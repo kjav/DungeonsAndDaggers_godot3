@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Inventory.png" type="Texture" id=1]
+[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "
+extends Node2D
+signal ItemUsed(item)
+export(int, \"Potion\", \"Food\", \"Spell\") var type setget setType, getType
+
+const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
+
+#var pos1 = Vector2(130, 140)
+#var pos2 = Vector2(355, 140)
+#var pos3 = Vector2(580, 140)
+func populateInventory():
+	var inc = 225
+	var start = Vector2(130,130)
+	var selected = []
+	
+	if type == \"Potion\":
+		selected = GameData.potions
+	elif type == \"Food\":
+		selected = GameData.foods
+	elif type == \"Spell\":
+		selected = GameData.spells
+	
+	for i in range(selected.size()):
+		var new_node = InventoryItem.instance()
+		new_node.setInstance(selected[i])
+		var row = i / 3
+		var col = i % 3
+		new_node.set_pos(start + Vector2(inc*col, inc*row))
+		get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\").get_node(\"Inventory\").add_child(new_node)
+
+func setType(newType):
+	if typeof(newType) == TYPE_STRING:
+		type = newType
+
+func selectItem(item):
+	emit_signal(\"ItemUsed\", item);
+	hideMenu(\"item used\");
+
+func hideMenu(event):
+	#Audio.playSoundEffect(\"Inventory_Close\", false)
+	get_tree().get_current_scene().get_node(\"HudNode\").inventoryOpen = false
+	self.queue_free()
+	self.hide()
+
+func getType():
+	return type"
+
+[node name="Node2D" type="Node2D"]
+
+script = SubResource( 1 )
+type = null
+
+[node name="TextureButton" type="TextureRect" parent="."]
+
+rect_scale = Vector2( 3, 5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags_horizontal = 1
+size_flags_vertical = 1
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 300.0
+margin_bottom = 273.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+mouse_filter = 0
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 27.0
+margin_top = 17.0
+margin_right = 871.0
+margin_bottom = 1352.0
+triggerOn = 1
+
+[connection signal="clicked_outside" from="Node2D" to="." method="hideMenu" binds=[  ]]

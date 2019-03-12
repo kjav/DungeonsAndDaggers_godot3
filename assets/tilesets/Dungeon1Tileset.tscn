@@ -1,0 +1,390 @@
+[gd_scene load_steps=44 format=2]
+
+[ext_resource path="res://assets/floor_tiles/Tile1.png" type="Texture" id=1]
+[ext_resource path="res://assets/floor_tiles/Tile1_under_wall.png" type="Texture" id=2]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_wall.png" type="Texture" id=3]
+[ext_resource path="res://assets/floor_tiles/Tile7_over_wall.png" type="Texture" id=4]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_topleft.png" type="Texture" id=5]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_topleft.png" type="Texture" id=6]
+[ext_resource path="res://assets/floor_tiles/Tile7_over_corner_topleft.png" type="Texture" id=7]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_topright.png" type="Texture" id=8]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_topright.png" type="Texture" id=9]
+[ext_resource path="res://assets/floor_tiles/Tile7_over_corner_topright.png" type="Texture" id=10]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_bottomleft.png" type="Texture" id=11]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_bottomleft.png" type="Texture" id=12]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_bottomright.png" type="Texture" id=13]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_bottomright.png" type="Texture" id=14]
+[ext_resource path="res://assets/floor_tiles/Tile1_left_wall.png" type="Texture" id=15]
+[ext_resource path="res://assets/floor_tiles/Tile2.png" type="Texture" id=16]
+[ext_resource path="res://assets/floor_tiles/Tile2_under_wall.png" type="Texture" id=17]
+[ext_resource path="res://assets/floor_tiles/Tile2_over_wall.png" type="Texture" id=18]
+[ext_resource path="res://assets/floor_tiles/Tile2_left_wall.png" type="Texture" id=19]
+[ext_resource path="res://assets/floor_tiles/Tile3.png" type="Texture" id=20]
+[ext_resource path="res://assets/floor_tiles/Tile3_under_wall.png" type="Texture" id=21]
+[ext_resource path="res://assets/floor_tiles/Tile3_over_wall.png" type="Texture" id=22]
+[ext_resource path="res://assets/floor_tiles/Tile3_left_tile.png" type="Texture" id=23]
+[ext_resource path="res://assets/floor_tiles/Tile3_door_tile.png" type="Texture" id=24]
+[ext_resource path="res://assets/floor_tiles/Tile4.png" type="Texture" id=25]
+[ext_resource path="res://assets/floor_tiles/Tile4_under_wall.png" type="Texture" id=26]
+[ext_resource path="res://assets/floor_tiles/Tile4_over_wall.png" type="Texture" id=27]
+[ext_resource path="res://assets/floor_tiles/Tile4_left_wall.png" type="Texture" id=28]
+[ext_resource path="res://assets/floor_tiles/Tile5.png" type="Texture" id=29]
+[ext_resource path="res://assets/floor_tiles/Tile5_under_wall.png" type="Texture" id=30]
+[ext_resource path="res://assets/floor_tiles/Tile5_over_wall.png" type="Texture" id=31]
+[ext_resource path="res://assets/floor_tiles/Tile5_left_wall.png" type="Texture" id=32]
+[ext_resource path="res://assets/floor_tiles/Tile6.png" type="Texture" id=33]
+[ext_resource path="res://assets/floor_tiles/Tile6_under_wall.png" type="Texture" id=34]
+[ext_resource path="res://assets/floor_tiles/Tile6_over_wall.png" type="Texture" id=35]
+[ext_resource path="res://assets/floor_tiles/Tile6_left_wall.png" type="Texture" id=36]
+[ext_resource path="res://assets/wall_middle_free.png" type="Texture" id=37]
+[ext_resource path="res://assets/wall_middle.png" type="Texture" id=38]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_bottomrightleft.png" type="Texture" id=39]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_vertical_wall.png" type="Texture" id=40]
+[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_plus_horizontal.png" type="Texture" id=41]
+[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_bottom_end.png" type="Texture" id=42]
+
+[node name="Node2D" type="Node2D"]
+
+
+[node name="Floor1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 0, 32 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 0, 64 )
+texture = ExtResource( 3 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor7_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 192, 64 )
+texture = ExtResource( 4 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_corner_topleft" type="Sprite" parent="."]
+
+position = Vector2( 0, 256 )
+texture = ExtResource( 5 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_corner_topleft" type="Sprite" parent="."]
+
+position = Vector2( 32, 256 )
+texture = ExtResource( 6 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor7_over_corner_topleft" type="Sprite" parent="."]
+
+position = Vector2( 32, 288 )
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_corner_topright" type="Sprite" parent="."]
+
+position = Vector2( 64, 256 )
+texture = ExtResource( 8 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_corner_topright" type="Sprite" parent="."]
+
+position = Vector2( 96, 256 )
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor7_over_corner_topright" type="Sprite" parent="."]
+
+position = Vector2( 96, 288 )
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_corner_bottomleft" type="Sprite" parent="."]
+
+position = Vector2( 128, 256 )
+texture = ExtResource( 11 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_corner_bottomleft" type="Sprite" parent="."]
+
+position = Vector2( 160, 256 )
+texture = ExtResource( 12 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_corner_bottomright" type="Sprite" parent="."]
+
+position = Vector2( 192, 256 )
+texture = ExtResource( 13 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_corner_bottomright" type="Sprite" parent="."]
+
+position = Vector2( 224, 256 )
+texture = ExtResource( 14 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 0, 128 )
+texture = ExtResource( 15 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor2" type="Sprite" parent="."]
+
+position = Vector2( 32, 0 )
+texture = ExtResource( 16 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor2_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 32, 32 )
+texture = ExtResource( 17 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor2_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 32, 64 )
+texture = ExtResource( 18 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor2_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 32, 128 )
+texture = ExtResource( 19 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor3" type="Sprite" parent="."]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 20 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor3_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 64, 32 )
+texture = ExtResource( 21 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor3_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 64, 64 )
+texture = ExtResource( 22 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor3_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 64, 128 )
+texture = ExtResource( 23 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor3_door_tile" type="Sprite" parent="."]
+
+position = Vector2( 64, 96 )
+texture = ExtResource( 24 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor4" type="Sprite" parent="."]
+
+position = Vector2( 96, 0 )
+texture = ExtResource( 25 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor4_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 96, 32 )
+texture = ExtResource( 26 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor4_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 96, 64 )
+texture = ExtResource( 27 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor4_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 96, 128 )
+texture = ExtResource( 28 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor5" type="Sprite" parent="."]
+
+position = Vector2( 128, 0 )
+texture = ExtResource( 29 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor5_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 128, 32 )
+texture = ExtResource( 30 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor5_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 128, 64 )
+texture = ExtResource( 31 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor5_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 128, 128 )
+texture = ExtResource( 32 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor6" type="Sprite" parent="."]
+
+position = Vector2( 160, 0 )
+texture = ExtResource( 33 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor6_under_wall" type="Sprite" parent="."]
+
+position = Vector2( 160, 32 )
+texture = ExtResource( 34 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor6_over_wall" type="Sprite" parent="."]
+
+position = Vector2( 160, 64 )
+texture = ExtResource( 35 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor6_left_wall" type="Sprite" parent="."]
+
+position = Vector2( 160, 128 )
+texture = ExtResource( 36 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="WallMiddle" type="Sprite" parent="."]
+
+position = Vector2( 0, 224 )
+texture = ExtResource( 37 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="WallMiddle2" type="Sprite" parent="."]
+
+position = Vector2( 32, 224 )
+texture = ExtResource( 38 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_corner_bottomrightleft" type="Sprite" parent="."]
+
+position = Vector2( 128, 288 )
+texture = ExtResource( 39 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_over_verticalwall" type="Sprite" parent="."]
+
+position = Vector2( 160, 288 )
+texture = ExtResource( 40 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_verticalwall_plus_horizontal_wall" type="Sprite" parent="."]
+
+position = Vector2( 192, 288 )
+texture = ExtResource( 41 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="Floor1_verticalwall_bottom_end" type="Sprite" parent="."]
+
+position = Vector2( 224, 288 )
+texture = ExtResource( 42 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+
+[node name="ZZZ_Floor1_duplicate" type="Sprite" parent="."]
+
+position = Vector2( 192, 0 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )

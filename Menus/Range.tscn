@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menus/scripts/Range.gd" type="Script" id=1]
+[ext_resource path="res://assets/range_plus.png" type="Texture" id=2]
+[ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=3]
+[ext_resource path="res://Menus/scripts/RangePlusButton.gd" type="Script" id=4]
+[ext_resource path="res://assets/range_minus.png" type="Texture" id=5]
+[ext_resource path="res://Menus/scripts/RangeMinusButton.gd" type="Script" id=6]
+[ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=7]
+
+[node name="Node2D" type="Node2D"]
+
+position = Vector2( 90, 0 )
+script = ExtResource( 1 )
+maxProgress = null
+progress = null
+name = null
+editable = null
+
+[node name="RangePlusButton" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags_horizontal = 1
+size_flags_vertical = 1
+margin_left = -35.0
+margin_top = -60.0
+margin_right = 85.0
+margin_bottom = 60.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 3 )
+params/resize_mode = 1
+params/stretch_mode = 4
+script = ExtResource( 4 )
+mouse_filter = 0
+
+[node name="RangeMinusButton" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags_horizontal = 1
+size_flags_vertical = 1
+margin_left = -85.0
+margin_top = -60.0
+margin_right = 35.0
+margin_bottom = 60.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 3 )
+params/resize_mode = 1
+params/stretch_mode = 4
+script = ExtResource( 6 )
+mouse_filter = 0
+
+[node name="RangeValueLabel" type="Label" parent="."]
+
+rect_scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags_horizontal = 1
+size_flags_vertical = 0
+theme = ExtResource( 7 )
+margin_left = 55.0
+margin_top = -21.0
+margin_right = 95.0
+margin_bottom = -5.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+mouse_filter = 1
+
+[node name="RangeNameLabel" type="Label" parent="."]
+
+rect_scale = Vector2( 1.8, 1.8 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags_horizontal = 1
+size_flags_vertical = 0
+theme = ExtResource( 7 )
+margin_left = -335.0
+margin_top = -21.0
+margin_right = -223.0
+margin_bottom = -5.0
+text = "example"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+mouse_filter = 1

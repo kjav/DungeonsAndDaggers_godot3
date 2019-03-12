@@ -1,0 +1,138 @@
+[gd_resource type="Resource" load_steps=1 format=2]
+
+[ext_resource path="res://assets/Audio/Bat_Noticed.wav" type="Sample" id=1]
+[ext_resource path="res://assets/Audio/Button_Click.wav" type="Sample" id=2]
+[ext_resource path="res://assets/Audio/Chew.wav" type="Sample" id=3]
+[ext_resource path="res://assets/Audio/Enemy_Death.wav" type="Sample" id=4]
+[ext_resource path="res://assets/Audio/Fireball_Flying.wav" type="Sample" id=5]
+[ext_resource path="res://assets/Audio/Fireball_Hit.wav" type="Sample" id=6]
+[ext_resource path="res://assets/Audio/Food_Use.sample" type="Sample" id=7]
+[ext_resource path="res://assets/Audio/Food_Use.wav" type="Sample" id=8]
+[ext_resource path="res://assets/Audio/GainHealth.wav" type="Sample" id=9]
+[ext_resource path="res://assets/Audio/HealthPotion_Drink.wav" type="Sample" id=10]
+[ext_resource path="res://assets/Audio/Hit_1.wav" type="Sample" id=11]
+[ext_resource path="res://assets/Audio/Hit_2.wav" type="Sample" id=12]
+[ext_resource path="res://assets/Audio/Hit_3.wav" type="Sample" id=13]
+[ext_resource path="res://assets/Audio/Inventory_Close.wav" type="Sample" id=14]
+[ext_resource path="res://assets/Audio/Inventory_Open.wav" type="Sample" id=15]
+[ext_resource path="res://assets/Audio/Player_Death.wav" type="Sample" id=16]
+[ext_resource path="res://assets/Audio/Walk_1.wav" type="Sample" id=17]
+[ext_resource path="res://assets/Audio/Walk_2.wav" type="Sample" id=18]
+[ext_resource path="res://assets/Audio/Walk_3.wav" type="Sample" id=19]
+
+[resource]
+
+samples/Bat_Noticed = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 1 )
+}
+samples/Button_Click = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 2 )
+}
+samples/Chew = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 3 )
+}
+samples/Enemy_Death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 4 )
+}
+samples/Fireball_Flying = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 5 )
+}
+samples/Fireball_Hit = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 6 )
+}
+samples/Food_Use = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 7 )
+}
+samples/Food_Use_1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 8 )
+}
+samples/GainHealth = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 9 )
+}
+samples/HealthPotion_Drink = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 10 )
+}
+samples/Hit_1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 11 )
+}
+samples/Hit_2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 12 )
+}
+samples/Hit_3 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 13 )
+}
+samples/Inventory_Close = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 14 )
+}
+samples/Inventory_Open = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 15 )
+}
+samples/Player_Death = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 16 )
+}
+samples/Walk_1 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 17 )
+}
+samples/Walk_2 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 18 )
+}
+samples/Walk_3 = {
+"db": 0.0,
+"pitch": 1.0,
+"priority": 0,
+"sample": ExtResource( 19 )
+}

@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://Components/DungeonMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/FloorItems.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hud/Hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/tilesets/Dungeon1Tileset.res" type="TileSet" id=6]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Background" type="ColorRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 6.0
+margin_right = 1081.0
+margin_bottom = 1926.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.12549, 0.12549, 0.12549, 1 )
+
+[node name="DungeonMap" parent="." index="1" instance=ExtResource( 2 )]
+
+[node name="FloorItems" parent="." index="2" instance=ExtResource( 3 )]
+
+z_index = 1
+
+[node name="Environments" type="Node" parent="." index="3"]
+
+[node name="Player" parent="." index="4" instance=ExtResource( 4 )]
+
+z_index = 1
+
+[node name="Enemies" type="Node" parent="." index="5"]
+
+[node name="HudNode" parent="." index="6" instance=ExtResource( 5 )]
+
+z_index = 3
+
+[node name="TileMap_top" type="TileMap" parent="." index="7"]
+
+visible = false
+position = Vector2( -0.225952, 0 )
+scale = Vector2( 4, 4 )
+mode = 0
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 1
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 65560, 37, 0, 65561, 36, 0, 65562, 36, 0, 65563, 36, 0, 65564, 36, 0, 65565, 36, 0, 65566, 36, 0, 65567, 36, 0, 131072, 37, 0, 131073, 36, 0, 131074, 36, 0, 131075, 36, 0, 131077, 36, 0, 131078, 36, 0, 131079, 36, 0, 131080, 36, 0, 131081, 36, 0, 131082, 36, 0, 131083, 36, 0, 131084, 36, 0, 131085, 36, 0, 131086, 36, 0, 131087, 36, 0, 131088, 36, 0, 131092, 36, 0, 131093, 36, 0, 131094, 36, 0, 131095, 36, 0, 262157, 36, 0, 262158, 36, 0, 262159, 36, 0, 393215, 32, 0, 458765, 36, 0, 458766, 36, 0, 458767, 36, 0, 458768, 36, 0, 458769, 36, 0, 458770, 36, 0, 458771, 36, 0, 458772, 36, 0, 589825, 36, 0, 589826, 36, 0, 589827, 36, 0, 589828, 36, 0, 589829, 36, 0, 589830, 36, 0, 589831, 36, 0, 589832, 36, 0, 983035, 36, 0, 983036, 36, 0, 983037, 36, 0, 983038, 36, 0, 983039, 36, 0, 917504, 36, 0, 917505, 36, 0, 917506, 36, 0, 917507, 36, 0, 917508, 36, 0, 917509, 36, 0, 917510, 36, 0, 917511, 36, 0, 917512, 36, 0 )
+
+

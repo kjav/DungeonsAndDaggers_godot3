@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=1 format=2]
+
+[ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=1]
+
+[resource]
+
+default_font = ExtResource( 1 )

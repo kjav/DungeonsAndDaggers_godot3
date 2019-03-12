@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
+[application]
+
+config/name="Dungeons & Daggers"
+run/main_scene="res://Menus/MainMenu.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Constants="*res://Singletons/Constants.gd"
+Enums="*res://Singletons/Enums.gd"
+EventListener="*res://Singletons/EventListener.gd"
+GameData="*res://Singletons/GameData.gd"
+
+[display]
+
+window/size/width=1080
+window/size/height=1920
+window/handheld/orientation="portrait"
+window/handheld/emulate_touchscreen=true
+window/stretch/mode="2d"
+
+[image_loader]
+
+filter=false
+
+[importer_defaults]
+
+texture={
+"flags/filter": false,
+"flags/mipmaps": true
+}
+
+[physics_2d]
+
+motion_fix_enabled=true

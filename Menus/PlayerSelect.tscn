@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Menus/scripts/PlayerSelect.gd" type="Script" id=1]
+[ext_resource path="res://assets/parallax-mountain-2.png" type="Texture" id=2]
+[ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menus/PlayerItem.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/angel_icon.png" type="Texture" id=5]
+[ext_resource path="res://assets/knight_icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/Beserker_full.png" type="Texture" id=7]
+[ext_resource path="res://assets/menu_button.png" type="Texture" id=8]
+[ext_resource path="res://assets/menu_button_selected.png" type="Texture" id=9]
+[ext_resource path="res://Menus/scripts/MenuButton.gd" type="Script" id=10]
+[ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=12]
+
+[node name="Node2D" type="Node2D" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Background" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -548.0
+margin_right = -276.0
+margin_bottom = 160.0
+rect_scale = Vector2( 12, 12 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 2 )
+stretch_mode = 0
+
+[node name="SelectScreen" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="AngelPlayer" parent="." index="2" instance=ExtResource( 4 )]
+
+position = Vector2( 540, 550 )
+playerTexture = ExtResource( 5 )
+playerName = "Angel"
+playerDescription = "The Angel is from another realm. Where it lacks in physical strength, it makes up for with massive hitpoints, and a very high speed gives them the first hit in most battles."
+
+[node name="WarriorPlayer" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( -705.747, 502.113 )
+playerTexture = ExtResource( 6 )
+playerName = "Warrior"
+playerDescription = "A fierce human warrior from the Surface, this character has the strength to hit hard - but will they survive to make the final blow?"
+
+[node name="BeserkerPlayer" parent="." index="4" instance=ExtResource( 4 )]
+
+playerTexture = ExtResource( 7 )
+playerName = "Beserker"
+playerDescription = "The beserker will never let you down with the damage he will inflict on evil creatures. But they may gravely injure him while he's striking..."
+
+[node name="Select Character" type="TextureButton" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 103.0
+margin_top = 1607.0
+margin_right = 403.0
+margin_bottom = 1807.0
+rect_scale = Vector2( 3, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Margin", "Rect", "Textures" ]
+scene = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="Select Character" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 28.0
+margin_top = 60.0
+margin_right = 233.0
+margin_bottom = 122.0
+rect_scale = Vector2( 1.2, 1.2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 12 )
+text = "Select Character"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Rect", "custom_fonts" ]
+
+[connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
+
+[connection signal="pressed" from="Select Character" to="Select Character" method="_on_pressed"]
+
+

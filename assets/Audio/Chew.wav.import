@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Chew.wav-2437b96637de13f0cb24baba21edbc39.sample"
+
+[deps]
+
+source_file="res://assets/Audio/Chew.wav"
+dest_files=[ "res://.import/Chew.wav-2437b96637de13f0cb24baba21edbc39.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

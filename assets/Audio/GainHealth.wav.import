@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GainHealth.wav-4c49feed1e88078df578178160a88608.sample"
+
+[deps]
+
+source_file="res://assets/Audio/GainHealth.wav"
+dest_files=[ "res://.import/GainHealth.wav-4c49feed1e88078df578178160a88608.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
