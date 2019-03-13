@@ -4,5 +4,5 @@ class SilverKey extends "KeyBase.gd":
 	func _init():
 		iconFilePath = "res://assets/silver_key2.png"
 		description = "A Silver Key"
-		name = "Silver Key"
+		item_name = "Silver Key"
 		UnlockGuid = "Silver"

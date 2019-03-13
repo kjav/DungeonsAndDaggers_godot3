@@ -4,7 +4,7 @@ class CookedSteak extends "Item.gd":
 	func _init():
 		iconFilePath = "res://assets/cooked_steak2.png"
 		description = "Mmmh suculent steak..."
-		name = "Cooked Steak"
+		item_name = "Cooked Steak"
 		useSound = "Food_Use"
 	
 	func onUse():

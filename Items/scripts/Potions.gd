@@ -4,7 +4,7 @@ class HealthPotion extends "Item.gd":
 	func _init():
 		iconFilePath = "res://assets/red_potion2.png"
 		description = "This drink heal your wounds!"
-		name = "Health Potion"
+		item_name = "Health Potion"
 		useSound = "HealthPotion_Drink"
 	
 	func onUse():

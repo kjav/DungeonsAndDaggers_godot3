@@ -18,7 +18,7 @@ func _on_Player_itemPickedUp( item ):
 
 func _on_Player_weaponChanged( slot, weapon ):
 	if (slot == "Primary"):
-		addMessage('A ' + weapon.weapon_name + ' is now equipt.');
+		addMessage('A ' + weapon.item_name + ' is now equipped.');
 
 func _on_Player_playerAttack( character, amount ):
 	addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');

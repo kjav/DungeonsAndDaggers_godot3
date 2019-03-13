@@ -7,7 +7,7 @@ class FireSpell extends "Item.gd":
 	func _init():
 		iconFilePath = "res://assets/red_spell2.png"
 		description = "Shoot a fire ball at the closest enemy!"
-		name = "Fire Spell"
+		item_name = "Fire Spell"
 
 	func onUse():
 		var closest_enemy = GameData.closestEnemy()

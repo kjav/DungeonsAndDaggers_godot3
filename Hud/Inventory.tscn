@@ -32,7 +32,7 @@ func populateInventory():
 		new_node.setInstance(selected[i])
 		var row = i / 3
 		var col = i % 3
-		new_node.set_pos(start + Vector2(inc*col, inc*row))
+		new_node.position = start + Vector2(inc*col, inc*row)
 		get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\").get_node(\"Inventory\").add_child(new_node)
 
 func setType(newType):

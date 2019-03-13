@@ -113,11 +113,11 @@ func set_map_type(type):
 		for enemy in map.npcs:
 			var node = enemy.value.instance()
 			Enemies.add_child(node)
-			node.set_position((enemy.position - Vector2(100, 100)) * 128)
+			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
 		
 		for item in map.items:
 			var node = item.value.new()
-			node.place((item.position - Vector2(100, 100)) * 128)
+			node.place((item.position - Vector2(100.0, 100.0)) * 128.0)
 
 		for env in map.environmentObjects:
 			var Environments = self.get_node("/root/Node2D/Environments")

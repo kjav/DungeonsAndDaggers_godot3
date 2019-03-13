@@ -4,7 +4,7 @@ extends "UnlockableBase.gd"
 var item_distribution
 
 func _init():
-	name = "Chest"
+	environment_name = "Chest"
 	walkable = true
 
 func handleAnimation():
