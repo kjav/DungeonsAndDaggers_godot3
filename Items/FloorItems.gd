@@ -20,7 +20,7 @@ func remove(item):
 func addItem(newItem):
 	var s = Sprite.new()
 	s.set_texture(newItem.texture) 
-	s.set_scale(Vector2(2,2))
+	s.set_scale(Vector2(0.5, 0.5))
 	s.set_position(newItem.position + Vector2(64,64))
 	add_child(s)
 

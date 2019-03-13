@@ -1,15 +1,15 @@
 tool
 extends Node2D
 
-export(String, "Right", "Centre", "Left") var frameStyle setget setFrameStyle, getFrameStyle
-export(String, "Potion", "Food", "Spell", "Sword", "Shield") var type setget setType, getType
+export(String, "Right", "Centre", "Left", "None") var frameStyle setget setFrameStyle, getFrameStyle
+export(String, "Potion", "Food", "Spell", "Sword", "Shield", "None") var type setget setType, getType
 
 var leftFrame = preload("res://assets//frame_left.png")
 var middleFrame = preload("res://assets//frame_none.png")
 var rightFrame = preload("res://assets//frame_right.png")
 var potion = preload("res://assets//potion_inventory.png")
-var food = preload("res://assets//food_inventory2.png")
-var spell = preload("res://assets//book1.png")
+var food = preload("res://assets//food_inventory.png")
+var spell = preload("res://assets//spell_inventory.png")
 var sword = preload("res://assets//basic_sword.png")
 var shield = preload("res://assets//basic_shield.png")
 

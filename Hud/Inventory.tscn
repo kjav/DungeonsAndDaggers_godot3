@@ -16,7 +16,7 @@ const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
 #var pos2 = Vector2(355, 140)
 #var pos3 = Vector2(580, 140)
 func populateInventory():
-	var inc = 225
+	var inc = 168.75
 	var start = Vector2(130,130)
 	var selected = []
 	
@@ -30,8 +30,8 @@ func populateInventory():
 	for i in range(selected.size()):
 		var new_node = InventoryItem.instance()
 		new_node.setInstance(selected[i])
-		var row = i / 3
-		var col = i % 3
+		var row = i / 4
+		var col = i % 4
 		new_node.position = start + Vector2(inc*col, inc*row)
 		get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\").get_node(\"Inventory\").add_child(new_node)
 
@@ -57,22 +57,25 @@ func getType():
 script = SubResource( 1 )
 type = null
 
-[node name="TextureButton" type="TextureRect" parent="."]
+[node name="TextureButton" type="TextureRect" parent="." index="0"]
 
-rect_scale = Vector2( 3, 5 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags_horizontal = 1
-size_flags_vertical = 1
-margin_left = 0.0
-margin_top = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 300.0
 margin_bottom = 273.0
+rect_scale = Vector2( 3, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 texture = ExtResource( 1 )
 stretch_mode = 0
-mouse_filter = 0
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
+[node name="Node2D" parent="." index="1" instance=ExtResource( 2 )]
 
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 27.0
@@ -81,4 +84,6 @@ margin_right = 871.0
 margin_bottom = 1352.0
 triggerOn = 1
 
-[connection signal="clicked_outside" from="Node2D" to="." method="hideMenu" binds=[  ]]
+[connection signal="clicked_outside" from="Node2D" to="." method="hideMenu"]
+
+

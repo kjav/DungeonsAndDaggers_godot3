@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hud/scripts/InventoryItem.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/InventoryIconClick.gd" type="Script" id=2]
 [ext_resource path="res://Items/ItemIcon.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Items/ItemDescription.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/tileInventory.png" type="Texture" id=5]
+[ext_resource path="res://assets/tileInventory.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -16,8 +15,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 200.0
-margin_bottom = 207.0
+margin_right = 168.0
+margin_bottom = 168.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -30,19 +29,14 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
 
 [node name="ItemIcon" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 12, 0 )
-scale = Vector2( 5, 5 )
+position = Vector2( 17.8746, 20.6551 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="ItemDescription" parent="." index="2" instance=ExtResource( 4 )]
-
-position = Vector2( -29.9513, 158.855 )
-scale = Vector2( 1.3, 1.3 )
-script = null
-
-[node name="Background" type="TextureRect" parent="." index="3"]
+[node name="Background" type="TextureRect" parent="." index="2"]
 
 visible = false
 anchor_left = 0.0
@@ -58,7 +52,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 stretch_mode = 0
 
 [connection signal="pressed" from="ClickRegion" to="ClickRegion" method="pressed"]
