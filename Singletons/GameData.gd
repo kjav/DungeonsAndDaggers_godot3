@@ -119,4 +119,10 @@ func reset():
 	environmentObjects = []
 	characters = []
 	placedItems = []
+	var instance = Constants.PotionClasses.HealthPotion.new()
+	addPotions([instance, instance, instance])
+	instance = Constants.FoodClasses.CookedSteak.new()
+	addFoods([instance, instance])
+	instance = Constants.SpellClasses.FireSpell.new()
+	addSpells([instance, instance])
 
