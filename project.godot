@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Dungeons & Daggers"
+config/name="Dungeons And Daggers"
 run/main_scene="res://Menus/MainMenu.tscn"
 config/icon="res://icon.png"
 
