@@ -4,7 +4,7 @@
 [ext_resource path="res://Menus/Range.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=3]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
 playerTexture = null
@@ -38,18 +38,22 @@ stretch_mode = 0
 [node name="StrengthRange" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 125, 400 )
+range_name = "StrengthRange"
 
 [node name="HitpointsRange" parent="." index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 125, 640 )
+range_name = "HitpointsRange"
 
 [node name="SpeedRange" parent="." index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 125, 760 )
+range_name = "SpeedRange"
 
 [node name="DefenceRange" parent="." index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 125, 520 )
+range_name = "DefenceRange"
 
 [node name="PlayerNameLabel" type="Label" parent="." index="5"]
 
@@ -57,9 +61,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -1250.0
+margin_left = -382.0
 margin_top = -700.0
-margin_right = -750.0
+margin_right = -229.0
 margin_bottom = -580.0
 rect_scale = Vector2( 5, 5 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -74,6 +78,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Mouse", "Rect", "Size Flags" ]
 
 [node name="PlayerDescriptionLabel" type="Label" parent="." index="6"]
 
@@ -97,5 +102,6 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Mouse", "Rect" ]
 
 

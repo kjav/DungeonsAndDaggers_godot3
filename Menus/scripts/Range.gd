@@ -85,7 +85,8 @@ func getName():
 
 func setName(value):
 	if typeof(value) == TYPE_STRING:
-		getNameLabel().text = str(value)
+		if has_node("RangeNameLabel"):
+			getNameLabel().text = str(value)
 		name = value
 
 func setEditable(value):
