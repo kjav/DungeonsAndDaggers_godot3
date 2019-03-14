@@ -1,4 +1,4 @@
-extends "EnvironmentBase.gd"
+ extends "EnvironmentBase.gd"
 
 signal keyUsed(unlockGuid, unlockedObjectsName)
 
@@ -17,7 +17,7 @@ func setLocked(_locked):
 
 func keyUnlocked():
 	GameData.RemoveKey(UnlockGuid)
-	emit_signal("keyUsed", UnlockGuid, name)
+	emit_signal("keyUsed", UnlockGuid, environment_name)
 	setLocked(false)
 
 func getLocked():
