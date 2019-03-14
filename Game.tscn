@@ -73,6 +73,8 @@ tile_data = PoolIntArray( 65560, 37, 0, 65561, 36, 0, 65562, 36, 0, 65563, 36, 0
 
 [node name="SwipeNode" parent="." index="8" instance=ExtResource( 7 )]
 
+_sections_unfolded = [ "Material", "Pause", "Transform", "Visibility", "Z Index" ]
+
 [connection signal="swipe" from="SwipeNode" to="Player" method="swiped"]
 
 

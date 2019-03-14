@@ -11,7 +11,7 @@ func _input(event):
 		_calculate_swipe(event.global_position)
 
 func _calculate_swipe(swipe_end):
-	if swipe_start == null: 
+	if swipe_start == null:
 		return
 	var swipe = swipe_end - swipe_start
 
