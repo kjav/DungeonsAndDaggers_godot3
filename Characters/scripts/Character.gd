@@ -236,7 +236,9 @@ func takeDamage(damage):
 func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
+	print("Death: ")
 	set_animation("death")
+	self.playing = true
 
 func playDeathAudio():
 	if(self == GameData.player):

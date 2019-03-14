@@ -105,6 +105,11 @@ func takeDamage(damage):
 	.takeDamage(damage)
 	emit_signal("statsChanged", "health", "Down", -damage)
 
+func handleCharacterDeath():
+	get_node("PrimaryWeapon").hide()
+	get_node("SecondaryWeapon").hide()
+	.handleCharacterDeath()
+
 func pickUp():
 	var item = GameData.itemAtPos(self.get_position()/GameData.TileSize)
 	if (item != null):
