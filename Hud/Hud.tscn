@@ -65,15 +65,14 @@ texture = ExtResource( 5 )
 
 [node name="SecondaryWeaponSlot" parent="HudCanvasLayer" index="5" instance=ExtResource( 6 )]
 
-position = Vector2( 154.679, 1759.67 )
-scale = Vector2( 1.5, 1.5 )
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 882.971, 1679.43 )
+scale = Vector2( 0.8, 0.8 )
 type = "Shield"
 
 [node name="PrimaryWeaponSlot" parent="HudCanvasLayer" index="6" instance=ExtResource( 6 )]
 
-position = Vector2( 6.61581, 1737.72 )
-scale = Vector2( 2, 2 )
+position = Vector2( 700.098, 1646.53 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 type = "Sword"
 
 [node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer" index="7"]
@@ -83,10 +82,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 140.0
-margin_top = 1744.0
-margin_right = 180.0
-margin_bottom = 1784.0
+margin_left = 871.0
+margin_top = 1665.0
+margin_right = 911.0
+margin_bottom = 1705.0
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -99,9 +98,11 @@ stretch_mode = 0
 
 [node name="Node2D" parent="HudCanvasLayer" index="8" instance=ExtResource( 8 )]
 
+visible = false
+
 [node name="FoodInvent" parent="HudCanvasLayer" index="9" instance=ExtResource( 9 )]
 
-position = Vector2( 915.832, 1764.08 )
+position = Vector2( 7.51074, 1730.66 )
 scale = Vector2( 0.34, 0.34 )
 _sections_unfolded = [ "Transform" ]
 frameStyle = "None"
@@ -109,15 +110,15 @@ type = "Food"
 
 [node name="PotInvent" parent="HudCanvasLayer" index="10" instance=ExtResource( 9 )]
 
-position = Vector2( 600.947, 1763.73 )
-scale = Vector2( 0.34, 0.34 )
+position = Vector2( 315.605, 1730.03 )
+scale = Vector2( 0.35, 0.34 )
 _sections_unfolded = [ "Transform" ]
 frameStyle = "None"
 type = "Potion"
 
 [node name="SpellInvent" parent="HudCanvasLayer" index="11" instance=ExtResource( 9 )]
 
-position = Vector2( 753.087, 1758.36 )
+position = Vector2( 159.012, 1730.03 )
 scale = Vector2( 0.35, 0.35 )
 _sections_unfolded = [ "Transform" ]
 frameStyle = "None"
@@ -125,7 +126,7 @@ type = "Spell"
 
 [node name="Pickup" parent="HudCanvasLayer" index="12" instance=ExtResource( 10 )]
 
-position = Vector2( 739.594, 1562.71 )
+position = Vector2( 133.657, 1535.67 )
 scale = Vector2( 2, 2 )
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer" index="13"]
