@@ -11,6 +11,7 @@ position = Vector2( 640, 1024 )
 scale = Vector2( 4, 4 )
 frames = ExtResource( 1 )
 animation = "stand_down"
+playing = true
 centered = false
 offset = Vector2( 0, -8 )
 script = ExtResource( 2 )
