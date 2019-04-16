@@ -73,12 +73,11 @@ animations = [ {
 "speed": 14.0
 } ]
 
-[node name="Sprite" type="AnimatedSprite" index="0"]
+[node name="Sprite" type="AnimatedSprite"]
 
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 animation = "stand_down"
-frame = 5
 playing = true
 offset = Vector2( 320, 320 )
 script = ExtResource( 23 )

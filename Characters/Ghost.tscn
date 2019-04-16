@@ -73,7 +73,7 @@ animations = [ {
 "speed": 6.0
 } ]
 
-[node name="Sprite" type="AnimatedSprite" index="0"]
+[node name="Sprite" type="AnimatedSprite"]
 
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )

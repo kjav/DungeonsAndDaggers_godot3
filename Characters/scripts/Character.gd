@@ -83,14 +83,15 @@ func handleMove(direction):
 
 func faceDirection(direction):
 	if alive():
-		if direction == Enums.DIRECTION.UP:
-			set_animation("stand_up")
-		elif direction == Enums.DIRECTION.DOWN:
-			set_animation("stand_down")
-		elif direction == Enums.DIRECTION.LEFT:
-			set_animation("stand_left")
-		elif direction == Enums.DIRECTION.RIGHT:
-			set_animation("stand_right")
+		match direction:
+			Enums.DIRECTION.UP:
+				set_animation("stand_up")
+			Enums.DIRECTION.DOWN:
+				set_animation("stand_down")
+			Enums.DIRECTION.LEFT:
+				set_animation("stand_left")
+			Enums.DIRECTION.RIGHT:
+				set_animation("stand_right")
 
 func setTarget(direction):
 	var pos = original_pos
@@ -104,28 +105,30 @@ func setTarget(direction):
 	return pos
 
 func getNextTargetPos(pos, direction):
-	if direction == Enums.DIRECTION.UP:
-		pos.y -= 1
-	elif direction == Enums.DIRECTION.DOWN:
-		pos.y += 1
-	elif direction == Enums.DIRECTION.LEFT:
-		pos.x -= 1
-	elif direction == Enums.DIRECTION.RIGHT:
-		pos.x += 1
+	match direction:
+		Enums.DIRECTION.UP:
+			pos.y -= 1
+		Enums.DIRECTION.DOWN:
+			pos.y += 1
+		Enums.DIRECTION.LEFT:
+			pos.x -= 1
+		Enums.DIRECTION.RIGHT:
+			pos.x += 1
 	
 	return pos
 
 func generateAdditionalAbosoluteAttackPositions(direction):
 	var phi
 	
-	if direction == Enums.DIRECTION.UP:
-		phi = 0
-	elif direction == Enums.DIRECTION.DOWN:
-		phi = PI
-	elif direction == Enums.DIRECTION.LEFT:
-		phi = PI /2
-	elif direction == Enums.DIRECTION.RIGHT:
-		phi = (3 *  PI) / 2
+	match direction:
+		Enums.DIRECTION.UP:
+			phi = 0
+		Enums.DIRECTION.DOWN:
+			phi = PI
+		Enums.DIRECTION.LEFT:
+			phi = PI /2
+		Enums.DIRECTION.RIGHT:
+			phi = (3 *  PI) / 2
 	
 	var AbsolutePositions = []
 
@@ -273,12 +276,25 @@ func alive():
 	return stats.health.value > 0
 
 func setWalkAnimation(direction):
-	if direction == Enums.DIRECTION.UP:
-		self.set_animation("walk_up")
-	elif direction == Enums.DIRECTION.DOWN:
-		self.set_animation("walk_down")
-	elif direction == Enums.DIRECTION.LEFT:
-		self.set_animation("walk_left")
-	elif direction == Enums.DIRECTION.RIGHT:
-		self.set_animation("walk_right")
+	print("Walking ", direction)
+	match direction:
+		Enums.DIRECTION.UP:
+			self.set_animation("walk_up")
+		Enums.DIRECTION.DOWN:
+			self.set_animation("walk_down")
+		Enums.DIRECTION.LEFT:
+			self.set_animation("walk_left")
+		Enums.DIRECTION.RIGHT:
+			self.set_animation("walk_right")
 
+func setStandAnimation(direction):
+	print("Standing ", direction)
+	match direction:
+		Enums.DIRECTION.UP:
+			self.set_animation("stand_up")
+		Enums.DIRECTION.DOWN:
+			self.set_animation("stand_down")
+		Enums.DIRECTION.LEFT:
+			self.set_animation("stand_left")
+		Enums.DIRECTION.RIGHT:
+			self.set_animation("stand_right")
