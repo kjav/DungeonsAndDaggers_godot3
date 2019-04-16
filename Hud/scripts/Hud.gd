@@ -43,9 +43,7 @@ func PlayerWeaponChanged(slot, weapon):
 	var selectedSlot
 	if slot == "Primary":
 		selectedSlot = get_node("HudCanvasLayer/PrimaryWeaponSlot")
-	else:
-		selectedSlot = get_node("HudCanvasLayer/SecondaryWeaponSlot")
-	selectedSlot.setIconTexture(weapon.texture)
+		selectedSlot.setIconTexture(weapon.texture)
 
 func PlayerHealthChanged(health, maxHealth):
 	for child in get_node("HudCanvasLayer/HealthBar").get_children():

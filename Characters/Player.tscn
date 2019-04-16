@@ -44,16 +44,18 @@ editor_draw_drag_margin = false
 
 [node name="PrimaryWeapon" type="Sprite" parent="." index="1"]
 
-position = Vector2( 10.6666, 16 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 6.66107, 11.1183 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 3 )
 offset = Vector2( -10, -10 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="SecondaryWeapon" type="Sprite" parent="." index="2"]
 
-position = Vector2( 21.3333, 18 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 20.8326, 15.8095 )
+scale = Vector2( 0.12, 0.12 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, -5 )
+_sections_unfolded = [ "Transform" ]
 
 

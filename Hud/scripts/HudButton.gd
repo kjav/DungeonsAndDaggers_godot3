@@ -1,15 +1,17 @@
 tool
 extends Node2D
 
-export(String, "Right", "Centre", "Left") var frameStyle setget setFrameStyle, getFrameStyle
-export(String, "Potion", "Food", "Spell", "Sword", "Shield") var type setget setType, getType
+export(String, "Pink", "Blue", "Green", "Yellow", "Orange", "None") var frameStyle setget setFrameStyle, getFrameStyle
+export(String, "Potion", "Food", "Spell", "Sword", "Shield", "None") var type setget setType, getType
 
-var leftFrame = preload("res://assets//frame_left.png")
-var middleFrame = preload("res://assets//frame_none.png")
-var rightFrame = preload("res://assets//frame_right.png")
-var potion = preload("res://assets//potion_inventory.png")
-var food = preload("res://assets//food_inventory2.png")
-var spell = preload("res://assets//book1.png")
+var pink = preload("res://assets//ring_inner_pink.png")
+var blue = preload("res://assets//ring_inner_blue.png")
+var green = preload("res://assets//ring_inner_green.png")
+var yellow = preload("res://assets//ring_inner_yellow.png")
+var orange = preload("res://assets//ring_inner_orange.png")
+var potion = preload("res://assets//ring_potion_inventory.png")
+var food = preload("res://assets//ring_food_inventory.png")
+var spell = preload("res://assets//ring_spell_inventory.png")
 var sword = preload("res://assets//basic_sword.png")
 var shield = preload("res://assets//basic_shield.png")
 
@@ -19,12 +21,16 @@ func setIconTexture(texture):
 func setFrameStyle(style):
 	if typeof(style) == TYPE_STRING:
 		frameStyle = style
-		if frameStyle == "Left":
-			get_node("Background").set_texture(leftFrame)
-		elif frameStyle == "Centre":
-			get_node("Background").set_texture(middleFrame)
-		elif frameStyle == "Right":
-			get_node("Background").set_texture(rightFrame)
+		if frameStyle == "Pink":
+			get_node("Background").set_texture(pink)
+		elif frameStyle == "Orange":
+			get_node("Background").set_texture(orange)
+		elif frameStyle == "Blue":
+			get_node("Background").set_texture(blue)
+		elif frameStyle == "Yellow":
+			get_node("Background").set_texture(yellow)
+		elif frameStyle == "Green":
+			get_node("Background").set_texture(green)
 
 func getFrameStyle():
 	return frameStyle

@@ -16,7 +16,7 @@ const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
 #var pos2 = Vector2(355, 140)
 #var pos3 = Vector2(580, 140)
 func populateInventory():
-	var inc = 225
+	var inc = 168.75
 	var start = Vector2(130,130)
 	var selected = []
 	
@@ -30,8 +30,8 @@ func populateInventory():
 	for i in range(selected.size()):
 		var new_node = InventoryItem.instance()
 		new_node.setInstance(selected[i])
-		var row = i / 3
-		var col = i % 3
+		var row = i / 4
+		var col = i % 4
 		new_node.position = start + Vector2(inc*col, inc*row)
 		get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\").get_node(\"Inventory\").add_child(new_node)
 
