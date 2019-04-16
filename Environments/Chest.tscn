@@ -22,7 +22,7 @@ animations = [ {
 
 frames = SubResource( 1 )
 animation = "closed"
-offset = Vector2( 56, 50 )
+offset = Vector2( 64, 64 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 

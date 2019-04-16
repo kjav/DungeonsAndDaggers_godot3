@@ -29,7 +29,7 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+_sections_unfolded = [ "Anchor", "Margin", "Rect", "Textures" ]
 
 [node name="ItemIcon" parent="." index="1" instance=ExtResource( 3 )]
 

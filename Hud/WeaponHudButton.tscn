@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Hud/scripts/HudButton.gd" type="Script" id=1]
-[ext_resource path="res://assets/slot.png" type="Texture" id=2]
+[ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=2]
 [ext_resource path="res://assets/basic_sword.png" type="Texture" id=3]
-[ext_resource path="res://assets/slot_front.png" type="Texture" id=4]
+[ext_resource path="res://assets/ring.png" type="Texture" id=4]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
@@ -20,8 +20,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 256.0
-margin_bottom = 303.0
-rect_scale = Vector2( 0.85, 0.85 )
+margin_bottom = 256.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -38,10 +37,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 36.0
-margin_top = 63.0
-margin_right = 292.0
-margin_bottom = 319.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 192.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -58,9 +57,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 256.0
-margin_bottom = 303.0
-rect_scale = Vector2( 0.85, 0.85 )
+margin_left = -1.0
+margin_top = 3.0
+margin_right = 255.0
+margin_bottom = 259.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

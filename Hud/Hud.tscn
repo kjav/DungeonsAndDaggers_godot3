@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/KeysInterfaceContainer.gd" type="Script" id=2]
-[ext_resource path="res://Hud/Hat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/half_grey_hat.png" type="Texture" id=4]
-[ext_resource path="res://assets/grey_hat.png" type="Texture" id=5]
-[ext_resource path="res://Hud/WeaponHudButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hud/WeaponHudButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hud/Hat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/half_grey_hat.png" type="Texture" id=5]
+[ext_resource path="res://assets/grey_hat.png" type="Texture" id=6]
 [ext_resource path="res://assets/change_arrow.png" type="Texture" id=7]
 [ext_resource path="res://Hud/Minimap.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hud/InventoryHudButton.tscn" type="PackedScene" id=9]
@@ -41,52 +41,49 @@ scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="HealthBar" type="Node2D" parent="HudCanvasLayer" index="3"]
+[node name="PrimaryWeaponSlot" parent="HudCanvasLayer" index="3" instance=ExtResource( 3 )]
 
-position = Vector2( 390, 3.09088 )
+position = Vector2( 30, 1716 )
+scale = Vector2( 0.75, 0.75 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+frameStyle = "Blue"
+
+[node name="HealthBar" type="Node2D" parent="HudCanvasLayer" index="4"]
+
+position = Vector2( -12.2763, 42.2845 )
 scale = Vector2( 2, 2 )
 
-[node name="ManaBar" type="Node2D" parent="HudCanvasLayer" index="4"]
+[node name="ManaBar" type="Node2D" parent="HudCanvasLayer" index="5"]
 
-position = Vector2( 820, 32 )
+position = Vector2( 103.407, 163.879 )
 scale = Vector2( 2, 2 )
 
-[node name="Hat" parent="HudCanvasLayer/ManaBar" index="0" instance=ExtResource( 3 )]
+[node name="Hat" parent="HudCanvasLayer/ManaBar" index="0" instance=ExtResource( 4 )]
 
-[node name="Hat1" parent="HudCanvasLayer/ManaBar" index="1" instance=ExtResource( 3 )]
+position = Vector2( 0, 5 )
 
-position = Vector2( 32, 0 )
-texture = ExtResource( 4 )
+[node name="Hat1" parent="HudCanvasLayer/ManaBar" index="1" instance=ExtResource( 4 )]
 
-[node name="Hat2" parent="HudCanvasLayer/ManaBar" index="2" instance=ExtResource( 3 )]
-
-position = Vector2( 64, 0 )
+position = Vector2( 32, 5 )
 texture = ExtResource( 5 )
 
-[node name="SecondaryWeaponSlot" parent="HudCanvasLayer" index="5" instance=ExtResource( 6 )]
+[node name="Hat2" parent="HudCanvasLayer/ManaBar" index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 882.971, 1679.43 )
-scale = Vector2( 0.8, 0.8 )
-type = "Shield"
+position = Vector2( 64, 5 )
+texture = ExtResource( 6 )
 
-[node name="PrimaryWeaponSlot" parent="HudCanvasLayer" index="6" instance=ExtResource( 6 )]
-
-position = Vector2( 700.098, 1646.53 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-type = "Sword"
-
-[node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer" index="7"]
+[node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer" index="6"]
 
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 871.0
-margin_top = 1665.0
-margin_right = 911.0
-margin_bottom = 1705.0
-rect_scale = Vector2( 1.5, 1.5 )
+margin_left = 103.0
+margin_top = 1747.0
+margin_right = 143.0
+margin_bottom = 1787.0
+rect_scale = Vector2( 1, 0.75 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -95,41 +92,42 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 7 )
 stretch_mode = 0
+_sections_unfolded = [ "Rect" ]
 
-[node name="Node2D" parent="HudCanvasLayer" index="8" instance=ExtResource( 8 )]
+[node name="Node2D" parent="HudCanvasLayer" index="7" instance=ExtResource( 8 )]
 
 visible = false
 
-[node name="FoodInvent" parent="HudCanvasLayer" index="9" instance=ExtResource( 9 )]
+[node name="FoodInvent" parent="HudCanvasLayer" index="8" instance=ExtResource( 9 )]
 
-position = Vector2( 7.51074, 1730.66 )
-scale = Vector2( 0.34, 0.34 )
-_sections_unfolded = [ "Transform" ]
-frameStyle = "None"
+position = Vector2( 770, 1780 )
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+frameStyle = "Yellow"
 type = "Food"
 
-[node name="PotInvent" parent="HudCanvasLayer" index="10" instance=ExtResource( 9 )]
+[node name="PotInvent" parent="HudCanvasLayer" index="9" instance=ExtResource( 9 )]
 
-position = Vector2( 315.605, 1730.03 )
-scale = Vector2( 0.35, 0.34 )
+position = Vector2( 620, 1780 )
+scale = Vector2( 0.5, 0.5 )
 _sections_unfolded = [ "Transform" ]
-frameStyle = "None"
+frameStyle = "Green"
 type = "Potion"
 
-[node name="SpellInvent" parent="HudCanvasLayer" index="11" instance=ExtResource( 9 )]
+[node name="SpellInvent" parent="HudCanvasLayer" index="10" instance=ExtResource( 9 )]
 
-position = Vector2( 159.012, 1730.03 )
-scale = Vector2( 0.35, 0.35 )
+position = Vector2( 920, 1780 )
+scale = Vector2( 0.5, 0.5 )
 _sections_unfolded = [ "Transform" ]
-frameStyle = "None"
+frameStyle = "Orange"
 type = "Spell"
 
-[node name="Pickup" parent="HudCanvasLayer" index="12" instance=ExtResource( 10 )]
+[node name="Pickup" parent="HudCanvasLayer" index="11" instance=ExtResource( 10 )]
 
-position = Vector2( 133.657, 1535.67 )
+position = Vector2( 773.552, 1640.96 )
 scale = Vector2( 2, 2 )
 
-[node name="Settings" type="TextureButton" parent="HudCanvasLayer" index="13"]
+[node name="Settings" type="TextureButton" parent="HudCanvasLayer" index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -155,11 +153,11 @@ texture_normal = ExtResource( 11 )
 script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
 
-[node name="EventMessageHolder" parent="HudCanvasLayer" index="14" instance=ExtResource( 13 )]
+[node name="EventMessageHolder" parent="HudCanvasLayer" index="13" instance=ExtResource( 13 )]
 
 position = Vector2( 390.218, 115.807 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" index="15" instance=ExtResource( 14 )]
+[node name="DeathMenu" parent="HudCanvasLayer" index="14" instance=ExtResource( 14 )]
 
 visible = false
 anchor_left = 0.0

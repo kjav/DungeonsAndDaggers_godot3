@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/silver_key2 (1).png-72bc07135f8ca952a6cd51ae7f6ee37c.stex"
+path="res://.import/ring_inner_pink.png-c33192ba90f85436dca88bf64e4ef015.stex"
 
 [deps]
 
-source_file="res://assets/silver_key2 (1).png"
-dest_files=[ "res://.import/silver_key2 (1).png-72bc07135f8ca952a6cd51ae7f6ee37c.stex" ]
+source_file="res://assets/ring_inner_pink.png"
+dest_files=[ "res://.import/ring_inner_pink.png-c33192ba90f85436dca88bf64e4ef015.stex" ]
 
 [params]
 

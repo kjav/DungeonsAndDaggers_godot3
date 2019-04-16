@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_silver_open (1).png-b3f998263f33136fe9b75ef3acf39805.stex"
+path="res://.import/glass_circle.png-b8f851defe6add02be65fbd30640ac3c.stex"
 
 [deps]
 
-source_file="res://assets/chest_silver_open (1).png"
-dest_files=[ "res://.import/chest_silver_open (1).png-b3f998263f33136fe9b75ef3acf39805.stex" ]
+source_file="res://assets/glass_circle.png"
+dest_files=[ "res://.import/glass_circle.png-b8f851defe6add02be65fbd30640ac3c.stex" ]
 
 [params]
 

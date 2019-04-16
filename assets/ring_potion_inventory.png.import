@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_silver_closed (1).png-4fa111ced441c18e9ce8ad95c43e3f47.stex"
+path="res://.import/ring_potion_inventory.png-26101344a818af7a208669b79a6579a1.stex"
 
 [deps]
 
-source_file="res://assets/chest_silver_closed (1).png"
-dest_files=[ "res://.import/chest_silver_closed (1).png-4fa111ced441c18e9ce8ad95c43e3f47.stex" ]
+source_file="res://assets/ring_potion_inventory.png"
+dest_files=[ "res://.import/ring_potion_inventory.png-26101344a818af7a208669b79a6579a1.stex" ]
 
 [params]
 
