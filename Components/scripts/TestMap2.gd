@@ -125,6 +125,7 @@ func _init().(200, 200, -1):
 	var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 	var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 	var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
+	var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
 	var main_room = DefaultRoom.get()
 	print(main_room.extents)
 	print(main_room.npcs)
@@ -147,9 +148,7 @@ func _init().(200, 200, -1):
 
 	var i = 0;
 	var room_distribution = Distribution.new([
-		{"p": 0.3, "value": DefaultRoom},
-		{"p": 0.3, "value": UpgradeRoom},
-		{"p": 0.3, "value": WideRoom},
+		{"p": .9, "value": BossRoomOgre},
 		{"p": 0.05, "value": TallRoom},
 		{"p": 0.05, "value": SuperTallRoom}
 	])
