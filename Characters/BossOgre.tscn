@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left.png" type="Texture" id=1]
+[ext_resource path="res://Characters/scripts/BossOgre.gd" type="Script" id=2]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_head_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_arm_left.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "stand_down",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stand_down",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "stand_down",
+"speed": 5.0
+} ]
+
+[node name="Body" type="AnimatedSprite" index="0"]
+
+scale = Vector2( 4, 4 )
+frames = SubResource( 1 )
+animation = "stand_down"
+playing = true
+offset = Vector2( 16, 16 )
+script = ExtResource( 2 )
+
+[node name="Head" type="AnimatedSprite" parent="." index="0"]
+
+position = Vector2( 13.6549, 8.16854 )
+frames = SubResource( 2 )
+animation = "stand_down"
+
+[node name="Left Arm" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 6.99766, 18.1763 )
+frames = SubResource( 3 )
+animation = "stand_down"
+
+[node name="Right Arm" type="AnimatedSprite" parent="." index="2"]
+
+position = Vector2( 20.0095, 18.1757 )
+frames = SubResource( 3 )
+animation = "stand_down"
+
+

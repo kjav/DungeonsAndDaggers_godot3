@@ -37,7 +37,7 @@ func rotate(extents):
 func get():
 	# Pick from the spawn distributions
 	return {
-		"extents": rotate(extents_distribution.pick()[0]) if (environment_distribution != null) else [],
+		"extents": rotate(extents_distribution.pick()[0]) if (extents_distribution != null) else [],
 		"environments": environment_distribution.pick() if (environment_distribution != null) else [],
 		"items": item_distribution.pick() if (item_distribution != null) else [],
 		"npcs": npc_distribution.pick() if (npc_distribution != null) else []
