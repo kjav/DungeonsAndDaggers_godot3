@@ -1,4 +1,4 @@
-extends AnimatedSprite
+extends Node2D
 
 signal attack(character, amount)
 
@@ -7,6 +7,8 @@ var movement_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
 var damageable = true
+
+const bodyPartsNodeName = "ChangingBodyParts"
 
 var stats = {
 	"health": {
@@ -85,13 +87,13 @@ func faceDirection(direction):
 	if alive():
 		match direction:
 			Enums.DIRECTION.UP:
-				set_animation("stand_up")
+				setAnimationOnAllBodyParts("stand_up")
 			Enums.DIRECTION.DOWN:
-				set_animation("stand_down")
+				setAnimationOnAllBodyParts("stand_down")
 			Enums.DIRECTION.LEFT:
-				set_animation("stand_left")
+				setAnimationOnAllBodyParts("stand_left")
 			Enums.DIRECTION.RIGHT:
-				set_animation("stand_right")
+				setAnimationOnAllBodyParts("stand_right")
 
 func setTarget(direction):
 	var pos = original_pos
@@ -240,8 +242,8 @@ func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
 	print("Death: ")
-	set_animation("death")
-	self.playing = true
+	setAnimationOnAllBodyParts("death")
+	setPlayingOnAllBodyParts(true)
 
 func playDeathAudio():
 	if(self == GameData.player):
@@ -279,22 +281,30 @@ func setWalkAnimation(direction):
 	print("Walking ", direction)
 	match direction:
 		Enums.DIRECTION.UP:
-			self.set_animation("walk_up")
+			setAnimationOnAllBodyParts("walk_up")
 		Enums.DIRECTION.DOWN:
-			self.set_animation("walk_down")
+			setAnimationOnAllBodyParts("walk_down")
 		Enums.DIRECTION.LEFT:
-			self.set_animation("walk_left")
+			setAnimationOnAllBodyParts("walk_left")
 		Enums.DIRECTION.RIGHT:
-			self.set_animation("walk_right")
+			setAnimationOnAllBodyParts("walk_right")
 
 func setStandAnimation(direction):
 	print("Standing ", direction)
 	match direction:
 		Enums.DIRECTION.UP:
-			self.set_animation("stand_up")
+			setAnimationOnAllBodyParts("stand_up")
 		Enums.DIRECTION.DOWN:
-			self.set_animation("stand_down")
+			setAnimationOnAllBodyParts("stand_down")
 		Enums.DIRECTION.LEFT:
-			self.set_animation("stand_left")
+			setAnimationOnAllBodyParts("stand_left")
 		Enums.DIRECTION.RIGHT:
-			self.set_animation("stand_right")
+			setAnimationOnAllBodyParts("stand_right")
+
+func setAnimationOnAllBodyParts(animationName):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.set_animation(animationName)
+
+func setPlayingOnAllBodyParts(playingValue):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.playing = playingValue

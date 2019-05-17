@@ -20,7 +20,7 @@ func _ready():
 	stats.health.value = stats.health.maximum
 	GameData.player = self
 	GameData.characters.append(self)
-	self.frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
+	self.get_node(bodyPartsNodeName).get_node("Body").frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
@@ -79,16 +79,16 @@ func _process(delta):
 		if time_elapsed >= 0.4:
 			if movement_direction == Enums.DIRECTION.LEFT:
 				set_position(original_pos + Vector2(-length, 0))
-				set_animation("stand_left")
+				setAnimationOnAllBodyParts("stand_left")
 			elif movement_direction == Enums.DIRECTION.RIGHT:
 				set_position(original_pos + Vector2(length, 0))
-				set_animation("stand_right")
+				setAnimationOnAllBodyParts("stand_right")
 			elif movement_direction == Enums.DIRECTION.UP:
 				set_position(original_pos + Vector2(0, -length))
-				set_animation("stand_up")
+				setAnimationOnAllBodyParts("stand_up")
 			elif movement_direction == Enums.DIRECTION.DOWN:
 				set_position(original_pos + Vector2(0, length))
-				set_animation("stand_down")
+				setAnimationOnAllBodyParts("stand_down")
 			moving = false
 			time_elapsed = 0
 	else:
