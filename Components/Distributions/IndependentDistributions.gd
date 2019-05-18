@@ -10,5 +10,5 @@ func pick():
 			if is_distribution(element.value):
 				result += element.value.pick()
 			else:
-				result.push_back(element.value)
+				result.push_back(element)
 	return result

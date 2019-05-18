@@ -6,8 +6,8 @@ func _init(elements):
 func pick():
 	pass
 
-func is_distribution(d):
-	if typeof(d) == 18 and d.is_type("Distribution"):
+func is_distribution(distribution):
+	if typeof(distribution) == TYPE_DICTIONARY:
 		return true
 
 func get_type():

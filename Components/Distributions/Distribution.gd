@@ -7,7 +7,11 @@ func _init(elements).(elements):
 	var p_sum = 0
 	for element in elements:
 		if element.has("p"):
-			cumulative_elements.push_back({ "p": p_sum, "value": element.value })
+			#Be careful changing cumulative_element as duplicate is not a deep copy, changing any object will also change it on element.	
+			var cumulative_element = element.duplicate()
+			cumulative_element.p = p_sum
+			
+			cumulative_elements.push_back(cumulative_element)
 			p_sum = p_sum + element.p
 	if p_sum > 1:
 		# Divide all probabilities by their sums to get values summing to 1.
@@ -16,7 +20,7 @@ func _init(elements).(elements):
 				element.p = element.p / p_sum
 	elif p_sum < 1:
 		# Add a null element to be picked for the rest of the [0, 1] probability range.
-		cumulative_elements.push_back({ "p": p_sum, "value": null })
+		cumulative_elements.push_back({ "p": p_sum })
 
 func pick():
 	var HIGH_INDEX = cumulative_elements.size() - 1
@@ -33,9 +37,10 @@ func pick():
 	if cumulative_elements[HIGH_INDEX].p < p:
 		LOW_INDEX = HIGH_INDEX
 	element = cumulative_elements[LOW_INDEX]
-	if is_distribution(element.value):
-		return element.value.pick()
-	elif element.value == null:
+		
+	if !element.has("value"):
 		return []
+	elif is_distribution(element.value):
+		return element.value.pick()
 	else:
-		return [element.value]
+		return [element]
