@@ -73,10 +73,10 @@ func add_room(name, room, wall):
 	
 	# Add the NPCs to the map
 	for enemy in room.npcs:
-		npcs.push_back({"position": position + Vector2(1, 1), "value": enemy})
+		npcs.push_back({"position": position + Vector2(1, 1), "value": enemy.value})
 		
 	for env in room.environments:
-		environmentObjects.push_back({"position": position + Vector2(1, 1), "value": env})
+		environmentObjects.push_back({"position": position + Vector2(1, 1), "value": env.value})
 	
 	# Room added successfully: return true
 	return true
@@ -125,7 +125,7 @@ func _init().(200, 200, -1):
 		# Pick a wall
 		var wall_index = randi() % exterior_walls.size()
 		var wall = exterior_walls[wall_index]
-		var room = room_distribution.pick()[0].get()
+		var room = room_distribution.pick()[0].value.get()
 		
 		var success = add_room(str(i), room, wall)
 		if success:
