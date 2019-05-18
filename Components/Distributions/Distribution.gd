@@ -7,7 +7,11 @@ func _init(elements).(elements):
 	var p_sum = 0
 	for element in elements:
 		if element.has("p"):
-			cumulative_elements.push_back(element)
+			#Be careful changing cumulative_element as duplicate is not a deep copy, changing any object will also change it on element.	
+			var cumulative_element = element.duplicate()
+			cumulative_element.p = p_sum
+			
+			cumulative_elements.push_back(cumulative_element)
 			p_sum = p_sum + element.p
 	if p_sum > 1:
 		# Divide all probabilities by their sums to get values summing to 1.
