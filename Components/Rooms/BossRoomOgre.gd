@@ -2,12 +2,15 @@ extends 'RoomBase.gd'
 
 func setup_params():
 	extents_distribution = Set.new([Vector2(9, 9)])
-	npc_distribution = Distribution.new([
+	npc_distribution = IndependentDistribution.new([
 		{
 			"p": 1, 
 			"value": load("res://Characters/BossOgre.tscn"),
-			"position": Distribution.new([
-				{ "p": 1, "value": Vector2(5, 5) }
-			])
-		}
+			"position": Vector2(4, 4),
+		},
+		{
+			"p": 1, 
+			"value": load("res://Characters/BabyOgre.tscn"),
+			"position": Vector2(4, 3),
+		},
 	])

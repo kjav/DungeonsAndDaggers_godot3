@@ -97,7 +97,7 @@ func add_room(name, room, wall):
 		var positionInRoom = Vector2(1, 1)
 		
 		if enemy.has("position"):
-			positionInRoom = enemy.position
+			positionInRoom = Vector2(enemy.position.x, enemy.position.y)
 		else:
 			positionInRoom = Vector2( randi()%int(round(room.extents.x-2))+1, randi()%int(round(room.extents.y-2))+1)
 			
