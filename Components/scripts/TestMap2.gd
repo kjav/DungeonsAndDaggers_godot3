@@ -85,7 +85,7 @@ func add_room(name, room, wall):
 	if door != null:
 		add_door(door)
 		remove_wall([door])
-		environmentObjects.push_back({"position": door, "value": doorClass, "facing": get_facing(wall_direction)})
+		environmentObjects.push_back({"position": door, "value": room.doorClass, "facing": get_facing(wall_direction)})
 	
 	# Add exterior walls to walls list, so other rooms can be placed adjacent
 	for i in range(0, 3):
