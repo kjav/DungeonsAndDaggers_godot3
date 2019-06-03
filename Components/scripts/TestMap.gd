@@ -94,7 +94,7 @@ func _init().(200, 200, -1):
 	var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 	var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 	var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
-	var main_room = DefaultRoom.get()
+	var main_room = DefaultRoom
 	print(main_room.extents)
 	print(main_room.npcs)
 	print("# # ")
@@ -125,7 +125,7 @@ func _init().(200, 200, -1):
 		# Pick a wall
 		var wall_index = randi() % exterior_walls.size()
 		var wall = exterior_walls[wall_index]
-		var room = room_distribution.pick()[0].value.get()
+		var room = room_distribution.pick()[0].value
 		
 		var success = add_room(str(i), room, wall)
 		if success:
