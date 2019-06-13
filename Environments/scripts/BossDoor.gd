@@ -1,6 +1,10 @@
 extends "Door.gd"
 signal bossDoorOpened()
 
+func setLocked(_locked):
+	walkable = Enums.WALKABLE.PLAYER
+	.setLockedButNotWalkable(_locked)
+
 func _init():
 	environment_name = "BossDoor"
 	#place boss key somewhere

@@ -1,4 +1,4 @@
- extends "EnvironmentBase.gd"
+extends "EnvironmentBase.gd"
 
 signal keyUsed(unlockGuid, unlockedObjectsName)
 
@@ -11,7 +11,18 @@ func _ready():
 func setLocked(_locked):
 	if typeof(_locked) == TYPE_BOOL:
 		locked = _locked
-		walkable = !locked
+
+		if _locked:
+			walkable = Enums.WALKABLE.NONE
+		else:
+			walkable = Enums.WALKABLE.ALL
+		
+		if get_node("Locks") != null:
+			get_node("Locks").visible = !(!locked)
+
+func setLockedButNotWalkable(_locked):
+	if typeof(_locked) == TYPE_BOOL:
+		locked = _locked
 		if get_node("Locks") != null:
 			get_node("Locks").visible = !(!locked)
 

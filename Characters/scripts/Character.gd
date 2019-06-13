@@ -171,9 +171,10 @@ func handleEnemyCollisions(posArray):
 func handleEnvironmentCollisions(pos):
 	var walkable = true
 	var collisions = GameData.environmentObjectAtPos(pos)
+	var isPlayer = self == GameData.player
 	
 	for i in range(collisions.size()):
-		if !collisions[i].walkable:
+		if collisions[i].walkable == Enums.WALKABLE.NONE or (collisions[i].walkable == Enums.WALKABLE.PLAYER && !isPlayer) :
 			walkable = false
 		
 		collisions[i].onWalkedInto(self)

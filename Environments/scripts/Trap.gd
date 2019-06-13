@@ -3,7 +3,7 @@ extends "EnvironmentBase.gd"
 var activated = false
 
 func _ready():
-	walkable = true
+	walkable = Enums.WALKABLE.ALL
 
 func onWalkedInto(character):
 	if character == GameData.player:
