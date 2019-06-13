@@ -145,7 +145,6 @@ func set_map_type(type):
 						print("Nodes name: " + node.environment_name)
 						print(env.has("facing"))
 			
-			#this is just temporary
 			if node.environment_name == "Chest":
 				node.setLocked(true)
 				node.setUnlockGuid("Silver")

@@ -12,6 +12,7 @@ func _ready():
 	turnBehaviour.setLimit(100)
 	turnBehaviour.init()
 	item_distribution = Constants.IndependentDistribution.new([{"p": 0.5, "value": Constants.FoodClasses.CookedSteak}])
+	._ready()
 
 func resetToStartPosition():
 	self.position = initial_pos

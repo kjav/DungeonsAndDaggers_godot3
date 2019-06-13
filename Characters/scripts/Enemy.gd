@@ -8,10 +8,13 @@ var processBehaviour
 var turnBehaviour
 var previous_movement_direction = Enums.DIRECTION.DOWN
 
+func _enter_tree():
+	GameData.characters.append(self)
+	
 func _ready():
 	set_process(true)
-	GameData.characters.append(self)
 	self.get_node("/root/Node2D").connectEnemy(self)
+	._ready()
 
 func attack(character):
 	.attack(character, base_damage);

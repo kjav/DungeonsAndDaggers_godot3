@@ -10,7 +10,8 @@ func _ready():
 	base_damage = 3
 	turnBehaviour.setWaitEvery(1)
 	item_distribution = Constants.IndependentDistribution.new([{"p": 0.5, "value": Constants.FoodClasses.CookedSteak}])
-
+	._ready()
+	
 func resetToStartPosition():
 	self.position = initial_pos
 	

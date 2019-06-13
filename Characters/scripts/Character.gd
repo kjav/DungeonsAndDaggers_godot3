@@ -12,7 +12,8 @@ var isPartOfBossRoom
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
-var stats = {
+
+var initialStats = {
 	"health": {
 		"value": 3,
 		"maximum": 3
@@ -30,6 +31,14 @@ var stats = {
 		"maximum": 5
 	}
 }
+
+var stats = {
+	"health": {},
+	"mana": {},
+	"strength": {},
+	"defence": {}
+}
+
 var additionalRelativeAttackPositions = []
 var attackPositionBlockable = true
 var onlyAttacksFirstEnemy = true
@@ -48,7 +57,12 @@ func _ready():
 	original_pos = get_position()
 	target_pos = get_position()
 	initial_pos = get_position()
-
+	
+	#this is because godot 3.0 doesn't have a deep duplicate.
+	stats.health = initialStats.health.duplicate()
+	stats.mana = initialStats.mana.duplicate()
+	stats.strength = initialStats.strength.duplicate()
+	stats.defence = initialStats.defence.duplicate()
 func turn():
 	pass
 
