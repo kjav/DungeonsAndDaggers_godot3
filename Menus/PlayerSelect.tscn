@@ -14,8 +14,6 @@ transitioning = false
 
 [node name="SelectScreen" parent="." index="0" instance=ExtResource( 2 )]
 
-active = true
-
 [node name="AngelPlayer" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 540, 550 )

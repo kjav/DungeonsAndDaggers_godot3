@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.png" type="Texture" id=2]
 [ext_resource path="res://assets/splash.png" type="Texture" id=3]
 [ext_resource path="res://assets/plank_15.png" type="Texture" id=4]
-[ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=5]
+[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/bg_01_02.png" type="Texture" id=6]
 [ext_resource path="res://Menus/PlayerSelect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=8]
@@ -16,7 +16,15 @@ max_value = 1.0
 bake_resolution = 200
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[node name="UnifiedMenu" type="Node2D" index="0"]
+[sub_resource type="DynamicFont" id=2]
+
+size = 58
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[node name="UnifiedMenu" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -96,23 +104,26 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 58.0
-margin_top = 46.0
-margin_right = 146.0
-margin_bottom = 81.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 41.0
+margin_top = 39.0
+margin_right = 313.0
+margin_bottom = 101.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.367188, 0.172119, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "START"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Hint", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Hint", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="PlayerSelect" type="Node2D" parent="." index="4"]
 
@@ -172,23 +183,26 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 89.0
-margin_top = 44.0
-margin_right = 177.0
-margin_bottom = 79.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 72.0
+margin_top = 37.0
+margin_right = 282.0
+margin_bottom = 96.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.300781, 0.148041, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "NEXT"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Hint", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 [node name="WorldSelect" type="Node2D" parent="." index="5"]
 
@@ -248,23 +262,26 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 85.0
-margin_top = 44.0
-margin_right = 149.0
-margin_bottom = 60.0
-rect_scale = Vector2( 3, 3 )
+margin_left = 70.0
+margin_top = 41.0
+margin_right = 286.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.417969, 0.176331, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
 text = "PLAY"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Hint", "Rect", "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Hint", "Rect", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 
