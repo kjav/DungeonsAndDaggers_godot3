@@ -1,5 +1,7 @@
 extends Node2D
 
+export var active = true
+
 signal changed(index)
 
 var items
@@ -17,11 +19,11 @@ func _ready():
 		select_item(0)
 
 func left():
-	if current_item > 0:
+	if active and current_item > 0:
 		select_item(current_item - 1)
 
 func right():
-	if current_item < items.size() - 1:
+	if active and current_item < items.size() - 1:
 		select_item(current_item + 1)
 
 func select_item(item):

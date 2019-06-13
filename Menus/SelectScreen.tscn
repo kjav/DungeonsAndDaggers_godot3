@@ -9,6 +9,7 @@
 [node name="Node2D" type="Node2D"]
 
 script = ExtResource( 1 )
+active = true
 
 [node name="LeftArrow" type="TextureButton" parent="." index="0"]
 

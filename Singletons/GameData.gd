@@ -14,6 +14,7 @@ var characters = []
 var environmentObjects = []
 var placedItems = []
 var TileSize = 128;
+var start_screen = ""
 
 func _ready():
 	var instance = Constants.PotionClasses.HealthPotion.new()

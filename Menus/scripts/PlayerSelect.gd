@@ -2,9 +2,7 @@ extends Node2D
 
 var _item_names = ["BeserkerPlayer", "AngelPlayer", "WarriorPlayer"]
 var _items = []
-
-func _ready():
-	pass
+export var transitioning = false setget setTransitioning, getTransitioning
 
 func get_items():
 	for i in range(_item_names.size()):
@@ -14,3 +12,10 @@ func get_items():
 
 func _on_changed(index):
 	GameData.chosen_player = _item_names[index]
+
+func setTransitioning(_transitioning):
+	if has_node("SelectScreen"):
+		get_node("SelectScreen").active = not _transitioning
+
+func getTransitioning():
+	pass

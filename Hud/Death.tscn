@@ -12,7 +12,7 @@ render_priority = 0
 
 [node name="Node2D" type="Control"]
 
-modulate = Color( 1, 1, 1, 0.392274 )
+modulate = Color( 1, 1, 1, 0.705882 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -44,6 +44,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 1 )
 stretch_mode = 0
+_sections_unfolded = [ "Anchor", "Focus", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "Theme", "Visibility" ]
 
 [node name="Label" type="Label" parent="." index="1"]
 
