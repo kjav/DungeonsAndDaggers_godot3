@@ -114,6 +114,7 @@ func set_map_type(type):
 			var node = enemy.value.instance()
 			Enemies.add_child(node)
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
+			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 		
 		for item in map.items:
 			var node = item.value.new()
@@ -151,6 +152,8 @@ func set_map_type(type):
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.BasicSpear}]))
 			elif node.environment_name == "Door":
+				node.setLocked(false)
+			elif node.environment_name == "BossDoor":
 				node.setLocked(false)
 
 			GameData.environmentObjects.append(node)

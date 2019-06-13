@@ -102,7 +102,7 @@ func add_room(name, room, wall):
 		else:
 			positionInRoom = Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
 			
-		npcs.push_back({"position": position + positionInRoom, "value": enemy.value})
+		npcs.push_back({"position": position + positionInRoom, "value": enemy.value, "isPartOfBossRoom": room.isBossRoom})
 		
 	# Add the items to the map
 	for item in roomDistribution.items:

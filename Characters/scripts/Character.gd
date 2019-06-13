@@ -7,6 +7,7 @@ var movement_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
 var damageable = true
+var isPartOfBossRoom
 
 const bodyPartsNodeName = "ChangingBodyParts"
 

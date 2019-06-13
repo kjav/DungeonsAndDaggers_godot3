@@ -2,6 +2,7 @@ extends 'RoomBase.gd'
 
 func _init():
 	doorClass = preload("res://Environments/BossDoor.tscn")
+	isBossRoom = true
 
 func setup_params():
 	extents_distribution = Set.new([Vector2(9, 9)])
