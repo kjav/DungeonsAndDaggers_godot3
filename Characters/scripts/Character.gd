@@ -7,6 +7,7 @@ var movement_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
 var damageable = true
+var initial_pos
 var isPartOfBossRoom
 
 const bodyPartsNodeName = "ChangingBodyParts"
@@ -35,6 +36,10 @@ var onlyAttacksFirstEnemy = true
 
 const Hitmarker = preload("res://Characters/Hitmarker.tscn")
 
+func resetToStartPosition():
+	self.position = initial_pos
+	
+	_ready()
 
 func roundVector2(pos):
 	return Vector2(round(pos.x), round(pos.y))
@@ -42,6 +47,7 @@ func roundVector2(pos):
 func _ready():
 	original_pos = get_position()
 	target_pos = get_position()
+	initial_pos = get_position()
 
 func turn():
 	pass
@@ -169,6 +175,7 @@ func handleEnvironmentCollisions(pos):
 	for i in range(collisions.size()):
 		if !collisions[i].walkable:
 			walkable = false
+		
 		collisions[i].onWalkedInto(self)
 		
 	return walkable
@@ -309,3 +316,6 @@ func setAnimationOnAllBodyParts(animationName):
 func setPlayingOnAllBodyParts(playingValue):
 	for child in self.get_node(bodyPartsNodeName).get_children():
 		child.playing = playingValue
+
+func _on_BossDoor_bossDoorOpened():
+	resetToStartPosition()

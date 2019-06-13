@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 var Distribution = Constants.Distribution
@@ -155,6 +154,9 @@ func set_map_type(type):
 				node.setLocked(false)
 			elif node.environment_name == "BossDoor":
 				node.setLocked(false)
+				for character in GameData.characters:
+					if character.isPartOfBossRoom:
+						node.connect("bossDoorOpened", character, "_on_BossDoor_bossDoorOpened")
 
 			GameData.environmentObjects.append(node)
 			node.set_position((env.position - Vector2(100, 100)) * 128)
