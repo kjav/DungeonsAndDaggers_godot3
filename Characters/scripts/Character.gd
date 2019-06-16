@@ -58,11 +58,15 @@ func _ready():
 	target_pos = get_position()
 	initial_pos = get_position()
 	
+	resetStats()
+
+func resetStats():
 	#this is because godot 3.0 doesn't have a deep duplicate.
 	stats.health = initialStats.health.duplicate()
 	stats.mana = initialStats.mana.duplicate()
 	stats.strength = initialStats.strength.duplicate()
 	stats.defence = initialStats.defence.duplicate()
+	
 func turn():
 	pass
 

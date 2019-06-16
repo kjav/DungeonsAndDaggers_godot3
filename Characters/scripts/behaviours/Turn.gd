@@ -11,6 +11,23 @@ class MoveRandom extends Node:
 	func getDirection(pos):
 		return randi()%5
 
+class MoveToWaitBeforeAndAfterAttack extends Node:
+	var moveTo = MoveTo.new()
+	var waitAttackWaitCount = -1
+	
+	func getDirection(pos):
+		var divided_pos = Vector2(0,0)
+		divided_pos.x = int(pos.x / GameData.TileSize)
+		divided_pos.y = int(pos.y / GameData.TileSize)
+		var player_pos = GameData.player.original_pos
+		player_pos.x = int(player_pos.x / GameData.TileSize)
+		player_pos.y = int(player_pos.y / GameData.TileSize)
+		if GameData.player.alive() and divided_pos.distance_squared_to(player_pos) > 1:
+			# Select movement direction towards player
+			return moveTo.getDirection(pos)
+		else:
+			return Enums.DIRECTION.NONE
+
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()
 	var moveTo = MoveTo.new()
