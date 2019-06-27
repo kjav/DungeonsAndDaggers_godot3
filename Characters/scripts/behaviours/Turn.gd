@@ -5,7 +5,16 @@ class MoveTo extends Node:
 		var player_pos = GameData.player.original_pos
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
-		return GameData.tilemap.findNextDirection(pos, player_pos) 
+		return GameData.tilemap.findNextDirection(pos, player_pos)
+	
+	func getDistance(pos):
+		var divided_pos = Vector2(0,0)
+		divided_pos.x = int(pos.x / GameData.TileSize)
+		divided_pos.y = int(pos.y / GameData.TileSize)
+		var player_pos = GameData.player.original_pos
+		player_pos.x = int(player_pos.x / GameData.TileSize)
+		player_pos.y = int(player_pos.y / GameData.TileSize)
+		return GameData.tilemap.findPathDistance(divided_pos, player_pos)
 
 class MoveRandom extends Node:
 	func getDirection(pos):
@@ -14,19 +23,13 @@ class MoveRandom extends Node:
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()
 	var moveTo = MoveTo.new()
-	var limit = 100
+	var limit = 10
 	
 	func setLimit(newLimit):
 		limit = newLimit
 	
 	func getDirection(pos):
-		var divided_pos = Vector2(0,0)
-		divided_pos.x = int(pos.x / GameData.TileSize)
-		divided_pos.y = int(pos.y / GameData.TileSize)
-		var player_pos = GameData.player.original_pos
-		player_pos.x = int(player_pos.x / GameData.TileSize)
-		player_pos.y = int(player_pos.y / GameData.TileSize)
-		if GameData.player.alive() and divided_pos.distance_squared_to(player_pos) < limit:
+		if GameData.player.alive() and moveTo.getDistance(pos) < limit:
 			# Select movement direction towards player
 			return moveTo.getDirection(pos)
 		else:
@@ -55,7 +58,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurns extends Node:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var behaviourEveryN = BehaviourEveryN.new()
 	var turnWait = 2
-	var limit = 100
+	var limit = 10
 	
 	func init():
 		behaviourEveryN.setBehaviour(turnBehaviour)
@@ -101,7 +104,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends Node:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var behaviourEveryNInvinsibleOnWait = BehaviourEveryNInvinsibleOnWait.new()
 	var turnWait = 2
-	var limit = 100
+	var limit = 10
 	
 	func init():
 		behaviourEveryNInvinsibleOnWait.setBehaviour(turnBehaviour)
@@ -143,7 +146,7 @@ class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends Node:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var waitEveryN = WaitEveryN.new()
 	var waitEvery = 3
-	var limit = 100
+	var limit = 10
 	
 	func init():
 		waitEveryN.setBehaviour(turnBehaviour)
@@ -188,7 +191,7 @@ class InRangeMoveToOtherwiseRandomInvincibleWaitEveryNTurns extends Node:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var invincibleWaitEveryN = InvincibleWaitEveryN.new()
 	var waitEvery = 3
-	var limit = 100
+	var limit = 10
 	
 	func init():
 		invincibleWaitEveryN.setBehaviour(turnBehaviour)

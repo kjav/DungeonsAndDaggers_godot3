@@ -158,15 +158,17 @@ func walkable(x, y):
 	var cell = BottomTileMap.get_cell(x, y)
 	return !not_walkable.has(cell)
 
-func findPath(a, b):
+func _getIdPath(a, b):
 	var a_vec3 = Vector3(a.x, a.y, 0)
 	var b_vec3 = Vector3(b.x, b.y, 0)
 	
 	var a_id = points[a_vec3]
 	var b_id = points[b_vec3]
 	
-	var id_path = Pathfinder.get_id_path(a_id, b_id)
-	
+	return Pathfinder.get_id_path(a_id, b_id)
+
+func findPath(a, b):
+	var id_path = _getIdPath(a, b)
 	var path = []
 	
 	for id in id_path:
@@ -176,17 +178,7 @@ func findPath(a, b):
 	return path
 
 func findNextDirection(a, b):
-	var a_vec3 = Vector3(a.x, a.y, 0)
-	var b_vec3 = Vector3(b.x, b.y, 0)
-	
-	var a_id = points[a_vec3]
-	var b_id = points[b_vec3]
-	
-	#print("Getting id path ", a_vec3, ", ", b_vec3)
-	
-	var id_path = Pathfinder.get_id_path(a_id, b_id)
-	
-	#print("Got id path ", a_vec3, ", ", b_vec3, ". Length: ", id_path.size())
+	var id_path = _getIdPath(a, b)
 	
 	var direction = Enums.DIRECTION.NONE
 	if id_path.size() > 1:
@@ -200,6 +192,11 @@ func findNextDirection(a, b):
 		elif direction.y == -1:
 			direction = Enums.DIRECTION.UP
 	return direction
+
+func findPathDistance(a, b):
+	var id_path = _getIdPath(a, b)
+	
+	return id_path.size()
 
 func _on_Environment_blockStateChanged(environmentObject, blockedState):
 	var x = environmentObject.position.x / GameData.TileSize

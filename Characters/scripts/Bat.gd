@@ -7,5 +7,4 @@ func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new()
 	processBehaviour = Process.StraightTransition.new()
 	self.character_name = 'Bat'
-	turnBehaviour.setLimit(100)
 	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.WeaponClasses.BasicShield }, { "p": 0.1, "value": Constants.PotionClasses.HealthPotion}])

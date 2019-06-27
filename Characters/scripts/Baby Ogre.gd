@@ -9,6 +9,5 @@ func _ready():
 	self.character_name = 'Baby Ogre'
 	base_damage = 3
 	turnBehaviour.setWaitEvery(3)
-	turnBehaviour.setLimit(100)
 	turnBehaviour.init()
 	item_distribution = Constants.IndependentDistribution.new([{"p": 0.5, "value": Constants.FoodClasses.CookedSteak}])
