@@ -14,8 +14,6 @@ func ignore(event, callback):
 	if listeners.has(event):
 		var i = listeners[event].find(callback)
 		listeners[event].remove(i)
-	print("Listeners: ")
-	print(listeners)
 
 func raise(event, args):
 	if listeners.has(event):

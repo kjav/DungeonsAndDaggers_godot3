@@ -15,8 +15,6 @@ func _calculate_swipe(swipe_end):
 		return
 	var swipe = swipe_end - swipe_start
 
-	print("Distance: ", swipe.length())
-
 	if swipe.length() > minimum_drag:
 		swipe = swipe.normalized()
 		if abs(swipe.x) > 0.2:

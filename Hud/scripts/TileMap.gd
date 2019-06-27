@@ -7,7 +7,6 @@ var ids = {}
 
 func _ready():
 	var cells = load_csv("res://assets/maps/" + GameData.chosen_map + ".csv")
-	print("Chosen map: ", GameData.chosen_map)
 	for i in range(-100, 100):
 		for j in range(-100, 100):
 			self.set_cell(i, j, cells[j + 100][i + 100])
@@ -90,7 +89,6 @@ func findNextDirection(a, b):
 	
 	if id_path.size() > 1:
 		direction = ids[id_path[1]] - ids[id_path[0]]
-		print(direction)
 		if direction.x == 1:
 			direction = Enums.DIRECTION.RIGHT
 		elif direction.x == -1:

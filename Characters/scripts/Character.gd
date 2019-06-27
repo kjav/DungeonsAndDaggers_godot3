@@ -276,7 +276,6 @@ func alive():
 	return stats.health.value > 0
 
 func setWalkAnimation(direction):
-	print("Walking ", direction)
 	match direction:
 		Enums.DIRECTION.UP:
 			self.set_animation("walk_up")
@@ -288,7 +287,6 @@ func setWalkAnimation(direction):
 			self.set_animation("walk_right")
 
 func setStandAnimation(direction):
-	print("Standing ", direction)
 	match direction:
 		Enums.DIRECTION.UP:
 			self.set_animation("stand_up")

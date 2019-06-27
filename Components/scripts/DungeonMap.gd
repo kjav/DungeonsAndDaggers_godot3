@@ -27,7 +27,6 @@ var top_layer_tiles = []
 var BottomTileMap
 
 func _ready():
-	print("YOOOOOOOO")
 	BottomTileMap = get_node("BottomTileMap")
 	for i in range(0, 128):
 		flat_not_walkable.push_back(not_walkable.has(i))
@@ -139,12 +138,6 @@ func set_map_type(type):
 			if env.has("facing"):
 				node.setFacing(env.facing)
 			
-			if env != null:
-				if node != null:
-					if node.environment_name != null:
-						print("Nodes name: " + node.environment_name)
-						print(env.has("facing"))
-			
 			#this is just temporary
 			if node.environment_name == "Chest":
 				node.setLocked(true)
@@ -198,7 +191,6 @@ func findNextDirection(a, b):
 	var direction = Enums.DIRECTION.NONE
 	if id_path.size() > 1:
 		direction = ids[id_path[1]] - ids[id_path[0]]
-		print(direction)
 		if direction.x == 1:
 			direction = Enums.DIRECTION.RIGHT
 		elif direction.x == -1:

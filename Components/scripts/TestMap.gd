@@ -84,23 +84,12 @@ func add_room(name, room, wall):
 func _init().(200, 200, -1):
 	var n_rooms = 1
 	randomize()
-	print("Starting: ")
-	print("\n\n\n\n\n")
-	print("# # ")
-	print("# # ")
-	print("# # ")
 	var DefaultRoom = load("res://Components/Rooms/DefaultRoomWithMonster.gd").new()
 	var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
 	var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 	var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 	var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
 	var main_room = DefaultRoom.get()
-	print(main_room.extents)
-	print(main_room.npcs)
-	print("# # ")
-	print("# # ")
-	print("# # ")
-	print("\n\n\n\n\n")
 	var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 	tree.add_value([
 		null, true, null,
@@ -109,7 +98,6 @@ func _init().(200, 200, -1):
 	], 42)
 	
 	var start = OS.get_ticks_msec()
-	print("    Fill Time: ", OS.get_ticks_msec() - start)
 	add_room("main", main_room, null)
 	
 	var mid_1 = OS.get_ticks_msec()
@@ -133,10 +121,5 @@ func _init().(200, 200, -1):
 			i = i + 1
 	
 	var mid_2 = OS.get_ticks_msec()
-	print("    Rooms time: ", OS.get_ticks_msec() - mid_1)
 	
 	make_walls_consistent()
-	print("    Make walls consistent time: ", OS.get_ticks_msec() - mid_2)
-	
-	print("Total Time: ", OS.get_ticks_msec() - start)
-
