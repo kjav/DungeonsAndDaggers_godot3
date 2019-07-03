@@ -11,10 +11,10 @@ class MoveRandom extends Node:
 	func getDirection(pos):
 		return randi()%5
 
-class MoveToWaitBeforeAndAfterAttack extends Node:
+class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
-	
+
 	func getDirection(pos):
 		var divided_pos = Vector2(0,0)
 		divided_pos.x = int(pos.x / GameData.TileSize)
@@ -22,11 +22,34 @@ class MoveToWaitBeforeAndAfterAttack extends Node:
 		var player_pos = GameData.player.original_pos
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
-		if GameData.player.alive() and divided_pos.distance_squared_to(player_pos) > 1:
-			# Select movement direction towards player
-			return moveTo.getDirection(pos)
-		else:
-			return Enums.DIRECTION.NONE
+		
+		if GameData.player.alive():
+			if inWaitAttackWaitSequence():
+				waitAttackWaitCount+=1
+				
+				if waitAttackWaitCount == 1:
+					return Enums.DIRECTION.NONE
+				elif waitAttackWaitCount == 2:
+					if playerInAttackablePosition(player_pos, divided_pos):
+						return moveTo.getDirection(pos)
+					else:
+						return Enums.DIRECTION.NONE
+				elif waitAttackWaitCount == 3:
+					waitAttackWaitCount = -1
+					return Enums.DIRECTION.NONE
+			else:
+				if divided_pos.distance_squared_to(player_pos) > 1:
+					# Select movement direction towards player
+					return moveTo.getDirection(pos)
+				else:
+					waitAttackWaitCount = 0
+					return Enums.DIRECTION.NONE
+
+	func playerInAttackablePosition(player_pos, divided_pos):
+		return (abs(player_pos.x - divided_pos.x) <= 2 and player_pos.y == divided_pos.y) or (abs(player_pos.y - divided_pos.y) <= 2 and player_pos.x == divided_pos.x)
+
+	func inWaitAttackWaitSequence():
+		return waitAttackWaitCount >= 0
 
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()

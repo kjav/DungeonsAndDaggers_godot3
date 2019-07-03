@@ -4,7 +4,7 @@ const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _ready():
-	turnBehaviour = Turn.MoveToWaitBeforeAndAfterAttack.new()
+	turnBehaviour = Turn.MoveToWaitBeforeAndAfterAttackTwoInFront.new()
 	processBehaviour = Process.StraightTransition.new()
 	self.character_name = 'Boss Ogre'
 	base_damage = 3
