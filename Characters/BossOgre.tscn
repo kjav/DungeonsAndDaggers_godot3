@@ -9,14 +9,9 @@
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
+"loop": false,
+"name": "stand_down",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
@@ -40,13 +35,18 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "stand_down",
-"speed": 1.0
+"loop": true,
+"name": "walk_down",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
@@ -54,12 +54,7 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_down",
+"name": "stand_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -84,12 +79,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
 "name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "stand_down",
+"name": "walk_down",
 "speed": 5.0
 } ]
 
@@ -97,33 +97,33 @@ animations = [ {
 
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_up",
+"loop": false,
+"name": "stand_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
+"loop": false,
 "name": "walk_left",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
+"loop": false,
 "name": "stand_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
+"loop": false,
 "name": "stand_left",
-"speed": 5.0
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "stand_up",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "stand_up",
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -132,9 +132,9 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "stand_down",
-"speed": 5.0
+"loop": false,
+"name": "walk_down",
+"speed": 1.0
 } ]
 
 [node name="Body" type="Node2D" index="0"]
@@ -159,14 +159,18 @@ animation = "stand_down"
 
 [node name="Left Arm" type="AnimatedSprite" parent="ChangingBodyParts" index="2"]
 
-position = Vector2( 6.99766, 18.1763 )
+position = Vector2( 3.96536, 15.144 )
 frames = SubResource( 3 )
 animation = "stand_down"
+centered = false
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Right Arm" type="AnimatedSprite" parent="ChangingBodyParts" index="3"]
 
-position = Vector2( 20.0095, 18.1757 )
+position = Vector2( 14.6453, 15.1434 )
 frames = SubResource( 3 )
 animation = "stand_down"
+centered = false
+_sections_unfolded = [ "Transform" ]
 
 

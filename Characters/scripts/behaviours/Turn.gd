@@ -27,14 +27,12 @@ class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 			if inWaitAttackWaitSequence():
 				waitAttackWaitCount+=1
 				
-				if waitAttackWaitCount == 1:
-					return Enums.DIRECTION.NONE
-				elif waitAttackWaitCount == 2:
+				if Attacking():
 					if playerInAttackablePosition(player_pos, divided_pos):
 						return moveTo.getDirection(pos)
 					else:
 						return Enums.DIRECTION.NONE
-				elif waitAttackWaitCount == 3:
+				elif Recovering():
 					waitAttackWaitCount = -1
 					return Enums.DIRECTION.NONE
 			else:
@@ -44,6 +42,15 @@ class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 				else:
 					waitAttackWaitCount = 0
 					return Enums.DIRECTION.NONE
+
+	func PreparingAttack():
+		return waitAttackWaitCount == 0
+		
+	func Attacking():
+		return waitAttackWaitCount == 1
+		
+	func Recovering():
+		return waitAttackWaitCount == 2
 
 	func playerInAttackablePosition(player_pos, divided_pos):
 		return (abs(player_pos.x - divided_pos.x) <= 2 and player_pos.y == divided_pos.y) or (abs(player_pos.y - divided_pos.y) <= 2 and player_pos.x == divided_pos.x)

@@ -17,6 +17,23 @@ func _ready():
 	
 	._ready()
 
+func turn():
+	.turn()
+	
+	var changingBodyParts = get_node("ChangingBodyParts")
+	
+	if (turnBehaviour.PreparingAttack()):
+		changingBodyParts.get_node("Left Arm").set_flip_v( true )
+		changingBodyParts.get_node("Right Arm").set_flip_v( true )
+	elif (turnBehaviour.Attacking()):
+		changingBodyParts.get_node("Left Arm").set_flip_v( false )
+		changingBodyParts.get_node("Right Arm").set_flip_v( false )
+		
+		#animate attack
+	elif (turnBehaviour.Recovering()):
+		pass
+		#animate stunned
+
 func resetToStartPosition():
 	self.position = initial_pos
 	
