@@ -25,9 +25,11 @@ func turn():
 	if (turnBehaviour.PreparingAttack()):
 		changingBodyParts.get_node("Left Arm").set_flip_v( true )
 		changingBodyParts.get_node("Right Arm").set_flip_v( true )
+		additionalRelativeAttackPositions = [Vector2(0, -1)]
 	elif (turnBehaviour.Attacking()):
 		changingBodyParts.get_node("Left Arm").set_flip_v( false )
 		changingBodyParts.get_node("Right Arm").set_flip_v( false )
+		additionalRelativeAttackPositions = []
 		
 		#animate attack
 	elif (turnBehaviour.Recovering()):

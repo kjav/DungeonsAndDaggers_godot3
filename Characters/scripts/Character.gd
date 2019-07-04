@@ -12,7 +12,6 @@ var isPartOfBossRoom
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
-
 var initialStats = {
 	"health": {
 		"value": 3,
