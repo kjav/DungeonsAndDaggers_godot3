@@ -2,8 +2,11 @@ extends "Enemy.gd"
 
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
+const HeavyImpact = preload("res://Animations/HeavyImpact.tscn")
+var AnimationsNode
 
 func _ready():
+	AnimationsNode = get_node("/root/Node2D/Animations")
 	turnBehaviour = Turn.MoveToWaitBeforeAndAfterAttackTwoInFront.new()
 	processBehaviour = Process.StraightTransition.new()
 	self.character_name = 'Boss Ogre'
@@ -27,14 +30,24 @@ func turn():
 		changingBodyParts.get_node("Right Arm").set_flip_v( true )
 		additionalRelativeAttackPositions = [Vector2(0, -1)]
 	elif (turnBehaviour.Attacking()):
+		addHeavyImpacts([Vector2(0, 1)])
+		
 		changingBodyParts.get_node("Left Arm").set_flip_v( false )
 		changingBodyParts.get_node("Right Arm").set_flip_v( false )
+		
 		additionalRelativeAttackPositions = []
 		
 		#animate attack
 	elif (turnBehaviour.Recovering()):
 		pass
 		#animate stunned
+
+func addHeavyImpacts(relativePositions):
+	for relativePosition in relativePositions:
+		var heavyImpactInstance = HeavyImpact.instance()
+		
+		heavyImpactInstance.position = get_position() + relativePosition * GameData.TileSize
+		AnimationsNode.add_child(heavyImpactInstance)
 
 func resetToStartPosition():
 	self.position = initial_pos
