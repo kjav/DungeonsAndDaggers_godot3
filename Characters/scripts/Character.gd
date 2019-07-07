@@ -91,9 +91,9 @@ func moveDirection(direction):
 
 func handleMove(direction):
 	faceDirection(direction)
+	
 	var pos = setTarget(direction)
-	var additional = generateAdditionalAbosoluteAttackPositions(direction)
-	var attacking = handleEnemyCollisions([pos] + additional)
+	var attacking = handleEnemyCollisions(absoluteAttackPositions(pos, direction))
 	
 	if not attacking:
 		var walkableEnvironment = handleEnvironmentCollisions(pos)
@@ -143,7 +143,18 @@ func getNextTargetPos(pos, direction):
 	
 	return pos
 
-func generateAdditionalAbosoluteAttackPositions(direction):
+func absoluteAttackPositions(targetPos, direction):
+	var additional = additionalAbosoluteAttackPositions(targetPos, direction)
+	if additional.size() > 0:
+		print(additional[0].x)
+		print(additional[0].y)
+		print("asda")
+	return([targetPos] + additional)
+
+func additionalAbosoluteAttackPositions(targetPos, direction):
+	return convertRelativePositionToAbsolute(targetPos, additionalRelativeAttackPositions, direction)
+	
+func convertRelativePositionToAbsolute(current_position, relativePositions, direction):
 	var phi
 	
 	match direction:
@@ -155,13 +166,15 @@ func generateAdditionalAbosoluteAttackPositions(direction):
 			phi = PI /2
 		Enums.DIRECTION.RIGHT:
 			phi = (3 *  PI) / 2
+		Enums.DIRECTION.NONE:
+			return []
 	
 	var AbsolutePositions = []
 
-	for relativePosition in additionalRelativeAttackPositions:
+	for relativePosition in relativePositions:
 		var rotated = relativePosition.rotated(phi)
-		var targetPosDivided = target_pos / GameData.TileSize
-		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + targetPosDivided]
+		var currentPosDivided = current_position / GameData.TileSize
+		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosDivided]
 	
 	return AbsolutePositions
 

@@ -1,5 +1,5 @@
 class MoveTo extends Node:
-	func getDirection(pos):
+	func turn(pos):
 		pos.x = int(pos.x / GameData.TileSize)
 		pos.y = int(pos.y / GameData.TileSize)
 		var player_pos = GameData.player.original_pos
@@ -8,40 +8,40 @@ class MoveTo extends Node:
 		return GameData.tilemap.findNextDirection(pos, player_pos) 
 
 class MoveRandom extends Node:
-	func getDirection(pos):
+	func turn(pos):
 		return randi()%5
 
 class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
+	var attackDirection
 
-	func getDirection(pos):
-		var divided_pos = Vector2(0,0)
-		divided_pos.x = int(pos.x / GameData.TileSize)
-		divided_pos.y = int(pos.y / GameData.TileSize)
-		var player_pos = GameData.player.original_pos
-		player_pos.x = int(player_pos.x / GameData.TileSize)
-		player_pos.y = int(player_pos.y / GameData.TileSize)
-		
+	func turn(pos):
 		if GameData.player.alive():
+			var divided_pos = Vector2(0,0)
+			divided_pos.x = int(pos.x / GameData.TileSize)
+			divided_pos.y = int(pos.y / GameData.TileSize)
+			var player_pos = GameData.player.original_pos
+			player_pos.x = int(player_pos.x / GameData.TileSize)
+			player_pos.y = int(player_pos.y / GameData.TileSize)
+			
 			if inWaitAttackWaitSequence():
-				waitAttackWaitCount+=1
-				
+				waitAttackWaitCount += 1
 				if Attacking():
 					if playerInAttackablePosition(player_pos, divided_pos):
-						return moveTo.getDirection(pos)
-					else:
-						return Enums.DIRECTION.NONE
+						return moveTo.turn(pos)
 				elif Recovering():
+					attackDirection = Enums.DIRECTION.NONE
 					waitAttackWaitCount = -1
-					return Enums.DIRECTION.NONE
 			else:
 				if divided_pos.distance_squared_to(player_pos) > 1:
 					# Select movement direction towards player
-					return moveTo.getDirection(pos)
+					return moveTo.turn(pos)
 				else:
+					attackDirection = moveTo.turn(pos)
 					waitAttackWaitCount = 0
-					return Enums.DIRECTION.NONE
+		
+		return Enums.DIRECTION.NONE
 
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
@@ -66,7 +66,7 @@ class InRangeMoveToOtherwiseRandom extends Node:
 	func setLimit(newLimit):
 		limit = newLimit
 	
-	func getDirection(pos):
+	func turn(pos):
 		var divided_pos = Vector2(0,0)
 		divided_pos.x = int(pos.x / GameData.TileSize)
 		divided_pos.y = int(pos.y / GameData.TileSize)
@@ -75,10 +75,10 @@ class InRangeMoveToOtherwiseRandom extends Node:
 		player_pos.y = int(player_pos.y / GameData.TileSize)
 		if GameData.player.alive() and divided_pos.distance_squared_to(player_pos) < limit:
 			# Select movement direction towards player
-			return moveTo.getDirection(pos)
+			return moveTo.turn(pos)
 		else:
 			# Select random movement direction
-			return random.getDirection(pos)
+			return random.turn(pos)
 
 class BehaviourEveryN extends Node:
 	var behaviour 
@@ -91,10 +91,10 @@ class BehaviourEveryN extends Node:
 	func setBehaviour(newBehaviour):
 		behaviour = newBehaviour
 	
-	func getDirection(pos):
+	func turn(pos):
 		counter += 1
 		if (counter % (turnWait+1) == 0):
-			return behaviour.getDirection(pos)
+			return behaviour.turn(pos)
 		else:
 			return Enums.DIRECTION.NONE
 
@@ -116,8 +116,8 @@ class InRangeMoveToOtherwiseRandomEveryNTurns extends Node:
 		limit = newLimit
 		turnBehaviour.setLimit(limit)
 	
-	func getDirection(pos):
-		return behaviourEveryN.getDirection(pos)
+	func turn(pos):
+		return behaviourEveryN.turn(pos)
 		
 
 class BehaviourEveryNInvinsibleOnWait extends Node:
@@ -132,11 +132,11 @@ class BehaviourEveryNInvinsibleOnWait extends Node:
 	func setBehaviour(newBehaviour):
 		behaviour = newBehaviour
 	
-	func getDirection(pos):
+	func turn(pos):
 		counter += 1
 		if (counter % (turnWait+1) == 0):
 			damageable = true
-			return behaviour.getDirection(pos)
+			return behaviour.turn(pos)
 		else:
 			damageable = false
 			return Enums.DIRECTION.NONE
@@ -162,8 +162,8 @@ class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends Node:
 		limit = newLimit
 		turnBehaviour.setLimit(limit)
 	
-	func getDirection(pos):
-		return behaviourEveryNInvinsibleOnWait.getDirection(pos)
+	func turn(pos):
+		return behaviourEveryNInvinsibleOnWait.turn(pos)
 	
 	func getDamageable():
 		return behaviourEveryNInvinsibleOnWait.getDamageable()
@@ -179,10 +179,10 @@ class WaitEveryN extends Node:
 	func setBehaviour(newBehaviour):
 		behaviour = newBehaviour
 	
-	func getDirection(pos):
+	func turn(pos):
 		counter += 1
 		if (counter % waitEvery != 0):
-			return behaviour.getDirection(pos)
+			return behaviour.turn(pos)
 		else:
 			return Enums.DIRECTION.NONE
 
@@ -204,8 +204,8 @@ class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends Node:
 		limit = newLimit
 		turnBehaviour.setLimit(limit)
 	
-	func getDirection(pos):
-		return waitEveryN.getDirection(pos)
+	func turn(pos):
+		return waitEveryN.turn(pos)
 
 class InvincibleWaitEveryN extends Node:
 	var behaviour 
@@ -219,11 +219,11 @@ class InvincibleWaitEveryN extends Node:
 	func setBehaviour(newBehaviour):
 		behaviour = newBehaviour
 	
-	func getDirection(pos):
+	func turn(pos):
 		counter += 1
 		if (counter % waitEvery != 0):
 			damageable = true
-			return behaviour.getDirection(pos)
+			return behaviour.turn(pos)
 		else:
 			damageable = false
 			return Enums.DIRECTION.NONE
@@ -249,8 +249,8 @@ class InRangeMoveToOtherwiseRandomInvincibleWaitEveryNTurns extends Node:
 		limit = newLimit
 		turnBehaviour.setLimit(limit)
 	
-	func getDirection(pos):
-		return invincibleWaitEveryN.getDirection(pos)
+	func turn(pos):
+		return invincibleWaitEveryN.turn(pos)
 	
 	func getDamageable():
 		return invincibleWaitEveryN.getDamageable()

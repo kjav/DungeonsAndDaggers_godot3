@@ -30,7 +30,7 @@ func turn():
 		changingBodyParts.get_node("Right Arm").set_flip_v( true )
 		additionalRelativeAttackPositions = [Vector2(0, -1)]
 	elif (turnBehaviour.Attacking()):
-		addHeavyImpacts([Vector2(0, 1)])
+		addHeavyImpacts()
 		
 		changingBodyParts.get_node("Left Arm").set_flip_v( false )
 		changingBodyParts.get_node("Right Arm").set_flip_v( false )
@@ -42,11 +42,13 @@ func turn():
 		pass
 		#animate stunned
 
-func addHeavyImpacts(relativePositions):
-	for relativePosition in relativePositions:
+func addHeavyImpacts():
+	var attackPositions = absoluteAttackPositions(getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection) * GameData.TileSize, turnBehaviour.attackDirection)
+	
+	for attackPosition in attackPositions:
 		var heavyImpactInstance = HeavyImpact.instance()
 		
-		heavyImpactInstance.position = get_position() + relativePosition * GameData.TileSize
+		heavyImpactInstance.position = attackPosition
 		AnimationsNode.add_child(heavyImpactInstance)
 
 func resetToStartPosition():

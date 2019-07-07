@@ -23,7 +23,7 @@ func attack(character):
 func turn():
 	if movement_direction != Enums.DIRECTION.NONE:
 		previous_movement_direction = movement_direction
-	moving = moveDirection(turnBehaviour.getDirection(original_pos))
+	moving = moveDirection(turnBehaviour.turn(original_pos))
 	print("HERE: moving: ", moving, ", direction: ", movement_direction)
 	if moving:
 		if movement_direction != Enums.DIRECTION.NONE:
