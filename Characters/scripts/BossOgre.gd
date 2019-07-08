@@ -43,13 +43,27 @@ func turn():
 		#animate stunned
 
 func addHeavyImpacts():
-	var attackPositions = absoluteAttackPositions(getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection) * GameData.TileSize, turnBehaviour.attackDirection)
+	var attackPositions = absoluteAttackPositions(getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), turnBehaviour.attackDirection)
 	
-	for attackPosition in attackPositions:
-		var heavyImpactInstance = HeavyImpact.instance()
+	for i in range(0, attackPositions.size()):
+		var attackPosition = attackPositions[i]
 		
-		heavyImpactInstance.position = attackPosition
-		EffectsNode.add_child(heavyImpactInstance)
+		if (i > 0):
+			var timer = Timer.new()
+			timer.set_wait_time(0.2 * i)
+			timer.connect("timeout", self, "AddHeavyImpact", [attackPosition * GameData.TileSize]) 
+			timer.set_one_shot(true)
+			add_child(timer)
+			timer.start()
+		else:
+			AddHeavyImpact(attackPosition * GameData.TileSize)
+
+func AddHeavyImpact(position):
+	var heavyImpactInstance = HeavyImpact.instance()
+		
+	heavyImpactInstance.position = position
+	EffectsNode.add_child(heavyImpactInstance)
+	heavyImpactInstance.play()
 
 func resetToStartPosition():
 	self.position = initial_pos

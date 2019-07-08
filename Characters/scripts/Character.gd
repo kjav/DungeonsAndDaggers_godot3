@@ -146,15 +146,21 @@ func getNextTargetPos(pos, direction):
 func absoluteAttackPositions(targetPos, direction):
 	var additional = additionalAbosoluteAttackPositions(targetPos, direction)
 	if additional.size() > 0:
+		print("SAD")
 		print(additional[0].x)
 		print(additional[0].y)
+		print(targetPos.x)
+		print(targetPos.y)
 		print("asda")
 	return([targetPos] + additional)
 
 func additionalAbosoluteAttackPositions(targetPos, direction):
-	return convertRelativePositionToAbsolute(targetPos, additionalRelativeAttackPositions, direction)
+	if (additionalRelativeAttackPositions.size() > 0):
+		return convertRelativePositionToAbsolute(targetPos, additionalRelativeAttackPositions, direction)
 	
-func convertRelativePositionToAbsolute(current_position, relativePositions, direction):
+	return []
+	
+func convertRelativePositionToAbsolute(currentPosition, relativePositions, direction):
 	var phi
 	
 	match direction:
@@ -163,9 +169,9 @@ func convertRelativePositionToAbsolute(current_position, relativePositions, dire
 		Enums.DIRECTION.DOWN:
 			phi = PI
 		Enums.DIRECTION.LEFT:
-			phi = PI /2
-		Enums.DIRECTION.RIGHT:
 			phi = (3 *  PI) / 2
+		Enums.DIRECTION.RIGHT:
+			phi = PI /2
 		Enums.DIRECTION.NONE:
 			return []
 	
@@ -173,8 +179,7 @@ func convertRelativePositionToAbsolute(current_position, relativePositions, dire
 
 	for relativePosition in relativePositions:
 		var rotated = relativePosition.rotated(phi)
-		var currentPosDivided = current_position / GameData.TileSize
-		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosDivided]
+		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosition]
 	
 	return AbsolutePositions
 
