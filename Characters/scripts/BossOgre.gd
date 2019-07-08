@@ -2,11 +2,11 @@ extends "Enemy.gd"
 
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
-const HeavyImpact = preload("res://Animations/HeavyImpact.tscn")
-var AnimationsNode
+const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+var EffectsNode
 
 func _ready():
-	AnimationsNode = get_node("/root/Node2D/Animations")
+	EffectsNode = get_node("/root/Node2D/Effects")
 	turnBehaviour = Turn.MoveToWaitBeforeAndAfterAttackTwoInFront.new()
 	processBehaviour = Process.StraightTransition.new()
 	self.character_name = 'Boss Ogre'
@@ -49,7 +49,7 @@ func addHeavyImpacts():
 		var heavyImpactInstance = HeavyImpact.instance()
 		
 		heavyImpactInstance.position = attackPosition
-		AnimationsNode.add_child(heavyImpactInstance)
+		EffectsNode.add_child(heavyImpactInstance)
 
 func resetToStartPosition():
 	self.position = initial_pos
