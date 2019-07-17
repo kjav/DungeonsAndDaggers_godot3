@@ -11,11 +11,12 @@ class MoveRandom extends Node:
 	func turn(pos):
 		return randi()%5
 
-class MoveToWaitBeforeAttackTwoInFrontRecoverIfMissed extends Node:
+class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
 	var attackDirection
 	var shouldRecover = false
+	var additionalRelativeAttackPositions = []
 
 	func turn(pos):
 		if GameData.player.alive():
@@ -63,10 +64,65 @@ class MoveToWaitBeforeAttackTwoInFrontRecoverIfMissed extends Node:
 		return shouldRecover
 
 	func playerInAttackablePosition(player_pos, divided_pos):
-		return (abs(player_pos.x - divided_pos.x) <= 2 and player_pos.y == divided_pos.y) or (abs(player_pos.y - divided_pos.y) <= 2 and player_pos.x == divided_pos.x)
-
+		var absolutePositions = absoluteAttackPositions(getNextTargetPos(divided_pos, attackDirection), attackDirection)
+		
+		for absolutePosition in absolutePositions:
+			if (absolutePosition.x == player_pos.x and absolutePosition.y == player_pos.y):
+				return true
+		
+		return false
+	
 	func inWaitAttackWaitSequence():
 		return waitAttackWaitCount >= 0
+	
+	func getNextTargetPos(pos, direction):
+		match direction:
+			Enums.DIRECTION.UP:
+				pos.y -= 1
+			Enums.DIRECTION.DOWN:
+				pos.y += 1
+			Enums.DIRECTION.LEFT:
+				pos.x -= 1
+			Enums.DIRECTION.RIGHT:
+				pos.x += 1
+		
+		return pos
+	
+	func absoluteAttackPositions(targetPos, direction):
+		var additional = additionalAbosoluteAttackPositions(targetPos, direction)
+		return([targetPos] + additional)
+	
+	func additionalAbosoluteAttackPositions(targetPos, direction):
+		if (additionalRelativeAttackPositions.size() > 0):
+			return convertRelativePositionToAbsolute(targetPos, additionalRelativeAttackPositions, direction)
+		
+		return []
+	
+	func convertRelativePositionToAbsolute(currentPosition, relativePositions, direction):
+		var phi
+		
+		match direction:
+			Enums.DIRECTION.UP:
+				phi = 0
+			Enums.DIRECTION.DOWN:
+				phi = PI
+			Enums.DIRECTION.LEFT:
+				phi = (3 *  PI) / 2
+			Enums.DIRECTION.RIGHT:
+				phi = PI /2
+			Enums.DIRECTION.NONE:
+				return []
+		
+		var AbsolutePositions = []
+	
+		for relativePosition in relativePositions:
+			var rotated = relativePosition.rotated(phi)
+			AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosition]
+		
+		return AbsolutePositions
+	
+	func roundVector2(pos):
+		return Vector2(round(pos.x), round(pos.y))
 
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()

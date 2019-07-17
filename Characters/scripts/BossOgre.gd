@@ -7,7 +7,7 @@ var EffectsNode
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
-	turnBehaviour = Turn.MoveToWaitBeforeAttackTwoInFrontRecoverIfMissed.new()
+	turnBehaviour = Turn.MoveToWaitBeforeAttackRecoverIfMissed.new()
 	processBehaviour = Process.StraightTransition.new()
 	self.character_name = 'Boss Ogre'
 	base_damage = 3
@@ -35,12 +35,14 @@ func turn():
 		changingBodyParts.get_node("Left Arm").set_flip_v( true )
 		changingBodyParts.get_node("Right Arm").set_flip_v( true )
 		additionalRelativeAttackPositions = [Vector2(0, -1)]
+		turnBehaviour.additionalRelativeAttackPositions = [Vector2(0, -1)]
 	elif (turnBehaviour.Attacking()):
 		addHeavyImpacts()
 		
 		changingBodyParts.get_node("Left Arm").set_flip_v( false )
 		changingBodyParts.get_node("Right Arm").set_flip_v( false )
 		
+		turnBehaviour.additionalRelativeAttackPositions = []
 		additionalRelativeAttackPositions = []
 
 func addHeavyImpacts():
