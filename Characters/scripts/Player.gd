@@ -117,9 +117,9 @@ func pickUp():
 		emit_signal("itemPickedUp", item)
 
 func heal(amount):
-	if self.stats.health.value < self.stats.health.maximum:
-		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
-		emit_signal("statsChanged", "health", "Up", amount)
+	.heal(amount)
+	
+	emit_signal("statsChanged", "health", "Up", amount)
 
 func consume_stat(stat, amount):
 	if stats[stat].value >= amount:
