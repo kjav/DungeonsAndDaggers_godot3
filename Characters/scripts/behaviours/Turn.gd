@@ -11,10 +11,11 @@ class MoveRandom extends Node:
 	func turn(pos):
 		return randi()%5
 
-class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
+class MoveToWaitBeforeAttackTwoInFrontRecoverIfMissed extends Node:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
 	var attackDirection
+	var shouldRecover = false
 
 	func turn(pos):
 		if GameData.player.alive():
@@ -27,21 +28,30 @@ class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 			
 			if inWaitAttackWaitSequence():
 				waitAttackWaitCount += 1
-				if Attacking():
+				
+				if shouldRecover:
+					setShouldRecoverForNextTurn()
+				elif Attacking():
 					if playerInAttackablePosition(player_pos, divided_pos):
 						return moveTo.turn(pos)
-				elif Recovering():
-					attackDirection = Enums.DIRECTION.NONE
-					waitAttackWaitCount = -1
-			else:
-				if divided_pos.distance_squared_to(player_pos) > 1:
-					# Select movement direction towards player
-					return moveTo.turn(pos)
+					
+					setShouldRecoverForNextTurn()
 				else:
-					attackDirection = moveTo.turn(pos)
+					waitAttackWaitCount = -1
+					return turn(pos)
+			else:
+				var playerDirection = moveTo.turn(pos)
+				
+				if divided_pos.distance_squared_to(player_pos) > 1:
+					return playerDirection
+				else:
+					attackDirection = playerDirection
 					waitAttackWaitCount = 0
 		
 		return Enums.DIRECTION.NONE
+
+	func setShouldRecoverForNextTurn():
+		shouldRecover = randi() % 2 == 1
 
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
@@ -50,7 +60,7 @@ class MoveToWaitBeforeAndAfterAttackTwoInFront extends Node:
 		return waitAttackWaitCount == 1
 		
 	func Recovering():
-		return waitAttackWaitCount == 2
+		return shouldRecover
 
 	func playerInAttackablePosition(player_pos, divided_pos):
 		return (abs(player_pos.x - divided_pos.x) <= 2 and player_pos.y == divided_pos.y) or (abs(player_pos.y - divided_pos.y) <= 2 and player_pos.x == divided_pos.x)
