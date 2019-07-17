@@ -12,6 +12,7 @@ func _ready():
 	self.character_name = 'Boss Ogre'
 	base_damage = 3
 	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.CookedSteak}])
+	self.get_node("Stars").hide()
 	
 	initialStats.health = {
 		"value": 12,
@@ -24,6 +25,11 @@ func turn():
 	.turn()
 	
 	var changingBodyParts = get_node("ChangingBodyParts")
+	
+	if (!turnBehaviour.Recovering()):
+		self.get_node("Stars").hide()
+	else:
+		self.get_node("Stars").show()
 	
 	if (turnBehaviour.PreparingAttack()):
 		changingBodyParts.get_node("Left Arm").set_flip_v( true )
@@ -64,3 +70,7 @@ func resetToStartPosition():
 	self.position = initial_pos
 	
 	_ready()
+
+func handleCharacterDeath():
+	self.get_node("Stars").hide()
+	.handleCharacterDeath()
