@@ -33,7 +33,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 				if shouldRecover:
 					setShouldRecoverForNextTurn()
 				elif Attacking():
-					if playerInAttackablePosition(player_pos, divided_pos):
+					if playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
 						return moveTo.turn(pos)
 					
 					setShouldRecoverForNextTurn()
@@ -50,10 +50,19 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 					waitAttackWaitCount = 0
 		
 		return Enums.DIRECTION.NONE
-
+	
+	func playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
+		var absolutePositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(divided_pos, attackDirection), additionalRelativeAttackPositions, attackDirection)
+		
+		for absolutePosition in absolutePositions:
+			if (absolutePosition.x == player_pos.x and absolutePosition.y == player_pos.y):
+				return true
+		
+		return false
+	
 	func setShouldRecoverForNextTurn():
 		shouldRecover = randi() % 2 == 1
-
+	
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
 		
@@ -62,67 +71,9 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 		
 	func Recovering():
 		return shouldRecover
-
-	func playerInAttackablePosition(player_pos, divided_pos):
-		var absolutePositions = absoluteAttackPositions(getNextTargetPos(divided_pos, attackDirection), attackDirection)
-		
-		for absolutePosition in absolutePositions:
-			if (absolutePosition.x == player_pos.x and absolutePosition.y == player_pos.y):
-				return true
-		
-		return false
 	
 	func inWaitAttackWaitSequence():
 		return waitAttackWaitCount >= 0
-	
-	func getNextTargetPos(pos, direction):
-		match direction:
-			Enums.DIRECTION.UP:
-				pos.y -= 1
-			Enums.DIRECTION.DOWN:
-				pos.y += 1
-			Enums.DIRECTION.LEFT:
-				pos.x -= 1
-			Enums.DIRECTION.RIGHT:
-				pos.x += 1
-		
-		return pos
-	
-	func absoluteAttackPositions(targetPos, direction):
-		var additional = additionalAbosoluteAttackPositions(targetPos, direction)
-		return([targetPos] + additional)
-	
-	func additionalAbosoluteAttackPositions(targetPos, direction):
-		if (additionalRelativeAttackPositions.size() > 0):
-			return convertRelativePositionToAbsolute(targetPos, additionalRelativeAttackPositions, direction)
-		
-		return []
-	
-	func convertRelativePositionToAbsolute(currentPosition, relativePositions, direction):
-		var phi
-		
-		match direction:
-			Enums.DIRECTION.UP:
-				phi = 0
-			Enums.DIRECTION.DOWN:
-				phi = PI
-			Enums.DIRECTION.LEFT:
-				phi = (3 *  PI) / 2
-			Enums.DIRECTION.RIGHT:
-				phi = PI /2
-			Enums.DIRECTION.NONE:
-				return []
-		
-		var AbsolutePositions = []
-	
-		for relativePosition in relativePositions:
-			var rotated = relativePosition.rotated(phi)
-			AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosition]
-		
-		return AbsolutePositions
-	
-	func roundVector2(pos):
-		return Vector2(round(pos.x), round(pos.y))
 
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()

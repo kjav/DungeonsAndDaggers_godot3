@@ -46,7 +46,7 @@ func turn():
 		additionalRelativeAttackPositions = []
 
 func addHeavyImpacts():
-	var attackPositions = absoluteAttackPositions(getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), turnBehaviour.attackDirection)
+	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
 	
 	for i in range(0, attackPositions.size()):
 		var attackPosition = attackPositions[i]
