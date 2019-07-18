@@ -297,6 +297,10 @@ func setAnimationOnAllBodyParts(animationName):
 	for child in self.get_node(bodyPartsNodeName).get_children():
 		child.set_animation(animationName)
 
+func setFlip_hOnAllBodyParts(state):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.set_flip_h( state )
+
 func setPlayingOnAllBodyParts(playingValue):
 	for child in self.get_node(bodyPartsNodeName).get_children():
 		child.playing = playingValue

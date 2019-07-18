@@ -15,18 +15,23 @@ animations = [ {
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "walk_left",
-"speed": 1.0
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "stand_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -40,14 +45,9 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
+"loop": false,
+"name": "walk_left",
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
@@ -60,17 +60,22 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_left",
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "stand_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -85,12 +90,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_up",
+"name": "walk_left",
 "speed": 5.0
 } ]
 
@@ -103,18 +103,23 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
 "loop": false,
-"name": "walk_left",
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "walk_down",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -128,14 +133,9 @@ animations = [ {
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
+"loop": false,
+"name": "walk_left",
+"speed": 1.0
 } ]
 
 [node name="Body" type="Node2D" index="0"]
@@ -180,7 +180,6 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
-frame = 0
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 
