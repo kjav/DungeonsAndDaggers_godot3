@@ -27,6 +27,7 @@ func _ready():
 	stageOneDefeated = false
 	alternateAttackCue = false
 	visualAttackCueActive = false
+	currentFlip_hState = false
 	
 	initialStats.health = {
 		"value": 12,
@@ -117,12 +118,12 @@ func setWalkAnimation(direction):
 		Enums.DIRECTION.UP:
 			setAnimationOnAllBodyParts("walk_up")
 		Enums.DIRECTION.DOWN:
-			setAnimationOnAllBodyParts("walk_down")
+			setAnimationOnAllBodyParts("walk_left")
 		Enums.DIRECTION.LEFT:
 			setAnimationOnAllBodyParts("walk_left")
 			currentFlip_hState = false
 		Enums.DIRECTION.RIGHT:
-			setAnimationOnAllBodyParts("walk_right")
+			setAnimationOnAllBodyParts("walk_left")
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)
@@ -134,12 +135,12 @@ func setStandAnimation(direction):
 		Enums.DIRECTION.UP:
 			setAnimationOnAllBodyParts("stand_up")
 		Enums.DIRECTION.DOWN:
-			setAnimationOnAllBodyParts("stand_down")
+			setAnimationOnAllBodyParts("stand_left")
 		Enums.DIRECTION.LEFT:
 			setAnimationOnAllBodyParts("stand_left")
 			currentFlip_hState = false
 		Enums.DIRECTION.RIGHT:
-			setAnimationOnAllBodyParts("stand_right")
+			setAnimationOnAllBodyParts("stand_left")
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)

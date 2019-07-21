@@ -1,138 +1,104 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/scripts/BossOgre.gd" type="Script" id=1]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left.png" type="Texture" id=2]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_head_left.png" type="Texture" id=3]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_arm_left.png" type="Texture" id=4]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_back.png" type="Texture" id=2]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_back_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_back_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left.png" type="Texture" id=5]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_head_back.png" type="Texture" id=8]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_head_left.png" type="Texture" id=9]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_arm_left.png" type="Texture" id=10]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "stand_down",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_up",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "walk_left",
+"name": "stand_up",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 6.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "stand_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
 "name": "walk_up",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "stand_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "stand_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
 "name": "stand_up",
-"speed": 5.0
+"speed": 1.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
 "name": "walk_left",
-"speed": 5.0
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "stand_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "walk_down",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
 "name": "stand_right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "stand_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
 "name": "stand_up",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "walk_down",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
 "name": "walk_left",
 "speed": 1.0
@@ -149,7 +115,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 [node name="Body" type="AnimatedSprite" parent="ChangingBodyParts" index="0"]
 
 frames = SubResource( 1 )
-animation = "stand_down"
+animation = "stand_left"
 playing = true
 offset = Vector2( 16, 16 )
 
@@ -157,7 +123,8 @@ offset = Vector2( 16, 16 )
 
 position = Vector2( 13.6549, 8.16854 )
 frames = SubResource( 2 )
-animation = "stand_down"
+animation = "walk_up"
+_sections_unfolded = [ "Transform" ]
 
 [node name="Left Arm" type="AnimatedSprite" parent="ChangingBodyParts" index="2"]
 
@@ -175,12 +142,12 @@ animation = "stand_down"
 centered = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Stars" parent="." index="1" instance=ExtResource( 5 )]
+[node name="Stars" parent="." index="1" instance=ExtResource( 11 )]
 
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
-frame = 1
+frame = 3
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 
