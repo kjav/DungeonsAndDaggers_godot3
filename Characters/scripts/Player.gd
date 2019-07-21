@@ -14,6 +14,9 @@ var swipe_funcref
 var character_name = 'Player'
 
 func _ready():
+	increaseMax(9)
+	heal(9)
+	
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
 	EventListener.listen("SwipeCommand", swipe_funcref)
