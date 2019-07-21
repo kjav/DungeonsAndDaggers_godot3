@@ -3,17 +3,18 @@ extends "Enemy.gd"
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const leftArmXInitialPosition = 3.96536
+const rightArmXInitialPosition = 14.6453
+const headXInitialPosition = 13.6549
+const leftArmXFlippedPosition = 21.96536
+const rightArmXFlippedPosition = 11.6453
+const headXFlippedPosition = 18.6549
+
 var EffectsNode
 var stageOneDefeated
 var alternateAttackCue
 var visualAttackCueActive
 var currentFlip_hState
-var leftArmXInitialPosition = 3.96536
-var rightArmXInitialPosition = 14.6453
-var headXInitialPosition = 13.6549
-var leftArmXFlippedPosition = 21.96536
-var rightArmXFlippedPosition = 11.6453
-var headXFlippedPosition = 18.6549
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
@@ -117,7 +118,6 @@ func setWalkAnimation(direction):
 			setAnimationOnAllBodyParts("walk_up")
 		Enums.DIRECTION.DOWN:
 			setAnimationOnAllBodyParts("walk_down")
-			currentFlip_hState = false
 		Enums.DIRECTION.LEFT:
 			setAnimationOnAllBodyParts("walk_left")
 			currentFlip_hState = false
@@ -135,7 +135,6 @@ func setStandAnimation(direction):
 			setAnimationOnAllBodyParts("stand_up")
 		Enums.DIRECTION.DOWN:
 			setAnimationOnAllBodyParts("stand_down")
-			currentFlip_hState = false
 		Enums.DIRECTION.LEFT:
 			setAnimationOnAllBodyParts("stand_left")
 			currentFlip_hState = false
