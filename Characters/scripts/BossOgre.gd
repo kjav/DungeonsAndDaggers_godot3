@@ -6,6 +6,7 @@ const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
 var EffectsNode
 var stageOneDefeated
 var alternateAttackCue
+var visualAttackCueActive
 var currentFlip_hState
 
 func _ready():
@@ -18,6 +19,7 @@ func _ready():
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
 	alternateAttackCue = false
+	visualAttackCueActive = false
 	
 	initialStats.health = {
 		"value": 12,
@@ -50,27 +52,30 @@ func turn():
 		additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
 		turnBehaviour.additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
 		
-		changeVisualAttackCues(alternateAttackCue, true)
+		visualAttackCueActive = true
+		setVisualAttackCues()
 	elif (turnBehaviour.Attacking()):
 		addHeavyImpacts()
-		changeVisualAttackCues(alternateAttackCue, false)
+		
+		visualAttackCueActive = false
+		setVisualAttackCues()
 		
 		turnBehaviour.additionalRelativeAttackPositions = []
 		additionalRelativeAttackPositions = []
 
-func changeVisualAttackCues(alternateAttackCue, active):
+func setVisualAttackCues():
 	var changingBodyParts = get_node("ChangingBodyParts")
 	
 	if alternateAttackCue:
-		changingBodyParts.get_node("Left Arm").set_flip_h( active )
-		changingBodyParts.get_node("Right Arm").set_flip_h( active )
-	else:
-		if active:
-			changingBodyParts.get_node("Left Arm").set_flip_v( false )
-			changingBodyParts.get_node("Right Arm").set_flip_v( true )
+		if visualAttackCueActive:
+			changingBodyParts.get_node("Left Arm").set_flip_h( false )
+			changingBodyParts.get_node("Right Arm").set_flip_h( true )
 		else:
-			changingBodyParts.get_node("Left Arm").set_flip_v( currentFlip_hState )
-			changingBodyParts.get_node("Right Arm").set_flip_v( currentFlip_hState )
+			changingBodyParts.get_node("Left Arm").set_flip_h( currentFlip_hState )
+			changingBodyParts.get_node("Right Arm").set_flip_h( currentFlip_hState )
+	
+	changingBodyParts.get_node("Left Arm").set_flip_v( visualAttackCueActive )
+	changingBodyParts.get_node("Right Arm").set_flip_v( visualAttackCueActive )
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
@@ -115,6 +120,7 @@ func setWalkAnimation(direction):
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)
+	setVisualAttackCues()
 
 func setStandAnimation(direction):
 	match direction:
@@ -131,6 +137,7 @@ func setStandAnimation(direction):
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)
+	setVisualAttackCues()
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
