@@ -8,6 +8,12 @@ var stageOneDefeated
 var alternateAttackCue
 var visualAttackCueActive
 var currentFlip_hState
+var leftArmXInitialPosition = 3.96536
+var rightArmXInitialPosition = 14.6453
+var headXInitialPosition = 13.6549
+var leftArmXFlippedPosition = 21.96536
+var rightArmXFlippedPosition = 11.6453
+var headXFlippedPosition = 18.6549
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
@@ -120,6 +126,7 @@ func setWalkAnimation(direction):
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)
+	adjustPositonForFlip()
 	setVisualAttackCues()
 
 func setStandAnimation(direction):
@@ -137,7 +144,28 @@ func setStandAnimation(direction):
 			currentFlip_hState = true
 	
 	setFlip_hOnAllBodyParts(currentFlip_hState)
+	adjustPositonForFlip()
 	setVisualAttackCues()
+
+func adjustPositonForFlip():
+	var plannedLeftArmXPosition
+	var plannedRightArmXPosition
+	var plannedHeadArmXPosition
+	
+	if currentFlip_hState:
+		plannedLeftArmXPosition = leftArmXFlippedPosition
+		plannedRightArmXPosition = rightArmXFlippedPosition
+		plannedHeadArmXPosition = headXFlippedPosition
+	else:
+		plannedLeftArmXPosition = leftArmXInitialPosition
+		plannedRightArmXPosition = rightArmXInitialPosition
+		plannedHeadArmXPosition = headXInitialPosition
+	
+	var changingBodyParts = get_node("ChangingBodyParts")
+	
+	changingBodyParts.get_node("Left Arm").position.x = plannedLeftArmXPosition
+	changingBodyParts.get_node("Right Arm").position.x = plannedRightArmXPosition
+	changingBodyParts.get_node("Head").position.x = plannedHeadArmXPosition
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()

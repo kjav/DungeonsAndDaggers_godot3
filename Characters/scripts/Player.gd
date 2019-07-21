@@ -14,6 +14,7 @@ var swipe_funcref
 var character_name = 'Player'
 
 func _ready():
+	#this is temporary to aid with testing
 	increaseMax(9)
 	heal(9)
 	
