@@ -90,18 +90,18 @@ func turn():
 		additionalRelativeAttackPositions = []
 
 func setVisualAttackCues():
-	var changingBodyParts = get_node("ChangingBodyParts")
-	
 	if alternateAttackCue:
 		if visualAttackCueActive:
-			changingBodyParts.get_node("Left Arm").set_flip_h( false )
-			changingBodyParts.get_node("Right Arm").set_flip_h( true )
+			leftArm.set_flip_h( false )
+			rightArm.set_flip_h( true )
+			if walkingUp:
+				leftArm.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
 		else:
-			changingBodyParts.get_node("Left Arm").set_flip_h( currentFlip_hState )
-			changingBodyParts.get_node("Right Arm").set_flip_h( currentFlip_hState )
+			leftArm.set_flip_h( currentFlip_hState )
+			rightArm.set_flip_h( currentFlip_hState )
 	
-	changingBodyParts.get_node("Left Arm").set_flip_v( visualAttackCueActive )
-	changingBodyParts.get_node("Right Arm").set_flip_v( visualAttackCueActive )
+	leftArm.set_flip_v( visualAttackCueActive )
+	rightArm.set_flip_v( visualAttackCueActive )
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
