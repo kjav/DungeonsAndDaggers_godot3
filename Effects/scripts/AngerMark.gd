@@ -2,7 +2,7 @@ extends AnimatedSprite
 
 const timeToLive = 0.5
 const distance = 20
-var Rotation
+var Rotation = 0
 
 func setRotation(rotation):
 	Rotation = rotation
