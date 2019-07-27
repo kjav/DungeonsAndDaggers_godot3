@@ -3,18 +3,30 @@ extends "Enemy.gd"
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+
 const leftArmXInitialPosition = 3.96536
 const rightArmXInitialPosition = 14.6453
 const headXInitialPosition = 13.6549
+
 const leftArmXFlippedPosition = 21.96536
 const rightArmXFlippedPosition = 11.6453
 const headXFlippedPosition = 18.6549
+
+const leftArmXUpPosition  = 6.6453
+const rightArmXUpPosition = 23.96536
+const headXUpPosition = 21.6549
+
+var changingBodyParts
+var leftArm
+var rightArm
+var head
 
 var EffectsNode
 var stageOneDefeated
 var alternateAttackCue
 var visualAttackCueActive
 var currentFlip_hState
+var walkingUp
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
@@ -28,6 +40,12 @@ func _ready():
 	alternateAttackCue = false
 	visualAttackCueActive = false
 	currentFlip_hState = false
+	walkingUp = false
+
+	changingBodyParts = get_node("ChangingBodyParts")
+	leftArm = changingBodyParts.get_node("Left Arm")
+	rightArm = changingBodyParts.get_node("Right Arm")
+	head = changingBodyParts.get_node("Head")
 	
 	initialStats.health = {
 		"value": 12,
@@ -114,9 +132,13 @@ func resetToStartPosition():
 	_ready()
 
 func setWalkAnimation(direction):
+	walkingUp = false
+	
 	match direction:
 		Enums.DIRECTION.UP:
 			setAnimationOnAllBodyParts("walk_up")
+			walkingUp = true
+			currentFlip_hState = true
 		Enums.DIRECTION.DOWN:
 			setAnimationOnAllBodyParts("walk_left")
 		Enums.DIRECTION.LEFT:
@@ -126,14 +148,16 @@ func setWalkAnimation(direction):
 			setAnimationOnAllBodyParts("walk_left")
 			currentFlip_hState = true
 	
-	setFlip_hOnAllBodyParts(currentFlip_hState)
-	adjustPositonForFlip()
-	setVisualAttackCues()
+	adjustBosyPositions()
 
 func setStandAnimation(direction):
+	walkingUp = false
+	
 	match direction:
 		Enums.DIRECTION.UP:
 			setAnimationOnAllBodyParts("stand_up")
+			walkingUp = true
+			currentFlip_hState = true
 		Enums.DIRECTION.DOWN:
 			setAnimationOnAllBodyParts("stand_left")
 		Enums.DIRECTION.LEFT:
@@ -143,11 +167,27 @@ func setStandAnimation(direction):
 			setAnimationOnAllBodyParts("stand_left")
 			currentFlip_hState = true
 	
+	adjustBosyPositions()
+
+func adjustBosyPositions():
 	setFlip_hOnAllBodyParts(currentFlip_hState)
-	adjustPositonForFlip()
+	
+	if (walkingUp):
+		adjustPositonForWalkingUp()
+	else:
+		changingBodyParts.move_child(changingBodyParts.get_node("Body"), 0)
+		adjustPositonForFacingDown()
+	
 	setVisualAttackCues()
 
-func adjustPositonForFlip():
+func adjustPositonForWalkingUp():	
+	head.position.x = headXUpPosition
+	leftArm.position.x = leftArmXUpPosition
+	rightArm.position.x = rightArmXUpPosition
+	
+	changingBodyParts.move_child(changingBodyParts.get_node("Body"), 3)
+
+func adjustPositonForFacingDown():
 	var plannedLeftArmXPosition
 	var plannedRightArmXPosition
 	var plannedHeadArmXPosition
@@ -161,11 +201,9 @@ func adjustPositonForFlip():
 		plannedRightArmXPosition = rightArmXInitialPosition
 		plannedHeadArmXPosition = headXInitialPosition
 	
-	var changingBodyParts = get_node("ChangingBodyParts")
-	
-	changingBodyParts.get_node("Left Arm").position.x = plannedLeftArmXPosition
-	changingBodyParts.get_node("Right Arm").position.x = plannedRightArmXPosition
-	changingBodyParts.get_node("Head").position.x = plannedHeadArmXPosition
+	leftArm.position.x = plannedLeftArmXPosition
+	rightArm.position.x = plannedRightArmXPosition
+	head.position.x = plannedHeadArmXPosition
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
