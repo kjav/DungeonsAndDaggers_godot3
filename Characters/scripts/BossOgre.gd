@@ -207,6 +207,7 @@ func adjustPositonForFacingDown():
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
+	turnBehaviour.LeaveWaitAttackWaitSequence()
 	
 	if (stageOneDefeated):
 		.handleCharacterDeath()

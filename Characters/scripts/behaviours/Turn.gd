@@ -15,7 +15,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
 	var attackDirection
-	var shouldRecover = false
+	var recoveryTurn = false
 	var additionalRelativeAttackPositions = []
 
 	func turn(pos):
@@ -30,15 +30,15 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 			if inWaitAttackWaitSequence():
 				waitAttackWaitCount += 1
 				
-				if shouldRecover:
-					setShouldRecoverForNextTurn()
+				if recoveryTurn:
+					setRecoveryForNextTurn()
 				elif Attacking():
 					if playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
 						return moveTo.turn(pos)
 					
-					setShouldRecoverForNextTurn()
+					setRecoveryForNextTurn()
 				else:
-					waitAttackWaitCount = -1
+					LeaveWaitAttackWaitSequence()
 					return turn(pos)
 			else:
 				var playerDirection = moveTo.turn(pos)
@@ -60,8 +60,8 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 		
 		return false
 	
-	func setShouldRecoverForNextTurn():
-		shouldRecover = randi() % 2 == 1
+	func setRecoveryForNextTurn():
+		recoveryTurn = randi() % 2 == 1
 	
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
@@ -70,10 +70,14 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 		return waitAttackWaitCount == 1
 		
 	func Recovering():
-		return shouldRecover
+		return recoveryTurn
 	
 	func inWaitAttackWaitSequence():
 		return waitAttackWaitCount >= 0
+	
+	func LeaveWaitAttackWaitSequence():
+		waitAttackWaitCount = -1
+		recoveryTurn = false
 
 class InRangeMoveToOtherwiseRandom extends Node:
 	var random = MoveRandom.new()
