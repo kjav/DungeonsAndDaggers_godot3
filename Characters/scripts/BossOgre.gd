@@ -15,12 +15,19 @@ const headXFlippedPosition = 18.6549
 
 const leftArmXUpPosition  = 6.6453
 const rightArmXUpPosition = 23.96536
-const headXUpPosition = 21.6549
+const headXUpPosition = 18.6549
 
 var changingBodyParts
 var leftArm
 var rightArm
 var head
+var body
+var leftArmAngerOverlay
+var rightArmAngerOverlay
+var headAngerOverlay
+var bodyAngerOverlay
+
+var headFrameSize
 
 var EffectsNode
 var stageOneDefeated
@@ -47,6 +54,18 @@ func _ready():
 	leftArm = changingBodyParts.get_node("Left Arm")
 	rightArm = changingBodyParts.get_node("Right Arm")
 	head = changingBodyParts.get_node("Head")
+	body = changingBodyParts.get_node("Body")
+	leftArmAngerOverlay = changingBodyParts.get_node("Left Arm Anger Overlay")
+	rightArmAngerOverlay = changingBodyParts.get_node("Right Arm Anger Overlay")
+	headAngerOverlay = changingBodyParts.get_node("Head Anger Overlay")
+	bodyAngerOverlay = changingBodyParts.get_node("Body Anger Overlay")
+	
+	leftArmAngerOverlay.hide()
+	rightArmAngerOverlay.hide()
+	headAngerOverlay.hide()
+	bodyAngerOverlay.hide()
+	
+	headFrameSize = head.frames.get_frame("stand_left", 0).get_size()
 	
 	initialStats.health = {
 		"value": 12,
@@ -94,15 +113,22 @@ func setVisualAttackCues():
 	if alternateAttackCue:
 		if visualAttackCueActive:
 			leftArm.set_flip_h( false )
+			leftArmAngerOverlay.set_flip_h( false )
 			rightArm.set_flip_h( true )
+			rightArmAngerOverlay.set_flip_h( true )
 			if walkingUp:
 				leftArm.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
+				leftArmAngerOverlay.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
 		else:
 			leftArm.set_flip_h( currentFlip_hState )
+			leftArmAngerOverlay.set_flip_h( currentFlip_hState )
 			rightArm.set_flip_h( currentFlip_hState )
+			rightArmAngerOverlay.set_flip_h( currentFlip_hState )
 	
 	leftArm.set_flip_v( visualAttackCueActive )
+	leftArmAngerOverlay.set_flip_v( visualAttackCueActive )
 	rightArm.set_flip_v( visualAttackCueActive )
+	rightArmAngerOverlay.set_flip_v( visualAttackCueActive )
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
@@ -188,17 +214,22 @@ func adjustBosyPositions():
 	if (walkingUp):
 		adjustPositonForWalkingUp()
 	else:
-		changingBodyParts.move_child(changingBodyParts.get_node("Body"), 0)
+		changingBodyParts.move_child(bodyAngerOverlay, 0)
+		changingBodyParts.move_child(body, 0)
 		adjustPositonForFacingDown()
 	
 	setVisualAttackCues()
 
 func adjustPositonForWalkingUp():	
 	head.position.x = headXUpPosition
+	headAngerOverlay.position.x = headXUpPosition
 	leftArm.position.x = leftArmXUpPosition
+	leftArmAngerOverlay.position.x = leftArmXUpPosition
 	rightArm.position.x = rightArmXUpPosition
+	rightArmAngerOverlay.position.x = rightArmXUpPosition
 	
-	changingBodyParts.move_child(changingBodyParts.get_node("Body"), 3)
+	changingBodyParts.move_child(body, changingBodyParts.get_child_count()-1)
+	changingBodyParts.move_child(bodyAngerOverlay, changingBodyParts.get_child_count()-1)
 
 func adjustPositonForFacingDown():
 	var plannedLeftArmXPosition
@@ -215,8 +246,11 @@ func adjustPositonForFacingDown():
 		plannedHeadArmXPosition = headXInitialPosition
 	
 	leftArm.position.x = plannedLeftArmXPosition
+	leftArmAngerOverlay.position.x = plannedLeftArmXPosition
 	rightArm.position.x = plannedRightArmXPosition
+	rightArmAngerOverlay.position.x = plannedRightArmXPosition
 	head.position.x = plannedHeadArmXPosition
+	headAngerOverlay.position.x = plannedHeadArmXPosition
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
@@ -226,6 +260,11 @@ func handleCharacterDeath():
 	addAngerMark(getHeadLeftMiddlePosition(), PI/16)
 	addAngerMark(getHeadRightTopPosition(), PI*3/4)
 	addAngerMark(getHeadRightMiddlePosition(), PI*15/16)
+	
+	leftArmAngerOverlay.show()
+	rightArmAngerOverlay.show()
+	headAngerOverlay.show()
+	bodyAngerOverlay.show()
 	
 	if (stageOneDefeated):
 		.handleCharacterDeath()
