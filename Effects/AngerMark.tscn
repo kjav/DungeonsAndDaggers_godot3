@@ -15,10 +15,12 @@ _sections_unfolded = [ "Resource" ]
 
 [node name="Animation" type="AnimatedSprite" index="0"]
 
-scale = Vector2( 0.55, 0.55 )
+scale = Vector2( 0.125, 0.125 )
 frames = SubResource( 1 )
 animation = "default"
 playing = true
+centered = false
+offset = Vector2( -64, -15 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 

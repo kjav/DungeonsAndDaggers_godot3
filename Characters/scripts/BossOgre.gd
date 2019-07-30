@@ -120,12 +120,24 @@ func addHeavyImpacts():
 		else:
 			AddHeavyImpact(attackPosition * GameData.TileSize)
 
+func getHeadLeftTopPosition():
+	return Vector2(head.position.x - headFrameSize.x / 2, head.position.y - headFrameSize.y / 2)
+
+func getHeadLeftMiddlePosition():
+	return Vector2(head.position.x - headFrameSize.x / 2, head.position.y)
+
+func getHeadRightTopPosition():
+	return Vector2(head.position.x + headFrameSize.x / 2, head.position.y - headFrameSize.y / 2)
+
+func getHeadRightMiddlePosition():
+	return Vector2(head.position.x + headFrameSize.x / 2, head.position.y)
+
 func AddHeavyImpact(position):
 	var heavyImpactInstance = HeavyImpact.instance()
-		
+	
 	heavyImpactInstance.position = position
 	EffectsNode.add_child(heavyImpactInstance)
-	heavyImpactInstance.play()
+	heavyImpactInstance.play()	
 
 func resetToStartPosition():
 	self.position = initial_pos
@@ -210,16 +222,21 @@ func handleCharacterDeath():
 	self.get_node("Stars").hide()
 	turnBehaviour.LeaveWaitAttackWaitSequence()
 	
+	addAngerMark(getHeadLeftTopPosition(), PI/4)
+	addAngerMark(getHeadLeftMiddlePosition(), PI/16)
+	addAngerMark(getHeadRightTopPosition(), PI*3/4)
+	addAngerMark(getHeadRightMiddlePosition(), PI*15/16)
+	
 	if (stageOneDefeated):
 		.handleCharacterDeath()
 	else:
 		stageOneDefeated = true
 		.heal(12)
 
-func addAngerMark(relativePosition, rotation):
+func addAngerMark(position, rotation):
 	var angerMark = AngerMark.instance()
 	
 	angerMark.setRotation(rotation)
-	angerMark.position = self.position + relativePosition
+	angerMark.position = position
 	
-	EffectsNode.add_child(angerMark)
+	self.add_child(angerMark)
