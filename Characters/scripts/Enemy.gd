@@ -37,10 +37,10 @@ func _process(delta):
 		self.set_position(state[0])
 	if self.moving and !state[1]:
 		original_pos = get_position()
-		if previous_movement_direction != Enums.DIRECTION.NONE:
-			setStandAnimation(previous_movement_direction)
+		if movement_direction != Enums.DIRECTION.NONE:
+			setStandAnimation(movement_direction)
 		else:
-			setStandAnimation(Enums.DIRECTION.STAND_DOWN)
+			setStandAnimation(previous_movement_direction)
 	if state[1] != null:
 		self.moving = state[1]
 
