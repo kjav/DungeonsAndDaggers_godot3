@@ -81,7 +81,6 @@ func moveDirection(direction):
 		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
 		
-		#think this is why enemies never use stand animation, remove this and add case to face direction and it might work
 		if direction != Enums.DIRECTION.NONE:
 			movement_direction = handleMove(direction)
 		

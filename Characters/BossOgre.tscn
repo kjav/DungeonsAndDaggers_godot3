@@ -181,7 +181,7 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[node name="Boss Ogre" type="Node2D" index="0"]
+[node name="Boss Ogre" type="Node2D"]
 
 scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
@@ -259,6 +259,7 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
+frame = 3
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 
