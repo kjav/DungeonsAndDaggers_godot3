@@ -84,6 +84,9 @@ func turn():
 	
 	if (turnBehaviour.PreparingAttack()):
 		var currentAdditionalRelativeAttacks
+		
+		stand_direction = turnBehaviour.attackDirection
+		previous_stand_direction = turnBehaviour.attackDirection
 		alternateAttackCue = false
 		
 		if (stageOneDefeated):

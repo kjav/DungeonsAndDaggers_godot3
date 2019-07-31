@@ -4,6 +4,7 @@ signal attack(character, amount)
 
 var moving = false
 var movement_direction = Enums.DIRECTION.NONE
+var stand_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
 var damageable = true
@@ -80,9 +81,11 @@ func moveDirection(direction):
 	if (not moving) and alive():
 		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
+		stand_direction = Enums.DIRECTION.NONE
 		
 		if direction != Enums.DIRECTION.NONE:
 			movement_direction = handleMove(direction)
+			stand_direction = movement_direction
 		
 		setTarget(movement_direction)
 		moving = true
