@@ -49,6 +49,8 @@ func _ready():
 	visualAttackCueActive = false
 	currentFlip_hState = false
 	walkingUp = false
+	
+	turnBehaviour.LeaveWaitAttackWaitSequence()
 
 	changingBodyParts = get_node("ChangingBodyParts")
 	leftArm = changingBodyParts.get_node("Left Arm")
@@ -59,6 +61,10 @@ func _ready():
 	rightArmAngerOverlay = changingBodyParts.get_node("Right Arm Anger Overlay")
 	headAngerOverlay = changingBodyParts.get_node("Head Anger Overlay")
 	bodyAngerOverlay = changingBodyParts.get_node("Body Anger Overlay")
+	
+	
+	additionalRelativeAttackPositions = []
+	turnBehaviour.additionalRelativeAttackPositions = []
 	
 	leftArmAngerOverlay.hide()
 	rightArmAngerOverlay.hide()
@@ -119,6 +125,7 @@ func setVisualAttackCues():
 			leftArmAngerOverlay.set_flip_h( false )
 			rightArm.set_flip_h( true )
 			rightArmAngerOverlay.set_flip_h( true )
+			
 			if walkingUp:
 				leftArm.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
 				leftArmAngerOverlay.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
@@ -166,7 +173,7 @@ func AddHeavyImpact(position):
 	
 	heavyImpactInstance.position = position
 	EffectsNode.add_child(heavyImpactInstance)
-	heavyImpactInstance.play()	
+	heavyImpactInstance.play()
 
 func resetToStartPosition():
 	self.position = initial_pos
@@ -259,21 +266,21 @@ func handleCharacterDeath():
 	self.get_node("Stars").hide()
 	turnBehaviour.LeaveWaitAttackWaitSequence()
 	
-	addAngerMark(getHeadLeftTopPosition(), PI/4)
-	addAngerMark(getHeadLeftMiddlePosition(), PI/16)
-	addAngerMark(getHeadRightTopPosition(), PI*3/4)
-	addAngerMark(getHeadRightMiddlePosition(), PI*15/16)
-	
-	leftArmAngerOverlay.show()
-	rightArmAngerOverlay.show()
-	headAngerOverlay.show()
-	bodyAngerOverlay.show()
-	
 	if (stageOneDefeated):
 		.handleCharacterDeath()
 	else:
 		stageOneDefeated = true
 		.heal(12)
+		
+		addAngerMark(getHeadLeftTopPosition(), PI/4)
+		addAngerMark(getHeadLeftMiddlePosition(), PI/16)
+		addAngerMark(getHeadRightTopPosition(), PI*3/4)
+		addAngerMark(getHeadRightMiddlePosition(), PI*15/16)
+		
+		leftArmAngerOverlay.show()
+		rightArmAngerOverlay.show()
+		headAngerOverlay.show()
+		bodyAngerOverlay.show()
 
 func addAngerMark(position, rotation):
 	var angerMark = AngerMark.instance()

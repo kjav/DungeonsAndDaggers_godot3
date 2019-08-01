@@ -11,10 +11,5 @@ func setup_params():
 			"p": 1, 
 			"value": load("res://Characters/BossOgre.tscn"),
 			"position": Vector2(4, 4),
-		},
-		{
-			"p": 1, 
-			"value": load("res://Characters/BabyOgre.tscn"),
-			"position": Vector2(4, 3),
-		},
+		}
 	])
