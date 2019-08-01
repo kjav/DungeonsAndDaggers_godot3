@@ -6,12 +6,15 @@ var item_distribution
 var base_damage = 1
 var processBehaviour
 var turnBehaviour
-var previous_movement_direction = Enums.DIRECTION.DOWN
+var previous_stand_direction = Enums.DIRECTION.DOWN
 
+func _enter_tree():
+	GameData.characters.append(self)
+	
 func _ready():
 	set_process(true)
-	GameData.characters.append(self)
 	self.get_node("/root/Node2D").connectEnemy(self)
+	._ready()
 
 func attack(character):
 	.attack(character, base_damage);
@@ -19,13 +22,13 @@ func attack(character):
 
 func turn():
 	if movement_direction != Enums.DIRECTION.NONE:
-		previous_movement_direction = movement_direction
-	moving = moveDirection(turnBehaviour.getDirection(original_pos))
+		previous_stand_direction = movement_direction
+	moving = moveDirection(turnBehaviour.turn(original_pos))
 	if moving:
 		if movement_direction != Enums.DIRECTION.NONE:
 			setWalkAnimation(movement_direction)
 		else:
-			setStandAnimation(previous_movement_direction)
+			setStandAnimation(previous_stand_direction)
 
 func _process(delta):
 	var state = processBehaviour.getNewState(get_position(), original_pos, movement_direction, moving, delta)
@@ -33,10 +36,10 @@ func _process(delta):
 		self.set_position(state[0])
 	if self.moving and !state[1]:
 		original_pos = get_position()
-		if previous_movement_direction != Enums.DIRECTION.NONE:
-			setStandAnimation(previous_movement_direction)
+		if stand_direction != Enums.DIRECTION.NONE:
+			setStandAnimation(stand_direction)
 		else:
-			setStandAnimation(Enums.DIRECTION.STAND_DOWN)
+			setStandAnimation(previous_stand_direction)
 	if state[1] != null:
 		self.moving = state[1]
 

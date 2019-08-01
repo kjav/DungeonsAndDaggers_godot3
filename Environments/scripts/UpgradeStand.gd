@@ -5,7 +5,7 @@ var shield_time = 0.0
 var frametime = 0.1
 
 func _ready():
-	walkable = true
+	walkable = Enums.WALKABLE.ALL
 	set_process(true)
 
 func _process(delta):

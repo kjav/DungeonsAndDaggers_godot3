@@ -5,7 +5,6 @@ var environmentObjects = []
 var doors = []
 var initial_tile
 var changed_tiles = {}
-var doorClass = preload("res://Environments/Door.tscn")
 
 var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution

@@ -1,22 +1,29 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/SpriteFrames/WarriorPlayer.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=3]
-[ext_resource path="res://assets/basic_shield.png" type="Texture" id=4]
+[ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/SpriteFrames/WarriorPlayer.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/basic_shield.png" type="Texture" id=3]
+[ext_resource path="res://assets/basic_sword.png" type="Texture" id=4]
 
-[node name="Player" type="AnimatedSprite"]
+[node name="Player" type="Node2D" index="0"]
 
 position = Vector2( 640, 1024 )
 scale = Vector2( 4, 4 )
-frames = ExtResource( 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="ChangingBodyParts" type="Node2D" parent="." index="0"]
+
+[node name="Body" type="AnimatedSprite" parent="ChangingBodyParts" index="0"]
+
+frames = ExtResource( 2 )
 animation = "stand_down"
 playing = true
 centered = false
 offset = Vector2( 0, -8 )
-script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
 
 offset = Vector2( 64, 64 )
 anchor_mode = 1
@@ -42,20 +49,20 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="PrimaryWeapon" type="Sprite" parent="." index="1"]
-
-position = Vector2( 6.66107, 11.1183 )
-scale = Vector2( 0.12, 0.12 )
-texture = ExtResource( 3 )
-offset = Vector2( -10, -10 )
-_sections_unfolded = [ "Transform" ]
-
 [node name="SecondaryWeapon" type="Sprite" parent="." index="2"]
 
 position = Vector2( 20.8326, 15.8095 )
 scale = Vector2( 0.12, 0.12 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 offset = Vector2( 0, -5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="PrimaryWeapon" type="Sprite" parent="." index="3"]
+
+position = Vector2( 6.66107, 11.1183 )
+scale = Vector2( 0.12, 0.12 )
+texture = ExtResource( 4 )
+offset = Vector2( -10, -10 )
 _sections_unfolded = [ "Transform" ]
 
 

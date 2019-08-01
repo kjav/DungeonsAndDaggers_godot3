@@ -14,13 +14,17 @@ var swipe_funcref
 var character_name = 'Player'
 
 func _ready():
+	#this is temporary to aid with testing
+	increaseMax(9)
+	heal(9)
+	
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
 	EventListener.listen("SwipeCommand", swipe_funcref)
 	stats.health.value = stats.health.maximum
 	GameData.player = self
 	GameData.characters.append(self)
-	self.frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
+	self.get_node(bodyPartsNodeName).get_node("Body").frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
@@ -79,16 +83,16 @@ func _process(delta):
 		if time_elapsed >= 0.4:
 			if movement_direction == Enums.DIRECTION.LEFT:
 				set_position(original_pos + Vector2(-length, 0))
-				set_animation("stand_left")
+				setAnimationOnAllBodyParts("stand_left")
 			elif movement_direction == Enums.DIRECTION.RIGHT:
 				set_position(original_pos + Vector2(length, 0))
-				set_animation("stand_right")
+				setAnimationOnAllBodyParts("stand_right")
 			elif movement_direction == Enums.DIRECTION.UP:
 				set_position(original_pos + Vector2(0, -length))
-				set_animation("stand_up")
+				setAnimationOnAllBodyParts("stand_up")
 			elif movement_direction == Enums.DIRECTION.DOWN:
 				set_position(original_pos + Vector2(0, length))
-				set_animation("stand_down")
+				setAnimationOnAllBodyParts("stand_down")
 			moving = false
 			time_elapsed = 0
 	else:
@@ -117,9 +121,9 @@ func pickUp():
 		emit_signal("itemPickedUp", item)
 
 func heal(amount):
-	if self.stats.health.value < self.stats.health.maximum:
-		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
-		emit_signal("statsChanged", "health", "Up", amount)
+	.heal(amount)
+	
+	emit_signal("statsChanged", "health", "Up", amount)
 
 func consume_stat(stat, amount):
 	if stats[stat].value >= amount:

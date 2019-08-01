@@ -8,6 +8,7 @@ func add_room(name, room, wall):
 	var shared_wall_index = -1
 	var position
 	var wall_direction
+	var roomDistribution = room.getSpawnDistributions()
 	
 	if wall == null:
 		position = Vector2(103, 104)
@@ -20,7 +21,7 @@ func add_room(name, room, wall):
 		door = door_index * wall_direction + wall[0]
 		
 		# Choose how much to move the new room by
-		var room_index = 1 + (randi() % (abs(int(room.extents.dot(wall_direction))) - 2))
+		var room_index = 1 + (randi() % (abs(int(roomDistribution.extents.dot(wall_direction))) - 2))
 		
 		if wall_direction == Vector2(0, 1):
 			position = door - Vector2(0, room_index)
@@ -32,7 +33,7 @@ func add_room(name, room, wall):
 			position = door - Vector2(room.extents.x - 1, room_index)
 			shared_wall_index = 1
 		elif wall_direction == Vector2(1, 0):
-			position = door - Vector2(room_index, room.extents.y - 1)
+			position = door - Vector2(room_index, roomDistribution.extents.y - 1)
 			shared_wall_index = 2
 		else:
 			print("WARNING: Wall direction not valid! Wall direction was set to: ")
@@ -41,21 +42,21 @@ func add_room(name, room, wall):
 			shared_wall_index = 1
 	
 	# Check if the interior of the room fits on the map
-	for x in range(position.x + 1, position.x + room.extents.x - 1):
-		for y in range(position.y + 1, position.y + room.extents.y - 1):
+	for x in range(position.x + 1, position.x + roomDistribution.extents.x - 1):
+		for y in range(position.y + 1, position.y + roomDistribution.extents.y - 1):
 			if tiles[y][x] != initial_tile:
 				return false
 	
 	# Check that the walls do not cover up another door
-	for x in range(position.x, room.extents.x + 1):
-		for y in [0, room.extents.y - 1]:
+	for x in range(position.x, roomDistribution.extents.x + 1):
+		for y in [0, roomDistribution.extents.y - 1]:
 			# Check this door is not our door!
 			var this_coord = Vector2(x, y)
 			if door != this_coord:
 				if is_door(this_coord):
 					return false
-	for y in range(position.y + 1, position.y + room.extents.y - 1):
-		for x in [0, room.extents.x - 1]:
+	for y in range(position.y + 1, position.y + roomDistribution.extents.y - 1):
+		for x in [0, roomDistribution.extents.x - 1]:
 			# Check this door is not our door!
 			var this_coord = Vector2(x, y)
 			if door != this_coord:
@@ -64,9 +65,9 @@ func add_room(name, room, wall):
 	
 	var corners = [
 		position,
-		position + Vector2(room.extents.x - 1, 0),
-		position + room.extents - Vector2(1, 1),
-		position + Vector2(0, room.extents.y - 1)
+		position + Vector2(roomDistribution.extents.x - 1, 0),
+		position + roomDistribution.extents - Vector2(1, 1),
+		position + Vector2(0, roomDistribution.extents.y - 1)
 	]
 	
 	# Add room to rooms array
@@ -76,7 +77,7 @@ func add_room(name, room, wall):
 	})
 	
 	# Draw floor on map
-	draw_floor(position, room.extents)
+	draw_floor(position, roomDistribution.extents)
 	
 	# Draw walls on map
 	wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
@@ -85,7 +86,7 @@ func add_room(name, room, wall):
 	if door != null:
 		add_door(door)
 		remove_wall([door])
-		environmentObjects.push_back({"position": door, "value": doorClass, "facing": get_facing(wall_direction)})
+		environmentObjects.push_back({"position": door, "value": room.doorClass, "facing": get_facing(wall_direction)})
 	
 	# Add exterior walls to walls list, so other rooms can be placed adjacent
 	for i in range(0, 3):
@@ -93,21 +94,21 @@ func add_room(name, room, wall):
 			exterior_walls.push_back([corners[i], corners[(i + 1) % 4]])
 	
 	# Add the NPCs to the map
-	for enemy in room.npcs:
+	for enemy in roomDistribution.npcs:
 		var positionInRoom = Vector2(1, 1)
 		
 		if enemy.has("position"):
-			positionInRoom = enemy.position
+			positionInRoom = Vector2(enemy.position.x, enemy.position.y)
 		else:
-			positionInRoom = Vector2( randi()%int(round(room.extents.x-2))+1, randi()%int(round(room.extents.y-2))+1)
+			positionInRoom = Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
 			
-		npcs.push_back({"position": position + positionInRoom, "value": enemy.value})
+		npcs.push_back({"position": position + positionInRoom, "value": enemy.value, "isPartOfBossRoom": room.isBossRoom})
 		
 	# Add the items to the map
-	for item in room.items:
+	for item in roomDistribution.items:
 		items.push_back({"position": position + Vector2(1, 1), "value": item.value})
 		
-	for env in room.environments:
+	for env in roomDistribution.environments:
 		environmentObjects.push_back({"position": position + Vector2(2, 1), "value": env.value})
 	
 	# Room added successfully: return true
@@ -127,7 +128,8 @@ func _init().(200, 200, -1):
 	var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 	var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 	var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
-	var main_room = DefaultRoom.get()
+	var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
+	var main_room = DefaultRoom
 	var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 	tree.add_value([
 		null, true, null,
@@ -142,17 +144,18 @@ func _init().(200, 200, -1):
 
 	var i = 0;
 	var room_distribution = Distribution.new([
-		{"p": 0.3, "value": DefaultRoom},
+		{"p": 0.3, "value": BossRoomOgre},
 		{"p": 0.3, "value": UpgradeRoom},
 		{"p": 0.3, "value": WideRoom},
 		{"p": 0.05, "value": TallRoom},
 		{"p": 0.05, "value": SuperTallRoom}
 	])
+  
 	while rooms.size() < n_rooms:
 		# Pick a wall
 		var wall_index = randi() % exterior_walls.size()
 		var wall = exterior_walls[wall_index]
-		var room = room_distribution.pick()[0].value.get()
+		var room = room_distribution.pick()[0].value
 		
 		var success = add_room(str(i), room, wall)
 		if success:

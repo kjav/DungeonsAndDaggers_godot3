@@ -1,4 +1,3 @@
-tool
 extends Node2D
 
 var Distribution = Constants.Distribution
@@ -113,6 +112,7 @@ func set_map_type(type):
 			var node = enemy.value.instance()
 			Enemies.add_child(node)
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
+			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 		
 		for item in map.items:
 			var node = item.value.new()
@@ -138,13 +138,17 @@ func set_map_type(type):
 			if env.has("facing"):
 				node.setFacing(env.facing)
 			
-			#this is just temporary
 			if node.environment_name == "Chest":
 				node.setLocked(true)
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.BasicSpear}]))
 			elif node.environment_name == "Door":
 				node.setLocked(false)
+			elif node.environment_name == "BossDoor":
+				node.setLocked(false)
+				for character in GameData.characters:
+					if character.isPartOfBossRoom:
+						node.connect("bossDoorOpened", character, "_on_BossDoor_bossDoorOpened")
 
 			GameData.environmentObjects.append(node)
 			node.set_position((env.position - Vector2(100, 100)) * 128)

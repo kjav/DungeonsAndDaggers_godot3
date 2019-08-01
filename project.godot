@@ -20,6 +20,7 @@ Constants="*res://Singletons/Constants.gd"
 Enums="*res://Singletons/Enums.gd"
 EventListener="*res://Singletons/EventListener.gd"
 GameData="*res://Singletons/GameData.gd"
+PositionHelper="*res://Singletons/PositionHelper.gd"
 
 [display]
 

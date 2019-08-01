@@ -5,7 +5,7 @@ var item_distribution
 
 func _init():
 	environment_name = "Chest"
-	walkable = true
+	walkable = Enums.WALKABLE.NONE
 
 func handleAnimation():
 	var state

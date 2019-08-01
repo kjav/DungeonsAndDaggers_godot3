@@ -7,3 +7,9 @@ enum DIRECTION {
 	RIGHT,
 	NONE
 }
+
+enum WALKABLE {
+	NONE,
+	PLAYER,
+	ALL
+}

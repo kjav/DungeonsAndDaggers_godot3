@@ -1,14 +1,19 @@
-extends AnimatedSprite
+extends Node2D
 
 signal attack(character, amount)
 
 var moving = false
 var movement_direction = Enums.DIRECTION.NONE
+var stand_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
 var damageable = true
+var initial_pos
+var isPartOfBossRoom
 
-var stats = {
+const bodyPartsNodeName = "ChangingBodyParts"
+
+var initialStats = {
 	"health": {
 		"value": 3,
 		"maximum": 3
@@ -26,20 +31,39 @@ var stats = {
 		"maximum": 5
 	}
 }
+
+var stats = {
+	"health": {},
+	"mana": {},
+	"strength": {},
+	"defence": {}
+}
+
 var additionalRelativeAttackPositions = []
 var attackPositionBlockable = true
 var onlyAttacksFirstEnemy = true
 
 const Hitmarker = preload("res://Characters/Hitmarker.tscn")
 
-
-func roundVector2(pos):
-	return Vector2(round(pos.x), round(pos.y))
+func resetToStartPosition():
+	self.position = initial_pos
+	
+	_ready()
 
 func _ready():
 	original_pos = get_position()
 	target_pos = get_position()
+	initial_pos = get_position()
+	
+	resetStats()
 
+func resetStats():
+	#this is because godot 3.0 doesn't have a deep duplicate.
+	stats.health = initialStats.health.duplicate()
+	stats.mana = initialStats.mana.duplicate()
+	stats.strength = initialStats.strength.duplicate()
+	stats.defence = initialStats.defence.duplicate()
+	
 func turn():
 	pass
 
@@ -49,14 +73,19 @@ func consume_stat(stat, amount):
 		return true
 	return false
 
+func heal(amount):
+	if self.stats.health.value < self.stats.health.maximum:
+		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
+
 func moveDirection(direction):
 	if (not moving) and alive():
 		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
+		stand_direction = Enums.DIRECTION.NONE
 		
-		#think this is why enemies never use stand animation, remove this and add case to face direction and it might work
 		if direction != Enums.DIRECTION.NONE:
 			movement_direction = handleMove(direction)
+			stand_direction = movement_direction
 		
 		setTarget(movement_direction)
 		moving = true
@@ -65,9 +94,9 @@ func moveDirection(direction):
 
 func handleMove(direction):
 	faceDirection(direction)
+	
 	var pos = setTarget(direction)
-	var additional = generateAdditionalAbosoluteAttackPositions(direction)
-	var attacking = handleEnemyCollisions([pos] + additional)
+	var attacking = handleEnemyCollisions(PositionHelper.absoluteAttackPositions(pos, additionalRelativeAttackPositions, direction))
 	
 	if not attacking:
 		var walkableEnvironment = handleEnvironmentCollisions(pos)
@@ -85,59 +114,24 @@ func faceDirection(direction):
 	if alive():
 		match direction:
 			Enums.DIRECTION.UP:
-				set_animation("stand_up")
+				setAnimationOnAllBodyParts("stand_up")
 			Enums.DIRECTION.DOWN:
-				set_animation("stand_down")
+				setAnimationOnAllBodyParts("stand_down")
 			Enums.DIRECTION.LEFT:
-				set_animation("stand_left")
+				setAnimationOnAllBodyParts("stand_left")
 			Enums.DIRECTION.RIGHT:
-				set_animation("stand_right")
+				setAnimationOnAllBodyParts("stand_right")
 
 func setTarget(direction):
 	var pos = original_pos
 	pos.x = int(pos.x / GameData.TileSize)
 	pos.y = int(pos.y / GameData.TileSize)
-	pos = getNextTargetPos(pos, direction)
+	pos = PositionHelper.getNextTargetPos(pos, direction)
 	target_pos = pos
 	target_pos.x *= GameData.TileSize
 	target_pos.y *= GameData.TileSize
 	
 	return pos
-
-func getNextTargetPos(pos, direction):
-	match direction:
-		Enums.DIRECTION.UP:
-			pos.y -= 1
-		Enums.DIRECTION.DOWN:
-			pos.y += 1
-		Enums.DIRECTION.LEFT:
-			pos.x -= 1
-		Enums.DIRECTION.RIGHT:
-			pos.x += 1
-	
-	return pos
-
-func generateAdditionalAbosoluteAttackPositions(direction):
-	var phi
-	
-	match direction:
-		Enums.DIRECTION.UP:
-			phi = 0
-		Enums.DIRECTION.DOWN:
-			phi = PI
-		Enums.DIRECTION.LEFT:
-			phi = PI /2
-		Enums.DIRECTION.RIGHT:
-			phi = (3 *  PI) / 2
-	
-	var AbsolutePositions = []
-
-	for relativePosition in additionalRelativeAttackPositions:
-		var rotated = relativePosition.rotated(phi)
-		var targetPosDivided = target_pos / GameData.TileSize
-		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + targetPosDivided]
-	
-	return AbsolutePositions
 
 func handleEnemyCollisions(posArray):
 	var collisions = []
@@ -162,10 +156,12 @@ func handleEnemyCollisions(posArray):
 func handleEnvironmentCollisions(pos):
 	var walkable = true
 	var collisions = GameData.environmentObjectAtPos(pos)
+	var isPlayer = self == GameData.player
 	
 	for i in range(collisions.size()):
-		if !collisions[i].walkable:
+		if collisions[i].walkable == Enums.WALKABLE.NONE or (collisions[i].walkable == Enums.WALKABLE.PLAYER && !isPlayer) :
 			walkable = false
+		
 		collisions[i].onWalkedInto(self)
 		
 	return walkable
@@ -240,8 +236,8 @@ func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
 	print("Death: ")
-	set_animation("death")
-	self.playing = true
+	setAnimationOnAllBodyParts("death")
+	setPlayingOnAllBodyParts(true)
 
 func playDeathAudio():
 	if(self == GameData.player):
@@ -278,21 +274,36 @@ func alive():
 func setWalkAnimation(direction):
 	match direction:
 		Enums.DIRECTION.UP:
-			self.set_animation("walk_up")
+			setAnimationOnAllBodyParts("walk_up")
 		Enums.DIRECTION.DOWN:
-			self.set_animation("walk_down")
+			setAnimationOnAllBodyParts("walk_down")
 		Enums.DIRECTION.LEFT:
-			self.set_animation("walk_left")
+			setAnimationOnAllBodyParts("walk_left")
 		Enums.DIRECTION.RIGHT:
-			self.set_animation("walk_right")
+			setAnimationOnAllBodyParts("walk_right")
 
 func setStandAnimation(direction):
 	match direction:
 		Enums.DIRECTION.UP:
-			self.set_animation("stand_up")
+			setAnimationOnAllBodyParts("stand_up")
 		Enums.DIRECTION.DOWN:
-			self.set_animation("stand_down")
+			setAnimationOnAllBodyParts("stand_down")
 		Enums.DIRECTION.LEFT:
-			self.set_animation("stand_left")
+			setAnimationOnAllBodyParts("stand_left")
 		Enums.DIRECTION.RIGHT:
-			self.set_animation("stand_right")
+			setAnimationOnAllBodyParts("stand_right")
+
+func setAnimationOnAllBodyParts(animationName):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.set_animation(animationName)
+
+func setFlip_hOnAllBodyParts(state):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.set_flip_h( state )
+
+func setPlayingOnAllBodyParts(playingValue):
+	for child in self.get_node(bodyPartsNodeName).get_children():
+		child.playing = playingValue
+
+func _on_BossDoor_bossDoorOpened():
+	resetToStartPosition()
