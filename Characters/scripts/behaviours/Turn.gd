@@ -1,4 +1,11 @@
-class MoveTo extends Node:
+class BaseTurn extends Node:
+	func turn(pos):
+		pass
+	
+	func afterMoveComplete(pos):
+		pass
+
+class MoveTo extends BaseTurn:
 	func turn(pos):
 		pos.x = int(pos.x / GameData.TileSize)
 		pos.y = int(pos.y / GameData.TileSize)
@@ -16,11 +23,11 @@ class MoveTo extends Node:
 		player_pos.y = int(player_pos.y / GameData.TileSize)
 		return GameData.tilemap.findPathDistance(divided_pos, player_pos)
 
-class MoveRandom extends Node:
+class MoveRandom extends BaseTurn:
 	func turn(pos):
 		return randi()%5
 
-class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
+class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
 	var attackDirection
@@ -32,7 +39,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 			var divided_pos = Vector2(0,0)
 			divided_pos.x = int(pos.x / GameData.TileSize)
 			divided_pos.y = int(pos.y / GameData.TileSize)
-			var player_pos = GameData.player.original_pos
+			var player_pos = GameData.player.target_pos
 			player_pos.x = int(player_pos.x / GameData.TileSize)
 			player_pos.y = int(player_pos.y / GameData.TileSize)
 			
@@ -88,7 +95,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends Node:
 		waitAttackWaitCount = -1
 		recoveryTurn = false
 
-class InRangeMoveToOtherwiseRandom extends Node:
+class InRangeMoveToOtherwiseRandom extends BaseTurn:
 	var random = MoveRandom.new()
 	var moveTo = MoveTo.new()
 	var limit = 10
@@ -110,7 +117,7 @@ class InRangeMoveToOtherwiseRandom extends Node:
 			# Select random movement direction
 			return random.turn(pos)
 
-class BehaviourEveryN extends Node:
+class BehaviourEveryN extends BaseTurn:
 	var behaviour 
 	var turnWait = 2
 	var counter = 0
@@ -128,7 +135,7 @@ class BehaviourEveryN extends Node:
 		else:
 			return Enums.DIRECTION.NONE
 
-class InRangeMoveToOtherwiseRandomEveryNTurns extends Node:
+class InRangeMoveToOtherwiseRandomEveryNTurns extends BaseTurn:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var behaviourEveryN = BehaviourEveryN.new()
 	var turnWait = 2
@@ -150,7 +157,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurns extends Node:
 		return behaviourEveryN.turn(pos)
 		
 
-class BehaviourEveryNInvinsibleOnWait extends Node:
+class BehaviourEveryNInvinsibleOnWait extends BaseTurn:
 	var behaviour 
 	var turnWait = 2
 	var counter = 0
@@ -174,7 +181,7 @@ class BehaviourEveryNInvinsibleOnWait extends Node:
 	func getDamageable():
 		return damageable
 
-class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends Node:
+class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends BaseTurn:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var behaviourEveryNInvinsibleOnWait = BehaviourEveryNInvinsibleOnWait.new()
 	var turnWait = 2
@@ -198,7 +205,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends Node:
 	func getDamageable():
 		return behaviourEveryNInvinsibleOnWait.getDamageable()
 
-class WaitEveryN extends Node:
+class WaitEveryN extends BaseTurn:
 	var behaviour 
 	var waitEvery = 3
 	var counter = 0
@@ -216,7 +223,7 @@ class WaitEveryN extends Node:
 		else:
 			return Enums.DIRECTION.NONE
 
-class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends Node:
+class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var waitEveryN = WaitEveryN.new()
 	var waitEvery = 3
@@ -237,7 +244,7 @@ class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends Node:
 	func turn(pos):
 		return waitEveryN.turn(pos)
 
-class InvincibleWaitEveryN extends Node:
+class InvincibleWaitEveryN extends BaseTurn:
 	var behaviour 
 	var waitEvery = 3
 	var counter = 0
@@ -261,7 +268,7 @@ class InvincibleWaitEveryN extends Node:
 	func getDamageable():
 		return damageable
 
-class InRangeMoveToOtherwiseRandomInvincibleWaitEveryNTurns extends Node:
+class InRangeMoveToOtherwiseRandomInvincibleWaitEveryNTurns extends BaseTurn:
 	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
 	var invincibleWaitEveryN = InvincibleWaitEveryN.new()
 	var waitEvery = 3

@@ -29,6 +29,8 @@ func turn():
 			setWalkAnimation(movement_direction)
 		else:
 			setStandAnimation(previous_stand_direction)
+	
+	turnBehaviour.afterMoveComplete(original_pos)
 
 func _process(delta):
 	var state = processBehaviour.getNewState(get_position(), original_pos, movement_direction, moving, delta)
