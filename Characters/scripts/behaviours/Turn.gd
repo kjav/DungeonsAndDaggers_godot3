@@ -33,8 +33,8 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 	var attackDirection
 	var recoveryTurn = false
 	var additionalRelativeAttackPositions = []
-
-	func turn(pos):
+	
+	func turn(pos):		
 		if GameData.player.alive():
 			var divided_pos = Vector2(0,0)
 			divided_pos.x = int(pos.x / GameData.TileSize)
@@ -56,14 +56,8 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 				else:
 					LeaveWaitAttackWaitSequence()
 					return turn(pos)
-			else:
-				var playerDirection = moveTo.turn(pos)
-				
-				if divided_pos.distance_squared_to(player_pos) > 1:
-					return playerDirection
-				else:
-					attackDirection = playerDirection
-					waitAttackWaitCount = 0
+			elif divided_pos.distance_squared_to(player_pos) > 1:
+				return moveTo.turn(pos)
 		
 		return Enums.DIRECTION.NONE
 	
@@ -94,6 +88,19 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 	func LeaveWaitAttackWaitSequence():
 		waitAttackWaitCount = -1
 		recoveryTurn = false
+	
+	func afterMoveComplete(pos):
+		var divided_pos = Vector2(0,0)
+		divided_pos.x = int(pos.x / GameData.TileSize)
+		divided_pos.y = int(pos.y / GameData.TileSize)
+		var player_pos = GameData.player.turn_end_pos
+		player_pos.x = int(player_pos.x / GameData.TileSize)
+		player_pos.y = int(player_pos.y / GameData.TileSize)
+		
+		if !inWaitAttackWaitSequence() and divided_pos.distance_squared_to(player_pos) <= 1:
+			waitAttackWaitCount = 0
+			attackDirection = moveTo.turn(pos)
+			recoveryTurn = false
 
 class InRangeMoveToOtherwiseRandom extends BaseTurn:
 	var random = MoveRandom.new()
@@ -107,7 +114,7 @@ class InRangeMoveToOtherwiseRandom extends BaseTurn:
 		var divided_pos = Vector2(0,0)
 		divided_pos.x = int(pos.x / GameData.TileSize)
 		divided_pos.y = int(pos.y / GameData.TileSize)
-		var player_pos = GameData.player.original_pos
+		var player_pos = GameData.player.turn_end_pos
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
 		if GameData.player.alive() and moveTo.getDistance(pos) < limit:

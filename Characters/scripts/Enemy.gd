@@ -32,7 +32,7 @@ func turn():
 		else:
 			setStandAnimation(previous_stand_direction)
 	
-	turnBehaviour.afterMoveComplete(original_pos)
+	turnBehaviour.afterMoveComplete(turn_end_pos)
 
 func _process(delta):
 	var state = processBehaviour.getNewState(get_position(), original_pos, movement_direction, moving, delta)
