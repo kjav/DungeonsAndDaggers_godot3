@@ -58,10 +58,19 @@ func swiped(direction):
 		#Audio.playWalk()
 		moveDirection(direction)
 		set_weapon_positions(direction)
-		for i in range(GameData.characters.size()):
-			if i < GameData.characters.size():
-				GameData.characters[i].turn()
 		emit_signal("playerMove", self.target_pos / 128)
+
+		var timer = Timer.new()
+		timer.set_wait_time(0.4)
+		timer.connect("timeout",self,"MoveCharacters") 
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start()
+	
+func MoveCharacters():
+	for i in range(GameData.characters.size()):
+		if i < GameData.characters.size():
+			GameData.characters[i].turn()
 
 func attack(character):
 	if alive():

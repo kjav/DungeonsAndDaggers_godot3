@@ -7,6 +7,7 @@ var movement_direction = Enums.DIRECTION.NONE
 var stand_direction = Enums.DIRECTION.NONE
 var original_pos = get_position()
 var target_pos = get_position()
+var turn_end_pos = get_position()
 var damageable = true
 var initial_pos
 var isPartOfBossRoom
@@ -52,6 +53,7 @@ func resetToStartPosition():
 
 func _ready():
 	original_pos = get_position()
+	turn_end_pos = get_position()
 	target_pos = get_position()
 	initial_pos = get_position()
 	
@@ -79,7 +81,7 @@ func heal(amount):
 
 func moveDirection(direction):
 	if (not moving) and alive():
-		original_pos = get_position()
+		original_pos = get_position() 
 		movement_direction = Enums.DIRECTION.NONE
 		stand_direction = Enums.DIRECTION.NONE
 		
@@ -103,7 +105,8 @@ func handleMove(direction):
 		if walkableEnvironment:
 			if targetWalkable(pos):
 				setWalkAnimation(direction)
-				
+				turn_end_pos = pos * GameData.TileSize;
+
 				return direction
 			else:
 				return Enums.DIRECTION.NONE

@@ -23,7 +23,9 @@ func attack(character):
 func turn():
 	if movement_direction != Enums.DIRECTION.NONE:
 		previous_stand_direction = movement_direction
+	
 	moving = moveDirection(turnBehaviour.turn(original_pos))
+
 	if moving:
 		if movement_direction != Enums.DIRECTION.NONE:
 			setWalkAnimation(movement_direction)
@@ -38,6 +40,7 @@ func _process(delta):
 		self.set_position(state[0])
 	if self.moving and !state[1]:
 		original_pos = get_position()
+		
 		if stand_direction != Enums.DIRECTION.NONE:
 			setStandAnimation(stand_direction)
 		else:
