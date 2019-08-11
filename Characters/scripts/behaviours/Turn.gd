@@ -102,11 +102,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 		var player_pos = GameData.player.turn_end_pos
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
-		
-		if !inWaitAttackWaitSequence() and divided_pos.distance_squared_to(player_pos) <= 1:
-			waitAttackWaitCount = 0
-			attackDirection = moveTo.turn(pos)
-			recoveryTurn = false
+
 
 class InRangeMoveToOtherwiseRandom extends BaseTurn:
 	var random = MoveRandom.new()
