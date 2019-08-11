@@ -75,7 +75,7 @@ func _ready():
 	
 	initialStats.health = {
 		"value": 12,
-		"maximum": 12
+		"maximum": 24
 	}
 	
 	._ready()
