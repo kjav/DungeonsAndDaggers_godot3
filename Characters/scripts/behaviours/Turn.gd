@@ -32,6 +32,7 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 	var waitAttackWaitCount = -1
 	var attackDirection
 	var recoveryTurn = false
+	var timeSpentRecovering = 0
 	var additionalRelativeAttackPositions = []
 	
 	func turn(pos):		
@@ -71,7 +72,12 @@ class MoveToWaitBeforeAttackRecoverIfMissed extends BaseTurn:
 		return false
 	
 	func setRecoveryForNextTurn():
-		recoveryTurn = randi() % 2 == 1
+		recoveryTurn = randi() % int(pow(2,timeSpentRecovering + 1)) == 1
+
+		if (recoveryTurn):
+			timeSpentRecovering += 1
+		else:
+			timeSpentRecovering = 0
 	
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
