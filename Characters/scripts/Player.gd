@@ -1,6 +1,7 @@
 extends "Character.gd"
 
 signal statsChanged(change, value)
+signal playerHealed(changeValue)
 signal weaponChanged(slot, weapon)
 signal itemPickedUp(item)
 signal playerMove(pos)
@@ -130,6 +131,8 @@ func pickUp():
 		emit_signal("itemPickedUp", item)
 
 func heal(amount):
+	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
+
 	.heal(amount)
 	
 	emit_signal("statsChanged", "health", "Up", amount)

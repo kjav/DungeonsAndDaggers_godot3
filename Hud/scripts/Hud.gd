@@ -16,6 +16,7 @@ func _ready():
 	PlayerManaChanged(GameData.player.stats.mana.value, GameData.player.stats.mana.maximum)
 	GameData.player.connect("healthChanged", self, "PlayerStatChanged")
 	GameData.player.connect("statsChanged", self, "PlayerStatChanged")
+	GameData.player.connect("playerHealed", self, "_on_Player_healthRaised")
 	GameData.player.connect("weaponChanged", self, "PlayerWeaponChanged")
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
@@ -81,7 +82,7 @@ func PlayerManaChanged(mana, maxMana):
 		
 		get_node("HudCanvasLayer/ManaBar").add_child(new_node)
 
-func PlayerStatChanged(stat, direction, value):
+func PlayerStatChanged(stat, direction, value):	
 	if stat == "health" or stat == "maxhealth":
 		PlayerHealthChanged(GameData.player.stats.health.value, GameData.player.stats.health.maximum)
 	elif stat == "mana":
@@ -102,6 +103,6 @@ func _on_Player_playerAttack(character, amount):
 func _on_Enemy_attack(character, amount):
 	get_node("HudCanvasLayer/EventMessageHolder")._on_Enemy_attack(character, amount);
 
-func _on_Player_healthChanged(change, value):
-	get_node("HudCanvasLayer/EventMessageHolder")._on_Player_healthChanged(change, value);
+func _on_Player_healthRaised(value):
+	get_node("HudCanvasLayer/EventMessageHolder")._on_Player_healthRaised(value);
 

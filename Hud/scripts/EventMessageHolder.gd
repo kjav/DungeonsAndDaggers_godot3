@@ -9,9 +9,8 @@ func _ready():
 func _on_Environment_unlocked(environmentObjectsName):
 	addMessage('You unlocked a ' + str(environmentObjectsName) + '.');
 
-func _on_Player_healthChanged(change, value):
-	if(change == "Up"):
-		addMessage('You healed: ' + str(value) + '.');
+func _on_Player_healthRaised(value):
+	addMessage('You healed: ' + str(value) + '.');
 
 func _on_Player_itemPickedUp( item ):
 		addMessage('You obtained a ' + item.item_name + '.');
