@@ -58,7 +58,7 @@ func hideMenu(event):
 func getType():
 	return type"
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 script = SubResource( 1 )
 type = null
