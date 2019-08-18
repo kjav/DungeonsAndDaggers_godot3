@@ -8,6 +8,7 @@ class CookedSteak extends "Item.gd":
 	
 	func onUse():
 		#Audio.playSoundEffect(useSound, true)
-		.onUse()
-		GameData.player.heal(2)
-		GameData.foods.remove(GameData.foods.find(self))
+		if (GameData.player.stats.health.maximum > GameData.player.stats.health.value):
+			.onUse()
+			GameData.player.heal(2)
+			GameData.foods.remove(GameData.foods.find(self))
