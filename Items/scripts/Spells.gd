@@ -22,7 +22,7 @@ class FireSpell extends "spellBase.gd":
 		var new_missile = missile.instance()
 		#Audio.playSoundEffect("Fireball_Flying")
 		GameData.player.get_parent().add_child(new_missile)
-	
+		
 		new_missile.init(
 			closest_enemy.get_path(),
 			missile_texture,

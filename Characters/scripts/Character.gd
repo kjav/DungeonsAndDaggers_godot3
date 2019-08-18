@@ -225,15 +225,18 @@ func attack(character, base_damage):
 			var damage = calculate_damage(character, base_damage)
 			emit_signal("attack", self, damage);
 			
-			if (character.damageable):
-				#Audio.playHit()
-				character.takeDamage(damage)
+			#Audio.playHit()
+			character.takeDamage(damage)
 
 func takeDamage(damage):
-	stats.health.value -= damage
-	if stats.health.value <= 0:
-		handleCharacterDeath()
-	createHitmarker(damage)
+	if damageable:
+		stats.health.value -= damage
+
+		if stats.health.value <= 0:
+			handleCharacterDeath()
+		createHitmarker(damage)
+	else:
+		createHitmarker(0)
 
 func handleCharacterDeath():
 	playDeathAudio()

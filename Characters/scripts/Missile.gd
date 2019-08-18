@@ -1,3 +1,4 @@
+
 extends Sprite
 
 export(NodePath) var target setget setTarget, getTarget

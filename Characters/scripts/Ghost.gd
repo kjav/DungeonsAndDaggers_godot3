@@ -15,5 +15,6 @@ func _ready():
 func turn():
 	.turn()
 	self.damageable = turnBehaviour.getDamageable()
+	
 	if (!self.damageable):
-		set_animation("invinsible")
+		setAnimationOnAllBodyParts("invinsible")
