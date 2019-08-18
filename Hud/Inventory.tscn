@@ -7,7 +7,6 @@
 
 script/source = "
 extends Node2D
-signal ItemUsed(item)
 export(int, \"Potion\", \"Food\", \"Spell\") var type setget setType, getType
 
 const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
@@ -18,6 +17,7 @@ const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
 func populateInventory():
 	var inc = 168.75
 	var start = Vector2(130,130)
+	var hudCanvasLayer = get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\")
 	var selected = []
 	
 	if type == \"Potion\":
@@ -29,11 +29,17 @@ func populateInventory():
 	
 	for i in range(selected.size()):
 		var new_node = InventoryItem.instance()
-		new_node.setInstance(selected[i])
+		new_node.setInstance(selected[i])	
+		if type == \"Potion\":
+			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_PotItem_used\")
+		elif type == \"Food\":
+			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_FoodItem_used\")
+		elif type == \"Spell\":
+			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_SpellItem_used\")
 		var row = i / 4
 		var col = i % 4
 		new_node.position = start + Vector2(inc*col, inc*row)
-		get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\").get_node(\"Inventory\").add_child(new_node)
+		hudCanvasLayer.get_node(\"Inventory\").add_child(new_node)
 
 func setType(newType):
 	if typeof(newType) == TYPE_STRING:
@@ -52,7 +58,7 @@ func hideMenu(event):
 func getType():
 	return type"
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 type = null

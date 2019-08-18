@@ -26,13 +26,13 @@ func _ready():
 	get_node("HudCanvasLayer/Pickup").hide()
 
 func FoodInventoryOpened(inventory):
-	inventory.connect("ItemUsed", get_node("HudCanvasLayer/EventMessageHolder"), "_on_FoodItem_used")
+	inventory.connect("CurrentInventoryItemUsed", self, "_on_FoodItem_used")
 
 func SpellInventoryOpened(inventory):
-	inventory.connect("ItemUsed", get_node("HudCanvasLayer/EventMessageHolder"), "_on_SpellItem_used")
+	inventory.connect("CurrentInventoryItemUsed", get_node("HudCanvasLayer/EventMessageHolder"), "_on_SpellItem_used")
 
 func PotInventoryOpened(inventory):
-	inventory.connect("ItemUsed", get_node("HudCanvasLayer/EventMessageHolder"), "_on_PotItem_used")
+	inventory.connect("CurrentInventoryItemUsed", get_node("HudCanvasLayer/EventMessageHolder"), "_on_PotItem_used")
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos):
