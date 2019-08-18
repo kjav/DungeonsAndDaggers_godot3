@@ -1,13 +1,12 @@
-const missile = preload("res://Characters/Missile.tscn")
-const missile_texture = preload("res://assets/fireball.png")
+class FireSpell extends "spellBase.gd":
+	const missile = preload("res://Characters/Missile.tscn")
+	const missile_texture = preload("res://assets/fireball.png")
 
-class FireSpell extends "Item.gd":
-	const texture = preload("res://assets/red_spell2.png")
-	
 	func _init():
 		iconFilePath = "res://assets/red_spell2.png"
 		description = "Shoot a fire ball at the closest enemy!"
 		item_name = "Fire Spell"
+		texture = preload("res://assets/red_spell2.png")
 
 	func onUse():
 		var closest_enemy = GameData.closestEnemy()
@@ -32,8 +31,3 @@ class FireSpell extends "Item.gd":
 			10,
 			"Fireball_Hit"
 		)
-
-	func pickup():
-		#todo, needs to check if inventory is full first
-		GameData.addSpells([self])
-		.pickup()

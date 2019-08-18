@@ -1,7 +1,7 @@
 extends Node2D
 
 signal ItemUsed(item)
-
+var texture
 var description
 var item_name
 var iconFilePath
