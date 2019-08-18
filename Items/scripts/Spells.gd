@@ -14,6 +14,7 @@ class FireSpell extends "Item.gd":
 		if closest_enemy:
 			# Remove potion
 			if GameData.player.consume_stat("mana", 1):
+				.onUse()
 				launchFireball(closest_enemy)
 				GameData.spells.remove(GameData.spells.find(self))
 

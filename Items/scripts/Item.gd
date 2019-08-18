@@ -1,12 +1,14 @@
 extends Node2D
 
+signal ItemUsed(item)
+
 var description
 var item_name
 var iconFilePath
 var useSound
 
 func onUse():
-	pass
+	emit_signal("ItemUsed", self);
 
 func place(newPos):
 	position = newPos
