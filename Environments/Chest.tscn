@@ -18,7 +18,7 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[node name="Chest" type="AnimatedSprite"]
+[node name="Chest" type="AnimatedSprite" index="0"]
 
 frames = SubResource( 1 )
 animation = "closed"

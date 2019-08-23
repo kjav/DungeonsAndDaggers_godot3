@@ -1,6 +1,10 @@
 extends "Door.gd"
 signal bossDoorOpened()
 
+func _ready():
+	._ready()
+	.emitBlockedStateChangeSignal(true)
+
 func setLocked(_locked):
 	walkable = Enums.WALKABLE.PLAYER
 	.setLockedButNotWalkable(_locked)

@@ -140,6 +140,7 @@ func set_map_type(type):
 			
 			if node.environment_name == "Chest":
 				node.setLocked(true)
+				node.blockFromPathFindingWhenReady = true
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.BasicSpear}]))
 			elif node.environment_name == "Door":

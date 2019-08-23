@@ -5,9 +5,6 @@ signal keyUsed(unlockGuid, unlockedObjectsName)
 export(bool) var locked setget setLocked, getLocked
 var UnlockGuid
 
-func _ready():
-	self.get_node("/root/Node2D").connectUnlockableEnvironment(self)
-
 func setLocked(_locked):
 	if typeof(_locked) == TYPE_BOOL:
 		locked = _locked
@@ -19,6 +16,8 @@ func setLocked(_locked):
 		
 		if get_node("Locks") != null:
 			get_node("Locks").visible = !(!locked)
+	
+	.emitBlockedStateChangeSignal(_locked)
 
 func setLockedButNotWalkable(_locked):
 	if typeof(_locked) == TYPE_BOOL:
