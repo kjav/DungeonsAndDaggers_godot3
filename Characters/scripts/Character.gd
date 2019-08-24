@@ -242,8 +242,8 @@ func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
 	print("Death: ")
-	setAnimationOnAllBodyParts("death")
-	setPlayingOnAllBodyParts(true)
+	setAnimationOnAllBodyParts("death", true)
+	setPlayingOnAllBodyParts(true, true)
 
 func playDeathAudio():
 	if(self == GameData.player):
@@ -299,17 +299,19 @@ func setStandAnimation(direction):
 		Enums.DIRECTION.RIGHT:
 			setAnimationOnAllBodyParts("stand_right")
 
-func setAnimationOnAllBodyParts(animationName):
-	for child in self.get_node(bodyPartsNodeName).get_children():
-		child.set_animation(animationName)
+func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
+	if alive() or setEvenIfDead:
+		for child in self.get_node(bodyPartsNodeName).get_children():
+			child.set_animation(animationName)
 
 func setFlip_hOnAllBodyParts(state):
 	for child in self.get_node(bodyPartsNodeName).get_children():
 		child.set_flip_h( state )
 
-func setPlayingOnAllBodyParts(playingValue):
-	for child in self.get_node(bodyPartsNodeName).get_children():
-		child.playing = playingValue
+func setPlayingOnAllBodyParts(playingValue, setEvenIfDead = false):
+	if alive() or setEvenIfDead:
+		for child in self.get_node(bodyPartsNodeName).get_children():
+			child.playing = playingValue
 
 func _on_BossDoor_bossDoorOpened():
 	resetToStartPosition()
