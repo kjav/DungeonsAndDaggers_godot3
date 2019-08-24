@@ -5,6 +5,7 @@ signal playerHealed(changeValue)
 signal weaponChanged(slot, weapon)
 signal itemPickedUp(item)
 signal playerMove(pos)
+signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
 
 var time_elapsed = 0
@@ -60,6 +61,7 @@ func swiped(direction):
 		moveDirection(direction)
 		set_weapon_positions(direction)
 		emit_signal("playerMove", self.target_pos / 128)
+		emit_signal("turnTimeChange", time_elapsed)
 
 		var timer = Timer.new()
 		timer.set_wait_time(0.4)
@@ -67,7 +69,7 @@ func swiped(direction):
 		timer.set_one_shot(true)
 		add_child(timer)
 		timer.start()
-	
+
 func MoveCharacters():
 	for i in range(GameData.characters.size()):
 		if i < GameData.characters.size():
@@ -107,6 +109,7 @@ func _process(delta):
 			time_elapsed = 0
 	else:
 		time_elapsed += delta
+		emit_signal("turnTimeChange", time_elapsed)
 		if time_elapsed >= 1:
 			# forefit turn
 			time_elapsed = 0
