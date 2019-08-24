@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/KeysInterfaceContainer.gd" type="Script" id=2]
@@ -15,8 +15,9 @@
 [ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=15]
+[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=16]
 
-[node name="HudNode" type="Node2D" index="0"]
+[node name="HudNode" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -160,13 +161,12 @@ position = Vector2( 390.218, 115.807 )
 [node name="DeathMenu" parent="HudCanvasLayer" index="14" instance=ExtResource( 14 )]
 
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_default_cursor_shape = 0
 script = ExtResource( 15 )
+
+[node name="Turn Timer" parent="HudCanvasLayer" index="15" instance=ExtResource( 16 )]
+
+position = Vector2( 1002.68, 79.558 )
+scale = Vector2( 0.1, 0.1 )
+_sections_unfolded = [ "Transform" ]
 
 
