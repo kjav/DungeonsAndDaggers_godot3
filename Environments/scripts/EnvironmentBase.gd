@@ -7,6 +7,7 @@ var pos
 var environment_name
 var blockFromPathFindingWhenReady
 var initialReadyCall = true
+var blocksAttacks = false
 
 func _ready():
 	self.get_node("/root/Node2D").connectEnvironmentToPathfinding(self)

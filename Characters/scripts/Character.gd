@@ -141,7 +141,7 @@ func handleEnemyCollisions(posArray):
 	var collided = false
 	
 	for pos in posArray:
-		if not targetWalkable(pos) and attackPositionBlockable:
+		if attackPositionBlockable and (not targetWalkable(pos) or GameData.environmentBlocksAttack(pos)) :
 			break;
 		
 		collisions += GameData.charactersAtPos(pos)

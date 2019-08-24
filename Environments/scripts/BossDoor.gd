@@ -11,6 +11,7 @@ func setLocked(_locked):
 
 func _init():
 	environment_name = "BossDoor"
+	blocksAttacks = true
 	#place boss key somewhere
 
 func onWalkedInto(character):
@@ -18,6 +19,7 @@ func onWalkedInto(character):
 		if !locked:
 			setState("open")
 			emit_signal("bossDoorOpened");
+			blocksAttacks = false
 		else:
 			var key = GameData.HasKey(UnlockGuid)
 			

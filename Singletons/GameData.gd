@@ -62,6 +62,15 @@ func HasKey(unlockGuid):
 func charactersAtPos(pos):
 	return arrayAtPosForMoving(pos, characters)
 
+func environmentBlocksAttack(pos):
+	var environmentObjectAtPos = environmentObjectAtPos(pos)
+	
+	for environmentObject in environmentObjectAtPos:
+		if environmentObject.blocksAttacks:
+			return true
+	
+	return false
+
 func arrayAtPosForMoving(pos, array):
 	var collisions = []
 	for i in range(array.size()):

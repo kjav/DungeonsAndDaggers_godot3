@@ -5,6 +5,7 @@ export(String, "closed", "open") var state = "closed" setget setState, getState
 
 func _init():
 	environment_name = "Door"
+	blocksAttacks = true
 
 func handleAnimation():
 	self.set_animation(facing + "_" + state)
@@ -52,6 +53,7 @@ func reset():
 func onWalkedInto(character):
 	if !locked:
 		setState("open")
+		blocksAttacks = false
 	
 	if locked && character == GameData.player:
 		var key = GameData.HasKey(UnlockGuid)
