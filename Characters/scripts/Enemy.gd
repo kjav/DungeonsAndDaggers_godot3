@@ -56,4 +56,4 @@ func dropItem():
 	if(item_distribution != null):
 		for pickedItem in item_distribution.pick():
 			var item = pickedItem.value.new()
-			item.place(get_position())
+			item.place(target_pos)
