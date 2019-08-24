@@ -114,9 +114,7 @@ func _process(delta):
 			# forefit turn
 			time_elapsed = 0
 			moveDirection(Enums.DIRECTION.NONE)
-			for i in range(GameData.characters.size()):
-				if i < GameData.characters.size():
-					GameData.characters[i].turn()
+			MoveCharacters()
 
 func takeDamage(damage):
 	.takeDamage(damage)
