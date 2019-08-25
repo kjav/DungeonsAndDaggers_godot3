@@ -58,7 +58,7 @@ func hideMenu(event):
 func getType():
 	return type"
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 script = SubResource( 1 )
 type = null
@@ -82,7 +82,7 @@ texture = ExtResource( 1 )
 stretch_mode = 0
 _sections_unfolded = [ "Mouse" ]
 
-[node name="Node2D" parent="." index="1" instance=ExtResource( 2 )]
+[node name="ClickableRegion" parent="." index="1" instance=ExtResource( 2 )]
 
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 27.0
@@ -90,6 +90,6 @@ margin_top = 17.0
 margin_right = 871.0
 margin_bottom = 1352.0
 
-[connection signal="clicked_outside" from="Node2D" to="." method="hideMenu"]
+[connection signal="clicked_outside" from="ClickableRegion" to="." method="hideMenu"]
 
 

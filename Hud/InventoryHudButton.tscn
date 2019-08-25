@@ -10,6 +10,8 @@
 
 position = Vector2( 0, -0.663414 )
 script = ExtResource( 1 )
+frameStyle = null
+type = null
 
 [node name="Background" type="TextureRect" parent="." index="0"]
 
