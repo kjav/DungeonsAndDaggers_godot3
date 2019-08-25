@@ -11,10 +11,9 @@ func _ready():
 	turnBehaviour.setTurnWait(2)
 	turnBehaviour.init()
 	item_distribution = Constants.IndependentDistribution.new([{"p": 0.1, "value": Constants.SpellClasses.FireSpell}])
+	undamageableAnimationName = "invinsible"
 
 func turn():
-	.turn()
+	.turn()    
 	self.damageable = turnBehaviour.getDamageable()
 	
-	if (!self.damageable):
-		setAnimationOnAllBodyParts("invinsible")

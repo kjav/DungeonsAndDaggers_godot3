@@ -69,6 +69,9 @@ func resetStats():
 func turn():
 	pass
 
+func setTurnAnimations():
+	pass
+
 func consume_stat(stat, amount):
 	if stats[stat].value >= amount:
 		stats[stat].value -= amount

@@ -74,6 +74,7 @@ func MoveCharacters():
 	for i in range(GameData.characters.size()):
 		if i < GameData.characters.size():
 			GameData.characters[i].turn()
+			GameData.characters[i].setTurnAnimations()
 
 func attack(character):
 	if alive():
