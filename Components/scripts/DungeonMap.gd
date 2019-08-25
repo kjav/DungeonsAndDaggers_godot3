@@ -201,7 +201,7 @@ func findNextDirection(a, b):
 func findPathDistance(a, b):
 	var id_path = _getIdPath(a, b)
 	
-	return id_path.size()
+	return id_path.size() - 1
 
 func _on_Environment_blockStateChanged(environmentObject, blockedState):
 	var x = environmentObject.position.x / GameData.TileSize
