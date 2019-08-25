@@ -67,7 +67,7 @@ animations = [ {
 "speed": 4.0
 } ]
 
-[node name="Ghost" type="Node2D" index="0"]
+[node name="Ghost" type="Node2D"]
 
 scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
@@ -78,7 +78,7 @@ script = ExtResource( 1 )
 
 frames = SubResource( 1 )
 animation = "invinsible"
-frame = 3
+frame = 4
 playing = true
 offset = Vector2( 16, 16 )
 

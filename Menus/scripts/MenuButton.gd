@@ -1,5 +1,5 @@
 tool
-extends TextureButton
+extends Node2D
 
 export(PackedScene) var scene setget setScene, getScene
 
