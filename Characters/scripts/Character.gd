@@ -239,7 +239,7 @@ func takeDamage(damage):
 			handleCharacterDeath()
 		createHitmarker(damage)
 	else:
-		createHitmarker(0)
+		createHitmarker(0, true)
 
 func handleCharacterDeath():
 	playDeathAudio()
@@ -261,18 +261,23 @@ var hitmarkers = {}
 func removeHitmarker(n):
 	hitmarkers.erase(n)
 
-func createHitmarker(damage):
+func createHitmarker(damage, blocked = false):
 	var newNode = Hitmarker.instance()
 	newNode.set_scale(Vector2(1,1) / (7*self.get_scale()))
 	# Find the lowest available hitsplat spot.
 	var index = 0
+
 	while hitmarkers.has(index):
 		index += 1
+	
 	newNode.setN(index)
 	newNode.setAmount(damage)
 	hitmarkers[index] = newNode
 	newNode.connect("death", self, "removeHitmarker")
 	self.add_child(newNode)
+
+	if blocked:
+		newNode.setBlockedHitmarker()
 
 func targetWalkable(pos):
 	return GameData.walkable(pos.x, pos.y)

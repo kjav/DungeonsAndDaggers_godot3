@@ -2,6 +2,9 @@ extends Node2D
 
 var amount setget setAmount, getAmount
 var n = 0 setget setN, getN
+var blockHitmarket =  preload("res://assets/block_hitmarker.png")
+var hitmarkerScene
+
 signal death(n)
 
 func setAmount(newAmount):
@@ -13,6 +16,11 @@ func setAmount(newAmount):
 		get_node("Container/Amount").set_text(str(amount))
 	else:
 		print("Error: hitsplat amount not numeric")
+
+func setBlockedHitmarker():
+	hitmarkerScene.texture = blockHitmarket
+	hitmarkerScene.set_scale(Vector2(0.6, 0.6))
+	hitmarkerScene.rect_position += Vector2(40, 30)
 
 func getAmount():
 	return amount
@@ -56,6 +64,7 @@ func getN():
 
 func _ready():
 	# Initialization here
+	hitmarkerScene = get_node("Container/Hitmarker")
 	var timer = Timer.new()
 	timer.set_wait_time(1)
 	timer.connect("timeout",self,"Timeout") 
