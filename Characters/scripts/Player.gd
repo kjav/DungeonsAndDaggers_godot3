@@ -14,6 +14,7 @@ var primaryWeapon = Constants.WeaponClasses.BasicSword.new()
 var secondaryWeapon = Constants.WeaponClasses.BasicShield.new()
 var swipe_funcref
 var character_name = 'Player'
+var charactersAwaitingMove = false
 
 func _ready():
 	#this is temporary to aid with testing
@@ -55,14 +56,16 @@ func dropWeapon():
 	primaryWeapon = null
 
 func swiped(direction):
-	if alive() and not moving:
+	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
 		time_elapsed = 0
 		#Audio.playWalk()
 		moveDirection(direction)
 		set_weapon_positions(direction)
 		emit_signal("playerMove", self.target_pos / 128)
 		emit_signal("turnTimeChange", time_elapsed)
-
+		
+		charactersAwaitingMove = true
+		
 		var timer = Timer.new()
 		timer.set_wait_time(0.4)
 		timer.connect("timeout",self,"MoveCharacters") 
@@ -71,6 +74,8 @@ func swiped(direction):
 		timer.start()
 
 func MoveCharacters():
+	charactersAwaitingMove = false
+	
 	for i in range(GameData.characters.size()):
 		if i < GameData.characters.size():
 			GameData.characters[i].turn()

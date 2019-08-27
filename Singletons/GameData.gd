@@ -59,6 +59,13 @@ func HasKey(unlockGuid):
 		if keys[i].IsValidKey(unlockGuid):
 			return keys[i]
 
+func charactersMoving():
+	#at the moment all characters move at the same speed so this is cutting corners
+	if characters.size() <= 0:
+		return false;
+	
+	return characters[0].moving
+
 func charactersAtPos(pos):
 	return arrayAtPosForMoving(pos, characters)
 
@@ -73,10 +80,12 @@ func environmentBlocksAttack(pos):
 
 func arrayAtPosForMoving(pos, array):
 	var collisions = []
+	
 	for i in range(array.size()):
 		var other_target_pos = Vector2(array[i].target_pos.x / GameData.TileSize, array[i].target_pos.y / GameData.TileSize)
 		if (other_target_pos.x == pos.x and other_target_pos.y == pos.y):
 			collisions.append(array[i])
+	
 	return collisions
 
 func environmentObjectAtPos(pos):
@@ -84,10 +93,12 @@ func environmentObjectAtPos(pos):
 
 func arrayAtPosForStationary(pos, array):
 	var collisions = []
+	
 	for i in range(array.size()):
 		var other_pos = Vector2(array[i].get_position().x / GameData.TileSize, array[i].get_position().y / GameData.TileSize)
 		if (other_pos.x == pos.x and other_pos.y == pos.y):
 			collisions.append(array[i])
+	
 	return collisions
 
 func pickedUp(item):
@@ -105,12 +116,15 @@ func placeItem(item):
 func closestEnemy():
 	var closestIndex
 	var minDistance = -1
+	
 	for i in range(0, characters.size()):
 		if characters[i] != player:
 			var distance = player.original_pos.distance_squared_to(characters[i].original_pos)
+			
 			if minDistance == -1 || distance < minDistance:
 				minDistance = distance
 				closestIndex = i
+	
 	if minDistance > -1:
 		return characters[closestIndex]
 	else:
