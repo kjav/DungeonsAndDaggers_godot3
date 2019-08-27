@@ -55,7 +55,7 @@ func dropWeapon():
 	primaryWeapon = null
 
 func swiped(direction):
-	if not moving:
+	if alive() and not moving:
 		time_elapsed = 0
 		#Audio.playWalk()
 		moveDirection(direction)
