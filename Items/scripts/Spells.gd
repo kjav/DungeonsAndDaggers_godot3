@@ -1,4 +1,4 @@
-class FireSpell extends "spellBase.gd":
+class FireSpell extends "SpellBase.gd":
 	const missile = preload("res://Characters/Missile.tscn")
 	const missile_texture = preload("res://assets/fireball.png")
 
