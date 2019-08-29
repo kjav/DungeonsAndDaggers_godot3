@@ -1,7 +1,7 @@
 extends "MapBase.gd"
 
 var rooms = []
-var exterior_walls = []
+var valid_exterior_walls = []
 
 func add_room(name, room, wall):
 	var door
@@ -89,9 +89,10 @@ func add_room(name, room, wall):
 		environmentObjects.push_back({"position": door, "value": room.doorClass, "facing": get_facing(wall_direction)})
 	
 	# Add exterior walls to walls list, so other rooms can be placed adjacent
-	for i in range(0, 3):
-		if i != shared_wall_index:
-			exterior_walls.push_back([corners[i], corners[(i + 1) % 4]])
+	if !room.oneEntrance:
+		for i in range(0, 3):
+			if i != shared_wall_index:
+				valid_exterior_walls.push_back([corners[i], corners[(i + 1) % 4]])
 	
 	# Add the NPCs to the map
 	for enemy in roomDistribution.npcs:
@@ -153,13 +154,13 @@ func _init().(200, 200, -1):
   
 	while rooms.size() < n_rooms:
 		# Pick a wall
-		var wall_index = randi() % exterior_walls.size()
-		var wall = exterior_walls[wall_index]
+		var wall_index = randi() % valid_exterior_walls.size()
+		var wall = valid_exterior_walls[wall_index]
 		var room = room_distribution.pick()[0].value
 		
 		var success = add_room(str(i), room, wall)
 		if success:
-			exterior_walls.remove(wall_index)
+			valid_exterior_walls.remove(wall_index)
 			i = i + 1
 	
 	var mid_2 = OS.get_ticks_msec()

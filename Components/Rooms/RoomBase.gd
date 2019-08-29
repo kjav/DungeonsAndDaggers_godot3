@@ -10,6 +10,7 @@ var item_distribution
 var npc_distribution
 var extents_distribution
 var isBossRoom
+var oneEntrance
 
 # Specifies the mirror axis that this room is symmetrical on
 enum SYMMETRY {
