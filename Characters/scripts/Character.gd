@@ -79,7 +79,7 @@ func consume_stat(stat, amount):
 	return false
 
 func heal(amount):
-	if self.stats.health.value < self.stats.health.maximum:
+	if self.stats.health.value < self.stats.health.maximum && alive():
 		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
 
 func moveDirection(direction):
