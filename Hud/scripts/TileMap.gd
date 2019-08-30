@@ -1,6 +1,6 @@
 extends TileMap
 
-var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35]
+var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 41, 42, 44, 45]
 var Pathfinder
 var points = {}
 var ids = {}

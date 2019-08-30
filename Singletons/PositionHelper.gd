@@ -41,9 +41,9 @@ static func convertRelativePositionToAbsolute(currentPosition, relativePositions
 
 	for relativePosition in relativePositions:
 		var rotated = relativePosition.rotated(phi)
-		AbsolutePositions = AbsolutePositions + [roundVector2(rotated) + currentPosition]
+		AbsolutePositions.push_back(roundVector2(rotated) + currentPosition)
 	
 	return AbsolutePositions
 
-func roundVector2(pos):
+static func roundVector2(pos):
 	return Vector2(round(pos.x), round(pos.y))

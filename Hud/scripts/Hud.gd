@@ -43,11 +43,11 @@ func PlayerHealthChanged(health, maxHealth):
 		heart.set_position(Vector2(inc * i, 0))
 		get_node("HudCanvasLayer/HealthBar").add_child(heart)
 		if i <= health:
-			heart.setType("Full")
+			heart.setType(heart.Full)
 		elif health == i - 0.5:
-			heart.setType("Half")
+			heart.setType(heart.Half)
 		else:
-			heart.setType("Empty")
+			heart.setType(heart.Empty)
 	
 	if health <= 0:
 		get_node("HudCanvasLayer/DeathMenu").died()
@@ -64,9 +64,9 @@ func PlayerManaChanged(mana, maxMana):
 		var new_node = Hat.instance()
 		new_node.set_position(Vector2(inc*i, 0))
 		if (i < mana):
-			new_node.setType("Full")
+			new_node.setType(new_node.Full)
 		else:
-			new_node.setType("Empty")
+			new_node.setType(new_node.Empty)
 		
 		get_node("HudCanvasLayer/ManaBar").add_child(new_node)
 

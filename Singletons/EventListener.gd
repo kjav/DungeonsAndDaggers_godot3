@@ -15,7 +15,7 @@ func ignore(event, callback):
 		var i = listeners[event].find(callback)
 		listeners[event].remove(i)
 
-func raise(event, args):
+func trigger(event, args):
 	if listeners.has(event):
 		for callback in listeners[event]:
 			callback.call_func(args)

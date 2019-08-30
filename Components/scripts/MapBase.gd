@@ -10,7 +10,7 @@ var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution
 
 func is_wall(tile):
-	return tile in [6, 13, 21, 28, 30, 32, 33, 34, 35, 39, 41, 42]
+	return tile in [6, 13, 21, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
 	
 func _init(width, height, initial_tile=-1):
 	self.initial_tile = initial_tile
@@ -56,6 +56,16 @@ func _init(width, height, initial_tile=-1):
 		null, true, null,
 		null, true, null, null
 	], 6)
+	tree.add_value([
+		null, null, null,
+		null, true, null,
+		false, true, null, true
+	], 41)
+	tree.add_value([
+		null, null, null,
+		null, true, null,
+		null, true, false, true
+	], 41)
 	
 	# Vertical wall
 	tree.add_value([
@@ -90,9 +100,19 @@ func _init(width, height, initial_tile=-1):
 	], 28)
 	tree.add_value([
 		null, false, null,
+		false, true, true,
+		true, true, null, null
+	], 45)
+	tree.add_value([
+		null, false, null,
 		true, true, false,
 		null, true, null, null
 	], 30)
+	tree.add_value([
+		null, false, null,
+		true, true, false,
+		null, true, true, null
+	], 44)
 	
 	# Above horizontal wall
 	tree.add_value([
@@ -123,9 +143,19 @@ func _init(width, height, initial_tile=-1):
 	], 28)
 	tree.add_value([
 		null, true, null,
+		false, true, true,
+		true, true, null, null
+	], 45)
+	tree.add_value([
+		null, true, null,
 		true, true, false,
 		null, true, null, null
 	], 30)
+	tree.add_value([
+		null, true, null,
+		true, true, false,
+		null, true, true, null
+	], 44)
 	
 	# L shapes
 	tree.add_value([

@@ -18,155 +18,98 @@
 [ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=16]
 
 [node name="HudNode" type="Node2D"]
-
 script = ExtResource( 1 )
 
-[node name="HudCanvasLayer" type="CanvasLayer" parent="." index="0"]
+[node name="HudCanvasLayer" type="CanvasLayer" parent="."]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+[node name="ActiveSlot" type="Node2D" parent="HudCanvasLayer"]
 
-[node name="ActiveSlot" type="Node2D" parent="HudCanvasLayer" index="0"]
-
-[node name="InactiveSlot" type="Node2D" parent="HudCanvasLayer" index="1"]
-
+[node name="InactiveSlot" type="Node2D" parent="HudCanvasLayer"]
 position = Vector2( 20, 0 )
 
-[node name="Keys" type="Node2D" parent="HudCanvasLayer" index="2"]
-
+[node name="Keys" type="Node2D" parent="HudCanvasLayer"]
 position = Vector2( 45.7208, 372.52 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="PrimaryWeaponSlot" parent="HudCanvasLayer" index="3" instance=ExtResource( 3 )]
-
+[node name="PrimaryWeaponSlot" parent="HudCanvasLayer" instance=ExtResource( 3 )]
 position = Vector2( 30, 1716 )
 scale = Vector2( 0.75, 0.75 )
-_sections_unfolded = [ "Transform", "Z Index" ]
 frameStyle = "Blue"
 
-[node name="HealthBar" type="Node2D" parent="HudCanvasLayer" index="4"]
-
+[node name="HealthBar" type="Node2D" parent="HudCanvasLayer"]
 position = Vector2( -12.2763, 42.2845 )
 scale = Vector2( 2, 2 )
 
-[node name="ManaBar" type="Node2D" parent="HudCanvasLayer" index="5"]
-
+[node name="ManaBar" type="Node2D" parent="HudCanvasLayer"]
 position = Vector2( 103.407, 163.879 )
 scale = Vector2( 2, 2 )
 
-[node name="Hat" parent="HudCanvasLayer/ManaBar" index="0" instance=ExtResource( 4 )]
-
+[node name="Hat" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 0, 5 )
+type = 0
 
-[node name="Hat1" parent="HudCanvasLayer/ManaBar" index="1" instance=ExtResource( 4 )]
-
+[node name="Hat1" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 32, 5 )
 texture = ExtResource( 5 )
+type = 0
 
-[node name="Hat2" parent="HudCanvasLayer/ManaBar" index="2" instance=ExtResource( 4 )]
-
+[node name="Hat2" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 64, 5 )
 texture = ExtResource( 6 )
+type = 0
 
-[node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer" index="6"]
-
+[node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer"]
 show_behind_parent = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 103.0
 margin_top = 1747.0
 margin_right = 143.0
 margin_bottom = 1787.0
 rect_scale = Vector2( 1, 0.75 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 7 )
-stretch_mode = 0
-_sections_unfolded = [ "Rect" ]
 
-[node name="Node2D" parent="HudCanvasLayer" index="7" instance=ExtResource( 8 )]
-
+[node name="Node2D" parent="HudCanvasLayer" instance=ExtResource( 8 )]
 visible = false
 
-[node name="FoodInvent" parent="HudCanvasLayer" index="8" instance=ExtResource( 9 )]
-
+[node name="FoodInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 770, 1780 )
 scale = Vector2( 0.5, 0.5 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 frameStyle = "Yellow"
 type = "Food"
 
-[node name="PotInvent" parent="HudCanvasLayer" index="9" instance=ExtResource( 9 )]
-
+[node name="PotInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 620, 1780 )
 scale = Vector2( 0.5, 0.5 )
-_sections_unfolded = [ "Transform" ]
 frameStyle = "Green"
 type = "Potion"
 
-[node name="SpellInvent" parent="HudCanvasLayer" index="10" instance=ExtResource( 9 )]
-
+[node name="SpellInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 920, 1780 )
 scale = Vector2( 0.5, 0.5 )
-_sections_unfolded = [ "Transform" ]
 frameStyle = "Orange"
 type = "Spell"
 
-[node name="Pickup" parent="HudCanvasLayer" index="11" instance=ExtResource( 10 )]
-
+[node name="Pickup" parent="HudCanvasLayer" instance=ExtResource( 10 )]
 position = Vector2( 773.552, 1640.96 )
 scale = Vector2( 2, 2 )
 
-[node name="Settings" type="TextureButton" parent="HudCanvasLayer" index="12"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
 margin_left = 1007.0
 margin_top = 6.0
 margin_right = 1263.0
 margin_bottom = 262.0
 rect_scale = Vector2( 0.25, 0.25 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 11 )
 script = ExtResource( 12 )
-_sections_unfolded = [ "Rect" ]
 
-[node name="EventMessageHolder" parent="HudCanvasLayer" index="13" instance=ExtResource( 13 )]
-
+[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 position = Vector2( 390.218, 115.807 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" index="14" instance=ExtResource( 14 )]
-
+[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 14 )]
 visible = false
 script = ExtResource( 15 )
 
-[node name="Turn Timer" parent="HudCanvasLayer" index="15" instance=ExtResource( 16 )]
-
+[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 16 )]
 position = Vector2( 1002.68, 79.558 )
 scale = Vector2( 0.1, 0.1 )
-_sections_unfolded = [ "Transform" ]
-
-

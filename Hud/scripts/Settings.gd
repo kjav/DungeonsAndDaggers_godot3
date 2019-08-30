@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 func hideMenu(event):
 	get_tree().get_current_scene().get_node("HudNode").settingsOpen = false

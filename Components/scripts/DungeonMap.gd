@@ -11,7 +11,7 @@ var Maps = {
   "TestMap": load("res://Components/scripts/TestMap.gd")
 }
 
-var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42]
+var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
 # This array is a boolean array, with elements at positions in the above array
 # set to true, and all other elements false.
 var flat_not_walkable = []

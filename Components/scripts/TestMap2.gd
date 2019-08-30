@@ -21,7 +21,7 @@ func add_room(name, room, wall):
 		door = door_index * wall_direction + wall[0]
 		
 		# Choose how much to move the new room by
-		var room_index = 1 + (randi() % (abs(int(roomDistribution.extents.dot(wall_direction))) - 2))
+		var room_index = 1 + (randi() % int(abs(int(roomDistribution.extents.dot(wall_direction))) - 2))
 		
 		if wall_direction == Vector2(0, 1):
 			position = door - Vector2(0, room_index)

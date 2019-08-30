@@ -222,7 +222,7 @@ func calculate_damage(character, base_damage):
 	
 	return base_damage * modifier
 
-func attack(character, base_damage):
+func attack(character, base_damage = 0):
 	if alive():
 		if (character == GameData.player) or (self == GameData.player):
 			var damage = calculate_damage(character, base_damage)

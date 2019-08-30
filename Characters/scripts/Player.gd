@@ -81,7 +81,7 @@ func MoveCharacters():
 			GameData.characters[i].turn()
 			GameData.characters[i].setTurnAnimations()
 
-func attack(character):
+func attack(character, base_damage = 0):
 	if alive():
 		emit_signal("playerAttack", character, primaryWeapon.damage)
 		.attack(character, primaryWeapon.damage)
