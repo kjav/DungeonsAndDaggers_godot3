@@ -167,11 +167,11 @@ scale = Vector2( 1, 1 )
 rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Head" type="Bone2D" parent="Skeleton2D/Body/Chest"]
-position = Vector2( -0.0509949, -10 )
+position = Vector2( -0.051, -8 )
 rotation = 1.5708
 scale = Vector2( 1.03097, -22.9448 )
-rest = Transform2D( -4.50651e-008, -1.03097, -22.9448, 1.00295e-006, -0.0509949, -10 )
-default_length = 4.0
+rest = Transform2D( 1.22942e-008, -1.03097, -22.9448, -2.73614e-007, -0.051, -8 )
+default_length = 3.0
 
 [node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( -5.1201, -5.77679 )
