@@ -33,14 +33,15 @@ func _process(delta):
 		var half_tile = Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
 		var target_pos = get_node(target).get_position() + half_tile
 		
-		if willReachTargetAfterMove(target_pos):
+		if willReachTargetAfterMove(target_pos, delta):
 			handleTargetReached()
 		else:
-			setNextState(target_pos)
+			setNextState(target_pos, delta)
 
-func setNextState(target_pos):
+func setNextState(target_pos, delta):
 	set_rotation((get_position()).angle_to_point(target_pos) + 90)
-	set_position(get_position() + (target_pos - get_position()).normalized() * speed)
+	# Multiply by delta * 60 to get a frame time normalized to 60fps
+	set_position(get_position() + (target_pos - get_position()).normalized() * speed * (delta * 60))
 
 func handleTargetReached():
 	#Audio.playSoundEffect(hitSound, true)
@@ -49,8 +50,9 @@ func handleTargetReached():
 	get_parent().remove_child(self)
 	queue_free()
 
-func willReachTargetAfterMove(target_pos):
-	return get_position().distance_squared_to(target_pos) <= speed * speed
+func willReachTargetAfterMove(target_pos, delta):
+	# Multiply by delta * 60 to get a frame time normalized to 60fps
+	return get_position().distance_squared_to(target_pos) <= pow(speed * delta * 60, 2)
 
 func showIfVisible():
 	if !is_visible():
