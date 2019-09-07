@@ -324,7 +324,7 @@ tracks/25/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 90.0 ]
+"values": [ 270.0 ]
 }
 tracks/26/type = "value"
 tracks/26/path = NodePath("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand:position")
