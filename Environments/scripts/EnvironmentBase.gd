@@ -26,6 +26,9 @@ func setPos(_pos):
 func onWalkedInto(character):
 	pass
 
+func onWalkedOut(character):
+	pass
+
 func emitBlockedStateChangeSignal(state):
 	emit_signal("blockStateChanged", self, state)
 

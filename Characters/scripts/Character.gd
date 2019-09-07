@@ -11,6 +11,8 @@ var turn_end_pos = get_position()
 var damageable = true
 var initial_pos
 var isPartOfBossRoom
+var environmentsAtPlayerTargetPosition = []
+var environmentsAtPlayerPosition = []
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -105,16 +107,31 @@ func handleMove(direction):
 	
 	if not attacking:
 		var walkableEnvironment = handleEnvironmentCollisions(pos)
+
 		if walkableEnvironment:
 			if targetWalkable(pos):
+				environmentOnWalkedInto()
+				environmentOnWalkedOut()
+				
 				setWalkAnimation(direction)
 				turn_end_pos = pos * GameData.TileSize;
-
+				
+				environmentsAtPlayerPosition = environmentsAtPlayerTargetPosition
+				environmentsAtPlayerTargetPosition = []
+				
 				return direction
 			else:
 				return Enums.DIRECTION.NONE
 	
 	return Enums.DIRECTION.NONE
+
+func environmentOnWalkedInto():
+	for i in range(environmentsAtPlayerPosition.size()):
+		environmentsAtPlayerTargetPosition[i].onWalkedInto(self)
+
+func environmentOnWalkedOut():
+	for i in range(environmentsAtPlayerPosition.size()):
+		environmentsAtPlayerPosition[i].onWalkedOut(self)
 
 func faceDirection(direction):
 	if alive():
@@ -167,8 +184,8 @@ func handleEnvironmentCollisions(pos):
 	for i in range(collisions.size()):
 		if collisions[i].walkable == Enums.WALKABLE.NONE or (collisions[i].walkable == Enums.WALKABLE.PLAYER && !isPlayer) :
 			walkable = false
-		
-		collisions[i].onWalkedInto(self)
+
+		environmentsAtPlayerTargetPosition.append(collisions[i])
 		
 	return walkable
 
