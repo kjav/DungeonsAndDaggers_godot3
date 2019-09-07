@@ -18,6 +18,8 @@ var charactersAwaitingMove = false
 var animationPlayer
 var skeletonScale
 var polygonsScale
+var primaryWeaponNode
+var secondaryWeaponNode
 
 func _ready():
 	#this is temporary to aid with testing
@@ -34,6 +36,8 @@ func _ready():
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
+	secondaryWeaponNode = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand/SecondaryWeapon")
+	primaryWeaponNode = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand/PrimaryWeapon")
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
@@ -47,7 +51,7 @@ func swapWeapons():
 func setPrimaryWeapon(weapon):
 	primaryWeapon = weapon
 	emit_signal("weaponChanged", "Primary", primaryWeapon)
-	get_node("PrimaryWeapon").set_texture(primaryWeapon.texture)
+	primaryWeaponNode.set_texture(primaryWeapon.texture)
 	additionalRelativeAttackPositions = weapon.relativeAttackPositions
 	onlyAttacksFirstEnemy = weapon.onlyAttacksFirstEnemy
 	attackPositionBlockable = weapon.attackPositionBlockable
@@ -55,7 +59,7 @@ func setPrimaryWeapon(weapon):
 func setSecondaryWeapon(weapon):
 	secondaryWeapon = weapon
 	emit_signal("weaponChanged", "Secondary", secondaryWeapon)
-	get_node("SecondaryWeapon").set_texture(secondaryWeapon.texture)
+	secondaryWeaponNode.set_texture(secondaryWeapon.texture)
 
 func dropWeapon():
 	primaryWeapon.place(get_position())
@@ -177,8 +181,8 @@ func takeDamage(damage):
 	emit_signal("statsChanged", "health", "Down", -damage)
 
 func handleCharacterDeath():
-	get_node("PrimaryWeapon").hide()
-	get_node("SecondaryWeapon").hide()
+	primaryWeaponNode.hide()
+	secondaryWeaponNode.hide()
 	.handleCharacterDeath()
 
 func pickUp():
@@ -206,42 +210,40 @@ func increaseMax(amount):
 	emit_signal("statsChanged", "maxhealth", "Up", amount)
 
 func set_weapon_positions(dir):
-	var weapon = self.get_node("PrimaryWeapon")
-	var secondary = self.get_node("SecondaryWeapon")
 	if dir == Enums.DIRECTION.DOWN:
-		weapon.set_draw_behind_parent(false)
-		if weapon.is_flipped_h():
-			weapon.set_offset(weapon.get_offset() * Vector2(-1, 1))
-		weapon.set_flip_h(false)
-		weapon.set_position(primaryWeapon.holdOffset[0])
-		secondary.set_draw_behind_parent(false)
-		secondary.set_flip_h(false)
-		secondary.set_position(secondaryWeapon.holdOffset[0])
+		primaryWeaponNode.set_draw_behind_parent(false)
+		if primaryWeaponNode.is_flipped_h():
+			primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
+		primaryWeaponNode.set_flip_h(false)
+		primaryWeaponNode.set_position(primaryWeapon.holdOffset[0])
+		secondaryWeaponNode.set_draw_behind_parent(false)
+		secondaryWeaponNode.set_flip_h(false)
+		secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[0])
 	elif dir == Enums.DIRECTION.UP:
-		weapon.set_draw_behind_parent(true)
-		if !weapon.is_flipped_h():
-			weapon.set_offset(weapon.get_offset() * Vector2(-1, 1))
-		weapon.set_flip_h(true)
-		weapon.set_position(primaryWeapon.holdOffset[1])
-		secondary.set_draw_behind_parent(true)
-		secondary.set_flip_h(true)
-		secondary.set_position(secondaryWeapon.holdOffset[1])
+		primaryWeaponNode.set_draw_behind_parent(true)
+		if !primaryWeaponNode.is_flipped_h():
+			primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
+		primaryWeaponNode.set_flip_h(true)
+		primaryWeaponNode.set_position(primaryWeapon.holdOffset[1])
+		secondaryWeaponNode.set_draw_behind_parent(true)
+		secondaryWeaponNode.set_flip_h(true)
+		secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[1])
 	elif dir == Enums.DIRECTION.LEFT:
-		weapon.set_draw_behind_parent(true)
-		if weapon.is_flipped_h():
-			weapon.set_offset(weapon.get_offset() * Vector2(-1, 1))
-		weapon.set_flip_h(false)
-		weapon.set_position(primaryWeapon.holdOffset[2])
-		secondary.set_draw_behind_parent(false)
-		secondary.set_flip_h(false)
-		secondary.set_position(secondaryWeapon.holdOffset[2])
+		primaryWeaponNode.set_draw_behind_parent(true)
+		if primaryWeaponNode.is_flipped_h():
+			primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
+		primaryWeaponNode.set_flip_h(false)
+		primaryWeaponNode.set_position(primaryWeapon.holdOffset[2])
+		secondaryWeaponNode.set_draw_behind_parent(false)
+		secondaryWeaponNode.set_flip_h(false)
+		secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[2])
 	elif dir == Enums.DIRECTION.RIGHT:
-		weapon.set_draw_behind_parent(false)
-		if !weapon.is_flipped_h():
-			weapon.set_offset(weapon.get_offset() * Vector2(-1, 1))
-		weapon.set_flip_h(true)
-		weapon.set_position(primaryWeapon.holdOffset[3])
-		secondary.set_draw_behind_parent(true)
-		secondary.set_flip_h(true)
-		secondary.set_position(secondaryWeapon.holdOffset[3])
+		primaryWeaponNode.set_draw_behind_parent(false)
+		if !primaryWeaponNode.is_flipped_h():
+			primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
+		primaryWeaponNode.set_flip_h(true)
+		primaryWeaponNode.set_position(primaryWeapon.holdOffset[3])
+		secondaryWeaponNode.set_draw_behind_parent(true)
+		secondaryWeaponNode.set_flip_h(true)
+		secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[3])
 
