@@ -413,3 +413,15 @@ tracks/33/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/34/type = "value"
+tracks/34/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand/SecondaryWeapon:position")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.35889, 0.588562 ) ]
+}
