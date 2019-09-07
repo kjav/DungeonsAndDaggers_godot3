@@ -15,6 +15,9 @@ var secondaryWeapon = Constants.WeaponClasses.BasicShield.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
+var animationPlayer
+var skeletonScale
+var polygonsScale
 
 func _ready():
 	#this is temporary to aid with testing
@@ -28,6 +31,9 @@ func _ready():
 	GameData.player = self
 	GameData.characters.append(self)
 	self.get_node(bodyPartsNodeName).get_node("Body").frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
+	animationPlayer = get_node("AnimationPlayer")
+	skeletonScale = get_node("Skeleton2D").scale
+	polygonsScale = get_node("Polygons").scale
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
@@ -54,6 +60,52 @@ func setSecondaryWeapon(weapon):
 func dropWeapon():
 	primaryWeapon.place(get_position())
 	primaryWeapon = null
+
+func faceDirection(direction):
+	if alive():
+		match direction:
+			Enums.DIRECTION.UP:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.DOWN:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.LEFT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
+				get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
+			Enums.DIRECTION.RIGHT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = skeletonScale
+				get_node("Polygons").scale = polygonsScale
+
+func setWalkAnimation(direction):
+	match direction:
+		Enums.DIRECTION.UP:
+			animationPlayer.current_animation = "walk"
+		Enums.DIRECTION.DOWN:
+			animationPlayer.current_animation = "walk"
+		Enums.DIRECTION.LEFT:
+			animationPlayer.current_animation = "walk"
+			get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
+			get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
+		Enums.DIRECTION.RIGHT:
+			animationPlayer.current_animation = "walk"
+			get_node("Skeleton2D").scale = skeletonScale
+			get_node("Polygons").scale = polygonsScale
+
+func setStandAnimation(direction):
+	match direction:
+		Enums.DIRECTION.UP:
+			animationPlayer.current_animation = "stand"
+		Enums.DIRECTION.DOWN:
+			animationPlayer.current_animation = "stand"
+		Enums.DIRECTION.LEFT:
+			animationPlayer.current_animation = "stand"
+			get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
+			get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
+		Enums.DIRECTION.RIGHT:
+			animationPlayer.current_animation = "stand"
+			get_node("Skeleton2D").scale = skeletonScale
+			get_node("Polygons").scale = polygonsScale
 
 func swiped(direction):
 	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
@@ -101,16 +153,14 @@ func _process(delta):
 		if time_elapsed >= 0.4:
 			if movement_direction == Enums.DIRECTION.LEFT:
 				set_position(original_pos + Vector2(-length, 0))
-				setAnimationOnAllBodyParts("stand_left")
 			elif movement_direction == Enums.DIRECTION.RIGHT:
 				set_position(original_pos + Vector2(length, 0))
-				setAnimationOnAllBodyParts("stand_right")
 			elif movement_direction == Enums.DIRECTION.UP:
 				set_position(original_pos + Vector2(0, -length))
-				setAnimationOnAllBodyParts("stand_up")
 			elif movement_direction == Enums.DIRECTION.DOWN:
 				set_position(original_pos + Vector2(0, length))
-				setAnimationOnAllBodyParts("stand_down")
+
+			setStandAnimation(movement_direction)
 			moving = false
 			time_elapsed = 0
 	else:
