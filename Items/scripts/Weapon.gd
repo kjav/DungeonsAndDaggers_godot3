@@ -2,11 +2,10 @@ extends "Item.gd"
 
 var damage
 var distance
-#Down, Up, Left, Right
-var holdOffset
 var relativeAttackPositions = []
 var onlyAttacksFirstEnemy = true
 var attackPositionBlockable = true
+var showBehindHand = false
 
 #can be used for things like bows later on
 func onUse():

@@ -116,7 +116,6 @@ func swiped(direction):
 		time_elapsed = 0
 		#Audio.playWalk()
 		moveDirection(direction)
-		set_weapon_positions(direction)
 		emit_signal("playerMove", self.target_pos / 128)
 		emit_signal("turnTimeChange", time_elapsed)
 		
@@ -208,42 +207,4 @@ func consume_stat(stat, amount):
 func increaseMax(amount):
 	self.stats.health.maximum += amount
 	emit_signal("statsChanged", "maxhealth", "Up", amount)
-
-func set_weapon_positions(dir):
-	if dir == Enums.DIRECTION.DOWN:
-		primaryWeaponNode.set_draw_behind_parent(false)
-		#if primaryWeaponNode.is_flipped_h():
-			#primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
-		#primaryWeaponNode.set_flip_h(false)
-		#primaryWeaponNode.set_position(primaryWeapon.holdOffset[0])
-		secondaryWeaponNode.set_draw_behind_parent(false)
-		#secondaryWeaponNode.set_flip_h(false)
-		#secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[0])
-	elif dir == Enums.DIRECTION.UP:
-		primaryWeaponNode.set_draw_behind_parent(true)
-		#if !primaryWeaponNode.is_flipped_h():
-			#primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
-		#primaryWeaponNode.set_flip_h(true)
-		#primaryWeaponNode.set_position(primaryWeapon.holdOffset[1])
-		secondaryWeaponNode.set_draw_behind_parent(true)
-		#secondaryWeaponNode.set_flip_h(true)
-		#secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[1])
-	elif dir == Enums.DIRECTION.LEFT:
-		primaryWeaponNode.set_draw_behind_parent(true)
-		#if primaryWeaponNode.is_flipped_h():
-			#primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
-		#primaryWeaponNode.set_flip_h(false)
-		#primaryWeaponNode.set_position(primaryWeapon.holdOffset[2])
-		secondaryWeaponNode.set_draw_behind_parent(false)
-		#secondaryWeaponNode.set_flip_h(false)
-		#secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[2])
-	elif dir == Enums.DIRECTION.RIGHT:
-		primaryWeaponNode.set_draw_behind_parent(false)
-		#if !primaryWeaponNode.is_flipped_h():
-			#primaryWeaponNode.set_offset(primaryWeaponNode.get_offset() * Vector2(-1, 1))
-		#primaryWeaponNode.set_flip_h(true)
-		#primaryWeaponNode.set_position(primaryWeapon.holdOffset[3])
-		secondaryWeaponNode.set_draw_behind_parent(true)
-		#secondaryWeaponNode.set_flip_h(true)
-		#secondaryWeaponNode.set_position(secondaryWeapon.holdOffset[3])
 
