@@ -270,7 +270,7 @@ func handleCharacterDeath():
 		.handleCharacterDeath()
 	else:
 		stageOneDefeated = true
-		.heal(12)
+		.heal(12, true)
 		
 		addAngerMark(getHeadLeftTopPosition(), PI/4)
 		addAngerMark(getHeadLeftMiddlePosition(), PI/16)

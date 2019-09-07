@@ -190,10 +190,10 @@ func pickUp():
 		item.pickup()
 		emit_signal("itemPickedUp", item)
 
-func heal(amount):
+func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
 
-	.heal(amount)
+	.heal(amount, evenIfDead)
 	
 	emit_signal("statsChanged", "health", "Up", amount)
 
