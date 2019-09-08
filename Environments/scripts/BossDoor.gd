@@ -20,8 +20,15 @@ func onWalkedInto(character):
 			setState("open")
 			emit_signal("bossDoorOpened");
 			blocksAttacks = false
+			emitBlockedStateChangeSignal(false)
 		else:
 			var key = GameData.HasKey(UnlockGuid)
 			
 			if key != null:
 				keyUnlocked()
+
+func onWalkedOut(character):
+	if character == GameData.player:
+		setState("closed")
+		blocksAttacks = true
+		emitBlockedStateChangeSignal(true)
