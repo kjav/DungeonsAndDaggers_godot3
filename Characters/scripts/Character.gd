@@ -114,10 +114,6 @@ func handleMove(direction):
 				setWalkAnimation(direction)
 
 				environmentOnWalkedOut()
-				environmentOnWalkedInto()
-				
-				environmentsAtPosition = environmentsAtTargetPosition
-				environmentsAtTargetPosition = []
 				
 				return direction
 			else:
@@ -125,13 +121,13 @@ func handleMove(direction):
 	
 	return Enums.DIRECTION.NONE
 
-func environmentOnWalkedInto():
-	for i in range(environmentsAtTargetPosition.size()):
-		environmentsAtTargetPosition[i].onWalkedInto(self)
-
 func environmentOnWalkedOut():
 	for i in range(environmentsAtPosition.size()):
-		environmentsAtPosition[i].onWalkedOut(self)
+		if (is_instance_valid(environmentsAtPosition[i])):
+			environmentsAtPosition[i].onWalkedOut(self)
+	
+	environmentsAtPosition = environmentsAtTargetPosition
+	environmentsAtTargetPosition = []
 
 func faceDirection(direction):
 	if alive():
@@ -184,7 +180,8 @@ func handleEnvironmentCollisions(pos):
 	for i in range(collisions.size()):
 		if collisions[i].walkable == Enums.WALKABLE.NONE or (collisions[i].walkable == Enums.WALKABLE.PLAYER && !isPlayer) :
 			walkable = false
-
+		
+		collisions[i].onWalkedInto(self)
 		environmentsAtTargetPosition.append(collisions[i])
 		
 	return walkable
