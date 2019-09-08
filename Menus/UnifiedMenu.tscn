@@ -73,24 +73,46 @@ texture = ExtResource( 6 )
 [node name="Node2D" parent="PlayerSelect" instance=ExtResource( 7 )]
 
 [node name="PlayerButton" type="TextureButton" parent="PlayerSelect"]
-margin_left = 300.0
-margin_top = 1730.0
-margin_right = 642.0
-margin_bottom = 1865.0
+margin_left = 596.521
+margin_top = 1731.71
+margin_right = 938.521
+margin_bottom = 1866.71
 rect_scale = Vector2( 1.35, 1.35 )
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="PlayerSelect/PlayerButton"]
-margin_left = 72.0
-margin_top = 37.0
-margin_right = 282.0
-margin_bottom = 96.0
+margin_left = 27.2615
+margin_top = 42.7058
+margin_right = 344.261
+margin_bottom = 101.706
+rect_scale = Vector2( 0.9, 0.9 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.300781, 0.148041, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "NEXT"
+text = "Select"
+
+[node name="PlayerBackButton" type="TextureButton" parent="PlayerSelect"]
+margin_left = 5.52112
+margin_top = 1731.71
+margin_right = 347.521
+margin_bottom = 1866.71
+rect_scale = Vector2( 1.35, 1.35 )
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="PlayerSelect/PlayerBackButton"]
+margin_left = 79.5162
+margin_top = 42.9415
+margin_right = 292.516
+margin_bottom = 101.942
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.300781, 0.148041, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Back"
 
 [node name="WorldSelect" type="Node2D" parent="."]
 position = Vector2( 2360, 0 )
@@ -105,24 +127,48 @@ texture = ExtResource( 6 )
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 8 )]
 
 [node name="WorldButton" type="TextureButton" parent="WorldSelect"]
-margin_left = 300.0
+margin_left = 598.058
 margin_top = 1730.0
-margin_right = 642.0
+margin_right = 940.058
 margin_bottom = 1865.0
 rect_scale = Vector2( 1.35, 1.35 )
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="WorldSelect/WorldButton"]
-margin_left = 70.0
-margin_top = 41.0
-margin_right = 286.0
-margin_bottom = 100.0
+margin_left = 79.3564
+margin_top = 44.1189
+margin_right = 295.356
+margin_bottom = 103.119
+rect_scale = Vector2( 0.9, 0.9 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.417969, 0.176331, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "PLAY"
+
+[node name="WorldBackButton" type="TextureButton" parent="WorldSelect"]
+margin_left = -0.335693
+margin_top = 1730.0
+margin_right = 341.664
+margin_bottom = 1865.0
+rect_scale = Vector2( 1.35, 1.35 )
+texture_normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="WorldSelect/WorldBackButton"]
+margin_left = 75.9259
+margin_top = 42.4814
+margin_right = 291.926
+margin_bottom = 101.481
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.417969, 0.176331, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Back"
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="PlayerSelect/PlayerButton" to="." method="_on_playerbutton_pressed"]
+[connection signal="pressed" from="PlayerSelect/PlayerBackButton" to="." method="_on_backbutton_pressed"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]
+[connection signal="pressed" from="WorldSelect/WorldBackButton" to="." method="_on_backbutton_pressed"]

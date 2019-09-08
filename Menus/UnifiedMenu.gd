@@ -45,6 +45,14 @@ func _on_playerbutton_pressed():
 		transitioning = true
 		get_node("PlayerSelect/Node2D").transitioning = true
 
+func _on_backbutton_pressed():
+	if not transitioning:
+		start_pos = position
+		target_pos = start_pos + Vector2(1180, 0)
+		current_time = 0.0
+		transitioning = true
+		get_node("PlayerSelect/Node2D").transitioning = true
+
 func _on_worldbutton_pressed():
 	if not transitioning:
 		get_tree().change_scene("Game.tscn")
