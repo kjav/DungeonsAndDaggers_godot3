@@ -258,9 +258,22 @@ func takeDamage(damage):
 func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
-	print("Death: ")
+	
 	setAnimationOnAllBodyParts("death", true)
 	setPlayingOnAllBodyParts(true, true)
+	
+	var timer = Timer.new()
+	timer.set_wait_time(1)
+	timer.connect("timeout",self,"deathAnimationsComplete") 
+	timer.set_one_shot(true)
+	add_child(timer)
+	timer.start()
+	
+func deathAnimationsComplete():
+	hide()
+	
+	if(self != GameData.player):
+		queue_free()
 
 func playDeathAudio():
 	if(self == GameData.player):

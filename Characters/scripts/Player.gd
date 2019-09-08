@@ -182,6 +182,7 @@ func takeDamage(damage):
 func handleCharacterDeath():
 	primaryWeaponNode.hide()
 	secondaryWeaponNode.hide()
+	get_node("Polygons").hide()
 	.handleCharacterDeath()
 
 func pickUp():
