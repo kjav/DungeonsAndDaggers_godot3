@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Characters/scripts/TrainingDummy.gd" type="Script" id=1]
+[ext_resource path="res://assets/TrainingDummy/training_dummy_0.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "stand_down",
+"speed": 1.0
+} ]
+
+[node name="TrainingDummy" type="Node2D"]
+scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 1 )
+
+[node name="ChangingBodyParts" type="Node2D" parent="."]
+
+[node name="Body" type="AnimatedSprite" parent="ChangingBodyParts"]
+position = Vector2( 136, -32 )
+frames = SubResource( 1 )
+animation = "stand_down"
+playing = true
+centered = false

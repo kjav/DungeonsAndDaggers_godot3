@@ -5,6 +5,10 @@ class BaseTurn extends Node:
 	func afterMoveComplete(pos):
 		pass
 
+class Wait extends BaseTurn:
+	func turn(pos):
+		return Enums.DIRECTION.NONE
+
 class MoveTo extends BaseTurn:
 	func turn(pos):
 		pos.x = int(pos.x / GameData.TileSize)
