@@ -31,6 +31,22 @@ class MoveRandom extends BaseTurn:
 	func turn(pos):
 		return randi()%5
 
+class MoveUpRightDownLeft extends BaseTurn:
+	var count = 0
+	
+	func turn(pos):
+		count += 1
+		var currentMove = count%4
+		
+		if currentMove == 0:
+			return Enums.DIRECTION.UP
+		elif currentMove == 1:
+			return Enums.DIRECTION.RIGHT
+		elif currentMove == 2:
+			return Enums.DIRECTION.DOWN
+		elif currentMove == 3:
+			return Enums.DIRECTION.LEFT
+
 class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 	var moveTo = MoveTo.new()
 	var waitAttackWaitCount = -1
