@@ -7,11 +7,17 @@ class BasicSword extends "Weapon.gd":
 		showBehindHand = true
 
 class BasicShield extends "Weapon.gd":
+	var chanceToBlockOutOf = 10
+	
 	func _init():
 		iconFilePath = "res://assets/basic_shield.png"
 		texture = preload("res://assets/basic_shield.png")
 		item_name = "Basic Shield"
 		damage = 1
+	
+	func onPlayerDamaged():
+		if randi()%chanceToBlockOutOf+1 == 1:
+			GameData.player.damageable = false
 
 class BasicSpear extends "Weapon.gd":
 	func _init():

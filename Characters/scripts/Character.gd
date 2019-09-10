@@ -248,9 +248,13 @@ func attack(character, base_damage = 0):
 func takeDamage(damage):
 	if damageable:
 		stats.health.value -= damage
+		
+		if self == GameData.player:
+			emit_signal("statsChanged", "health", "Down", -damage)
 
 		if stats.health.value <= 0:
 			handleCharacterDeath()
+		
 		createHitmarker(damage)
 	else:
 		createHitmarker(0, true)

@@ -176,8 +176,12 @@ func _process(delta):
 			MoveCharacters()
 
 func takeDamage(damage):
+	var damageableStore = damageable
+	primaryWeapon.onPlayerDamaged()
+	secondaryWeapon.onPlayerDamaged()
+	
 	.takeDamage(damage)
-	emit_signal("statsChanged", "health", "Down", -damage)
+	damageable = damageableStore
 
 func handleCharacterDeath():
 	primaryWeaponNode.hide()

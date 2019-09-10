@@ -11,6 +11,9 @@ var showBehindHand = false
 func onUse():
 	pass
 
+func onPlayerDamaged():
+	pass
+
 func pickup():
 	.pickup()
 	GameData.player.dropWeapon()
