@@ -11,6 +11,7 @@ func add_room(name, room, wall):
 	var roomDistribution = room.getSpawnDistributions()
 	
 	if wall == null:
+		# Place the first room in the centre of the map
 		position = Vector2(103, 104)
 	else:
 		# Get the direction of the wall, with the interior on the right hand side.
