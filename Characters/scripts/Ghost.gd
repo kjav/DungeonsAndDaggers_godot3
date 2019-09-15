@@ -5,7 +5,7 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait.new()
-	processBehaviour = Process.StraightTransition.new()
+	processBehaviour = Process.Direct.new()
 	self.character_name = 'Ghost'
 	base_damage = 2
 	turnBehaviour.setTurnWait(2)

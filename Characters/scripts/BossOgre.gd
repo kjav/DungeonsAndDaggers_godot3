@@ -39,7 +39,7 @@ var walkingUp
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
 	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new()
-	processBehaviour = Process.StraightTransition.new()
+	processBehaviour = Process.Direct.new()
 	self.character_name = 'Boss Ogre'
 	base_damage = 3
 	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.CookedSteak}])

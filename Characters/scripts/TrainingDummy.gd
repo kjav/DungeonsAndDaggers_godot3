@@ -5,7 +5,7 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _ready():
 	turnBehaviour = Turn.Wait.new()
-	processBehaviour = Process.StraightTransition.new()
+	processBehaviour = Process.Direct.new()
 	self.character_name = 'Training Dummy'
 	base_damage = 0
 	
