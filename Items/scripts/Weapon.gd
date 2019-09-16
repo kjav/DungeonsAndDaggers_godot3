@@ -6,6 +6,10 @@ var relativeAttackPositions = []
 var onlyAttacksFirstEnemy = true
 var attackPositionBlockable = true
 var showBehindHand = false
+var offset = Vector2(0, 0)
+var rotationInHand = 0
+var rotationInOffHand = 0
+
 
 #can be used for things like bows later on
 func onUse():

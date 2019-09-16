@@ -10,8 +10,8 @@ signal playerAttack(character, amount)
 
 var time_elapsed = 0
 var attack
-var primaryWeapon = Constants.WeaponClasses.BasicSword.new()
-var secondaryWeapon = Constants.WeaponClasses.BasicShield.new()
+var primaryWeapon = Constants.WeaponClasses.BasicBow.new()
+var secondaryWeapon = Constants.WeaponClasses.BasicSword.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
@@ -52,6 +52,8 @@ func setPrimaryWeapon(weapon):
 	primaryWeapon = weapon
 	emit_signal("weaponChanged", "Primary", primaryWeapon)
 	primaryWeaponNode.set_texture(primaryWeapon.texture)
+	primaryWeaponNode.set_offset(primaryWeapon.offset)
+	primaryWeaponNode.set_rotation(primaryWeapon.rotationInHand)
 	additionalRelativeAttackPositions = weapon.relativeAttackPositions
 	onlyAttacksFirstEnemy = weapon.onlyAttacksFirstEnemy
 	attackPositionBlockable = weapon.attackPositionBlockable
@@ -60,6 +62,8 @@ func setSecondaryWeapon(weapon):
 	secondaryWeapon = weapon
 	emit_signal("weaponChanged", "Secondary", secondaryWeapon)
 	secondaryWeaponNode.set_texture(secondaryWeapon.texture)
+	secondaryWeaponNode.set_offset(secondaryWeapon.offset)
+	secondaryWeaponNode.set_rotation(secondaryWeapon.rotationInOffHand)
 
 func dropWeapon():
 	primaryWeapon.place(get_position())
