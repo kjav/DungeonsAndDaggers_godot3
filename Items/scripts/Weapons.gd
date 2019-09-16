@@ -34,3 +34,16 @@ class BasicSpear extends "Weapon.gd":
 		offset = Vector2(-30, -30)
 		rotationInHand = deg2rad(140)
 		rotationInOffHand = deg2rad(50)
+
+class BasicBow extends "Weapon.gd":
+	func _init():
+		iconFilePath = "res://assets/basic_bow.png"
+		texture = preload("res://assets/basic_bow.png")
+		item_name = "Basic Bow"
+		relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]
+		damage = 0.5
+		onlyAttacksFirstEnemy = true
+		showBehindHand = true
+		offset = Vector2(10, 22)
+		rotationInHand = deg2rad(205)
+		rotationInOffHand = deg2rad(150)
