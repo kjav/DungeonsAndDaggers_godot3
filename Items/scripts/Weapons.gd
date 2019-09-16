@@ -5,6 +5,9 @@ class BasicSword extends "Weapon.gd":
 		item_name = "Basic Sword"
 		damage = 3
 		showBehindHand = true
+		offset = Vector2(-30, -30)
+		rotationInHand = deg2rad(140)
+		rotationInOffHand = deg2rad(50)
 
 class BasicShield extends "Weapon.gd":
 	var chanceToBlockOutOf = 10
@@ -28,3 +31,6 @@ class BasicSpear extends "Weapon.gd":
 		damage = 1
 		onlyAttacksFirstEnemy = false
 		showBehindHand = true
+		offset = Vector2(-30, -30)
+		rotationInHand = deg2rad(140)
+		rotationInOffHand = deg2rad(50)

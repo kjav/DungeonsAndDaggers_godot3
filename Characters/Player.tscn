@@ -7,8 +7,8 @@
 [ext_resource path="res://assets/Player/ActionRpgArmor_23.png" type="Texture" id=5]
 [ext_resource path="res://assets/Player/ActionRpgArmor_32.png" type="Texture" id=6]
 [ext_resource path="res://assets/Player/ActionRpgArmor_42.png" type="Texture" id=7]
-[ext_resource path="res://assets/basic_shield.png" type="Texture" id=8]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=9]
+[ext_resource path="res://assets/basic_sword.png" type="Texture" id=8]
+[ext_resource path="res://assets/basic_bow.png" type="Texture" id=9]
 [ext_resource path="res://Characters/Player.tres" type="Animation" id=10]
 
 [sub_resource type="Animation" id=1]
@@ -551,7 +551,6 @@ __meta__ = {
 [node name="Right Lower Leg" type="Bone2D" parent="Skeleton2D/Body/Hip/Right Upper Leg"]
 position = Vector2( 1.75629, -0.132019 )
 rotation = 0.00113485
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.999999, 0.00113485, -0.00113485, 0.999999, 1.75629, -0.132019 )
 default_length = 4.0
 __meta__ = {
@@ -623,7 +622,6 @@ rest = Transform2D( 1, 3.72528e-009, -3.72528e-009, 1, 4.02557, -0.0999908 )
 [node name="Left Hand" type="Bone2D" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist"]
 position = Vector2( 1.84055, -0.115448 )
 rotation = -0.261799
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.965926, -0.258819, 0.258819, 0.965926, 1.84055, -0.115448 )
 default_length = 2.0
 __meta__ = {
@@ -631,16 +629,14 @@ __meta__ = {
 }
 
 [node name="SecondaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand"]
-position = Vector2( 1.35889, 0.588562 )
-rotation = -0.183484
+position = Vector2( 1, 0 )
 scale = Vector2( 0.1, 0.100359 )
 texture = ExtResource( 8 )
-offset = Vector2( 0, -5 )
+offset = Vector2( -30, -30 )
 
 [node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( -5.18, -5.777 )
 rotation = 1.58825
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.0174524, 0.999848, -0.999848, -0.0174524, -5.18, -5.777 )
 default_length = 4.0
 __meta__ = {
@@ -655,7 +651,6 @@ rest = Transform2D( 1, 0, 0, 1, 4.02188, 0.0414886 )
 [node name="Right Hand" type="Bone2D" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist"]
 position = Vector2( 1.9, 0.07 )
 rotation = 0.261799
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.965926, 0.258819, -0.258819, 0.965926, 1.9, 0.07 )
 default_length = 2.0
 __meta__ = {
@@ -663,11 +658,11 @@ __meta__ = {
 }
 
 [node name="PrimaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand"]
-position = Vector2( 0.773682, -3.38299 )
-rotation = -0.899348
-scale = Vector2( -0.1, 0.1 )
+position = Vector2( 1, 0 )
+rotation = 3.57792
+scale = Vector2( 0.1, -0.1 )
 texture = ExtResource( 9 )
-offset = Vector2( -10, -10 )
+offset = Vector2( 10, 22 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 64, 64 )
