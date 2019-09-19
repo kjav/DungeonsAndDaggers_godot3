@@ -19,6 +19,7 @@ var animationPlayer
 var skeletonScale
 var polygonsScale
 var primaryWeaponNode
+var primaryHandBone
 var secondaryWeaponNode
 
 func _ready():
@@ -37,10 +38,14 @@ func _ready():
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
 	secondaryWeaponNode = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand/SecondaryWeapon")
-	primaryWeaponNode = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand/PrimaryWeapon")
+	primaryHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
+	primaryWeaponNode = primaryHandBone.get_node("PrimaryWeapon")
 	
 	setSecondaryWeapon(secondaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
+
+func getPrimaryHandPosition():
+	return primaryHandBone.global_position
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
@@ -146,6 +151,7 @@ func MoveCharacters():
 func attack(character, base_damage = 0):
 	if alive():
 		emit_signal("playerAttack", character, primaryWeapon.damage)
+		primaryWeapon.onAttack(character)
 		.attack(character, primaryWeapon.damage)
 
 func _process(delta):
