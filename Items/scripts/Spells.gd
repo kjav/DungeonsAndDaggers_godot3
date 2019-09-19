@@ -28,5 +28,6 @@ class FireSpell extends "SpellBase.gd":
 			GameData.player.get_position(),
 			25,
 			10,
-			"Fireball_Hit"
+			"Fireball_Hit",
+			Vector2(4, 4)
 		)

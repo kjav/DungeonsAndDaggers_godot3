@@ -10,9 +10,7 @@ var offset = Vector2(0, 0)
 var rotationInHand = 0
 var rotationInOffHand = 0
 
-
-#can be used for things like bows later on
-func onUse():
+func onAttack(character):
 	pass
 
 func onPlayerDamaged():

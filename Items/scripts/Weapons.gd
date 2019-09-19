@@ -36,6 +36,9 @@ class BasicSpear extends "Weapon.gd":
 		rotationInOffHand = deg2rad(50)
 
 class BasicBow extends "Weapon.gd":
+	const missile = preload("res://Projectiles/Missile.tscn")
+	const missile_texture = preload("res://assets/arrow.png")
+	
 	func _init():
 		iconFilePath = "res://assets/basic_bow.png"
 		texture = preload("res://assets/basic_bow.png")
@@ -47,3 +50,19 @@ class BasicBow extends "Weapon.gd":
 		offset = Vector2(10, 22)
 		rotationInHand = deg2rad(205)
 		rotationInOffHand = deg2rad(150)
+	
+	func onAttack(target):
+		if target:
+			var new_missile = missile.instance()
+			#Audio.playSoundEffect("Arrow_Shot")
+			GameData.player.get_parent().add_child(new_missile)
+			
+			new_missile.init(
+				target.get_path(),
+				missile_texture,
+				GameData.player.getPrimaryHandPosition(),
+				25,
+				0,
+				"Fireball_Hit",
+				Vector2(0.5, 0.5)
+			)
