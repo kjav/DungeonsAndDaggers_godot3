@@ -21,6 +21,7 @@ func _ready():
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
 	get_node("HudCanvasLayer/Pickup").hide()
+	PlayerWeaponChanged("Primary", GameData.player.primaryWeapon)
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos):

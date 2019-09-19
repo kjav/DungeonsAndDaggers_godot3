@@ -7,73 +7,25 @@
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
-
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-frameStyle = null
 type = "None"
 
-[node name="Background" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Background" type="TextureRect" parent="."]
 margin_right = 256.0
 margin_bottom = 256.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 2 )
-stretch_mode = 0
-_sections_unfolded = [ "Rect" ]
 
-[node name="Icon" type="TextureRect" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Icon" type="TextureRect" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 192.0
 margin_bottom = 192.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 0
-_sections_unfolded = [ "Rect" ]
 
-[node name="front" type="TextureButton" parent="." index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="front" type="TextureButton" parent="."]
 margin_left = -1.0
 margin_top = 3.0
 margin_right = 255.0
 margin_bottom = 259.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 texture_normal = ExtResource( 4 )
 script = ExtResource( 5 )
-_sections_unfolded = [ "Rect", "Textures" ]
-
-

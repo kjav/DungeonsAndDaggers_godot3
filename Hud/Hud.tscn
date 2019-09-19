@@ -47,17 +47,14 @@ scale = Vector2( 2, 2 )
 
 [node name="Hat" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 0, 5 )
-type = 0
 
 [node name="Hat1" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 32, 5 )
 texture = ExtResource( 5 )
-type = 0
 
 [node name="Hat2" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 64, 5 )
 texture = ExtResource( 6 )
-type = 0
 
 [node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer"]
 show_behind_parent = true

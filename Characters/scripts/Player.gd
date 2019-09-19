@@ -38,6 +38,9 @@ func _ready():
 	polygonsScale = get_node("Polygons").scale
 	secondaryWeaponNode = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand/SecondaryWeapon")
 	primaryWeaponNode = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand/PrimaryWeapon")
+	
+	setSecondaryWeapon(secondaryWeapon)
+	setPrimaryWeapon(primaryWeapon)
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)

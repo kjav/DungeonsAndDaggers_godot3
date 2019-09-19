@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/SpriteFrames/BeserkerPlayer.tres" type="SpriteFrames" id=2]
@@ -8,8 +8,7 @@
 [ext_resource path="res://assets/Player/ActionRpgArmor_32.png" type="Texture" id=6]
 [ext_resource path="res://assets/Player/ActionRpgArmor_42.png" type="Texture" id=7]
 [ext_resource path="res://assets/basic_sword.png" type="Texture" id=8]
-[ext_resource path="res://assets/basic_bow.png" type="Texture" id=9]
-[ext_resource path="res://Characters/Player.tres" type="Animation" id=10]
+[ext_resource path="res://Characters/Player.tres" type="Animation" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "stand"
@@ -661,7 +660,7 @@ __meta__ = {
 position = Vector2( 1, 0 )
 rotation = 3.57792
 scale = Vector2( 0.1, -0.1 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 offset = Vector2( 10, 22 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -670,4 +669,4 @@ current = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/stand = SubResource( 1 )
-anims/walk = ExtResource( 10 )
+anims/walk = ExtResource( 9 )
