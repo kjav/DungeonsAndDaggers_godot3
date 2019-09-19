@@ -1,5 +1,5 @@
 class FireSpell extends "SpellBase.gd":
-	const missile = preload("res://Characters/Missile.tscn")
+	const missile = preload("res://Projectiles/Missile.tscn")
 	const missile_texture = preload("res://assets/fireball.png")
 
 	func _init():
@@ -16,7 +16,6 @@ class FireSpell extends "SpellBase.gd":
 				.onUse()
 				launchFireball(closest_enemy)
 				GameData.spells.remove(GameData.spells.find(self))
-
 
 	func launchFireball(closest_enemy):
 		var new_missile = missile.instance()

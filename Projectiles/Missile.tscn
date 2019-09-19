@@ -1,14 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Characters/scripts/Missile.gd" type="Script" id=1]
+[ext_resource path="res://Projectiles/Missile.gd" type="Script" id=1]
 
 [node name="Missile" type="Sprite"]
-
 visible = false
 scale = Vector2( 4, 4 )
 script = ExtResource( 1 )
-target = null
-speed = 25
-damage = 0
-
-
