@@ -19,8 +19,9 @@ var animationPlayer
 var skeletonScale
 var polygonsScale
 var primaryWeaponNode
-var primaryHandBone
+var backHandBone
 var secondaryWeaponNode
+var forwardHandBone
 
 func _ready():
 	#this is temporary to aid with testing
@@ -37,15 +38,17 @@ func _ready():
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
-	secondaryWeaponNode = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand/SecondaryWeapon")
-	primaryHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
-	primaryWeaponNode = primaryHandBone.get_node("PrimaryWeapon")
+	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand")
+	primaryWeaponNode = forwardHandBone.get_node("PrimaryWeapon")
+	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
+	secondaryWeaponNode = backHandBone.get_node("SecondaryWeapon")
 	
 	setSecondaryWeapon(secondaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
+	faceDirection(Enums.DIRECTION.RIGHT)
 
 func getPrimaryHandPosition():
-	return primaryHandBone.global_position
+	return backHandBone.global_position
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)

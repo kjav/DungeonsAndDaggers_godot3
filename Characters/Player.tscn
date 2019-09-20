@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Player/ActionRpgArmor_23.png" type="Texture" id=5]
 [ext_resource path="res://assets/Player/ActionRpgArmor_32.png" type="Texture" id=6]
 [ext_resource path="res://assets/Player/ActionRpgArmor_42.png" type="Texture" id=7]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=8]
+[ext_resource path="res://assets/basic_bow.png" type="Texture" id=8]
 [ext_resource path="res://Characters/Player.tres" type="Animation" id=9]
 
 [sub_resource type="Animation" id=1]
@@ -603,6 +603,36 @@ scale = Vector2( 1.03097, -22.9448 )
 rest = Transform2D( 1.22942e-008, -1.03097, -22.9448, -2.73614e-007, -0.051, -8 )
 default_length = 3.0
 
+[node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
+position = Vector2( -5.18, -5.777 )
+rotation = 1.58825
+rest = Transform2D( -0.0174524, 0.999848, -0.999848, -0.0174524, -5.18, -5.777 )
+default_length = 4.0
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="Right Wrist" type="Bone2D" parent="Skeleton2D/Body/Chest/Right Arm"]
+position = Vector2( 4.02188, 0.0414886 )
+rest = Transform2D( 1, 0, 0, 1, 4.02188, 0.0414886 )
+
+[node name="Right Hand" type="Bone2D" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist"]
+position = Vector2( 1.9, 0.07 )
+rotation = 0.261799
+rest = Transform2D( 0.965926, 0.258819, -0.258819, 0.965926, 1.9, 0.07 )
+default_length = 2.0
+__meta__ = {
+"_edit_bone_": true
+}
+
+[node name="SecondaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand"]
+position = Vector2( 1, 0 )
+rotation = 2.53073
+scale = Vector2( 0.1, 0.100359 )
+texture = ExtResource( 8 )
+offset = Vector2( 10, 22 )
+
 [node name="Left Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( 4.89159, -5.77594 )
 rotation = 1.57079
@@ -627,38 +657,9 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="SecondaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand"]
+[node name="PrimaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand"]
 position = Vector2( 1, 0 )
-scale = Vector2( 0.1, 0.100359 )
-texture = ExtResource( 8 )
-offset = Vector2( -30, -30 )
-
-[node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
-position = Vector2( -5.18, -5.777 )
-rotation = 1.58825
-rest = Transform2D( -0.0174524, 0.999848, -0.999848, -0.0174524, -5.18, -5.777 )
-default_length = 4.0
-__meta__ = {
-"_edit_bone_": true,
-"_edit_ik_": true
-}
-
-[node name="Right Wrist" type="Bone2D" parent="Skeleton2D/Body/Chest/Right Arm"]
-position = Vector2( 4.02188, 0.0414886 )
-rest = Transform2D( 1, 0, 0, 1, 4.02188, 0.0414886 )
-
-[node name="Right Hand" type="Bone2D" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist"]
-position = Vector2( 1.9, 0.07 )
-rotation = 0.261799
-rest = Transform2D( 0.965926, 0.258819, -0.258819, 0.965926, 1.9, 0.07 )
-default_length = 2.0
-__meta__ = {
-"_edit_bone_": true
-}
-
-[node name="PrimaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand"]
-position = Vector2( 1, 0 )
-rotation = 3.57792
+rotation = 3.22886
 scale = Vector2( 0.1, -0.1 )
 texture = ExtResource( 8 )
 offset = Vector2( 10, 22 )
