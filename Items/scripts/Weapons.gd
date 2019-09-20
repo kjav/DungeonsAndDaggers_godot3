@@ -6,8 +6,8 @@ class BasicSword extends "Weapon.gd":
 		damage = 3
 		showBehindHand = true
 		offset = Vector2(-30, -30)
-		rotationInHand = deg2rad(140)
-		rotationInOffHand = deg2rad(50)
+		rotationInHand = deg2rad(120)
+		rotationInOffHand = deg2rad(55)
 
 class BasicShield extends "Weapon.gd":
 	var chanceToBlockOutOf = 10
@@ -32,8 +32,8 @@ class BasicSpear extends "Weapon.gd":
 		onlyAttacksFirstEnemy = false
 		showBehindHand = true
 		offset = Vector2(-30, -30)
-		rotationInHand = deg2rad(140)
-		rotationInOffHand = deg2rad(50)
+		rotationInHand = deg2rad(120)
+		rotationInOffHand = deg2rad(55)
 
 class BasicBow extends "Weapon.gd":
 	const missile = preload("res://Projectiles/Missile.tscn")
@@ -48,8 +48,8 @@ class BasicBow extends "Weapon.gd":
 		onlyAttacksFirstEnemy = true
 		showBehindHand = true
 		offset = Vector2(10, 22)
-		rotationInHand = deg2rad(205)
-		rotationInOffHand = deg2rad(150)
+		rotationInHand = deg2rad(185)
+		rotationInOffHand = deg2rad(145)
 	
 	func onAttack(target):
 		if target:
