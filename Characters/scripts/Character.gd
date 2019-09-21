@@ -240,6 +240,11 @@ func attack(character, base_damage = 0):
 	if alive():
 		if (character == GameData.player) or (self == GameData.player):
 			var damage = calculate_damage(character, base_damage)
+			
+			if damageMultiplierInEffect():
+				damage = damageAfterMultiplier(damage)
+				reduceDamageMultiplier()
+			
 			emit_signal("attack", self, damage);
 			
 			#Audio.playHit()
@@ -354,3 +359,25 @@ func setPlayingOnAllBodyParts(playingValue, setEvenIfDead = false):
 
 func _on_BossDoor_bossDoorOpened():
 	resetToStartPosition()
+
+func damageAfterMultiplier(damage):
+	return ceil(damage * 2 * damageMultiplier) / 2
+
+func reduceDamageMultiplier():
+	multiplierRemainingAttacks -= 1
+	
+	if multiplierRemainingAttacks <= 0:
+		removeDamageModfier()
+
+func removeDamageModfier():
+	#remove visual effect
+	damageMultiplier = 1
+	multiplierRemainingAttacks = 0
+
+func applyDamageModifier(modifier, numberOfAttacks):
+	#apply visual effect
+	damageMultiplier = modifier
+	multiplierRemainingAttacks = numberOfAttacks
+
+func damageMultiplierInEffect():
+	return multiplierRemainingAttacks > 0
