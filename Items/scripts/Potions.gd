@@ -20,4 +20,15 @@ class DamagePotion extends "PotionBase.gd":
 	func onUse():
 		#Audio.playSoundEffect(useSound, true)
 		.onUse()
-		GameData.player.applyDamageModifier(2, 3)
+		GameData.player.applyDamageModifier(3)
+
+class InvisibilityPotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/clear_potion.png"
+		item_name = "Invisibility Potion"
+		texture = preload("res://assets/clear_potion.png")
+	
+	func onUse():
+		#Audio.playSoundEffect(useSound, true)
+		.onUse()
+		GameData.player.applyInvisibility(10)

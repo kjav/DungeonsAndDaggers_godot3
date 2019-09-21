@@ -375,9 +375,19 @@ func removeDamageModfier():
 	#remove visual effect
 	multiplierRemainingAttacks = 0
 
-func applyDamageModifier(modifier, numberOfAttacks):
+func applyDamageModifier(numberOfAttacks):
 	#apply visual effect
 	multiplierRemainingAttacks += numberOfAttacks
 
 func damageMultiplierInEffect():
 	return multiplierRemainingAttacks > 0
+
+func removeInvisibility():
+	invisible = false
+	self.set_modulate(Color(1, 1, 1, 1))
+	invisibilityTurnsRemaining = 0
+
+func applyInvisibility(turnsAmount):
+	invisible = true
+	self.set_modulate(Color(1, 1, 1, 0.1))
+	invisibilityTurnsRemaining += turnsAmount
