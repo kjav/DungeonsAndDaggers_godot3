@@ -13,6 +13,8 @@ var initial_pos
 var isPartOfBossRoom
 var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
+var damageMultiplier = 2
+var multiplierRemainingAttacks = 0
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -371,13 +373,11 @@ func reduceDamageMultiplier():
 
 func removeDamageModfier():
 	#remove visual effect
-	damageMultiplier = 1
 	multiplierRemainingAttacks = 0
 
 func applyDamageModifier(modifier, numberOfAttacks):
 	#apply visual effect
-	damageMultiplier = modifier
-	multiplierRemainingAttacks = numberOfAttacks
+	multiplierRemainingAttacks += numberOfAttacks
 
 func damageMultiplierInEffect():
 	return multiplierRemainingAttacks > 0

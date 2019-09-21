@@ -14,7 +14,7 @@ class HealthPotion extends "PotionBase.gd":
 class DamagePotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/black_potion.png"
-		item_name = "Damage Potion"
+		item_name = "Damage Boost Potion"
 		texture = preload("res://assets/black_potion.png")
 	
 	func onUse():

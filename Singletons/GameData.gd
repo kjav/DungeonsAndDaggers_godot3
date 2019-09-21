@@ -17,7 +17,7 @@ var TileSize = 128;
 var start_screen = ""
 
 func _ready():
-	var instance = Constants.PotionClasses.HealthPotion.new()
+	var instance = Constants.PotionClasses.DamagePotion.new()
 	addPotions([instance, instance, instance])
 	instance = Constants.FoodClasses.CookedSteak.new()
 	addFoods([instance, instance])
