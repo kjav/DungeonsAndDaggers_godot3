@@ -15,6 +15,8 @@ var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
+var invisible = false
+var invisibilityTurnsRemaining = 0
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -71,6 +73,11 @@ func resetStats():
 	stats.defence = initialStats.defence.duplicate()
 	
 func turn():
+	invisibilityTurnsRemaining -= 1
+	
+	if invisibilityTurnsRemaining <= 0:
+		removeInvisibility()
+	
 	pass
 
 func setTurnAnimations():
@@ -246,6 +253,8 @@ func attack(character, base_damage = 0):
 			if damageMultiplierInEffect():
 				damage = damageAfterMultiplier(damage)
 				reduceDamageMultiplier()
+			
+			removeInvisibility()
 			
 			emit_signal("attack", self, damage);
 			

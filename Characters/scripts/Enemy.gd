@@ -22,6 +22,8 @@ func attack(character, damage=0):
 	
 
 func turn():
+	.turn()
+	
 	if movement_direction != Enums.DIRECTION.NONE:
 		previous_stand_direction = movement_direction
 	

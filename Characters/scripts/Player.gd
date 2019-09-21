@@ -128,6 +128,7 @@ func setStandAnimation(direction):
 
 func swiped(direction):
 	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		.turn()
 		time_elapsed = 0
 		#Audio.playWalk()
 		moveDirection(direction)
