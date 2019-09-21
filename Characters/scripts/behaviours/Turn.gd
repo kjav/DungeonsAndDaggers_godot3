@@ -11,12 +11,15 @@ class Wait extends BaseTurn:
 
 class MoveTo extends BaseTurn:
 	func turn(pos):
-		pos.x = int(pos.x / GameData.TileSize)
-		pos.y = int(pos.y / GameData.TileSize)
-		var player_pos = GameData.player.turn_end_pos
-		player_pos.x = int(player_pos.x / GameData.TileSize)
-		player_pos.y = int(player_pos.y / GameData.TileSize)
-		return GameData.tilemap.findNextDirection(pos, player_pos)
+		if GameData.player.invisible:
+			return Enums.DIRECTION.NONE
+		else:
+			pos.x = int(pos.x / GameData.TileSize)
+			pos.y = int(pos.y / GameData.TileSize)
+			var player_pos = GameData.player.turn_end_pos
+			player_pos.x = int(player_pos.x / GameData.TileSize)
+			player_pos.y = int(player_pos.y / GameData.TileSize)
+			return GameData.tilemap.findNextDirection(pos, player_pos)
 	
 	func getPathFindingDistance(pos):
 		var divided_pos = Vector2(0,0)
@@ -55,8 +58,8 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 	var timeSpentRecovering = 0
 	var additionalRelativeAttackPositions = []
 	
-	func turn(pos):		
-		if GameData.player.alive():
+	func turn(pos):
+		if GameData.player.alive() || GameData.player.invisibile:
 			var divided_pos = Vector2(0,0)
 			divided_pos.x = int(pos.x / GameData.TileSize)
 			divided_pos.y = int(pos.y / GameData.TileSize)
@@ -143,7 +146,7 @@ class InRangeMoveToOtherwiseRandom extends BaseTurn:
 		var player_pos = GameData.player.turn_end_pos
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
-		if GameData.player.alive() and moveTo.getPathFindingDistance(pos) < limit:
+		if GameData.player.alive() and !GameData.player.invisible and moveTo.getPathFindingDistance(pos) < limit:
 			# Select movement direction towards player
 			return moveTo.turn(pos)
 		else:
