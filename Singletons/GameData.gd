@@ -18,7 +18,7 @@ var start_screen = ""
 
 func _ready():
 	var instance = Constants.PotionClasses.HealthPotion.new()
-	var instance2 = Constants.PotionClasses.DamagePotion.new()
+	var instance2 = Constants.PotionClasses.DamageBoostPotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
 	addPotions([instance, instance2, instance3])
 	instance = Constants.FoodClasses.CookedSteak.new()
@@ -145,7 +145,7 @@ func reset():
 	characters = []
 	placedItems = []
 	var instance = Constants.PotionClasses.HealthPotion.new()
-	var instance2 = Constants.PotionClasses.DamagePotion.new()
+	var instance2 = Constants.PotionClasses.DamageBoostPotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
 	addPotions([instance, instance2, instance3])
 	instance = Constants.FoodClasses.CookedSteak.new()
