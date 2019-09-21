@@ -230,3 +230,5 @@ func increaseMax(amount):
 	self.stats.health.maximum += amount
 	emit_signal("statsChanged", "maxhealth", "Up", amount)
 
+func addArmour(amount):
+	#armour functionality

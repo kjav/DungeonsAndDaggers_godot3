@@ -43,3 +43,14 @@ class LevelUpPotion extends "PotionBase.gd":
 		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		#open upgrade screen
+
+class ArmourPotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/purple_potion.png"
+		item_name = "Armour Potion"
+		texture = preload("res://assets/purple_potion.png")
+	
+	func onUse():
+		#Audio.playSoundEffect(useSound, true)
+		.onUse()
+		GameData.player.addArmour(2)
