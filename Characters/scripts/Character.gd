@@ -24,6 +24,9 @@ var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
+var temporaryManaTurnsRemaining = -1
+var manaChangeSinceTempIncrease = 0
+var temporaryManaAmount = 2
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -37,8 +40,8 @@ var initialStats = {
 		"maximum": 3
 	},
 	"strength": {
-		"value": 5,
-		"maximum": 5
+		"value": 0,
+		"maximum": 0
 	},
 	"defence": {
 		"value": 5,
@@ -99,6 +102,12 @@ func turn():
 		temporaryDefenceTurnsRemaining -= 1
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
+
+	if temporaryManaTurnsRemaining > 0:
+		temporaryManaTurnsRemaining -= 1
+	elif temporaryManaTurnsRemaining == 0:
+		removeTemporaryMana()
+
 func setTurnAnimations():
 	pass
 
@@ -114,6 +123,10 @@ func heal(amount, evenIfDead = false):
 func increaseHealth(amount, evenIfDead = false):
 	if self.stats.health.value < self.stats.health.maximum && (evenIfDead || alive()):
 		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
+
+func increaseMana(amount):
+	if self.stats.mana.value < self.stats.mana.maximum:
+		self.stats.mana.value = min(self.stats.mana.value + amount, self.stats.mana.maximum)
 
 func moveDirection(direction):
 	if (not moving) and alive():
@@ -435,6 +448,15 @@ func decreaseMaxHealth(amount):
 	if self.stats.health.value > self.stats.health.maximum:
 		self.stats.health.value = self.stats.health.maximum
 
+func increaseMaxMana(amount):
+	self.stats.mana.maximum += amount
+
+func decreaseMaxMana(amount):
+	self.stats.mana.maximum -= amount
+	
+	if self.stats.mana.value > self.stats.mana.maximum:
+		self.stats.mana.value = self.stats.mana.maximum
+
 func applyTemporaryHealth(turnAmount):
 	if temporaryMaxHeathTurnsRemaining <= 0:
 		increaseMaxHealth(temporaryMaxHeathAmount)
@@ -477,3 +499,19 @@ func removeTemporaryDefence():
 	self.stats.defence.value -= temporaryDefenceAmount
 	self.stats.defence.maximum -= temporaryDefenceAmount
 	temporaryDefenceTurnsRemaining = -1
+
+func applyTemporaryMana(turnAmount):
+	if temporaryManaTurnsRemaining <= 0:
+		increaseMaxMana(temporaryManaAmount) #todo check
+		increaseMana(temporaryManaAmount)
+	else:
+		increaseMana(min(manaChangeSinceTempIncrease, 2))
+	
+	manaChangeSinceTempIncrease = 0
+	
+	temporaryManaTurnsRemaining += turnAmount
+
+func removeTemporaryMana():
+	decreaseMaxMana(temporaryManaAmount)
+	manaChangeSinceTempIncrease = 0
+	temporaryManaTurnsRemaining -= 1

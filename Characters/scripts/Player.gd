@@ -220,6 +220,10 @@ func increaseHealth(amount, evenIfDead = false):
 	.increaseHealth(amount, evenIfDead)
 	emit_signal("statsChanged", "health", "Up", amount)
 
+func increaseMana(amount):
+	.increaseMana(amount)
+	emit_signal("statsChanged", "mana", "Up", amount)
+
 func consume_stat(stat, amount):
 	if stats[stat].value >= amount:
 		stats[stat].value -= amount
@@ -234,6 +238,14 @@ func increaseMaxHealth(amount):
 func decreaseMaxHealth(amount):
 	.decreaseMaxHealth(amount)
 	emit_signal("statsChanged", "maxhealth", "Down", amount)
+
+func increaseMaxMana(amount):
+	.increaseMaxMana(amount)
+	emit_signal("statsChanged", "maxmana", "Up", amount)
+
+func decreaseMaxMana(amount):
+	.decreaseMaxMana(amount)
+	emit_signal("statsChanged", "maxmana", "Down", amount)
 
 func addArmour(amount):
 	pass
