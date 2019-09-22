@@ -231,4 +231,5 @@ func increaseMax(amount):
 	emit_signal("statsChanged", "maxhealth", "Up", amount)
 
 func addArmour(amount):
+	pass
 	#armour functionality
