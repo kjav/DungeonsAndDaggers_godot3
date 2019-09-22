@@ -473,9 +473,6 @@ func removeTemporaryMaxHealth():
 	damageSinceMaxHealthIncrease = 0
 	temporaryMaxHeathTurnsRemaining -= 1
 
-func addArmour(amount):
-	pass
-
 func applyTemporaryStrength(turnAmount):
 	if temporaryStrengthTurnsRemaining <= 0:
 		self.stats.strength.value += temporaryStrengthAmount

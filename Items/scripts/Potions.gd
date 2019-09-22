@@ -39,16 +39,6 @@ class LevelUpPotion extends "PotionBase.gd":
 		.onUse()
 		#open upgrade screen
 
-class ArmourPotion extends "PotionBase.gd":
-	func _init():
-		iconFilePath = "res://assets/purple_potion.png"
-		item_name = "Armour Potion"
-		texture = preload("res://assets/purple_potion.png")
-	
-	func onUse():
-		.onUse()
-		GameData.player.addArmour(2)
-
 class BreifHealthPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/red_simple_potion.png"
