@@ -400,3 +400,12 @@ func applyInvisibility(turnsAmount):
 	invisible = true
 	self.set_modulate(Color(1, 1, 1, 0.1))
 	invisibilityTurnsRemaining += turnsAmount
+
+func applyTemporaryHealth():
+	pass
+
+func applyTemporaryDefence():
+	pass
+
+func applyTemporaryAttack():
+	pass

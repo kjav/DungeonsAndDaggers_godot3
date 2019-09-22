@@ -9,10 +9,10 @@ class HealthPotion extends "PotionBase.gd":
 		.onUse()
 		GameData.player.increaseMax(1)
 
-class DamageBoostPotion extends "PotionBase.gd":
+class DoubleDamagePotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/black_potion.png"
-		item_name = "Damage Boost Potion"
+		item_name = "Double Damage Potion"
 		texture = preload("res://assets/black_potion.png")
 	
 	func onUse():
@@ -48,3 +48,43 @@ class ArmourPotion extends "PotionBase.gd":
 	func onUse():
 		.onUse()
 		GameData.player.addArmour(2)
+
+class BreifHealthPotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/red_simple_potion.png"
+		item_name = "Breif Health Potion"
+		texture = preload("res://assets/red_simple_potion.png")
+	
+	func onUse():
+		.onUse()
+		GameData.player.applyTemporaryHealth(15)
+		
+class BreifManaPotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/blue_simple_potion.png"
+		item_name = "Breif Mana Potion"
+		texture = preload("res://assets/blue_simple_potion.png")
+	
+	func onUse():
+		.onUse()
+		GameData.player.applyTemporaryMana(15)
+
+class BreifAttackPotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/black_simple_potion.png"
+		item_name = "Breif Attack Potion"
+		texture = preload("res://assets/black_simple_potion.png")
+	
+	func onUse():
+		.onUse()
+		GameData.player.applyTemporaryAttack(15)
+		
+class BreifDefencePotion extends "PotionBase.gd":
+	func _init():
+		iconFilePath = "res://assets/purple_simple_potion.png"
+		item_name = "Breif Defence Potion"
+		texture = preload("res://assets/purple_simple_potion.png")
+	
+	func onUse():
+		.onUse()
+		GameData.player.applyTemporaryDefence(15)

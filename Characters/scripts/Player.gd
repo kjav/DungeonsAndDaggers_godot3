@@ -233,3 +233,10 @@ func increaseMax(amount):
 func addArmour(amount):
 	pass
 	#armour functionality
+
+func applyTemporaryHealth():
+	.applyTemporaryHealth()
+	pass
+
+func applyTemporaryMana():
+	pass
