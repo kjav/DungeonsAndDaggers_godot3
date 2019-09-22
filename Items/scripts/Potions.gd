@@ -7,7 +7,7 @@ class HealthPotion extends "PotionBase.gd":
 	
 	func onUse():
 		.onUse()
-		GameData.player.increaseMax(1)
+		GameData.player.increaseMaxHealth(1)
 
 class DoubleDamagePotion extends "PotionBase.gd":
 	func _init():

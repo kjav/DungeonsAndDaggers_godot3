@@ -16,7 +16,11 @@ var environmentsAtPosition = []
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
 var invisible = false
-var invisibilityTurnsRemaining = 0
+var invisibilityTurnsRemaining = -1
+var temporaryMaxHealth = 0
+var temporaryMaxHeathTurnsRemaining = -1
+var damageSinceMaxHealthIncrease = 0
+var temporaryMaxHeathAmount = 2
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -73,12 +77,15 @@ func resetStats():
 	stats.defence = initialStats.defence.duplicate()
 	
 func turn():
-	invisibilityTurnsRemaining -= 1
-	
-	if invisibilityTurnsRemaining <= 0:
+	if invisibilityTurnsRemaining > 0:
+		invisibilityTurnsRemaining -= 1
+	elif invisibilityTurnsRemaining == 0:
 		removeInvisibility()
-	
-	pass
+
+	if temporaryMaxHeathTurnsRemaining > 0:
+		temporaryMaxHeathTurnsRemaining -= 1
+	elif temporaryMaxHeathTurnsRemaining == 0:
+		removeTemporaryMaxHealth()
 
 func setTurnAnimations():
 	pass
@@ -90,6 +97,9 @@ func consume_stat(stat, amount):
 	return false
 
 func heal(amount, evenIfDead = false):
+	increaseHealth(amount, evenIfDead)
+
+func increaseHealth(amount, evenIfDead = false):
 	if self.stats.health.value < self.stats.health.maximum && (evenIfDead || alive()):
 		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
 
@@ -268,6 +278,9 @@ func takeDamage(damage):
 		if self == GameData.player:
 			emit_signal("statsChanged", "health", "Down", -damage)
 
+		if temporaryMaxHeathTurnsRemaining > 0:
+			damageSinceMaxHealthIncrease += damage
+
 		if stats.health.value <= 0:
 			handleCharacterDeath()
 		
@@ -394,18 +407,40 @@ func damageMultiplierInEffect():
 func removeInvisibility():
 	invisible = false
 	self.set_modulate(Color(1, 1, 1, 1))
-	invisibilityTurnsRemaining = 0
+	invisibilityTurnsRemaining = -1
 
 func applyInvisibility(turnsAmount):
 	invisible = true
 	self.set_modulate(Color(1, 1, 1, 0.1))
 	invisibilityTurnsRemaining += turnsAmount
 
-func applyTemporaryHealth():
+func increaseMaxHealth(amount):
+	self.stats.health.maximum += amount
+
+func decreaseMaxHealth(amount):
+	self.stats.health.maximum -= amount
+	
+	if self.stats.health.value > self.stats.health.maximum:
+		self.stats.health.value = self.stats.health.maximum
+
+func applyTemporaryHealth(turnAmount):
+	if temporaryMaxHeathTurnsRemaining <= 0:
+		increaseMaxHealth(temporaryMaxHeathAmount)
+		increaseHealth(temporaryMaxHeathAmount)
+	else:
+		increaseHealth(min(damageSinceMaxHealthIncrease, 2))
+	
+	damageSinceMaxHealthIncrease = 0
+	
+	temporaryMaxHeathTurnsRemaining += turnAmount
+
+func removeTemporaryMaxHealth():
+	decreaseMaxHealth(temporaryMaxHeathAmount)
+	damageSinceMaxHealthIncrease = 0
+	temporaryMaxHeathTurnsRemaining -= 1
+
+func applyTemporaryDefence(turnAmount):
 	pass
 
-func applyTemporaryDefence():
-	pass
-
-func applyTemporaryAttack():
+func applyTemporaryAttack(turnAmount):
 	pass

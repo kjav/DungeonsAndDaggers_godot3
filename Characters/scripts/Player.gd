@@ -25,8 +25,8 @@ var forwardHandBone
 
 func _ready():
 	#this is temporary to aid with testing
-	increaseMax(9)
-	heal(9)
+	#increaseMaxHealth(9)
+	#heal(9)
 	
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
@@ -214,9 +214,10 @@ func pickUp():
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
-
 	.heal(amount, evenIfDead)
-	
+
+func increaseHealth(amount, evenIfDead = false):
+	.increaseHealth(amount, evenIfDead)
 	emit_signal("statsChanged", "health", "Up", amount)
 
 func consume_stat(stat, amount):
@@ -226,17 +227,17 @@ func consume_stat(stat, amount):
 		return true
 	return false
 
-func increaseMax(amount):
-	self.stats.health.maximum += amount
+func increaseMaxHealth(amount):
+	.increaseMaxHealth(amount)
 	emit_signal("statsChanged", "maxhealth", "Up", amount)
+
+func decreaseMaxHealth(amount):
+	.decreaseMaxHealth(amount)
+	emit_signal("statsChanged", "maxhealth", "Down", amount)
 
 func addArmour(amount):
 	pass
 	#armour functionality
 
-func applyTemporaryHealth():
-	.applyTemporaryHealth()
-	pass
-
-func applyTemporaryMana():
+func applyTemporaryMana(turnAmount):
 	pass
