@@ -17,6 +17,9 @@ var TileSize = 128;
 var start_screen = ""
 
 func _ready():
+	addInitialItems()
+
+func addInitialItems():
 	var instance = Constants.PotionClasses.HealthPotion.new()
 	var instance2 = Constants.PotionClasses.DamageBoostPotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
@@ -144,12 +147,5 @@ func reset():
 	environmentObjects = []
 	characters = []
 	placedItems = []
-	var instance = Constants.PotionClasses.HealthPotion.new()
-	var instance2 = Constants.PotionClasses.DamageBoostPotion.new()
-	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
-	addPotions([instance, instance2, instance3])
-	instance = Constants.FoodClasses.CookedSteak.new()
-	addFoods([instance, instance])
-	instance = Constants.SpellClasses.FireSpell.new()
-	addSpells([instance, instance])
+	addInitialItems()
 

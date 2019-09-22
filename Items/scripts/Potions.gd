@@ -6,10 +6,8 @@ class HealthPotion extends "PotionBase.gd":
 		texture = preload("res://assets/red_potion2.png")
 	
 	func onUse():
-		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		GameData.player.increaseMax(1)
-		GameData.potions.remove(GameData.potions.find(self))
 
 class DamageBoostPotion extends "PotionBase.gd":
 	func _init():
@@ -18,7 +16,6 @@ class DamageBoostPotion extends "PotionBase.gd":
 		texture = preload("res://assets/black_potion.png")
 	
 	func onUse():
-		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		GameData.player.applyDamageModifier(3)
 
@@ -29,7 +26,6 @@ class InvisibilityPotion extends "PotionBase.gd":
 		texture = preload("res://assets/clear_potion.png")
 	
 	func onUse():
-		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		GameData.player.applyInvisibility(10)
 
@@ -40,7 +36,6 @@ class LevelUpPotion extends "PotionBase.gd":
 		texture = preload("res://assets/special_potion.png")
 	
 	func onUse():
-		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		#open upgrade screen
 
@@ -51,6 +46,5 @@ class ArmourPotion extends "PotionBase.gd":
 		texture = preload("res://assets/purple_potion.png")
 	
 	func onUse():
-		#Audio.playSoundEffect(useSound, true)
 		.onUse()
 		GameData.player.addArmour(2)
