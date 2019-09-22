@@ -61,9 +61,9 @@ class BreifManaPotion extends "PotionBase.gd":
 
 class BreifStrengthPotion extends "PotionBase.gd":
 	func _init():
-		iconFilePath = "res://assets/black_simple_potion.png"
+		iconFilePath = "res://assets/green_simple_potion.png"
 		item_name = "Breif Strength Potion"
-		texture = preload("res://assets/black_simple_potion.png")
+		texture = preload("res://assets/green_simple_potion.png")
 	
 	func onUse():
 		.onUse()
@@ -71,9 +71,9 @@ class BreifStrengthPotion extends "PotionBase.gd":
 		
 class BreifDefencePotion extends "PotionBase.gd":
 	func _init():
-		iconFilePath = "res://assets/purple_simple_potion.png"
+		iconFilePath = "res://assets/black_simple_potion.png"
 		item_name = "Breif Defence Potion"
-		texture = preload("res://assets/purple_simple_potion.png")
+		texture = preload("res://assets/black_simple_potion.png")
 	
 	func onUse():
 		.onUse()
