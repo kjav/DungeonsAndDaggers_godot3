@@ -21,7 +21,7 @@ func _ready():
 
 func addInitialItems():
 	var instance = Constants.PotionClasses.HealthPotion.new()
-	var instance2 = Constants.PotionClasses.DamageBoostPotion.new()
+	var instance2 = Constants.PotionClasses.DoubleDamagePotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
 	addPotions([instance, instance2, instance3])
 	instance = Constants.FoodClasses.CookedSteak.new()

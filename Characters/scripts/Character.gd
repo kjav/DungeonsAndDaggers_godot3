@@ -17,10 +17,13 @@ var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
 var invisible = false
 var invisibilityTurnsRemaining = -1
-var temporaryMaxHealth = 0
 var temporaryMaxHeathTurnsRemaining = -1
 var damageSinceMaxHealthIncrease = 0
 var temporaryMaxHeathAmount = 2
+var temporaryStrengthTurnsRemaining = -1
+var temporaryStrengthAmount = 5
+var temporaryDefenceTurnsRemaining = -1
+var temporaryDefenceAmount = 5
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -87,6 +90,15 @@ func turn():
 	elif temporaryMaxHeathTurnsRemaining == 0:
 		removeTemporaryMaxHealth()
 
+	if temporaryStrengthTurnsRemaining > 0:
+		temporaryStrengthTurnsRemaining -= 1
+	elif temporaryStrengthTurnsRemaining == 0:
+		removeTemporaryStrength()
+
+	if temporaryDefenceTurnsRemaining > 0:
+		temporaryDefenceTurnsRemaining -= 1
+	elif temporaryDefenceTurnsRemaining == 0:
+		removeTemporaryDefence()
 func setTurnAnimations():
 	pass
 
@@ -439,8 +451,29 @@ func removeTemporaryMaxHealth():
 	damageSinceMaxHealthIncrease = 0
 	temporaryMaxHeathTurnsRemaining -= 1
 
-func applyTemporaryDefence(turnAmount):
+func addArmour(amount):
 	pass
 
-func applyTemporaryAttack(turnAmount):
-	pass
+func applyTemporaryStrength(turnAmount):
+	if temporaryStrengthTurnsRemaining <= 0:
+		self.stats.strength.value += temporaryStrengthAmount
+		self.stats.strength.maximum += temporaryStrengthAmount
+	
+	temporaryStrengthTurnsRemaining += turnAmount
+
+func removeTemporaryStrength():
+	self.stats.strength.value -= temporaryStrengthAmount
+	self.stats.strength.maximum -= temporaryStrengthAmount
+	temporaryStrengthTurnsRemaining = -1
+
+func applyTemporaryDefence(turnAmount):
+	if temporaryDefenceTurnsRemaining <= 0:
+		self.stats.defence.value += temporaryDefenceAmount
+		self.stats.defence.maximum += temporaryDefenceAmount
+	
+	temporaryDefenceTurnsRemaining += turnAmount
+
+func removeTemporaryDefence():
+	self.stats.defence.value -= temporaryDefenceAmount
+	self.stats.defence.maximum -= temporaryDefenceAmount
+	temporaryDefenceTurnsRemaining = -1

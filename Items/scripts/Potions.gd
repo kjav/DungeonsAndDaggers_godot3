@@ -69,15 +69,15 @@ class BreifManaPotion extends "PotionBase.gd":
 		.onUse()
 		GameData.player.applyTemporaryMana(15)
 
-class BreifAttackPotion extends "PotionBase.gd":
+class BreifStrengthPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/black_simple_potion.png"
-		item_name = "Breif Attack Potion"
+		item_name = "Breif Strength Potion"
 		texture = preload("res://assets/black_simple_potion.png")
 	
 	func onUse():
 		.onUse()
-		GameData.player.applyTemporaryAttack(15)
+		GameData.player.applyTemporaryStrength(15)
 		
 class BreifDefencePotion extends "PotionBase.gd":
 	func _init():
