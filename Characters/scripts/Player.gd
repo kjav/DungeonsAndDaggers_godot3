@@ -246,10 +246,3 @@ func increaseMaxMana(amount):
 func decreaseMaxMana(amount):
 	.decreaseMaxMana(amount)
 	emit_signal("statsChanged", "maxmana", "Down", amount)
-
-func addArmour(amount):
-	pass
-	#armour functionality
-
-func applyTemporaryMana(turnAmount):
-	pass

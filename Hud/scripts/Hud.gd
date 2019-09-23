@@ -74,7 +74,7 @@ func PlayerManaChanged(mana, maxMana):
 func PlayerStatChanged(stat, direction, value):	
 	if stat == "health" or stat == "maxhealth":
 		PlayerHealthChanged(GameData.player.stats.health.value, GameData.player.stats.health.maximum)
-	elif stat == "mana":
+	elif stat == "mana" or stat == "maxmana":
 		PlayerManaChanged(GameData.player.stats.mana.value, GameData.player.stats.mana.maximum)
 
 func _on_Player_itemPickedUp(item):

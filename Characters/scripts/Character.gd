@@ -18,7 +18,7 @@ var multiplierRemainingAttacks = 0
 var invisible = false
 var invisibilityTurnsRemaining = -1
 var temporaryMaxHeathTurnsRemaining = -1
-var damageSinceMaxHealthIncrease = 0
+var healthAfterTemporaryIncreaseAdded = 0
 var temporaryMaxHeathAmount = 2
 var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
@@ -27,6 +27,7 @@ var temporaryDefenceAmount = 5
 var temporaryManaTurnsRemaining = -1
 var manaChangeSinceTempIncrease = 0
 var temporaryManaAmount = 2
+var manaAfterTemporaryIncreaseAdded = 0
 
 const bodyPartsNodeName = "ChangingBodyParts"
 
@@ -303,9 +304,6 @@ func takeDamage(damage):
 		if self == GameData.player:
 			emit_signal("statsChanged", "health", "Down", -damage)
 
-		if temporaryMaxHeathTurnsRemaining > 0:
-			damageSinceMaxHealthIncrease += damage
-
 		if stats.health.value <= 0:
 			handleCharacterDeath()
 		
@@ -461,16 +459,14 @@ func applyTemporaryHealth(turnAmount):
 	if temporaryMaxHeathTurnsRemaining <= 0:
 		increaseMaxHealth(temporaryMaxHeathAmount)
 		increaseHealth(temporaryMaxHeathAmount)
+		healthAfterTemporaryIncreaseAdded = self.stats.health.value
 	else:
-		increaseHealth(min(damageSinceMaxHealthIncrease, 2))
-	
-	damageSinceMaxHealthIncrease = 0
+		increaseHealth(max(0, min(healthAfterTemporaryIncreaseAdded - self.stats.health.value, temporaryMaxHeathAmount)))
 	
 	temporaryMaxHeathTurnsRemaining += turnAmount
 
 func removeTemporaryMaxHealth():
 	decreaseMaxHealth(temporaryMaxHeathAmount)
-	damageSinceMaxHealthIncrease = 0
 	temporaryMaxHeathTurnsRemaining -= 1
 
 func applyTemporaryStrength(turnAmount):
@@ -499,16 +495,14 @@ func removeTemporaryDefence():
 
 func applyTemporaryMana(turnAmount):
 	if temporaryManaTurnsRemaining <= 0:
-		increaseMaxMana(temporaryManaAmount) #todo check
+		increaseMaxMana(temporaryManaAmount)
 		increaseMana(temporaryManaAmount)
+		manaAfterTemporaryIncreaseAdded = self.stats.mana.value
 	else:
-		increaseMana(min(manaChangeSinceTempIncrease, 2))
-	
-	manaChangeSinceTempIncrease = 0
+		increaseMana(max(0, min(manaChangeSinceTempIncrease - self.stats.mana.value, temporaryManaAmount)))
 	
 	temporaryManaTurnsRemaining += turnAmount
 
 func removeTemporaryMana():
 	decreaseMaxMana(temporaryManaAmount)
-	manaChangeSinceTempIncrease = 0
 	temporaryManaTurnsRemaining -= 1
