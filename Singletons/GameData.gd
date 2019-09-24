@@ -24,14 +24,26 @@ func addInitialItems():
 	var instance2 = Constants.PotionClasses.DoubleDamagePotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
 	var instance4 = Constants.PotionClasses.LevelUpPotion.new()
-	var instance6 = Constants.PotionClasses.BreifHealthPotion.new()
-	var instance7 = Constants.PotionClasses.BreifManaPotion.new()
-	var instance8 = Constants.PotionClasses.BreifStrengthPotion.new()
-	var instance9 = Constants.PotionClasses.BreifDefencePotion.new()
-	addPotions([instance, instance2, instance3, instance4, instance6, instance7, instance8, instance9])
+	var instance5 = Constants.PotionClasses.BreifHealthPotion.new()
+	var instance6 = Constants.PotionClasses.BreifManaPotion.new()
+	var instance7 = Constants.PotionClasses.BreifStrengthPotion.new()
+	var instance8 = Constants.PotionClasses.BreifDefencePotion.new()
+	
+	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7, instance8])
+	
 	instance = Constants.FoodClasses.CookedSteak.new()
-	addFoods([instance, instance])
+	instance2 = Constants.FoodClasses.WholeChicken.new()
+	instance3 = Constants.FoodClasses.Cheese.new()
+	instance4 = Constants.FoodClasses.Bread.new()
+	instance5 = Constants.FoodClasses.Cake.new()
+	instance6 = Constants.FoodClasses.Cabbage.new()
+	instance7 = Constants.FoodClasses.Apple.new()
+	instance8 = Constants.FoodClasses.BakedPie.new()
+	
+	addFoods([instance, instance2, instance3, instance4, instance5, instance6, instance7, instance8])
+	
 	instance = Constants.SpellClasses.FireSpell.new()
+	
 	addSpells([instance, instance])
 
 func addKey(new_key):
