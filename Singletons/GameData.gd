@@ -166,3 +166,14 @@ func reset():
 	placedItems = []
 	addInitialItems()
 
+func getEnemiesWithinDistanceOfPlayer(distance):
+	var enemiesInDistance = []
+	
+	for character in GameData.characters:
+		var tileDistance = (character.original_pos - GameData.player.original_pos) / GameData.TileSize
+		var directDistance = abs(tileDistance.x) + abs(tileDistance.y)
+		
+		if character != GameData.player and directDistance <= distance:
+			enemiesInDistance.append(character)
+	
+	return enemiesInDistance
