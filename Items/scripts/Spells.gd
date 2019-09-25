@@ -42,7 +42,42 @@ class PushSpell extends "SpellBase.gd":
 				#.onUse()
 				
 				for enemy in enemiesToPush:
-					pass
-					#enemy.position -= Vector2(-GameData.TileSize, 0) * 3
-					# push enemies back a few squares in the correct direction checking for collisions
+					pushEnemy(enemy, 3)
 					# animate wind
+	
+	func pushEnemy(enemy, pushDistance):
+		var distance = enemy.position - GameData.player.position
+		
+		var tileMovementDirection
+		var damageToTake = 0.0
+		var enemyNewPosition = enemy.position
+		
+		if abs(distance.x) > abs(distance.y):
+			if distance.x > 0:
+				tileMovementDirection = Vector2(1, 0)
+			else:
+				tileMovementDirection = Vector2(-1, 0)
+		else:
+			if distance.y > 0:
+				tileMovementDirection = Vector2(0, 1)
+			else:
+				tileMovementDirection = Vector2(0, -1)
+		
+		for i in range(pushDistance):
+			var potentialMovePosition = enemy.position / GameData.TileSize + tileMovementDirection * (i + 1)
+			
+			if !GameData.walkable(potentialMovePosition.x, potentialMovePosition.y):
+				if i != 0: 
+					damageToTake = (pushDistance - i) / 2
+				
+				break
+			
+			enemyNewPosition += tileMovementDirection * GameData.TileSize
+		
+		if enemyNewPosition != Vector2(0, 0):
+			enemy.position = enemyNewPosition
+			enemy.target_pos = enemyNewPosition
+			enemy.original_pos = enemyNewPosition
+		
+		if damageToTake > 0:
+			enemy.takeDamage(damageToTake)
