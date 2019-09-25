@@ -43,8 +43,8 @@ func addInitialItems():
 	addFoods([instance, instance2, instance3, instance4, instance5, instance6, instance7, instance8])
 	
 	instance = Constants.SpellClasses.FireSpell.new()
-	
-	addSpells([instance, instance])
+	instance2 = Constants.SpellClasses.PushSpell.new()
+	addSpells([instance, instance2])
 
 func addKey(new_key):
 	#todo, needs to check if inventory is full first

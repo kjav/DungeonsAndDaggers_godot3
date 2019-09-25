@@ -4,18 +4,15 @@ class FireSpell extends "SpellBase.gd":
 
 	func _init():
 		iconFilePath = "res://assets/red_spell2.png"
-		description = "Shoot a fire ball at the closest enemy!"
 		item_name = "Fire Spell"
 		texture = preload("res://assets/red_spell2.png")
 
 	func onUse():
 		var closest_enemy = GameData.closestEnemy()
-		if closest_enemy:
-			# Remove potion
-			if GameData.player.consume_stat("mana", 1):
+		
+		if closest_enemy and GameData.player.consume_stat("mana", 1):
 				.onUse()
 				launchFireball(closest_enemy)
-				GameData.spells.remove(GameData.spells.find(self))
 
 	func launchFireball(closest_enemy):
 		var new_missile = missile.instance()
@@ -31,3 +28,21 @@ class FireSpell extends "SpellBase.gd":
 			"Fireball_Hit",
 			Vector2(4, 4)
 		)
+
+class PushSpell extends "SpellBase.gd":
+	func _init():
+		iconFilePath = "res://assets/swirl_spell.png"
+		item_name = "Push Spell"
+		texture = preload("res://assets/swirl_spell.png")
+
+	func onUse():
+		var enemiesToPush = GameData.getEnemiesWithinDistanceOfPlayer(3)
+		
+		if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
+				#.onUse()
+				
+				for enemy in enemiesToPush:
+					pass
+					#enemy.position -= Vector2(-GameData.TileSize, 0) * 3
+					# push enemies back a few squares in the correct direction checking for collisions
+					# animate wind
