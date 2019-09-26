@@ -153,11 +153,6 @@ func handleForcedMove(direction):
 	if blockedByTile:
 		return false
 	
-	var blockedByEnemy = GameData.charactersAtPosExcludingCharacter(pos, self).size() > 0
-	
-	if blockedByEnemy:
-		return false
-	
 	var blockedByEnvironment = !handleEnvironmentCollisions(pos)
 	
 	if blockedByEnvironment:
@@ -166,6 +161,7 @@ func handleForcedMove(direction):
 	environmentOnWalkedOut()
 	position = pos * GameData.TileSize
 	original_pos = pos * GameData.TileSize
+	turn_end_pos = pos * GameData.TileSize
 	
 	return true
 

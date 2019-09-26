@@ -39,10 +39,9 @@ class PushSpell extends "SpellBase.gd":
 
 	func onUse():
 		var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
-		#this probably needs to be in distance order
 		
-		if enemiesToPush.size() > 0:# and GameData.player.consume_stat("mana", 1):
-				#.onUse()
+		if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
+				.onUse()
 				
 				for enemy in enemiesToPush:
 					pushEnemy(enemy, 3)
@@ -72,8 +71,7 @@ class PushSpell extends "SpellBase.gd":
 		
 		for i in range(pushDistance):
 			if !enemy.handleForcedMove(tileMovementDirection):
-				if i != 0: 
-					pushesBlocked = (pushDistance - i)
+				pushesBlocked = (pushDistance - i)
 				
 				break
 		
