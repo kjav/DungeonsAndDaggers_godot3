@@ -13,19 +13,24 @@ var initial_pos
 var isPartOfBossRoom
 var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
+
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
+
 var invisible = false
 var invisibilityTurnsRemaining = -1
+
 var temporaryMaxHeathTurnsRemaining = -1
 var healthAfterTemporaryIncreaseAdded = 0
 var temporaryMaxHeathAmount = 2
+
 var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
+
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
+
 var temporaryManaTurnsRemaining = -1
-var manaChangeSinceTempIncrease = 0
 var temporaryManaAmount = 2
 var manaAfterTemporaryIncreaseAdded = 0
 
@@ -69,10 +74,7 @@ func resetToStartPosition():
 	_ready()
 
 func _ready():
-	original_pos = get_position()
-	turn_end_pos = get_position()
-	target_pos = get_position()
-	initial_pos = get_position()
+	setPosition(get_position())
 	
 	resetStats()
 
@@ -196,6 +198,12 @@ func environmentOnWalkedOut():
 	
 	environmentsAtPosition = environmentsAtTargetPosition
 	environmentsAtTargetPosition = []
+
+func setPosition(pos):
+	original_pos = pos
+	target_pos = pos
+	turn_end_pos = pos
+	initial_pos = pos
 
 func faceDirection(direction):
 	if alive():
@@ -522,7 +530,7 @@ func applyTemporaryMana(turnAmount):
 		increaseMana(temporaryManaAmount)
 		manaAfterTemporaryIncreaseAdded = self.stats.mana.value
 	else:
-		increaseMana(max(0, min(manaChangeSinceTempIncrease - self.stats.mana.value, temporaryManaAmount)))
+		increaseMana(max(0, min(manaAfterTemporaryIncreaseAdded - self.stats.mana.value, temporaryManaAmount)))
 	
 	temporaryManaTurnsRemaining += turnAmount
 

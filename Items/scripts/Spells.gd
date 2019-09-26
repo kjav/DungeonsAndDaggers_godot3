@@ -74,5 +74,3 @@ class PushSpell extends "SpellBase.gd":
 		if pushesBlocked > 0:
 			enemy.takeDamage(float(pushesBlocked) / 2)
 		
-		if damageToTake > 0:
-			enemy.takeDamage(damageToTake)

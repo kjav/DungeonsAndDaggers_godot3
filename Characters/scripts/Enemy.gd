@@ -19,7 +19,6 @@ func _ready():
 
 func attack(character, damage=0):
 	.attack(character, base_damage);
-	
 
 func turn():
 	.turn()

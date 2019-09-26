@@ -47,22 +47,18 @@ func addInitialItems():
 	addSpells([instance, instance2])
 
 func addKey(new_key):
-	#todo, needs to check if inventory is full first
 	keys.append(new_key)
 
 func addPotions(new_potions):
 	for potion in new_potions:
-		#todo, needs to check if inventory is full first
 		potions.append(potion)
 
 func addFoods(new_foods):
 	for food in new_foods:
-		#todo, needs to check if inventory is full first
 		foods.append(food)
 
 func addSpells(new_spells):
 	for spell in new_spells:
-		#todo, needs to check if inventory is full first
 		spells.append(spell)
 
 func RemoveEnvironment(environmentObjectToRemove):
