@@ -144,6 +144,29 @@ func moveDirection(direction):
 		
 		return true
 
+func handleForcedMove(direction):
+	var pos = setTarget(direction)
+	var blockedByTile = !targetWalkable(pos)
+	
+	if blockedByTile:
+		return false
+	
+	var blockedByEnemy = GameData.charactersAtPosExcludingCharacter(pos, self).size() > 0
+	
+	if blockedByEnemy:
+		return false
+	
+	var blockedByEnvironment = !handleEnvironmentCollisions(pos)
+	
+	if blockedByEnvironment:
+		return false
+	
+	environmentOnWalkedOut()
+	position = pos * GameData.TileSize
+	original_pos = pos * GameData.TileSize
+	
+	return true
+
 func handleMove(direction):
 	faceDirection(direction)
 	

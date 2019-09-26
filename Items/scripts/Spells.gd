@@ -36,9 +36,10 @@ class PushSpell extends "SpellBase.gd":
 		texture = preload("res://assets/swirl_spell.png")
 
 	func onUse():
-		var enemiesToPush = GameData.getEnemiesWithinDistanceOfPlayer(3)
+		var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
+		#this probably needs to be in distance order
 		
-		if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
+		if enemiesToPush.size() > 0:# and GameData.player.consume_stat("mana", 1):
 				#.onUse()
 				
 				for enemy in enemiesToPush:
@@ -49,35 +50,29 @@ class PushSpell extends "SpellBase.gd":
 		var distance = enemy.position - GameData.player.position
 		
 		var tileMovementDirection
-		var damageToTake = 0.0
+		var pushesBlocked = 0
 		var enemyNewPosition = enemy.position
 		
 		if abs(distance.x) > abs(distance.y):
 			if distance.x > 0:
-				tileMovementDirection = Vector2(1, 0)
+				tileMovementDirection = Enums.DIRECTION.RIGHT
 			else:
-				tileMovementDirection = Vector2(-1, 0)
+				tileMovementDirection = Enums.DIRECTION.LEFT
 		else:
 			if distance.y > 0:
-				tileMovementDirection = Vector2(0, 1)
+				tileMovementDirection = Enums.DIRECTION.DOWN
 			else:
-				tileMovementDirection = Vector2(0, -1)
+				tileMovementDirection = Enums.DIRECTION.UP
 		
 		for i in range(pushDistance):
-			var potentialMovePosition = enemy.position / GameData.TileSize + tileMovementDirection * (i + 1)
-			
-			if !GameData.walkable(potentialMovePosition.x, potentialMovePosition.y):
+			if !enemy.handleForcedMove(tileMovementDirection):
 				if i != 0: 
-					damageToTake = (pushDistance - i) / 2
+					pushesBlocked = (pushDistance - i)
 				
 				break
-			
-			enemyNewPosition += tileMovementDirection * GameData.TileSize
 		
-		if enemyNewPosition != Vector2(0, 0):
-			enemy.position = enemyNewPosition
-			enemy.target_pos = enemyNewPosition
-			enemy.original_pos = enemyNewPosition
+		if pushesBlocked > 0:
+			enemy.takeDamage(float(pushesBlocked) / 2)
 		
 		if damageToTake > 0:
 			enemy.takeDamage(damageToTake)

@@ -88,6 +88,15 @@ func charactersMoving():
 	
 	return characters[0].moving
 
+func charactersAtPosExcludingCharacter(pos, character):
+	var possibleCharacters = charactersAtPos(pos)
+	
+	for i in range(possibleCharacters.size()):
+		if possibleCharacters[i] == character:
+			possibleCharacters.remove(i)
+	
+	return possibleCharacters
+
 func charactersAtPos(pos):
 	return arrayAtPosForMoving(pos, characters)
 
@@ -166,14 +175,15 @@ func reset():
 	placedItems = []
 	addInitialItems()
 
-func getEnemiesWithinDistanceOfPlayer(distance):
+func getEnemiesWithinAreaAroundPlayer(distance):
 	var enemiesInDistance = []
 	
 	for character in GameData.characters:
-		var tileDistance = (character.original_pos - GameData.player.original_pos) / GameData.TileSize
-		var directDistance = abs(tileDistance.x) + abs(tileDistance.y)
+		var tileDistance = (character.turn_end_pos - GameData.player.turn_end_pos) / GameData.TileSize
+		var xDistance = abs(tileDistance.x)
+		var yDistance = abs(tileDistance.y)
 		
-		if character != GameData.player and directDistance <= distance:
+		if character != GameData.player and xDistance <= distance and yDistance <= distance:
 			enemiesInDistance.append(character)
 	
 	return enemiesInDistance
