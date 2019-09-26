@@ -94,7 +94,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 		if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
 			.onUse()
 			addHeavyImpacts()
-			#shake screen
+			GameData.player.get_node("Camera2D").shake(0.2, 50, 50)
 			damageEnemies(enemiesInArea)
 			pass
 	

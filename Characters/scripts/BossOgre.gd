@@ -146,6 +146,8 @@ func addHeavyImpacts():
 	for i in range(0, attackPositions.size()):
 		var attackPosition = attackPositions[i]
 		
+		GameData.player.get_node("Camera2D").shake(0.2, 20, 40)
+		
 		if (i > 0):
 			var timer = Timer.new()
 			timer.set_wait_time(0.2 * i)
