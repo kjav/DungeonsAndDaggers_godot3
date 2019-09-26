@@ -15,6 +15,7 @@ var environmentObjects = []
 var placedItems = []
 var TileSize = 128;
 var start_screen = ""
+var effectsNode
 
 func _ready():
 	addInitialItems()
@@ -44,7 +45,8 @@ func addInitialItems():
 	
 	instance = Constants.SpellClasses.FireSpell.new()
 	instance2 = Constants.SpellClasses.PushSpell.new()
-	addSpells([instance, instance2])
+	instance3 = Constants.SpellClasses.EarthquakeSpell.new()
+	addSpells([instance, instance2, instance3])
 
 func addKey(new_key):
 	keys.append(new_key)

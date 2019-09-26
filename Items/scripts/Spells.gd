@@ -73,4 +73,55 @@ class PushSpell extends "SpellBase.gd":
 		
 		if pushesBlocked > 0:
 			enemy.takeDamage(float(pushesBlocked) / 2)
+
+class EarthquakeSpell extends "SpellBase.gd":
+	const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+	
+	func _init():
+		iconFilePath = "res://assets/brown_spell.png"
+		item_name = "Earthquake Spell"
+		texture = preload("res://assets/brown_spell.png")
+	
+	func onUse():
+		var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
 		
+		if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
+			.onUse()
+			addHeavyImpacts()
+			damageEnemies(enemiesInArea)
+			pass
+	
+	func damageEnemies(enemiesInArea):
+		for enemy in enemiesInArea:
+			enemy.takeDamage(3)
+	
+	func addHeavyImpacts():
+		var attackPositions = [Vector2(0, 1), Vector2(1, 0), Vector2(1, 1), Vector2(0, -1), Vector2(-1, 0), Vector2(-1, -1), Vector2(-1, 1), Vector2(1, -1)]
+		var attackPositions2 = [Vector2(0, 2), Vector2(-1, 2), Vector2(-2, 2), Vector2(-2, 1), Vector2(-2, 0), Vector2(-2, -1), Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2), Vector2(2, -1), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2), Vector2(1, 2)]
+		
+		attackPositions = convertToAbsolutePosition(attackPositions)
+		attackPositions2 = convertToAbsolutePosition(attackPositions2)
+		
+		displayHeavyImpacts(attackPositions)
+		
+		var timer = Timer.new()
+		timer.set_wait_time(0.2)
+		timer.connect("timeout", self, "displayHeavyImpacts", [attackPositions2])
+		timer.set_one_shot(true)
+		GameData.effectsNode.add_child(timer)
+		timer.start()
+	
+	func convertToAbsolutePosition(attackPositions):
+		for i in range(attackPositions.size()):
+			attackPositions[i] *= GameData.TileSize
+			attackPositions[i] += GameData.player.position
+		
+		return attackPositions
+	
+	func displayHeavyImpacts(positions):
+		for position in positions:
+			var heavyImpactInstance = HeavyImpact.instance()
+			
+			heavyImpactInstance.position = position
+			GameData.effectsNode.add_child(heavyImpactInstance)
+			heavyImpactInstance.play()
