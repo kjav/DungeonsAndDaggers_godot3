@@ -6,4 +6,5 @@ func pickup():
 	.pickup()
 
 func onUse():
+	.onUse()
 	GameData.spells.remove(GameData.spells.find(self))

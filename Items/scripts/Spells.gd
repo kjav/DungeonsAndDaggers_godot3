@@ -130,3 +130,13 @@ class EarthquakeSpell extends "SpellBase.gd":
 			heavyImpactInstance.position = position
 			GameData.effectsNode.add_child(heavyImpactInstance)
 			heavyImpactInstance.play()
+
+class TeleportSpell extends "SpellBase.gd":
+	func _init():
+		iconFilePath = "res://assets/gem_spell.png"
+		item_name = "Teleport Spell"
+		texture = preload("res://assets/gem_spell.png")
+
+	func onUse():
+		.onUse()
+		pass
