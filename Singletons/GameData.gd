@@ -48,7 +48,8 @@ func addInitialItems():
 	instance3 = Constants.SpellClasses.EarthquakeSpell.new()
 	instance4 = Constants.SpellClasses.TeleportSpell.new()
 	instance5 = Constants.SpellClasses.MissileSpell.new()
-	addSpells([instance, instance2, instance3, instance4, instance5])
+	instance6 = Constants.SpellClasses.StunSpell.new()
+	addSpells([instance, instance2, instance3, instance4, instance5, instance6])
 
 func addKey(new_key):
 	keys.append(new_key)

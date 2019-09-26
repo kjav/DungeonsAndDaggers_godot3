@@ -159,7 +159,7 @@ class MissileSpell extends "SpellBase.gd":
 
 	func launchPellet(closest_enemy):
 		var new_missile = missile.instance()
-		#Audio.playSoundEffect("Fireball_Flying")
+		#Audio.playSoundEffect("Missile_Flying")
 		GameData.player.get_parent().add_child(new_missile)
 		
 		new_missile.init(
@@ -171,3 +171,17 @@ class MissileSpell extends "SpellBase.gd":
 			"Missile_Hit",
 			Vector2(0.2, 0.2)
 		)
+
+class StunSpell extends "SpellBase.gd":
+	func _init():
+		iconFilePath = "res://assets/rune_spell.png"
+		item_name = "Stun Spell"
+		texture = preload("res://assets/rune_spell.png")
+	
+	func onUse():
+		var closest_enemy = GameData.closestEnemy()
+		
+		if closest_enemy and GameData.player.consume_stat("mana", 0.5):
+				.onUse()
+				#stun enemy
+				#puff of smoke on enemy

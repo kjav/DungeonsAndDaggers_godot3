@@ -27,6 +27,8 @@ func _ready():
 	#this is temporary to aid with testing
 	increaseMaxHealth(9)
 	heal(9)
+	increaseMaxMana(9)
+	increaseMana(9)
 	
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
