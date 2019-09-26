@@ -11,22 +11,15 @@
 [ext_resource path="res://Effects/scripts/HeavyImpact.gd" type="Script" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": false,
 "name": "default",
 "speed": 12.0
 } ]
-_sections_unfolded = [ "Resource" ]
 
 [node name="Animation" type="AnimatedSprite"]
-
 scale = Vector2( 0.55, 0.55 )
 frames = SubResource( 1 )
-animation = "default"
 centered = false
 script = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
-
-

@@ -30,6 +30,8 @@ class FireSpell extends "SpellBase.gd":
 		)
 
 class PushSpell extends "SpellBase.gd":
+	const Blast = preload("res://Effects/Blast.tscn")
+	
 	func _init():
 		iconFilePath = "res://assets/swirl_spell.png"
 		item_name = "Push Spell"
@@ -44,7 +46,11 @@ class PushSpell extends "SpellBase.gd":
 				
 				for enemy in enemiesToPush:
 					pushEnemy(enemy, 3)
-					# animate wind
+					
+				var blastInstance = Blast.instance()
+				blastInstance.position = GameData.player.position + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
+				GameData.effectsNode.add_child(blastInstance)
+				blastInstance.play()
 	
 	func pushEnemy(enemy, pushDistance):
 		var distance = enemy.position - GameData.player.position
@@ -88,6 +94,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 		if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
 			.onUse()
 			addHeavyImpacts()
+			#shake screen
 			damageEnemies(enemiesInArea)
 			pass
 	
