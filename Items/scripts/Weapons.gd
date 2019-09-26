@@ -63,6 +63,6 @@ class BasicBow extends "Weapon.gd":
 				GameData.player.getPrimaryHandPosition(),
 				25,
 				0,
-				"Fireball_Hit",
+				"Arrow_Hit",
 				Vector2(0.5, 0.5)
 			)
