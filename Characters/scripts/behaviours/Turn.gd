@@ -1,4 +1,9 @@
-class BaseTurn extends Node:
+class BaseTurn:
+	var character
+	
+	func _init(_character = null):
+		character = _character
+	
 	func turn(pos):
 		pass
 	
@@ -6,10 +11,16 @@ class BaseTurn extends Node:
 		pass
 
 class Wait extends BaseTurn:
+	func _init(_character = null).(_character):
+		pass
+	
 	func turn(pos):
 		return Enums.DIRECTION.NONE
 
 class MoveTo extends BaseTurn:
+	func _init(_character = null).(_character):
+		pass
+	
 	func turn(pos):
 		pos.x = int(pos.x / GameData.TileSize)
 		pos.y = int(pos.y / GameData.TileSize)
@@ -28,11 +39,17 @@ class MoveTo extends BaseTurn:
 		return GameData.tilemap.findPathDistance(divided_pos, player_pos)
 
 class MoveRandom extends BaseTurn:
+	func _init(_character = null).(_character):
+		pass
+	
 	func turn(pos):
 		return randi()%5
 
 class MoveUpRightDownLeft extends BaseTurn:
 	var count = 0
+	
+	func _init(_character = null).(_character):
+		pass
 	
 	func turn(pos):
 		count += 1
@@ -48,12 +65,15 @@ class MoveUpRightDownLeft extends BaseTurn:
 			return Enums.DIRECTION.LEFT
 
 class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
-	var moveTo = MoveTo.new()
+	var moveTo
 	var waitAttackWaitCount = -1
 	var attackDirection
 	var recoveryTurn = false
 	var timeSpentRecovering = 0
 	var additionalRelativeAttackPositions = []
+	
+	func _init(_character = null).(_character):
+		moveTo = MoveTo.new(_character)
 	
 	func turn(pos):
 		if GameData.player.alive():
@@ -129,9 +149,13 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 			recoveryTurn = false
 
 class InRangeMoveToOtherwiseRandom extends BaseTurn:
-	var random = MoveRandom.new()
-	var moveTo = MoveTo.new()
+	var random
+	var moveTo
 	var limit = 10
+	
+	func _init(_character = null).(_character):
+		random = MoveRandom.new(_character)
+		moveTo = MoveTo.new(_character)
 	
 	func setLimit(newLimit):
 		limit = newLimit
@@ -155,6 +179,9 @@ class BehaviourEveryN extends BaseTurn:
 	var turnWait = 2
 	var counter = 0
 	
+	func _init(_character = null).(_character):
+		pass
+	
 	func setTurnWait(newTurnWait):
 		turnWait = newTurnWait
 	
@@ -169,12 +196,15 @@ class BehaviourEveryN extends BaseTurn:
 			return Enums.DIRECTION.NONE
 
 class InRangeMoveToOtherwiseRandomEveryNTurns extends BaseTurn:
-	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
-	var behaviourEveryN = BehaviourEveryN.new()
+	var turnBehaviour
+	var behaviourEveryN
 	var turnWait = 2
 	var limit = 10
 	
-	func init():
+	func _init(_character = null).(_character):
+		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)
+		behaviourEveryN = BehaviourEveryN.new(_character)
+	
 		behaviourEveryN.setBehaviour(turnBehaviour)
 		behaviourEveryN.setTurnWait(turnWait)
 	
@@ -196,6 +226,9 @@ class BehaviourEveryNInvinsibleOnWait extends BaseTurn:
 	var counter = 0
 	var damageable = true
 	
+	func _init(_character = null).(_character):
+		pass
+	
 	func setTurnWait(newTurnWait):
 		turnWait = newTurnWait
 	
@@ -215,12 +248,15 @@ class BehaviourEveryNInvinsibleOnWait extends BaseTurn:
 		return damageable
 
 class InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait extends BaseTurn:
-	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
-	var behaviourEveryNInvinsibleOnWait = BehaviourEveryNInvinsibleOnWait.new()
+	var turnBehaviour
+	var behaviourEveryNInvinsibleOnWait
 	var turnWait = 2
 	var limit = 10
 	
-	func init():
+	func _init(_character = null).(_character):
+		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)
+		behaviourEveryNInvinsibleOnWait = BehaviourEveryNInvinsibleOnWait.new(_character)
+		
 		behaviourEveryNInvinsibleOnWait.setBehaviour(turnBehaviour)
 		behaviourEveryNInvinsibleOnWait.setTurnWait(turnWait)
 	
@@ -243,6 +279,9 @@ class WaitEveryN extends BaseTurn:
 	var waitEvery = 3
 	var counter = 0
 	
+	func _init(_character = null).(_character):
+		pass
+	
 	func setWaitEvery(newWaitEvery):
 		waitEvery = newWaitEvery
 	
@@ -257,12 +296,15 @@ class WaitEveryN extends BaseTurn:
 			return Enums.DIRECTION.NONE
 
 class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
-	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
-	var waitEveryN = WaitEveryN.new()
+	var turnBehaviour
+	var waitEveryN
 	var waitEvery = 3
 	var limit = 10
 	
-	func init():
+	func _init(_character = null).(_character):
+		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)
+		waitEveryN = WaitEveryN.new(_character)
+		
 		waitEveryN.setBehaviour(turnBehaviour)
 		waitEveryN.setWaitEvery(waitEvery)
 	
@@ -283,6 +325,9 @@ class InvincibleWaitEveryN extends BaseTurn:
 	var counter = 0
 	var damageable = true
 	
+	func _init(_character = null).(_character):
+		pass
+	
 	func setWaitEvery(newWaitEvery):
 		waitEvery = newWaitEvery
 	
@@ -302,12 +347,15 @@ class InvincibleWaitEveryN extends BaseTurn:
 		return damageable
 
 class InRangeMoveToOtherwiseRandomInvincibleWaitEveryNTurns extends BaseTurn:
-	var turnBehaviour = InRangeMoveToOtherwiseRandom.new()
-	var invincibleWaitEveryN = InvincibleWaitEveryN.new()
+	var turnBehaviour
+	var invincibleWaitEveryN
 	var waitEvery = 3
 	var limit = 10
 	
-	func init():
+	func _init(_character = null).(_character):
+		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)
+		invincibleWaitEveryN = InvincibleWaitEveryN.new(_character)
+	
 		invincibleWaitEveryN.setBehaviour(turnBehaviour)
 		invincibleWaitEveryN.setWaitEvery(waitEvery)
 	

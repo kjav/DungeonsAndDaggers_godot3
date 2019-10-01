@@ -235,3 +235,4 @@ centered = false
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
+frame = 1

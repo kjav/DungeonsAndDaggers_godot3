@@ -38,7 +38,7 @@ var walkingUp
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
-	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new()
+	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new(self)
 	processBehaviour = Process.Direct.new()
 	self.character_name = 'Boss Ogre'
 	base_damage = 3

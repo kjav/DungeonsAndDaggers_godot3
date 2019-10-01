@@ -4,7 +4,7 @@ const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _ready():
-	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomWaitEveryNTurns.new()
+	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomWaitEveryNTurns.new(self)
 	processBehaviour = Process.Direct.new()
 	self.character_name = 'Baby Ogre'
 	base_damage = 3
