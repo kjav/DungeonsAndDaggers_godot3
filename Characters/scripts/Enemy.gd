@@ -76,3 +76,11 @@ func setStandAnimation(direction):
 		setAnimationOnAllBodyParts(undamageableAnimationName)
 	else:
 		.setStandAnimation(direction)
+
+func addStun(turnAmount):
+	.addStun(turnAmount)
+	get_node("Stars").show()
+
+func removeStunned():
+	.removeStunned()
+	get_node("Stars").hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/scripts/Baby Ogre.gd" type="Script" id=1]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Flipped.png" type="Texture" id=8]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_1_Flipped.png" type="Texture" id=9]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_2_Flipped.png" type="Texture" id=10]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -38,24 +39,24 @@ animations = [ {
 "name": "stand_left",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "stand_up",
-"speed": 6.0
+"name": "stand_down",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk_down",
 "speed": 6.0
 }, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "stand_up",
+"speed": 6.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "stand_right",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_down",
 "speed": 1.0
 } ]
 
@@ -70,3 +71,9 @@ frames = SubResource( 1 )
 animation = "stand_down"
 playing = true
 offset = Vector2( 16, 16 )
+
+[node name="Stars" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 7.92442, 0.471691 )
+scale = Vector2( 0.025, 0.025 )
+frame = 0

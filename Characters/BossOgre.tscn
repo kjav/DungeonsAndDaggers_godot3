@@ -133,8 +133,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
-"name": "stand_up",
-"speed": 1.0
+"name": "stand_down",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
@@ -143,12 +143,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
-"name": "stand_right",
-"speed": 5.0
+"name": "stand_up",
+"speed": 1.0
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
-"name": "stand_down",
+"name": "stand_right",
 "speed": 5.0
 } ]
 
@@ -235,4 +235,4 @@ centered = false
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
-frame = 1
+frame = 3

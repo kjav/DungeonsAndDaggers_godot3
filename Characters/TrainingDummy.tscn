@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/scripts/TrainingDummy.gd" type="Script" id=1]
 [ext_resource path="res://assets/TrainingDummy/training_dummy_0.png" type="Texture" id=2]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -23,3 +24,8 @@ frames = SubResource( 1 )
 animation = "stand_down"
 playing = true
 centered = false
+
+[node name="Stars" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 79.9778, -271.144 )
+frame = 3

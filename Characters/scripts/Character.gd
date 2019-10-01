@@ -78,7 +78,7 @@ func resetToStartPosition():
 func _ready():
 	setPosition(get_position())
 	
-	stunnedDuration = 0
+	stunnedDuration = -1
 	
 	resetStats()
 
@@ -117,6 +117,8 @@ func turn():
 	
 	if stunnedDuration > 0:
 		stunnedDuration -= 1
+	elif stunnedDuration == 0:
+		removeStunned()
 
 func setTurnAnimations():
 	pass
@@ -540,3 +542,9 @@ func applyTemporaryMana(turnAmount):
 func removeTemporaryMana():
 	decreaseMaxMana(temporaryManaAmount)
 	temporaryManaTurnsRemaining -= 1
+
+func addStun(turnAmount):
+	stunnedDuration += turnAmount
+
+func removeStunned():
+	stunnedDuration = -1
