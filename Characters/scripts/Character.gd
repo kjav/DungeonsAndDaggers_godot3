@@ -458,6 +458,10 @@ func removeDamageModfier():
 
 func applyDamageModifier(numberOfAttacks):
 	#apply visual effect
+	
+	if multiplierRemainingAttacks < 0:
+		multiplierRemainingAttacks = 0
+	
 	multiplierRemainingAttacks += numberOfAttacks
 
 func damageMultiplierInEffect():
@@ -471,6 +475,10 @@ func removeInvisibility():
 func applyInvisibility(turnsAmount):
 	invisible = true
 	self.set_modulate(Color(1, 1, 1, 0.1))
+	
+	if invisibilityTurnsRemaining < 0:
+		invisibilityTurnsRemaining = 0
+	
 	invisibilityTurnsRemaining += turnsAmount
 
 func increaseMaxHealth(amount):
@@ -496,6 +504,7 @@ func applyTemporaryHealth(turnAmount):
 		increaseMaxHealth(temporaryMaxHeathAmount)
 		increaseHealth(temporaryMaxHeathAmount)
 		healthAfterTemporaryIncreaseAdded = self.stats.health.value
+		temporaryMaxHeathTurnsRemaining = 0
 	else:
 		increaseHealth(max(0, min(healthAfterTemporaryIncreaseAdded - self.stats.health.value, temporaryMaxHeathAmount)))
 	
@@ -509,6 +518,7 @@ func applyTemporaryStrength(turnAmount):
 	if temporaryStrengthTurnsRemaining <= 0:
 		self.stats.strength.value += temporaryStrengthAmount
 		self.stats.strength.maximum += temporaryStrengthAmount
+		temporaryStrengthTurnsRemaining = 0
 	
 	temporaryStrengthTurnsRemaining += turnAmount
 
@@ -521,6 +531,7 @@ func applyTemporaryDefence(turnAmount):
 	if temporaryDefenceTurnsRemaining <= 0:
 		self.stats.defence.value += temporaryDefenceAmount
 		self.stats.defence.maximum += temporaryDefenceAmount
+		temporaryDefenceTurnsRemaining = 0
 	
 	temporaryDefenceTurnsRemaining += turnAmount
 
@@ -534,6 +545,7 @@ func applyTemporaryMana(turnAmount):
 		increaseMaxMana(temporaryManaAmount)
 		increaseMana(temporaryManaAmount)
 		manaAfterTemporaryIncreaseAdded = self.stats.mana.value
+		temporaryManaTurnsRemaining = 0
 	else:
 		increaseMana(max(0, min(manaAfterTemporaryIncreaseAdded - self.stats.mana.value, temporaryManaAmount)))
 	
@@ -544,6 +556,9 @@ func removeTemporaryMana():
 	temporaryManaTurnsRemaining -= 1
 
 func addStun(turnAmount):
+	if stunnedDuration < 0:
+		stunnedDuration = 0
+	
 	stunnedDuration += turnAmount
 
 func removeStunned():
