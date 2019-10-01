@@ -34,6 +34,8 @@ var temporaryManaTurnsRemaining = -1
 var temporaryManaAmount = 2
 var manaAfterTemporaryIncreaseAdded = 0
 
+var stunnedDuration
+
 const bodyPartsNodeName = "ChangingBodyParts"
 
 var initialStats = {
@@ -76,6 +78,8 @@ func resetToStartPosition():
 func _ready():
 	setPosition(get_position())
 	
+	stunnedDuration = 0
+	
 	resetStats()
 
 func resetStats():
@@ -110,6 +114,9 @@ func turn():
 		temporaryManaTurnsRemaining -= 1
 	elif temporaryManaTurnsRemaining == 0:
 		removeTemporaryMana()
+	
+	if stunnedDuration > 0:
+		stunnedDuration -= 1
 
 func setTurnAnimations():
 	pass
