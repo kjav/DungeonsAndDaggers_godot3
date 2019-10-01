@@ -6,7 +6,7 @@ func setup_params():
 	[
 		{
 			"p": 1, 
-			"value": load("res://Characters/BabyOgre.tscn"),
+			"value": load("res://Characters/TrainingDummy.tscn"),
 			"position": Vector2(1, 1)
 		}
 	])

@@ -76,7 +76,7 @@ script = ExtResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ChangingBodyParts"]
 frames = SubResource( 1 )
 animation = "invinsible"
-frame = 1
+frame = 3
 playing = true
 offset = Vector2( 16, 16 )
 
@@ -84,3 +84,4 @@ offset = Vector2( 16, 16 )
 visible = false
 position = Vector2( 9.6856, 1.07051 )
 scale = Vector2( 0.02, 0.02 )
+frame = 1
