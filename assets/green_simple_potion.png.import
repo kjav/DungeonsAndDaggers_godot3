@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green_simple_potion.PNG-1b4a40bffcea816d2c60c00b03cbbd1a.stex"
+path="res://.import/green_simple_potion.png-1c262b7d6ff932a250410f76c9c0bd84.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/green_simple_potion.PNG"
-dest_files=[ "res://.import/green_simple_potion.PNG-1b4a40bffcea816d2c60c00b03cbbd1a.stex" ]
+source_file="res://assets/green_simple_potion.png"
+dest_files=[ "res://.import/green_simple_potion.png-1c262b7d6ff932a250410f76c9c0bd84.stex" ]
 
 [params]
 
