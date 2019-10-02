@@ -185,4 +185,3 @@ class StunSpell extends "SpellBase.gd":
 		if closest_enemy and GameData.player.consume_stat("mana", 0.5):
 				.onUse()
 				closest_enemy.addStun(randi()%2+2)
-				#puff of smoke on enemy
