@@ -88,7 +88,13 @@ func resetStats():
 	stats.mana = initialStats.mana.duplicate()
 	stats.strength = initialStats.strength.duplicate()
 	stats.defence = initialStats.defence.duplicate()
-	
+
+func afterMoveComplete():
+	if stunnedDuration > 0:
+		stunnedDuration -= 1
+	elif stunnedDuration == 0:
+		removeStunned()
+
 func turn():
 	if invisibilityTurnsRemaining > 0:
 		invisibilityTurnsRemaining -= 1
@@ -114,11 +120,6 @@ func turn():
 		temporaryManaTurnsRemaining -= 1
 	elif temporaryManaTurnsRemaining == 0:
 		removeTemporaryMana()
-	
-	if stunnedDuration > 0:
-		stunnedDuration -= 1
-	elif stunnedDuration == 0:
-		removeStunned()
 
 func setTurnAnimations():
 	pass

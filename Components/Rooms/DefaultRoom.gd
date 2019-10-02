@@ -7,7 +7,7 @@ func setup_params():
 		{
 			"p": 1, 
 			"value": load("res://Characters/TrainingDummy.tscn"),
-			"position": Vector2(1, 1)
+			"position": Vector2(2, 2)
 		}
 	])
 	environment_distribution = Distribution.new([{"p": 1.0, "value": load("res://Environments/Chest.tscn")}])

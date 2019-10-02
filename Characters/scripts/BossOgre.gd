@@ -81,37 +81,43 @@ func _ready():
 	._ready()
 
 func turn():
-	.turn()
-	
-	if (turnBehaviour.PreparingAttack()):
-		var currentAdditionalRelativeAttacks
+	if stunnedDuration <= 0:
+		.turnWithNoAfterMoveComplete()
 		
-		stand_direction = turnBehaviour.attackDirection
-		previous_stand_direction = turnBehaviour.attackDirection
-		alternateAttackCue = false
+		if (turnBehaviour.Attacking()):
+			addHeavyImpacts()
+			
+			visualAttackCueActive = false
+			setVisualAttackCues()
+			
+			turnBehaviour.additionalRelativeAttackPositions = []
+			additionalRelativeAttackPositions = []
 		
-		if (stageOneDefeated):
-			if (randi() % 2 == 1):
-				currentAdditionalRelativeAttacks = [Vector2(0, -1)]
+		.afterMoveComplete()
+		
+		if (turnBehaviour.PreparingAttack()):
+			var currentAdditionalRelativeAttacks
+			
+			stand_direction = turnBehaviour.attackDirection
+			previous_stand_direction = turnBehaviour.attackDirection
+			alternateAttackCue = false
+			
+			if (stageOneDefeated):
+				if (randi() % 2 == 1):
+					currentAdditionalRelativeAttacks = [Vector2(0, -1)]
+				else:
+					currentAdditionalRelativeAttacks = [Vector2(-1, 0), Vector2(1, 0)]
+					alternateAttackCue = true
 			else:
-				currentAdditionalRelativeAttacks = [Vector2(-1, 0), Vector2(1, 0)]
-				alternateAttackCue = true
-		else:
-			currentAdditionalRelativeAttacks = [Vector2(0, -1)]
-		
-		additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
-		turnBehaviour.additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
-		
-		visualAttackCueActive = true
-		setVisualAttackCues()
-	elif (turnBehaviour.Attacking()):
-		addHeavyImpacts()
-		
-		visualAttackCueActive = false
-		setVisualAttackCues()
-		
-		turnBehaviour.additionalRelativeAttackPositions = []
-		additionalRelativeAttackPositions = []
+				currentAdditionalRelativeAttacks = [Vector2(0, -1)]
+			
+			additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
+			turnBehaviour.additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
+			
+			visualAttackCueActive = true
+			setVisualAttackCues()
+	else:
+		.turn()
 
 func setVisualAttackCues():
 	if alternateAttackCue:
