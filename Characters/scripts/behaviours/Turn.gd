@@ -68,8 +68,7 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 	var moveTo
 	var waitAttackWaitCount = -1
 	var attackDirection
-	var recoveryTurn = false
-	var timeSpentRecovering = 0
+	var shouldStun = false
 	var additionalRelativeAttackPositions = []
 	
 	func _init(_character = null).(_character):
@@ -87,13 +86,11 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 			if inWaitAttackWaitSequence():
 				waitAttackWaitCount += 1
 				
-				if recoveryTurn:
-					setRecoveryForNextTurn()
-				elif Attacking():
+				if Attacking():
 					if playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
 						return moveTo.turn(pos)
 					
-					setRecoveryForNextTurn()
+					shouldStun = randi()%2 == 1
 				else:
 					LeaveWaitAttackWaitSequence()
 					return turn(pos)
@@ -111,31 +108,29 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 		
 		return false
 	
-	func setRecoveryForNextTurn():
-		recoveryTurn = randi() % int(pow(2,timeSpentRecovering + 1)) == 1
-
-		if (recoveryTurn):
-			timeSpentRecovering += 1
-		else:
-			timeSpentRecovering = 0
-	
 	func PreparingAttack():
 		return waitAttackWaitCount == 0
 		
 	func Attacking():
 		return waitAttackWaitCount == 1
-		
-	func Recovering():
-		return recoveryTurn
 	
 	func inWaitAttackWaitSequence():
 		return waitAttackWaitCount >= 0
 	
 	func LeaveWaitAttackWaitSequence():
 		waitAttackWaitCount = -1
-		recoveryTurn = false
 	
 	func afterMoveComplete(pos):
+		if (shouldStun):
+			var amount = randi()%3
+			if (amount <= 1):
+				character.addStun(1)
+			else:
+				character.addStun(2)
+		
+		if (character.stunnedDuration > 0):
+			return
+		
 		var divided_pos = Vector2(0,0)
 		divided_pos.x = int(pos.x / GameData.TileSize)
 		divided_pos.y = int(pos.y / GameData.TileSize)
@@ -146,7 +141,6 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 		if !inWaitAttackWaitSequence() and divided_pos.distance_squared_to(player_pos) <= 1:
 			waitAttackWaitCount = 0
 			attackDirection = moveTo.turn(pos)
-			recoveryTurn = false
 
 class InRangeMoveToOtherwiseRandom extends BaseTurn:
 	var random

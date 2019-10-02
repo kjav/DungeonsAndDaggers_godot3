@@ -453,11 +453,11 @@ func reduceDamageMultiplier():
 		removeDamageModfier()
 
 func removeDamageModfier():
-	#remove visual effect
 	multiplierRemainingAttacks = 0
 
 func applyDamageModifier(numberOfAttacks):
-	#apply visual effect
+	if (numberOfAttacks <= 0):
+		return
 	
 	if multiplierRemainingAttacks < 0:
 		multiplierRemainingAttacks = 0
@@ -473,6 +473,9 @@ func removeInvisibility():
 	invisibilityTurnsRemaining = -1
 
 func applyInvisibility(turnsAmount):
+	if (turnsAmount <= 0):
+		return
+	
 	invisible = true
 	self.set_modulate(Color(1, 1, 1, 0.1))
 	
@@ -482,15 +485,24 @@ func applyInvisibility(turnsAmount):
 	invisibilityTurnsRemaining += turnsAmount
 
 func increaseMaxHealth(amount):
+	if (amount <= 0):
+		return
+	
 	self.stats.health.maximum += amount
 
 func decreaseMaxHealth(amount):
+	if (amount >= 0):
+		return
+	
 	self.stats.health.maximum -= amount
 	
 	if self.stats.health.value > self.stats.health.maximum:
 		self.stats.health.value = self.stats.health.maximum
 
 func increaseMaxMana(amount):
+	if (amount <= 0):
+		return
+	
 	self.stats.mana.maximum += amount
 
 func decreaseMaxMana(amount):
@@ -500,6 +512,9 @@ func decreaseMaxMana(amount):
 		self.stats.mana.value = self.stats.mana.maximum
 
 func applyTemporaryHealth(turnAmount):
+	if (turnAmount <= 0):
+		return
+	
 	if temporaryMaxHeathTurnsRemaining <= 0:
 		increaseMaxHealth(temporaryMaxHeathAmount)
 		increaseHealth(temporaryMaxHeathAmount)
@@ -515,6 +530,9 @@ func removeTemporaryMaxHealth():
 	temporaryMaxHeathTurnsRemaining -= 1
 
 func applyTemporaryStrength(turnAmount):
+	if (turnAmount <= 0):
+		return
+	
 	if temporaryStrengthTurnsRemaining <= 0:
 		self.stats.strength.value += temporaryStrengthAmount
 		self.stats.strength.maximum += temporaryStrengthAmount
@@ -528,6 +546,9 @@ func removeTemporaryStrength():
 	temporaryStrengthTurnsRemaining = -1
 
 func applyTemporaryDefence(turnAmount):
+	if (turnAmount <= 0):
+		return
+	
 	if temporaryDefenceTurnsRemaining <= 0:
 		self.stats.defence.value += temporaryDefenceAmount
 		self.stats.defence.maximum += temporaryDefenceAmount
@@ -541,6 +562,9 @@ func removeTemporaryDefence():
 	temporaryDefenceTurnsRemaining = -1
 
 func applyTemporaryMana(turnAmount):
+	if (turnAmount <= 0):
+		return
+	
 	if temporaryManaTurnsRemaining <= 0:
 		increaseMaxMana(temporaryManaAmount)
 		increaseMana(temporaryManaAmount)
@@ -556,6 +580,9 @@ func removeTemporaryMana():
 	temporaryManaTurnsRemaining -= 1
 
 func addStun(turnAmount):
+	if (turnAmount <= 0):
+		return
+	
 	if stunnedDuration < 0:
 		stunnedDuration = 0
 	

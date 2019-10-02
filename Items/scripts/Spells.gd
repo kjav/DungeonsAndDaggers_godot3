@@ -139,7 +139,8 @@ class TeleportSpell extends "SpellBase.gd":
 
 	func onUse():
 		.onUse()
-		pass
+		
+		#teleport player to click
 
 class MissileSpell extends "SpellBase.gd":
 	const missile = preload("res://Projectiles/Missile.tscn")

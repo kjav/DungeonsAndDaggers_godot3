@@ -78,6 +78,9 @@ func setStandAnimation(direction):
 		.setStandAnimation(direction)
 
 func addStun(turnAmount):
+	if turnAmount <= 0:
+		return
+	
 	.addStun(turnAmount)
 	get_node("Stars").show()
 

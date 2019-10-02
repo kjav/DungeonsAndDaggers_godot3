@@ -83,11 +83,6 @@ func _ready():
 func turn():
 	.turn()
 	
-	if (!turnBehaviour.Recovering()):
-		self.get_node("Stars").hide()
-	else:
-		self.get_node("Stars").show()
-	
 	if (turnBehaviour.PreparingAttack()):
 		var currentAdditionalRelativeAttacks
 		
