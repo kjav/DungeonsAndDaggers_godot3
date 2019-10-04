@@ -95,3 +95,5 @@ func _on_Enemy_attack(character, amount):
 func _on_Player_healthRaised(value):
 	get_node("HudCanvasLayer/EventMessageHolder")._on_Player_healthRaised(value);
 
+func _on_GameClickableRegion_clicked_inside(event):
+	GameData.player.gameClickableRegionClicked(event)

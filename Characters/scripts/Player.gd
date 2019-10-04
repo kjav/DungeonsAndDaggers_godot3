@@ -248,3 +248,6 @@ func increaseMaxMana(amount):
 func decreaseMaxMana(amount):
 	.decreaseMaxMana(amount)
 	emit_signal("statsChanged", "maxmana", "Down", amount)
+
+func gameClickableRegionClicked(event):
+	pass
