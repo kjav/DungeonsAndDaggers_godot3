@@ -22,6 +22,7 @@ var primaryWeaponNode
 var backHandBone
 var secondaryWeaponNode
 var forwardHandBone
+var readyToTeleportOnTileSelect
 
 func _ready():
 	#this is temporary to aid with testing
@@ -250,4 +251,12 @@ func decreaseMaxMana(amount):
 	emit_signal("statsChanged", "maxmana", "Down", amount)
 
 func gameClickableRegionClicked(event):
-	pass
+	if readyToTeleportOnTileSelect:
+		var tilePositionUnrounded= (event.position + Vector2(GameData.TileSize, GameData.TileSize) / 2) / GameData.TileSize
+		var tilePosition = Vector2(floor(tilePositionUnrounded.x), floor(tilePositionUnrounded.y))
+		
+		#check there is a path to it
+		#check if the teleport should abort
+		GameData.player.handleForcedMoveTo(tilePosition)
+		
+		readyToTeleportOnTileSelect = false

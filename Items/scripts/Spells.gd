@@ -139,8 +139,7 @@ class TeleportSpell extends "SpellBase.gd":
 
 	func onUse():
 		.onUse()
-		
-		#teleport player to click
+		GameData.player.readyToTeleportOnTileSelect = true
 
 class MissileSpell extends "SpellBase.gd":
 	const missile = preload("res://Projectiles/Missile.tscn")

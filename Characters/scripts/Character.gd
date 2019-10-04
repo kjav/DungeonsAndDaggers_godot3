@@ -156,8 +156,7 @@ func moveDirection(direction):
 		
 		return true
 
-func handleForcedMove(direction):
-	var pos = setTarget(direction)
+func handleForcedMoveTo(pos):
 	var blockedByTile = !targetWalkable(pos)
 	
 	if blockedByTile:
@@ -174,6 +173,10 @@ func handleForcedMove(direction):
 	turn_end_pos = pos * GameData.TileSize
 	
 	return true
+
+func handleForcedMove(direction):
+	var pos = setTarget(direction)
+	handleForcedMoveTo(pos)
 
 func handleMove(direction):
 	faceDirection(direction)
