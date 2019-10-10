@@ -23,6 +23,7 @@ var backHandBone
 var secondaryWeaponNode
 var forwardHandBone
 var readyToTeleportOnTileSelect
+var currentlyUnsureWhyThisIsSignificant
 
 func _ready():
 	#this is temporary to aid with testing
@@ -49,6 +50,7 @@ func _ready():
 	setSecondaryWeapon(secondaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
 	faceDirection(Enums.DIRECTION.RIGHT)
+	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
 
 func getPrimaryHandPosition():
 	return backHandBone.global_position
@@ -252,11 +254,14 @@ func decreaseMaxMana(amount):
 
 func gameClickableRegionClicked(event):
 	if readyToTeleportOnTileSelect:
-		var tilePositionUnrounded= (event.position + Vector2(GameData.TileSize, GameData.TileSize) / 2) / GameData.TileSize
-		var tilePosition = Vector2(floor(tilePositionUnrounded.x), floor(tilePositionUnrounded.y))
+		#work out why value is significant
+		var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - currentlyUnsureWhyThisIsSignificant) / GameData.TileSize
+		var tilePositionRelativeToCameraRounded = Vector2(floor(tilePositionRelativeToCamera.x), floor(tilePositionRelativeToCamera.y))
 		
 		#check there is a path to it
 		#check if the teleport should abort
-		GameData.player.handleForcedMoveTo(tilePosition)
+		#show message for failure
+		#teleport animation
+		GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)
 		
 		readyToTeleportOnTileSelect = false
