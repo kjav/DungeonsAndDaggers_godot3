@@ -9,6 +9,7 @@ var keys = []
 var tilemap
 var chosen_player
 var player
+var hud
 var chosen_map
 var characters = []
 var environmentObjects = []

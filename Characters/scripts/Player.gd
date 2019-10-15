@@ -254,14 +254,19 @@ func decreaseMaxMana(amount):
 
 func gameClickableRegionClicked(event):
 	if readyToTeleportOnTileSelect:
-		#work out why value is significant
 		var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - currentlyUnsureWhyThisIsSignificant) / GameData.TileSize
 		var tilePositionRelativeToCameraRounded = Vector2(floor(tilePositionRelativeToCamera.x), floor(tilePositionRelativeToCamera.y))
+		var player_pos = (GameData.player.turn_end_pos) / GameData.TileSizearePointsConnected
+		var distance = GameData.tilemap.estimatePathDistance(tilePositionRelativeToCameraRounded, player_pos)
 		
-		#check there is a path to it
-		#check if the teleport should abort
-		#show message for failure
-		#teleport animation
-		GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)
-		
-		readyToTeleportOnTileSelect = false
+		if (distance < 20 && distance > 0):
+			if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
+				#teleport animation
+				readyToTeleportOnTileSelect = false
+				GameData.hud.SetVisibilityOfTeleportWarning(false)
+			else:
+				pass
+				#show message for invalid location failure
+		else:
+			pass
+			#show message for distance failure

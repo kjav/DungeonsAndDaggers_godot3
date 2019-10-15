@@ -140,6 +140,7 @@ class TeleportSpell extends "SpellBase.gd":
 	func onUse():
 		.onUse()
 		GameData.player.readyToTeleportOnTileSelect = true
+		GameData.hud.SetVisibilityOfTeleportWarning(true)
 
 class MissileSpell extends "SpellBase.gd":
 	const missile = preload("res://Projectiles/Missile.tscn")
