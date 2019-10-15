@@ -176,7 +176,8 @@ func handleForcedMoveTo(pos):
 
 func handleForcedMove(direction):
 	var pos = setTarget(direction)
-	handleForcedMoveTo(pos)
+	
+	return handleForcedMoveTo(pos)
 
 func handleMove(direction):
 	faceDirection(direction)

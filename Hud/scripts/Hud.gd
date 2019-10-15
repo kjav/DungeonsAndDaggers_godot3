@@ -77,6 +77,9 @@ func PlayerStatChanged(stat, direction, value):
 	elif stat == "mana" or stat == "maxmana":
 		PlayerManaChanged(GameData.player.stats.mana.value, GameData.player.stats.mana.maximum)
 
+func SetVisibilityOfTeleportWarning(visibility):
+	get_node("HudCanvasLayer/Teleport Warning").visible = visibility
+
 func _on_Player_itemPickedUp(item):
 	if item is KeyBase:
 		get_node("HudCanvasLayer/Keys").AddKey(item)
