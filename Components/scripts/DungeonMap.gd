@@ -167,6 +167,9 @@ func _getIdPath(a, b):
 	var a_vec3 = Vector3(a.x, a.y, 0)
 	var b_vec3 = Vector3(b.x, b.y, 0)
 	
+	if (!points.has(a_vec3) || !points.has(b_vec3)):
+		return null;
+	
 	var a_id = points[a_vec3]
 	var b_id = points[b_vec3]
 	
@@ -200,6 +203,9 @@ func findNextDirection(a, b):
 
 func findPathDistance(a, b):
 	var id_path = _getIdPath(a, b)
+	
+	if id_path == null:
+		return -1
 	
 	return id_path.size() - 1
 

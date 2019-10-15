@@ -256,17 +256,19 @@ func gameClickableRegionClicked(event):
 	if readyToTeleportOnTileSelect:
 		var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - currentlyUnsureWhyThisIsSignificant) / GameData.TileSize
 		var tilePositionRelativeToCameraRounded = Vector2(floor(tilePositionRelativeToCamera.x), floor(tilePositionRelativeToCamera.y))
-		var player_pos = (GameData.player.turn_end_pos) / GameData.TileSizearePointsConnected
-		var distance = GameData.tilemap.estimatePathDistance(tilePositionRelativeToCameraRounded, player_pos)
+		var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
+		var distance = GameData.tilemap.findPathDistance(tilePositionRelativeToCameraRounded, player_pos)
 		
-		if (distance < 20 && distance > 0):
-			if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
-				#teleport animation
-				readyToTeleportOnTileSelect = false
-				GameData.hud.SetVisibilityOfTeleportWarning(false)
+		if (distance > 0):
+			if (distance < 20):
+				if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
+					#teleport animation
+					readyToTeleportOnTileSelect = false
+					GameData.hud.SetVisibilityOfTeleportWarning(false)
+					GameData.hud.addEventMessage("Player Teleported!")
+				else:
+					GameData.hud.addEventMessage("Can't teleport there")
 			else:
-				pass
-				#show message for invalid location failure
+				GameData.hud.addEventMessage("Can't teleport, path too far")
 		else:
-			pass
-			#show message for distance failure
+			GameData.hud.addEventMessage("Can't teleport there")
