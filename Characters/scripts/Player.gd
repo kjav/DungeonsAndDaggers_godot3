@@ -8,6 +8,7 @@ signal playerMove(pos)
 signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
 
+const LightBlip = preload("res://Effects/LightBlip.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.BasicBow.new()
@@ -262,13 +263,15 @@ func gameClickableRegionClicked(event):
 		if (distance > 0):
 			if (distance < 20):
 				if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
-					#teleport animation
+					get_node("LightBlip").play("finish")
+					get_node("LightBlip").hideOnComplete()
+					
 					readyToTeleportOnTileSelect = false
 					GameData.hud.SetVisibilityOfTeleportWarning(false)
 					GameData.hud.addEventMessage("Player Teleported!")
 				else:
-					GameData.hud.addEventMessage("Can't teleport there")
+					GameData.hud.addEventMessage("Can't teleport there!")
 			else:
 				GameData.hud.addEventMessage("Can't teleport, path too far")
 		else:
-			GameData.hud.addEventMessage("Can't teleport there")
+			GameData.hud.addEventMessage("Can't teleport there!")
