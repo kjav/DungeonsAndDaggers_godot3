@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/EnergyBlip/blip_none.png" type="Texture" id=1]
+[ext_resource path="res://assets/EnergyBlip/blip_half.png" type="Texture" id=2]
+[ext_resource path="res://assets/EnergyBlip/blip_full.png" type="Texture" id=3]
+[ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=4]
+[ext_resource path="res://Effects/scripts/LightBlip.gd" type="Script" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "finish",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 1 ), null, ExtResource( 1 ), null ],
+"loop": true,
+"name": "preparing",
+"speed": 6.0
+} ]
+
+[node name="Animation" type="AnimatedSprite"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+scale = Vector2( 0.55, 0.55 )
+frames = SubResource( 1 )
+animation = "preparing"
+frame = 2
+playing = true
+script = ExtResource( 5 )
