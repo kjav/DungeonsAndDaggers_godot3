@@ -54,7 +54,7 @@ func _ready():
 	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
 
 func getPrimaryHandPosition():
-	return backHandBone.global_position
+	return forwardHandBone.global_position
 
 func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
