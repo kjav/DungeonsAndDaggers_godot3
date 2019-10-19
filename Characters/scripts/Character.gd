@@ -160,11 +160,13 @@ func handleForcedMoveTo(pos):
 	var blockedByTile = !targetWalkable(pos)
 	
 	if blockedByTile:
+		target_pos = original_pos
 		return false
 	
 	var blockedByEnvironment = !handleEnvironmentCollisions(pos)
 	
 	if blockedByEnvironment:
+		target_pos = original_pos
 		return false
 	
 	environmentOnWalkedOut()
