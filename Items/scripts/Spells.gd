@@ -101,8 +101,8 @@ class EarthquakeSpell extends "SpellBase.gd":
 			enemy.takeDamage(3)
 	
 	func addHeavyImpacts():
-		var attackPositions = [Vector2(0, 1), Vector2(1, 0), Vector2(1, 1), Vector2(0, -1), Vector2(-1, 0), Vector2(-1, -1), Vector2(-1, 1), Vector2(1, -1)]
-		var attackPositions2 = [Vector2(0, 2), Vector2(-1, 2), Vector2(-2, 2), Vector2(-2, 1), Vector2(-2, 0), Vector2(-2, -1), Vector2(-2, -2), Vector2(-1, -2), Vector2(0, -2), Vector2(1, -2), Vector2(2, -2), Vector2(2, -1), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2), Vector2(1, 2)]
+		var attackPositions = PositionHelper.getRelativeCoordinatesAroundPoint(1)
+		var attackPositions2 = PositionHelper.getRelativeCoordinatesAroundPoint(2)
 		
 		attackPositions = convertToAbsolutePosition(attackPositions)
 		attackPositions2 = convertToAbsolutePosition(attackPositions2)

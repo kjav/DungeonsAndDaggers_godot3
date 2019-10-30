@@ -95,7 +95,7 @@ func afterMoveComplete():
 	elif stunnedDuration == 0:
 		removeStunned()
 
-func turn():
+func turn(skipTurnBehaviour = false):
 	if invisibilityTurnsRemaining > 0:
 		invisibilityTurnsRemaining -= 1
 	elif invisibilityTurnsRemaining == 0:
@@ -324,21 +324,23 @@ func calculate_damage(character, base_damage):
 	
 	return base_damage * modifier
 
+func shouldAttack(character):
+	return alive() && (character == GameData.player or self == GameData.player)
+
 func attack(character, base_damage = 0):
-	if alive():
-		if (character == GameData.player) or (self == GameData.player):
-			var damage = calculate_damage(character, base_damage)
-			
-			if damageMultiplierInEffect():
-				damage = damageAfterMultiplier(damage)
-				reduceDamageMultiplier()
-			
-			removeInvisibility()
-			
-			emit_signal("attack", self, damage);
-			
-			#Audio.playHit()
-			character.takeDamage(damage)
+	if shouldAttack(character):
+		var damage = calculate_damage(character, base_damage)
+		
+		if damageMultiplierInEffect():
+			damage = damageAfterMultiplier(damage)
+			reduceDamageMultiplier()
+		
+		removeInvisibility()
+		
+		emit_signal("attack", self, damage);
+		
+		#Audio.playHit()
+		character.takeDamage(damage)
 
 func takeDamage(damage):
 	if damageable:

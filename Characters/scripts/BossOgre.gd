@@ -80,7 +80,7 @@ func _ready():
 	
 	._ready()
 
-func turn():
+func turn(skipTurnBehaviour = false):
 	if stunnedDuration <= 0:
 		.turnWithNoAfterMoveComplete()
 		
@@ -233,7 +233,7 @@ func adjustBosyPositions():
 	
 	setVisualAttackCues()
 
-func adjustPositonForWalkingUp():	
+func adjustPositonForWalkingUp():
 	head.position.x = headXUpPosition
 	headAngerOverlay.position.x = headXUpPosition
 	leftArm.position.x = leftArmXUpPosition

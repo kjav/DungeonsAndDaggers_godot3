@@ -13,7 +13,7 @@ func _ready():
 	item_distribution = Constants.IndependentDistribution.new([{"p": 0.1, "value": Constants.SpellClasses.FireSpell}])
 	undamageableAnimationName = "invinsible"
 
-func turn():
+func turn(skipTurnBehaviour = false):
 	.turn()    
 	self.damageable = turnBehaviour.getDamageable()
 	

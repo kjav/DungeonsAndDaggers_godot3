@@ -47,3 +47,18 @@ static func convertRelativePositionToAbsolute(currentPosition, relativePositions
 
 static func roundVector2(pos):
 	return Vector2(round(pos.x), round(pos.y))
+
+static func getRelativeCoordinatesAroundPoint(distance):
+	var pointsForDistance = []
+	var x = -distance
+	var y = -distance
+	
+	while (x <= distance):
+		while (y <= distance):
+			if (x != 0 or y != 0):
+				pointsForDistance.push_back(Vector2(x, y)) 
+			y += 1
+		y = -distance
+		x += 1
+	
+	return pointsForDistance

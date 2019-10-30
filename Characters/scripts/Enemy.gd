@@ -20,17 +20,18 @@ func _ready():
 func attack(character, damage=0):
 	.attack(character, base_damage);
 
-func turn():
-	turnWithNoAfterMoveComplete()
+func turn(skipTurnBehaviour = false):
+	turnWithNoAfterMoveComplete(skipTurnBehaviour)
 	
 	afterMoveComplete()
 
-func turnWithNoAfterMoveComplete():
+func turnWithNoAfterMoveComplete(skipTurnBehaviour = false):
 	if stunnedDuration <= 0:
 		if movement_direction != Enums.DIRECTION.NONE:
 			previous_stand_direction = movement_direction
 		
-		moving = moveDirection(turnBehaviour.turn(original_pos))
+		if !skipTurnBehaviour:
+			moving = moveDirection(turnBehaviour.turn(original_pos))
 	
 	.turn()
 
