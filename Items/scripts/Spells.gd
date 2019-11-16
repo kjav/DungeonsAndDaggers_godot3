@@ -9,6 +9,7 @@ class FireSpell extends "SpellBase.gd":
 
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		var closest_enemy = GameData.closestEnemy()
@@ -16,6 +17,8 @@ class FireSpell extends "SpellBase.gd":
 		if closest_enemy and GameData.player.consume_stat("mana", 1):
 				.onUse()
 				launchFireball(closest_enemy)
+		else:
+			GameData.hud.addEventMessage("No target in range")
 
 	func launchFireball(closest_enemy):
 		var new_missile = missile.instance()
@@ -42,6 +45,7 @@ class PushSpell extends "SpellBase.gd":
 
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return;
 
 		var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
@@ -56,6 +60,8 @@ class PushSpell extends "SpellBase.gd":
 				blastInstance.position = GameData.player.position + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
 				GameData.effectsNode.add_child(blastInstance)
 				blastInstance.play()
+		else:
+			GameData.hud.addEventMessage("No targets in range")
 	
 	func pushEnemy(enemy, pushDistance):
 		var distance = enemy.position - GameData.player.position
@@ -94,6 +100,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
@@ -104,6 +111,8 @@ class EarthquakeSpell extends "SpellBase.gd":
 			GameData.player.get_node("Camera2D").shake(0.2, 50, 50)
 			damageEnemies(enemiesInArea)
 			pass
+		else:
+			GameData.hud.addEventMessage("No targets in range")
 	
 	func damageEnemies(enemiesInArea):
 		for enemy in enemiesInArea:
@@ -146,10 +155,7 @@ class TeleportSpell extends "SpellBase.gd":
 		item_name = "Teleport Spell"
 		texture = preload("res://assets/gem_spell.png")
 
-	func onUse():
-		if not .allowedToUse():
-			return
-		
+	func onUse():		
 		.onUse()
 		GameData.player.get_node("LightBlip").play("preparing")
 		GameData.player.get_node("LightBlip").show()
@@ -167,13 +173,16 @@ class MissileSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 
 		var closest_enemy = GameData.closestEnemy()
 		
 		if closest_enemy and GameData.player.consume_stat("mana", 0.5):
-				.onUse()
-				launchPellet(closest_enemy)
+			.onUse()
+			launchPellet(closest_enemy)
+		else:
+			GameData.hud.addEventMessage("No target in range")
 
 	func launchPellet(closest_enemy):
 		var new_missile = missile.instance()
@@ -198,10 +207,13 @@ class StunSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 
 		var closest_enemy = GameData.closestEnemy()
 		
 		if closest_enemy and GameData.player.consume_stat("mana", 0.5):
-				.onUse()
-				closest_enemy.addStun(randi()%2+2)
+			.onUse()
+			closest_enemy.addStun(randi()%2+2)
+		else:
+			GameData.hud.addEventMessage("No target in range")

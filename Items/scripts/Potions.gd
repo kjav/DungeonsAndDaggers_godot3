@@ -7,6 +7,7 @@ class HealthPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -20,6 +21,7 @@ class DoubleDamagePotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -33,6 +35,7 @@ class InvisibilityPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -46,6 +49,7 @@ class LevelUpPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -59,6 +63,7 @@ class BreifHealthPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -72,6 +77,7 @@ class BreifManaPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -85,6 +91,7 @@ class BreifStrengthPotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()
@@ -98,6 +105,7 @@ class BreifDefencePotion extends "PotionBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		.onUse()

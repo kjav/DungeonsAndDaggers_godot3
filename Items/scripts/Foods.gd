@@ -6,11 +6,14 @@ class CookedSteak extends "Item.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
 			.onUse()
 			GameData.player.heal(3)
+		else:
+			GameData.hud.addEventMessage("Health is already full")
 
 class Apple extends "Item.gd":
 	func _init():
@@ -20,11 +23,14 @@ class Apple extends "Item.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
 			.onUse()
 			GameData.player.heal(1)
+		else:
+			GameData.hud.addEventMessage("Health is already full")
 
 class Cheese extends "Item.gd":
 	func _init():
@@ -34,8 +40,11 @@ class Cheese extends "Item.gd":
 	
 	func onUse():
 		if not .allowedToUse():
+			.eventMessageForTurnUse()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
 			.onUse()
 			GameData.player.heal(2)
+		else:
+			GameData.hud.addEventMessage("Health is already full")
