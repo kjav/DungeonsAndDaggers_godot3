@@ -1,6 +1,7 @@
 extends Node
 
 signal itemDropped(item)
+signal itemPickedUp(item)
 
 var potions = []
 var foods = []
@@ -15,6 +16,7 @@ var environmentObjects = []
 var placedItems = []
 var TileSize = 128;
 var start_screen = ""
+var current_level = 1
 
 func _ready():
 	var instance = Constants.PotionClasses.HealthPotion.new()
@@ -101,6 +103,15 @@ func arrayAtPosForStationary(pos, array):
 	
 	return collisions
 
+func stairsAtPos(pos):
+	var envs = arrayAtPosForStationary(pos, environmentObjects)
+	print(envs)
+	if len(envs) > 0:
+		print(envs[0].get_name())
+	for env in envs:
+		if "Stairs" in env.get_name():
+			return env
+
 func pickedUp(item):
 	placedItems.remove(placedItems.find(item))
 
@@ -149,3 +160,19 @@ func reset():
 	instance = Constants.SpellClasses.FireSpell.new()
 	addSpells([instance, instance])
 
+func next_level():
+	# TODO: Hide HUD node.
+	current_level += 1
+	for item in placedItems:
+		emit_signal("itemPickedUp", item)
+		item.queue_free()
+	placedItems = []
+	for environ in environmentObjects:
+		environ.queue_free()
+	environmentObjects = []
+	for chr in characters:
+		if chr != player:
+			chr.queue_free()
+	characters = [player]
+	player.position = Vector2(640, 1024)
+	tilemap.next_level()

@@ -4,9 +4,9 @@ func _ready():
 	for i in GameData.placedItems:
 		addItem(i)
 	GameData.connect("itemDropped", self, "addItem")
+	GameData.connect("itemPickedUp", self, "remove")
 
 func setupConnection():
-#todo, need to call this
 	GameData.player.connect("itemPickedUp", self, "remove")
 
 func remove(item):

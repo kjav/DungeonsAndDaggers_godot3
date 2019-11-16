@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/KeysInterfaceContainer.gd" type="Script" id=2]
@@ -10,12 +10,13 @@
 [ext_resource path="res://Hud/Minimap.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hud/InventoryHudButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hud/PickupHudButton.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/if_Settings_gear_setting_tools_392496.png" type="Texture" id=11]
-[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=12]
-[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=15]
-[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Hud/NextLevelHudButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/if_Settings_gear_setting_tools_392496.png" type="Texture" id=12]
+[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=13]
+[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=16]
+[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=17]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,17 +48,14 @@ scale = Vector2( 2, 2 )
 
 [node name="Hat" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 0, 5 )
-type = 0
 
 [node name="Hat1" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 32, 5 )
 texture = ExtResource( 5 )
-type = 0
 
 [node name="Hat2" parent="HudCanvasLayer/ManaBar" instance=ExtResource( 4 )]
 position = Vector2( 64, 5 )
 texture = ExtResource( 6 )
-type = 0
 
 [node name="ChangeArrow" type="TextureRect" parent="HudCanvasLayer"]
 show_behind_parent = true
@@ -91,7 +89,11 @@ frameStyle = "Orange"
 type = "Spell"
 
 [node name="Pickup" parent="HudCanvasLayer" instance=ExtResource( 10 )]
-position = Vector2( 773.552, 1640.96 )
+position = Vector2( 770, 1675 )
+scale = Vector2( 2, 2 )
+
+[node name="NextLevel" parent="HudCanvasLayer" instance=ExtResource( 11 )]
+position = Vector2( 560, 1675 )
 scale = Vector2( 2, 2 )
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
@@ -100,16 +102,16 @@ margin_top = 6.0
 margin_right = 1263.0
 margin_bottom = 262.0
 rect_scale = Vector2( 0.25, 0.25 )
-texture_normal = ExtResource( 11 )
-script = ExtResource( 12 )
+texture_normal = ExtResource( 12 )
+script = ExtResource( 13 )
 
-[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 13 )]
+[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 14 )]
 position = Vector2( 390.218, 115.807 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 14 )]
+[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 15 )]
 visible = false
-script = ExtResource( 15 )
+script = ExtResource( 16 )
 
-[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 16 )]
+[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 17 )]
 position = Vector2( 1002.68, 79.558 )
 scale = Vector2( 0.1, 0.1 )

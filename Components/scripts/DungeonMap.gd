@@ -29,6 +29,12 @@ func _ready():
 	BottomTileMap = get_node("BottomTileMap")
 	for i in range(0, 128):
 		flat_not_walkable.push_back(not_walkable.has(i))
+	GameData.tilemap = self
+	set_map_type(GameData.chosen_map)
+
+func next_level():
+	points = {}
+	ids = {}
 	set_map_type(GameData.chosen_map)
 
 func addPoint(i, j):
@@ -86,12 +92,11 @@ func disconnectPoint(i, j):
 
 func set_map_type(type):
 	if has_node("BottomTileMap"):
-		map = Maps[type].new()
+		map = Maps[type].new(GameData.current_level)
 		var BTM = self.get_node("BottomTileMap")
-		var TTM = self.get_node("BottomTileMap")
+		var TTM = self.get_node("TopTileMap")
 		var Enemies = self.get_node("/root/Node2D/Enemies")
 		Pathfinder = AStar.new()
-		GameData.tilemap = self
 		
 		var j = -100
 		for row in map.tiles:
@@ -110,8 +115,8 @@ func set_map_type(type):
 		
 		for enemy in map.npcs:
 			var node = enemy.value.instance()
-			Enemies.add_child(node)
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
+			Enemies.add_child(node)
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 		
 		for item in map.items:
@@ -121,6 +126,7 @@ func set_map_type(type):
 		for env in map.environmentObjects:
 			var Environments = self.get_node("/root/Node2D/Environments")
 			var node = env.value.instance()
+			node.set_position((env.position - Vector2(100, 100)) * 128)
 			Environments.add_child(node)
       
 			# Insert the node at the correct position, sorted by y coordinate, to prevent overdraw
@@ -152,7 +158,6 @@ func set_map_type(type):
 						node.connect("bossDoorOpened", character, "_on_BossDoor_bossDoorOpened")
 
 			GameData.environmentObjects.append(node)
-			node.set_position((env.position - Vector2(100, 100)) * 128)
 	
 	map_type = type
 
