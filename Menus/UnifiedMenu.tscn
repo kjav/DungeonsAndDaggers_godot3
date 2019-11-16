@@ -35,8 +35,10 @@ stretch_mode = 2
 [node name="SplashScreen" type="Node2D" parent="."]
 
 [node name="SplashScreenTexture" type="TextureRect" parent="."]
-margin_right = 1080.0
-margin_bottom = 1920.0
+margin_left = -4.659
+margin_top = -121.134
+margin_right = 1075.34
+margin_bottom = 1798.87
 mouse_filter = 2
 texture = ExtResource( 3 )
 
