@@ -34,13 +34,8 @@ func addInitialItems():
 	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7, instance8])
 	
 	instance = Constants.FoodClasses.CookedSteak.new()
-	instance2 = Constants.FoodClasses.WholeChicken.new()
 	instance3 = Constants.FoodClasses.Cheese.new()
-	instance4 = Constants.FoodClasses.Bread.new()
-	instance5 = Constants.FoodClasses.Cake.new()
-	instance6 = Constants.FoodClasses.Cabbage.new()
 	instance7 = Constants.FoodClasses.Apple.new()
-	instance8 = Constants.FoodClasses.BakedPie.new()
 	
 	addFoods([instance, instance2, instance3, instance4, instance5, instance6, instance7, instance8])
 	

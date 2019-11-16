@@ -6,6 +6,9 @@ class HealthPotion extends "PotionBase.gd":
 		texture = preload("res://assets/red_potion2.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.increaseMaxHealth(1)
 
@@ -16,6 +19,9 @@ class DoubleDamagePotion extends "PotionBase.gd":
 		texture = preload("res://assets/black_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyDamageModifier(3)
 
@@ -26,6 +32,9 @@ class InvisibilityPotion extends "PotionBase.gd":
 		texture = preload("res://assets/clear_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyInvisibility(10)
 
@@ -36,6 +45,9 @@ class LevelUpPotion extends "PotionBase.gd":
 		texture = preload("res://assets/special_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		#open upgrade screen
 
@@ -46,6 +58,9 @@ class BreifHealthPotion extends "PotionBase.gd":
 		texture = preload("res://assets/red_simple_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyTemporaryHealth(15)
 		
@@ -56,6 +71,9 @@ class BreifManaPotion extends "PotionBase.gd":
 		texture = preload("res://assets/blue_simple_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyTemporaryMana(15)
 
@@ -66,6 +84,9 @@ class BreifStrengthPotion extends "PotionBase.gd":
 		texture = preload("res://assets/green_simple_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyTemporaryStrength(15)
 		
@@ -76,5 +97,8 @@ class BreifDefencePotion extends "PotionBase.gd":
 		texture = preload("res://assets/black_simple_potion.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.applyTemporaryDefence(15)

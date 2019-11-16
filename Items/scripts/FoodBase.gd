@@ -9,5 +9,8 @@ func pickup():
 	.pickup()
 
 func onUse():
+	if not .allowedToUse():
+		return
+	
 	GameData.foods.remove(GameData.foods.find(self))
 	#Audio.playSoundEffect(useSound, true)

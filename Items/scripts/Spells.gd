@@ -8,6 +8,9 @@ class FireSpell extends "SpellBase.gd":
 		texture = preload("res://assets/red_spell2.png")
 
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		var closest_enemy = GameData.closestEnemy()
 		
 		if closest_enemy and GameData.player.consume_stat("mana", 1):
@@ -38,6 +41,9 @@ class PushSpell extends "SpellBase.gd":
 		texture = preload("res://assets/swirl_spell.png")
 
 	func onUse():
+		if not .allowedToUse():
+			return;
+
 		var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
 		
 		if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
@@ -87,6 +93,9 @@ class EarthquakeSpell extends "SpellBase.gd":
 		texture = preload("res://assets/brown_spell.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
 		
 		if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
@@ -138,6 +147,9 @@ class TeleportSpell extends "SpellBase.gd":
 		texture = preload("res://assets/gem_spell.png")
 
 	func onUse():
+		if not .allowedToUse():
+			return
+		
 		.onUse()
 		GameData.player.get_node("LightBlip").play("preparing")
 		GameData.player.get_node("LightBlip").show()
@@ -154,6 +166,9 @@ class MissileSpell extends "SpellBase.gd":
 		texture = preload("res://assets/triangle_spell.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+
 		var closest_enemy = GameData.closestEnemy()
 		
 		if closest_enemy and GameData.player.consume_stat("mana", 0.5):
@@ -182,6 +197,9 @@ class StunSpell extends "SpellBase.gd":
 		texture = preload("res://assets/rune_spell.png")
 	
 	func onUse():
+		if not .allowedToUse():
+			return
+
 		var closest_enemy = GameData.closestEnemy()
 		
 		if closest_enemy and GameData.player.consume_stat("mana", 0.5):

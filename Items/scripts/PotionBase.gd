@@ -6,6 +6,9 @@ func pickup():
 	.pickup()
 
 func onUse():
+	if not .allowedToUse():
+		return
+	
 	.onUse()
 	GameData.potions.remove(GameData.potions.find(self))
 	#Audio.playSoundEffect(useSound, true)
