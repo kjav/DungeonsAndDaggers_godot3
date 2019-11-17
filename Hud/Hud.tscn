@@ -18,8 +18,8 @@
 [ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=16]
 [ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=20]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -126,10 +126,8 @@ margin_top = -8.0
 margin_right = 1089.0
 margin_bottom = 1930.0
 
-[node name="ContextualMenu" parent="HudCanvasLayer" instance=ExtResource( 19 )]
+[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 19 )]
 visible = false
-position = Vector2( 306.226, 930.632 )
 
-[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 20 )]
-visible = false
+[node name="ContextualMenu" parent="." instance=ExtResource( 20 )]
 [connection signal="clicked_inside" from="HudCanvasLayer/GameClickableRegion" to="." method="_on_GameClickableRegion_clicked_inside"]

@@ -31,11 +31,11 @@ func _ready():
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos) or GameData.stairsAtPos(pos):
-		get_node("HudCanvasLayer/ContextualMenu").show()
-		#needs to convert 4,12 into tile position on screen
-		get_node("HudCanvasLayer/ContextualMenu").position = (pos) * GameData.TileSize
+		get_node("ContextualMenu").position = (pos + Vector2(0.5, 0.5)) * GameData.TileSize
+		get_node("ContextualMenu").activate(pos)
+		get_node("ContextualMenu").show()
 	else:
-		get_node("HudCanvasLayer/ContextualMenu").hide()
+		get_node("ContextualMenu").hide()
 
 func SetCurrentWeapon(currentSlot):
 	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)

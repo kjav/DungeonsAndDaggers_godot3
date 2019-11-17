@@ -133,9 +133,12 @@ func arrayAtPosForStationary(pos, array):
 
 func stairsAtPos(pos):
 	var envs = arrayAtPosForStationary(pos, environmentObjects)
+	
 	for env in envs:
 		if "Stairs" in env.get_name():
 			return env
+	
+	return null
 
 func pickedUp(item):
 	placedItems.remove(placedItems.find(item))
@@ -144,6 +147,15 @@ func itemAtPos(pos):
 	for item in placedItems:
 		if (item.position.x / 128 == round(pos.x) and item.position.y / 128 == round(pos.y)):
 			return item
+
+func itemsAtPos(pos):
+	var items = []
+
+	for item in placedItems:
+		if (item.position.x / 128 == round(pos.x) and item.position.y / 128 == round(pos.y)):
+			items.append(item)
+	
+	return items
 
 func placeItem(item):
 	GameData.placedItems.append(item)
