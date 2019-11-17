@@ -1,4 +1,4 @@
-extends "Enemy.gd"
+extends "Boss.gd"
 
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")

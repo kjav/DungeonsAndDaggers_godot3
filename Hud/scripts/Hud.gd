@@ -27,12 +27,18 @@ func _ready():
 	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
 	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
 	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
+	get_node("HudCanvasLayer/NextLevel").hide()
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos):
 		get_node("HudCanvasLayer/Pickup").show()
 	else:
 		get_node("HudCanvasLayer/Pickup").hide()
+
+	if GameData.stairsAtPos(pos):
+		get_node("HudCanvasLayer/NextLevel").show()
+	else:
+		get_node("HudCanvasLayer/NextLevel").hide()
 
 func SetCurrentWeapon(currentSlot):
 	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)
@@ -108,4 +114,3 @@ func _on_GameClickableRegion_clicked_inside(event):
 
 func addEventMessage(message):
 	get_node("HudCanvasLayer/EventMessageHolder").addMessage(message);
-	

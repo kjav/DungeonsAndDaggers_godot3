@@ -12,7 +12,7 @@ var Distribution = Constants.Distribution
 func is_wall(tile):
 	return tile in [6, 13, 21, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
 	
-func _init(width, height, initial_tile=-1):
+func _init(width, height, level, initial_tile=-1):
 	self.initial_tile = initial_tile
 	
 	tree.add_value([

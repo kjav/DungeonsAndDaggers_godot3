@@ -193,7 +193,9 @@ func MoveCharacters():
 	for i in range(GameData.characters.size()):
 		if i < GameData.characters.size():
 			GameData.characters[i].turn()
-			GameData.characters[i].setTurnAnimations()
+			# Ensure the character hasn't died during the turn and been removed
+			if len(GameData.characters) > i:
+				GameData.characters[i].setTurnAnimations()
 
 func attack(character, base_damage = 0):
 	if alive():
