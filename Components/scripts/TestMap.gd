@@ -81,7 +81,7 @@ func add_room(name, room, wall):
 	# Room added successfully: return true
 	return true
 
-func _init().(200, 200, -1):
+func _init().(200, 200, 1, -1):
 	var n_rooms = 1
 	randomize()
 	var DefaultRoom = load("res://Components/Rooms/DefaultRoomWithMonster.gd").new()

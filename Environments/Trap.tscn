@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/spikes_0.png" type="Texture" id=1]
 [ext_resource path="res://assets/spikes_1.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://Environments/scripts/Trap.gd" type="Script" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
@@ -24,7 +23,6 @@ animations = [ {
 } ]
 
 [node name="Trap" type="AnimatedSprite"]
-
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
 animation = "stationary"

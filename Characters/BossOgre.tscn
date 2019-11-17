@@ -1,65 +1,65 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/scripts/BossOgre.gd" type="Script" id=1]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left.png" type="Texture" id=2]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_1.png" type="Texture" id=3]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_body_back.png" type="Texture" id=5]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_back.png" type="Texture" id=2]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_body_left_2.png" type="Texture" id=5]
 [ext_resource path="res://assets/OgreBoss/boss_ogre_body_back_1.png" type="Texture" id=6]
 [ext_resource path="res://assets/OgreBoss/boss_ogre_body_back_2.png" type="Texture" id=7]
-[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_body_left.png" type="Texture" id=8]
-[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_body_back.png" type="Texture" id=9]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_head_left.png" type="Texture" id=10]
-[ext_resource path="res://assets/OgreBoss/boss_ogre_head_back.png" type="Texture" id=11]
-[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_head_left.png" type="Texture" id=12]
-[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_head_back.png" type="Texture" id=13]
+[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_body_back.png" type="Texture" id=8]
+[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_body_left.png" type="Texture" id=9]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_head_back.png" type="Texture" id=10]
+[ext_resource path="res://assets/OgreBoss/boss_ogre_head_left.png" type="Texture" id=11]
+[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_head_back.png" type="Texture" id=12]
+[ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_head_left.png" type="Texture" id=13]
 [ext_resource path="res://assets/OgreBoss/boss_ogre_arm_left.png" type="Texture" id=14]
 [ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_left_arm.png" type="Texture" id=15]
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "walk_left",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "stand_left",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "stand_up",
-"speed": 1.0
+"frames": [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 6.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
 "name": "walk_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": false,
-"name": "stand_up",
+"name": "walk_up",
 "speed": 1.0
 } ]
 
@@ -67,22 +67,22 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 10 ) ],
 "loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
 "name": "walk_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 10 ) ],
 "loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "stand_up",
+"name": "walk_up",
 "speed": 1.0
 } ]
 
@@ -90,22 +90,22 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
 "name": "walk_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": false,
-"name": "stand_up",
+"name": "walk_up",
 "speed": 1.0
 } ]
 
@@ -113,7 +113,22 @@ animations = [ {
 animations = [ {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
+"name": "stand_right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
 "name": "walk_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 14 ) ],
@@ -128,11 +143,6 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
 "name": "stand_down",
 "speed": 5.0
 }, {
@@ -140,28 +150,18 @@ animations = [ {
 "loop": false,
 "name": "walk_down",
 "speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "stand_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "stand_right",
-"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "walk_left",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "walk_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -171,7 +171,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "stand_up",
+"name": "walk_up",
 "speed": 1.0
 } ]
 
@@ -235,4 +235,4 @@ centered = false
 visible = false
 position = Vector2( 0.0658798, -15.8113 )
 scale = Vector2( 0.05, 0.05 )
-frame = 3
+frame = 0

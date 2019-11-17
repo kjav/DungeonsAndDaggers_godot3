@@ -21,6 +21,7 @@ func _ready():
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
 	get_node("HudCanvasLayer/Pickup").hide()
+	get_node("HudCanvasLayer/NextLevel").hide()
 	PlayerWeaponChanged("Primary", GameData.player.primaryWeapon)
 	GameData.hud = self
 
@@ -29,6 +30,11 @@ func CheckFloor(pos):
 		get_node("HudCanvasLayer/Pickup").show()
 	else:
 		get_node("HudCanvasLayer/Pickup").hide()
+
+	if GameData.stairsAtPos(pos):
+		get_node("HudCanvasLayer/NextLevel").show()
+	else:
+		get_node("HudCanvasLayer/NextLevel").hide()
 
 func PlayerWeaponChanged(slot, weapon):
 	var selectedSlot
