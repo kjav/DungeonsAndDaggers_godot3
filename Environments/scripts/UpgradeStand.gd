@@ -26,6 +26,5 @@ func _process(delta):
 
 func onWalkedInto(character):
 	if character == GameData.player:
-		print(GameData.hud)
 		GameData.hud.show_upgrade_menu()
 	return true

@@ -6,7 +6,6 @@ class StrengthUpgrade3 extends "Upgrade.gd":
 	
 	func onUse():
 		GameData.player.increaseStat("strength", 3)
-		print(GameData.player.stats)
 
 class DefenceUpgrade3 extends "Upgrade.gd":
 	func _init():
@@ -16,7 +15,6 @@ class DefenceUpgrade3 extends "Upgrade.gd":
 	
 	func onUse():
 		GameData.player.increaseStat("defence", 3)
-		print(GameData.player.stats)
 
 class HealthUpgrade1 extends "Upgrade.gd":
 	func _init():
