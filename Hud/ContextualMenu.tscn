@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hud/scripts/ContextualMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/frame_bg_fake_sqaure.png" type="Texture" id=3]
-[ext_resource path="res://assets/pixel.png" type="Texture" id=4]
-[ext_resource path="res://Hud/ContextualMenuItemNode.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hud/scripts/NextLevel.gd" type="Script" id=4]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=5]
+[ext_resource path="res://Hud/ContextualMenuItemNode.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
@@ -28,6 +29,7 @@ margin_right = 1032.0
 margin_bottom = 256.989
 rect_scale = Vector2( 0.17, 0.17 )
 texture_normal = ExtResource( 3 )
+script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="LevelSelect"]
 self_modulate = Color( 0.180392, 0.180392, 0.180392, 1 )
@@ -36,37 +38,37 @@ margin_left = 30.0
 margin_top = 21.0
 margin_right = 1104.0
 margin_bottom = 268.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 expand = true
 
-[node name="ItemNode1" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode1" parent="." instance=ExtResource( 6 )]
 position = Vector2( -52.5317, -187.857 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode2" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -157.532, -145.69 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode3" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode3" parent="." instance=ExtResource( 6 )]
 position = Vector2( 51.3019, -145.69 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode4" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode4" parent="." instance=ExtResource( 6 )]
 position = Vector2( -207.532, -50.69 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode5" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode5" parent="." instance=ExtResource( 6 )]
 position = Vector2( 103.468, -50.69 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode6" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode6" parent="." instance=ExtResource( 6 )]
 position = Vector2( -154, 43.647 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode7" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode7" parent="." instance=ExtResource( 6 )]
 position = Vector2( 51, 43.647 )
 scale = Vector2( 0.4, 0.4 )
 
-[node name="ItemNode8" parent="." instance=ExtResource( 5 )]
+[node name="ItemNode8" parent="." instance=ExtResource( 6 )]
 position = Vector2( -50.5317, 80.6466 )
 scale = Vector2( 0.4, 0.4 )

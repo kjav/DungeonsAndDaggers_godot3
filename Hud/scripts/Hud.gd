@@ -26,7 +26,6 @@ func _ready():
 	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
 	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
 	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
-	get_node("HudCanvasLayer/NextLevel").hide()
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos) or GameData.stairsAtPos(pos):

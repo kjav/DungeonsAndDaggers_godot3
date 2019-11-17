@@ -133,7 +133,7 @@ func arrayAtPosForStationary(pos, array):
 
 func stairsAtPos(pos):
 	var envs = arrayAtPosForStationary(pos, environmentObjects)
-	
+
 	for env in envs:
 		if "Stairs" in env.get_name():
 			return env
@@ -160,6 +160,9 @@ func itemsAtPos(pos):
 func placeItem(item):
 	GameData.placedItems.append(item)
 	emit_signal("itemDropped", item)
+
+func isBossLevel(level):
+	return (level % 3) == 0
 	
 func closestEnemy():
 	var closestIndex

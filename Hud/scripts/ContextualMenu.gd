@@ -11,7 +11,16 @@ func populateLevelOption(stairs):
 	if stairs != null:
 		get_node("LevelSelect").show()
 		get_node("LevelSelectText").show()
-		#update text to right level / boss
+		
+		var nextLevel = GameData.current_level + 1
+		var levelText
+		
+		if GameData.isBossLevel(nextLevel):
+			levelText = "Boss"
+		else:
+			levelText = "Level " + str(nextLevel)
+		
+		get_node("LevelSelectText").text = "Go to " + str(levelText)
 	else:
 		get_node("LevelSelect").hide()
 		get_node("LevelSelectText").hide()
