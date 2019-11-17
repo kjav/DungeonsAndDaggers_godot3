@@ -35,10 +35,9 @@ position = Vector2( 45.7208, 372.52 )
 scale = Vector2( 0.6, 0.6 )
 script = ExtResource( 2 )
 
-[node name="PrimaryWeaponSlot" parent="HudCanvasLayer" instance=ExtResource( 3 )]
+[node name="WeaponSlots" parent="HudCanvasLayer" instance=ExtResource( 3 )]
 position = Vector2( 30, 1716 )
 scale = Vector2( 0.75, 0.75 )
-frameStyle = "Blue"
 
 [node name="HealthBar" type="Node2D" parent="HudCanvasLayer"]
 position = Vector2( -12.2763, 42.2845 )
