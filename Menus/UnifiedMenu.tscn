@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/bg_01_02.png" type="Texture" id=6]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/gui_02_title.png" type="Texture" id=8]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -75,19 +74,18 @@ texture = ExtResource( 6 )
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 7 )]
 
 [node name="WorldButton" type="TextureButton" parent="WorldSelect"]
-margin_left = 229.179
-margin_top = 1179.78
-margin_right = 1449.18
-margin_bottom = 1549.78
-rect_scale = Vector2( 0.5, 0.5 )
-texture_normal = ExtResource( 8 )
+margin_left = 196.88
+margin_top = 1191.52
+margin_right = 1416.88
+margin_bottom = 1561.52
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="WorldSelect"]
-margin_left = 356.951
-margin_top = 1246.21
-margin_right = 760.951
-margin_bottom = 1367.21
-rect_scale = Vector2( 0.9, 0.9 )
+margin_left = 342.352
+margin_top = 1223.45
+margin_right = 746.352
+margin_bottom = 1344.45
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.417969, 0.176331, 0, 1 )
