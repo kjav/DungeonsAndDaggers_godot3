@@ -194,7 +194,7 @@ func findNextDirection(a, b):
 	var id_path = _getIdPath(a, b)
 	
 	var direction = Enums.DIRECTION.NONE
-	if id_path.size() > 1:
+	if id_path and id_path.size() > 1:
 		direction = ids[id_path[1]] - ids[id_path[0]]
 		if direction.x == 1:
 			direction = Enums.DIRECTION.RIGHT
