@@ -16,7 +16,7 @@ func _on_Player_itemPickedUp( item ):
 		addMessage('You obtained a ' + item.item_name + '.');
 
 func _on_Player_weaponChanged( slot, weapon ):
-	if (slot == "Primary"):
+	if (slot == Enums.WEAPONSLOT.PRIMARY):
 		addMessage('A ' + weapon.item_name + ' is now equipped.');
 
 func _on_Player_playerAttack( character, amount ):

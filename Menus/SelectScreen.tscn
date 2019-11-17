@@ -7,95 +7,33 @@
 [ext_resource path="res://assets/iconmonstr-arrow-63-240.png" type="Texture" id=5]
 
 [node name="Node2D" type="Node2D"]
-
 script = ExtResource( 1 )
-active = true
 
-[node name="LeftArrow" type="TextureButton" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="LeftArrow" type="TextureButton" parent="."]
 margin_right = 140.0
 margin_bottom = 1700.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="texture" type="TextureRect" parent="LeftArrow" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="texture" type="TextureRect" parent="LeftArrow"]
+margin_top = -294.248
 margin_right = 140.0
-margin_bottom = 1700.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+margin_bottom = 1405.75
 texture = ExtResource( 3 )
 stretch_mode = 4
-_sections_unfolded = [ "Rect" ]
 
-[node name="RightArrow" type="TextureButton" parent="." index="1"]
-
+[node name="RightArrow" type="TextureButton" parent="."]
 modulate = Color( 1, 1, 1, 0.5 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 940.0
 margin_top = 8.0
 margin_right = 1080.0
 margin_bottom = 1708.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
 script = ExtResource( 4 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Material", "Pause", "Rect", "Size Flags", "Textures", "Visibility" ]
 
-[node name="texture" type="TextureRect" parent="RightArrow" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="texture" type="TextureRect" parent="RightArrow"]
+margin_top = -294.248
 margin_right = 140.0
-margin_bottom = 1700.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+margin_bottom = 1405.75
 texture = ExtResource( 5 )
 stretch_mode = 4
-_sections_unfolded = [ "Rect" ]
-
 [connection signal="pressed" from="LeftArrow" to="LeftArrow" method="_on_LeftArrow_pressed"]
-
 [connection signal="pressed" from="RightArrow" to="RightArrow" method="_on_RightArrow_pressed"]
-
-

@@ -627,7 +627,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="SecondaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand"]
+[node name="OffHandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand"]
 position = Vector2( 1, 0 )
 rotation = 2.53073
 scale = Vector2( 0.1, 0.100359 )
@@ -658,7 +658,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="PrimaryWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand"]
+[node name="CurrentWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand"]
 position = Vector2( 1, 0 )
 rotation = 3.22886
 scale = Vector2( 0.1, -0.1 )

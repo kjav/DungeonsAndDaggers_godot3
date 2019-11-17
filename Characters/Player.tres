@@ -414,7 +414,7 @@ tracks/33/keys = {
 "values": [ 0.0 ]
 }
 tracks/34/type = "value"
-tracks/34/path = NodePath("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand/SecondaryWeapon:position")
+tracks/34/path = NodePath("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand/OffHandWeapon:position")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/imported = false

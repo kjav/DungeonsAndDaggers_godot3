@@ -14,3 +14,4 @@ func get_items():
 
 func _on_changed(index):
 	GameData.chosen_map = _item_names[index]
+	GameData.chosen_player = "BeserkerPlayer"

@@ -8,166 +8,81 @@
 [ext_resource path="res://assets/flask.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 80
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 4 )
-_sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Node2D" type="Node2D" index="0"]
-
+[node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="SelectScreen" parent="." index="0" instance=ExtResource( 2 )]
+[node name="SelectScreen" parent="." instance=ExtResource( 2 )]
 
-[node name="DungeonMap" type="Node2D" parent="." index="1"]
+[node name="DungeonMap" type="Node2D" parent="."]
+position = Vector2( 544.205, 485.558 )
 
-position = Vector2( 540, 700 )
-
-[node name="TextureFrame" type="TextureRect" parent="DungeonMap" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="TextureFrame" type="TextureRect" parent="DungeonMap"]
 margin_left = -385.0
 margin_top = -340.0
 margin_right = 165.0
 margin_bottom = 210.0
 rect_scale = Vector2( 1.4, 1.4 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 3 )
-stretch_mode = 0
 
-[node name="Label" type="Label" parent="DungeonMap" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label" type="Label" parent="DungeonMap"]
 margin_left = -486.0
 margin_top = 484.0
 margin_right = 507.0
 margin_bottom = 596.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "DUNGEON MAP"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="MazeMap" type="Node2D" parent="." index="2"]
+[node name="MazeMap" type="Node2D" parent="."]
+position = Vector2( 1604.2, 485.558 )
 
-position = Vector2( 1600, 700 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="TextureFrame" type="TextureRect" parent="MazeMap" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="TextureFrame" type="TextureRect" parent="MazeMap"]
 margin_left = -385.0
 margin_top = -340.0
 margin_right = 165.0
 margin_bottom = 210.0
 rect_scale = Vector2( 1.4, 1.4 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 5 )
-stretch_mode = 0
 
-[node name="Label" type="Label" parent="MazeMap" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label" type="Label" parent="MazeMap"]
 margin_left = -424.0
 margin_top = 484.0
 margin_right = 456.0
 margin_bottom = 596.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "MAZE MAP"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="TestMap" type="Node2D" parent="." index="3"]
+[node name="TestMap" type="Node2D" parent="."]
+position = Vector2( 1604.2, 485.558 )
 
-position = Vector2( 1600, 700 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="TextureFrame" type="TextureRect" parent="TestMap" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="TextureFrame" type="TextureRect" parent="TestMap"]
 margin_left = -335.0
 margin_top = -340.0
 margin_right = 215.0
 margin_bottom = 210.0
 rect_scale = Vector2( 1.2, 1.4 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 texture = ExtResource( 6 )
 expand = true
-stretch_mode = 0
 
-[node name="Label" type="Label" parent="TestMap" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label" type="Label" parent="TestMap"]
 margin_left = -424.0
 margin_top = 484.0
 margin_right = 417.0
 margin_bottom = 596.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "TEST MAP"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
-
-
