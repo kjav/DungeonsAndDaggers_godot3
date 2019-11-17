@@ -19,6 +19,7 @@ var TileSize = 128;
 var start_screen = ""
 var effectsNode
 var current_level = 1
+var muted = false
 
 func _ready():
 	addInitialItems()
@@ -208,3 +209,7 @@ func next_level():
 	characters = [player]
 	player.position = Vector2(640, 1024)
 	tilemap.next_level()
+
+func toggle_mute():
+	muted = not muted
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), muted)
