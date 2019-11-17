@@ -63,6 +63,7 @@ func PlayerHealthChanged(health, maxHealth):
 	
 	if health <= 0:
 		get_node("HudCanvasLayer/DeathMenu").died()
+		get_node("HudCanvasLayer/Turn Timer").hide()
 
 func _on_Environment_unlocked(unlockGuid, environmentObjectsName):
 	get_node("HudCanvasLayer/Keys").KeyAmountChanged()
