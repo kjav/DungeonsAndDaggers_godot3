@@ -11,8 +11,8 @@ signal playerAttack(character, amount)
 const LightBlip = preload("res://Effects/LightBlip.tscn")
 var time_elapsed = 0
 var attack
-var primaryWeapon = Constants.WeaponClasses.BasicBow.new()
-var secondaryWeapon = Constants.WeaponClasses.BasicSword.new()
+var primaryWeapon = Constants.WeaponClasses.BasicSword.new()
+var secondaryWeapon = Constants.WeaponClasses.BasicShield.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
