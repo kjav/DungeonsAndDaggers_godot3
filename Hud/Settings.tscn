@@ -1,24 +1,77 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Hud/scripts/Settings.gd" type="Script" id=1]
-[ext_resource path="res://assets/plank_15.png" type="Texture" id=2]
-[ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=3]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/cross.png" type="Texture" id=2]
+[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/plank_15.png" type="Texture" id=4]
+[ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=5]
+[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://Hud/scripts/MuteButton.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [node name="Node2D" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -33.0
+margin_top = -27.0
+margin_right = 1112.0
+margin_bottom = 1946.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.54902 )
+margin_left = 930.0
+margin_top = 50.0
+margin_right = 1170.0
+margin_bottom = 290.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="ClickableRegion" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -31.8928
+margin_top = 895.614
+margin_right = 1124.11
+margin_bottom = 2105.61
+rect_pivot_offset = Vector2( 598, 941 )
+
+[node name="ClickableRegion2" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -29.5905
+margin_top = -625.947
+margin_right = 1126.41
+margin_bottom = 584.053
+rect_pivot_offset = Vector2( 598, 941 )
+
+[node name="ClickableRegion3" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 729.066
+margin_top = 9.86963
+margin_right = 1885.07
+margin_bottom = 1219.87
+rect_pivot_offset = Vector2( 598, 941 )
+
+[node name="ClickableRegion4" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -794.852
+margin_top = -24.6707
+margin_right = 361.148
+margin_bottom = 1185.33
+rect_pivot_offset = Vector2( 598, 941 )
 
 [node name="QuitButton" type="TextureButton" parent="."]
 margin_left = 375.277
 margin_top = 596.101
 margin_right = 717.277
 margin_bottom = 731.101
-texture_normal = ExtResource( 2 )
-script = ExtResource( 3 )
+action_mode = 0
+texture_normal = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="QuitButton"]
 margin_left = 81.3013
@@ -32,3 +85,30 @@ custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Quit
 "
+
+[node name="MuteButton" type="TextureButton" parent="."]
+margin_left = 375.277
+margin_top = 744.15
+margin_right = 717.277
+margin_bottom = 879.15
+action_mode = 0
+texture_normal = ExtResource( 4 )
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="MuteButton"]
+margin_left = 3.6673
+margin_top = 8.00763
+margin_right = 341.667
+margin_bottom = 128.008
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.368627, 0.172549, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "Mute"
+align = 1
+valign = 1
+[connection signal="clicked_inside" from="ClickableRegion" to="." method="hideMenu"]
+[connection signal="clicked_inside" from="ClickableRegion2" to="." method="hideMenu"]
+[connection signal="clicked_inside" from="ClickableRegion3" to="." method="hideMenu"]
+[connection signal="clicked_inside" from="ClickableRegion4" to="." method="hideMenu"]

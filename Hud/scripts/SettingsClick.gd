@@ -7,3 +7,4 @@ func _pressed():
 		new_instance.set_name("Settings")
 		get_tree().get_current_scene().get_node("HudNode").get_node("HudCanvasLayer").add_child(new_instance)
 		get_tree().get_current_scene().get_node("HudNode").settingsOpen = true
+		get_tree().paused = true
