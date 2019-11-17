@@ -126,7 +126,8 @@ margin_top = -8.0
 margin_right = 1089.0
 margin_bottom = 1930.0
 
-[node name="Node2D2" parent="HudCanvasLayer" instance=ExtResource( 19 )]
+[node name="ContextualMenu" parent="HudCanvasLayer" instance=ExtResource( 19 )]
+visible = false
 position = Vector2( 306.226, 930.632 )
 
 [node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 20 )]

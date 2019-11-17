@@ -30,15 +30,12 @@ func _ready():
 	get_node("HudCanvasLayer/NextLevel").hide()
 
 func CheckFloor(pos):
-	if GameData.itemAtPos(pos):
-		get_node("HudCanvasLayer/Pickup").show()
+	if GameData.itemAtPos(pos) or GameData.stairsAtPos(pos):
+		get_node("HudCanvasLayer/ContextualMenu").show()
+		#needs to convert 4,12 into tile position on screen
+		get_node("HudCanvasLayer/ContextualMenu").position = (pos) * GameData.TileSize
 	else:
-		get_node("HudCanvasLayer/Pickup").hide()
-
-	if GameData.stairsAtPos(pos):
-		get_node("HudCanvasLayer/NextLevel").show()
-	else:
-		get_node("HudCanvasLayer/NextLevel").hide()
+		get_node("HudCanvasLayer/ContextualMenu").hide()
 
 func SetCurrentWeapon(currentSlot):
 	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)

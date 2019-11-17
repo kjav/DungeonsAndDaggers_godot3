@@ -3,20 +3,19 @@
 [ext_resource path="res://assets/frame_bg_fake_sqaure.png" type="Texture" id=1]
 [ext_resource path="res://assets/pixel.png" type="Texture" id=2]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/ring.png" type="Texture" id=4]
+[ext_resource path="res://Hud/ContextualMenuItemNode.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
 font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( -1.89996, 11.3999 )
 
 [node name="LevelSelect" type="TextureButton" parent="."]
-margin_left = 187.46
-margin_top = 221.79
-margin_right = 1315.46
-margin_bottom = 516.79
+margin_left = -82.1568
+margin_top = 72.5349
+margin_right = 1045.84
+margin_bottom = 367.535
 rect_scale = Vector2( 0.15, 0.15 )
 texture_normal = ExtResource( 1 )
 
@@ -38,58 +37,30 @@ margin_bottom = 316.925
 custom_fonts/font = SubResource( 1 )
 text = "Go to Level 2"
 
-[node name="TextureButton2" type="TextureButton" parent="."]
-margin_left = 245.0
-margin_top = 28.0
-margin_right = 501.0
-margin_bottom = 284.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode1" parent="." instance=ExtResource( 4 )]
+position = Vector2( -24.6167, -124.255 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton4" type="TextureButton" parent="."]
-margin_left = 190.0
-margin_top = 60.0
-margin_right = 446.0
-margin_bottom = 316.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode2" parent="." instance=ExtResource( 4 )]
+position = Vector2( -79.6167, -89.2546 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton8" type="TextureButton" parent="."]
-margin_left = 300.0
-margin_top = 60.0
-margin_right = 556.0
-margin_bottom = 316.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 30.3833, -89.2546 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton3" type="TextureButton" parent="."]
-margin_left = 160.0
-margin_top = 110.0
-margin_right = 416.0
-margin_bottom = 366.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode4" parent="." instance=ExtResource( 4 )]
+position = Vector2( -109.617, -39.2546 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton5" type="TextureButton" parent="."]
-margin_left = 330.0
-margin_top = 110.0
-margin_right = 586.0
-margin_bottom = 366.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 60.3833, -39.2546 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton6" type="TextureButton" parent="."]
-margin_left = 190.0
-margin_top = 160.0
-margin_right = 446.0
-margin_bottom = 416.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode6" parent="." instance=ExtResource( 4 )]
+position = Vector2( -79.6167, 10.7454 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="TextureButton7" type="TextureButton" parent="."]
-margin_left = 300.0
-margin_top = 160.0
-margin_right = 556.0
-margin_bottom = 416.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture_normal = ExtResource( 4 )
+[node name="ItemNode7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 30.3833, 10.7454 )
+scale = Vector2( 0.2, 0.2 )
