@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hud/UpgradeScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Hud/UpgradeButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[node name="Node2D" type="Control"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -23.0
+margin_top = -23.0
+margin_right = 1098.0
+margin_bottom = 1950.0
+color = Color( 0, 0, 0, 0.686275 )
+
+[node name="Label" type="Label" parent="."]
+material = SubResource( 1 )
+margin_left = 145.51
+margin_top = 74.19
+margin_right = 343.51
+margin_bottom = 131.19
+rect_scale = Vector2( 4, 4 )
+mouse_filter = 1
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+text = "Level Up!"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="."]
+material = SubResource( 1 )
+margin_left = 181.688
+margin_top = 209.676
+margin_right = 448.688
+margin_bottom = 266.676
+rect_scale = Vector2( 3, 3 )
+mouse_filter = 1
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+text = "Pick one upgrade"
+align = 1
+autowrap = true
+
+[node name="UpgradeButton1" parent="." instance=ExtResource( 3 )]
+margin_left = 63.6007
+margin_top = 304.753
+margin_right = 2208.6
+margin_bottom = 1476.75
+rect_scale = Vector2( 0.45, 0.45 )
+
+[node name="UpgradeButton2" parent="." instance=ExtResource( 3 )]
+margin_left = 63.6007
+margin_top = 842.01
+margin_right = 2208.6
+margin_bottom = 2014.01
+rect_scale = Vector2( 0.45, 0.45 )
+
+[node name="UpgradeButton3" parent="." instance=ExtResource( 3 )]
+margin_left = 60.9507
+margin_top = 1383.32
+margin_right = 2205.95
+margin_bottom = 2555.32
+rect_scale = Vector2( 0.45, 0.45 )

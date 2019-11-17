@@ -53,7 +53,7 @@ class LevelUpPotion extends "PotionBase.gd":
 			return
 		
 		.onUse()
-		#open upgrade screen
+		GameData.hud.show_upgrade_menu()
 
 class BreifHealthPotion extends "PotionBase.gd":
 	func _init():

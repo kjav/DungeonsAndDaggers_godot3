@@ -29,7 +29,7 @@ var currentWeaponSlot
 
 func _ready():
 	#this is temporary to aid with testing
-	increaseMaxHealth(9)
+	increaseMaxHealth(4)
 	heal(9)
 	increaseMaxMana(9)
 	increaseMana(9)

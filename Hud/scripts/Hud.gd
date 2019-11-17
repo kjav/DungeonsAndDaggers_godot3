@@ -115,3 +115,7 @@ func _on_GameClickableRegion_clicked_inside(event):
 
 func addEventMessage(message):
 	get_node("HudCanvasLayer/EventMessageHolder").addMessage(message);
+
+func show_upgrade_menu():
+	get_tree().paused = true
+	get_node("HudCanvasLayer/UpgradeMenu").show()
