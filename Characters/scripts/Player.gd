@@ -19,12 +19,13 @@ var charactersAwaitingMove = false
 var animationPlayer
 var skeletonScale
 var polygonsScale
-var primaryWeaponNode
+var currentWeaponNode
 var backHandBone
-var secondaryWeaponNode
+var offHandWeaponNode
 var forwardHandBone
 var readyToTeleportOnTileSelect
 var currentlyUnsureWhyThisIsSignificant
+var currentWeaponSlot
 
 func _ready():
 	#this is temporary to aid with testing
@@ -44,12 +45,13 @@ func _ready():
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
 	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand")
-	primaryWeaponNode = forwardHandBone.get_node("PrimaryWeapon")
+	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
 	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
-	secondaryWeaponNode = backHandBone.get_node("SecondaryWeapon")
+	offHandWeaponNode = backHandBone.get_node("OffHandWeapon")
 	
 	setSecondaryWeapon(secondaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
+	setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 	faceDirection(Enums.DIRECTION.RIGHT)
 	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
 
@@ -60,31 +62,66 @@ func _exit_tree():
 	EventListener.ignore("SwipeCommand", swipe_funcref)
 	GameData.reset()
 
-func swapWeapons():
-	var temp = primaryWeapon
-	setPrimaryWeapon(secondaryWeapon)
-	setSecondaryWeapon(temp)
+func setCurrentWeaponSlot(slot):
+	currentWeaponSlot = slot
 
+	var chosenWeapon = getCurrentWeapon()
+	var offHandWeapon = getOffHandWeapon()
+
+	GameData.hud.SetCurrentWeapon(slot)
+
+	if chosenWeapon != null:
+		currentWeaponNode.set_texture(chosenWeapon.texture)
+		currentWeaponNode.set_offset(chosenWeapon.offset)
+		currentWeaponNode.set_rotation(chosenWeapon.rotationInHand)
+		offHandWeaponNode.set_texture(offHandWeapon.texture)
+		offHandWeaponNode.set_offset(offHandWeapon.offset)
+		offHandWeaponNode.set_rotation(offHandWeapon.rotationInOffHand)
+		additionalRelativeAttackPositions = chosenWeapon.relativeAttackPositions
+		onlyAttacksFirstEnemy = chosenWeapon.onlyAttacksFirstEnemy
+		attackPositionBlockable = chosenWeapon.attackPositionBlockable
+
+func getCurrentWeapon():
+	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
+		return primaryWeapon
+	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
+		return secondaryWeapon
+
+func getOffHandWeapon():
+	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
+		return secondaryWeapon
+	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
+		return primaryWeapon
+
+func swapWeapons():
+	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
+		GameData.hud.SetCurrentWeapon(Enums.WEAPONSLOT.SECONDARY)
+	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
+		GameData.hud.SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
+
+func setCurrentWeapon(weapon):
+	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
+		setPrimaryWeapon(weapon)
+	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
+		setSecondaryWeapon(weapon)
+	
 func setPrimaryWeapon(weapon):
 	primaryWeapon = weapon
-	emit_signal("weaponChanged", "Primary", primaryWeapon)
-	primaryWeaponNode.set_texture(primaryWeapon.texture)
-	primaryWeaponNode.set_offset(primaryWeapon.offset)
-	primaryWeaponNode.set_rotation(primaryWeapon.rotationInHand)
-	additionalRelativeAttackPositions = weapon.relativeAttackPositions
-	onlyAttacksFirstEnemy = weapon.onlyAttacksFirstEnemy
-	attackPositionBlockable = weapon.attackPositionBlockable
+	emit_signal("weaponChanged", Enums.WEAPONSLOT.PRIMARY, primaryWeapon)
+	
+	setCurrentWeaponSlot(currentWeaponSlot)
 
 func setSecondaryWeapon(weapon):
 	secondaryWeapon = weapon
-	emit_signal("weaponChanged", "Secondary", secondaryWeapon)
-	secondaryWeaponNode.set_texture(secondaryWeapon.texture)
-	secondaryWeaponNode.set_offset(secondaryWeapon.offset)
-	secondaryWeaponNode.set_rotation(secondaryWeapon.rotationInOffHand)
+	emit_signal("weaponChanged", Enums.WEAPONSLOT.SECONDARY, secondaryWeapon)
+	
+	setCurrentWeaponSlot(currentWeaponSlot)
 
 func dropWeapon():
-	primaryWeapon.place(get_position())
-	primaryWeapon = null
+	var currentWeapon = getCurrentWeapon()
+	
+	currentWeapon.place(get_position())
+	currentWeapon = null
 
 func faceDirection(direction):
 	if alive():
@@ -160,9 +197,11 @@ func MoveCharacters():
 
 func attack(character, base_damage = 0):
 	if alive():
-		emit_signal("playerAttack", character, primaryWeapon.damage)
-		primaryWeapon.onAttack(character)
-		.attack(character, primaryWeapon.damage)
+		var currentWeapon = getCurrentWeapon()
+		
+		emit_signal("playerAttack", character, currentWeapon.damage)
+		currentWeapon.onAttack(character)
+		.attack(character, currentWeapon.damage)
 
 func _process(delta):
 	if moving:
@@ -207,8 +246,8 @@ func takeDamage(damage):
 	damageable = damageableStore
 
 func handleCharacterDeath():
-	primaryWeaponNode.hide()
-	secondaryWeaponNode.hide()
+	currentWeaponNode.hide()
+	offHandWeaponNode.hide()
 	get_node("Polygons").hide()
 	.handleCharacterDeath()
 

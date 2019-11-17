@@ -9,6 +9,9 @@ const Hat = preload("res://Hud/Hat.tscn")
 
 const KeyBase = preload("res://Items/scripts/KeyBase.gd")
 
+func _init():
+	GameData.hud = self
+
 func _ready():
 	inventoryOpen = false
 	settingsOpen = false
@@ -21,8 +24,9 @@ func _ready():
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
 	get_node("HudCanvasLayer/Pickup").hide()
-	PlayerWeaponChanged("Primary", GameData.player.primaryWeapon)
-	GameData.hud = self
+	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
+	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
+	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
 
 func CheckFloor(pos):
 	if GameData.itemAtPos(pos):
@@ -30,11 +34,11 @@ func CheckFloor(pos):
 	else:
 		get_node("HudCanvasLayer/Pickup").hide()
 
+func SetCurrentWeapon(currentSlot):
+	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)
+
 func PlayerWeaponChanged(slot, weapon):
-	var selectedSlot
-	if slot == "Primary":
-		selectedSlot = get_node("HudCanvasLayer/PrimaryWeaponSlot")
-		selectedSlot.setIconTexture(weapon.texture)
+	get_node("HudCanvasLayer/WeaponSlots").setIconTexture(slot, weapon.texture)
 
 func PlayerHealthChanged(health, maxHealth):
 	for child in get_node("HudCanvasLayer/HealthBar").get_children():

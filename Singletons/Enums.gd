@@ -13,3 +13,8 @@ enum WALKABLE {
 	PLAYER,
 	ALL
 }
+
+enum WEAPONSLOT {
+	PRIMARY,
+	SECONDARY
+}

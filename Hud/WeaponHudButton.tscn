@@ -1,31 +1,74 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Hud/scripts/HudButton.gd" type="Script" id=1]
+[ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=2]
 [ext_resource path="res://assets/basic_sword.png" type="Texture" id=3]
 [ext_resource path="res://assets/ring.png" type="Texture" id=4]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=5]
+[ext_resource path="res://assets/basic_shield.png" type="Texture" id=6]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-type = "None"
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Primary Background" type="TextureRect" parent="."]
 margin_right = 256.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Primary Icon" type="TextureRect" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 192.0
 margin_bottom = 192.0
 texture = ExtResource( 3 )
 
-[node name="front" type="TextureButton" parent="."]
+[node name="Primary front" type="TextureRect" parent="."]
 margin_left = -1.0
 margin_top = 3.0
 margin_right = 255.0
 margin_bottom = 259.0
-texture_normal = ExtResource( 4 )
+texture = ExtResource( 4 )
+
+[node name="Primary Inactive Ovelay" type="TextureButton" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = -19.4584
+margin_top = -17.7601
+margin_right = 237.542
+margin_bottom = 243.24
+rect_scale = Vector2( 1.14, 1.14 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="Secondary Background" type="TextureRect" parent="."]
+margin_left = 280.0
+margin_right = 536.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="Secondary Icon" type="TextureRect" parent="."]
+margin_left = 344.0
+margin_top = 64.0
+margin_right = 472.0
+margin_bottom = 192.0
+texture = ExtResource( 6 )
+
+[node name="Secondary front" type="TextureRect" parent="."]
+margin_left = 279.0
+margin_top = 3.0
+margin_right = 535.0
+margin_bottom = 259.0
+texture = ExtResource( 4 )
+
+[node name="Secondary Inactive Ovelay" type="TextureButton" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 260.882
+margin_top = -17.797
+margin_right = 517.882
+margin_bottom = 243.203
+rect_scale = Vector2( 1.14, 1.14 )
+texture_normal = ExtResource( 2 )
 script = ExtResource( 5 )
