@@ -272,6 +272,10 @@ func increaseMana(amount):
 	emit_signal("statsChanged", "mana", "Up", amount)
 
 func consume_stat(stat, amount):
+	#remove when mana is readded
+	if stat == "mana":
+		return true
+	
 	if stats[stat].value >= amount:
 		stats[stat].value -= amount
 		emit_signal("statsChanged", stat, "Down", amount)

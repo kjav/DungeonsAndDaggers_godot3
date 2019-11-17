@@ -44,6 +44,7 @@ position = Vector2( -12.2763, 42.2845 )
 scale = Vector2( 2, 2 )
 
 [node name="ManaBar" type="Node2D" parent="HudCanvasLayer"]
+visible = false
 position = Vector2( 103.407, 163.879 )
 scale = Vector2( 2, 2 )
 
