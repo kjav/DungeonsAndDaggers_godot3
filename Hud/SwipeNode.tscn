@@ -3,8 +3,5 @@
 [ext_resource path="res://Hud/scripts/SwipeNode.gd" type="Script" id=1]
 
 [node name="SwipeNode" type="Node2D"]
-
+pause_mode = 2
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material" ]
-
-
