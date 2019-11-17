@@ -23,22 +23,17 @@ func _ready():
 	GameData.player.connect("weaponChanged", self, "PlayerWeaponChanged")
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
-	get_node("HudCanvasLayer/Pickup").hide()
 	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
 	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
 	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
-	get_node("HudCanvasLayer/NextLevel").hide()
 
 func CheckFloor(pos):
-	if GameData.itemAtPos(pos):
-		get_node("HudCanvasLayer/Pickup").show()
+	if GameData.itemAtPos(pos) or GameData.stairsAtPos(pos):
+		get_node("ContextualMenu").position = (pos + Vector2(0.5, 0.5)) * GameData.TileSize
+		get_node("ContextualMenu").activate(pos)
+		get_node("ContextualMenu").show()
 	else:
-		get_node("HudCanvasLayer/Pickup").hide()
-
-	if GameData.stairsAtPos(pos):
-		get_node("HudCanvasLayer/NextLevel").show()
-	else:
-		get_node("HudCanvasLayer/NextLevel").hide()
+		get_node("ContextualMenu").hide()
 
 func SetCurrentWeapon(currentSlot):
 	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)

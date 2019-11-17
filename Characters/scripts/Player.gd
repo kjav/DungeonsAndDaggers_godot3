@@ -253,8 +253,10 @@ func handleCharacterDeath():
 	get_node("Polygons").hide()
 	.handleCharacterDeath()
 
-func pickUp():
-	var item = GameData.itemAtPos(self.get_position()/GameData.TileSize)
+func pickUpTopItem():
+	pickUp(GameData.itemAtPos(self.get_position()/GameData.TileSize))
+
+func pickUp(item):
 	if (item != null):
 		item.pickup()
 		emit_signal("itemPickedUp", item)

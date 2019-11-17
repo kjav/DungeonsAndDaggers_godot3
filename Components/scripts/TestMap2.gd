@@ -11,11 +11,8 @@ var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
 
-func is_bosslevel(level):
-	return (level % 3) == 0
-
 func level_rooms(level):
-	if is_bosslevel(level):
+	if GameData.isBossLevel(level):
 		return Distribution.new([
 			{"p": 1, "value": BossRoomOgre}
 		])
@@ -179,7 +176,7 @@ func _init(level).(200, 200, level, -1):
 	
 	
 	var main_room
-	if (is_bosslevel(level)):
+	if (GameData.isBossLevel(level)):
 		main_room = pick_bossroom(level)
 	else:
 		main_room = DefaultRoom
@@ -191,7 +188,7 @@ func _init(level).(200, 200, level, -1):
 	
 	var room_distribution = level_rooms(level)
   
-	if not is_bosslevel(level):
+	if not GameData.isBossLevel(level):
 		while rooms.size() < n_rooms:
 			# Pick a wall
 			var wall_index = randi() % valid_exterior_walls.size()
