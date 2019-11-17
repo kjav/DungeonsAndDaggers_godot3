@@ -133,9 +133,6 @@ func arrayAtPosForStationary(pos, array):
 
 func stairsAtPos(pos):
 	var envs = arrayAtPosForStationary(pos, environmentObjects)
-	print(envs)
-	if len(envs) > 0:
-		print(envs[0].get_name())
 	for env in envs:
 		if "Stairs" in env.get_name():
 			return env
