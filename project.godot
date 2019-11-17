@@ -28,6 +28,7 @@ Enums="*res://Singletons/Enums.gd"
 EventListener="*res://Singletons/EventListener.gd"
 GameData="*res://Singletons/GameData.gd"
 PositionHelper="*res://Singletons/PositionHelper.gd"
+Audio="*res://Singletons/Audio.tscn"
 
 [display]
 

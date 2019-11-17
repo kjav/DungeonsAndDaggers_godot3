@@ -141,6 +141,10 @@ func increaseMana(amount):
 	if self.stats.mana.value < self.stats.mana.maximum:
 		self.stats.mana.value = min(self.stats.mana.value + amount, self.stats.mana.maximum)
 
+func increaseStat(stat, amount):
+	self.stats[stat].value += amount
+	self.stats[stat].maximum += amount
+
 func moveDirection(direction):
 	if (not moving) and alive():
 		original_pos = get_position() 

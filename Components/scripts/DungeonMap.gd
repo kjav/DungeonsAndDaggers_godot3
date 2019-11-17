@@ -145,7 +145,7 @@ func set_map_type(type):
 				node.setFacing(env.facing)
 			
 			if node.environment_name == "Chest":
-				node.setLocked(true)
+				node.setLocked(false)
 				node.blockFromPathFindingWhenReady = true
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.BasicSpear}]))
@@ -194,7 +194,7 @@ func findNextDirection(a, b):
 	var id_path = _getIdPath(a, b)
 	
 	var direction = Enums.DIRECTION.NONE
-	if id_path.size() > 1:
+	if id_path and id_path.size() > 1:
 		direction = ids[id_path[1]] - ids[id_path[0]]
 		if direction.x == 1:
 			direction = Enums.DIRECTION.RIGHT

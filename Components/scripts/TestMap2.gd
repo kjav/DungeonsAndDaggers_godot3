@@ -18,10 +18,10 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{"p": 0.13, "value": WideRoom},
-			{"p": 0.33, "value": TallRoom},
+			{"p": 0.31, "value": UpgradeRoom},
+			{"p": 0.43, "value": TallRoom},
 			{"p": 0.2, "value": StairsRoom},
-			{"p": 0.34, "value": SuperTallRoom}
+			{"p": 0.06, "value": SuperTallRoom}
 		])
 
 func pick_bossroom(level):

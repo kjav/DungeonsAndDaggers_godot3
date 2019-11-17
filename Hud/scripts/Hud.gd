@@ -58,6 +58,7 @@ func PlayerHealthChanged(health, maxHealth):
 	
 	if health <= 0:
 		get_node("HudCanvasLayer/DeathMenu").died()
+		get_node("HudCanvasLayer/Turn Timer").hide()
 
 func _on_Environment_unlocked(unlockGuid, environmentObjectsName):
 	get_node("HudCanvasLayer/Keys").KeyAmountChanged()
@@ -109,3 +110,7 @@ func _on_GameClickableRegion_clicked_inside(event):
 
 func addEventMessage(message):
 	get_node("HudCanvasLayer/EventMessageHolder").addMessage(message);
+
+func show_upgrade_menu():
+	get_tree().paused = true
+	get_node("HudCanvasLayer/UpgradeMenu").show()

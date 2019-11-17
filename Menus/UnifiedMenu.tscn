@@ -74,10 +74,10 @@ texture = ExtResource( 6 )
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 7 )]
 
 [node name="WorldButton" type="TextureButton" parent="WorldSelect"]
-margin_left = 196.88
-margin_top = 1191.52
-margin_right = 1416.88
-margin_bottom = 1561.52
+margin_left = 197.0
+margin_top = 1192.0
+margin_right = 539.0
+margin_bottom = 1327.0
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 4 )
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/KeysInterfaceContainer.gd" type="Script" id=2]
@@ -17,7 +17,8 @@
 [ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=19]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -119,5 +120,9 @@ margin_bottom = 1930.0
 [node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 17 )]
 visible = false
 
-[node name="ContextualMenu" parent="." instance=ExtResource( 18 )]
+[node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 18 )]
+visible = false
+
+[node name="ContextualMenu" parent="." instance=ExtResource( 19 )]
+visible = false
 [connection signal="clicked_inside" from="HudCanvasLayer/GameClickableRegion" to="." method="_on_GameClickableRegion_clicked_inside"]

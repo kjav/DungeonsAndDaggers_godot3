@@ -11,4 +11,4 @@ func setup_params():
 		}
 	])
 	environment_distribution = Distribution.new([{"p": 1.0, "value": load("res://Environments/Chest.tscn")}])
-	item_distribution = Distribution.new([{"p": 1.0, "value": Constants.KeyClasses.SilverKey}])
+	item_distribution = Distribution.new([])

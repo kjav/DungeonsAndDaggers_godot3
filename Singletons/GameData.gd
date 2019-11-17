@@ -193,6 +193,7 @@ func reset():
 	environmentObjects = []
 	characters = []
 	placedItems = []
+	current_level = 1
 	addInitialItems()
 
 func getEnemiesWithinAreaAroundPlayer(distance):
