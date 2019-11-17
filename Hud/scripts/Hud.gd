@@ -23,7 +23,6 @@ func _ready():
 	GameData.player.connect("weaponChanged", self, "PlayerWeaponChanged")
 	GameData.player.connect("itemPickedUp", self, "_on_Player_itemPickedUp")
 	GameData.player.connect("playerMove", self, "CheckFloor")
-	get_node("HudCanvasLayer/Pickup").hide()
 	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
 	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
 	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)

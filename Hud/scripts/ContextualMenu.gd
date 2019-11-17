@@ -23,5 +23,6 @@ func populateItems(items):
 		if itemNumber <= items.size():
 			itemNode.show()
 			itemNode.get_node("icon").texture = items[itemNumber-1].texture
+			itemNode.get_node("frame").item = items[itemNumber-1]
 		else:
 			itemNode.hide()
