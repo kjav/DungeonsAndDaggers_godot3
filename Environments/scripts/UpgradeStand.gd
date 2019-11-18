@@ -3,6 +3,7 @@ extends "EnvironmentBase.gd"
 var current_time = 0.0
 var shield_time = 0.0
 var frametime = 0.1
+var used = false
 
 func _ready():
 	walkable = Enums.WALKABLE.ALL
@@ -25,6 +26,8 @@ func _process(delta):
 		current_time = current_time - floor(current_time / frametime) * frametime
 
 func onWalkedInto(character):
-	if character == GameData.player:
-		GameData.hud.show_upgrade_menu()
-	return true
+	if !used:
+		if character == GameData.player:
+			GameData.hud.show_upgrade_menu()
+			hide()
+			used = true
