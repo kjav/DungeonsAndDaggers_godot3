@@ -12,8 +12,9 @@ var orange = preload("res://assets//ring_inner_orange.png")
 var potion = preload("res://assets//ring_potion_inventory.png")
 var food = preload("res://assets//ring_food_inventory.png")
 var spell = preload("res://assets//ring_spell_inventory.png")
-func setIconTexture(texture):
-	get_node("Icon").set_texture(texture)
+
+func setIconTexture(weapon):
+	get_node("Icon").set_texture(weapon.texture)
 
 func setFrameStyle(style):
 	if typeof(style) == TYPE_STRING:

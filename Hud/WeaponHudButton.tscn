@@ -1,42 +1,23 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=2]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=3]
-[ext_resource path="res://assets/ring.png" type="Texture" id=4]
-[ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=5]
-[ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=6]
-[ext_resource path="res://assets/basic_shield.png" type="Texture" id=7]
+[ext_resource path="res://assets/basic_shield.png" type="Texture" id=3]
+[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/ring.png" type="Texture" id=5]
+[ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
+[ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=7]
+[ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=8]
+[ext_resource path="res://assets/basic_sword.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="Primary Background" type="TextureRect" parent="."]
-margin_right = 256.0
-margin_bottom = 256.0
-texture = ExtResource( 2 )
-
-[node name="Primary Icon" type="TextureRect" parent="."]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 192.0
-margin_bottom = 192.0
-texture = ExtResource( 3 )
-
-[node name="Primary front" type="TextureRect" parent="."]
-margin_left = -1.0
-margin_top = 3.0
-margin_right = 255.0
-margin_bottom = 259.0
-texture = ExtResource( 4 )
-
-[node name="Primary Inactive Overlay" type="TextureButton" parent="."]
-margin_left = -22.9872
-margin_top = -18.6659
-margin_right = 277.013
-margin_bottom = 281.334
-texture_normal = ExtResource( 5 )
-script = ExtResource( 6 )
 
 [node name="Secondary Background" type="TextureRect" parent="."]
 margin_left = 280.0
@@ -49,19 +30,78 @@ margin_left = 344.0
 margin_top = 64.0
 margin_right = 472.0
 margin_bottom = 192.0
-texture = ExtResource( 7 )
+texture = ExtResource( 3 )
+
+[node name="Secondary Use Count" type="Label" parent="."]
+visible = false
+margin_left = 424.0
+margin_top = 69.0
+margin_right = 483.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 1 )
+text = "3"
 
 [node name="Secondary front" type="TextureRect" parent="."]
 margin_left = 279.0
 margin_top = 3.0
 margin_right = 535.0
 margin_bottom = 259.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
-[node name="Secondary Inactive Overlay" type="TextureButton" parent="."]
-margin_left = 257.07
-margin_top = -20.0809
-margin_right = 557.07
-margin_bottom = 279.919
-texture_normal = ExtResource( 5 )
-script = ExtResource( 6 )
+[node name="Secondary Inactive Overlay" type="TextureRect" parent="."]
+margin_left = 257.0
+margin_top = -18.0
+margin_right = 557.0
+margin_bottom = 282.0
+texture = ExtResource( 6 )
+
+[node name="Secondary Inactive Button" type="TextureButton" parent="."]
+margin_left = 257.0
+margin_top = -20.0
+margin_right = 557.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="Primary Background" type="TextureRect" parent="."]
+margin_right = 256.0
+margin_bottom = 256.0
+texture = ExtResource( 2 )
+
+[node name="Primary Icon" type="TextureRect" parent="."]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 192.0
+texture = ExtResource( 9 )
+
+[node name="Primary front" type="TextureRect" parent="."]
+margin_left = -1.0
+margin_top = 3.0
+margin_right = 255.0
+margin_bottom = 259.0
+texture = ExtResource( 5 )
+
+[node name="Primary Use Count" type="Label" parent="."]
+visible = false
+margin_left = 146.0
+margin_top = 69.0
+margin_right = 205.0
+margin_bottom = 156.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+
+[node name="Primary Inactive Overlay" type="TextureRect" parent="."]
+margin_left = -23.0
+margin_top = -18.0
+margin_right = 277.0
+margin_bottom = 282.0
+texture = ExtResource( 6 )
+
+[node name="Primary Inactive Button" type="TextureButton" parent="."]
+margin_left = -22.9872
+margin_top = -18.6659
+margin_right = 277.013
+margin_bottom = 281.334
+texture_normal = ExtResource( 7 )
+script = ExtResource( 8 )

@@ -39,7 +39,7 @@ func SetCurrentWeapon(currentSlot):
 	get_node("HudCanvasLayer/WeaponSlots").SetCurrentWeapon(currentSlot)
 
 func PlayerWeaponChanged(slot, weapon):
-	get_node("HudCanvasLayer/WeaponSlots").setIconTexture(slot, weapon.texture)
+	get_node("HudCanvasLayer/WeaponSlots").setIconTexture(slot, weapon)
 
 func PlayerHealthChanged(health, maxHealth):
 	for child in get_node("HudCanvasLayer/HealthBar").get_children():
