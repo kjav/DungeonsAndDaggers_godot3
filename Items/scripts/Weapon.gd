@@ -21,5 +21,4 @@ func onPlayerDamaged():
 
 func pickup():
 	.pickup()
-	GameData.player.dropWeapon()
-	GameData.player.setCurrentWeapon(self)
+	GameData.player.pickUpWeapon(self)

@@ -95,9 +95,9 @@ func getOffHandWeapon():
 
 func swapWeapons():
 	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
-		GameData.hud.SetCurrentWeapon(Enums.WEAPONSLOT.SECONDARY)
+		setCurrentWeaponSlot(Enums.WEAPONSLOT.SECONDARY)
 	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
-		GameData.hud.SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
+		setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 
 func setCurrentWeapon(weapon):
 	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
@@ -120,8 +120,9 @@ func setSecondaryWeapon(weapon):
 func dropWeapon():
 	var currentWeapon = getCurrentWeapon()
 	
-	currentWeapon.place(get_position())
-	currentWeapon = null
+	if currentWeapon.equiptable:
+		currentWeapon.place(get_position())
+		currentWeapon = null
 
 func faceDirection(direction):
 	if alive():
@@ -205,6 +206,17 @@ func attack(character, base_damage = 0):
 			emit_signal("playerAttack", character, currentWeapon.damage)
 			currentWeapon.onAttack(character)
 			.attack(character, currentWeapon.damage)
+			
+			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
+			
+			if currentWeapon.ammo == 0:
+				removeCurrentWeapon()
+		else:
+			removeCurrentWeapon()
+
+func removeCurrentWeapon():
+	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
+	swapWeapons()
 
 func _process(delta):
 	if moving:
@@ -256,6 +268,13 @@ func handleCharacterDeath():
 
 func pickUpTopItem():
 	pickUp(GameData.itemAtPos(self.get_position()/GameData.TileSize))
+	
+func pickUpWeapon(weapon):
+	if not getOffHandWeapon().equiptable:
+		swapWeapons()
+	
+	dropWeapon()
+	setCurrentWeapon(weapon)
 
 func pickUp(item):
 	if (item != null):
