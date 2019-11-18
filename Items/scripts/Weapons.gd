@@ -50,6 +50,7 @@ class BasicBow extends "Weapon.gd":
 		offset = Vector2(10, 22)
 		rotationInHand = deg2rad(185)
 		rotationInOffHand = deg2rad(145)
+		ammo = 3
 	
 	func onAttack(target):
 		if target:
@@ -66,3 +67,5 @@ class BasicBow extends "Weapon.gd":
 				"Arrow_Hit",
 				Vector2(0.5, 0.5)
 			)
+			
+			.onAttack(target)

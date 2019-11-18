@@ -201,9 +201,10 @@ func attack(character, base_damage = 0):
 	if alive():
 		var currentWeapon = getCurrentWeapon()
 		
-		emit_signal("playerAttack", character, currentWeapon.damage)
-		currentWeapon.onAttack(character)
-		.attack(character, currentWeapon.damage)
+		if currentWeapon.ammo != 0:
+			emit_signal("playerAttack", character, currentWeapon.damage)
+			currentWeapon.onAttack(character)
+			.attack(character, currentWeapon.damage)
 
 func _process(delta):
 	if moving:
