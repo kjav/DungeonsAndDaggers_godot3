@@ -148,7 +148,7 @@ func set_map_type(type):
 				node.setLocked(false)
 				node.blockFromPathFindingWhenReady = true
 				node.setUnlockGuid("Silver")
-				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.CommonSpear}]))
+				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.UncommonSpear}]))
 			elif node.environment_name == "Door":
 				node.setLocked(false)
 			elif node.environment_name == "BossDoor":

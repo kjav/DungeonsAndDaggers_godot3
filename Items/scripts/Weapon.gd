@@ -11,7 +11,6 @@ var rotationInHand = 0
 var rotationInOffHand = 0
 var ammo = -1
 var equiptable = true
-var rarity = Enums.WEAPONRARITY.COMMON
 
 func onAttack(character):
 	if ammo > 0:

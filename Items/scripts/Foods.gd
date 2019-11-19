@@ -3,6 +3,7 @@ class CookedSteak extends "Item.gd":
 		iconFilePath = "res://assets/cooked_steak2.png"
 		item_name = "Cooked Steak"
 		texture = preload("res://assets/cooked_steak2.png")
+		rarity = Enums.WEAPONRARITY.RARE
 	
 	func onUse():
 		if not .allowedToUse():
@@ -37,6 +38,7 @@ class Cheese extends "Item.gd":
 		iconFilePath = "res://assets/cheese_wedge.png"
 		item_name = "Cheese"
 		texture = preload("res://assets/cheese_wedge.png")
+		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
 	func onUse():
 		if not .allowedToUse():

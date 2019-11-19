@@ -6,6 +6,7 @@ class FireSpell extends "SpellBase.gd":
 		iconFilePath = "res://assets/red_spell2.png"
 		item_name = "Fire Spell"
 		texture = preload("res://assets/red_spell2.png")
+		rarity = Enums.WEAPONRARITY.RARE
 
 	func onUse():
 		if not .allowedToUse():
@@ -42,6 +43,7 @@ class PushSpell extends "SpellBase.gd":
 		iconFilePath = "res://assets/swirl_spell.png"
 		item_name = "Push Spell"
 		texture = preload("res://assets/swirl_spell.png")
+		rarity = Enums.WEAPONRARITY.UNCOMMON
 
 	func onUse():
 		if not .allowedToUse():
@@ -97,6 +99,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 		iconFilePath = "res://assets/brown_spell.png"
 		item_name = "Earthquake Spell"
 		texture = preload("res://assets/brown_spell.png")
+		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
 	func onUse():
 		if not .allowedToUse():

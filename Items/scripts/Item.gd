@@ -6,6 +6,7 @@ var description
 var item_name
 var iconFilePath
 var useSound
+var rarity = Enums.WEAPONRARITY.COMMON
 
 func onUse():
 	emit_signal("ItemUsed", self);

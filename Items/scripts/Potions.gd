@@ -4,6 +4,7 @@ class HealthPotion extends "PotionBase.gd":
 		item_name = "Health Potion"
 		useSound = "HealthPotion_Drink"
 		texture = preload("res://assets/red_potion2.png")
+		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
 	func onUse():
 		if not .allowedToUse():
@@ -18,6 +19,7 @@ class DoubleDamagePotion extends "PotionBase.gd":
 		iconFilePath = "res://assets/black_potion.png"
 		item_name = "Double Damage Potion"
 		texture = preload("res://assets/black_potion.png")
+		rarity = Enums.WEAPONRARITY.RARE
 	
 	func onUse():
 		if not .allowedToUse():
@@ -32,6 +34,7 @@ class InvisibilityPotion extends "PotionBase.gd":
 		iconFilePath = "res://assets/clear_potion.png"
 		item_name = "Invisibility Potion"
 		texture = preload("res://assets/clear_potion.png")
+		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
 	func onUse():
 		if not .allowedToUse():
@@ -46,6 +49,7 @@ class LevelUpPotion extends "PotionBase.gd":
 		iconFilePath = "res://assets/special_potion.png"
 		item_name = "Level Up Potion"
 		texture = preload("res://assets/special_potion.png")
+		rarity = Enums.WEAPONRARITY.RARE
 	
 	func onUse():
 		if not .allowedToUse():

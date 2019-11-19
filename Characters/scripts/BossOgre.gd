@@ -42,7 +42,7 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	self.character_name = 'Boss Ogre'
 	base_damage = 3
-	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.CookedSteak}])
+	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.WeaponClasses.RareSword}])
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
 	alternateAttackCue = false

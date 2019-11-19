@@ -18,7 +18,7 @@ class CommonSword extends "Weapon.gd":
 		rotationInOffHand = deg2rad(55)
 
 class CommonShield extends "Weapon.gd":
-	var chanceToBlockOutOf = 10
+	var chanceToBlockOutOf = 7
 	
 	func _init():
 		iconFilePath = "res://assets/basic_shield.png"
@@ -77,3 +77,67 @@ class CommonBow extends "Weapon.gd":
 			)
 			
 			.onAttack(target)
+
+class UncommonSword extends CommonSword:
+	func _init():
+		iconFilePath = "res://assets/basic_sword.png"
+		texture = preload("res://assets/basic_sword.png")
+		item_name = "Uncommon Sword"
+		damage = 3.5
+		rarity = Enums.WEAPONRARITY.UNCOMMON
+
+class UncommonShield extends CommonShield:
+	func _init():
+		chanceToBlockOutOf = 6
+		iconFilePath = "res://assets/basic_shield.png"
+		texture = preload("res://assets/basic_shield.png")
+		item_name = "Uncommon Shield"
+		rarity = Enums.WEAPONRARITY.UNCOMMON
+
+class UncommonSpear extends CommonSpear:
+	func _init():
+		iconFilePath = "res://assets/basic_spear.png"
+		texture = preload("res://assets/basic_spear.png")
+		item_name = "Uncommon Spear"
+		damage = 1.5
+		rarity = Enums.WEAPONRARITY.UNCOMMON
+
+class UncommonBow extends CommonBow:
+	func _init():
+		iconFilePath = "res://assets/basic_bow.png"
+		texture = preload("res://assets/basic_bow.png")
+		item_name = "Uncommon Bow"
+		damage = 1
+		rarity = Enums.WEAPONRARITY.UNCOMMON
+
+class RareSword extends UncommonSword:
+	func _init():
+		iconFilePath = "res://assets/basic_sword.png"
+		texture = preload("res://assets/basic_sword.png")
+		item_name = "Rare Sword"
+		damage = 4
+		rarity = Enums.WEAPONRARITY.RARE
+
+class RareShield extends UncommonShield:
+	func _init():
+		chanceToBlockOutOf = 5
+		iconFilePath = "res://assets/basic_shield.png"
+		texture = preload("res://assets/basic_shield.png")
+		item_name = "Rare Shield"
+		rarity = Enums.WEAPONRARITY.RARE
+
+class RareSpear extends UncommonSpear:
+	func _init():
+		iconFilePath = "res://assets/basic_spear.png"
+		texture = preload("res://assets/basic_spear.png")
+		item_name = "Rare Spear"
+		damage = 2
+		rarity = Enums.WEAPONRARITY.RARE
+
+class RareBow extends UncommonBow:
+	func _init():
+		iconFilePath = "res://assets/basic_bow.png"
+		texture = preload("res://assets/basic_bow.png")
+		item_name = "Rare Bow"
+		damage = 1.5
+		rarity = Enums.WEAPONRARITY.RARE
