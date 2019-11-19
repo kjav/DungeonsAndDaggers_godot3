@@ -20,6 +20,9 @@ var start_screen = ""
 var effectsNode
 var current_level = 1
 var muted = false
+var commonBackground = preload("res://assets//ring_inner_grey.png")
+var uncommonBackground = preload("res://assets//ring_inner_green.png")
+var rareBackground = preload("res://assets//ring_inner_blue.png")
 
 func _ready():
 	addInitialItems()
@@ -51,6 +54,14 @@ func addInitialItems():
 
 func addKey(new_key):
 	keys.append(new_key)
+
+func getBackgroundForRarity(rarity):
+	if rarity == Enums.WEAPONRARITY.COMMON:
+		return commonBackground
+	if rarity == Enums.WEAPONRARITY.UNCOMMON:
+		return uncommonBackground
+	if rarity == Enums.WEAPONRARITY.RARE:
+		return rareBackground
 
 func addPotions(new_potions):
 	for potion in new_potions:

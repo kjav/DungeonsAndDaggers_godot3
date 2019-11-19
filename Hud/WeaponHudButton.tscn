@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
-[ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=2]
+[ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=2]
 [ext_resource path="res://assets/basic_shield.png" type="Texture" id=3]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ring.png" type="Texture" id=5]
 [ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
 [ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=7]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=8]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=9]
+[ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=9]
+[ext_resource path="res://assets/basic_sword.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -66,14 +67,14 @@ script = ExtResource( 8 )
 [node name="Primary Background" type="TextureRect" parent="."]
 margin_right = 256.0
 margin_bottom = 256.0
-texture = ExtResource( 2 )
+texture = ExtResource( 9 )
 
 [node name="Primary Icon" type="TextureRect" parent="."]
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 192.0
 margin_bottom = 192.0
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Primary front" type="TextureRect" parent="."]
 margin_left = -1.0

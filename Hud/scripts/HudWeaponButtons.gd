@@ -18,12 +18,16 @@ func updateAmmo(slot, ammo):
 func setIconTexture(slot, weapon):
 	if slot == Enums.WEAPONSLOT.PRIMARY:
 		primaryWeapon = weapon
-		get_node("Primary Icon").set_texture(weapon.texture)
+		setTexture(get_node("Primary Icon"), get_node("Primary Background"), weapon)
 	elif slot == Enums.WEAPONSLOT.SECONDARY:
 		secondaryWeapon = weapon
-		get_node("Secondary Icon").set_texture(weapon.texture)
+		setTexture(get_node("Secondary Icon"), get_node("Secondary Background"), weapon)
 	
 	updateAmmo(slot, weapon.ammo)
+
+func setTexture(icon, background, weapon):
+		icon.set_texture(weapon.texture)
+		background.set_texture(GameData.getBackgroundForRarity(weapon.rarity))
 
 func SetCurrentWeapon(slot):
 	get_node("Primary Inactive Overlay").visible = not slot == Enums.WEAPONSLOT.PRIMARY
