@@ -33,5 +33,6 @@ func populateItems(items):
 			itemNode.show()
 			itemNode.get_node("icon").texture = items[itemNumber-1].texture
 			itemNode.get_node("frame").item = items[itemNumber-1]
+			itemNode.get_node("background").texture = GameData.getBackgroundForRarity(items[itemNumber-1].rarity)
 		else:
 			itemNode.hide()
