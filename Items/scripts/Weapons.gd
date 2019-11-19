@@ -6,35 +6,35 @@ class Unarmed extends "Weapon.gd":
 		equiptable = false
 		damage = 0.5
 
-class BasicSword extends "Weapon.gd":
+class CommonSword extends "Weapon.gd":
 	func _init():
 		iconFilePath = "res://assets/basic_sword.png"
 		texture = preload("res://assets/basic_sword.png")
-		item_name = "Basic Sword"
+		item_name = "Common Sword"
 		damage = 3
 		showBehindHand = true
 		offset = Vector2(-30, -30)
 		rotationInHand = deg2rad(120)
 		rotationInOffHand = deg2rad(55)
 
-class BasicShield extends "Weapon.gd":
+class CommonShield extends "Weapon.gd":
 	var chanceToBlockOutOf = 10
 	
 	func _init():
 		iconFilePath = "res://assets/basic_shield.png"
 		texture = preload("res://assets/basic_shield.png")
-		item_name = "Basic Shield"
+		item_name = "Common Shield"
 		damage = 1
 	
 	func onPlayerDamaged():
 		if randi()%chanceToBlockOutOf+1 == 1:
 			GameData.player.damageable = false
 
-class BasicSpear extends "Weapon.gd":
+class CommonSpear extends "Weapon.gd":
 	func _init():
 		iconFilePath = "res://assets/basic_spear.png"
 		texture = preload("res://assets/basic_spear.png")
-		item_name = "Basic Spear"
+		item_name = "Common Spear"
 		relativeAttackPositions = [Vector2(0, -1)]
 		damage = 1
 		onlyAttacksFirstEnemy = false
@@ -43,14 +43,14 @@ class BasicSpear extends "Weapon.gd":
 		rotationInHand = deg2rad(120)
 		rotationInOffHand = deg2rad(55)
 
-class BasicBow extends "Weapon.gd":
+class CommonBow extends "Weapon.gd":
 	const missile = preload("res://Projectiles/Missile.tscn")
 	const missile_texture = preload("res://assets/arrow.png")
 	
 	func _init():
 		iconFilePath = "res://assets/basic_bow.png"
 		texture = preload("res://assets/basic_bow.png")
-		item_name = "Basic Bow"
+		item_name = "Common Bow"
 		relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]
 		damage = 0.5
 		onlyAttacksFirstEnemy = true
