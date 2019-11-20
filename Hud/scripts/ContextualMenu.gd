@@ -1,11 +1,28 @@
 extends Node2D
 
+var lastPos
+
+func _ready():
+	get_node("ItemNode1").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode2").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode3").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode4").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode5").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode6").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode7").get_node("frame").connect("pressed",self,"refresh") 
+	get_node("ItemNode8").get_node("frame").connect("pressed",self,"refresh") 
+
 func activate(pos):
+	lastPos = pos
+	
 	var items = GameData.itemsAtPos(pos)
 	var stairs = GameData.stairsAtPos(pos)
 	
 	populateItems(items)
 	populateLevelOption(stairs)
+	
+func refresh():
+	activate(lastPos)
 
 func populateLevelOption(stairs):
 	if stairs != null:
