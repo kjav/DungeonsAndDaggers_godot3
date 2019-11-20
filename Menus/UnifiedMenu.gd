@@ -12,7 +12,7 @@ var printed = false
 func _ready():
 	match GameData.start_screen:
 		"world_select":
-			position = Vector2(-2380, 0)
+			position = Vector2(-1180, 0)
 		_: # The default
 			position = Vector2(0, 0)
 
