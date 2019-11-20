@@ -1,4 +1,4 @@
-class CookedSteak extends "Item.gd":
+class CookedSteak extends "FoodBase.gd":
 	func _init():
 		iconFilePath = "res://assets/cooked_steak2.png"
 		item_name = "Cooked Steak"
@@ -16,7 +16,7 @@ class CookedSteak extends "Item.gd":
 		else:
 			GameData.hud.addEventMessage("Health is already full")
 
-class Apple extends "Item.gd":
+class Apple extends "FoodBase.gd":
 	func _init():
 		iconFilePath = "res://assets/apple.png"
 		item_name = "Apple"
@@ -33,7 +33,7 @@ class Apple extends "Item.gd":
 		else:
 			GameData.hud.addEventMessage("Health is already full")
 
-class Cheese extends "Item.gd":
+class Cheese extends "FoodBase.gd":
 	func _init():
 		iconFilePath = "res://assets/cheese_wedge.png"
 		item_name = "Cheese"

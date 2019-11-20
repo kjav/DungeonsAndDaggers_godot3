@@ -9,5 +9,6 @@ func pickup():
 	.pickup()
 
 func onUse():
+	.onUse()
 	GameData.foods.remove(GameData.foods.find(self))
 	#Audio.playSoundEffect(useSound, true)
