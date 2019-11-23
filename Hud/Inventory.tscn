@@ -1,45 +1,84 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Hud/InventoryItemDisplay.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/frame.png" type="Texture" id=2]
-[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/frame_no_right.png" type="Texture" id=1]
+[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hud/InventoryItemDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "
 extends Node2D
 export(int, \"Potion\", \"Food\", \"Spell\") var type setget setType, getType
 
-const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
+const InventoryItemDisplay = preload(\"res://Hud/InventoryItemDisplay.tscn\")
+var eventMessageHolderNode
+const initialTilePlacementPos = Vector2(616, 1638)
+const borderSize = Vector2(10, 10)
 
-#var pos1 = Vector2(130, 140)
-#var pos2 = Vector2(355, 140)
-#var pos3 = Vector2(580, 140)
+func _ready():
+	eventMessageHolderNode = GameData.hud.get_node(\"HudCanvasLayer/EventMessageHolder\")
+
 func populateInventory():
-	var inc = 168.75
-	var start = Vector2(130,130)
-	var hudCanvasLayer = get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\")
-	var selected = []
+	var selectedItems = []
+	var lastNode
 	
-	if type == \"Potion\":
-		selected = GameData.potions
-	elif type == \"Food\":
-		selected = GameData.foods
-	elif type == \"Spell\":
-		selected = GameData.spells
+	selectedItems = getSelectedItems()
 	
-	for i in range(selected.size()):
-		var new_node = InventoryItem.instance()
-		new_node.setInstance(selected[i])	
-		if type == \"Potion\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_PotItem_used\")
-		elif type == \"Food\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_FoodItem_used\")
-		elif type == \"Spell\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_SpellItem_used\")
-		var row = i / 4
-		var col = i % 4
-		new_node.position = start + Vector2(inc*col, inc*row)
-		hudCanvasLayer.get_node(\"Inventory\").add_child(new_node)
+	lastNode = addItemNodes(selectedItems)
+	
+	setInventoryToFitItems(lastNode)
+
+func getSelectedItems():
+	match type:
+		\"Potion\":
+			return GameData.potions
+		\"Food\":
+			return GameData.foods
+		\"Spell\":
+			return GameData.spells
+
+func addItemNodes(selectedItems):
+	var lastNode
+	
+	for i in range(selectedItems.size()):
+		var new_node = InventoryItemDisplay.instance()
+		new_node.setInstance(selectedItems[i])    
+		
+		match type:
+			\"Potion\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_PotItem_used\")
+			\"Food\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_FoodItem_used\")
+			\"Spell\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_SpellItem_used\")
+		
+		new_node.position = initialTilePlacementPos - Vector2(0, i * new_node.get_node(\"InventoryTile\").get_size().y *new_node.get_node(\"InventoryTile\").get_scale().y)
+		new_node.set_draw_behind_parent(true)
+		
+		add_child(new_node)
+		lastNode = new_node
+	
+	return lastNode
+
+func setInventoryToFitItems(lastNode):
+	if lastNode != null:
+		var lastNodeSize = lastNode.get_node(\"InventoryTile\").get_size() * lastNode.get_node(\"InventoryTile\").get_scale()
+		var lastNodePosition = lastNode.get_position()
+		
+		var inventorySize = Vector2(lastNodeSize.x + 2 * borderSize.x, initialTilePlacementPos.y - lastNodePosition.y + 2 * borderSize.y + lastNodeSize.y)
+		var inventoryPosition = lastNodePosition - borderSize
+		
+		get_node(\"InventoryWrapper\").set_size(inventorySize)
+		get_node(\"InventoryWrapper\").set_position(inventoryPosition)
+		
+		get_node(\"InventoryClickableRegion\").set_size(inventorySize)
+		get_node(\"InventoryClickableRegion\").set_position(inventoryPosition)
+	else:
+		eventMessageHolderNode.addMessage(\"You have no \" + type.to_lower() + \"s\")
+		
+		get_node(\"InventoryWrapper\").set_size(Vector2(0,0))
+		get_node(\"InventoryClickableRegion\").set_size(Vector2(0,0))
+		
+		hideMenu(\"no items\")
 
 func setType(newType):
 	if typeof(newType) == TYPE_STRING:
@@ -63,42 +102,22 @@ func getType():
 [node name="Node2D" type="Node2D"]
 script = SubResource( 1 )
 
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 696.849 )
+[node name="InventoryWrapper" type="TextureRect" parent="."]
+margin_left = 598.0
+margin_top = 1229.0
+margin_right = 2513.0
+margin_bottom = 3577.0
+texture = ExtResource( 1 )
+expand = true
 
-[node name="Node2D8" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 966.474 )
-
-[node name="Node2D3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 1101.42 )
-
-[node name="Node2D5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 1506.91 )
-
-[node name="Node2D2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 831.323 )
-
-[node name="Node2D6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 1371.89 )
-
-[node name="Node2D4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 624.659, 1236.41 )
-
-[node name="Node2D7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 623.644, 1643 )
-
-[node name="TextureButton" type="TextureRect" parent="."]
-margin_left = 597.897
-margin_top = 665.895
-margin_right = 2512.9
-margin_bottom = 3013.9
-rect_scale = Vector2( 0.25, 0.49 )
-texture = ExtResource( 2 )
-
-[node name="ClickableRegion" parent="." instance=ExtResource( 3 )]
+[node name="InventoryClickableRegion" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 602.0
-margin_top = 659.0
-margin_right = 1079.0
-margin_bottom = 1820.0
-[connection signal="clicked_outside" from="ClickableRegion" to="." method="hideMenu"]
+margin_top = 1223.0
+margin_right = 1078.0
+margin_bottom = 1818.0
+
+[node name="Node2D" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 616, 1643 )
+[connection signal="clicked_outside" from="InventoryClickableRegion" to="." method="hideMenu"]
