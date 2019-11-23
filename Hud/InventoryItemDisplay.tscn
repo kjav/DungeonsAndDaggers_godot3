@@ -8,8 +8,6 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]

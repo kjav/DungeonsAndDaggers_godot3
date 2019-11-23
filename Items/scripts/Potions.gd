@@ -1,7 +1,7 @@
 class HealthPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/red_potion2.png"
-		item_name = "Health Potion"
+		item_name = "Health"
 		useSound = "HealthPotion_Drink"
 		texture = preload("res://assets/red_potion2.png")
 		rarity = Enums.WEAPONRARITY.UNCOMMON
@@ -17,7 +17,7 @@ class HealthPotion extends "PotionBase.gd":
 class DoubleDamagePotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/black_potion.png"
-		item_name = "Double Damage Potion"
+		item_name = "Double Damage"
 		texture = preload("res://assets/black_potion.png")
 		rarity = Enums.WEAPONRARITY.RARE
 	
@@ -32,7 +32,7 @@ class DoubleDamagePotion extends "PotionBase.gd":
 class InvisibilityPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/clear_potion.png"
-		item_name = "Invisibility Potion"
+		item_name = "Invisibility"
 		texture = preload("res://assets/clear_potion.png")
 		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
@@ -47,7 +47,7 @@ class InvisibilityPotion extends "PotionBase.gd":
 class LevelUpPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/special_potion.png"
-		item_name = "Level Up Potion"
+		item_name = "Level Up"
 		texture = preload("res://assets/special_potion.png")
 		rarity = Enums.WEAPONRARITY.RARE
 	
@@ -62,7 +62,7 @@ class LevelUpPotion extends "PotionBase.gd":
 class BreifHealthPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/red_simple_potion.png"
-		item_name = "Breif Health Potion"
+		item_name = "Breif Health"
 		texture = preload("res://assets/red_simple_potion.png")
 	
 	func onUse():
@@ -76,7 +76,7 @@ class BreifHealthPotion extends "PotionBase.gd":
 class BreifManaPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/blue_simple_potion.png"
-		item_name = "Breif Mana Potion"
+		item_name = "Breif Mana"
 		texture = preload("res://assets/blue_simple_potion.png")
 	
 	func onUse():
@@ -90,7 +90,7 @@ class BreifManaPotion extends "PotionBase.gd":
 class BreifStrengthPotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/green_simple_potion.png"
-		item_name = "Breif Strength Potion"
+		item_name = "Breif Strength"
 		texture = preload("res://assets/green_simple_potion.png")
 	
 	func onUse():
@@ -104,7 +104,7 @@ class BreifStrengthPotion extends "PotionBase.gd":
 class BreifDefencePotion extends "PotionBase.gd":
 	func _init():
 		iconFilePath = "res://assets/black_simple_potion.png"
-		item_name = "Breif Defence Potion"
+		item_name = "Breif Defence"
 		texture = preload("res://assets/black_simple_potion.png")
 	
 	func onUse():
