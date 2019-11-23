@@ -1,52 +1,126 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/Inventory.png" type="Texture" id=1]
-[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/frame_top.png" type="Texture" id=1]
+[ext_resource path="res://assets/frame_bottom.png" type="Texture" id=2]
+[ext_resource path="res://assets/frame_left.png" type="Texture" id=3]
+[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
-
 script/source = "
 extends Node2D
 export(int, \"Potion\", \"Food\", \"Spell\") var type setget setType, getType
 
-const InventoryItem = preload(\"res://Hud/InventoryItem.tscn\")
+const InventoryItemDisplay = preload(\"res://Hud/InventoryItemTile.tscn\")
+var eventMessageHolderNode
+const initialTilePlacementPos = Vector2(616, 1638)
+const borderSize = Vector2(10, 10)
 
-#var pos1 = Vector2(130, 140)
-#var pos2 = Vector2(355, 140)
-#var pos3 = Vector2(580, 140)
+func _ready():
+	eventMessageHolderNode = GameData.hud.get_node(\"HudCanvasLayer/EventMessageHolder\")
+
 func populateInventory():
-	var inc = 168.75
-	var start = Vector2(130,130)
-	var hudCanvasLayer = get_tree().get_current_scene().get_node(\"HudNode\").get_node(\"HudCanvasLayer\")
-	var selected = []
+	var selectedItems = getSelectedItems()
 	
-	if type == \"Potion\":
-		selected = GameData.potions
-	elif type == \"Food\":
-		selected = GameData.foods
-	elif type == \"Spell\":
-		selected = GameData.spells
+	var groupedSelectedItems = removeDuplicateItemsAndKeepCount(selectedItems)
 	
-	for i in range(selected.size()):
-		var new_node = InventoryItem.instance()
-		new_node.setInstance(selected[i])	
-		if type == \"Potion\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_PotItem_used\")
-		elif type == \"Food\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_FoodItem_used\")
-		elif type == \"Spell\":
-			new_node.instance.connect(\"ItemUsed\", hudCanvasLayer.get_node(\"EventMessageHolder\"), \"_on_SpellItem_used\")
-		var row = i / 4
-		var col = i % 4
-		new_node.position = start + Vector2(inc*col, inc*row)
-		hudCanvasLayer.get_node(\"Inventory\").add_child(new_node)
+	var lastNode = addItemNodes(groupedSelectedItems)
+	
+	setInventoryToFitItems(lastNode)
+
+func getSelectedItems():
+	match type:
+		\"Potion\":
+			return GameData.potions
+		\"Food\":
+			return GameData.foods
+		\"Spell\":
+			return GameData.spells
+
+func removeDuplicateItemsAndKeepCount(selectedItems):
+	var itemsWithoutDuplicates = []
+	var itemNamesToIgnore = []
+	
+	for item in selectedItems:
+		if not itemNamesToIgnore.has(item.item_name):
+			var count = countWithItemName(selectedItems, item.item_name)
+			
+			if count > 1:
+				itemNamesToIgnore.append(item.item_name)
+				itemsWithoutDuplicates.append([lastItemWithName(selectedItems, item.item_name), count])
+			else:
+				itemsWithoutDuplicates.append([item, count])
+	
+	return itemsWithoutDuplicates
+
+func countWithItemName(itemArray, name):
+	var count = 0
+	
+	for item in itemArray:
+		if item.item_name == name:
+			count += 1
+	
+	return count
+
+func lastItemWithName(itemArray, name):
+	for i in range(itemArray.size()-1, 0, -1):
+		if itemArray[i].item_name == name:
+			return itemArray[i]
+
+func addItemNodes(selectedItems):
+	var lastNode
+	
+	for i in range(selectedItems.size()):
+		var new_node = InventoryItemDisplay.instance()
+		new_node.setInstance(selectedItems[i][0], selectedItems[i][1])    
+		
+		match type:
+			\"Potion\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_PotItem_used\")
+			\"Food\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_FoodItem_used\")
+			\"Spell\":
+				new_node.instance.connect(\"ItemUsed\", eventMessageHolderNode, \"_on_SpellItem_used\")
+		
+		new_node.position = initialTilePlacementPos - Vector2(0, i * new_node.get_node(\"InventoryTile\").get_size().y *new_node.get_node(\"InventoryTile\").get_scale().y)
+		new_node.set_draw_behind_parent(true)
+		
+		add_child(new_node)
+		lastNode = new_node
+	
+	return lastNode
+
+func setInventoryToFitItems(lastNode):
+	if lastNode != null:
+		var lastNodeSize = lastNode.get_node(\"InventoryTile\").get_size() * lastNode.get_node(\"InventoryTile\").get_scale()
+		var lastNodePosition = lastNode.get_position()
+		
+		var inventorySize = Vector2(lastNodeSize.x + 2 * borderSize.x, initialTilePlacementPos.y - lastNodePosition.y + 2 * borderSize.y + lastNodeSize.y)
+		var inventoryPosition = lastNodePosition - borderSize
+		
+		get_node(\"InventoryWrapperTop\").set_size(Vector2(inventorySize.x, get_node(\"InventoryWrapperTop\").get_size().y))
+		get_node(\"InventoryWrapperTop\").set_position(inventoryPosition)
+		
+		get_node(\"InventoryWrapperBottom\").set_size(Vector2(inventorySize.x, get_node(\"InventoryWrapperBottom\").get_size().y))
+		get_node(\"InventoryWrapperBottom\").set_position(initialTilePlacementPos + Vector2(-1.75 * borderSize.x, borderSize.y + lastNodeSize.y - get_node(\"InventoryWrapperBottom\").get_size().y))
+		
+		get_node(\"InventoryWrapperLeft\").set_size(Vector2(get_node(\"InventoryWrapperLeft\").get_size().x, inventorySize.y - get_node(\"InventoryWrapperBottom\").get_size().y - get_node(\"InventoryWrapperTop\").get_size().y))
+		get_node(\"InventoryWrapperLeft\").set_position(inventoryPosition + Vector2(0, get_node(\"InventoryWrapperTop\").get_size().y))
+		
+		get_node(\"InventoryClickableRegion\").set_size(inventorySize)
+		get_node(\"InventoryClickableRegion\").set_position(inventoryPosition)
+	else:
+		eventMessageHolderNode.addMessage(\"You have no \" + type.to_lower() + \"s\")
+		
+		get_node(\"InventoryWrapper\").set_size(Vector2(0,0))
+		get_node(\"InventoryClickableRegion\").set_size(Vector2(0,0))
+		
+		hideMenu(\"no items\")
 
 func setType(newType):
 	if typeof(newType) == TYPE_STRING:
 		type = newType
 
 func selectItem(item):
-	emit_signal(\"ItemUsed\", item);
 	hideMenu(\"item used\");
 
 func hideMenu(event):
@@ -60,38 +134,37 @@ func hideMenu(event):
 func getType():
 	return type"
 
-[node name="Node2D" type="Node2D" index="0"]
-
+[node name="Node2D" type="Node2D"]
 script = SubResource( 1 )
-type = null
 
-[node name="TextureButton" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 300.0
-margin_bottom = 273.0
-rect_scale = Vector2( 3, 5 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+[node name="InventoryWrapperTop" type="TextureRect" parent="."]
+margin_left = 628.0
+margin_top = 1224.0
+margin_right = 1083.0
+margin_bottom = 1247.0
 texture = ExtResource( 1 )
-stretch_mode = 0
-_sections_unfolded = [ "Mouse" ]
+expand = true
 
-[node name="ClickableRegion" parent="." index="1" instance=ExtResource( 2 )]
+[node name="InventoryWrapperBottom" type="TextureRect" parent="."]
+margin_left = 599.0
+margin_top = 1563.0
+margin_right = 1082.0
+margin_bottom = 1652.0
+texture = ExtResource( 2 )
+expand = true
 
+[node name="InventoryWrapperLeft" type="TextureRect" parent="."]
+margin_left = 628.0
+margin_top = 1247.0
+margin_right = 645.0
+margin_bottom = 1578.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="InventoryClickableRegion" parent="." instance=ExtResource( 4 )]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 27.0
-margin_top = 17.0
-margin_right = 871.0
-margin_bottom = 1352.0
-
-[connection signal="clicked_outside" from="ClickableRegion" to="." method="hideMenu"]
-
-
+margin_left = 668.011
+margin_top = 1245.13
+margin_right = 1144.01
+margin_bottom = 1840.13
+[connection signal="clicked_outside" from="InventoryClickableRegion" to="." method="hideMenu"]
