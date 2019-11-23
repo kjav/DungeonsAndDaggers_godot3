@@ -6,5 +6,3 @@ func _pressed():
 	parent.hide()
 	parent.get_parent().selectItem(parent)
 	parent.instance.onUse()
-	#needs to remove from gamedata list
-

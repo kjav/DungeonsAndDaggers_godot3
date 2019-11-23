@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hud/scripts/InventoryItemDisplay.gd" type="Script" id=1]
 [ext_resource path="res://assets/die_03.png" type="Texture" id=2]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=3]
 [ext_resource path="res://assets/green_simple_potion.png" type="Texture" id=4]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Hud/scripts/InventoryItemClick.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -57,3 +58,8 @@ text = "11"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 467.0
+margin_bottom = 136.0
+script = ExtResource( 6 )

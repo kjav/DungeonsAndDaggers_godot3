@@ -38,7 +38,7 @@ func _on_SpellItem_used(item):
 	addItemMessage(item, "You cast a ", " Spell");
 
 func addItemMessage(item, messagePretext, messagePostText):
-	addMessage(messagePretext + str(item.item_name) + messagePretext + '.');
+	addMessage(messagePretext + str(item.item_name) + messagePostText + '.');
 
 func createEventMessageNode(y_pos, text):
 	var instance = EventMessage.instance();

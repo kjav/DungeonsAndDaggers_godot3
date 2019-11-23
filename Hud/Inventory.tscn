@@ -1,15 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/frame_no_right.png" type="Texture" id=1]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hud/InventoryItemDisplay.tscn" type="PackedScene" id=3]
 
 [sub_resource type="GDScript" id=1]
 script/source = "
 extends Node2D
 export(int, \"Potion\", \"Food\", \"Spell\") var type setget setType, getType
 
-const InventoryItemDisplay = preload(\"res://Hud/InventoryItemDisplay.tscn\")
+const InventoryItemDisplay = preload(\"res://Hud/InventoryItemTile.tscn\")
 var eventMessageHolderNode
 const initialTilePlacementPos = Vector2(616, 1638)
 const borderSize = Vector2(10, 10)
@@ -18,12 +17,11 @@ func _ready():
 	eventMessageHolderNode = GameData.hud.get_node(\"HudCanvasLayer/EventMessageHolder\")
 
 func populateInventory():
-	var selectedItems = []
-	var lastNode
+	var selectedItems = getSelectedItems()
 	
-	selectedItems = getSelectedItems()
+	var groupedSelectedItems = removeDuplicateItemsAndKeepCount(selectedItems)
 	
-	lastNode = addItemNodes(selectedItems)
+	var lastNode = addItemNodes(groupedSelectedItems)
 	
 	setInventoryToFitItems(lastNode)
 
@@ -36,12 +34,42 @@ func getSelectedItems():
 		\"Spell\":
 			return GameData.spells
 
+func removeDuplicateItemsAndKeepCount(selectedItems):
+	var itemsWithoutDuplicates = []
+	var itemNamesToIgnore = []
+	
+	for item in selectedItems:
+		if not itemNamesToIgnore.has(item.item_name):
+			var count = countWithItemName(selectedItems, item.item_name)
+			
+			if count > 1:
+				itemNamesToIgnore.append(item.item_name)
+				itemsWithoutDuplicates.append([lastItemWithName(selectedItems, item.item_name), count])
+			else:
+				itemsWithoutDuplicates.append([item, count])
+	
+	return itemsWithoutDuplicates
+
+func countWithItemName(itemArray, name):
+	var count = 0
+	
+	for item in itemArray:
+		if item.item_name == name:
+			count += 1
+	
+	return count
+
+func lastItemWithName(itemArray, name):
+	for i in range(itemArray.size()-1, 0, -1):
+		if itemArray[i].item_name == name:
+			return itemArray[i]
+
 func addItemNodes(selectedItems):
 	var lastNode
 	
 	for i in range(selectedItems.size()):
 		var new_node = InventoryItemDisplay.instance()
-		new_node.setInstance(selectedItems[i])    
+		new_node.setInstance(selectedItems[i][0], selectedItems[i][1])    
 		
 		match type:
 			\"Potion\":
@@ -85,7 +113,6 @@ func setType(newType):
 		type = newType
 
 func selectItem(item):
-	emit_signal(\"ItemUsed\", item);
 	hideMenu(\"item used\");
 
 func hideMenu(event):
@@ -116,8 +143,4 @@ margin_left = 602.0
 margin_top = 1223.0
 margin_right = 1078.0
 margin_bottom = 1818.0
-
-[node name="Node2D" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 616, 1643 )
 [connection signal="clicked_outside" from="InventoryClickableRegion" to="." method="hideMenu"]
