@@ -19,11 +19,11 @@ script = ExtResource( 1 )
 position = Vector2( 544.205, 485.558 )
 
 [node name="TextureFrame" type="TextureRect" parent="OgresDomain"]
-margin_left = -354.0
-margin_top = -312.0
-margin_right = 158.0
-margin_bottom = 200.0
-rect_scale = Vector2( 1.4, 1.4 )
+margin_left = -378.993
+margin_top = -332.633
+margin_right = 133.007
+margin_bottom = 179.367
+rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="OgresDomain"]
@@ -42,11 +42,11 @@ align = 1
 position = Vector2( 1604.2, 485.558 )
 
 [node name="TextureFrame" type="TextureRect" parent="Tutorial"]
-margin_left = -385.0
-margin_top = -340.0
-margin_right = 255.0
-margin_bottom = 210.0
-rect_scale = Vector2( 1.2, 1.4 )
+margin_left = -377.976
+margin_top = -330.912
+margin_right = 134.024
+margin_bottom = 181.088
+rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 5 )
 expand = true
 
