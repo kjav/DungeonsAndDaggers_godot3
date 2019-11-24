@@ -16,7 +16,7 @@ func _ready():
 	right_arrow = get_node("RightArrow")
 	
 	if items.size() > 0:
-		select_item(0)
+		select_item(1)
 
 func left():
 	if active and current_item > 0:

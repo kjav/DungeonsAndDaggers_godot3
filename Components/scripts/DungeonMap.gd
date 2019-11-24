@@ -4,11 +4,11 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "Basic Dungeon", "Maze Dungeon") var map_type = 0 setget set_map_type, get_map_type
+export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-  "DungeonMap": load("res://Components/scripts/TestMap2.gd"),
-  "TestMap": load("res://Components/scripts/TestMap.gd")
+  "OgresDomain": load("res://Components/scripts/TestMap2.gd"),
+  "Tutorial": load("res://Components/scripts/TutorialMap.gd")
 }
 
 var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]

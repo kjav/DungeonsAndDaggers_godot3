@@ -1,6 +1,6 @@
 extends Node2D
 
-var _item_names = ["DungeonMap", "TestMap", "MazeMap"]
+var _item_names = ["Tutorial", "OgresDomain"]
 var _items = []
 
 func _ready():
