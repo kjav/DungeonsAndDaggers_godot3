@@ -8,10 +8,11 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	self.character_name = 'Training Dummy'
 	base_damage = 0
+	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])
 	
 	initialStats.health = {
-		"value": 3e+37,
-		"maximum": 3e+37
+		"value": 9,
+		"maximum": 9
 	}
 
 	._ready()

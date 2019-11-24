@@ -7,7 +7,7 @@ export(int) var top_z_index = 2
 export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-  "OgresDomain": load("res://Components/scripts/TestMap2.gd"),
+  "OgresDomain": load("res://Components/scripts/OgresDomain.gd"),
   "Tutorial": load("res://Components/scripts/TutorialMap.gd")
 }
 

@@ -3,30 +3,8 @@ extends "MapBase.gd"
 var rooms = []
 var valid_exterior_walls = []
 
-var DefaultRoom = load("res://Components/Rooms/DefaultRoom.gd").new()
-var StairsRoom = load("res://Components/Rooms/StairsRoom.gd").new()
-var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
-var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
-var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
-var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
-var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
-
-func level_rooms(level):
-	if GameData.isBossLevel(level):
-		return Distribution.new([
-			{"p": 1, "value": BossRoomOgre}
-		])
-	else:
-		return Distribution.new([
-			{"p": 0.31, "value": UpgradeRoom},
-			{"p": 0.43, "value": TallRoom},
-			{"p": 0.2, "value": StairsRoom},
-			{"p": 0.06, "value": SuperTallRoom}
-		])
-
-func pick_bossroom(level):
-	# TODO: Pick harder bosses as game progresses
-	return BossRoomOgre
+var TutorialStartRoom = load("res://Components/Rooms/TutorialStartRoom.gd").new()
+var TutorialSecondRoom = load("res://Components/Rooms/TutorialSecondRoom.gd").new()
 
 func add_room(name, room, wall):
 	var door
@@ -167,44 +145,20 @@ func get_facing(wall_direction):
 	return "front"
 
 func _init(level).(200, 200, level, -1):
-	var n_rooms = 40
 	randomize()
 	
-	var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
-	tree.add_value([
-		null, true, null,
-		false, true, false,
-		null, false, null, null
-	], 42)
-	
-	var start = OS.get_ticks_msec()
-	
-	
 	var main_room
-	if (GameData.isBossLevel(level)):
-		main_room = pick_bossroom(level)
-	else:
-		main_room = DefaultRoom
+	
+	main_room = TutorialStartRoom
+	
 	add_room("main", main_room, null)
 	
-	var mid_1 = OS.get_ticks_msec()
+	var wall_index = randi() % valid_exterior_walls.size()
+	var wall = valid_exterior_walls[wall_index]
+	var room = TutorialSecondRoom
 
-	var i = 0;
-	
-	var room_distribution = level_rooms(level)
-  
-	if not GameData.isBossLevel(level):
-		while rooms.size() < n_rooms:
-			# Pick a wall
-			var wall_index = randi() % valid_exterior_walls.size()
-			var wall = valid_exterior_walls[wall_index]
-			var room = room_distribution.pick()[0].value
-		
-			var success = add_room(str(i), room, wall)
-			if success:
-				valid_exterior_walls.remove(wall_index)
-				i = i + 1
-	
-	var mid_2 = OS.get_ticks_msec()
+	var success = add_room(1, room, wall)
+	if success:
+		valid_exterior_walls.remove(wall_index)
 	
 	make_walls_consistent()

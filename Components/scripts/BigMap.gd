@@ -1,4 +1,4 @@
-extends "TestMap2.gd"
+extends "OgresDomain.gd"
 
 func _init().(40):
 	pass
