@@ -9,6 +9,7 @@ signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
 
 const LightBlip = preload("res://Effects/LightBlip.tscn")
+const Text = preload("res://Effects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
@@ -26,6 +27,7 @@ var forwardHandBone
 var readyToTeleportOnTileSelect
 var currentlyUnsureWhyThisIsSignificant
 var currentWeaponSlot
+var hasMoved
 
 func _ready():
 	#this is temporary to aid with testing
@@ -54,6 +56,15 @@ func _ready():
 	setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 	faceDirection(Enums.DIRECTION.RIGHT)
 	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
+	
+	addTutorialTextIfTutorial("Swipe To\nMove", Vector2(5, 9.3))
+
+func addTutorialTextIfTutorial(text, pos):
+	if GameData.chosen_map == "Tutorial":
+		var textNode = Text.instance()
+		textNode.set_position(pos * GameData.TileSize)
+		textNode.text = text
+		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func getPrimaryHandPosition():
 	return forwardHandBone.global_position
@@ -187,6 +198,11 @@ func swiped(direction):
 		timer.set_one_shot(true)
 		add_child(timer)
 		timer.start()
+		
+		if not hasMoved:
+			addTutorialTextIfTutorial("Move Into\nEnemies\nTo Attack", Vector2(6.8, 7))
+		
+		hasMoved = true
 
 func MoveCharacters():
 	charactersAwaitingMove = false

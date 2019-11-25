@@ -125,4 +125,6 @@ visible = false
 
 [node name="ContextualMenu" parent="." instance=ExtResource( 19 )]
 visible = false
+
+[node name="TutorialTextPrompts" type="Node2D" parent="."]
 [connection signal="clicked_inside" from="HudCanvasLayer/GameClickableRegion" to="." method="_on_GameClickableRegion_clicked_inside"]
