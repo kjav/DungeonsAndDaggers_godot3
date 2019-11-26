@@ -291,6 +291,10 @@ func save_game():
 	}))
 	save_game.close()
 
+func delete_saved_game():
+	var dir = Directory.new()
+	dir.remove(chosen_map)
+
 func has_save_game(map):
 	return File.new().file_exists("user://" + map + ".save")
 

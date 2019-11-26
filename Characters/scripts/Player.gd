@@ -354,3 +354,8 @@ func gameClickableRegionClicked(event):
 			GameData.hud.addEventMessage("Can't teleport, path too far")
 	else:
 		GameData.hud.addEventMessage("Can't teleport there!")
+
+# Override death function to delete save game
+func handleCharacterDeath():
+	GameData.delete_saved_game()
+	.handleCharacterDeath()
