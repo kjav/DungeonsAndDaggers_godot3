@@ -4,7 +4,7 @@ class FireSpell extends "SpellBase.gd":
 
 	func _init():
 		iconFilePath = "res://assets/red_spell2.png"
-		item_name = "Fire Spell"
+		item_name = "Fire"
 		texture = preload("res://assets/red_spell2.png")
 		rarity = Enums.WEAPONRARITY.RARE
 
@@ -36,12 +36,12 @@ class FireSpell extends "SpellBase.gd":
 			Vector2(4, 4)
 		)
 
-class PushSpell extends "SpellBase.gd":
+class RepelSpell extends "SpellBase.gd":
 	const Blast = preload("res://Effects/Blast.tscn")
 	
 	func _init():
 		iconFilePath = "res://assets/swirl_spell.png"
-		item_name = "Push Spell"
+		item_name = "Repel"
 		texture = preload("res://assets/swirl_spell.png")
 		rarity = Enums.WEAPONRARITY.UNCOMMON
 
@@ -97,7 +97,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 	
 	func _init():
 		iconFilePath = "res://assets/brown_spell.png"
-		item_name = "Earthquake Spell"
+		item_name = "Earthquake"
 		texture = preload("res://assets/brown_spell.png")
 		rarity = Enums.WEAPONRARITY.UNCOMMON
 	
@@ -155,7 +155,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 class TeleportSpell extends "SpellBase.gd":
 	func _init():
 		iconFilePath = "res://assets/gem_spell.png"
-		item_name = "Teleport Spell"
+		item_name = "Teleport"
 		texture = preload("res://assets/gem_spell.png")
 
 	func onUse():		
@@ -171,7 +171,7 @@ class MissileSpell extends "SpellBase.gd":
 	
 	func _init():
 		iconFilePath = "res://assets/triangle_spell.png"
-		item_name = "Missile Spell"
+		item_name = "Missile"
 		texture = preload("res://assets/triangle_spell.png")
 	
 	func onUse():
@@ -205,7 +205,7 @@ class MissileSpell extends "SpellBase.gd":
 class StunSpell extends "SpellBase.gd":
 	func _init():
 		iconFilePath = "res://assets/rune_spell.png"
-		item_name = "Stun Spell"
+		item_name = "Stun"
 		texture = preload("res://assets/rune_spell.png")
 	
 	func onUse():

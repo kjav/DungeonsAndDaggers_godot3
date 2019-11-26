@@ -29,16 +29,16 @@ func _on_Timer_timeout(node):
 	removeChild(node);
 
 func _on_FoodItem_used(item):
-	addItemMessage(item, "You ate a ");
+	addItemMessage(item, "You ate a ", "");
 	
 func _on_PotItem_used(item):
-	addItemMessage(item, "You drank a ");
+	addItemMessage(item, "You drank a ", " Potion");
 	
 func _on_SpellItem_used(item):
-	addItemMessage(item, "You cast a ");
+	addItemMessage(item, "You cast a ", " Spell");
 
-func addItemMessage(item, messagePretext):
-	addMessage(messagePretext + str(item.item_name) + '.');
+func addItemMessage(item, messagePretext, messagePostText):
+	addMessage(messagePretext + str(item.item_name) + messagePostText + '.');
 
 func createEventMessageNode(y_pos, text):
 	var instance = EventMessage.instance();

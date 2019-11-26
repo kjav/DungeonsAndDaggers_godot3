@@ -19,7 +19,7 @@ func handleAnimation():
 	self.set_animation(state)
 
 func setLocked(_locked):
-	.setLocked(_locked)
+	.setLockedButNotWalkable(_locked)
 	handleAnimation();
 
 func keyUnlocked():

@@ -50,7 +50,7 @@ func addInitialItems():
 	addFoods([instance, instance2, instance3])
 	
 	instance = Constants.SpellClasses.FireSpell.new()
-	instance2 = Constants.SpellClasses.PushSpell.new()
+	instance2 = Constants.SpellClasses.RepelSpell.new()
 	instance3 = Constants.SpellClasses.EarthquakeSpell.new()
 	instance4 = Constants.SpellClasses.TeleportSpell.new()
 	instance5 = Constants.SpellClasses.MissileSpell.new()

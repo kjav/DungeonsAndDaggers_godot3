@@ -33,6 +33,9 @@ func emitBlockedStateChangeSignal(state):
 	emit_signal("blockStateChanged", self, state)
 
 func remove():
+	walkable = Enums.WALKABLE.ALL
+	blocksAttacks = false
+	emitBlockedStateChangeSignal(false)
 	GameData.RemoveEnvironment(self)
 	hide()
 	queue_free()

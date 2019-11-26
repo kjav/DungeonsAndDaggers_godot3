@@ -125,7 +125,12 @@ func add_room(name, room, wall):
 		var positionInRoom = Vector2(1, 1)
 		
 		if enemy.has("position"):
-			positionInRoom - Vector2(enemy.position.x, enemy.position.y)
+			if typeof(enemy.position) == TYPE_OBJECT:
+				if enemy.position.is_type("Distribution"):
+					var picked = enemy.position.pick()[0].value
+					positionInRoom = Vector2(picked.x, picked.y)
+			else:
+				positionInRoom = Vector2(enemy.position.x, enemy.position.y)
 		else:
 			positionInRoom = Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
 			
