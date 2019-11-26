@@ -57,6 +57,9 @@ func _ready():
 	faceDirection(Enums.DIRECTION.RIGHT)
 	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
 	
+	if GameData.chosen_map == "Tutorial":
+		stats.health.value -= 1
+	
 	addTutorialTextIfTutorial("Swipe To\nMove", Vector2(5, 9.3))
 
 func addTutorialTextIfTutorial(text, pos):
@@ -200,7 +203,7 @@ func swiped(direction):
 		timer.start()
 		
 		if not hasMoved:
-			addTutorialTextIfTutorial("Move Into\nEnemies\nTo Attack", Vector2(6.8, 7))
+			addTutorialTextIfTutorial("Move Into\nEnemies\nTo Attack", Vector2(5.8, 7))
 		
 		hasMoved = true
 
@@ -272,6 +275,9 @@ func takeDamage(damage):
 	var damageableStore = damageable
 	primaryWeapon.onPlayerDamaged()
 	secondaryWeapon.onPlayerDamaged()
+	
+	if GameData.chosen_map == "Tutorial":
+		damage = min(damage, stats.health.value - 0.5)
 	
 	.takeDamage(damage)
 	damageable = damageableStore

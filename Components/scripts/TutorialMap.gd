@@ -21,7 +21,7 @@ func add_room(name, room, wall):
 		wall_direction = (wall[1] - wall[0]).normalized().snapped(Vector2(1, 1))
 		
 		# Choose a door in the wall, excluding the corners of the wall.
-		var door_index = 1 + (randi() % (int((wall[1] - wall[0]).length()) - 2))
+		var door_index = 4
 		door = door_index * wall_direction + wall[0]
 		
 		# Choose how much to move the new room by
@@ -153,11 +153,12 @@ func _init(level).(200, 200, level, -1):
 	
 	add_room("main", main_room, null)
 	
-	var wall_index = randi() % valid_exterior_walls.size()
-	var wall = valid_exterior_walls[wall_index]
+	var wall_index = 1
+	var wall = valid_exterior_walls[0]
 	var room = TutorialSecondRoom
 
 	var success = add_room(1, room, wall)
+	
 	if success:
 		valid_exterior_walls.remove(wall_index)
 	
