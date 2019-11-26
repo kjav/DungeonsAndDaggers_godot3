@@ -3,9 +3,6 @@ extends Node2D
 var _item_names = ["DungeonMap", "TestMap", "MazeMap"]
 var _items = []
 
-func _ready():
-	pass
-
 func get_items():
 	for i in range(_item_names.size()):
 		if typeof(_item_names[i]) == typeof("") and has_node(_item_names[i]):

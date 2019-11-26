@@ -16,7 +16,7 @@ var characters = []
 var environmentObjects = []
 var placedItems = []
 var TileSize = 128;
-var start_screen = ""
+var start_screen = "world_select"
 var effectsNode
 var current_level = 1
 var muted = false
@@ -24,8 +24,13 @@ var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
 
+var saved_player = null
+
+var map_seed = null
+
 func _ready():
 	addInitialItems()
+	map_seed = randi()
 
 func addInitialItems():
 	var instance = Constants.PotionClasses.HealthPotion.new()
@@ -173,7 +178,7 @@ func placeItem(item):
 	emit_signal("itemDropped", item)
 
 func isBossLevel(level):
-	return (level % 3) == 0
+	return (int(level) % 3) == 0
 	
 func closestEnemy():
 	var closestIndex
@@ -205,6 +210,10 @@ func reset():
 	characters = []
 	placedItems = []
 	current_level = 1
+	
+	# Erase the saved state
+	saved_player = null
+	map_seed = null
 	addInitialItems()
 
 func getEnemiesWithinAreaAroundPlayer(distance):
@@ -219,6 +228,91 @@ func getEnemiesWithinAreaAroundPlayer(distance):
 			enemiesInDistance.append(character)
 	
 	return enemiesInDistance
+
+
+func string2vec(s):
+	var x = s.split(", ")[0].split("(")[1]
+	var y = s.split(", ")[1].split(")")[0]
+	return Vector2(float(x), float(y))
+
+func dict2item(dict):
+	var item = dict2inst(dict)
+	# Fixes textures not loading
+	item.texture = load(item.iconFilePath)
+	if "offset" in item:
+		# Fixes offset stored as string not Vector2
+		item.offset = string2vec(item.offset)
+	if "relativeAttackPositions" in item:
+		var array = []
+		for s in item.relativeAttackPositions:
+			array.push_back(string2vec(s))
+		item.relativeAttackPositions = array
+	return item
+
+func serialise_items(items):
+	var dictionaries = []
+	for inst in items:
+		var dict = inst2dict(inst)
+		dictionaries.push_back(dict)
+	return dictionaries
+
+func deserialise_items(items):
+	var instances = []
+	for dict in items:
+		instances.push_back(dict2item(dict))
+	return instances
+
+func serialise_player(player):
+	return {
+		"stats": player.stats,
+		"primary_weapon": inst2dict(player.primaryWeapon),
+		"secondary_weapon": inst2dict(player.secondaryWeapon)
+	}
+
+func load_player(dict):
+	saved_player = {
+		"stats": dict.stats,
+		"primaryWeapon": dict2item(dict.primary_weapon),
+		"secondaryWeapon": dict2item(dict.secondary_weapon)
+	}
+
+func save_game():
+	# TODO: Return the current game state as an object
+	var save_game = File.new()
+	save_game.open("user://" + chosen_map + ".save", File.WRITE)
+	print("Potion: ", potions[0].get_class())
+	save_game.store_line(to_json({
+		"level": current_level,
+		"seed": map_seed,
+		"potions": serialise_items(potions),
+		"foods": serialise_items(foods),
+		"spells": serialise_items(spells),
+		"player": serialise_player(player)
+	}))
+	save_game.close()
+
+func has_save_game(map):
+	return File.new().file_exists("user://" + map + ".save")
+
+
+func load_game():
+	# TODO: Load current game state from config object
+	var save_game = File.new()
+	if not save_game.file_exists("user://" + chosen_map + ".save"):
+		return # Error! We don't have a save to load.
+
+	# the object it represents.
+	save_game.open("user://" + chosen_map + ".save", File.READ)
+	while not save_game.eof_reached():
+		var state = parse_json(save_game.get_line())
+		if state:
+			current_level = state.level
+			map_seed = state.seed
+			potions = deserialise_items(state.potions)
+			foods = deserialise_items(state.foods)
+			spells = deserialise_items(state.spells)
+			load_player(state.player)
+	save_game.close()
 
 func next_level():
 	# TODO: Hide HUD node.
@@ -236,6 +330,7 @@ func next_level():
 	characters = [player]
 	player.position = Vector2(640, 1024)
 	tilemap.next_level()
+	save_game()
 
 func toggle_mute():
 	muted = not muted

@@ -54,6 +54,12 @@ func _ready():
 	setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 	faceDirection(Enums.DIRECTION.RIGHT)
 	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
+	
+	if GameData.saved_player:
+		print("Here!")
+		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
+		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
+		stats = GameData.saved_player.stats
 
 func getPrimaryHandPosition():
 	return forwardHandBone.global_position

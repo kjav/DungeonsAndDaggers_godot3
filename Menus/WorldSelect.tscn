@@ -1,14 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/maps/dungeon_map_screenshot.png" type="Texture" id=3]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/maps/maze_map_screenshot.png" type="Texture" id=5]
-[ext_resource path="res://assets/flask.png" type="Texture" id=6]
+[ext_resource path="res://assets/plank_15.png" type="Texture" id=5]
+[ext_resource path="res://Menus/Continue.gd" type="Script" id=6]
+[ext_resource path="res://Menus/New Game.gd" type="Script" id=7]
+[ext_resource path="res://assets/maps/maze_map_screenshot.png" type="Texture" id=8]
+[ext_resource path="res://assets/flask.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
@@ -39,6 +51,46 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "DUNGEON MAP"
 align = 1
 
+[node name="Continue" type="TextureButton" parent="DungeonMap"]
+visible = false
+margin_left = -326.057
+margin_top = 660.373
+margin_right = 15.9427
+margin_bottom = 795.373
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="DungeonMap/Continue"]
+margin_left = 60.0601
+margin_top = 32.0
+margin_right = 499.06
+margin_bottom = 165.0
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CONTINUE
+"
+
+[node name="New Game" type="TextureButton" parent="DungeonMap"]
+margin_left = -324.228
+margin_top = 907.03
+margin_right = 17.7716
+margin_bottom = 1042.03
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="DungeonMap/New Game"]
+margin_left = 59.2725
+margin_top = 35.1616
+margin_right = 500.273
+margin_bottom = 100.162
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NEW GAME"
+
 [node name="MazeMap" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
 
@@ -48,7 +100,7 @@ margin_top = -340.0
 margin_right = 165.0
 margin_bottom = 210.0
 rect_scale = Vector2( 1.4, 1.4 )
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="MazeMap"]
 margin_left = -424.0
@@ -71,7 +123,7 @@ margin_top = -340.0
 margin_right = 215.0
 margin_bottom = 210.0
 rect_scale = Vector2( 1.2, 1.4 )
-texture = ExtResource( 6 )
+texture = ExtResource( 9 )
 expand = true
 
 [node name="Label" type="Label" parent="TestMap"]
