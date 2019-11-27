@@ -24,7 +24,7 @@ var backHandBone
 var offHandWeaponNode
 var forwardHandBone
 var readyToTeleportOnTileSelect
-var currentlyUnsureWhyThisIsSignificant
+var half_screen_size
 var currentWeaponSlot
 
 func _ready():
@@ -53,7 +53,7 @@ func _ready():
 	setPrimaryWeapon(primaryWeapon)
 	setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 	faceDirection(Enums.DIRECTION.RIGHT)
-	currentlyUnsureWhyThisIsSignificant = Vector2(540, 960)
+	half_screen_size = Vector2(540, 960)
 	
 	if GameData.saved_player:
 		print("Here!")
@@ -336,7 +336,7 @@ func gameClickableRegionClicked(event):
 		GameData.hud.addEventMessage("Can't use that while turn is completing.")
 		return
 
-	var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - currentlyUnsureWhyThisIsSignificant) / GameData.TileSize
+	var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
 	var tilePositionRelativeToCameraRounded = Vector2(floor(tilePositionRelativeToCamera.x), floor(tilePositionRelativeToCamera.y))
 	var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
 	var distance = GameData.tilemap.findPathDistance(tilePositionRelativeToCameraRounded, player_pos)
@@ -350,6 +350,7 @@ func gameClickableRegionClicked(event):
 				readyToTeleportOnTileSelect = false
 				GameData.hud.SetVisibilityOfTeleportWarning(false)
 				GameData.hud.addEventMessage("Player Teleported!")
+				emit_signal("playerMove", tilePositionRelativeToCameraRounded)
 			else:
 				GameData.hud.addEventMessage("Can't teleport there!")
 		else:

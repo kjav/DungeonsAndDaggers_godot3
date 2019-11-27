@@ -181,7 +181,6 @@ func _init(level).(200, 200, level, -1):
 	
 	var start = OS.get_ticks_msec()
 	
-	
 	var main_room
 	if (GameData.isBossLevel(level)):
 		main_room = pick_bossroom(level)
