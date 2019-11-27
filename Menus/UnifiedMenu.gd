@@ -10,7 +10,6 @@ var current_time
 var printed = false
 
 func _ready():
-	GameData.toggle_mute()
 	match GameData.start_screen:
 		"world_select":
 			position = Vector2(-1180, 0)
