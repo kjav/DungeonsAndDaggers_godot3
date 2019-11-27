@@ -140,3 +140,4 @@ playing = true
 visible = false
 position = Vector2( 9.49777, 5.47329 )
 scale = Vector2( 0.02, 0.02 )
+frame = 0

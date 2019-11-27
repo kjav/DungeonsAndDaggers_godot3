@@ -1,5 +1,8 @@
 extends 'RoomBase.gd'
 
+func _init():
+	symmetry = SYMMETRY.none
+
 func setup_params():
 	extents_distribution = Set.new([Vector2(5, 10)])
 	npc_distribution =  IndependentDistribution.new(
@@ -28,6 +31,10 @@ func setup_params():
 	environment_distribution = Distribution.new([{
 		"p": 1,
 		"value": load("res://Environments/LevelStairs.tscn"),
-		"position": Vector2(3, 2)
+		"position": Vector2(2, 1)
 	}])
-	item_distribution = Distribution.new([])
+	item_distribution = Distribution.new([{
+		"p": 1, 
+		"value": Constants.SpellClasses.EarthquakeSpell,
+		"position": Vector2(3, 5)
+	}])

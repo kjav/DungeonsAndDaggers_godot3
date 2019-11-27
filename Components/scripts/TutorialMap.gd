@@ -25,7 +25,7 @@ func add_room(name, room, wall):
 		door = door_index * wall_direction + wall[0]
 		
 		# Choose how much to move the new room by
-		var room_index = 1 + (randi() % int(abs(int(roomDistribution.extents.dot(wall_direction))) - 2))
+		var room_index = 2
 		
 		if wall_direction == Vector2(0, 1):
 			position = door - Vector2(0, room_index)
@@ -45,20 +45,6 @@ func add_room(name, room, wall):
 			position = wall[0]
 			shared_wall_index = 1
 	
-	# Check if the interior of the room fits on the map
-	for x in range(position.x + 1, position.x + roomDistribution.extents.x - 1):
-		for y in range(position.y + 1, position.y + roomDistribution.extents.y - 1):
-			if tiles[y][x] != initial_tile:
-				return false
-	
-	# Check that the walls do not cover up another door
-	for x in range(position.x, roomDistribution.extents.x + 1):
-		for y in [0, roomDistribution.extents.y - 1]:
-			# Check this door is not our door!
-			var this_coord = Vector2(x, y)
-			if door != this_coord:
-				if is_door(this_coord):
-					return false
 	for y in range(position.y + 1, position.y + roomDistribution.extents.y - 1):
 		for x in [0, roomDistribution.extents.x - 1]:
 			# Check this door is not our door!
@@ -118,11 +104,8 @@ func add_room(name, room, wall):
 	for item in roomDistribution.items:
 		var positionInRoom = Vector2(1, 1)
 		if item.has("position"):
-			if item.position.is_type("Distribution"):
-				positionInRoom = item.position.pick()[0]
-			else:
-				positionInRoom = item.position
-		items.push_back({"position": position + Vector2(1, 1), "value": item.value})
+			positionInRoom = item.position
+		items.push_back({"position": position + positionInRoom, "value": item.value})
 		
 	for env in roomDistribution.environments:
 		var positionInRoom = Vector2(2, 1)
