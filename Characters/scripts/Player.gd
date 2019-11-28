@@ -28,6 +28,7 @@ var readyToTeleportOnTileSelect
 var half_screen_size
 var currentWeaponSlot
 var hasMoved
+var firstTrainingDummyKilled
 
 func _ready():
 	#this is temporary to aid with testing
@@ -60,7 +61,7 @@ func _ready():
 	if GameData.chosen_map == "Tutorial":
 		stats.health.value -= 1
 	
-	addTutorialTextIfTutorial("Swipe To\nMove", Vector2(5, 9.3))
+	addTutorialTextIfTutorial("Swipe to\nmove", Vector2(5, 9.3))
   
 	if GameData.saved_player:
 		print("Here!")
@@ -209,7 +210,7 @@ func swiped(direction):
 		timer.start()
 		
 		if not hasMoved:
-			addTutorialTextIfTutorial("Move Into\nEnemies\nTo Attack", Vector2(5.8, 7))
+			addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(5.8, 7))
 		
 		hasMoved = true
 
@@ -231,6 +232,11 @@ func attack(character, base_damage = 0):
 			emit_signal("playerAttack", character, currentWeapon.damage)
 			currentWeapon.onAttack(character)
 			.attack(character, currentWeapon.damage)
+			
+			if character.character_name == "Training Dummy" && not character.alive() && not firstTrainingDummyKilled:
+				addTutorialTextIfTutorial("Move to\nitems to\npick up", Vector2(7, 6))
+				addTutorialTextIfTutorial("Careful!\nenemies move\ninto you\nto attack", Vector2(5, 4))
+				firstTrainingDummyKilled = true
 			
 			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
 			
@@ -310,6 +316,9 @@ func pickUp(item):
 	if (item != null):
 		item.pickup()
 		emit_signal("itemPickedUp", item)
+		
+		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple":
+			GameData.hud.get_node("TutorialTextPrompts").get_child(2).text = "Click food\nicon at\npage bottom\nto eat"
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
