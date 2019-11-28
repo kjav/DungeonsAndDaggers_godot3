@@ -32,7 +32,9 @@ func populateLevelOption(stairs):
 		var nextLevel = GameData.current_level + 1
 		var levelText
 		
-		if GameData.isBossLevel(nextLevel):
+		if GameData.chosen_map == "Tutorial" && GameData.current_level == 2:
+			levelText = "main game"
+		elif GameData.isBossLevel(nextLevel):
 			levelText = "Boss"
 		else:
 			levelText = "Level " + str(nextLevel)

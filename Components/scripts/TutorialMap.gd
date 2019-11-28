@@ -154,3 +154,7 @@ func _init(level).(200, 200, level, -1):
 		add_room("main", main_room, null)
 		
 		make_walls_consistent()
+	
+	for textNode in GameData.hud.get_node("TutorialTextPrompts").get_children():
+		textNode.hide()
+		textNode.queue_free()
