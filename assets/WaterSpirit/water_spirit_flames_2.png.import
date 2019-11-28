@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_spirit_flames_2.png-311f3c373ea612c1d4678e095e04d093.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/WaterSpirit/water_spirit_flames_2.png"
-dest_files=[ "res://.import/water_spirit_flames_2.png-311f3c373ea612c1d4678e095e04d093.stex" ]
-
 [params]
 
 compress/mode=0

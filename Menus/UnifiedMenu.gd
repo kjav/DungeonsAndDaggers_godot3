@@ -18,6 +18,7 @@ func _ready():
 
 func _process(delta):
 	if transitioning:
+		print("_process", transitioning)
 		current_time += delta
 		if current_time > transition_time:
 			transitioning = false
@@ -30,6 +31,7 @@ func _process(delta):
 func _on_splashbutton_start():
 	if not transitioning:
 		start_pos = position
+		print(start_pos)
 		target_pos = start_pos - Vector2(1180, 0)
 		current_time = 0.0
 		transitioning = true

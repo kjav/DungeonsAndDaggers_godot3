@@ -168,7 +168,9 @@ func get_facing(wall_direction):
 
 func _init(level).(200, 200, level, -1):
 	var n_rooms = 40
-	randomize()
+	if GameData.map_seed:
+		# Use the loaded seed, adding the level multiplied by a large prime
+		seed(GameData.map_seed + level * 524287)
 	
 	var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 	tree.add_value([
@@ -178,7 +180,6 @@ func _init(level).(200, 200, level, -1):
 	], 42)
 	
 	var start = OS.get_ticks_msec()
-	
 	
 	var main_room
 	if (GameData.isBossLevel(level)):

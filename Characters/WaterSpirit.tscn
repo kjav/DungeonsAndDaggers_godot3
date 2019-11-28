@@ -1,24 +1,23 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Characters/scripts/WaterSpirit.gd" type="Script" id=1]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_0.png" type="Texture" id=2]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_right_0.png" type="Texture" id=3]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_right_0.png" type="Texture" id=2]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_0.png" type="Texture" id=3]
 [ext_resource path="res://assets/WaterSpirit/water_spirit_up_0.png" type="Texture" id=4]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_0.png" type="Texture" id=5]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_2.png" type="Texture" id=7]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_3.png" type="Texture" id=8]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_4.png" type="Texture" id=9]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_5.png" type="Texture" id=10]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_6.png" type="Texture" id=11]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_0.png" type="Texture" id=12]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_1.png" type="Texture" id=13]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_2.png" type="Texture" id=14]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_3.png" type="Texture" id=15]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_4.png" type="Texture" id=16]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_5.png" type="Texture" id=17]
-[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_6.png" type="Texture" id=18]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_4.png" type="Texture" id=8]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_5.png" type="Texture" id=9]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_6.png" type="Texture" id=10]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_2.png" type="Texture" id=13]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_4.png" type="Texture" id=15]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_5.png" type="Texture" id=16]
+[ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_6.png" type="Texture" id=17]
+[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -29,12 +28,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "walk_left",
+"name": "stand_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "walk_right",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
-"name": "stand_right",
+"name": "stand_down",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -44,7 +48,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
-"name": "walk_right",
+"name": "walk_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "stand_left",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -52,19 +61,9 @@ animations = [ {
 "name": "walk_up",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "stand_down",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "walk_down",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "stand_left",
 "speed": 1.0
 } ]
 
@@ -75,44 +74,44 @@ animations = [ {
 "name": "death",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), null, ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "stand_right",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "stand_up",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), null, ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "stand_down",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), null, ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "stand_up",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
 "name": "stand_left",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), null, ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "walk_down",
 "speed": 14.0
 } ]
 
@@ -136,7 +135,7 @@ animation = "death"
 frame = -1
 playing = true
 
-[node name="Stars" parent="." instance=ExtResource( 19 )]
+[node name="Stars" parent="." instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 9.49777, 5.47329 )
 scale = Vector2( 0.02, 0.02 )
