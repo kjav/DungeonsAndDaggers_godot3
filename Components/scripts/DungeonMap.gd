@@ -118,6 +118,9 @@ func set_map_type(type):
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
 			Enemies.add_child(node)
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
+			
+			if type == "Tutorial" and (node.character_name == "Fire Spirit" or node.character_name == "Water Spirit"):
+				node.item_distribution = null
 		
 		for item in map.items:
 			var node = item.value.new()
