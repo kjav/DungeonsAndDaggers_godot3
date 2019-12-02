@@ -39,6 +39,9 @@ func onWalkedInto(character):
 	if !locked:
 		remove()
 	
+	if GameData.chosen_map == "Tutorial":
+		GameData.hud.get_node("TutorialTextPrompts").get_child(0).text = "Some\nweapons have\nlimited ammo"
+	
 	if locked && character == GameData.player:
 		var key = GameData.HasKey(UnlockGuid)
 		

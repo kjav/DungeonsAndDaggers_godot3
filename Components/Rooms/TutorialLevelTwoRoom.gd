@@ -31,5 +31,5 @@ func setup_params():
 	item_distribution = Distribution.new([{
 		"p": 1, 
 		"value": Constants.WeaponClasses.UncommonSpear,
-		"position": Vector2(1, 3)
+		"position": Vector2(1, 2)
 	}])
