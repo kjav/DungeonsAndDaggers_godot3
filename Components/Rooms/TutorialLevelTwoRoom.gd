@@ -12,6 +12,11 @@ func setup_params():
 		{
 			"p": 1, 
 			"value": load("res://Characters/TrainingDummy.tscn"),
+			"position": Vector2(4, 1)
+		},
+		{
+			"p": 1, 
+			"value": load("res://Characters/TrainingDummy.tscn"),
 			"position": Vector2(5, 4)
 		}
 	])
@@ -31,5 +36,5 @@ func setup_params():
 	item_distribution = Distribution.new([{
 		"p": 1, 
 		"value": Constants.WeaponClasses.UncommonSpear,
-		"position": Vector2(1, 2)
+		"position": Vector2(2, 1)
 	}])

@@ -61,6 +61,7 @@ func _ready():
 		stats.health.value -= 1
 	
 	addTutorialTextIfTutorial("Swipe to\nmove", Vector2(5, 9.3))
+	addTutorialTextIfTutorial("These are\ncrucial, they\noffer random\nupgrades", Vector2(7.1, -2.9))
   
 	if GameData.saved_player:
 		print("Here!")
@@ -72,7 +73,7 @@ func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":
 		var textNode = Text.instance()
 		textNode.set_position(pos * GameData.TileSize)
-		textNode.text = text
+		textNode.set_text(text)
 		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func getPrimaryHandPosition():
@@ -209,7 +210,7 @@ func swiped(direction):
 		timer.start()
 		
 		if not hasMoved:
-			addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(5.8, 7))
+			addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
 		
 		hasMoved = true
 
@@ -233,8 +234,8 @@ func attack(character, base_damage = 0):
 			.attack(character, currentWeapon.damage)
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
-				addTutorialTextIfTutorial("Move to\nitems to\npick up", Vector2(7, 6))
-				addTutorialTextIfTutorial("Careful!\nenemies move\ninto you\nto attack", Vector2(5, 4))
+				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))
+				addTutorialTextIfTutorial("Careful\nenemies move\ninto you\nto attack", Vector2(5.2, 3.5))
 			
 			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
 			
@@ -316,7 +317,8 @@ func pickUp(item):
 		emit_signal("itemPickedUp", item)
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple" && GameData.current_level == 1:
-			GameData.hud.get_node("TutorialTextPrompts").get_child(2).text = "Click food\nicon at\npage bottom\nto eat"
+			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_text("Click food\nicon at\npage bottom\nto eat")
+			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_position(Vector2(7, 6.1) * GameData.TileSize)
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
