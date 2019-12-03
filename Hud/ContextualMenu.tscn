@@ -20,6 +20,8 @@ margin_right = 87.0
 margin_bottom = -5.0
 custom_fonts/font = SubResource( 1 )
 text = "Go to Level 2"
+align = 1
+valign = 1
 
 [node name="LevelSelect" type="TextureButton" parent="."]
 show_behind_parent = true

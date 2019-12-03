@@ -36,13 +36,15 @@ var visualAttackCueActive
 var currentFlip_hState
 var walkingUp
 
+func _init():
+	self.character_name = 'Boss Ogre'
+	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.WeaponClasses.RareSword}])
+
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
 	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new(self)
 	processBehaviour = Process.Direct.new()
-	self.character_name = 'Boss Ogre'
 	base_damage = 3
-	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.WeaponClasses.RareSword}])
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
 	alternateAttackCue = false

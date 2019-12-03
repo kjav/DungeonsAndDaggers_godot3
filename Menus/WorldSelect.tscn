@@ -1,14 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/maps/dungeon_map_screenshot.png" type="Texture" id=3]
+[ext_resource path="res://assets/43.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/plank_15.png" type="Texture" id=5]
 [ext_resource path="res://Menus/Continue.gd" type="Script" id=6]
 [ext_resource path="res://Menus/New Game.gd" type="Script" id=7]
-[ext_resource path="res://assets/maps/maze_map_screenshot.png" type="Texture" id=8]
-[ext_resource path="res://assets/flask.png" type="Texture" id=9]
+[ext_resource path="res://assets/dummy_01.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -28,18 +27,18 @@ script = ExtResource( 1 )
 
 [node name="SelectScreen" parent="." instance=ExtResource( 2 )]
 
-[node name="DungeonMap" type="Node2D" parent="."]
+[node name="OgresDomain" type="Node2D" parent="."]
 position = Vector2( 544.205, 485.558 )
 
-[node name="TextureFrame" type="TextureRect" parent="DungeonMap"]
-margin_left = -385.0
-margin_top = -340.0
-margin_right = 165.0
-margin_bottom = 210.0
+[node name="TextureFrame" type="TextureRect" parent="OgresDomain"]
+margin_left = -353.0
+margin_top = -317.0
+margin_right = 159.0
+margin_bottom = 195.0
 rect_scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="DungeonMap"]
+[node name="Label" type="Label" parent="OgresDomain"]
 margin_left = -486.0
 margin_top = 484.0
 margin_right = 507.0
@@ -48,10 +47,10 @@ mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "DUNGEON MAP"
+text = "OGRES DOMAIN"
 align = 1
 
-[node name="Continue" type="TextureButton" parent="DungeonMap"]
+[node name="Continue" type="TextureButton" parent="OgresDomain"]
 visible = false
 margin_left = -326.057
 margin_top = 660.373
@@ -61,7 +60,7 @@ rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 script = ExtResource( 6 )
 
-[node name="Label" type="Label" parent="DungeonMap/Continue"]
+[node name="Label" type="Label" parent="OgresDomain/Continue"]
 margin_left = 60.0601
 margin_top = 32.0
 margin_right = 499.06
@@ -72,7 +71,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CONTINUE
 "
 
-[node name="New Game" type="TextureButton" parent="DungeonMap"]
+[node name="New Game" type="TextureButton" parent="OgresDomain"]
 margin_left = -324.228
 margin_top = 907.03
 margin_right = 17.7716
@@ -81,7 +80,7 @@ rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 script = ExtResource( 7 )
 
-[node name="Label" type="Label" parent="DungeonMap/New Game"]
+[node name="Label" type="Label" parent="OgresDomain/New Game"]
 margin_left = 59.2725
 margin_top = 35.1616
 margin_right = 500.273
@@ -91,18 +90,18 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "NEW GAME"
 
-[node name="MazeMap" type="Node2D" parent="."]
+[node name="Tutorial" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
 
-[node name="TextureFrame" type="TextureRect" parent="MazeMap"]
-margin_left = -385.0
-margin_top = -340.0
-margin_right = 165.0
-margin_bottom = 210.0
-rect_scale = Vector2( 1.4, 1.4 )
+[node name="TextureFrame" type="TextureRect" parent="Tutorial"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="MazeMap"]
+[node name="Tutorial" type="Label" parent="Tutorial"]
 margin_left = -424.0
 margin_top = 484.0
 margin_right = 456.0
@@ -111,30 +110,25 @@ mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "MAZE MAP"
+text = "TUTORIAL"
 align = 1
 
-[node name="TestMap" type="Node2D" parent="."]
-position = Vector2( 1604.2, 485.558 )
+[node name="New Game" type="TextureButton" parent="Tutorial"]
+margin_left = -324.064
+margin_top = 907.03
+margin_right = 17.9355
+margin_bottom = 1042.03
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+script = ExtResource( 7 )
 
-[node name="TextureFrame" type="TextureRect" parent="TestMap"]
-margin_left = -335.0
-margin_top = -340.0
-margin_right = 215.0
-margin_bottom = 210.0
-rect_scale = Vector2( 1.2, 1.4 )
-texture = ExtResource( 9 )
-expand = true
-
-[node name="Label" type="Label" parent="TestMap"]
-margin_left = -424.0
-margin_top = 484.0
-margin_right = 417.0
-margin_bottom = 596.0
-mouse_filter = 1
-size_flags_vertical = 0
-custom_fonts/font = SubResource( 1 )
+[node name="Label" type="Label" parent="Tutorial/New Game"]
+margin_left = 59.2725
+margin_top = 35.1616
+margin_right = 500.273
+margin_bottom = 100.162
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "TEST MAP"
-align = 1
+text = "NEW GAME"
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]

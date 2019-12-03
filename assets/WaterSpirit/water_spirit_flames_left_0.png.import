@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/maze_map_screenshot.png-fa180b10f611b48cf655e0b5b0e6bf6a.stex"
+path="res://.import/water_spirit_flames_left_0.png-777c50d1ef722a2805ef866808bad815.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/maps/maze_map_screenshot.png"
-dest_files=[ "res://.import/maze_map_screenshot.png-fa180b10f611b48cf655e0b5b0e6bf6a.stex" ]
+source_file="res://assets/WaterSpirit/water_spirit_flames_left_0.png"
+dest_files=[ "res://.import/water_spirit_flames_left_0.png-777c50d1ef722a2805ef866808bad815.stex" ]
 
 [params]
 

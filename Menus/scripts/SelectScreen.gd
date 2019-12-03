@@ -15,8 +15,13 @@ func _ready():
 	left_arrow = get_node("LeftArrow")
 	right_arrow = get_node("RightArrow")
 	
+	var selectedStart = 0
+	
+	if(GameData.shouldTutorialHide()):
+		selectedStart = 1
+	
 	if items.size() > 0:
-		select_item(0)
+		select_item(selectedStart)
 
 func left():
 	if active and current_item > 0:
