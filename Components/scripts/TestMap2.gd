@@ -18,11 +18,15 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{"p": 0.31, "value": UpgradeRoom},
-			{"p": 0.43, "value": TallRoom},
-			{"p": 0.2, "value": StairsRoom},
-			{"p": 0.06, "value": SuperTallRoom}
+			{"p": 0.85, "value": TallRoom},
+			{"p": 0.15, "value": SuperTallRoom}
 		])
+
+func level_final_rooms(level):
+	if GameData.isBossLevel(level):
+		return []
+	else:
+		return [UpgradeRoom, StairsRoom]
 
 func pick_bossroom(level):
 	# TODO: Pick harder bosses as game progresses
@@ -190,9 +194,10 @@ func _init(level).(200, 200, level, -1):
 	
 	var mid_1 = OS.get_ticks_msec()
 
-	var i = 0;
 	
 	var room_distribution = level_rooms(level)
+	var final_rooms = level_final_rooms(level)
+	var i = 0
   
 	if not GameData.isBossLevel(level):
 		while rooms.size() < n_rooms:
@@ -204,7 +209,20 @@ func _init(level).(200, 200, level, -1):
 			var success = add_room(str(i), room, wall)
 			if success:
 				valid_exterior_walls.remove(wall_index)
-				i = i + 1
+				i += 1
+
+		for room in final_rooms:
+			var placed = false
+			while not placed:
+				# Pick a wall
+				var wall_index = randi() % valid_exterior_walls.size()
+				var wall = valid_exterior_walls[wall_index]
+			
+				var success = add_room(str(i), room, wall)
+				if success:
+					valid_exterior_walls.remove(wall_index)
+					placed = true
+					i += 1
 	
 	var mid_2 = OS.get_ticks_msec()
 	
