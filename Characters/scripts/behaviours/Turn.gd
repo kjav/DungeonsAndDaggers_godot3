@@ -143,12 +143,7 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 		LeaveWaitAttackWaitSequence()
 		shouldStun = false
 		
-		var amount = randi()%3
-		
-		if (amount <= 1):
-			character.addStun(1)
-		else:
-			character.addStun(1)
+		character.addStun(max(randi() % 5 - 1, 2))
 	
 	func afterMoveComplete(pos):
 		if (shouldStun):
