@@ -7,7 +7,7 @@ class CookedSteak extends "FoodBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
@@ -24,7 +24,7 @@ class Apple extends "FoodBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
@@ -42,7 +42,7 @@ class Cheese extends "FoodBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 		
 		if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():

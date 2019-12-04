@@ -21,5 +21,5 @@ func pickup():
 func allowedToUse():
 	return not (GameData.player.moving or GameData.player.charactersAwaitingMove or GameData.charactersMoving())
 
-func eventMessageForTurnUse():
-	GameData.hud.addEventMessage("Can't use that while turn is completing.")
+func tryAgainOnTurnEnd():
+	GameData.player.connect("turnEnd",self,"onUse", [], CONNECT_ONESHOT)

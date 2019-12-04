@@ -7,6 +7,7 @@ signal itemPickedUp(item)
 signal playerMove(pos)
 signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
+signal turnEnd()
 
 const LightBlip = preload("res://Effects/LightBlip.tscn")
 const Text = preload("res://Effects/Text.tscn")
@@ -28,6 +29,7 @@ var readyToTeleportOnTileSelect
 var half_screen_size
 var currentWeaponSlot
 var hasMoved
+var lastEvent
 
 func _ready():
 	#this is temporary to aid with testing
@@ -272,6 +274,7 @@ func _process(delta):
 
 			setStandAnimation(movement_direction)
 			moving = false
+			emit_signal("turnEnd")
 			time_elapsed = 0
 	else:
 		time_elapsed += delta
@@ -359,12 +362,17 @@ func decreaseMaxMana(amount):
 	.decreaseMaxMana(amount)
 	emit_signal("statsChanged", "maxmana", "Down", amount)
 
-func gameClickableRegionClicked(event):
+func gameClickableRegionClicked(event = null):
+	if event == null:
+		event = lastEvent
+	else:
+		lastEvent = event
+	
 	if not readyToTeleportOnTileSelect:
 		return
 	
 	if moving or charactersAwaitingMove or GameData.charactersMoving():
-		GameData.hud.addEventMessage("Can't use that while turn is completing.")
+		self.connect("turnEnd",self,"gameClickableRegionClicked", [], CONNECT_ONESHOT)
 		return
 
 	var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
