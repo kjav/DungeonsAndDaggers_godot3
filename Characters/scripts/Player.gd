@@ -193,28 +193,34 @@ func setStandAnimation(direction):
 			get_node("Skeleton2D").scale = skeletonScale
 			get_node("Polygons").scale = polygonsScale
 
-func swiped(direction):
-	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
-		.turn()
-		time_elapsed = 0
-		#Audio.playWalk()
-		moveDirection(direction)
-		emit_signal("playerMove", self.target_pos / 128)
-		emit_signal("turnTimeChange", time_elapsed)
-		
-		charactersAwaitingMove = true
-		
+func forceTurnEnd(direction = Enums.DIRECTION.NONE):
+	.turn()
+	time_elapsed = 0
+	#Audio.playWalk()
+	moveDirection(direction)
+	emit_signal("playerMove", self.target_pos / 128)
+	emit_signal("turnTimeChange", time_elapsed)
+	
+	charactersAwaitingMove = true
+	
+	if direction == Enums.DIRECTION.NONE:
+		MoveCharacters()
+	else:
 		var timer = Timer.new()
 		timer.set_wait_time(0.4)
 		timer.connect("timeout",self,"MoveCharacters") 
 		timer.set_one_shot(true)
 		add_child(timer)
 		timer.start()
-		
-		if not hasMoved:
-			addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
-		
-		hasMoved = true
+	
+	if not hasMoved:
+		addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
+	
+	hasMoved = true
+
+func swiped(direction):
+	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		forceTurnEnd(direction)
 
 func MoveCharacters():
 	charactersAwaitingMove = false
@@ -320,8 +326,8 @@ func pickUp(item):
 		emit_signal("itemPickedUp", item)
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple" && GameData.current_level == 1:
-			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_text("Click food\nicon at\npage bottom\nto eat")
-			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_position(Vector2(7, 6.1) * GameData.TileSize)
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("Click food\nicon at\npage bottom\nto eat")
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
