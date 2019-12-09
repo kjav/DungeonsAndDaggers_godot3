@@ -14,6 +14,12 @@ func _calculate_swipe(swipe_end):
 	if swipe_start == null:
 		return
 	var swipe = swipe_end - swipe_start
+	
+	var width = ProjectSettings.get_setting("display/window/size/width")
+	var height = ProjectSettings.get_setting("display/window/size/height")
+	
+	swipe.x * float(width) / height
+	swipe.y * float(height) / width
 
 	if swipe.length() > minimum_drag:
 		swipe = swipe.normalized()
