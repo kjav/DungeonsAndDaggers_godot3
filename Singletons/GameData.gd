@@ -258,9 +258,6 @@ func serialise_items(items):
 	var dictionaries = []
 	for inst in items:
 		var dict = inst2dict(inst)
-		print(inst.path)
-		print(inst.subpath)
-		dict.subpath = inst.get("@subpath")
 		dictionaries.push_back(dict)
 	return dictionaries
 
