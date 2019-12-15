@@ -504,7 +504,7 @@ func increaseMaxHealth(amount):
 	self.stats.health.maximum += amount
 
 func decreaseMaxHealth(amount):
-	if (amount >= 0):
+	if (amount <= 0):
 		return
 	
 	self.stats.health.maximum -= amount

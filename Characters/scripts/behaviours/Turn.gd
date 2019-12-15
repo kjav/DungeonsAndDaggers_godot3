@@ -64,6 +64,25 @@ class MoveUpRightDownLeft extends BaseTurn:
 		elif currentMove == 3:
 			return Enums.DIRECTION.LEFT
 
+class MoveUpLeftDownRight extends BaseTurn:
+	var count = 0
+	
+	func _init(_character = null).(_character):
+		pass
+	
+	func turn(pos):
+		count += 1
+		var currentMove = count%4
+		
+		if currentMove == 0:
+			return Enums.DIRECTION.UP
+		elif currentMove == 1:
+			return Enums.DIRECTION.LEFT
+		elif currentMove == 2:
+			return Enums.DIRECTION.DOWN
+		elif currentMove == 3:
+			return Enums.DIRECTION.RIGHT
+
 class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 	var moveTo
 	var waitAttackWaitCount = -1
@@ -124,12 +143,7 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 		LeaveWaitAttackWaitSequence()
 		shouldStun = false
 		
-		var amount = randi()%3
-		
-		if (amount <= 1):
-			character.addStun(1)
-		else:
-			character.addStun(1)
+		character.addStun(max(randi() % 5 - 1, 2))
 	
 	func afterMoveComplete(pos):
 		if (shouldStun):

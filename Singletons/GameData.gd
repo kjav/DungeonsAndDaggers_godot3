@@ -284,6 +284,18 @@ func load_player(dict):
 		"secondaryWeapon": dict2item(dict.secondary_weapon)
 	}
 
+func stopSuggestingTutorial():
+	if not shouldTutorialHide():
+		var hide_tutorial = File.new()
+		
+		hide_tutorial.open("user://hide-tutorial.save", File.WRITE)
+		hide_tutorial.store_line("true")
+		
+		hide_tutorial.close()
+
+func shouldTutorialHide():
+	return File.new().file_exists("user://hide-tutorial.save")
+
 func save_game():
 	# TODO: Return the current game state as an object
 	var save_game = File.new()

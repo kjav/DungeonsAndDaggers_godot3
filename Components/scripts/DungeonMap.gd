@@ -4,11 +4,11 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "Basic Dungeon", "Maze Dungeon") var map_type = 0 setget set_map_type, get_map_type
+export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-  "DungeonMap": load("res://Components/scripts/TestMap2.gd"),
-  "TestMap": load("res://Components/scripts/TestMap.gd")
+  "OgresDomain": load("res://Components/scripts/OgresDomain.gd"),
+  "Tutorial": load("res://Components/scripts/TutorialMap.gd")
 }
 
 var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
@@ -118,6 +118,9 @@ func set_map_type(type):
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
 			Enemies.add_child(node)
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
+			
+			if type == "Tutorial" and (node.character_name == "Fire Spirit" or node.character_name == "Water Spirit"):
+				node.item_distribution = null
 		
 		for item in map.items:
 			var node = item.value.new()
@@ -149,6 +152,8 @@ func set_map_type(type):
 				node.blockFromPathFindingWhenReady = true
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.UncommonSpear}]))
+				if type == "Tutorial":
+					node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.CommonBow}]))
 			elif node.environment_name == "Door":
 				node.setLocked(false)
 			elif node.environment_name == "BossDoor":

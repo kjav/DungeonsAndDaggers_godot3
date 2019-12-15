@@ -10,7 +10,7 @@ class FireSpell extends "SpellBase.gd":
 
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 		
 		var closest_enemy = GameData.closestEnemy()
@@ -47,7 +47,7 @@ class RepelSpell extends "SpellBase.gd":
 
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return;
 
 		var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
@@ -103,7 +103,7 @@ class EarthquakeSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 		
 		var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
@@ -176,7 +176,7 @@ class MissileSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 
 		var closest_enemy = GameData.closestEnemy()
@@ -210,7 +210,7 @@ class StunSpell extends "SpellBase.gd":
 	
 	func onUse():
 		if not .allowedToUse():
-			.eventMessageForTurnUse()
+			.tryAgainOnTurnEnd()
 			return
 
 		var closest_enemy = GameData.closestEnemy()

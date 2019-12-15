@@ -7,8 +7,10 @@ signal itemPickedUp(item)
 signal playerMove(pos)
 signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
+signal turnEnd()
 
 const LightBlip = preload("res://Effects/LightBlip.tscn")
+const Text = preload("res://Effects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
@@ -26,6 +28,8 @@ var forwardHandBone
 var readyToTeleportOnTileSelect
 var half_screen_size
 var currentWeaponSlot
+var hasMoved
+var lastEvent
 
 func _ready():
 	#this is temporary to aid with testing
@@ -55,11 +59,24 @@ func _ready():
 	faceDirection(Enums.DIRECTION.RIGHT)
 	half_screen_size = Vector2(540, 960)
 	
+	if GameData.chosen_map == "Tutorial":
+		stats.health.value -= 1
+	
+	addTutorialTextIfTutorial("Swipe to\nmove", Vector2(5, 9.3))
+	addTutorialTextIfTutorial("These are\ncrucial, they\noffer random\nupgrades", Vector2(7.1, -2.9))
+  
 	if GameData.saved_player:
 		print("Here!")
 		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
 		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
 		stats = GameData.saved_player.stats
+
+func addTutorialTextIfTutorial(text, pos):
+	if GameData.chosen_map == "Tutorial":
+		var textNode = Text.instance()
+		textNode.set_position(pos * GameData.TileSize)
+		textNode.set_text(text)
+		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func getPrimaryHandPosition():
 	return forwardHandBone.global_position
@@ -176,23 +193,34 @@ func setStandAnimation(direction):
 			get_node("Skeleton2D").scale = skeletonScale
 			get_node("Polygons").scale = polygonsScale
 
-func swiped(direction):
-	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
-		.turn()
-		time_elapsed = 0
-		#Audio.playWalk()
-		moveDirection(direction)
-		emit_signal("playerMove", self.target_pos / 128)
-		emit_signal("turnTimeChange", time_elapsed)
-		
-		charactersAwaitingMove = true
-		
+func forceTurnEnd(direction = Enums.DIRECTION.NONE):
+	.turn()
+	time_elapsed = 0
+	#Audio.playWalk()
+	moveDirection(direction)
+	emit_signal("playerMove", self.target_pos / 128)
+	emit_signal("turnTimeChange", time_elapsed)
+	
+	charactersAwaitingMove = true
+	
+	if direction == Enums.DIRECTION.NONE:
+		MoveCharacters()
+	else:
 		var timer = Timer.new()
 		timer.set_wait_time(0.4)
 		timer.connect("timeout",self,"MoveCharacters") 
 		timer.set_one_shot(true)
 		add_child(timer)
 		timer.start()
+	
+	if not hasMoved:
+		addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
+	
+	hasMoved = true
+
+func swiped(direction):
+	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		forceTurnEnd(direction)
 
 func MoveCharacters():
 	charactersAwaitingMove = false
@@ -212,6 +240,10 @@ func attack(character, base_damage = 0):
 			emit_signal("playerAttack", character, currentWeapon.damage)
 			currentWeapon.onAttack(character)
 			.attack(character, currentWeapon.damage)
+			
+			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
+				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))
+				addTutorialTextIfTutorial("Careful\nenemies move\ninto you\nto attack", Vector2(5.2, 3.5))
 			
 			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
 			
@@ -248,6 +280,7 @@ func _process(delta):
 
 			setStandAnimation(movement_direction)
 			moving = false
+			emit_signal("turnEnd")
 			time_elapsed = 0
 	else:
 		time_elapsed += delta
@@ -262,6 +295,9 @@ func takeDamage(damage):
 	var damageableStore = damageable
 	primaryWeapon.onPlayerDamaged()
 	secondaryWeapon.onPlayerDamaged()
+	
+	if GameData.chosen_map == "Tutorial":
+		damage = min(damage, stats.health.value - 0.5)
 	
 	.takeDamage(damage)
 	damageable = damageableStore
@@ -288,6 +324,10 @@ func pickUp(item):
 	if (item != null):
 		item.pickup()
 		emit_signal("itemPickedUp", item)
+		
+		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple" && GameData.current_level == 1:
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("Click food\nicon at\npage bottom\nto eat")
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
@@ -328,12 +368,17 @@ func decreaseMaxMana(amount):
 	.decreaseMaxMana(amount)
 	emit_signal("statsChanged", "maxmana", "Down", amount)
 
-func gameClickableRegionClicked(event):
+func gameClickableRegionClicked(event = null):
+	if event == null:
+		event = lastEvent
+	else:
+		lastEvent = event
+	
 	if not readyToTeleportOnTileSelect:
 		return
 	
 	if moving or charactersAwaitingMove or GameData.charactersMoving():
-		GameData.hud.addEventMessage("Can't use that while turn is completing.")
+		self.connect("turnEnd",self,"gameClickableRegionClicked", [], CONNECT_ONESHOT)
 		return
 
 	var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize

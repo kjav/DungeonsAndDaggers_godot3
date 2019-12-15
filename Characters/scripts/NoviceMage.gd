@@ -7,14 +7,16 @@ const missile_texture = preload("res://assets/pellet.png")
 var moveTo
 var attackedLastTurn
 
+func _init():
+	self.character_name = 'Novice Mage'
+	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.SpellClasses.MissileSpell}])
+
 func _ready():
 	moveTo = Turn.MoveTo.new(self)
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomWaitEveryNTurns.new(self)
 	processBehaviour = Process.Direct.new()
-	self.character_name = 'Novice Mage'
 	base_damage = 0
 	turnBehaviour.setWaitEvery(2)
-	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.SpellClasses.MissileSpell}])
 	attackedLastTurn = false
 	
 	._ready()
