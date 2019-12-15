@@ -19,7 +19,7 @@ var TileSize = 128;
 var start_screen = "world_select"
 var effectsNode
 var current_level = 1
-var muted = false
+var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
@@ -200,6 +200,9 @@ func closestEnemy():
 func walkable(x, y):
 	return tilemap.walkable(x, y)
 
+func check_muted():
+	return File.new().file_exists("user://audio_muted.persist")
+
 func reset():
 	potions = []
 	foods = []
@@ -236,6 +239,8 @@ func string2vec(s):
 	return Vector2(float(x), float(y))
 
 func dict2item(dict):
+	if "subpath" in dict:
+		dict["@subpath"] = dict["subpath"]
 	var item = dict2inst(dict)
 	# Fixes textures not loading
 	item.texture = load(item.iconFilePath)
@@ -253,6 +258,9 @@ func serialise_items(items):
 	var dictionaries = []
 	for inst in items:
 		var dict = inst2dict(inst)
+		print(inst.path)
+		print(inst.subpath)
+		dict.subpath = inst.get("@subpath")
 		dictionaries.push_back(dict)
 	return dictionaries
 
@@ -339,3 +347,13 @@ func next_level():
 func toggle_mute():
 	muted = not muted
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), muted)
+	if muted:
+		# Write mute file
+		var save_game = File.new()
+		save_game.open("user://audio_muted.persist", File.WRITE)
+		save_game.store_line(" ")
+		save_game.close()
+	else:
+		# Delete mute file
+		var dir = Directory.new()
+		dir.remove("user//audio_muted.persist")

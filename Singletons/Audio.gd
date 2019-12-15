@@ -1,4 +1,5 @@
 extends Node
 
 func _ready():
-	get_node("StreamPlayer").play()
+	if not GameData.muted:
+		get_node("StreamPlayer").play()

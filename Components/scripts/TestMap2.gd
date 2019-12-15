@@ -171,7 +171,7 @@ func get_facing(wall_direction):
 	return "front"
 
 func _init(level).(200, 200, level, -1):
-	var n_rooms = 40
+	var n_rooms = 10
 	if GameData.map_seed:
 		# Use the loaded seed, adding the level multiplied by a large prime
 		seed(GameData.map_seed + level * 524287)
