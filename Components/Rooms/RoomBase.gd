@@ -25,6 +25,9 @@ func setup_params():
 func _init():
 	setup_params()
 
+func apply_randomness():
+	pass
+
 func rotate(extents):
 	if symmetry == SYMMETRY.none:
 		return extents
