@@ -69,6 +69,44 @@ var AllCommonItemsDistribution = DistributionOfEquals.new([
 	{ "value": WeaponClasses.CommonBow }
 ])
 
+var AllUncommonItemsDistribution = DistributionOfEquals.new([
+	{ "value": PotionClasses.HealthPotion },
+	{ "value": PotionClasses.InvisibilityPotion },
+	{ "value": SpellClasses.EarthquakeSpell },
+	{ "value": SpellClasses.RepelSpell },
+	{ "value": FoodClasses.Cheese },
+	{ "value": WeaponClasses.UncommonSpear },
+	{ "value": WeaponClasses.UncommonSword },
+	{ "value": WeaponClasses.UncommonShield },
+	{ "value": WeaponClasses.UncommonBow }
+
+])
+
+var CommonWeaponsDistribution = DistributionOfEquals.new([
+	{ "value": WeaponClasses.CommonShield },
+	{ "value": WeaponClasses.CommonSword },
+	{ "value": WeaponClasses.CommonSpear },
+	{ "value": WeaponClasses.CommonBow }
+])
+
+var UncommonWeaponsDistribution = DistributionOfEquals.new([
+	{ "value": WeaponClasses.UncommonShield },
+	{ "value": WeaponClasses.UncommonSword },
+	{ "value": WeaponClasses.UncommonSpear },
+	{ "value": WeaponClasses.UncommonBow }
+])
+
+var CommonPotionsDistribution = DistributionOfEquals.new([
+	{ "value": PotionClasses.BriefHealthPotion },
+	{ "value": PotionClasses.BriefStrengthPotion },
+	{ "value": PotionClasses.BriefDefencePotion }
+])
+
+var UncommonPotionsDistribution = DistributionOfEquals.new([
+	{ "value": PotionClasses.HealthPotion },
+	{ "value": PotionClasses.InvisibilityPotion }
+])
+
 var UpgradesDistribution = Distribution.new([{
 	"p": 0.33, 
 	"value": UpgradeClasses.StrengthUpgrade3
