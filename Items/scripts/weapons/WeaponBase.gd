@@ -1,4 +1,4 @@
-extends "Item.gd"
+extends "../Item.gd"
 
 var damage
 var distance

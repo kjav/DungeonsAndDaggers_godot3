@@ -7,7 +7,7 @@ var inc = 40
 const Heart = preload("res://Hud/Heart.tscn")
 const Hat = preload("res://Hud/Hat.tscn")
 
-const KeyBase = preload("res://Items/scripts/KeyBase.gd")
+const KeyBase = preload("res://Items/scripts/keys/KeyBase.gd")
 
 func _init():
 	GameData.hud = self

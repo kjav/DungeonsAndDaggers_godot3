@@ -1,4 +1,4 @@
-extends "Item.gd"
+extends "../Item.gd"
 
 func init():
 	useSound = "Food_Use"

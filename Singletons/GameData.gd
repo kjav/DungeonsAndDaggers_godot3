@@ -37,9 +37,9 @@ func addInitialItems():
 	var instance2 = Constants.PotionClasses.DoubleDamagePotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
 	var instance4 = Constants.PotionClasses.LevelUpPotion.new()
-	var instance5 = Constants.PotionClasses.BreifHealthPotion.new()
-	var instance6 = Constants.PotionClasses.BreifStrengthPotion.new()
-	var instance7 = Constants.PotionClasses.BreifDefencePotion.new()
+	var instance5 = Constants.PotionClasses.BriefHealthPotion.new()
+	var instance6 = Constants.PotionClasses.BriefStrengthPotion.new()
+	var instance7 = Constants.PotionClasses.BriefDefencePotion.new()
 	
 	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7])
 	

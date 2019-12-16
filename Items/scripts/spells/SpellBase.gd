@@ -1,4 +1,4 @@
-extends "Item.gd"
+extends "../Item.gd"
 
 func pickup():
 	#todo, needs to check if inventory is full first
