@@ -127,7 +127,7 @@ func add_room(name, room, wall):
 	
 	# Add the NPCs to the map
 	for enemy in roomDistribution.npcs:
-		var positionInRoom = Vector2(1, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
 		
 		if enemy.has("position"):
 			if typeof(enemy.position) == TYPE_OBJECT:
@@ -136,23 +136,24 @@ func add_room(name, room, wall):
 					positionInRoom = Vector2(picked.x, picked.y)
 			else:
 				positionInRoom = Vector2(enemy.position.x, enemy.position.y)
-		else:
-			positionInRoom = Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
-			
+		
 		npcs.push_back({"position": position + positionInRoom, "value": enemy.value, "isPartOfBossRoom": room.isBossRoom})
 		
 	# Add the items to the map
 	for item in roomDistribution.items:
-		var positionInRoom = Vector2(1, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
+		
 		if item.has("position"):
 			if item.position.is_type("Distribution"):
 				positionInRoom = item.position.pick()[0]
 			else:
 				positionInRoom = item.position
+		
 		items.push_back({"position": position + Vector2(1, 1), "value": item.value})
 		
 	for env in roomDistribution.environments:
-		var positionInRoom = Vector2(2, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
+		
 		if env.has("position"):
 			if typeof(env.position) == TYPE_OBJECT:
 				if env.position.is_type("Distribution"):
@@ -160,6 +161,7 @@ func add_room(name, room, wall):
 					positionInRoom = Vector2(picked.x, picked.y)
 			else:
 				positionInRoom = Vector2(env.position.x, env.position.y)
+		
 		environmentObjects.push_back({"position": position + positionInRoom, "value": env.value})
 	
 	# Room added successfully: return true
@@ -228,3 +230,6 @@ func _init(level).(200, 200, level, -1):
 	var mid_2 = OS.get_ticks_msec()
 	
 	make_walls_consistent()
+
+func randomPositionInRoom(roomDistribution):
+	return Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
