@@ -30,8 +30,8 @@ func setDistribution(_distribution):
 
 func remove():
 	if(item_distribution != null):
-		var item = item_distribution.pick()[0].value.new()
-		item.place(get_position())
+		for item in item_distribution.pick():
+			item.value.new().place(get_position())
 	
 	.remove()
 

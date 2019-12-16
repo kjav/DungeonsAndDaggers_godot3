@@ -9,6 +9,13 @@ var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
 var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
+var FillerRoom = load("res://Components/Rooms/FillerRoom.gd").new()
+var SpiritRoom = load("res://Components/Rooms/SpiritRoom.gd").new()
+var DoubleSpiritRoom = load("res://Components/Rooms/DoubleSpiritRoom.gd").new()
+var BatRoom = load("res://Components/Rooms/BatRoom.gd").new()
+var CommonWeaponRoom = load("res://Components/Rooms/CommonWeaponRoom.gd").new()
+var CommonChestRoom = load("res://Components/Rooms/CommonChestRoom.gd").new()
+var CommonLootRoom = load("res://Components/Rooms/CommonLootRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
 
 func level_rooms(level):
@@ -18,8 +25,13 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{"p": 0.85, "value": TallRoom},
-			{"p": 0.15, "value": SuperTallRoom}
+			{ "p": 0.5, "value": FillerRoom },
+			{ "p": 0.15, "value": SpiritRoom },
+			{ "p": 0.1, "value": BatRoom },
+			{ "p": 0.1, "value": DoubleSpiritRoom },
+			{ "p": 0.07, "value": CommonWeaponRoom },
+			{ "p": 0.05, "value": CommonLootRoom },
+			{ "p": 0.05, "value": CommonChestRoom },
 		])
 
 func level_final_rooms(level):
@@ -33,6 +45,7 @@ func pick_bossroom(level):
 	return BossRoomOgre
 
 func add_room(name, room, wall):
+	room.apply_randomness()
 	var door
 	var shared_wall_index = -1
 	var position
@@ -126,7 +139,7 @@ func add_room(name, room, wall):
 	
 	# Add the NPCs to the map
 	for enemy in roomDistribution.npcs:
-		var positionInRoom = Vector2(1, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
 		
 		if enemy.has("position"):
 			if typeof(enemy.position) == TYPE_OBJECT:
@@ -135,23 +148,24 @@ func add_room(name, room, wall):
 					positionInRoom = Vector2(picked.x, picked.y)
 			else:
 				positionInRoom = Vector2(enemy.position.x, enemy.position.y)
-		else:
-			positionInRoom = Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
-			
+		
 		npcs.push_back({"position": position + positionInRoom, "value": enemy.value, "isPartOfBossRoom": room.isBossRoom})
 		
 	# Add the items to the map
 	for item in roomDistribution.items:
-		var positionInRoom = Vector2(1, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
+		
 		if item.has("position"):
 			if item.position.is_type("Distribution"):
 				positionInRoom = item.position.pick()[0]
 			else:
 				positionInRoom = item.position
-		items.push_back({"position": position + Vector2(1, 1), "value": item.value})
+		
+		items.push_back({"position": position + positionInRoom, "value": item.value})
 		
 	for env in roomDistribution.environments:
-		var positionInRoom = Vector2(2, 1)
+		var positionInRoom = randomPositionInRoom(roomDistribution)
+		
 		if env.has("position"):
 			if typeof(env.position) == TYPE_OBJECT:
 				if env.position.is_type("Distribution"):
@@ -159,6 +173,7 @@ func add_room(name, room, wall):
 					positionInRoom = Vector2(picked.x, picked.y)
 			else:
 				positionInRoom = Vector2(env.position.x, env.position.y)
+		
 		environmentObjects.push_back({"position": position + positionInRoom, "value": env.value})
 	
 	# Room added successfully: return true
@@ -227,3 +242,6 @@ func _init(level).(200, 200, level, -1):
 	var mid_2 = OS.get_ticks_msec()
 	
 	make_walls_consistent()
+
+func randomPositionInRoom(roomDistribution):
+	return Vector2( randi()%int(round(roomDistribution.extents.x-2))+1, randi()%int(round(roomDistribution.extents.y-2))+1)
