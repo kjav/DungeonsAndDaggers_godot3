@@ -52,6 +52,7 @@ const UpgradeClasses = {
 const Set = preload("res://Components/Distributions/Set.gd")
 const NumberOf = preload("res://Components/Distributions/NumberOf.gd")
 const Distribution = preload("res://Components/Distributions/Distribution.gd")
+const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
 var UpgradesDistribution = Distribution.new([{

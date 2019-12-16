@@ -1,6 +1,7 @@
 var Set = Constants.Set
 var NumberOf = Constants.NumberOf
 var Distribution = Constants.Distribution
+var DistributionOfEquals = Constants.DistributionOfEquals
 var IndependentDistribution = Constants.IndependentDistribution
 
 var doorClass = preload("res://Environments/Door.tscn")
