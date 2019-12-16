@@ -33,6 +33,7 @@ func pick_bossroom(level):
 	return BossRoomOgre
 
 func add_room(name, room, wall):
+	room.apply_randomness()
 	var door
 	var shared_wall_index = -1
 	var position
