@@ -9,6 +9,12 @@ var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
 var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
 var WideRoom = load("res://Components/Rooms/WideRoom.gd").new()
 var UpgradeRoom = load("res://Components/Rooms/UpgradeRoom.gd").new()
+var FillerRoom = load("res://Components/Rooms/FillerRoom.gd").new()
+var SpiritRoom = load("res://Components/Rooms/SpiritRoom.gd").new()
+var DoubleSpiritRoom = load("res://Components/Rooms/DoubleSpiritRoom.gd").new()
+var BatRoom = load("res://Components/Rooms/BatRoom.gd").new()
+var CommonWeaponRoom = load("res://Components/Rooms/CommonWeaponRoom.gd").new()
+var CommonChestRoom = load("res://Components/Rooms/CommonChestRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
 
 func level_rooms(level):
