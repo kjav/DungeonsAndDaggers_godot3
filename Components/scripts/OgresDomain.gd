@@ -149,7 +149,7 @@ func add_room(name, room, wall):
 			else:
 				positionInRoom = item.position
 		
-		items.push_back({"position": position + Vector2(1, 1), "value": item.value})
+		items.push_back({"position": position + positionInRoom, "value": item.value})
 		
 	for env in roomDistribution.environments:
 		var positionInRoom = randomPositionInRoom(roomDistribution)

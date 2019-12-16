@@ -55,6 +55,20 @@ const Distribution = preload("res://Components/Distributions/Distribution.gd")
 const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
+var AllCommonItemsDistribution = DistributionOfEquals.new([
+	{ "value": PotionClasses.BriefHealthPotion },
+	{ "value": PotionClasses.BriefStrengthPotion },
+	{ "value": PotionClasses.BriefDefencePotion },
+	{ "value": SpellClasses.TeleportSpell },
+	{ "value": SpellClasses.MissileSpell },
+	{ "value": SpellClasses.StunSpell },
+	{ "value": FoodClasses.Apple },
+	{ "value": WeaponClasses.CommonSpear },
+	{ "value": WeaponClasses.CommonSword },
+	{ "value": WeaponClasses.CommonShield },
+	{ "value": WeaponClasses.CommonBow }
+])
+
 var UpgradesDistribution = Distribution.new([{
 	"p": 0.33, 
 	"value": UpgradeClasses.StrengthUpgrade3
