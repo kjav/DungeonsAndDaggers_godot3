@@ -15,6 +15,7 @@ var DoubleSpiritRoom = load("res://Components/Rooms/DoubleSpiritRoom.gd").new()
 var BatRoom = load("res://Components/Rooms/BatRoom.gd").new()
 var CommonWeaponRoom = load("res://Components/Rooms/CommonWeaponRoom.gd").new()
 var CommonChestRoom = load("res://Components/Rooms/CommonChestRoom.gd").new()
+var CommonLootRoom = load("res://Components/Rooms/CommonLootRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
 
 func level_rooms(level):
@@ -24,8 +25,13 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{"p": 0.85, "value": TallRoom},
-			{"p": 0.15, "value": SuperTallRoom}
+			{ "p": 0.5, "value": FillerRoom },
+			{ "p": 0.15, "value": SpiritRoom },
+			{ "p": 0.1, "value": BatRoom },
+			{ "p": 0.1, "value": DoubleSpiritRoom },
+			{ "p": 0.07, "value": CommonWeaponRoom },
+			{ "p": 0.05, "value": CommonLootRoom },
+			{ "p": 0.05, "value": CommonChestRoom },
 		])
 
 func level_final_rooms(level):

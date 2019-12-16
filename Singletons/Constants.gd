@@ -55,57 +55,65 @@ const Distribution = preload("res://Components/Distributions/Distribution.gd")
 const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
-var AllCommonItemsDistribution = DistributionOfEquals.new([
-	{ "value": PotionClasses.BriefHealthPotion },
-	{ "value": PotionClasses.BriefStrengthPotion },
-	{ "value": PotionClasses.BriefDefencePotion },
-	{ "value": SpellClasses.TeleportSpell },
-	{ "value": SpellClasses.MissileSpell },
-	{ "value": SpellClasses.StunSpell },
-	{ "value": FoodClasses.Apple },
-	{ "value": WeaponClasses.CommonSpear },
-	{ "value": WeaponClasses.CommonSword },
-	{ "value": WeaponClasses.CommonShield },
-	{ "value": WeaponClasses.CommonBow }
-])
-
-var AllUncommonItemsDistribution = DistributionOfEquals.new([
-	{ "value": PotionClasses.HealthPotion },
-	{ "value": PotionClasses.InvisibilityPotion },
-	{ "value": SpellClasses.EarthquakeSpell },
-	{ "value": SpellClasses.RepelSpell },
-	{ "value": FoodClasses.Cheese },
-	{ "value": WeaponClasses.UncommonSpear },
-	{ "value": WeaponClasses.UncommonSword },
-	{ "value": WeaponClasses.UncommonShield },
-	{ "value": WeaponClasses.UncommonBow }
-
-])
-
-var CommonWeaponsDistribution = DistributionOfEquals.new([
+const CommonWeapons = [
 	{ "value": WeaponClasses.CommonShield },
 	{ "value": WeaponClasses.CommonSword },
 	{ "value": WeaponClasses.CommonSpear },
 	{ "value": WeaponClasses.CommonBow }
-])
+]
 
-var UncommonWeaponsDistribution = DistributionOfEquals.new([
-	{ "value": WeaponClasses.UncommonShield },
-	{ "value": WeaponClasses.UncommonSword },
-	{ "value": WeaponClasses.UncommonSpear },
-	{ "value": WeaponClasses.UncommonBow }
-])
-
-var CommonPotionsDistribution = DistributionOfEquals.new([
+const CommonPotions = [
 	{ "value": PotionClasses.BriefHealthPotion },
 	{ "value": PotionClasses.BriefStrengthPotion },
 	{ "value": PotionClasses.BriefDefencePotion }
-])
+]
 
-var UncommonPotionsDistribution = DistributionOfEquals.new([
+const CommonSpells = [
+	{ "value": SpellClasses.TeleportSpell },
+	{ "value": SpellClasses.MissileSpell },
+	{ "value": SpellClasses.StunSpell },
+]
+
+const CommonFoods = [
+	{ "value": FoodClasses.Apple }
+]
+
+const UncommonWeapons = [
+	{ "value": WeaponClasses.UncommonSpear },
+	{ "value": WeaponClasses.UncommonSword },
+	{ "value": WeaponClasses.UncommonShield },
+	{ "value": WeaponClasses.UncommonBow }
+]
+
+const UncommonPotions = [
 	{ "value": PotionClasses.HealthPotion },
-	{ "value": PotionClasses.InvisibilityPotion }
-])
+	{ "value": PotionClasses.InvisibilityPotion },
+]
+
+const UncommonSpells = [
+	{ "value": SpellClasses.EarthquakeSpell },
+	{ "value": SpellClasses.RepelSpell },
+]
+
+const UncommonFoods = [
+	{ "value": FoodClasses.Cheese }
+]
+
+var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
+var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
+
+var AllCommonPotionsSpellsFoodsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells)
+var AllUncommonPotionsSpellsFoodsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells)
+
+var CommonWeaponsDistribution = DistributionOfEquals.new(CommonWeapons)
+var CommonPotionsDistribution = DistributionOfEquals.new(CommonPotions)
+var CommonSpellsDistribution = DistributionOfEquals.new(CommonSpells)
+var CommonFoodsDistribution = DistributionOfEquals.new(CommonFoods)
+
+var UncommonWeaponsDistribution = DistributionOfEquals.new(UncommonWeapons)
+var UncommonPotionsDistribution = DistributionOfEquals.new(UncommonPotions)
+var UncommonSpellsDistribution = DistributionOfEquals.new(UncommonSpells)
+var UncommonFoodsDistribution = DistributionOfEquals.new(UncommonFoods)
 
 var UpgradesDistribution = Distribution.new([{
 	"p": 0.33, 
