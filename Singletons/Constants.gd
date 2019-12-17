@@ -102,8 +102,8 @@ const UncommonFoods = [
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
 
-var AllCommonPotionsSpellsFoodsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells)
-var AllUncommonPotionsSpellsFoodsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells)
+var AllCommonPotionsSpellsDistribution = DistributionOfEquals.new(CommonPotions + CommonSpells)
+var AllUncommonPotionsSpellsDistribution = DistributionOfEquals.new(UncommonPotions + UncommonSpells)
 
 var CommonWeaponsDistribution = DistributionOfEquals.new(CommonWeapons)
 var CommonPotionsDistribution = DistributionOfEquals.new(CommonPotions)
