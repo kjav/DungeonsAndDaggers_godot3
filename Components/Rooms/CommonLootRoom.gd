@@ -12,20 +12,20 @@ func apply_randomness():
 	item_distribution = IndependentDistribution.new([
 	{
 		"p": 0.5, "value": Distribution.new([
-			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsFoodsDistribution.pick()[0].value },
-			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsFoodsDistribution.pick()[0].value }
+			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsDistribution.pick()[0].value },
+			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value }
 		]).pick()[0].value 
 	},
 	{
 		"p": 0.5, "value": Distribution.new([
-			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsFoodsDistribution.pick()[0].value },
-			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsFoodsDistribution.pick()[0].value }
+			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsDistribution.pick()[0].value },
+			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value }
 		]).pick()[0].value 
 	},
 	{
 		"p": 0.5, "value": Distribution.new([
-			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsFoodsDistribution.pick()[0].value },
-			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsFoodsDistribution.pick()[0].value }
+			{ "p": 0.9, "value": Constants.AllCommonPotionsSpellsDistribution.pick()[0].value },
+			{ "p": 0.1, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value }
 		]).pick()[0].value 
 	}
 	])

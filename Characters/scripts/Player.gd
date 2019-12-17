@@ -31,13 +31,13 @@ var currentWeaponSlot
 var hasMoved
 var lastEvent
 
+func _init():
+	initialStats.health = {
+		"value": 4,
+		"maximum": 4
+	}
+
 func _ready():
-	#this is temporary to aid with testing
-	increaseMaxHealth(4)
-	heal(9)
-	increaseMaxMana(9)
-	increaseMana(9)
-	
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
 	EventListener.listen("SwipeCommand", swipe_funcref)

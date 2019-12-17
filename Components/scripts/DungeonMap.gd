@@ -119,8 +119,11 @@ func set_map_type(type):
 			Enemies.add_child(node)
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 			
-			if type == "Tutorial" and (node.character_name == "Fire Spirit" or node.character_name == "Water Spirit"):
-				node.item_distribution = null
+			if type == "Tutorial":
+				if node.character_name == "Fire Spirit" or node.character_name == "Water Spirit":
+					node.item_distribution = null
+				elif node.character_name == "Training Dummy":
+					node.item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])
 		
 		for item in map.items:
 			var node = item.value.new()

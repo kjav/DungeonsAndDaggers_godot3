@@ -3,7 +3,7 @@ extends "MapBase.gd"
 var rooms = []
 var valid_exterior_walls = []
 
-var DefaultRoom = load("res://Components/Rooms/DefaultRoom.gd").new()
+var StartRoom = load("res://Components/Rooms/StartRoom.gd").new()
 var StairsRoom = load("res://Components/Rooms/StairsRoom.gd").new()
 var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
 var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
@@ -25,13 +25,13 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{ "p": 0.5, "value": FillerRoom },
-			{ "p": 0.15, "value": SpiritRoom },
-			{ "p": 0.1, "value": BatRoom },
+			{ "p": 0.35, "value": FillerRoom },
+			{ "p": 0.25, "value": SpiritRoom },
+			{ "p": 0.15, "value": BatRoom },
 			{ "p": 0.1, "value": DoubleSpiritRoom },
 			{ "p": 0.07, "value": CommonWeaponRoom },
 			{ "p": 0.05, "value": CommonLootRoom },
-			{ "p": 0.05, "value": CommonChestRoom },
+			{ "p": 0.03, "value": CommonChestRoom },
 		])
 
 func level_final_rooms(level):
@@ -186,7 +186,7 @@ func get_facing(wall_direction):
 	return "front"
 
 func _init(level).(200, 200, level, -1):
-	var n_rooms = 10
+	var n_rooms = 30
 	if GameData.map_seed:
 		# Use the loaded seed, adding the level multiplied by a large prime
 		seed(GameData.map_seed + level * 524287)
@@ -204,7 +204,7 @@ func _init(level).(200, 200, level, -1):
 	if (GameData.isBossLevel(level)):
 		main_room = pick_bossroom(level)
 	else:
-		main_room = DefaultRoom
+		main_room = StartRoom
 	add_room("main", main_room, null)
 	
 	var mid_1 = OS.get_ticks_msec()
