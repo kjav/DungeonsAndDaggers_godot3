@@ -10,7 +10,6 @@ func onWalkedInto(character):
 		if not activated:
 			activated = true
 			self.animation = "active"
-			character.takeDamage(0.5)
-			character.takeDamage(0.5)
-			character.takeDamage(0.5)
-
+			character.takeDamage(randi()%2 / float(2))
+			character.takeDamage(randi()%2 / float(2))
+			character.takeDamage(randi()%2 / float(2))
