@@ -5,7 +5,12 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
 	self.character_name = 'Fire Spirit'
-	item_distribution = Constants.Distribution.new([{"p": 0.05, "value": Constants.PotionClasses.BriefStrengthPotion}, {"p": 0.15, "value": Constants.FoodClasses.Apple}, {"p": 0.05, "value": Constants.SpellClasses.MissileSpell}])
+
+	item_distribution = Constants.Distribution.new([
+		{"p": 0.1, "value": Constants.DistributionOfEquals.new([Constants.PotionClasses.BriefStrengthPotion, Constants.CommonPotionsDistribution.pick()[0].value]).pick()[0].value}, 
+		{"p": 0.15, "value": Constants.CommonFoodsDistribution.pick()[0].value}, 
+		{"p": 0.05, "value": Constants.DistributionOfEquals.new([Constants.SpellClasses.MissileSpell, Constants.CommonSpellsDistribution.pick()[0].value]).pick()[0].value}
+	])
 
 func _ready():
 	turnBehaviour = Turn.MoveUpRightDownLeft.new(self)
