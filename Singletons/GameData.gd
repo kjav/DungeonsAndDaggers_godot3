@@ -29,10 +29,10 @@ var saved_player = null
 var map_seed = null
 
 func _ready():
-	addInitialItems()
+	#addInitialItemsForTesting()
 	map_seed = randi()
 
-func addInitialItems():
+func addInitialItemsForTesting():
 	var instance = Constants.PotionClasses.HealthPotion.new()
 	var instance2 = Constants.PotionClasses.DoubleDamagePotion.new()
 	var instance3 = Constants.PotionClasses.InvisibilityPotion.new()
@@ -217,7 +217,7 @@ func reset():
 	# Erase the saved state
 	saved_player = null
 	map_seed = null
-	addInitialItems()
+	#addInitialItemsForTesting()
 
 func getEnemiesWithinAreaAroundPlayer(distance):
 	var enemiesInDistance = []

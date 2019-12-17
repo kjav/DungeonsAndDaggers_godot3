@@ -5,11 +5,14 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
 	self.character_name = 'Water Spirit'
-
+	
 	item_distribution = Constants.Distribution.new([
-		{"p": 0.1, "value": Constants.DistributionOfEquals.new([Constants.PotionClasses.BriefDefencePotion, Constants.CommonPotionsDistribution.pick()[0].value]).pick()[0].value}, 
+		{"p": 0.1, "value": Constants.DistributionOfEquals.new([
+				{ "value": Constants.PotionClasses.BriefDefencePotion }, 
+				{ "value": Constants.CommonPotionsDistribution.pick()[0].value }
+			]).pick()[0].value}, 
 		{"p": 0.15, "value": Constants.CommonFoodsDistribution.pick()[0].value}, 
-		{"p": 0.05, "value": Constants.DistributionOfEquals.new([Constants.SpellClasses.StunSpell, Constants.CommonSpellsDistribution.pick()[0].value]).pick()[0].value}
+		{"p": 0.05, "value": Constants.DistributionOfEquals.new([{ "value": Constants.SpellClasses.StunSpell }, { "value": Constants.CommonSpellsDistribution.pick()[0].value }]).pick()[0].value}
 	])
 
 func _ready():
@@ -18,8 +21,8 @@ func _ready():
 	base_damage = 0.5
 	
 	initialStats.health = {
-		"value": 3,
-		"maximum": 3
+		"value": 4,
+		"maximum": 4
 	}
 	
 	._ready()

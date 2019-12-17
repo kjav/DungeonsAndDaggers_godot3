@@ -3,7 +3,7 @@ extends "MapBase.gd"
 var rooms = []
 var valid_exterior_walls = []
 
-var DefaultRoom = load("res://Components/Rooms/DefaultRoom.gd").new()
+var StartRoom = load("res://Components/Rooms/StartRoom.gd").new()
 var StairsRoom = load("res://Components/Rooms/StairsRoom.gd").new()
 var TallRoom = load("res://Components/Rooms/TallRoom.gd").new()
 var SuperTallRoom = load("res://Components/Rooms/SuperTallRoom.gd").new()
@@ -204,7 +204,7 @@ func _init(level).(200, 200, level, -1):
 	if (GameData.isBossLevel(level)):
 		main_room = pick_bossroom(level)
 	else:
-		main_room = DefaultRoom
+		main_room = StartRoom
 	add_room("main", main_room, null)
 	
 	var mid_1 = OS.get_ticks_msec()
