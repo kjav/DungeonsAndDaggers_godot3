@@ -18,6 +18,16 @@ func _init():
 		"maximum": 2
 	}
 
+	initialStats.strength = {
+		"value": 3,
+		"maximum": 3
+	}
+
+	initialStats.defence = {
+		"value": 3,
+		"maximum": 3
+	}
+
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
 	processBehaviour = Process.Direct.new()

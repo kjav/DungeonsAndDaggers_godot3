@@ -36,6 +36,16 @@ func _init():
 		"value": 4,
 		"maximum": 4
 	}
+	
+	initialStats.strength = {
+		"value": 4,
+		"maximum": 4
+	}
+	
+	initialStats.defence = {
+		"value": 4,
+		"maximum": 4
+	}
 
 func _ready():
 	set_process(true)
