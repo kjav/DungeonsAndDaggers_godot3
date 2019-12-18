@@ -14,7 +14,7 @@ const Text = preload("res://Effects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
-var secondaryWeapon = Constants.WeaponClasses.CommonBow.new()
+var secondaryWeapon = Constants.WeaponClasses.Unarmed.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
