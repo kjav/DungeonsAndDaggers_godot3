@@ -29,6 +29,7 @@ var saved_player = null
 var map_seed = null
 
 func _ready():
+	randomize()
 	addInitialItems()
 	map_seed = randi()
 
