@@ -4,7 +4,7 @@ func _init():
 	iconFilePath = "res://assets/basic_sword.png"
 	texture = preload("res://assets/basic_sword.png")
 	item_name = "Common Sword"
-	damage = 3
+	damage = 2.5
 	showBehindHand = true
 	offset = Vector2(-30, -30)
 	rotationInHand = deg2rad(120)

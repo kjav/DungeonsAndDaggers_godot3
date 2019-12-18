@@ -32,7 +32,7 @@ func launchFireball(closest_enemy):
 		missile_texture,
 		GameData.player.get_position(),
 		25,
-		10,
+		randi() % 3 + 8,
 		"Fireball_Hit",
 		Vector2(4, 4)
 	)

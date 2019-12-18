@@ -4,7 +4,7 @@ func _init():
 	iconFilePath = "res://assets/black_potion.png"
 	item_name = "Double Damage"
 	texture = preload("res://assets/black_potion.png")
-	rarity = Enums.WEAPONRARITY.RARE
+	rarity = Enums.WEAPONRARITY.UNCOMMON
 
 func onUse():
 	if not .allowedToUse():
@@ -12,4 +12,4 @@ func onUse():
 		return
 	
 	.onUse()
-	GameData.player.applyDamageModifier(3)
+	GameData.player.applyDamageModifier(2)

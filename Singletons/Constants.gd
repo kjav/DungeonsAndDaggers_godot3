@@ -62,22 +62,6 @@ const CommonWeapons = [
 	{ "value": WeaponClasses.CommonBow }
 ]
 
-const CommonPotions = [
-	{ "value": PotionClasses.BriefHealthPotion },
-	{ "value": PotionClasses.BriefStrengthPotion },
-	{ "value": PotionClasses.BriefDefencePotion }
-]
-
-const CommonSpells = [
-	{ "value": SpellClasses.TeleportSpell },
-	{ "value": SpellClasses.MissileSpell },
-	{ "value": SpellClasses.StunSpell },
-]
-
-const CommonFoods = [
-	{ "value": FoodClasses.Apple }
-]
-
 const UncommonWeapons = [
 	{ "value": WeaponClasses.UncommonSpear },
 	{ "value": WeaponClasses.UncommonSword },
@@ -85,18 +69,54 @@ const UncommonWeapons = [
 	{ "value": WeaponClasses.UncommonBow }
 ]
 
+const RareWeapons = [
+	{ "value": WeaponClasses.RareSpear },
+	{ "value": WeaponClasses.RareSword },
+	{ "value": WeaponClasses.RareShield },
+	{ "value": WeaponClasses.RareBow }
+]
+
+const CommonPotions = [
+	{ "value": PotionClasses.BriefHealthPotion },
+	{ "value": PotionClasses.BriefStrengthPotion },
+	{ "value": PotionClasses.BriefDefencePotion }
+]
+
 const UncommonPotions = [
+	{ "value": PotionClasses.DoubleDamagePotion },
+	{ "value": PotionClasses.InvisibilityPotion }
+]
+
+const RarePotions = [
 	{ "value": PotionClasses.HealthPotion },
-	{ "value": PotionClasses.InvisibilityPotion },
+	{ "value": PotionClasses.LevelUpPotion }
+]
+
+const CommonSpells = [
+	{ "value": SpellClasses.TeleportSpell },
+	{ "value": SpellClasses.MissileSpell },
+	{ "value": SpellClasses.StunSpell }
 ]
 
 const UncommonSpells = [
 	{ "value": SpellClasses.EarthquakeSpell },
-	{ "value": SpellClasses.RepelSpell },
+	{ "value": SpellClasses.RepelSpell }
+]
+
+const RareSpells = [
+	{ "value": SpellClasses.FireSpell }
+]
+
+const CommonFoods = [
+	{ "value": FoodClasses.Apple }
 ]
 
 const UncommonFoods = [
 	{ "value": FoodClasses.Cheese }
+]
+
+const RareFoods = [
+	{ "value": FoodClasses.CookedSteak }
 ]
 
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)

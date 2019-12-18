@@ -5,7 +5,7 @@ func _init():
 	item_name = "Health"
 	useSound = "HealthPotion_Drink"
 	texture = preload("res://assets/red_potion2.png")
-	rarity = Enums.WEAPONRARITY.UNCOMMON
+	rarity = Enums.WEAPONRARITY.RARE
 
 func onUse():
 	if not .allowedToUse():
