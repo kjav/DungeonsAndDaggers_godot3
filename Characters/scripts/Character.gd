@@ -48,12 +48,12 @@ var initialStats = {
 		"maximum": 3
 	},
 	"strength": {
-		"value": 0,
-		"maximum": 0
+		"value": 3,
+		"maximum": 3
 	},
 	"defence": {
-		"value": 5,
-		"maximum": 5
+		"value": 3,
+		"maximum": 3
 	}
 }
 
@@ -83,12 +83,30 @@ func _ready():
 	resetStats()
 
 func resetStats():
-	#this is because godot 3.0 doesn't have a deep duplicate.
-	stats.health = initialStats.health.duplicate()
-	stats.mana = initialStats.mana.duplicate()
-	stats.strength = initialStats.strength.duplicate()
-	stats.defence = initialStats.defence.duplicate()
+	var additional = 0
 
+	if self != GameData.player: 
+		additional = GameData.current_level - 1
+
+	stats.health = {
+		"value" : initialStats.health.value + additional,
+		"maximum" : initialStats.health.maximum + additional
+	}
+
+	stats.mana = {
+		"value" : initialStats.mana.value + additional,
+		"maximum" : initialStats.mana.maximum + additional
+	}
+
+	stats.strength = {
+		"value" : initialStats.strength.value + additional,
+		"maximum" : initialStats.strength.maximum + additional
+	}
+
+	stats.defence = {
+		"value" : initialStats.defence.value + additional,
+		"maximum" : initialStats.defence.maximum + additional
+	}
 func afterMoveComplete():
 	if stunnedDuration > 0:
 		stunnedDuration -= 1

@@ -22,4 +22,14 @@ func _ready():
 		"maximum": 2
 	}
 
+	initialStats.strength = {
+		"value": 2,
+		"maximum": 2
+	}
+
+	initialStats.defence = {
+		"value": 2,
+		"maximum": 2
+	}
+
 	._ready()

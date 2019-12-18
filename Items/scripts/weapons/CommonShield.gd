@@ -1,6 +1,6 @@
 extends "WeaponBase.gd"
 
-var chanceToBlockOutOf = 7
+var chanceToBlockOutOf = 6
 
 func _init():
 	iconFilePath = "res://assets/basic_shield.png"
@@ -9,5 +9,5 @@ func _init():
 	damage = 1
 
 func onPlayerDamaged():
-	if randi()%chanceToBlockOutOf+1 == 1:
+	if randi() % chanceToBlockOutOf + 1 == 1:
 		GameData.player.damageable = false

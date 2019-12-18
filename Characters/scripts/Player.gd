@@ -14,7 +14,7 @@ const Text = preload("res://Effects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
-var secondaryWeapon = Constants.WeaponClasses.CommonBow.new()
+var secondaryWeapon = Constants.WeaponClasses.Unarmed.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
@@ -33,6 +33,16 @@ var lastEvent
 
 func _init():
 	initialStats.health = {
+		"value": 4,
+		"maximum": 4
+	}
+	
+	initialStats.strength = {
+		"value": 4,
+		"maximum": 4
+	}
+	
+	initialStats.defence = {
 		"value": 4,
 		"maximum": 4
 	}
@@ -387,18 +397,15 @@ func gameClickableRegionClicked(event = null):
 	var distance = GameData.tilemap.findPathDistance(tilePositionRelativeToCameraRounded, player_pos)
 	
 	if (distance > 0):
-		if (distance < 20):
-			if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
-				get_node("LightBlip").play("finish")
-				get_node("LightBlip").hideOnComplete()
-				
-				readyToTeleportOnTileSelect = false
-				GameData.hud.SetVisibilityOfTeleportWarning(false)
-				GameData.hud.addEventMessage("Player Teleported!")
-				emit_signal("playerMove", tilePositionRelativeToCameraRounded)
-			else:
-				GameData.hud.addEventMessage("Can't teleport there!")
+		if (GameData.player.handleForcedMoveTo(tilePositionRelativeToCameraRounded)):
+			get_node("LightBlip").play("finish")
+			get_node("LightBlip").hideOnComplete()
+			
+			readyToTeleportOnTileSelect = false
+			GameData.hud.SetVisibilityOfTeleportWarning(false)
+			GameData.hud.addEventMessage("Player Teleported!")
+			emit_signal("playerMove", tilePositionRelativeToCameraRounded)
 		else:
-			GameData.hud.addEventMessage("Can't teleport, path too far")
+			GameData.hud.addEventMessage("Can't teleport there!")
 	else:
 		GameData.hud.addEventMessage("Can't teleport there!")
