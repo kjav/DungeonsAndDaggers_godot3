@@ -27,8 +27,9 @@ func pick():
 	var LOW_INDEX = 0
 	var p = randf()
 	var element
+	
 	while HIGH_INDEX > LOW_INDEX + 1:
-		var INDEX = floor((HIGH_INDEX - LOW_INDEX) / 2.0) + 1
+		var INDEX = floor((HIGH_INDEX - LOW_INDEX) / 2.0) + 1 + LOW_INDEX
 		element = cumulative_elements[INDEX]
 		if element.p < p:
 			LOW_INDEX = INDEX

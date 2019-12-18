@@ -23,12 +23,13 @@ func _calculate_swipe(swipe_end):
 
 	if swipe.length() > minimum_drag:
 		swipe = swipe.normalized()
-		if abs(swipe.x) > 0.2:
+		
+		if abs(swipe.x) > abs(swipe.y):
 			if swipe.x > 0:
 				emit_signal("swipe", Enums.DIRECTION.RIGHT)
 			else:
 				emit_signal("swipe", Enums.DIRECTION.LEFT)
-		if abs(swipe.y) > 0.2:
+		else:
 			if swipe.y > 0:
 				emit_signal("swipe", Enums.DIRECTION.DOWN)
 			else:
