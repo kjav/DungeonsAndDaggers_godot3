@@ -16,22 +16,55 @@ var BatRoom = load("res://Components/Rooms/BatRoom.gd").new()
 var CommonWeaponRoom = load("res://Components/Rooms/CommonWeaponRoom.gd").new()
 var CommonChestRoom = load("res://Components/Rooms/CommonChestRoom.gd").new()
 var CommonLootRoom = load("res://Components/Rooms/CommonLootRoom.gd").new()
+var GhostRoom = load("res://Components/Rooms/GhostRoom.gd").new()
+var UncommonWeaponRoom = load("res://Components/Rooms/UncommonWeaponRoom.gd").new()
+var UncommonLootRoom = load("res://Components/Rooms/UncommonLootRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
+var TrapRoom = load("res://Components/Rooms/TrapRoom.gd").new()
+var MageRoom = load("res://Components/Rooms/MageRoom.gd").new()
+var UncommonChestRoom = load("res://Components/Rooms/UncommonChestRoom.gd").new()
 
 func level_rooms(level):
 	if GameData.isBossLevel(level):
 		return Distribution.new([
 			{"p": 1, "value": BossRoomOgre}
 		])
-	else:
+	elif level == 1:
 		return Distribution.new([
 			{ "p": 0.35, "value": FillerRoom },
 			{ "p": 0.25, "value": SpiritRoom },
-			{ "p": 0.15, "value": BatRoom },
-			{ "p": 0.1, "value": DoubleSpiritRoom },
+			{ "p": 0.1, "value": BatRoom },
+			{ "p": 0.15, "value": DoubleSpiritRoom },
 			{ "p": 0.07, "value": CommonWeaponRoom },
 			{ "p": 0.05, "value": CommonLootRoom },
 			{ "p": 0.03, "value": CommonChestRoom },
+		])
+	elif level == 2:
+		return Distribution.new([
+			{ "p": 0.3, "value": FillerRoom },
+			{ "p": 0.2, "value": BatRoom },
+			{ "p": 0.15, "value": SpiritRoom },
+			{ "p": 0.15, "value": DoubleSpiritRoom },
+			{ "p": 0.05, "value": GhostRoom },
+			{ "p": 0.04, "value": CommonLootRoom },
+			{ "p": 0.04, "value": CommonChestRoom },
+			{ "p": 0.03, "value": UncommonLootRoom },
+			{ "p": 0.02, "value": CommonWeaponRoom },
+			{ "p": 0.02, "value": UncommonWeaponRoom },
+		])
+	elif level == 3:
+		return Distribution.new([
+			{ "p": 0.25, "value": FillerRoom },
+			{ "p": 0.25, "value": GhostRoom },
+			{ "p": 0.2, "value": BatRoom },
+			{ "p": 0.05, "value": DoubleSpiritRoom },
+			{ "p": 0.05, "value": MageRoom },
+			{ "p": 0.05, "value": TrapRoom },
+			{ "p": 0.04, "value": UncommonWeaponRoom },
+			{ "p": 0.03, "value": UncommonLootRoom },
+			{ "p": 0.03, "value": UncommonChestRoom },
+			{ "p": 0.03, "value": CommonLootRoom },
+			{ "p": 0.02, "value": CommonChestRoom },
 		])
 
 func level_final_rooms(level):

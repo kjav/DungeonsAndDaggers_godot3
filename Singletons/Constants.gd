@@ -121,9 +121,11 @@ const RareFoods = [
 
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
+var AllRareItemsDistribution = DistributionOfEquals.new(RareFoods + RarePotions + RareSpells + RareWeapons)
 
 var AllCommonPotionsSpellsDistribution = DistributionOfEquals.new(CommonPotions + CommonSpells)
 var AllUncommonPotionsSpellsDistribution = DistributionOfEquals.new(UncommonPotions + UncommonSpells)
+var AllRarePotionsSpellsDistribution = DistributionOfEquals.new(RarePotions + RareSpells)
 
 var CommonWeaponsDistribution = DistributionOfEquals.new(CommonWeapons)
 var CommonPotionsDistribution = DistributionOfEquals.new(CommonPotions)
@@ -134,6 +136,11 @@ var UncommonWeaponsDistribution = DistributionOfEquals.new(UncommonWeapons)
 var UncommonPotionsDistribution = DistributionOfEquals.new(UncommonPotions)
 var UncommonSpellsDistribution = DistributionOfEquals.new(UncommonSpells)
 var UncommonFoodsDistribution = DistributionOfEquals.new(UncommonFoods)
+
+var RareWeaponsDistribution = DistributionOfEquals.new(RareWeapons)
+var RarePotionsDistribution = DistributionOfEquals.new(RarePotions)
+var RareSpellsDistribution = DistributionOfEquals.new(RareSpells)
+var RareFoodsDistribution = DistributionOfEquals.new(RareFoods)
 
 var UpgradesDistribution = Distribution.new([{
 	"p": 0.33, 
