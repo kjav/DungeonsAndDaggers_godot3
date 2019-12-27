@@ -7,6 +7,7 @@ export(float) var damage = 0
 var flyingSound
 var soundID
 var hitSound
+var inflictDamage
 
 var total_time = 0
 var delay = 0.05
@@ -15,7 +16,7 @@ func _ready():
 	if target:
 		set_process(true)
 
-func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale):
+func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictDamage = true):
 	set_texture(_texture)
 	set_position(_pos)
 	set_scale(_scale)
@@ -24,6 +25,7 @@ func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale):
 	damage = _damage
 	target = _target
 	hitSound = _hitSound
+	inflictDamage = _inflictDamage
 
 func _process(delta):
 	total_time += delta
@@ -47,7 +49,7 @@ func setNextState(target_pos, delta):
 func handleTargetReached():
 	#Audio.playSoundEffect(hitSound, true)
 	set_process(false)
-	if damage != 0:
+	if inflictDamage:
 		get_node(target).takeDamage(damage)
 	get_parent().remove_child(self)
 	queue_free()
