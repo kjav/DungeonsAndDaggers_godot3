@@ -30,7 +30,6 @@ var map_seed = null
 
 func _ready():
 	randomize()
-	addInitialItems()
 	#addInitialItemsForTesting()
 	map_seed = randi()
 
@@ -180,7 +179,7 @@ func placeItem(item):
 	emit_signal("itemDropped", item)
 
 func isBossLevel(level):
-	return (int(level) % 3) == 0
+	return (int(level) % 6) == 0
 	
 func closestEnemy():
 	var closestIndex
@@ -299,7 +298,7 @@ func save_game():
 	# TODO: Return the current game state as an object
 	var save_game = File.new()
 	save_game.open("user://" + chosen_map + ".save", File.WRITE)
-	print("Potion: ", potions[0].get_class())
+	
 	save_game.store_line(to_json({
 		"level": current_level,
 		"seed": map_seed,
