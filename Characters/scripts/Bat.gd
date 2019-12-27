@@ -10,17 +10,21 @@ func _init():
 		{"p": 0.2, "value": Constants.CommonFoodsDistribution.pick()[0].value},
 		{"p": 0.05, "value": Constants.UncommonFoodsDistribution.pick()[0].value}
 	])
-	
+
+func _ready():
+	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
+	processBehaviour = Process.Direct.new()
+
 	base_damage = 1
 	
 	initialStats.health = {
-		"value": 2,
-		"maximum": 2
+		"value": 1,
+		"maximum": 1
 	}
 
 	initialStats.strength = {
-		"value": 3,
-		"maximum": 3
+		"value": 1,
+		"maximum": 1
 	}
 
 	initialStats.defence = {
@@ -28,6 +32,4 @@ func _init():
 		"maximum": 3
 	}
 
-func _ready():
-	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
-	processBehaviour = Process.Direct.new()
+	._ready()
