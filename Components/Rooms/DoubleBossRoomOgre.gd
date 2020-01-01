@@ -6,13 +6,7 @@ func _init():
 	oneEntrance = true
 
 func setup_params():
-	extents_distribution = Set.new([Vector2(9, 9)])
-
-	environment_distribution = Distribution.new([{
-		"p": 1,
-		"value": load("res://Environments/LevelStairs.tscn"),
-		"position": Vector2(2, 2)
-	}])
+	extents_distribution = Set.new([Vector2(9, 7)])
 
 	npc_distribution = IndependentDistribution.new([
 		{
@@ -23,6 +17,6 @@ func setup_params():
 		{
 			"p": 1, 
 			"value": load("res://Characters/BossOgre.tscn"),
-			"position": Vector2(6, 6),
+			"position": Vector2(5, 7),
 		}
 	])

@@ -6,8 +6,8 @@ func _init():
 	oneEntrance = true
 
 func setup_params():
-	extents_distribution = Set.new([Vector2(9, 9)])
-
+	extents_distribution = Set.new([Vector2(9, 7)])
+	
 	npc_distribution = IndependentDistribution.new([
 		{
 			"p": 1, 

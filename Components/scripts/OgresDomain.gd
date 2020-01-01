@@ -30,15 +30,7 @@ var RareChestRoom = load("res://Components/Rooms/RareChestRoom.gd").new()
 var RareLootRoom = load("res://Components/Rooms/RareLootRoom.gd").new()
 
 func level_rooms(level):
-	if GameData.isFirstBossLevel(level):
-		return Distribution.new([
-			{"p": 1, "value": BossRoomOgre}
-		])
-	elif GameData.isBossLevel(level):
-		return Distribution.new([
-			{"p": 1, "value": DoubleBossRoomOgre}
-		])
-	elif level == 1:
+	if level == 1:
 		return Distribution.new([
 			{ "p": 0.35, "value": FillerRoom },
 			{ "p": 0.25, "value": SpiritRoom },
@@ -126,8 +118,10 @@ func level_final_rooms(level):
 		return [UpgradeRoom, StairsRoom]
 
 func pick_bossroom(level):
-	# TODO: Pick harder bosses as game progresses
-	return BossRoomOgre
+	if GameData.isFirstBossLevel(level):
+		return BossRoomOgre
+	
+	return DoubleBossRoomOgre
 
 func add_room(name, room, wall):
 	room.apply_randomness()
