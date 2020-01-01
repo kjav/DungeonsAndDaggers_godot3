@@ -18,8 +18,8 @@ func _ready():
 	base_damage = 1
 	
 	initialStats.health = {
-		"value": 1,
-		"maximum": 1
+		"value": 2,
+		"maximum": 2
 	}
 
 	initialStats.strength = {

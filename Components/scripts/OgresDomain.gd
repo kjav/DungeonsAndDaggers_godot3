@@ -20,9 +20,13 @@ var GhostRoom = load("res://Components/Rooms/GhostRoom.gd").new()
 var UncommonWeaponRoom = load("res://Components/Rooms/UncommonWeaponRoom.gd").new()
 var UncommonLootRoom = load("res://Components/Rooms/UncommonLootRoom.gd").new()
 var BossRoomOgre = load("res://Components/Rooms/BossRoomOgre.gd").new()
+var BabyOgreRoom = load("res://Components/Rooms/BabyOgreRoom.gd").new()
 var TrapRoom = load("res://Components/Rooms/TrapRoom.gd").new()
 var MageRoom = load("res://Components/Rooms/MageRoom.gd").new()
 var UncommonChestRoom = load("res://Components/Rooms/UncommonChestRoom.gd").new()
+var RareWeaponRoom = load("res://Components/Rooms/RareWeaponRoom.gd").new()
+var RareChestRoom = load("res://Components/Rooms/RareChestRoom.gd").new()
+var RareLootRoom = load("res://Components/Rooms/RareLootRoom.gd").new()
 
 func level_rooms(level):
 	if GameData.isBossLevel(level):
@@ -65,6 +69,34 @@ func level_rooms(level):
 			{ "p": 0.03, "value": UncommonChestRoom },
 			{ "p": 0.03, "value": CommonLootRoom },
 			{ "p": 0.02, "value": CommonChestRoom },
+		])
+	elif level == 4:
+		return Distribution.new([
+			{ "p": 0.2, "value": FillerRoom },
+			{ "p": 0.15, "value": GhostRoom },
+			{ "p": 0.2, "value": BatRoom },
+			{ "p": 0.15, "value": MageRoom },
+			{ "p": 0.08, "value": TrapRoom },
+			{ "p": 0.07, "value": UncommonWeaponRoom },
+			{ "p": 0.05, "value": BabyOgreRoom },
+			{ "p": 0.05, "value": UncommonLootRoom },
+			{ "p": 0.03, "value": UncommonChestRoom },
+			{ "p": 0.02, "value": DoubleSpiritRoom },
+		])
+	elif level == 5:
+		return Distribution.new([
+			{ "p": 0.2, "value": BabyOgreRoom },
+			{ "p": 0.1, "value": FillerRoom },
+			{ "p": 0.1, "value": GhostRoom },
+			{ "p": 0.15, "value": MageRoom },
+			{ "p": 0.12, "value": BatRoom },
+			{ "p": 0.08, "value": TrapRoom },
+			{ "p": 0.055, "value": UncommonWeaponRoom },
+			{ "p": 0.035, "value": UncommonLootRoom },
+			{ "p": 0.02, "value": UncommonChestRoom },
+			{ "p": 0.015, "value": RareWeaponRoom },
+			{ "p": 0.015, "value": RareLootRoom },
+			{ "p": 0.01, "value": RareChestRoom },
 		])
 
 func level_final_rooms(level):
