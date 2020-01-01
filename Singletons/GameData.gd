@@ -23,6 +23,7 @@ var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
+var bossLevelEvery = 6
 
 var saved_player = null
 
@@ -179,7 +180,10 @@ func placeItem(item):
 	emit_signal("itemDropped", item)
 
 func isBossLevel(level):
-	return (int(level) % 6) == 0
+	return (int(level) % bossLevelEvery) == 0
+
+func isFirstBossLevel(level):
+	return bossLevelEvery == level
 	
 func closestEnemy():
 	var closestIndex
