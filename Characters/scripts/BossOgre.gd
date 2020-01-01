@@ -38,7 +38,21 @@ var walkingUp
 
 func _init():
 	self.character_name = 'Boss Ogre'
-	item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.WeaponClasses.RareSword}])
+
+	item_distribution = Constants.IndependentDistribution.new([
+		{ "p": 1, "value": Constants.Distribution.new([
+			{ "p": 0.6, "value": Constants.UncommonWeaponsDistribution.pick()[0].value }, 
+			{ "p": 0.4, "value": Constants.RareWeaponsDistribution.pick()[0].value }
+		]).pick()[0].value }, 
+		{ "p": 1, "value": Constants.SpellClasses.EarthquakeSpell },
+		{ "p": 1, "value": Constants.PotionClasses.LevelUpPotion },
+		{ "p": 1, "value": Constants.Distribution.new([
+			{ "p": 0.6, "value": Constants.UncommonFoodsDistribution.pick()[0].value }, 
+			{ "p": 0.4, "value": Constants.RareFoodsDistribution.pick()[0].value }
+		]).pick()[0].value }, 
+		{ "p": 0.6, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value },
+		{ "p": 0.3, "value": Constants.AllRarePotionsSpellsDistribution.pick()[0].value }
+	])
 
 func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
@@ -63,7 +77,6 @@ func _ready():
 	rightArmAngerOverlay = changingBodyParts.get_node("Right Arm Anger Overlay")
 	headAngerOverlay = changingBodyParts.get_node("Head Anger Overlay")
 	bodyAngerOverlay = changingBodyParts.get_node("Body Anger Overlay")
-	
 	
 	additionalRelativeAttackPositions = []
 	turnBehaviour.additionalRelativeAttackPositions = []

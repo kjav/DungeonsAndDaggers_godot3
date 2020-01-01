@@ -59,7 +59,7 @@ func turn(skipTurnBehaviour = false):
 		.turn()
 
 func pathFindingWithinBounds(distance):
-	return distance != -1 && distance <= 3
+	return distance != -1 && distance <= 4
 
 func castMissile():
 	GameData.hud.addEventMessage(character_name + " cast a missile at you!")

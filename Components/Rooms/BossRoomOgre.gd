@@ -4,9 +4,10 @@ func _init():
 	doorClass = preload("res://Environments/BossDoor.tscn")
 	isBossRoom = true
 	oneEntrance = true
+	symmetry = SYMMETRY.none
 
 func setup_params():
-	extents_distribution = Set.new([Vector2(9, 7)])
+	extents_distribution = Set.new([Vector2(7, 9)])
 	
 	npc_distribution = IndependentDistribution.new([
 		{

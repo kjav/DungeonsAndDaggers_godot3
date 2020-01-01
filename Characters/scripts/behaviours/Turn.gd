@@ -166,7 +166,7 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 class InRangeMoveToOtherwiseRandom extends BaseTurn:
 	var random
 	var moveTo
-	var limit = 10
+	var limit = 8
 	
 	func _init(_character = null).(_character):
 		random = MoveRandom.new(_character)
