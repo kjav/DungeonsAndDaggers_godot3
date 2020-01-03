@@ -38,11 +38,11 @@ class Direct extends baseProcess:
 	func getPositionAfterMove(movement_direction, pos, delta):
 		var returnedPos
 		if movement_direction == Enums.DIRECTION.LEFT:
-			returnedPos = (pos + Vector2(-GameData.TileSize * (delta / 0.4), 0))
+			returnedPos = (pos + Vector2(-GameData.TileSize * (delta / GameData.turnTime), 0))
 		elif movement_direction == Enums.DIRECTION.RIGHT:
-			returnedPos = (pos + Vector2(GameData.TileSize * (delta / 0.4), 0))
+			returnedPos = (pos + Vector2(GameData.TileSize * (delta / GameData.turnTime), 0))
 		elif movement_direction == Enums.DIRECTION.UP:
-			returnedPos = (pos + Vector2(0, -GameData.TileSize * (delta / 0.4)))
+			returnedPos = (pos + Vector2(0, -GameData.TileSize * (delta / GameData.turnTime)))
 		elif movement_direction == Enums.DIRECTION.DOWN:
-			returnedPos = (pos + Vector2(0, GameData.TileSize * (delta / 0.4)))
+			returnedPos = (pos + Vector2(0, GameData.TileSize * (delta / GameData.turnTime)))
 		return returnedPos

@@ -217,7 +217,7 @@ func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 		MoveCharacters()
 	else:
 		var timer = Timer.new()
-		timer.set_wait_time(0.4)
+		timer.set_wait_time(GameData.turnTime)
 		timer.connect("timeout",self,"MoveCharacters") 
 		timer.set_one_shot(true)
 		add_child(timer)
@@ -271,14 +271,14 @@ func _process(delta):
 		var length = 128
 		time_elapsed = time_elapsed + delta
 		if movement_direction == Enums.DIRECTION.LEFT:
-			self.set_position(get_position() + Vector2(-length * (delta / 0.4), 0))
+			self.set_position(get_position() + Vector2(-length * (delta / GameData.turnTime), 0))
 		elif movement_direction == Enums.DIRECTION.RIGHT:
-			self.set_position(get_position() + Vector2(length * (delta / 0.4), 0))
+			self.set_position(get_position() + Vector2(length * (delta / GameData.turnTime), 0))
 		if movement_direction == Enums.DIRECTION.UP:
-			self.set_position(get_position() + Vector2(0, -length * (delta / 0.4)))
+			self.set_position(get_position() + Vector2(0, -length * (delta / GameData.turnTime)))
 		elif movement_direction == Enums.DIRECTION.DOWN:
-			self.set_position(get_position() + Vector2(0, length * (delta / 0.4)))
-		if time_elapsed >= 0.4:
+			self.set_position(get_position() + Vector2(0, length * (delta / GameData.turnTime)))
+		if time_elapsed >= GameData.turnTime:
 			if movement_direction == Enums.DIRECTION.LEFT:
 				set_position(original_pos + Vector2(-length, 0))
 			elif movement_direction == Enums.DIRECTION.RIGHT:
