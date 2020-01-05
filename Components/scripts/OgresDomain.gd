@@ -28,12 +28,14 @@ var UncommonChestRoom = load("res://Components/Rooms/UncommonChestRoom.gd").new(
 var RareWeaponRoom = load("res://Components/Rooms/RareWeaponRoom.gd").new()
 var RareChestRoom = load("res://Components/Rooms/RareChestRoom.gd").new()
 var RareLootRoom = load("res://Components/Rooms/RareLootRoom.gd").new()
+var Corridor = load("res://Components/Rooms/Corridor.gd").new()
 
 func level_rooms(level):
 	if level == 1:
 		return Distribution.new([
-			{ "p": 0.35, "value": FillerRoom },
 			{ "p": 0.25, "value": SpiritRoom },
+			{ "p": 0.2, "value": Corridor },
+			{ "p": 0.15, "value": FillerRoom },
 			{ "p": 0.1, "value": BatRoom },
 			{ "p": 0.15, "value": DoubleSpiritRoom },
 			{ "p": 0.07, "value": CommonWeaponRoom },
@@ -42,8 +44,9 @@ func level_rooms(level):
 		])
 	elif level == 2:
 		return Distribution.new([
-			{ "p": 0.3, "value": FillerRoom },
 			{ "p": 0.2, "value": BatRoom },
+			{ "p": 0.15, "value": FillerRoom },
+			{ "p": 0.15, "value": Corridor },
 			{ "p": 0.15, "value": SpiritRoom },
 			{ "p": 0.15, "value": DoubleSpiritRoom },
 			{ "p": 0.05, "value": GhostRoom },
@@ -55,9 +58,10 @@ func level_rooms(level):
 		])
 	elif level == 3:
 		return Distribution.new([
-			{ "p": 0.25, "value": FillerRoom },
 			{ "p": 0.25, "value": GhostRoom },
 			{ "p": 0.2, "value": BatRoom },
+			{ "p": 0.15, "value": Corridor },
+			{ "p": 0.1, "value": FillerRoom },
 			{ "p": 0.05, "value": DoubleSpiritRoom },
 			{ "p": 0.05, "value": MageRoom },
 			{ "p": 0.05, "value": TrapRoom },
@@ -69,10 +73,11 @@ func level_rooms(level):
 		])
 	elif level == 4:
 		return Distribution.new([
-			{ "p": 0.2, "value": FillerRoom },
-			{ "p": 0.15, "value": GhostRoom },
 			{ "p": 0.2, "value": BatRoom },
 			{ "p": 0.15, "value": MageRoom },
+			{ "p": 0.15, "value": GhostRoom },
+			{ "p": 0.1, "value": Corridor },
+			{ "p": 0.1, "value": FillerRoom },
 			{ "p": 0.08, "value": TrapRoom },
 			{ "p": 0.07, "value": UncommonWeaponRoom },
 			{ "p": 0.05, "value": BabyOgreRoom },
@@ -83,11 +88,12 @@ func level_rooms(level):
 	elif level == 5:
 		return Distribution.new([
 			{ "p": 0.2, "value": BabyOgreRoom },
-			{ "p": 0.15, "value": FillerRoom },
 			{ "p": 0.15, "value": GhostRoom },
 			{ "p": 0.15, "value": MageRoom },
 			{ "p": 0.12, "value": BatRoom },
+			{ "p": 0.1, "value": Corridor },
 			{ "p": 0.08, "value": TrapRoom },
+			{ "p": 0.05, "value": FillerRoom },
 			{ "p": 0.055, "value": UncommonWeaponRoom },
 			{ "p": 0.035, "value": UncommonLootRoom },
 			{ "p": 0.02, "value": UncommonChestRoom },
@@ -98,7 +104,7 @@ func level_rooms(level):
 	else:
 		return Distribution.new([
 			{ "p": 0.2, "value": BabyOgreRoom },
-			{ "p": 0.1, "value": FillerRoom },
+			{ "p": 0.1, "value": Corridor },
 			{ "p": 0.1, "value": GhostRoom },
 			{ "p": 0.2, "value": MageRoom },
 			{ "p": 0.15, "value": BatRoom },
@@ -139,7 +145,7 @@ func add_room(name, room, wall):
 		wall_direction = (wall[1] - wall[0]).normalized().snapped(Vector2(1, 1))
 		
 		# Choose a door in the wall, excluding the corners of the wall.
-		var door_index = 1 + (randi() % (int((wall[1] - wall[0]).length()) - 2))
+		var door_index = 1 + (randi() % (int((wall[1] - wall[0]).length()) - 1))
 		door = door_index * wall_direction + wall[0]
 		
 		# Choose how much to move the new room by
