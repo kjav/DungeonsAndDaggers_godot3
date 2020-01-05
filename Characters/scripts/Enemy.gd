@@ -48,6 +48,7 @@ func setTurnAnimations():
 			setStandAnimation(previous_stand_direction)
 
 func _process(delta):
+	#state = new position, new moving
 	var state = processBehaviour.getNewState(get_position(), original_pos, movement_direction, moving, delta)
 	
 	if state[0] != null:
@@ -57,6 +58,7 @@ func _process(delta):
 		original_pos = get_position()
 		
 		if stand_direction != Enums.DIRECTION.NONE:
+			self.set_position(turn_end_pos)
 			setStandAnimation(stand_direction)
 		else:
 			setStandAnimation(previous_stand_direction)
