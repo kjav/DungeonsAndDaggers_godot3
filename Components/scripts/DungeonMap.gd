@@ -29,6 +29,11 @@ func _ready():
 	BottomTileMap = get_node("BottomTileMap")
 	for i in range(0, 128):
 		flat_not_walkable.push_back(not_walkable.has(i))
+	# NOTE: -1 is "not walkable". This means that it should be "true" in
+	# flat_not_walkable. However, the -1'th element of an array is its last
+	# element. So for this special case, we add "true" to the end of the array
+	# to ensure that flat_not_walkable[-1] == true.
+	flat_not_walkable.push_back(true)
 	GameData.tilemap = self
 	set_map_type(GameData.chosen_map)
 
@@ -92,12 +97,14 @@ func disconnectPoint(i, j):
 
 func set_map_type(type):
 	if has_node("BottomTileMap"):
+		print("A:", OS.get_ticks_msec())
 		map = Maps[type].new(GameData.current_level)
 		var BTM = self.get_node("BottomTileMap")
 		var TTM = self.get_node("TopTileMap")
 		var Enemies = self.get_node("/root/Node2D/Enemies")
 		Pathfinder = AStar.new()
-		
+		print("B:", OS.get_ticks_msec())
+		var counting = 0
 		var j = -100
 		for row in map.tiles:
 			var i = -100
@@ -108,11 +115,14 @@ func set_map_type(type):
 					TTM.set_cell(i, j, tile)
 				
 				if !flat_not_walkable[tile]:
+					counting += 1
 					addPoint(i, j)
 					connectPointsUpAndLeft(i, j)
 				i = i + 1
 			j = j + 1
 		
+		print("Counting: ", counting)
+		print("C:", OS.get_ticks_msec())
 		for enemy in map.npcs:
 			var node = enemy.value.instance()
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
@@ -125,26 +135,28 @@ func set_map_type(type):
 				elif node.character_name == "Training Dummy":
 					node.item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])
 		
+		print("D:", OS.get_ticks_msec())
 		for item in map.items:
 			var node = item.value.new()
 			node.place((item.position - Vector2(100.0, 100.0)) * 128.0)
 
+		print("E:", OS.get_ticks_msec())
 		for env in map.environmentObjects:
 			var Environments = self.get_node("/root/Node2D/Environments")
 			var node = env.value.instance()
 			node.set_position((env.position - Vector2(100, 100)) * 128)
 			Environments.add_child(node)
-      
+
 			# Insert the node at the correct position, sorted by y coordinate, to prevent overdraw
 			var children = Environments.get_children()
 			var i = 0
-      
+
 			while i < children.size() and (children[i] == node or children[i].get_position().y < node.get_position().y):
 				i += 1
-        
+
 			if i >= children.size() or children[i].get_position().y > node.get_position().y:
 				i = max(0, i - 1)
-        
+
 			Environments.move_child(node, i)
 			
 			if env.has("facing"):
@@ -166,6 +178,7 @@ func set_map_type(type):
 						node.connect("bossDoorOpened", character, "_on_BossDoor_bossDoorOpened")
 
 			GameData.environmentObjects.append(node)
+		print("F:", OS.get_ticks_msec())
 	
 	map_type = type
 
