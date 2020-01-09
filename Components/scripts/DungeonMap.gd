@@ -7,8 +7,8 @@ export(int) var top_z_index = 2
 export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-  "OgresDomain": load("res://Components/scripts/OgresDomain.gd"),
-  "Tutorial": load("res://Components/scripts/TutorialMap.gd")
+	"OgresDomain": preload("res://Components/scripts/OgresDomain.gd"),
+	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }
 
 var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
@@ -97,13 +97,11 @@ func disconnectPoint(i, j):
 
 func set_map_type(type):
 	if has_node("BottomTileMap"):
-		print("A:", OS.get_ticks_msec())
 		map = Maps[type].new(GameData.current_level)
 		var BTM = self.get_node("BottomTileMap")
 		var TTM = self.get_node("TopTileMap")
 		var Enemies = self.get_node("/root/Node2D/Enemies")
 		Pathfinder = AStar.new()
-		print("B:", OS.get_ticks_msec())
 		var counting = 0
 		var j = -100
 		for row in map.tiles:
@@ -121,8 +119,6 @@ func set_map_type(type):
 				i = i + 1
 			j = j + 1
 		
-		print("Counting: ", counting)
-		print("C:", OS.get_ticks_msec())
 		for enemy in map.npcs:
 			var node = enemy.value.instance()
 			node.set_position((enemy.position - Vector2(100.0, 100.0)) * 128.0)
@@ -135,12 +131,10 @@ func set_map_type(type):
 				elif node.character_name == "Training Dummy":
 					node.item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])
 		
-		print("D:", OS.get_ticks_msec())
 		for item in map.items:
 			var node = item.value.new()
 			node.place((item.position - Vector2(100.0, 100.0)) * 128.0)
 
-		print("E:", OS.get_ticks_msec())
 		for env in map.environmentObjects:
 			var Environments = self.get_node("/root/Node2D/Environments")
 			var node = env.value.instance()
@@ -178,7 +172,6 @@ func set_map_type(type):
 						node.connect("bossDoorOpened", character, "_on_BossDoor_bossDoorOpened")
 
 			GameData.environmentObjects.append(node)
-		print("F:", OS.get_ticks_msec())
 	
 	map_type = type
 

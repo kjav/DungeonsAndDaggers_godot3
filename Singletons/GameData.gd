@@ -372,3 +372,32 @@ func toggle_mute():
 		# Delete mute file
 		var dir = Directory.new()
 		dir.remove("user//audio_muted.persist")
+
+var Rooms = {
+	"StartRoom": preload("res://Components/Rooms/StartRoom.gd").new(),
+	"StairsRoom": preload("res://Components/Rooms/StairsRoom.gd").new(),
+	"TallRoom": preload("res://Components/Rooms/TallRoom.gd").new(),
+	"SuperTallRoom": preload("res://Components/Rooms/SuperTallRoom.gd").new(),
+	"WideRoom": preload("res://Components/Rooms/WideRoom.gd").new(),
+	"UpgradeRoom": preload("res://Components/Rooms/UpgradeRoom.gd").new(),
+	"FillerRoom": preload("res://Components/Rooms/FillerRoom.gd").new(),
+	"SpiritRoom": preload("res://Components/Rooms/SpiritRoom.gd").new(),
+	"DoubleSpiritRoom": preload("res://Components/Rooms/DoubleSpiritRoom.gd").new(),
+	"BatRoom": preload("res://Components/Rooms/BatRoom.gd").new(),
+	"CommonWeaponRoom": preload("res://Components/Rooms/CommonWeaponRoom.gd").new(),
+	"CommonChestRoom": preload("res://Components/Rooms/CommonChestRoom.gd").new(),
+	"CommonLootRoom": preload("res://Components/Rooms/CommonLootRoom.gd").new(),
+	"GhostRoom": preload("res://Components/Rooms/GhostRoom.gd").new(),
+	"UncommonWeaponRoom": preload("res://Components/Rooms/UncommonWeaponRoom.gd").new(),
+	"UncommonLootRoom": preload("res://Components/Rooms/UncommonLootRoom.gd").new(),
+	"BossRoomOgre": preload("res://Components/Rooms/BossRoomOgre.gd").new(),
+	"DoubleBossRoomOgre": preload("res://Components/Rooms/DoubleBossRoomOgre.gd").new(),
+	"BabyOgreRoom": preload("res://Components/Rooms/BabyOgreRoom.gd").new(),
+	"TrapRoom": preload("res://Components/Rooms/TrapRoom.gd").new(),
+	"MageRoom": preload("res://Components/Rooms/MageRoom.gd").new(),
+	"UncommonChestRoom": preload("res://Components/Rooms/UncommonChestRoom.gd").new(),
+	"RareWeaponRoom": preload("res://Components/Rooms/RareWeaponRoom.gd").new(),
+	"RareChestRoom": preload("res://Components/Rooms/RareChestRoom.gd").new(),
+	"RareLootRoom": preload("res://Components/Rooms/RareLootRoom.gd").new(),
+	"Corridor": preload("res://Components/Rooms/Corridor.gd").new()
+}
