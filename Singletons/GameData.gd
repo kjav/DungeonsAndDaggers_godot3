@@ -24,7 +24,7 @@ var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
 var bossLevelEvery = 6
-var turnTime = 0.25
+var turnTime = 0.2
 
 var saved_player = null
 
