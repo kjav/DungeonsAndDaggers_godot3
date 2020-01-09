@@ -208,7 +208,19 @@ func add_room(name, room, wall):
 	draw_floor(position, roomDistribution.extents)
 	
 	# Draw walls on map
-	wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
+	var wallsWithAdjecentRooms = wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
+
+	# Add doors in walls that have adjecent rooms
+	for walls in wallsWithAdjecentRooms:
+		#need to remove corner walls and walls with doors
+		
+		if walls.size() > 0:
+			var newDoorPosition = walls[randi() % walls.size()]
+
+			add_door(newDoorPosition)
+			remove_wall([newDoorPosition])
+			environmentObjects.push_back({"position": newDoorPosition, "value": room.doorClass, "facing": get_facing(wall_direction)})
+
 	
 	# Remove the wall and add a door
 	if door != null:

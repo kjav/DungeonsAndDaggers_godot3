@@ -237,11 +237,15 @@ func wall(path):
 		var point = path[0]
 		tiles[point[1]][point[0]] = 6
 	else:
+		var multipleRoomWalls = []
+
 		for index in range(0, path.size() - 1):
 			var point_a = path[index]
 			var point_b = path[index + 1]
 			var diff = point_b - point_a
 			var move = Vector2(0, 0)
+			var wallsWithAdjecentRooms = []
+
 			if diff[0] == 0 and diff[1] != 0:
 				# Moving vertically
 				move.y = diff[1] / abs(diff[1])
@@ -253,7 +257,10 @@ func wall(path):
 				return
 			
 			while point_a != point_b:
-				tiles[point_a.y][point_a.x]  = 6
+				if (tiles[point_a.y][point_a.x] == 6):
+					wallsWithAdjecentRooms.append(Vector2(point_a.x, point_a.y))
+				
+				tiles[point_a.y][point_a.x] = 6
 				changed_tiles[point_a] = true
 				changed_tiles[point_a + right] = true
 				changed_tiles[point_a + left] = true
@@ -262,6 +269,9 @@ func wall(path):
 				changed_tiles[point_a + upup] = true
 				changed_tiles[point_a + downdown] = true
 				point_a += move
+			
+			multipleRoomWalls.append(wallsWithAdjecentRooms)
+		
 		var point = path[-1]
 		tiles[point.y][point.x] = 6
 		changed_tiles[point] = true
@@ -272,6 +282,8 @@ func wall(path):
 		changed_tiles[point + upup] = true
 		changed_tiles[point + downdown] = true
 
+		return multipleRoomWalls
+
 func remove_wall(path):
 	for index in range(0, path.size()):
 		var point = path[index]
@@ -279,8 +291,8 @@ func remove_wall(path):
 		changed_tiles[point] = true
 
 func draw_floor(position, extents):
-	for x in range(position.x, position.x + extents.x):
-		for y in range(position.y, position.y + extents.y):
+	for x in range(position.x + 1, position.x + extents.x - 1):
+		for y in range(position.y + 1, position.y + extents.y - 1):
 			tiles[y][x] = 0
 
 func make_walls_consistent():
