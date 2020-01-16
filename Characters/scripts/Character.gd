@@ -190,6 +190,12 @@ func handleForcedMoveTo(pos):
 	if blockedByEnvironment:
 		target_pos = original_pos
 		return false
+
+	var blockedByCharacter = GameData.charactersAtPos(pos).size() > 0
+
+	if blockedByCharacter:
+		target_pos = original_pos
+		return false
 	
 	environmentOnWalkedOut()
 	position = pos * GameData.TileSize
