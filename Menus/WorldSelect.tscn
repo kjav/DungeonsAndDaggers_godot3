@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/43.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/plank_15.png" type="Texture" id=5]
-[ext_resource path="res://Menus/Continue.gd" type="Script" id=6]
-[ext_resource path="res://Menus/New Game.gd" type="Script" id=7]
-[ext_resource path="res://assets/dummy_01.png" type="Texture" id=8]
+[ext_resource path="res://assets/plank_15_dark.png" type="Texture" id=6]
+[ext_resource path="res://Menus/Continue.gd" type="Script" id=7]
+[ext_resource path="res://Menus/New Game.gd" type="Script" id=8]
+[ext_resource path="res://assets/dummy_01.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -58,7 +59,8 @@ margin_right = 15.9427
 margin_bottom = 795.373
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
-script = ExtResource( 6 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="OgresDomain/Continue"]
 margin_left = 60.0601
@@ -78,7 +80,8 @@ margin_right = 17.7716
 margin_bottom = 1042.03
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
-script = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="OgresDomain/New Game"]
 margin_left = 59.2725
@@ -99,7 +102,7 @@ margin_top = -318.723
 margin_right = -98.4608
 margin_bottom = -62.7231
 rect_scale = Vector2( 2.8, 2.8 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Tutorial" type="Label" parent="Tutorial"]
 margin_left = -424.0
@@ -120,7 +123,8 @@ margin_right = 17.9355
 margin_bottom = 1042.03
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
-script = ExtResource( 7 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="Tutorial/New Game"]
 margin_left = 59.2725
