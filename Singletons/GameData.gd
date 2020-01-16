@@ -33,7 +33,9 @@ var map_seed = null
 func _ready():
 	randomize()
 	#addInitialItemsForTesting()
+	# Set this to get a fixed seed
 	map_seed = randi()
+	print("Map seed: ", map_seed)
 
 func addInitialItemsForTesting():
 	var instance = Constants.PotionClasses.HealthPotion.new()
@@ -335,6 +337,7 @@ func load_game():
 		if state:
 			current_level = state.level
 			map_seed = state.seed
+			print("Loaded Map Seed: ", map_seed)
 			potions = deserialise_items(state.potions)
 			foods = deserialise_items(state.foods)
 			spells = deserialise_items(state.spells)
