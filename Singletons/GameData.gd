@@ -16,7 +16,7 @@ var characters = []
 var environmentObjects = []
 var placedItems = []
 var TileSize = 128;
-var start_screen = "world_select"
+var start_screen = ""
 var effectsNode
 var current_level = 1
 var muted = check_muted()
