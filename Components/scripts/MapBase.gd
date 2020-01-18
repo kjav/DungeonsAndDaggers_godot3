@@ -230,21 +230,25 @@ var downdown = Vector2(0, 2)
 var upup = Vector2(0, -2)
 # Create a wall between the given points
 func wall(path):
+	var alreadyExistingWalls = []
 	var path_size = path.size()
+	
 	if path_size == 0:
 		return
+	
 	if path_size == 1:
 		var point = path[0]
+		
+		if tiles[point[1]][point[0]] == 6:
+			alreadyExistingWalls.append(Vector2(point[0], point[1]))
+		
 		tiles[point[1]][point[0]] = 6
 	else:
-		var multipleRoomWalls = []
-
 		for index in range(0, path.size() - 1):
 			var point_a = path[index]
 			var point_b = path[index + 1]
 			var diff = point_b - point_a
 			var move = Vector2(0, 0)
-			var wallsWithAdjecentRooms = []
 
 			if diff[0] == 0 and diff[1] != 0:
 				# Moving vertically
@@ -257,8 +261,8 @@ func wall(path):
 				return
 			
 			while point_a != point_b:
-				if (tiles[point_a.y][point_a.x] == 6):
-					wallsWithAdjecentRooms.append(Vector2(point_a.x, point_a.y))
+				if tiles[point_a.y][point_a.x] == 6:
+					alreadyExistingWalls.append(Vector2(point_a.x, point_a.y))
 				
 				tiles[point_a.y][point_a.x] = 6
 				changed_tiles[point_a] = true
@@ -269,10 +273,9 @@ func wall(path):
 				changed_tiles[point_a + upup] = true
 				changed_tiles[point_a + downdown] = true
 				point_a += move
-			
-			multipleRoomWalls.append(wallsWithAdjecentRooms)
 		
 		var point = path[-1]
+			
 		tiles[point.y][point.x] = 6
 		changed_tiles[point] = true
 		changed_tiles[point + right] = true
@@ -281,8 +284,58 @@ func wall(path):
 		changed_tiles[point + up] = true
 		changed_tiles[point + upup] = true
 		changed_tiles[point + downdown] = true
+	
+	return alreadyExistingWalls
 
-		return multipleRoomWalls
+func possibleDoors(path):
+	var possibleDoorsInWalls = []
+	var possibleDoors = []
+	
+	if path.size() > 0:
+		var previousMovingHorizontal
+		
+		if (!is_corner_wall(path[0])):
+			possibleDoors.append(Vector2(path[0].x, path[0].y))
+		
+		if path.size() > 1:
+			for index in range(1, path.size()):
+				var point_a = path[index]
+				var point_b = path[index - 1]
+				var diff = point_b - point_a
+				var nextMoveHorizontal
+				
+				if diff[0] == 0 and diff[1] != 0:
+					nextMoveHorizontal = false
+				elif diff[0] != 0 and diff[1] == 0:
+					nextMoveHorizontal = true
+				else:
+					possibleDoorsInWalls.append(possibleDoors)
+					possibleDoors = []
+				
+				if previousMovingHorizontal == null && hasWallMoveChangedDirection(previousMovingHorizontal, nextMoveHorizontal) && possibleDoors.size() > 0:
+					possibleDoorsInWalls.append(possibleDoors)
+					possibleDoors = []
+				
+				previousMovingHorizontal = nextMoveHorizontal
+				
+				if (!is_corner_wall(point_a)):
+					possibleDoors.append(Vector2(point_a.x, point_a.y))
+	
+	possibleDoorsInWalls.append(possibleDoors)
+	
+	return possibleDoorsInWalls;
+
+func hasWallMoveChangedDirection(lastMoveHorizontal, nextMoveHorizontal):
+	return lastMoveHorizontal != nextMoveHorizontal
+
+func is_corner_wall(point):
+	var isVertical = is_door_or_wall(point + Vector2(0, 1)) || is_door_or_wall(point + Vector2(0, -1))
+	var isHorizontal = is_door_or_wall(point + Vector2(1, 0)) || is_door_or_wall(point + Vector2(-1, 0))
+	
+	return isVertical && isHorizontal
+
+func is_door_or_wall(point):
+	return is_wall(tiles[point.y][point.x]) || is_door(point)
 
 func remove_wall(path):
 	for index in range(0, path.size()):
