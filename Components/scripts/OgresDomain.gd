@@ -209,19 +209,24 @@ func add_room(name, room, wall):
 	
 	# Draw walls on map
 	var alreadyExistingWalls = wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
-
 	var atleastOneDoorSet = false
-		
 	var wallsWithPossibleDoors = possibleDoors(alreadyExistingWalls)
 	
 	if (wallsWithPossibleDoors != null && door != null):
-		for wall in wallsWithPossibleDoors:
-			if wall.size() > 0:
-				var newDoorPosition = wall[randi() % wall.size()]
-				add_door(newDoorPosition)
-				remove_wall([newDoorPosition])
-				#need to get facing
-				environmentObjects.push_back({"position": newDoorPosition, "value": room.doorClass, "facing": 1})
+		for wallWithDirection in wallsWithPossibleDoors:
+			if wallWithDirection.size() > 0:
+				var newDoor = wallWithDirection[randi() % wallWithDirection.size()]
+				var facing
+
+				add_door(newDoor[0])
+				remove_wall([newDoor[0]])
+
+				if newDoor[1] == Enums.WALLDIRECTION.HORIZONTAL:
+					facing = "front"
+				else:
+					facing = "side"
+
+				environmentObjects.push_back({"position": newDoor[0], "value": room.doorClass, "facing": facing})
 				atleastOneDoorSet = true
 	
 	#this should never enter but i have seen weird behaviour and while i think it is fixed i added this to make sure

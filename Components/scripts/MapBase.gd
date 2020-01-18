@@ -228,6 +228,7 @@ var downright = Vector2(1, 1)
 var zero = Vector2(0, 0)
 var downdown = Vector2(0, 2)
 var upup = Vector2(0, -2)
+
 # Create a wall between the given points
 func wall(path):
 	var alreadyExistingWalls = []
@@ -293,9 +294,10 @@ func possibleDoors(path):
 	
 	if path.size() > 0:
 		var previousMovingHorizontal
+		var possibleDoorWall = wallIfNotCorner(path[0])
 		
-		if (!is_corner_wall(path[0])):
-			possibleDoors.append(Vector2(path[0].x, path[0].y))
+		if possibleDoorWall != null:
+			possibleDoors.append(possibleDoorWall)
 		
 		if path.size() > 1:
 			for index in range(1, path.size()):
@@ -318,21 +320,38 @@ func possibleDoors(path):
 				
 				previousMovingHorizontal = nextMoveHorizontal
 				
-				if (!is_corner_wall(point_a)):
-					possibleDoors.append(Vector2(point_a.x, point_a.y))
+				possibleDoorWall = wallIfNotCorner(point_a)
+				
+				if possibleDoorWall != null:
+					possibleDoors.append(possibleDoorWall)
 	
 	possibleDoorsInWalls.append(possibleDoors)
 	
 	return possibleDoorsInWalls;
 
+func wallIfNotCorner(point):
+	var isHorizontal = is_horizontal_wall(point)
+	var isVertical = is_vertical_wall(point)
+	var wallDirection = Enums.WALLDIRECTION.NONE
+
+	if isHorizontal && isVertical:
+		wallDirection = Enums.WALLDIRECTION.CORNER
+	elif isHorizontal:
+		wallDirection = Enums.WALLDIRECTION.HORIZONTAL
+	elif isVertical:
+		wallDirection = Enums.WALLDIRECTION.VERTICAL
+	
+	if (wallDirection == Enums.WALLDIRECTION.HORIZONTAL || wallDirection == Enums.WALLDIRECTION.VERTICAL):
+		return [Vector2(point.x, point.y), wallDirection]
+
 func hasWallMoveChangedDirection(lastMoveHorizontal, nextMoveHorizontal):
 	return lastMoveHorizontal != nextMoveHorizontal
 
-func is_corner_wall(point):
-	var isVertical = is_door_or_wall(point + Vector2(0, 1)) || is_door_or_wall(point + Vector2(0, -1))
-	var isHorizontal = is_door_or_wall(point + Vector2(1, 0)) || is_door_or_wall(point + Vector2(-1, 0))
+func is_horizontal_wall(point):
+	return is_door_or_wall(point + Vector2(1, 0)) || is_door_or_wall(point + Vector2(-1, 0))
 	
-	return isVertical && isHorizontal
+func is_vertical_wall(point):
+	return is_door_or_wall(point + Vector2(0, 1)) || is_door_or_wall(point + Vector2(0, -1))
 
 func is_door_or_wall(point):
 	return is_wall(tiles[point.y][point.x]) || is_door(point)
