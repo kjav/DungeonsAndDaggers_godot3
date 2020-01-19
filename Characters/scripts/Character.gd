@@ -365,6 +365,7 @@ func attack(character, base_damage = 0):
 		
 		removeInvisibility()
 		
+		damage = round(damage * 2) / 2
 		emit_signal("attack", self, damage);
 		
 		#Audio.playHit()
