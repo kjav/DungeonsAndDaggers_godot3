@@ -16,8 +16,8 @@ func onUse():
 	var closest_enemy = GameData.closestEnemy()
 	
 	if closest_enemy and GameData.player.consume_stat("mana", 0.5):
-		.onUse()
 		launchPellet(closest_enemy)
+		.onUse()
 	else:
 		GameData.hud.addEventMessage("No target in range")
 

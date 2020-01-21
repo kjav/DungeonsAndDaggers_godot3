@@ -11,5 +11,5 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	.onUse()
 	GameData.player.applyDamageModifier(2)
+	.onUse()

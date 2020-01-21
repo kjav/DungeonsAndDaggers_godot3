@@ -15,9 +15,7 @@ func onUse():
 
 	var enemiesToPush = GameData.getEnemiesWithinAreaAroundPlayer(3)
 	
-	if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
-			.onUse()
-			
+	if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):			
 			for enemy in enemiesToPush:
 				pushEnemy(enemy, 3)
 				
@@ -25,6 +23,7 @@ func onUse():
 			blastInstance.position = GameData.player.position + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
 			GameData.effectsNode.add_child(blastInstance)
 			blastInstance.play()
+			.onUse()
 	else:
 		GameData.hud.addEventMessage("No targets in range")
 

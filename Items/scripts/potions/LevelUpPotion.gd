@@ -11,5 +11,5 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	.onUse()
 	GameData.hud.show_upgrade_menu()
+	.onUse()

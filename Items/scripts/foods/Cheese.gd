@@ -12,7 +12,7 @@ func onUse():
 		return
 	
 	if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
-		.onUse()
 		GameData.player.heal(2)
+		.onUse()
 	else:
 		GameData.hud.addEventMessage("Health is already full")

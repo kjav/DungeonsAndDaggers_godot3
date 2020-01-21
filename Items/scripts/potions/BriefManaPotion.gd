@@ -10,5 +10,5 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	.onUse()
 	GameData.player.applyTemporaryMana(15)
+	.onUse()

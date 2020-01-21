@@ -5,7 +5,7 @@ func pickup():
 	GameData.addPotions([self])
 	.pickup()
 
-func onUse():	
-	.onUse()
+func onUse():
 	GameData.potions.remove(GameData.potions.find(self))
+	.onUse()
 	#Audio.playSoundEffect(useSound, true)

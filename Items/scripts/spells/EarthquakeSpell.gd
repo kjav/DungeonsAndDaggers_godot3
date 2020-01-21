@@ -16,11 +16,10 @@ func onUse():
 	var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
 	
 	if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
-		.onUse()
 		addHeavyImpacts()
 		GameData.player.get_node("Camera2D").shake(0.2, 50, 50)
 		damageEnemies(enemiesInArea)
-		pass
+		.onUse()
 	else:
 		GameData.hud.addEventMessage("No targets in range")
 

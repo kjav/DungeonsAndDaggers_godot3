@@ -10,5 +10,5 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	.onUse()
 	GameData.player.applyTemporaryHealth(15)
+	.onUse()

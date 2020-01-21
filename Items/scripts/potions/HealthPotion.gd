@@ -12,5 +12,5 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	.onUse()
 	GameData.player.increaseMaxHealth(1)
+	.onUse()
