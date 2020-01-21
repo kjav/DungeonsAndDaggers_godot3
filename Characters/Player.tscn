@@ -685,4 +685,3 @@ anims/walk = ExtResource( 10 )
 [node name="LightBlip" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 64.75, 45.415 )
-frame = 3
