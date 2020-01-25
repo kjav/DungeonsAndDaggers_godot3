@@ -1,6 +1,7 @@
 extends Node2D
 
 var EventMessage = load("res://Hud/EventMessage.tscn")
+const maximumMessagesToShow = 10
 
 func _ready():
 	GameData.player.connect("healthChanged", self, "PlayerHealthChanged")
@@ -45,26 +46,30 @@ func createEventMessageNode(y_pos, text):
 	instance.set_position(Vector2(0, y_pos));
 	instance.set_text(text);
 	instance.connect("timeout", self, "on_Timer_timeout");
+
 	return instance;
 
 func addMessage(text):
 	var y_pos = 0;
-	print ("number " + str(self.get_child_count()));
-	#this number should be one less than wanted
-	if(self.get_child_count() > 4):
+
+	if(self.get_child_count() > maximumMessagesToShow):
 		removeChild(0);
+	
 	if(self.get_child_count() > 0):
 		y_pos = getLastYPosition();
+	
 	self.add_child(createEventMessageNode(y_pos, text));
 
 func getLastYPosition():
 	var y_pos = self.get_child(self.get_child_count()-1).get_position().y;
 	y_pos += self.get_child(self.get_child_count()-1).get_height();
+
 	return y_pos;
 
 func removeChild(child):
 	if (TYPE_INT == typeof(child)):
 		child = self.get_child(child)
+	
 	child.remove();
 	self.remove_child(child);
 	reposition(-child.get_height());

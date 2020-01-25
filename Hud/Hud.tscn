@@ -40,7 +40,7 @@ position = Vector2( 30, 1716 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="HealthBar" type="Node2D" parent="HudCanvasLayer"]
-position = Vector2( -12.2763, 42.2845 )
+position = Vector2( -47.3499, 43.9547 )
 scale = Vector2( 2, 2 )
 
 [node name="ManaBar" type="Node2D" parent="HudCanvasLayer"]
@@ -91,23 +91,23 @@ frameStyle = "Orange"
 type = "Spell"
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
-margin_left = 1007.0
-margin_top = 6.0
-margin_right = 1263.0
-margin_bottom = 262.0
+margin_left = 979.0
+margin_top = 34.0
+margin_right = 1235.0
+margin_bottom = 290.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture_normal = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 12 )]
-position = Vector2( 390.218, 115.807 )
+position = Vector2( 39.766, 130.638 )
 
 [node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 visible = false
 script = ExtResource( 14 )
 
 [node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 15 )]
-position = Vector2( 1002.68, 79.558 )
+position = Vector2( 974.68, 107.558 )
 scale = Vector2( 0.1, 0.1 )
 
 [node name="GameClickableRegion" parent="HudCanvasLayer" instance=ExtResource( 16 )]
