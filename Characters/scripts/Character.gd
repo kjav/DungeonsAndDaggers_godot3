@@ -191,7 +191,7 @@ func handleForcedMoveTo(pos):
 		target_pos = original_pos
 		return false
 
-	var blockedByCharacter = GameData.charactersAtPos(pos).size() > 0
+	var blockedByCharacter = GameData.charactersAtPosExcludingCharacter(pos, self).size() > 0
 
 	if blockedByCharacter:
 		target_pos = original_pos
