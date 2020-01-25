@@ -23,7 +23,7 @@ func onAttack(target):
 		GameData.player.get_parent().add_child(new_missile)
 		
 		new_missile.init(
-			target.get_path(),
+			target,
 			missile_texture,
 			GameData.player.getPrimaryHandPosition(),
 			25,

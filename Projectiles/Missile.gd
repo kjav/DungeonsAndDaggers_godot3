@@ -1,4 +1,3 @@
-
 extends Sprite
 
 export(NodePath) var target setget setTarget, getTarget
@@ -8,6 +7,7 @@ var flyingSound
 var soundID
 var hitSound
 var inflictDamage
+var targetPath
 
 var total_time = 0
 var delay = 0.05
@@ -20,12 +20,19 @@ func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictD
 	set_texture(_texture)
 	set_position(_pos)
 	set_scale(_scale)
-	
+
 	speed = _speed
 	damage = _damage
 	target = _target
+	targetPath = _target.get_path()
 	hitSound = _hitSound
 	inflictDamage = _inflictDamage
+
+	var tileDistance = abs(target.get_position().x - get_position().x) + abs(target.get_position().y - get_position().y)
+
+	if (tileDistance / GameData.TileSize) <= 3:
+		target.takeDamage(damage)
+		inflictDamage = false
 
 func _process(delta):
 	total_time += delta
@@ -34,7 +41,7 @@ func _process(delta):
 		showIfVisible()
 		
 		var half_tile = Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
-		var target_pos = get_node(target).get_position() + half_tile
+		var target_pos = get_node(targetPath).get_position() + half_tile
 		
 		if willReachTargetAfterMove(target_pos, delta):
 			handleTargetReached()
@@ -50,7 +57,7 @@ func handleTargetReached():
 	#Audio.playSoundEffect(hitSound, true)
 	set_process(false)
 	if inflictDamage:
-		get_node(target).takeDamage(damage)
+		target.takeDamage(damage)
 	get_parent().remove_child(self)
 	queue_free()
 
