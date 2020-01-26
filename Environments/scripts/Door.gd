@@ -17,11 +17,9 @@ func setFacing(_facing):
 	if typeof(_facing) == TYPE_STRING:
 		if changeOfState(facing, _facing):
 			facing = _facing
-			if facing == "side":
-				self.set_position(self.get_position() + Vector2(0,16))
-			elif facing == "front":
-				self.set_position(self.get_position() - Vector2(0,16))
+			
 			handleAnimation()
+			
 			if get_node("Locks") != null:
 				get_node("Locks").set_animation(facing + "_locked")
 
