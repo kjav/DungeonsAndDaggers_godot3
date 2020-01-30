@@ -107,7 +107,7 @@ visible = false
 script = ExtResource( 14 )
 
 [node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 15 )]
-position = Vector2( 974.68, 107.558 )
+position = Vector2( 967.716, 146.247 )
 scale = Vector2( 0.1, 0.1 )
 
 [node name="GameClickableRegion" parent="HudCanvasLayer" instance=ExtResource( 16 )]
