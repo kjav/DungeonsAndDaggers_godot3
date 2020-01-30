@@ -1,8 +1,9 @@
 extends "WeaponBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/basic_sword.png"
+	textureFilePath = "res://assets/basic_sword.png"
 	texture = preload("res://assets/basic_sword.png")
+	iconTexture = preload("res://assets/basic_sword.png")
 	item_name = "Common Sword"
 	damage = 2.5
 	showBehindHand = true

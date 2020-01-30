@@ -4,8 +4,9 @@ const missile = preload("res://Projectiles/Missile.tscn")
 const missile_texture = preload("res://assets/arrow.png")
 
 func _init():
-	iconFilePath = "res://assets/basic_bow.png"
+	textureFilePath = "res://assets/basic_bow.png"
 	texture = preload("res://assets/basic_bow.png")
+	iconTexture = preload("res://assets/clipped_basic_bow.png")
 	item_name = "Common Bow"
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]
 	damage = 1

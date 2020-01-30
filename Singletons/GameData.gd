@@ -251,7 +251,7 @@ func dict2item(dict):
 		dict["@subpath"] = dict["subpath"]
 	var item = dict2inst(dict)
 	# Fixes textures not loading
-	item.texture = load(item.iconFilePath)
+	item.texture = load(item.textureFilePath)
 	if "offset" in item:
 		# Fixes offset stored as string not Vector2
 		item.offset = string2vec(item.offset)

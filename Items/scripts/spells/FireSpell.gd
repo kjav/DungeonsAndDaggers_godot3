@@ -4,7 +4,7 @@ const missile = preload("res://Projectiles/Missile.tscn")
 const missile_texture = preload("res://assets/fireball.png")
 
 func _init():
-	iconFilePath = "res://assets/red_spell2.png"
+	textureFilePath = "res://assets/red_spell2.png"
 	item_name = "Fire"
 	texture = preload("res://assets/red_spell2.png")
 	rarity = Enums.WEAPONRARITY.RARE

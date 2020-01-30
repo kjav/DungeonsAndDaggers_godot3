@@ -11,6 +11,7 @@ var rotationInHand = 0
 var rotationInOffHand = 0
 var ammo = -1
 var equiptable = true
+var iconTexture
 
 func onAttack(character):
 	if ammo > 0:

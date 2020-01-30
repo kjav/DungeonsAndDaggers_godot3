@@ -1,7 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/clear_potion.png"
+	textureFilePath = "res://assets/clear_potion.png"
 	item_name = "Invisibility"
 	texture = preload("res://assets/clear_potion.png")
 	rarity = Enums.WEAPONRARITY.UNCOMMON

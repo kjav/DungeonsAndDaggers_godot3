@@ -1,7 +1,7 @@
 extends "FoodBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/apple.png"
+	textureFilePath = "res://assets/apple.png"
 	item_name = "Apple"
 	texture = preload("res://assets/apple.png")
 

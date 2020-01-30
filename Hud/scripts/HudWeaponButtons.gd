@@ -26,7 +26,7 @@ func setIconTexture(slot, weapon):
 	updateAmmo(slot, weapon.ammo)
 
 func setTexture(icon, background, weapon):
-		icon.set_texture(weapon.texture)
+		icon.set_texture(weapon.iconTexture)
 		background.set_texture(GameData.getBackgroundForRarity(weapon.rarity))
 
 func SetCurrentWeapon(slot):

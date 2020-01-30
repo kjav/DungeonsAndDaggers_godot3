@@ -27,10 +27,11 @@ margin_bottom = 256.0
 texture = ExtResource( 2 )
 
 [node name="Secondary Icon" type="TextureRect" parent="."]
-margin_left = 344.0
-margin_top = 64.0
-margin_right = 472.0
-margin_bottom = 192.0
+margin_left = 333.0
+margin_top = 56.0
+margin_right = 461.0
+margin_bottom = 184.0
+rect_scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 3 )
 
 [node name="Secondary Use Count" type="Label" parent="."]
@@ -70,10 +71,11 @@ margin_bottom = 256.0
 texture = ExtResource( 9 )
 
 [node name="Primary Icon" type="TextureRect" parent="."]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 192.0
-margin_bottom = 192.0
+margin_left = 51.0
+margin_top = 58.0
+margin_right = 179.0
+margin_bottom = 186.0
+rect_scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 10 )
 
 [node name="Primary front" type="TextureRect" parent="."]

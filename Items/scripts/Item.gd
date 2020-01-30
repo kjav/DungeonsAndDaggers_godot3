@@ -2,9 +2,9 @@ extends Node2D
 
 signal ItemUsed(item)
 var texture
+var textureFilePath
 var description
 var item_name
-var iconFilePath
 var useSound
 var rarity = Enums.WEAPONRARITY.COMMON
 

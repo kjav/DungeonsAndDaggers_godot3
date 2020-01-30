@@ -3,8 +3,9 @@ extends "WeaponBase.gd"
 var chanceToBlockOutOf = 6
 
 func _init():
-	iconFilePath = "res://assets/basic_shield.png"
+	textureFilePath = "res://assets/basic_shield.png"
 	texture = preload("res://assets/basic_shield.png")
+	iconTexture = preload("res://assets/basic_shield.png")
 	item_name = "Common Shield"
 	damage = 1
 

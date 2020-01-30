@@ -1,7 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/blue_simple_potion.png"
+	textureFilePath = "res://assets/blue_simple_potion.png"
 	item_name = "Brief Mana"
 	texture = preload("res://assets/blue_simple_potion.png")
 

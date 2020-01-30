@@ -1,7 +1,7 @@
 extends "FoodBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/cooked_steak2.png"
+	textureFilePath = "res://assets/cooked_steak2.png"
 	item_name = "Steak"
 	texture = preload("res://assets/cooked_steak2.png")
 	rarity = Enums.WEAPONRARITY.RARE
