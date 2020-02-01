@@ -181,13 +181,36 @@ func add_room(name, room, wall):
 	draw_floor(position, roomDistribution.extents)
 	
 	# Draw walls on map
-	wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
+	var alreadyExistingWalls = []
+
+	wall([corners[0], corners[1], corners[2], corners[3], corners[0]], alreadyExistingWalls)
+
+	var atleastOneDoorSet = false
+	var wallsWithPossibleDoors = possibleDoors(alreadyExistingWalls)
 	
-	# Remove the wall and add a door
-	if door != null:
+	if (wallsWithPossibleDoors != null && door != null):
+		for wallWithDirection in wallsWithPossibleDoors:
+			if wallWithDirection.size() > 0:
+				var newDoor = wallWithDirection[randi() % wallWithDirection.size()]
+				var facing
+
+				add_door(newDoor[0])
+				remove_wall([newDoor[0]])
+
+				if newDoor[1] == Enums.WALLDIRECTION.HORIZONTAL:
+					facing = "front"
+				else:
+					facing = "side"
+
+				environmentObjects.push_back({"position": newDoor[0], "value": room.doorClass, "facing": facing})
+				atleastOneDoorSet = true
+	
+	#this should never enter but i have seen weird behaviour and while i think it is fixed i added this to make sure
+	if !atleastOneDoorSet && door != null:
 		add_door(door)
 		remove_wall([door])
 		environmentObjects.push_back({"position": door, "value": room.doorClass, "facing": get_facing(wall_direction)})
+		print("*Important! If you see this message there is a problem with door generation!*")
 	
 	# Add exterior walls to walls list, so other rooms can be placed adjacent
 	if !room.oneEntrance:

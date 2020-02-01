@@ -2,9 +2,10 @@ var tiles = []
 var npcs = []
 var items = []
 var environmentObjects = []
-var doors = []
 var initial_tile
 var changed_tiles = {}
+
+var door_tiles = {}
 
 var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution
@@ -228,13 +229,20 @@ var downright = Vector2(1, 1)
 var zero = Vector2(0, 0)
 var downdown = Vector2(0, 2)
 var upup = Vector2(0, -2)
+
 # Create a wall between the given points
-func wall(path):
+func wall(path, alreadyExistingWalls = []):
 	var path_size = path.size()
+	
 	if path_size == 0:
 		return
+	
 	if path_size == 1:
 		var point = path[0]
+		
+		if tiles[point[1]][point[0]] == 6:
+			alreadyExistingWalls.append(Vector2(point[0], point[1]))
+		
 		tiles[point[1]][point[0]] = 6
 	else:
 		for index in range(0, path.size() - 1):
@@ -242,6 +250,7 @@ func wall(path):
 			var point_b = path[index + 1]
 			var diff = point_b - point_a
 			var move = Vector2(0, 0)
+
 			if diff[0] == 0 and diff[1] != 0:
 				# Moving vertically
 				move.y = diff[1] / abs(diff[1])
@@ -253,7 +262,10 @@ func wall(path):
 				return
 			
 			while point_a != point_b:
-				tiles[point_a.y][point_a.x]  = 6
+				if tiles[point_a.y][point_a.x] == 6:
+					alreadyExistingWalls.append(Vector2(point_a.x, point_a.y))
+				
+				tiles[point_a.y][point_a.x] = 6
 				changed_tiles[point_a] = true
 				changed_tiles[point_a + right] = true
 				changed_tiles[point_a + left] = true
@@ -262,7 +274,9 @@ func wall(path):
 				changed_tiles[point_a + upup] = true
 				changed_tiles[point_a + downdown] = true
 				point_a += move
+		
 		var point = path[-1]
+			
 		tiles[point.y][point.x] = 6
 		changed_tiles[point] = true
 		changed_tiles[point + right] = true
@@ -272,6 +286,74 @@ func wall(path):
 		changed_tiles[point + upup] = true
 		changed_tiles[point + downdown] = true
 
+func possibleDoors(path):
+	var possibleDoorsInWalls = []
+	var possibleDoors = []
+	
+	if path.size() > 0:
+		var previousMovingHorizontal = null
+		var possibleDoorWall = wallIfNotCorner(path[0])
+		
+		if possibleDoorWall != null:
+			possibleDoors.append(possibleDoorWall)
+		
+		if path.size() > 1:
+			for index in range(1, path.size()):
+				var point_a = path[index]
+				var point_b = path[index - 1]
+				var diff = point_b - point_a
+				var nextMoveHorizontal
+				
+				if diff[0] == 0 and diff[1] != 0:
+					nextMoveHorizontal = false
+				elif diff[0] != 0 and diff[1] == 0:
+					nextMoveHorizontal = true
+				else:
+					possibleDoorsInWalls.append(possibleDoors)
+					possibleDoors = []
+				
+				if previousMovingHorizontal == null && hasWallMoveChangedDirection(previousMovingHorizontal, nextMoveHorizontal) && possibleDoors.size() > 0:
+					possibleDoorsInWalls.append(possibleDoors)
+					possibleDoors = []
+				
+				previousMovingHorizontal = nextMoveHorizontal
+				
+				possibleDoorWall = wallIfNotCorner(point_a)
+				
+				if possibleDoorWall != null:
+					possibleDoors.append(possibleDoorWall)
+	
+	possibleDoorsInWalls.append(possibleDoors)
+	
+	return possibleDoorsInWalls;
+
+func wallIfNotCorner(point):
+	var isHorizontal = is_horizontal_wall(point)
+	var isVertical = is_vertical_wall(point)
+	var wallDirection = Enums.WALLDIRECTION.NONE
+
+	if isHorizontal && isVertical:
+		wallDirection = Enums.WALLDIRECTION.CORNER
+	elif isHorizontal:
+		wallDirection = Enums.WALLDIRECTION.HORIZONTAL
+	elif isVertical:
+		wallDirection = Enums.WALLDIRECTION.VERTICAL
+	
+	if (wallDirection == Enums.WALLDIRECTION.HORIZONTAL || wallDirection == Enums.WALLDIRECTION.VERTICAL):
+		return [Vector2(point.x, point.y), wallDirection]
+
+func hasWallMoveChangedDirection(lastMoveHorizontal, nextMoveHorizontal):
+	return lastMoveHorizontal != nextMoveHorizontal
+
+func is_horizontal_wall(point):
+	return is_door_or_wall(point + Vector2(1, 0)) || is_door_or_wall(point + Vector2(-1, 0))
+	
+func is_vertical_wall(point):
+	return is_door_or_wall(point + Vector2(0, 1)) || is_door_or_wall(point + Vector2(0, -1))
+
+func is_door_or_wall(point):
+	return is_wall(tiles[point.y][point.x]) || is_door(point)
+
 func remove_wall(path):
 	for index in range(0, path.size()):
 		var point = path[index]
@@ -279,8 +361,8 @@ func remove_wall(path):
 		changed_tiles[point] = true
 
 func draw_floor(position, extents):
-	for x in range(position.x, position.x + extents.x):
-		for y in range(position.y, position.y + extents.y):
+	for x in range(position.x + 1, position.x + extents.x - 1):
+		for y in range(position.y + 1, position.y + extents.y - 1):
 			tiles[y][x] = 0
 
 func make_walls_consistent():
@@ -310,10 +392,7 @@ func make_walls_consistent():
 	changed_tiles = {}
 
 func add_door(v):
-	doors.push_back(v)
+	door_tiles[v] = true
 
 func is_door(v):
-	for d in doors:
-		if d == v:
-			return true
-	return false
+	return door_tiles.has(v)
