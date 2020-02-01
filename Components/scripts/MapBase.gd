@@ -2,9 +2,10 @@ var tiles = []
 var npcs = []
 var items = []
 var environmentObjects = []
-var doors = []
 var initial_tile
 var changed_tiles = {}
+
+var door_tiles = {}
 
 var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution
@@ -230,8 +231,7 @@ var downdown = Vector2(0, 2)
 var upup = Vector2(0, -2)
 
 # Create a wall between the given points
-func wall(path):
-	var alreadyExistingWalls = []
+func wall(path, alreadyExistingWalls = []):
 	var path_size = path.size()
 	
 	if path_size == 0:
@@ -285,15 +285,13 @@ func wall(path):
 		changed_tiles[point + up] = true
 		changed_tiles[point + upup] = true
 		changed_tiles[point + downdown] = true
-	
-	return alreadyExistingWalls
 
 func possibleDoors(path):
 	var possibleDoorsInWalls = []
 	var possibleDoors = []
 	
 	if path.size() > 0:
-		var previousMovingHorizontal
+		var previousMovingHorizontal = null
 		var possibleDoorWall = wallIfNotCorner(path[0])
 		
 		if possibleDoorWall != null:
@@ -394,10 +392,7 @@ func make_walls_consistent():
 	changed_tiles = {}
 
 func add_door(v):
-	doors.push_back(v)
+	door_tiles[v] = true
 
 func is_door(v):
-	for d in doors:
-		if d == v:
-			return true
-	return false
+	return door_tiles.has(v)

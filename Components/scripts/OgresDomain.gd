@@ -208,7 +208,10 @@ func add_room(name, room, wall):
 	draw_floor(position, roomDistribution.extents)
 	
 	# Draw walls on map
-	var alreadyExistingWalls = wall([corners[0], corners[1], corners[2], corners[3], corners[0]])
+	var alreadyExistingWalls = []
+
+	wall([corners[0], corners[1], corners[2], corners[3], corners[0]], alreadyExistingWalls)
+
 	var atleastOneDoorSet = false
 	var wallsWithPossibleDoors = possibleDoors(alreadyExistingWalls)
 	
