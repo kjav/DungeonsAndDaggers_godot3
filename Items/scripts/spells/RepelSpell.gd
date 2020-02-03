@@ -3,9 +3,9 @@ extends "SpellBase.gd"
 const Blast = preload("res://Effects/Blast.tscn")
 
 func _init():
-	iconFilePath = "res://assets/swirl_spell.png"
+	iconFilePath = "res://assets/swirl_spell.webp"
 	item_name = "Repel"
-	texture = preload("res://assets/swirl_spell.png")
+	texture = preload("res://assets/swirl_spell.webp")
 	rarity = Enums.WEAPONRARITY.UNCOMMON
 
 func onUse():

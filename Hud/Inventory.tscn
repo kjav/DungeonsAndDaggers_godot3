@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/frame_top.png" type="Texture" id=1]
-[ext_resource path="res://assets/frame_bottom.png" type="Texture" id=2]
-[ext_resource path="res://assets/frame_left.png" type="Texture" id=3]
+[ext_resource path="res://assets/frame_left.webp" type="Texture" id=1]
+[ext_resource path="res://assets/frame_top.webp" type="Texture" id=2]
+[ext_resource path="res://assets/frame_bottom.webp" type="Texture" id=3]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
@@ -104,7 +104,7 @@ func setInventoryToFitItems(lastNode):
 		get_node(\"InventoryWrapperBottom\").set_position(initialTilePlacementPos + Vector2(-1.75 * borderSize.x, borderSize.y + lastNodeSize.y - get_node(\"InventoryWrapperBottom\").get_size().y))
 		
 		get_node(\"InventoryWrapperLeft\").set_size(Vector2(get_node(\"InventoryWrapperLeft\").get_size().x, inventorySize.y - get_node(\"InventoryWrapperBottom\").get_size().y - get_node(\"InventoryWrapperTop\").get_size().y))
-		get_node(\"InventoryWrapperLeft\").set_position(inventoryPosition + Vector2(0, get_node(\"InventoryWrapperTop\").get_size().y))
+		get_node(\"InventoryWrapperLeft\").set_position(inventoryPosition + Vector2(1, get_node(\"InventoryWrapperTop\").get_size().y))
 		
 		get_node(\"InventoryClickableRegion\").set_size(inventorySize)
 		get_node(\"InventoryClickableRegion\").set_position(inventoryPosition)
@@ -139,12 +139,21 @@ func getType():
 [node name="Node2D" type="Node2D"]
 script = SubResource( 1 )
 
+[node name="InventoryWrapperLeft" type="TextureRect" parent="."]
+margin_left = 629.0
+margin_top = 1247.0
+margin_right = 645.0
+margin_bottom = 1580.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+
 [node name="InventoryWrapperTop" type="TextureRect" parent="."]
 margin_left = 628.0
 margin_top = 1224.0
 margin_right = 1083.0
 margin_bottom = 1247.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 expand = true
 
 [node name="InventoryWrapperBottom" type="TextureRect" parent="."]
@@ -152,14 +161,6 @@ margin_left = 599.0
 margin_top = 1563.0
 margin_right = 1082.0
 margin_bottom = 1652.0
-texture = ExtResource( 2 )
-expand = true
-
-[node name="InventoryWrapperLeft" type="TextureRect" parent="."]
-margin_left = 628.0
-margin_top = 1247.0
-margin_right = 645.0
-margin_bottom = 1578.0
 texture = ExtResource( 3 )
 expand = true
 

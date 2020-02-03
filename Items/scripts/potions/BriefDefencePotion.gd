@@ -1,9 +1,9 @@
 extends "PotionBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/black_simple_potion.png"
+	iconFilePath = "res://assets/black_simple_potion.webp"
 	item_name = "Brief Defence"
-	texture = preload("res://assets/black_simple_potion.png")
+	texture = preload("res://assets/black_simple_potion.webp")
 
 func onUse():
 	if not .allowedToUse():

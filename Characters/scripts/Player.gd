@@ -54,7 +54,6 @@ func _ready():
 	stats.health.value = stats.health.maximum
 	GameData.player = self
 	GameData.characters.append(self)
-	self.get_node(bodyPartsNodeName).get_node("Body").frames = load("res://assets/SpriteFrames/" + GameData.chosen_player + ".tres")
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale

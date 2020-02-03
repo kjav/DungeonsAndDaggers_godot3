@@ -4,46 +4,16 @@
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre.png" type="Texture" id=2]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Back.png" type="Texture" id=5]
-[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Up_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Up_1.png" type="Texture" id=7]
-[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Flipped.png" type="Texture" id=8]
+[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Flipped.png" type="Texture" id=5]
+[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Back.png" type="Texture" id=6]
+[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Up_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Up_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_1_Flipped.png" type="Texture" id=9]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_2_Flipped.png" type="Texture" id=10]
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
-"loop": false,
-"name": "death",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_left",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "stand_down",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "walk_down",
@@ -51,13 +21,43 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
+"name": "stand_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
 "name": "stand_up",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [  ],
+"loop": false,
+"name": "death",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "stand_right",
+"name": "stand_down",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "stand_left",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 6.0
 } ]
 
 [node name="BabyOgre" type="Node2D"]
@@ -76,4 +76,4 @@ offset = Vector2( 16, 16 )
 visible = false
 position = Vector2( 7.92442, 0.471691 )
 scale = Vector2( 0.025, 0.025 )
-frame = 0
+frame = 1

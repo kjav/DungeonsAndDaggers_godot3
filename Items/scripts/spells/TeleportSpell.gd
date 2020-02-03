@@ -1,9 +1,9 @@
 extends "SpellBase.gd"
 
 func _init():
-	iconFilePath = "res://assets/gem_spell.png"
+	iconFilePath = "res://assets/gem_spell.webp"
 	item_name = "Teleport"
-	texture = preload("res://assets/gem_spell.png")
+	texture = preload("res://assets/gem_spell.webp")
 
 func onUse():		
 	.onUse()

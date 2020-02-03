@@ -11,11 +11,6 @@
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
-"name": "front_opened",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": false,
 "name": "side_opened",
 "speed": 1.0
 }, {
@@ -23,6 +18,11 @@ animations = [ {
 "loop": false,
 "name": "side_closed",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "front_opened",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,

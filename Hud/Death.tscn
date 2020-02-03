@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/plank_15.png" type="Texture" id=2]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=2]
 [ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=4]
 

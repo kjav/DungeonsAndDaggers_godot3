@@ -2,7 +2,7 @@ extends Node2D
 
 var amount setget setAmount, getAmount
 var n = 0 setget setN, getN
-var blockHitmarket =  preload("res://assets/block_hitmarker.png")
+var blockHitmarket =  preload("res://assets/block_hitmarker.webp")
 var hitmarkerScene
 
 signal death(n)

@@ -3,9 +3,9 @@ extends "SpellBase.gd"
 const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
 
 func _init():
-	iconFilePath = "res://assets/brown_spell.png"
+	iconFilePath = "res://assets/brown_spell.webp"
 	item_name = "Earthquake"
-	texture = preload("res://assets/brown_spell.png")
+	texture = preload("res://assets/brown_spell.webp")
 	rarity = Enums.WEAPONRARITY.UNCOMMON
 
 func onUse():

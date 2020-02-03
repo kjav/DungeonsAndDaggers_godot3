@@ -1,12 +1,12 @@
 extends "SpellBase.gd"
 
 const missile = preload("res://Projectiles/Missile.tscn")
-const missile_texture = preload("res://assets/pellet.png")
+const missile_texture = preload("res://assets/pellet.jpg")
 
 func _init():
-	iconFilePath = "res://assets/triangle_spell.png"
+	iconFilePath = "res://assets/triangle_spell.webp"
 	item_name = "Missile"
-	texture = preload("res://assets/triangle_spell.png")
+	texture = preload("res://assets/triangle_spell.webp")
 
 func onUse():
 	if not .allowedToUse():

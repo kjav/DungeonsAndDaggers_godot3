@@ -4,34 +4,20 @@
 [ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=2]
 
 [sub_resource type="Theme" id=1]
-
 default_font = ExtResource( 2 )
 
 [node name="Node2D" type="Node2D"]
-
 position = Vector2( 0.59874, -0.59874 )
 script = ExtResource( 1 )
 
 [node name="Output" type="Label" parent="."]
-
-rect_scale = Vector2( 1.3, 1.3 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags_horizontal = 1
-size_flags_vertical = 0
-theme = SubResource( 1 )
-margin_left = 0.0
-margin_top = 0.0
 margin_right = 176.0
 margin_bottom = 16.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+rect_scale = Vector2( 1.3, 1.3 )
 mouse_filter = 1
+size_flags_vertical = 0
+theme = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-
-process_mode = 1
 wait_time = 8.0
-one_shot = false
 autostart = true

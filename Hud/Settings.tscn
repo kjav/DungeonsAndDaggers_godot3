@@ -3,9 +3,9 @@
 [ext_resource path="res://Hud/scripts/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/cross.png" type="Texture" id=2]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/plank_15.png" type="Texture" id=4]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
 [ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=5]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://Hud/scripts/MuteButton.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]

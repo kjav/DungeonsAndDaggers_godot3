@@ -2,8 +2,8 @@
 
 [ext_resource path="res://Hud/scripts/HudButton.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_yellow.png" type="Texture" id=2]
-[ext_resource path="res://assets/ring_food_inventory.png" type="Texture" id=3]
-[ext_resource path="res://assets/ring.png" type="Texture" id=4]
+[ext_resource path="res://assets/ring_food_inventory.webp" type="Texture" id=3]
+[ext_resource path="res://assets/ring.webp" type="Texture" id=4]
 [ext_resource path="res://Hud/scripts/HudButtonClick.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 margin_right = 256.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
+expand = true
 
 [node name="Icon" type="TextureRect" parent="."]
 margin_right = 256.0
