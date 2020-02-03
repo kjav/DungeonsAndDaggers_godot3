@@ -224,6 +224,11 @@ func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 		add_child(timer)
 		timer.start()
 	
+	checkForTutorialPrompts()
+	
+	hasMoved = true
+
+func checkForTutorialPrompts():
 	if not hasMoved:
 		addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
 	
@@ -235,11 +240,19 @@ func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 		addTutorialTextIfTutorial("Click The\nFloating Menu\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2:
-		
 			GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
 			GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
-	
-	hasMoved = true
+
+func _input(ev):
+	if ev is InputEventKey and not ev.echo:
+		if ev.scancode == KEY_LEFT:
+			swiped(Enums.DIRECTION.LEFT)
+		elif ev.scancode == KEY_RIGHT:
+			swiped(Enums.DIRECTION.RIGHT)
+		elif ev.scancode == KEY_UP:
+			swiped(Enums.DIRECTION.UP)
+		elif ev.scancode == KEY_DOWN:
+			swiped(Enums.DIRECTION.DOWN)
 
 func swiped(direction):
 	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
