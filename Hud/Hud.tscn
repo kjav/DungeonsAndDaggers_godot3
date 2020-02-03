@@ -91,11 +91,11 @@ frameStyle = "Orange"
 type = "Spell"
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
-margin_left = 979.0
-margin_top = 34.0
-margin_right = 1235.0
-margin_bottom = 290.0
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = 969.0
+margin_top = 37.0
+margin_right = 1225.0
+margin_bottom = 293.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 10 )
 script = ExtResource( 11 )
 
