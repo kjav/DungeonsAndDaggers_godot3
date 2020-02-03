@@ -30,6 +30,7 @@ var half_screen_size
 var currentWeaponSlot
 var hasMoved
 var lastEvent
+var applePickedUp = false
 
 func _init():
 	initialStats.health = {
@@ -226,6 +227,18 @@ func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 	if not hasMoved:
 		addTutorialTextIfTutorial("Move into\nenemies\nto attack", Vector2(6.4, 7.2))
 	
+	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(768, 768) && GameData.current_level == 1 && !applePickedUp:
+		GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("To Pickup\nClick The\nFloating Menu\nThis Uses\nA Turn")
+		GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
+	
+	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(640, -512) && GameData.current_level == 1:
+		addTutorialTextIfTutorial("Click The\nFloating Menu\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
+	
+	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2:
+		
+			GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
+			GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
+	
 	hasMoved = true
 
 func swiped(direction):
@@ -253,7 +266,7 @@ func attack(character, base_damage = 0):
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
 				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))
-				addTutorialTextIfTutorial("Careful\nenemies move\ninto you\nto attack", Vector2(5.2, 3.5))
+				addTutorialTextIfTutorial("Careful!\nenemies move\ninto you\nto attack", Vector2(5.2, 3.5))
 			
 			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
 			
@@ -336,6 +349,7 @@ func pickUp(item):
 		emit_signal("itemPickedUp", item)
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple" && GameData.current_level == 1:
+			applePickedUp = true
 			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("Click food\nicon at\npage bottom\nto eat")
 			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
 

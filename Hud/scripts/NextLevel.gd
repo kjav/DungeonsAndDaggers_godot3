@@ -15,7 +15,5 @@ func _pressed():
 		
 		if GameData.chosen_map == "Tutorial" && GameData.current_level == 2:
 			GameData.player.addTutorialTextIfTutorial("Move into\nobjects to\ninteract", Vector2(4.3, 10.1))
-			GameData.player.addTutorialTextIfTutorial("Blue's best\nthen green\nworst is grey", Vector2(3.1, 7.2))
-			GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.8))
 	
 	get_parent().hide()
