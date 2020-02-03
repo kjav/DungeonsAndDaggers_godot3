@@ -30,7 +30,7 @@ func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictD
 
 	var tileDistance = abs(target.get_position().x - get_position().x) + abs(target.get_position().y - get_position().y)
 
-	if (tileDistance / GameData.TileSize) <= 3:
+	if (tileDistance / GameData.TileSize) <= 3 && inflictDamage:
 		target.takeDamage(damage)
 		inflictDamage = false
 
