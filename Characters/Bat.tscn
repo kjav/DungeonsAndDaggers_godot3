@@ -1,26 +1,41 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Characters/scripts/Bat.gd" type="Script" id=1]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_000.png" type="Texture" id=2]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_001.png" type="Texture" id=3]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_002.png" type="Texture" id=4]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_003.png" type="Texture" id=5]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_004.png" type="Texture" id=6]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_005.png" type="Texture" id=7]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_006.png" type="Texture" id=8]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_007.png" type="Texture" id=9]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_000.png" type="Texture" id=10]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_001.png" type="Texture" id=11]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_002.png" type="Texture" id=12]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_003.png" type="Texture" id=13]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_004.png" type="Texture" id=14]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_005.png" type="Texture" id=15]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_006.png" type="Texture" id=16]
-[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_007.png" type="Texture" id=17]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_000.webp" type="Texture" id=2]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_001.webp" type="Texture" id=3]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_002.webp" type="Texture" id=4]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_003.webp" type="Texture" id=5]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_004.webp" type="Texture" id=6]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_005.webp" type="Texture" id=7]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_006.webp" type="Texture" id=8]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_007.webp" type="Texture" id=9]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_000.webp" type="Texture" id=10]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_001.webp" type="Texture" id=11]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_002.webp" type="Texture" id=12]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_003.webp" type="Texture" id=13]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_004.webp" type="Texture" id=14]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_005.webp" type="Texture" id=15]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_006.webp" type="Texture" id=16]
+[ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_007.webp" type="Texture" id=17]
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_down",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "stand_right",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "stand_up",
+"speed": 14.0
+}, {
 "frames": [  ],
 "loop": false,
 "name": "death",
@@ -28,42 +43,27 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "walk_left",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "stand_left",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
 "name": "stand_down",
 "speed": 14.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "walk_down",
+"name": "stand_left",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_right",
 "speed": 14.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
 "loop": true,
-"name": "stand_up",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "stand_right",
+"name": "walk_left",
 "speed": 14.0
 } ]
 
@@ -74,13 +74,13 @@ script = ExtResource( 1 )
 [node name="ChangingBodyParts" type="Node2D" parent="."]
 
 [node name="Body" type="AnimatedSprite" parent="ChangingBodyParts"]
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "stand_down"
-frame = 7
+frame = 6
 playing = true
-offset = Vector2( 320, 320 )
+offset = Vector2( 160, 160 )
 
 [node name="Stars" parent="." instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 144.936, 27.6696 )
-frame = 0

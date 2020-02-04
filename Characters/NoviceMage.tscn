@@ -1,16 +1,16 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/scripts/NoviceMage.gd" type="Script" id=1]
-[ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=2]
+[ext_resource path="res://assets/mage.png" type="Texture" id=2]
 [ext_resource path="res://assets/mage_right.png" type="Texture" id=3]
-[ext_resource path="res://assets/mage.png" type="Texture" id=4]
+[ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=4]
 [ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "death",
+"name": "walk_down",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -18,17 +18,27 @@ animations = [ {
 "name": "stand_right",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "walk_down",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "death",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "stand_down",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "walk_up",
 "speed": 1.0
@@ -38,19 +48,9 @@ animations = [ {
 "name": "walk_right",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "stand_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "walk_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "stand_left",
 "speed": 1.0
 } ]
 
@@ -70,4 +70,3 @@ offset = Vector2( 16, 16 )
 visible = false
 position = Vector2( 6.38902, -1.84483 )
 scale = Vector2( 0.03, 0.03 )
-frame = 1

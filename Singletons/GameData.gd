@@ -32,7 +32,7 @@ var map_seed = null
 
 func _ready():
 	randomize()
-	#addInitialItemsForTesting()
+	addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
 	print("Map seed: ", map_seed)

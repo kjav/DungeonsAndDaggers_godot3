@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hud/scripts/ContextualMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/frame_bg_fake_sqaure.png" type="Texture" id=3]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/frame_bg_fake_square.webp" type="Texture" id=3]
 [ext_resource path="res://Hud/scripts/NextLevel.gd" type="Script" id=4]
 [ext_resource path="res://assets/pixel.png" type="Texture" id=5]
 [ext_resource path="res://Hud/ContextualMenuItemNode.tscn" type="PackedScene" id=6]
@@ -31,6 +31,7 @@ margin_right = 1032.0
 margin_bottom = 256.989
 rect_scale = Vector2( 0.17, 0.17 )
 texture_normal = ExtResource( 3 )
+expand = true
 script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="LevelSelect"]

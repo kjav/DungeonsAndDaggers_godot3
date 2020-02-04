@@ -5,7 +5,6 @@
 [ext_resource path="res://Environments/scripts/Chest.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
@@ -18,12 +17,8 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[node name="Chest" type="AnimatedSprite" index="0"]
-
+[node name="Chest" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "closed"
 offset = Vector2( 64, 64 )
 script = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-

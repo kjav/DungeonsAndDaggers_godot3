@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/scripts/KeysInterfaceContainer.gd" type="Script" id=2]
@@ -7,18 +7,17 @@
 [ext_resource path="res://assets/half_grey_hat.png" type="Texture" id=5]
 [ext_resource path="res://assets/grey_hat.png" type="Texture" id=6]
 [ext_resource path="res://assets/change_arrow.png" type="Texture" id=7]
-[ext_resource path="res://Hud/Minimap.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Hud/InventoryHudButton.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/if_Settings_gear_setting_tools_392496.png" type="Texture" id=10]
-[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=11]
-[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=14]
-[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Hud/InventoryHudButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/if_Settings_gear_setting_tools_392496.png" type="Texture" id=9]
+[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=10]
+[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=13]
+[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=18]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -40,7 +39,7 @@ position = Vector2( 30, 1716 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="HealthBar" type="Node2D" parent="HudCanvasLayer"]
-position = Vector2( -47.3499, 43.9547 )
+position = Vector2( -12.2763, 42.2845 )
 scale = Vector2( 2, 2 )
 
 [node name="ManaBar" type="Node2D" parent="HudCanvasLayer"]
@@ -69,61 +68,58 @@ rect_scale = Vector2( 1, 0.75 )
 mouse_filter = 2
 texture = ExtResource( 7 )
 
-[node name="Node2D" parent="HudCanvasLayer" instance=ExtResource( 8 )]
-visible = false
-
-[node name="FoodInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
+[node name="FoodInvent" parent="HudCanvasLayer" instance=ExtResource( 8 )]
 position = Vector2( 770, 1780 )
 scale = Vector2( 0.5, 0.5 )
 frameStyle = "Yellow"
 type = "Food"
 
-[node name="PotInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
+[node name="PotInvent" parent="HudCanvasLayer" instance=ExtResource( 8 )]
 position = Vector2( 620, 1780 )
 scale = Vector2( 0.5, 0.5 )
 frameStyle = "Green"
 type = "Potion"
 
-[node name="SpellInvent" parent="HudCanvasLayer" instance=ExtResource( 9 )]
+[node name="SpellInvent" parent="HudCanvasLayer" instance=ExtResource( 8 )]
 position = Vector2( 920, 1780 )
 scale = Vector2( 0.5, 0.5 )
 frameStyle = "Orange"
 type = "Spell"
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
-margin_left = 969.0
-margin_top = 37.0
-margin_right = 1225.0
-margin_bottom = 293.0
-rect_scale = Vector2( 0.5, 0.5 )
-texture_normal = ExtResource( 10 )
-script = ExtResource( 11 )
+margin_left = 1007.0
+margin_top = 6.0
+margin_right = 1263.0
+margin_bottom = 262.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_normal = ExtResource( 9 )
+script = ExtResource( 10 )
 
-[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 12 )]
-position = Vector2( 39.766, 130.638 )
+[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 11 )]
+position = Vector2( 390.218, 115.807 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 13 )]
+[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 12 )]
 visible = false
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
-[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 15 )]
-position = Vector2( 967.716, 146.247 )
+[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 14 )]
+position = Vector2( 1002.68, 79.558 )
 scale = Vector2( 0.1, 0.1 )
 
-[node name="GameClickableRegion" parent="HudCanvasLayer" instance=ExtResource( 16 )]
+[node name="GameClickableRegion" parent="HudCanvasLayer" instance=ExtResource( 15 )]
 visible = false
 margin_left = -9.0
 margin_top = -8.0
 margin_right = 1089.0
 margin_bottom = 1930.0
 
-[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 17 )]
+[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 16 )]
 visible = false
 
-[node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 18 )]
+[node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 17 )]
 visible = false
 
-[node name="ContextualMenu" parent="." instance=ExtResource( 19 )]
+[node name="ContextualMenu" parent="." instance=ExtResource( 18 )]
 visible = false
 
 [node name="TutorialTextPrompts" type="Node2D" parent="."]

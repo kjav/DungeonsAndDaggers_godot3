@@ -1,9 +1,9 @@
 extends "FoodBase.gd"
 
 func _init():
-	textureFilePath = "res://assets/apple.png"
+	textureFilePath = "res://assets/apple.webp"
 	item_name = "Apple"
-	texture = preload("res://assets/apple.png")
+	texture = preload("res://assets/apple.webp")
 
 func onUse():
 	if not .allowedToUse():

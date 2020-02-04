@@ -1,9 +1,9 @@
 extends "SpellBase.gd"
 
 func _init():
-	textureFilePath = "res://assets/gem_spell.png"
+	textureFilePath = "res://assets/gem_spell.webp"
 	item_name = "Teleport"
-	texture = preload("res://assets/gem_spell.png")
+	texture = preload("res://assets/gem_spell.webp")
 
 func onUse():		
 	GameData.player.get_node("LightBlip").play("preparing")

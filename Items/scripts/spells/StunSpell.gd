@@ -1,9 +1,9 @@
 extends "SpellBase.gd"
 
 func _init():
-	textureFilePath = "res://assets/rune_spell.png"
+	textureFilePath = "res://assets/rune_spell.webp"
 	item_name = "Stun"
-	texture = preload("res://assets/rune_spell.png")
+	texture = preload("res://assets/rune_spell.webp")
 
 func onUse():
 	if not .allowedToUse():

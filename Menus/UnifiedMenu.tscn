@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/stone_wall02.png" type="Texture" id=2]
-[ext_resource path="res://assets/splash.png" type="Texture" id=3]
-[ext_resource path="res://assets/plank_15.png" type="Texture" id=4]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=5]
-[ext_resource path="res://assets/bg_01_02.png" type="Texture" id=6]
+[ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
+[ext_resource path="res://assets/splash.webp" type="Texture" id=3]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve" id=1]
@@ -26,7 +26,7 @@ margin_left = -635.334
 margin_top = -255.066
 margin_right = 7728.67
 margin_bottom = 4288.94
-rect_scale = Vector2( 0.66, 0.66 )
+rect_scale = Vector2( 1.32, 1.32 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
