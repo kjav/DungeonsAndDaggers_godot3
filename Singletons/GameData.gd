@@ -374,7 +374,7 @@ func toggle_mute():
 	else:
 		# Delete mute file
 		var dir = Directory.new()
-		dir.remove("user//audio_muted.persist")
+		dir.remove("user://audio_muted.persist")
 
 var Rooms = {
 	"StartRoom": preload("res://Components/Rooms/StartRoom.gd").new(),
