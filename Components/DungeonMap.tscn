@@ -14,10 +14,9 @@ cell_size = Vector2( 32, 32 )
 format = 1
 
 [node name="TopTileMap" type="TileMap" parent="."]
-visible = false
 scale = Vector2( 4, 4 )
+z_index = 2
 z_as_relative = false
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -262137, 0, 0 )
