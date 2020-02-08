@@ -273,7 +273,6 @@ func attack(character, base_damage = 0):
 		var currentWeapon = getCurrentWeapon()
 		
 		if currentWeapon.ammo != 0:
-			emit_signal("playerAttack", character, currentWeapon.damage)
 			currentWeapon.onAttack(character)
 			.attack(character, currentWeapon.damage)
 			
