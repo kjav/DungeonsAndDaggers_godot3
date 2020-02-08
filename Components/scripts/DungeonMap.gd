@@ -21,12 +21,23 @@ var points = {}
 var ids = {}
 var map = null
 
-var top_layer_tiles = []
+var top_layer_tiles = [14, 15, 16, 17, 18, 19, 20, 24, 29, 31, 33, 35, 39, 44, 45]
 
 var BottomTileMap
+var TopTileMap
+
+func tile_to_top_tile(n):
+	match n:
+		14, 15, 16, 17, 18, 19, 20, 24, 39:
+			return 36
+		29,33,44:
+			return 37
+		31, 35, 45:
+			return 38
 
 func _ready():
 	BottomTileMap = get_node("BottomTileMap")
+	TopTileMap = get_node("TopTileMap")
 	for i in range(0, 128):
 		flat_not_walkable.push_back(not_walkable.has(i))
 	# NOTE: -1 is "not walkable". This means that it should be "true" in
@@ -100,6 +111,7 @@ func set_map_type(type):
 		map = Maps[type].new(GameData.current_level)
 		var BTM = self.get_node("BottomTileMap")
 		var TTM = self.get_node("TopTileMap")
+		TTM.clear()
 		var Enemies = self.get_node("/root/Node2D/Enemies")
 		Pathfinder = AStar.new()
 		var counting = 0
@@ -107,10 +119,13 @@ func set_map_type(type):
 		for row in map.tiles:
 			var i = -100
 			for tile in row:
-				BTM.set_cell(i, j, tile)
+				if tile == -1:
+					BTM.set_cell(i, j, 0)
+				else:
+					BTM.set_cell(i, j, tile)
 				
 				if tile in top_layer_tiles:
-					TTM.set_cell(i, j, tile)
+					TTM.set_cell(i, j, tile_to_top_tile(tile))
 				
 				if !flat_not_walkable[tile]:
 					counting += 1

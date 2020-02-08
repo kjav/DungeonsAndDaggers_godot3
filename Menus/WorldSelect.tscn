@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/43.PNG" type="Texture" id=3]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=4]
-[ext_resource path="res://assets/plank_15.png" type="Texture" id=5]
-[ext_resource path="res://assets/plank_15_dark.png" type="Texture" id=6]
+[ext_resource path="res://assets/43.webp" type="Texture" id=3]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=5]
+[ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/Continue.gd" type="Script" id=7]
 [ext_resource path="res://Menus/New Game.gd" type="Script" id=8]
-[ext_resource path="res://assets/dummy_01.png" type="Texture" id=9]
+[ext_resource path="res://assets/dummy_01.webp" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -24,6 +24,7 @@ size = 64
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
+position = Vector2( 0, 169 )
 script = ExtResource( 1 )
 
 [node name="SelectScreen" parent="." instance=ExtResource( 2 )]

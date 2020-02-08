@@ -32,7 +32,7 @@ var map_seed = null
 
 func _ready():
 	randomize()
-	#addInitialItemsForTesting()
+	addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
 	print("Map seed: ", map_seed)
@@ -252,6 +252,8 @@ func dict2item(dict):
 	var item = dict2inst(dict)
 	# Fixes textures not loading
 	item.texture = load(item.textureFilePath)
+	if item.iconTextureFilePath:
+		item.iconTexture = load(item.iconTextureFilePath)
 	if "offset" in item:
 		# Fixes offset stored as string not Vector2
 		item.offset = string2vec(item.offset)
@@ -374,7 +376,7 @@ func toggle_mute():
 	else:
 		# Delete mute file
 		var dir = Directory.new()
-		dir.remove("user//audio_muted.persist")
+		dir.remove("user://audio_muted.persist")
 
 var Rooms = {
 	"StartRoom": preload("res://Components/Rooms/StartRoom.gd").new(),

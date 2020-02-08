@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hud/scripts/InventoryItemDisplay.gd" type="Script" id=1]
-[ext_resource path="res://assets/die_03.png" type="Texture" id=2]
+[ext_resource path="res://assets/die_03.webp" type="Texture" id=2]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=3]
-[ext_resource path="res://assets/green_simple_potion.png" type="Texture" id=4]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/green_simple_potion.webp" type="Texture" id=4]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://Hud/scripts/InventoryItemClick.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
@@ -16,17 +16,17 @@ script = ExtResource( 1 )
 
 [node name="InventoryTile" type="TextureRect" parent="."]
 self_modulate = Color( 0.690196, 0.564706, 0.517647, 1 )
-margin_right = 1897.0
-margin_bottom = 344.0
-rect_scale = Vector2( 0.245, 0.39 )
+margin_right = 474.0
+margin_bottom = 86.0
+rect_scale = Vector2( 0.98, 1.56 )
 texture = ExtResource( 2 )
 
 [node name="ItemBackground" type="TextureRect" parent="."]
 margin_left = 9.2209
 margin_top = 7.84237
-margin_right = 265.221
-margin_bottom = 263.842
-rect_scale = Vector2( 0.45, 0.45 )
+margin_right = 137.221
+margin_bottom = 135.842
+rect_scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 3 )
 
 [node name="ItemTexture" type="TextureRect" parent="."]

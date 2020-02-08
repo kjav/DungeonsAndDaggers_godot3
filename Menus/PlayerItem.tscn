@@ -2,90 +2,57 @@
 
 [ext_resource path="res://Menus/scripts/PlayerItem.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Range.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/CMONNEAR.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 110
-use_mipmaps = false
-use_filter = false
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 30
 use_mipmaps = true
-use_filter = false
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="Node2D" type="Node2D"]
-
 script = ExtResource( 1 )
-playerTexture = null
-playerName = null
-playerStrength = null
-playerDefence = null
-playerHitpoints = null
-playerSpeed = null
-playerDescription = null
-playerEditable = null
 
-[node name="PlayerImage" type="TextureRect" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PlayerImage" type="TextureRect" parent="."]
 margin_left = -320.0
 margin_top = -320.0
 margin_right = 320.0
 margin_bottom = 320.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 expand = true
-stretch_mode = 0
 
-[node name="Strength" parent="." index="1" instance=ExtResource( 2 )]
-
+[node name="Strength" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 400 )
+progress = 0
 range_name = "Strength"
+editable = false
 
-[node name="Hitpoints" parent="." index="2" instance=ExtResource( 2 )]
-
+[node name="Hitpoints" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 640 )
+progress = 0
 range_name = "Hitpoints"
+editable = false
 
-[node name="Speed" parent="." index="3" instance=ExtResource( 2 )]
-
+[node name="Speed" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 760 )
+progress = 0
 range_name = "Speed"
+editable = false
 
-[node name="Defence" parent="." index="4" instance=ExtResource( 2 )]
-
+[node name="Defence" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 520 )
+progress = 0
 range_name = "Defence"
+editable = false
 
-[node name="PlayerNameLabel" type="Label" parent="." index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PlayerNameLabel" type="Label" parent="."]
 margin_left = -600.0
 margin_top = -417.0
 margin_right = 600.0
 margin_bottom = -297.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -95,35 +62,16 @@ custom_constants/shadow_offset_y = 2
 text = "DEFAULT"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="PlayerDescriptionLabel" type="Label" parent="." index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="PlayerDescriptionLabel" type="Label" parent="."]
 margin_left = -460.0
 margin_top = 815.0
 margin_right = 460.0
 margin_bottom = 1065.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "some default description text"
 align = 1
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Material", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_colors", "custom_fonts" ]
-
-

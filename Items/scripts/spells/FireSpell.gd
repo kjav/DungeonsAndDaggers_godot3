@@ -1,12 +1,12 @@
 extends "SpellBase.gd"
 
 const missile = preload("res://Projectiles/Missile.tscn")
-const missile_texture = preload("res://assets/fireball.png")
+const missile_texture = preload("res://assets/fireball.webp")
 
 func _init():
-	textureFilePath = "res://assets/red_spell2.png"
+	textureFilePath = "res://assets/red_spell2.webp"
 	item_name = "Fire"
-	texture = preload("res://assets/red_spell2.png")
+	texture = preload("res://assets/red_spell2.webp")
 	rarity = Enums.WEAPONRARITY.RARE
 
 func onUse():

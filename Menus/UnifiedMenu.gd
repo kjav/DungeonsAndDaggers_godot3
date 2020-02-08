@@ -4,7 +4,6 @@ export(Curve) var transition_curve
 export(float) var transition_time = 1.0
 
 var transitioning = false
-var start_pos
 var target_pos
 var current_time
 var printed = false
@@ -26,13 +25,11 @@ func _process(delta):
 			position = target_pos
 		else:
 			var ratio = transition_curve.interpolate_baked(current_time / transition_time)
-			position = target_pos * ratio + start_pos * (1 - ratio)
+			position = target_pos * ratio
 
 func _on_splashbutton_start():
 	if not transitioning:
-		start_pos = position
-		print(start_pos)
-		target_pos = start_pos - Vector2(1180, 0)
+		target_pos = -Vector2(1180, 0)
 		current_time = 0.0
 		transitioning = true
 		#get_node("PlayerSelect/Node2D").transitioning = true

@@ -8,35 +8,40 @@
 [ext_resource path="res://assets/Beserker_full.png" type="Texture" id=6]
 
 [node name="Node2D" type="Node2D"]
-
 script = ExtResource( 1 )
-transitioning = false
 
-[node name="SelectScreen" parent="." index="0" instance=ExtResource( 2 )]
+[node name="SelectScreen" parent="." instance=ExtResource( 2 )]
 
-[node name="AngelPlayer" parent="." index="1" instance=ExtResource( 3 )]
-
+[node name="AngelPlayer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 540, 550 )
 playerTexture = ExtResource( 4 )
 playerName = "Angel"
+playerStrength = 0
+playerDefence = 0
+playerHitpoints = 0
+playerSpeed = 0
 playerDescription = "The Angel is from another realm. Where it lacks in physical strength, it makes up for with massive hitpoints, and a very high speed gives them the first hit in most battles."
+playerEditable = false
 
-[node name="WarriorPlayer" parent="." index="2" instance=ExtResource( 3 )]
-
+[node name="WarriorPlayer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -1100 )
-_sections_unfolded = [ "Transform" ]
 playerTexture = ExtResource( 5 )
 playerName = "Warrior"
+playerStrength = 0
+playerDefence = 0
+playerHitpoints = 0
+playerSpeed = 0
 playerDescription = "A fierce human warrior from the Surface, this character has the strength to hit hard - but will they survive to make the final blow?"
+playerEditable = false
 
-[node name="BeserkerPlayer" parent="." index="3" instance=ExtResource( 3 )]
-
+[node name="BeserkerPlayer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -1100 )
-_sections_unfolded = [ "Transform" ]
 playerTexture = ExtResource( 6 )
 playerName = "Beserker"
+playerStrength = 0
+playerDefence = 0
+playerHitpoints = 0
+playerSpeed = 0
 playerDescription = "The beserker will never let you down with the damage he will inflict on evil creatures. But they may gravely injure him while he's striking..."
-
+playerEditable = false
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
-
-

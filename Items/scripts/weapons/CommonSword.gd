@@ -4,6 +4,8 @@ func _init():
 	textureFilePath = "res://assets/basic_sword.png"
 	texture = preload("res://assets/basic_sword.png")
 	iconTexture = preload("res://assets/basic_sword.png")
+	iconTextureFilePath = "res://assets/basic_sword.png"
+	iconTexture = preload("res://assets/basic_sword.png")
 	item_name = "Common Sword"
 	damage = 2.5
 	showBehindHand = true

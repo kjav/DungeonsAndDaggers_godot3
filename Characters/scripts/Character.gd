@@ -234,7 +234,8 @@ func handleMove(direction):
 func environmentOnWalkedOut():
 	for i in range(environmentsAtPosition.size()):
 		if (is_instance_valid(environmentsAtPosition[i])):
-			environmentsAtPosition[i].onWalkedOut(self)
+			if funcref(environmentsAtPosition[i], "onWalkedOut"):
+				environmentsAtPosition[i].onWalkedOut(self)
 	
 	environmentsAtPosition = environmentsAtTargetPosition
 	environmentsAtTargetPosition = []

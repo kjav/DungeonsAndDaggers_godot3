@@ -3,7 +3,7 @@ extends "Enemy.gd"
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 const missile = preload("res://Projectiles/Missile.tscn")
-const missile_texture = preload("res://assets/pellet.png")
+const missile_texture = preload("res://assets/pellet.jpg")
 var moveTo
 var attackedLastTurn
 
