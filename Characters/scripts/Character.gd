@@ -23,6 +23,7 @@ var invisibilityTurnsRemaining = -1
 var temporaryMaxHeathTurnsRemaining = -1
 var healthAfterTemporaryIncreaseAdded = 0
 var temporaryMaxHeathAmount = 2
+var damageSinceTemporaryHealthAdded = 0
 
 var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
@@ -141,6 +142,10 @@ func consume_stat(stat, amount):
 
 func heal(amount, evenIfDead = false):
 	increaseHealth(amount, evenIfDead)
+
+func decreaseHealth(amount):
+	if self.stats.health.value > 0:
+		self.stats.health.value = max(self.stats.health.value - amount, 0)
 
 func increaseHealth(amount, evenIfDead = false):
 	if self.stats.health.value < self.stats.health.maximum && (evenIfDead || alive()):
@@ -370,6 +375,7 @@ func attack(character, base_damage = 0):
 func takeDamage(damage):
 	if damageable:
 		stats.health.value -= damage
+		damageSinceTemporaryHealthAdded += damage
 		
 		if self == GameData.player:
 			emit_signal("statsChanged", "health", "Down", -damage)
@@ -555,11 +561,13 @@ func applyTemporaryHealth(turnAmount):
 		healthAfterTemporaryIncreaseAdded = self.stats.health.value
 		temporaryMaxHeathTurnsRemaining = 0
 	else:
-		increaseHealth(max(0, min(healthAfterTemporaryIncreaseAdded - self.stats.health.value, temporaryMaxHeathAmount)))
+		increaseHealth(min(damageSinceTemporaryHealthAdded, temporaryMaxHeathAmount))
 	
+	damageSinceTemporaryHealthAdded = 0
 	temporaryMaxHeathTurnsRemaining += turnAmount
 
 func removeTemporaryMaxHealth():
+	decreaseHealth(max(temporaryMaxHeathAmount - damageSinceTemporaryHealthAdded, 0))
 	decreaseMaxHealth(temporaryMaxHeathAmount)
 	temporaryMaxHeathTurnsRemaining -= 1
 
