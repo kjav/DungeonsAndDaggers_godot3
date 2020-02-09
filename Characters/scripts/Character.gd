@@ -30,10 +30,6 @@ var temporaryStrengthAmount = 5
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
 
-var temporaryManaTurnsRemaining = -1
-var temporaryManaAmount = 2
-var manaAfterTemporaryIncreaseAdded = 0
-
 var stunnedDuration
 
 const bodyPartsNodeName = "ChangingBodyParts"
@@ -133,11 +129,6 @@ func turn(skipTurnBehaviour = false):
 		temporaryDefenceTurnsRemaining -= 1
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
-
-	if temporaryManaTurnsRemaining > 0:
-		temporaryManaTurnsRemaining -= 1
-	elif temporaryManaTurnsRemaining == 0:
-		removeTemporaryMana()
 
 func setTurnAnimations():
 	pass
@@ -603,24 +594,6 @@ func removeTemporaryDefence():
 	self.stats.defence.value -= temporaryDefenceAmount
 	self.stats.defence.maximum -= temporaryDefenceAmount
 	temporaryDefenceTurnsRemaining = -1
-
-func applyTemporaryMana(turnAmount):
-	if (turnAmount <= 0):
-		return
-	
-	if temporaryManaTurnsRemaining <= 0:
-		increaseMaxMana(temporaryManaAmount)
-		increaseMana(temporaryManaAmount)
-		manaAfterTemporaryIncreaseAdded = self.stats.mana.value
-		temporaryManaTurnsRemaining = 0
-	else:
-		increaseMana(max(0, min(manaAfterTemporaryIncreaseAdded - self.stats.mana.value, temporaryManaAmount)))
-	
-	temporaryManaTurnsRemaining += turnAmount
-
-func removeTemporaryMana():
-	decreaseMaxMana(temporaryManaAmount)
-	temporaryManaTurnsRemaining -= 1
 
 func addStun(turnAmount):
 	if (turnAmount <= 0):

@@ -7,7 +7,6 @@ const PotionClasses = {
 	"InvisibilityPotion": preload("res://Items/scripts/potions/InvisibilityPotion.gd"),
 	"LevelUpPotion": preload("res://Items/scripts/potions/LevelUpPotion.gd"),
 	"BriefHealthPotion": preload("res://Items/scripts/potions/BriefHealthPotion.gd"),
-	"BriefManaPotion": preload("res://Items/scripts/potions/BriefManaPotion.gd"),
 	"BriefStrengthPotion": preload("res://Items/scripts/potions/BriefStrengthPotion.gd"),
 	"BriefDefencePotion": preload("res://Items/scripts/potions/BriefDefencePotion.gd")
 }
