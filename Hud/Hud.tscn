@@ -8,12 +8,12 @@
 [ext_resource path="res://assets/grey_hat.png" type="Texture" id=6]
 [ext_resource path="res://assets/change_arrow.png" type="Texture" id=7]
 [ext_resource path="res://Hud/InventoryHudButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/settings_gear.webp" type="Texture" id=9]
-[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=10]
-[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=13]
-[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hud/TurnTimer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/settings_gear.webp" type="Texture" id=10]
+[ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=11]
+[ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=14]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=17]
@@ -39,7 +39,7 @@ position = Vector2( 30, 1716 )
 scale = Vector2( 0.75, 0.75 )
 
 [node name="HealthBar" type="Node2D" parent="HudCanvasLayer"]
-position = Vector2( -12.2763, 42.2845 )
+position = Vector2( -47.11, 32.2845 )
 scale = Vector2( 2, 2 )
 
 [node name="ManaBar" type="Node2D" parent="HudCanvasLayer"]
@@ -86,25 +86,25 @@ scale = Vector2( 0.5, 0.5 )
 frameStyle = "Orange"
 type = "Spell"
 
+[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 9 )]
+position = Vector2( 985.047, 118.504 )
+scale = Vector2( 0.2, 0.2 )
+
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
-margin_left = 1007.0
-margin_top = 6.0
-margin_right = 1263.0
-margin_bottom = 262.0
-rect_scale = Vector2( 0.25, 0.25 )
-texture_normal = ExtResource( 9 )
-script = ExtResource( 10 )
+margin_left = 985.94
+margin_top = 26.1055
+margin_right = 1241.94
+margin_bottom = 282.105
+rect_scale = Vector2( 0.5, 0.5 )
+texture_normal = ExtResource( 10 )
+script = ExtResource( 11 )
 
-[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 11 )]
-position = Vector2( 390.218, 115.807 )
+[node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 12 )]
+position = Vector2( 31.4499, 114.573 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 12 )]
+[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 visible = false
-script = ExtResource( 13 )
-
-[node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 14 )]
-position = Vector2( 1002.68, 79.558 )
-scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 14 )
 
 [node name="GameClickableRegion" parent="HudCanvasLayer" instance=ExtResource( 15 )]
 visible = false
