@@ -302,7 +302,7 @@ func handleEnvironmentCollisions(pos):
 func sample_normal_distribution(mean, sd):
 	# Use the Box-Muller transform to sample from the given normal distribution.
 	# https://en.wikipedia.org/wiki/Box-Muller_transform
-	return sqrt(-2 * log(randf())) * cos(2 * PI * randf())
+	return sqrt(-2 * log(randf())) * cos(2 * PI * randf()) * sd + mean
 
 func calculate_damage(character, base_damage):
 	# Get the stats to use for the roll
@@ -320,12 +320,8 @@ func calculate_damage(character, base_damage):
 	# The mean of the distribution is 0 by default.
 	var mean = 0
 	if difference > 0:
-		# When there is a difference in stats, use the infinite sum 1/(5 * 1.1^x) to
-		# calculate an adjusted mean, between 0 and 2. When the difference in stats
-		# is 1, the mean will be about 0.18. When the difference is 2, the mean will
-		# be 0.165. Etc.
-		mean = difference_sign / (5 * pow(1.1, difference))
-
+		mean = difference_sign * (pow(1.2, difference) - 1)
+ 
 	# Use a fixed standard deviation. The value 1.5 gives a 10% chance of getting
 	# a modifier of 0 or 2 for equal stats (i.e. a difference of 0).
 	var sd = 1.5
