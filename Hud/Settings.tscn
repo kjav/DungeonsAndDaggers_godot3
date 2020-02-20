@@ -32,37 +32,41 @@ margin_bottom = 290.0
 rect_scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
-[node name="ClickableRegion" parent="." instance=ExtResource( 3 )]
+[node name="ClickableRegion" type="Button" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -31.8928
 margin_top = 895.614
 margin_right = 1124.11
 margin_bottom = 2105.61
 rect_pivot_offset = Vector2( 598, 941 )
+mouse_filter = 1
 
-[node name="ClickableRegion2" parent="." instance=ExtResource( 3 )]
+[node name="ClickableRegion2" type="Button" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -29.5905
 margin_top = -625.947
 margin_right = 1126.41
 margin_bottom = 584.053
 rect_pivot_offset = Vector2( 598, 941 )
+mouse_filter = 1
 
-[node name="ClickableRegion3" parent="." instance=ExtResource( 3 )]
+[node name="ClickableRegion3" type="Button" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 729.066
 margin_top = 9.86963
 margin_right = 1885.07
 margin_bottom = 1219.87
 rect_pivot_offset = Vector2( 598, 941 )
+mouse_filter = 1
 
-[node name="ClickableRegion4" parent="." instance=ExtResource( 3 )]
+[node name="ClickableRegion4" type="Button" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -794.852
 margin_top = -24.6707
 margin_right = 361.148
 margin_bottom = 1185.33
 rect_pivot_offset = Vector2( 598, 941 )
+mouse_filter = 1
 
 [node name="QuitButton" type="TextureButton" parent="."]
 margin_left = 375.277
@@ -108,7 +112,7 @@ custom_constants/shadow_offset_y = 2
 text = "Mute"
 align = 1
 valign = 1
-[connection signal="clicked_inside" from="ClickableRegion" to="." method="hideMenu"]
-[connection signal="clicked_inside" from="ClickableRegion2" to="." method="hideMenu"]
-[connection signal="clicked_inside" from="ClickableRegion3" to="." method="hideMenu"]
-[connection signal="clicked_inside" from="ClickableRegion4" to="." method="hideMenu"]
+[connection signal="pressed" from="ClickableRegion" to="." method="hideMenu"]
+[connection signal="pressed" from="ClickableRegion2" to="." method="hideMenu"]
+[connection signal="pressed" from="ClickableRegion3" to="." method="hideMenu"]
+[connection signal="pressed" from="ClickableRegion4" to="." method="hideMenu"]
