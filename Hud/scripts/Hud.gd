@@ -5,7 +5,6 @@ var settingsOpen
 var inc = 40
 
 const Heart = preload("res://Hud/Heart.tscn")
-const Hat = preload("res://Hud/Hat.tscn")
 
 const KeyBase = preload("res://Items/scripts/keys/KeyBase.gd")
 
@@ -16,7 +15,6 @@ func _ready():
 	inventoryOpen = false
 	settingsOpen = false
 	PlayerHealthChanged(GameData.player.stats.health.value, GameData.player.stats.health.maximum)
-	PlayerManaChanged(GameData.player.stats.mana.value, GameData.player.stats.mana.maximum)
 	GameData.player.connect("healthChanged", self, "PlayerStatChanged")
 	GameData.player.connect("statsChanged", self, "PlayerStatChanged")
 	GameData.player.connect("playerHealed", self, "_on_Player_healthRaised")
@@ -64,25 +62,9 @@ func _on_Environment_unlocked(unlockGuid, environmentObjectsName):
 	get_node("HudCanvasLayer/Keys").KeyAmountChanged()
 	get_node("HudCanvasLayer/EventMessageHolder")._on_Environment_unlocked(environmentObjectsName);
 
-func PlayerManaChanged(mana, maxMana):
-	for child in get_node("HudCanvasLayer/ManaBar").get_children():
-		child.queue_free()
-		child.hide()
-	for i in range(maxMana):
-		var new_node = Hat.instance()
-		new_node.set_position(Vector2(inc*i, 0))
-		if (i < mana):
-			new_node.setType(new_node.Full)
-		else:
-			new_node.setType(new_node.Empty)
-		
-		get_node("HudCanvasLayer/ManaBar").add_child(new_node)
-
 func PlayerStatChanged(stat, direction, value):	
 	if stat == "health" or stat == "maxhealth":
 		PlayerHealthChanged(GameData.player.stats.health.value, GameData.player.stats.health.maximum)
-	elif stat == "mana" or stat == "maxmana":
-		PlayerManaChanged(GameData.player.stats.mana.value, GameData.player.stats.mana.maximum)
 
 func SetVisibilityOfTeleportWarning(visibility):
 	get_node("HudCanvasLayer/Teleport Warning").visible = visibility

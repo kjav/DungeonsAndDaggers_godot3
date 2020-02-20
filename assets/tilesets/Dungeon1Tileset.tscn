@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://assets/floor_tiles/Tile1.png" type="Texture" id=1]
 [ext_resource path="res://assets/floor_tiles/Tile1_under_wall.png" type="Texture" id=2]
@@ -37,14 +37,13 @@
 [ext_resource path="res://assets/floor_tiles/Tile6_over_wall.png" type="Texture" id=35]
 [ext_resource path="res://assets/floor_tiles/Tile6_left_wall.png" type="Texture" id=36]
 [ext_resource path="res://assets/wall_middle_free.png" type="Texture" id=37]
-[ext_resource path="res://assets/wall_middle.png" type="Texture" id=38]
-[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_bottomrightleft.png" type="Texture" id=39]
-[ext_resource path="res://assets/floor_tiles/Tile1_over_vertical_wall.png" type="Texture" id=40]
-[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_plus_horizontal.png" type="Texture" id=41]
-[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_bottom_end.png" type="Texture" id=42]
-[ext_resource path="res://assets/floor_tiles/Tile1_corner_topright_with_rightwall.png" type="Texture" id=43]
-[ext_resource path="res://assets/floor_tiles/Tile1_corner_topleft_with_leftwall.png" type="Texture" id=44]
-[ext_resource path="res://assets/floor_tiles/Tile1Stairs.png" type="Texture" id=45]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_corner_bottomrightleft.png" type="Texture" id=38]
+[ext_resource path="res://assets/floor_tiles/Tile1_over_vertical_wall.png" type="Texture" id=39]
+[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_plus_horizontal.png" type="Texture" id=40]
+[ext_resource path="res://assets/floor_tiles/Tile1_left_wall_bottom_end.png" type="Texture" id=41]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_topright_with_rightwall.png" type="Texture" id=42]
+[ext_resource path="res://assets/floor_tiles/Tile1_corner_topleft_with_leftwall.png" type="Texture" id=43]
+[ext_resource path="res://assets/floor_tiles/Tile1Stairs.png" type="Texture" id=44]
 
 [node name="Node2D" type="Node2D"]
 
@@ -306,37 +305,30 @@ centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
-[node name="WallMiddle2" type="Sprite" parent="."]
-position = Vector2( 32, 224 )
-texture = ExtResource( 38 )
-centered = false
-region_enabled = true
-region_rect = Rect2( 0, 0, 32, 32 )
-
 [node name="Floor1_over_corner_bottomrightleft" type="Sprite" parent="."]
 position = Vector2( 128, 288 )
-texture = ExtResource( 39 )
+texture = ExtResource( 38 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Floor1_over_verticalwall" type="Sprite" parent="."]
 position = Vector2( 160, 288 )
-texture = ExtResource( 40 )
+texture = ExtResource( 39 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Floor1_verticalwall_plus_horizontal_wall" type="Sprite" parent="."]
 position = Vector2( 192, 288 )
-texture = ExtResource( 41 )
+texture = ExtResource( 40 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Floor1_verticalwall_bottom_end" type="Sprite" parent="."]
 position = Vector2( 224, 288 )
-texture = ExtResource( 42 )
+texture = ExtResource( 41 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
@@ -350,21 +342,21 @@ region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Floor1_corner_topright_with_rightwall" type="Sprite" parent="."]
 position = Vector2( 192, 224 )
-texture = ExtResource( 43 )
+texture = ExtResource( 42 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Floor1_corner_topleft_with_leftwall" type="Sprite" parent="."]
 position = Vector2( 224, 224 )
-texture = ExtResource( 44 )
+texture = ExtResource( 43 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
 
 [node name="Stairs" type="Sprite" parent="."]
 position = Vector2( 192, 192 )
-texture = ExtResource( 45 )
+texture = ExtResource( 44 )
 centered = false
 region_enabled = true
 region_rect = Rect2( 0, 0, 32, 32 )
