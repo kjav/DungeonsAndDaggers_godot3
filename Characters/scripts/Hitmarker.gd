@@ -47,7 +47,7 @@ func get_offset(n):
 			position += traversal
 			if edge == 0:
 				# Rotate traversal by 60 degrees
-				traversal = traversal.rotated(PI * -60/180)
+				traversal = traversal.rotated(PI * 60/180)
 				edge = radius
 			index -= 1
 		return position
@@ -66,7 +66,7 @@ func _ready():
 	# Initialization here
 	hitmarkerScene = get_node("Container/Hitmarker")
 	var timer = Timer.new()
-	timer.set_wait_time(1)
+	timer.set_wait_time(0.9)
 	timer.connect("timeout",self,"Timeout") 
 	timer.set_one_shot(true)
 	add_child(timer)
