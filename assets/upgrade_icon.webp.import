@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ShieldCrestedSkull.png-23b256af6718dbf5b3d3b653d41f4d71.stex"
+path="res://.import/upgrade_icon.webp-0d37b1ecda1a64a8cc46cbac0fb9774f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ShieldCrestedSkull.png"
-dest_files=[ "res://.import/ShieldCrestedSkull.png-23b256af6718dbf5b3d3b653d41f4d71.stex" ]
+source_file="res://assets/upgrade_icon.webp"
+dest_files=[ "res://.import/upgrade_icon.webp-0d37b1ecda1a64a8cc46cbac0fb9774f.stex" ]
 
 [params]
 
