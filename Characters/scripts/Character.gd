@@ -361,7 +361,7 @@ func attack(character, base_damage = 0):
 		damage = round(damage * 2) / 2
 
 		if self == GameData.player:
-			emit_signal("playerAttack", self, damage);
+			emit_signal("playerAttack", character, damage);
 		else:
 			emit_signal("attack", self, damage);
 		
