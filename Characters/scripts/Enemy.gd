@@ -68,6 +68,7 @@ func _process(delta):
 
 func handleCharacterDeath():
 	dropItem()
+	GameData.player_kills += 1
 	.handleCharacterDeath()
 
 func dropItem():

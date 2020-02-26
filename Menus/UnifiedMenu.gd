@@ -36,4 +36,4 @@ func _on_splashbutton_start():
 
 func _on_worldbutton_pressed():
 	if not transitioning:
-		get_tree().change_scene("Game.tscn")
+		GameData.StartNewGame()

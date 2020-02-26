@@ -19,6 +19,7 @@ var TileSize = 128;
 var start_screen = ""
 var effectsNode
 var current_level = 1
+var player_kills = 0
 var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
@@ -29,6 +30,10 @@ var turnTime = 0.2
 var saved_player = null
 
 var map_seed = null
+
+func StartNewGame():
+	player_kills = 0
+	get_tree().change_scene("Game.tscn")
 
 func _ready():
 	randomize()

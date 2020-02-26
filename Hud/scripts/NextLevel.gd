@@ -9,7 +9,7 @@ func _pressed():
 		if not GameData.has_save_game("OgresDomain"):
 			GameData.chosen_map = "OgresDomain"
 			GameData.chosen_player = "BeserkerPlayer"
-			get_tree().change_scene("Game.tscn")
+			GameData.StartNewGame()
 	else:
 		GameData.next_level()
 		
