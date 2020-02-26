@@ -8,6 +8,9 @@ func pickup():
 	GameData.addFoods([self])
 	.pickup()
 
+func onWalkedOut():
+	pass
+
 func onUse():
 	.onUse()
 	GameData.foods.remove(GameData.foods.find(self))

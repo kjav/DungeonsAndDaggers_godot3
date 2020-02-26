@@ -8,3 +8,6 @@ func pickup():
 func onUse():
 	GameData.spells.remove(GameData.spells.find(self))
 	.onUse()
+
+func onWalkedOut():
+	pass

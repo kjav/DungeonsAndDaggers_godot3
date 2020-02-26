@@ -21,7 +21,6 @@ color = Color( 0.12549, 0.12549, 0.12549, 1 )
 [node name="DungeonMap" parent="." instance=ExtResource( 2 )]
 
 [node name="FloorItems" parent="." instance=ExtResource( 3 )]
-z_index = 1
 
 [node name="Environments" type="Node" parent="."]
 

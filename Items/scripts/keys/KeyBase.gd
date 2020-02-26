@@ -13,6 +13,9 @@ func pickup():
 	GameData.addKey(self)
 	.pickup()
 
+func onWalkedOut():
+	pass
+
 #in the future will have to check for valid floor too
 func IsValidKey(unlockGuid):
 	return UnlockGuid == unlockGuid

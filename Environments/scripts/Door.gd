@@ -9,6 +9,10 @@ func _init():
 
 func handleAnimation():
 	self.set_animation(facing + "_" + state)
+	if facing == "front" and state == "closed":
+		get_node("Top").show()
+	else:
+		get_node("Top").hide()
 
 func changeOfState(original, new):
 	return original != new
