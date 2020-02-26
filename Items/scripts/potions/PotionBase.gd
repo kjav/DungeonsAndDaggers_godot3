@@ -5,6 +5,9 @@ func pickup():
 	GameData.addPotions([self])
 	.pickup()
 
+func onWalkedOut():
+	pass
+
 func onUse():
 	GameData.potions.remove(GameData.potions.find(self))
 	.onUse()

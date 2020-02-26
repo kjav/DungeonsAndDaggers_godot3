@@ -6,3 +6,6 @@ var title
 
 func onUse():
 	pass
+
+func onWalkedOut():
+	pass

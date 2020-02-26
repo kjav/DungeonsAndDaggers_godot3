@@ -252,7 +252,7 @@ func dict2item(dict):
 	var item = dict2inst(dict)
 	# Fixes textures not loading
 	item.texture = load(item.textureFilePath)
-	if item.iconTextureFilePath:
+	if not item.get("iconTextureFilePath") == null:
 		item.iconTexture = load(item.iconTextureFilePath)
 	if "offset" in item:
 		# Fixes offset stored as string not Vector2

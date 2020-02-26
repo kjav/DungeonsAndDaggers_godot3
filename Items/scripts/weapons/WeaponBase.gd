@@ -24,3 +24,6 @@ func onPlayerDamaged():
 func pickup():
 	.pickup()
 	GameData.player.pickUpWeapon(self)
+
+func onWalkedOut():
+	pass
