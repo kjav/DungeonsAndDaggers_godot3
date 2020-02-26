@@ -319,7 +319,8 @@ func save_game():
 		"potions": serialise_items(potions),
 		"foods": serialise_items(foods),
 		"spells": serialise_items(spells),
-		"player": serialise_player(player)
+		"player": serialise_player(player),
+		"kills": player_kills
 	}))
 	save_game.close()
 
@@ -349,6 +350,7 @@ func load_game():
 			foods = deserialise_items(state.foods)
 			spells = deserialise_items(state.spells)
 			load_player(state.player)
+			player_kills = state.kills
 	save_game.close()
 
 func next_level():
