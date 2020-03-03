@@ -44,8 +44,19 @@ margin_right = 1163.18
 margin_bottom = 253.208
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "16
 "
+
+[node name="Monsters New Highscore" type="Label" parent="."]
+visible = false
+margin_left = 117.915
+margin_top = 99.7371
+margin_right = 699.915
+margin_bottom = 254.737
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
+text = "New Highscore"
 
 [node name="Level Text" type="Label" parent="."]
 margin_left = 1.76454
@@ -74,10 +85,20 @@ custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
 text = "HighScore"
 
 [node name="Level Highscore Amount" type="Label" parent="."]
-margin_left = 872.747
-margin_top = 295.0
-margin_right = 1161.75
-margin_bottom = 450.0
+margin_left = 870.292
+margin_top = 296.228
+margin_right = 1159.29
+margin_bottom = 451.228
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "3"
+
+[node name="Level New Highscore" type="Label" parent="."]
+visible = false
+margin_left = 117.915
+margin_top = 294.509
+margin_right = 699.915
+margin_bottom = 449.509
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
+text = "New Highscore"
