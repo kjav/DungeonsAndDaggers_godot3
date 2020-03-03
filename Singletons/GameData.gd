@@ -20,6 +20,8 @@ var start_screen = ""
 var effectsNode
 var current_level = 1
 var player_kills = 0
+var record_current_level = 0
+var record_player_kills = 0
 var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")

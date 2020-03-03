@@ -28,7 +28,7 @@ rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "4"
 
-[node name="Monsters HighScore Text" type="Label" parent="."]
+[node name="Monsters Highscore Text" type="Label" parent="."]
 margin_left = 359.915
 margin_top = 98.5094
 margin_right = 780.915
@@ -64,7 +64,7 @@ margin_bottom = 351.942
 custom_fonts/font = SubResource( 1 )
 text = "2"
 
-[node name="Level HighScore Text" type="Label" parent="."]
+[node name="Level Highscore Text" type="Label" parent="."]
 margin_left = 359.915
 margin_top = 294.509
 margin_right = 780.915
@@ -73,7 +73,7 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
 text = "HighScore"
 
-[node name="Level HighScore Amount" type="Label" parent="."]
+[node name="Level Highscore Amount" type="Label" parent="."]
 margin_left = 872.747
 margin_top = 295.0
 margin_right = 1161.75
