@@ -9,9 +9,8 @@ func _ready():
 
 func _init_ads():
 	if(Engine.has_singleton("AdMob")):
-		pass
-		#admob = Engine.get_singleton("AdMob")
-		#var res = admob.init(isReal, get_instance_id())
+		admob = Engine.get_singleton("AdMob")
+		var res = admob.init(isReal, get_instance_id())
 
 		#admob.connect("_on_rewarded", self, "on_rewarded")
 		#admob.resize()
