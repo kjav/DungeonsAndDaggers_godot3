@@ -14,6 +14,9 @@ func _init_ads():
 
 		admob.connect("_on_rewarded", self, "on_rewarded")
 		admob.resize()
+
+func play_reward_video():
+	if admob:
 		admob.loadRewardedVideo(adRewardId)
 		admob.showRewardedVideo()
 
