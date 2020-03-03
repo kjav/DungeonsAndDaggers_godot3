@@ -12,8 +12,8 @@ func _init_ads():
 		admob = Engine.get_singleton("AdMob")
 		var res = admob.init(isReal, get_instance_id())
 
-		admob.connect("_on_rewarded", self, "on_rewarded")
-		admob.resize()
+		#admob.connect("_on_rewarded", self, "on_rewarded")
+		#admob.resize()
 
 func play_reward_video():
 	if admob:
