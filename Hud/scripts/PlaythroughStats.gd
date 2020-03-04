@@ -2,6 +2,8 @@ extends Node2D
 
 var record_player_kills = 0
 var record_current_level = 0
+var record_total_blocked_damage = 0
+var record_total_items_used = 0
 
 func _draw():
 	load_highscores()
@@ -21,6 +23,22 @@ func _draw():
 		get_node("Level Highscore Text").hide()
 		get_node("Level Highscore Amount").add_color_override("font_color", Color(0.5,0.5,0.5,1))
 
+	get_node("Damage Blocked Amount").text = str(GameData.total_blocked_damage)
+	get_node("Damage Blocked Highscore Amount").text = str(record_total_blocked_damage)
+	
+	if (record_total_blocked_damage < GameData.total_blocked_damage):
+		get_node("Damage Blocked New Highscore").show()
+		get_node("Damage Blocked Highscore Text").hide()
+		get_node("Damage Blocked Highscore Amount").add_color_override("font_color", Color(0.5,0.5,0.5,1))
+
+	get_node("Items Used Amount").text = str(GameData.total_items_used)
+	get_node("Items Used Highscore Amount").text = str(record_total_items_used)
+	
+	if (record_total_items_used < GameData.total_items_used):
+		get_node("Items Used New Highscore").show()
+		get_node("Items Used Highscore Text").hide()
+		get_node("Items Used Highscore Amount").add_color_override("font_color", Color(0.5,0.5,0.5,1))
+
 	save_highscores()
 	
 func save_highscores():
@@ -30,7 +48,9 @@ func save_highscores():
 	
 	highscores.store_line(to_json({
 		"kills": max(record_player_kills, GameData.player_kills),
-		"level": max(record_current_level, GameData.current_level)
+		"level": max(record_current_level, GameData.current_level),
+		"blockedDamage": max(record_total_blocked_damage, GameData.total_blocked_damage),
+		"itemsUsed": max(record_total_items_used, GameData.total_items_used)
 	}))
 
 	highscores.close()
@@ -47,6 +67,8 @@ func load_highscores():
 		if state:
 			record_player_kills = int(state.kills)
 			record_current_level = int(state.level)
+			record_total_blocked_damage = int(state.blockedDamage)
+			record_total_items_used = int(state.itemsUsed)
 	
 	highscores.close()
 

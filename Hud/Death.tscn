@@ -51,4 +51,4 @@ custom_fonts/font = ExtResource( 4 )
 text = "Menu"
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 5 )]
-position = Vector2( 61.2086, 803.998 )
+position = Vector2( 69.1286, 803.998 )
