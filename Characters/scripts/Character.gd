@@ -381,6 +381,9 @@ func takeDamage(damage):
 		
 		createHitmarker(damage)
 	else:
+		if self == GameData.player:
+			GameData.total_blocked_damage += damage
+		
 		createHitmarker(0, true)
 
 func handleCharacterDeath():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=2]
 [ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=4]
+[ext_resource path="res://Hud/PlaythroughStats.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -19,9 +20,9 @@ color = Color( 0, 0, 0, 0.686275 )
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
 margin_left = 143.0
-margin_top = 522.0
+margin_top = 220.0
 margin_right = 341.0
-margin_bottom = 579.0
+margin_bottom = 277.0
 rect_scale = Vector2( 4, 4 )
 mouse_filter = 1
 size_flags_vertical = 0
@@ -32,9 +33,9 @@ autowrap = true
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 357.799
-margin_top = 938.482
+margin_top = 428.482
 margin_right = 756.799
-margin_bottom = 1190.48
+margin_bottom = 680.48
 texture_normal = ExtResource( 2 )
 script = ExtResource( 3 )
 
@@ -48,3 +49,6 @@ mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
 text = "Menu"
+
+[node name="PlaythroughStats" parent="." instance=ExtResource( 5 )]
+position = Vector2( 69.1286, 803.998 )

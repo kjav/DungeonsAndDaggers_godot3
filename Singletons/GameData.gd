@@ -19,6 +19,9 @@ var TileSize = 128;
 var start_screen = ""
 var effectsNode
 var current_level = 1
+var player_kills = 0
+var total_blocked_damage = 0
+var total_items_used = 0
 var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
@@ -29,6 +32,12 @@ var turnTime = 0.2
 var saved_player = null
 
 var map_seed = null
+
+func StartNewGame():
+	player_kills = 0
+	total_blocked_damage = 0
+	total_items_used = 0
+	get_tree().change_scene("Game.tscn")
 
 func _ready():
 	randomize()
@@ -314,7 +323,10 @@ func save_game():
 		"potions": serialise_items(potions),
 		"foods": serialise_items(foods),
 		"spells": serialise_items(spells),
-		"player": serialise_player(player)
+		"player": serialise_player(player),
+		"kills": player_kills,
+		"blockedDamage": total_blocked_damage,
+		"itemsUsed": total_items_used
 	}))
 	save_game.close()
 
@@ -344,6 +356,9 @@ func load_game():
 			foods = deserialise_items(state.foods)
 			spells = deserialise_items(state.spells)
 			load_player(state.player)
+			player_kills = state.kills
+			total_blocked_damage = state.blockedDamage
+			total_items_used = state.itemsUsed
 	save_game.close()
 
 func next_level():
