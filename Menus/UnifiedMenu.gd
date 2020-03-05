@@ -17,7 +17,6 @@ func _ready():
 
 func _process(delta):
 	if transitioning:
-		print("_process", transitioning)
 		current_time += delta
 		if current_time > transition_time:
 			transitioning = false
