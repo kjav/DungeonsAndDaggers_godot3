@@ -8,17 +8,27 @@ func _ready():
 	call_deferred("_init_ads")
 
 func _init_ads():
+	print("Engine has singleton: ", Engine.has_singleton("AdMob"))
 	if(Engine.has_singleton("AdMob")):
 		admob = Engine.get_singleton("AdMob")
 		var res = admob.init(isReal, get_instance_id())
 
-		#admob.connect("_on_rewarded", self, "on_rewarded")
-		#admob.resize()
+		admob.resize()
 
 func play_reward_video():
-	if admob:
+	print("Playing reward video: ", admob != null)
+	if admob != null:
 		admob.loadRewardedVideo(adRewardId)
-		admob.showRewardedVideo()
 
-func on_rewarded(currency, amount):
+func _on_rewarded_video_ad_left_application():
+	pass
+
+func _on_rewarded_video_ad_closed():
+	pass
+
+func _on_rewarded_video_ad_loaded():
+	print("Showing video")
+	admob.showRewardedVideo()
+
+func _on_rewarded(currency, amount):
 	print("Rewarded ", amount, " ", currency)
