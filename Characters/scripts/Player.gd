@@ -31,6 +31,7 @@ var currentWeaponSlot
 var hasMoved
 var lastEvent
 var applePickedUp = false
+var lastDirection = Enums.DIRECTION.NONE
 
 func _init():
 	initialStats.health = {
@@ -255,6 +256,7 @@ func _input(ev):
 
 func swiped(direction):
 	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		lastDirection = direction
 		forceTurnEnd(direction)
 
 func MoveCharacters():
@@ -273,7 +275,7 @@ func attack(character, base_damage = 0):
 		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
-			currentWeapon.onAttack(character)
+			currentWeapon.onAttack(character, lastDirection)
 
 			if currentWeapon.doesDamage:
 				.attack(character, currentWeapon.damage)
@@ -291,6 +293,9 @@ func attack(character, base_damage = 0):
 		
 		if offhandWeapon is Constants.WeaponClasses.CommonDagger && currentWeapon.isMelee && target_pos == character.target_pos:
 			.attack(character, offhandWeapon.damage)
+	
+	additionalRelativeAttackPositions = getCurrentWeapon().relativeAttackPositions
+	currentWeaponNode.set_rotation(getCurrentWeapon().rotationInHand)
 
 func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())

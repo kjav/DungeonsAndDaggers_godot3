@@ -17,7 +17,7 @@ func _init():
 	rotationInOffHand = deg2rad(55)
 	doesDamage = false
 
-func onAttack(target):
+func onAttack(target, attackDirection):
 	if target:
 		var new_missile = missile.instance()
 		GameData.player.get_parent().add_child(new_missile)
@@ -34,4 +34,4 @@ func onAttack(target):
 			true
 		)
 		
-		.onAttack(target)
+		.onAttack(target, attackDirection)

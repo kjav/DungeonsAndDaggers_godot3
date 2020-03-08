@@ -17,7 +17,7 @@ func _init():
 	rotationInOffHand = deg2rad(145)
 	ammo = 4
 
-func onAttack(target):
+func onAttack(target, attackDirection):
 	if target:
 		var new_missile = missile.instance()
 		#Audio.playSoundEffect("Arrow_Shot")
@@ -35,4 +35,4 @@ func onAttack(target):
 			false
 		)
 		
-		.onAttack(target)
+		.onAttack(target, attackDirection)
