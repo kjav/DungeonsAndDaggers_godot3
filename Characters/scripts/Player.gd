@@ -269,16 +269,16 @@ func MoveCharacters():
 			if len(GameData.characters) > i:
 				GameData.characters[i].setTurnAnimations()
 
-func attack(character, base_damage = 0):
+func attack(character, isFirstCollision, base_damage = 0):
 	if alive():
 		var currentWeapon = getCurrentWeapon()
 		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
-			currentWeapon.onAttack(character, lastDirection)
+			currentWeapon.onAttack(character, lastDirection, isFirstCollision)
 
 			if currentWeapon.doesDamage:
-				.attack(character, currentWeapon.damage)
+				.attack(character, isFirstCollision, currentWeapon.damage)
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
 				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))
@@ -292,7 +292,7 @@ func attack(character, base_damage = 0):
 			removeCurrentWeapon()
 		
 		if offhandWeapon is Constants.WeaponClasses.CommonDagger && currentWeapon.isMelee && target_pos == character.target_pos:
-			.attack(character, offhandWeapon.damage)
+			.attack(character, isFirstCollision, offhandWeapon.damage)
 	
 	additionalRelativeAttackPositions = getCurrentWeapon().relativeAttackPositions
 	currentWeaponNode.set_rotation(getCurrentWeapon().rotationInHand)

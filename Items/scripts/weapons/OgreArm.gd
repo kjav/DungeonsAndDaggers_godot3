@@ -18,12 +18,12 @@ func _init():
 	rotationInOffHand = deg2rad(55)
 	toggleRelativeAttackPositions()
 
-func onAttack(target, attackDirection):
-	addHeavyImpacts(attackDirection)
-
-	toggleRelativeAttackPositions()
+func onAttack(target, attackDirection, isFirstCollision):
+	if isFirstCollision:
+		addHeavyImpacts(attackDirection)
+		toggleRelativeAttackPositions()
 	
-	.onAttack(target, attackDirection)
+	.onAttack(target, attackDirection, isFirstCollision)
 
 func toggleRelativeAttackPositions():
 	if nextAttackForward:

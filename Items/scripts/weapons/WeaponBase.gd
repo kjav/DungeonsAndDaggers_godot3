@@ -16,7 +16,7 @@ var iconTexture
 var iconTextureFilePath
 var doesDamage = true
 
-func onAttack(character, attackDirection):
+func onAttack(character, attackDirection, isFirstCollision):
 	if ammo > 0:
 		ammo -= 1
 
