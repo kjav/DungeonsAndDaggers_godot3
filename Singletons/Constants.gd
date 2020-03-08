@@ -30,6 +30,7 @@ const WeaponClasses = {
 	"CommonShield": preload("res://Items/scripts/weapons/CommonShield.gd"),
 	"CommonSpear": preload("res://Items/scripts/weapons/CommonSpear.gd"),
 	"CommonBow": preload("res://Items/scripts/weapons/CommonBow.gd"),
+	"Bomb": preload("res://Items/scripts/weapons/Bomb.gd"),
 	"UncommonSword": preload("res://Items/scripts/weapons/UncommonSword.gd"),
 	"UncommonDagger": preload("res://Items/scripts/weapons/UncommonDagger.gd"),
 	"UncommonShield": preload("res://Items/scripts/weapons/UncommonShield.gd"),
@@ -66,6 +67,7 @@ const CommonWeapons = [
 ]
 
 const UncommonWeapons = [
+	{ "value": WeaponClasses.Bomb },
 	{ "value": WeaponClasses.UncommonSpear },
 	{ "value": WeaponClasses.UncommonSword },
 	{ "value": WeaponClasses.UncommonDagger },

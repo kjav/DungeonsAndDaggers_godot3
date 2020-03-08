@@ -274,7 +274,9 @@ func attack(character, base_damage = 0):
 		
 		if currentWeapon.ammo != 0:
 			currentWeapon.onAttack(character)
-			.attack(character, currentWeapon.damage)
+
+			if currentWeapon.doesDamage:
+				.attack(character, currentWeapon.damage)
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
 				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))

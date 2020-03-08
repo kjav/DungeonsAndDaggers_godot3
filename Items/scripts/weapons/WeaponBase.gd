@@ -14,6 +14,7 @@ var ammo = -1
 var equiptable = true
 var iconTexture
 var iconTextureFilePath
+var doesDamage = true
 
 func onAttack(character):
 	if ammo > 0:
