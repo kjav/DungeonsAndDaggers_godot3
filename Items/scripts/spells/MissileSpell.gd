@@ -33,5 +33,7 @@ func launchPellet(closest_enemy):
 		25,
 		2,
 		"Missile_Hit",
-		Vector2(0.2, 0.2)
+		Vector2(0.2, 0.2),
+		true,
+		false
 	)

@@ -32,6 +32,7 @@ func onAttack(target):
 			0,
 			"Arrow_Hit",
 			Vector2(0.5, 0.5),
+			false,
 			false
 		)
 		

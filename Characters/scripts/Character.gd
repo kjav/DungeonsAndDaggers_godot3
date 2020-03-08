@@ -483,7 +483,7 @@ func _on_BossDoor_bossDoorOpened():
 	resetToStartPosition()
 
 func damageAfterMultiplier(damage):
-	return ceil(damage * 2 * damageMultiplier) / 2
+	return round(damage * 2 * damageMultiplier) / 2
 
 func reduceDamageMultiplier():
 	multiplierRemainingAttacks -= 1

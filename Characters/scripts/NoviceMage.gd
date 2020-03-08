@@ -75,5 +75,7 @@ func castMissile():
 		25,
 		randi()%2 / float(2),
 		"Missile_Hit",
-		Vector2(0.2, 0.2)
+		Vector2(0.2, 0.2),
+		true,
+		false
 	)

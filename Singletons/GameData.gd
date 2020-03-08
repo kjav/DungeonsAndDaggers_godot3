@@ -236,15 +236,15 @@ func reset():
 	map_seed = null
 	#addInitialItemsForTesting()
 
-func getEnemiesWithinAreaAroundPlayer(distance):
+func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	var enemiesInDistance = []
 	
 	for character in GameData.characters:
-		var tileDistance = (character.turn_end_pos - GameData.player.turn_end_pos) / GameData.TileSize
+		var tileDistance = (character.turn_end_pos - targetCharacter.turn_end_pos) / GameData.TileSize
 		var xDistance = abs(tileDistance.x)
 		var yDistance = abs(tileDistance.y)
 		
-		if character != GameData.player and xDistance <= distance and yDistance <= distance:
+		if character != targetCharacter and xDistance <= distance and yDistance <= distance:
 			enemiesInDistance.append(character)
 	
 	return enemiesInDistance

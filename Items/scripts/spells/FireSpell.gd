@@ -34,5 +34,7 @@ func launchFireball(closest_enemy):
 		25,
 		randi() % 3 + 8,
 		"Fireball_Hit",
-		Vector2(4, 4)
+		Vector2(4, 4),
+		true,
+		false
 	)
