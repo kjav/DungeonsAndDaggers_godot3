@@ -12,8 +12,6 @@ func _init():
 	ammo = 1
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]
 	damage = 0
-	onlyAttacksFirstEnemy = true
-	showBehindHand = true
 	offset = Vector2(-10, -10)
 	rotationInHand = deg2rad(120)
 	rotationInOffHand = deg2rad(55)

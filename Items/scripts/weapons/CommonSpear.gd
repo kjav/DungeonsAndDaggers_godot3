@@ -10,7 +10,6 @@ func _init():
 	relativeAttackPositions = [Vector2(0, -1)]
 	damage = 1.5
 	isMelee = true
-	onlyAttacksFirstEnemy = false
 	showBehindHand = true
 	offset = Vector2(-30, -30)
 	rotationInHand = deg2rad(120)

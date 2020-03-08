@@ -11,7 +11,6 @@ func _init():
 	item_name = "Common Bow"
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]
 	damage = 1
-	onlyAttacksFirstEnemy = true
 	showBehindHand = true
 	offset = Vector2(10, 22)
 	rotationInHand = deg2rad(185)

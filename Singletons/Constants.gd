@@ -36,6 +36,7 @@ const WeaponClasses = {
 	"UncommonShield": preload("res://Items/scripts/weapons/UncommonShield.gd"),
 	"UncommonSpear": preload("res://Items/scripts/weapons/UncommonSpear.gd"),
 	"UncommonBow": preload("res://Items/scripts/weapons/UncommonBow.gd"),
+	"OgreArm": preload("res://Items/scripts/weapons/OgreArm.gd"),
 	"RareSword": preload("res://Items/scripts/weapons/RareSword.gd"),
 	"RareDagger": preload("res://Items/scripts/weapons/RareDagger.gd"),
 	"RareShield": preload("res://Items/scripts/weapons/RareShield.gd"),
