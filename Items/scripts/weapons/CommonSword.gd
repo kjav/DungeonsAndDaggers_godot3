@@ -8,6 +8,7 @@ func _init():
 	iconTexture = preload("res://assets/basic_sword.png")
 	item_name = "Common Sword"
 	damage = 2.5
+	isMelee = true
 	showBehindHand = true
 	offset = Vector2(-30, -30)
 	rotationInHand = deg2rad(120)

@@ -6,6 +6,7 @@ var relativeAttackPositions = []
 var onlyAttacksFirstEnemy = true
 var attackPositionBlockable = true
 var showBehindHand = false
+var isMelee = false
 var offset = Vector2(0, 0)
 var rotationInHand = 0
 var rotationInOffHand = 0

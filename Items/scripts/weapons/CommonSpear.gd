@@ -9,6 +9,7 @@ func _init():
 	item_name = "Common Spear"
 	relativeAttackPositions = [Vector2(0, -1)]
 	damage = 1.5
+	isMelee = true
 	onlyAttacksFirstEnemy = false
 	showBehindHand = true
 	offset = Vector2(-30, -30)

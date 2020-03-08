@@ -270,6 +270,7 @@ func MoveCharacters():
 func attack(character, base_damage = 0):
 	if alive():
 		var currentWeapon = getCurrentWeapon()
+		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
 			currentWeapon.onAttack(character)
@@ -285,6 +286,9 @@ func attack(character, base_damage = 0):
 				removeCurrentWeapon()
 		else:
 			removeCurrentWeapon()
+		
+		if offhandWeapon is Constants.WeaponClasses.CommonDagger && currentWeapon.isMelee && target_pos == character.target_pos:
+			.attack(character, offhandWeapon.damage)
 
 func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
