@@ -9,7 +9,7 @@ func _init():
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.2, "value": Constants.CommonFoodsDistribution.pick()[0].value},
 		{"p": 0.1, "value": Constants.UncommonFoodsDistribution.pick()[0].value},
-		{"p": 0.05, "value": Constants.UncommonFoodsDistribution.pick()[0].value}
+		{"p": 0.05, "value": Constants.WeaponClasses.OgreArm}
 	])
 
 func _ready():

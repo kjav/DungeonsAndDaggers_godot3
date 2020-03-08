@@ -75,7 +75,6 @@ func handleTargetReached():
 	queue_free()
 
 func handleExplosion():
-	
 	if inflictDamage:
 		var enemiesInArea = GameData.getCharactersWithinAreaAroundCharacter(target, 1)
 		damageEnemies(enemiesInArea)
