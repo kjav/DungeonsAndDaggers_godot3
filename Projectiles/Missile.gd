@@ -6,6 +6,7 @@ export(NodePath) var target setget setTarget, getTarget
 export(float) var speed = 25
 export(float) var damage = 0
 var flyingSound
+var caster
 var soundID
 var hitSound
 var inflictDamage
@@ -18,11 +19,12 @@ func _ready():
 	if target:
 		set_process(true)
 
-func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictDamage, _explodes):
+func init(_caster, _target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictDamage, _explodes):
 	set_texture(_texture)
 	set_position(_pos)
 	set_scale(_scale)
 
+	caster = _caster
 	speed = _speed
 	damage = _damage
 	target = _target
@@ -35,12 +37,20 @@ func init(_target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictD
 
 	if (tileDistance / GameData.TileSize) <= 3:
 		if inflictDamage:
-			target.takeDamage(damage)
+			damage(target, damage)
 		
 		if explodes:
 			handleExplosion()
 		
 		inflictDamage = false
+
+func damage(_target, _damage):
+	_target.takeDamage(_damage)
+
+	if caster == GameData.player:
+		GameData.hud.get_node("HudCanvasLayer/EventMessageHolder")._on_Player_playerAttack(_target, _damage);
+	else:
+		GameData.hud.get_node("HudCanvasLayer/EventMessageHolder")._on_Enemy_attack(caster, _damage);
 
 func _process(delta):
 	total_time += delta
@@ -66,7 +76,7 @@ func handleTargetReached():
 	set_process(false)
 
 	if inflictDamage:
-		target.takeDamage(damage)
+		damage(target, damage)
 	
 	if explodes:
 		handleExplosion()
@@ -84,7 +94,7 @@ func handleExplosion():
 
 func damageEnemies(enemiesInArea):
 	for enemy in enemiesInArea:
-		enemy.takeDamage(round(damage) / 2)
+		damage(enemy, round(damage) / 2)
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.getRelativeCoordinatesAroundPoint(1)

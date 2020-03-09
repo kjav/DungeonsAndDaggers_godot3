@@ -28,6 +28,7 @@ func launchFireball(closest_enemy):
 	GameData.player.get_parent().add_child(new_missile)
 	
 	new_missile.init(
+		GameData.player,
 		closest_enemy,
 		missile_texture,
 		GameData.player.get_position(),

@@ -21,7 +21,10 @@ func _on_Player_weaponChanged( slot, weapon ):
 		addMessage('A ' + weapon.item_name + ' is now equipped.');
 
 func _on_Player_playerAttack( character, amount ):
-	addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');
+	if character == GameData.player:
+		addMessage('You hurt a Yourself: ' + str(amount) + '.');
+	else:
+		addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');
 
 func _on_Enemy_attack( character, amount ):
 	addMessage('A ' + character.character_name + ' hurt you: ' + str(amount) + '.');

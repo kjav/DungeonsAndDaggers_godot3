@@ -24,6 +24,7 @@ func onAttack(target, attackDirection, isFirstCollision):
 		GameData.player.get_parent().add_child(new_missile)
 		
 		new_missile.init(
+			GameData.player,
 			target,
 			missile_texture,
 			GameData.player.getPrimaryHandPosition(),
