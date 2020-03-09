@@ -240,8 +240,9 @@ func checkForTutorialPrompts():
 		addTutorialTextIfTutorial("Click The\nFloating Menu\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2:
-			GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
-			GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
+		GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
+		GameData.player.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOffhand", Vector2(1.2, 8.1))
+		GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:

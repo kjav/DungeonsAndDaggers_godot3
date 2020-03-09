@@ -33,8 +33,16 @@ func setup_params():
 			"position": Vector2(2, 4)
 		}
 	])
-	item_distribution = Distribution.new([{
-		"p": 1, 
-		"value": Constants.WeaponClasses.UncommonSpear,
-		"position": Vector2(2, 1)
-	}])
+	item_distribution = Distribution.new(
+	[
+		{
+			"p": 1, 
+			"value": Constants.WeaponClasses.UncommonSpear,
+			"position": Vector2(2, 1)
+		},
+		{
+			"p": 1, 
+			"value": Constants.WeaponClasses.CommonDagger,
+			"position": Vector2(1, 3)
+		}
+	])
