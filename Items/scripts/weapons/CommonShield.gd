@@ -10,6 +10,7 @@ func _init():
 	item_name = "Common Shield"
 	damage = 1
 	isMelee = true
+	isOffhand = true
 
 func onPlayerDamaged():
 	if randi() % int(chanceToBlockOutOf + 1) == 1:
