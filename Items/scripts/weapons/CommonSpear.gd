@@ -11,6 +11,6 @@ func _init():
 	damage = 1.5
 	isMelee = true
 	showBehindHand = true
-	offset = Vector2(-30, -30)
+	offset = Vector2(-30, -50)
 	rotationInHand = deg2rad(120)
 	rotationInOffHand = deg2rad(55)
