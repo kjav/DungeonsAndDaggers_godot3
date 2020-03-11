@@ -5,11 +5,10 @@ func _init():
 	texture = preload("res://assets/common-sword.png")
 	iconTexture = preload("res://assets/common-sword.png")
 	iconTextureFilePath = "res://assets/common-sword.png"
-	iconTexture = preload("res://assets/common-sword.png")
 	item_name = "Common Sword"
 	damage = 2.5
 	isMelee = true
 	showBehindHand = true
-	offset = Vector2(-31, -31)
+	offset = Vector2(-31, -25)
 	rotationInHand = deg2rad(120)
 	rotationInOffHand = deg2rad(55)

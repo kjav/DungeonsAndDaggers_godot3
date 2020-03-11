@@ -11,6 +11,8 @@ func _init():
 	damage = 1
 	isMelee = true
 	isOffhand = true
+	rotationInHand = deg2rad(100)
+	rotationInOffHand = deg2rad(-100)
 
 func onPlayerDamaged():
 	if randi() % int(chanceToBlockOutOf + 1) == 1:
