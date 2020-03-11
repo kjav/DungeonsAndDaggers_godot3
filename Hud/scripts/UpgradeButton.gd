@@ -1,5 +1,7 @@
 extends TextureButton
 
+var clickable = true
+
 export var upgrade = Constants.UpgradeClasses.DefenceUpgrade3 setget setUpgrade, getUpgrade
 
 func setUpgrade(new_upgrade):
@@ -12,5 +14,6 @@ func getUpgrade():
 	return upgrade
 
 func _pressed():
-	upgrade.onUse()
-	get_parent().close()
+	if clickable:
+		upgrade.onUse()
+		get_parent().close()
