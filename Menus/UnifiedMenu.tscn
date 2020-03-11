@@ -7,8 +7,8 @@
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Menus/TextureButton.gd" type="Script" id=8]
-[ext_resource path="res://Menus/Mute2.gd" type="Script" id=9]
+[ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=8]
+[ext_resource path="res://Menus/TextureButton.gd" type="Script" id=9]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -111,7 +111,8 @@ margin_top = 33.0
 margin_right = 2250.0
 margin_bottom = 168.0
 texture_normal = ExtResource( 4 )
-script = ExtResource( 8 )
+texture_pressed = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Mute"]
 margin_right = 343.0
@@ -120,24 +121,6 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0.286275, 0.113725, 0, 1 )
 text = "MUTE"
-align = 1
-valign = 1
-
-[node name="Mute2" type="TextureButton" parent="."]
-margin_left = 1508.0
-margin_top = 33.0
-margin_right = 1850.0
-margin_bottom = 168.0
-texture_normal = ExtResource( 4 )
-script = ExtResource( 9 )
-
-[node name="Label" type="Label" parent="Mute2"]
-margin_right = 343.0
-margin_bottom = 136.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_outline_modulate = Color( 0.286275, 0.113725, 0, 1 )
-text = "Ad"
 align = 1
 valign = 1
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]

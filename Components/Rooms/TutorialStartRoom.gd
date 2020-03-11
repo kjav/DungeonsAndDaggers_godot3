@@ -10,5 +10,6 @@ func setup_params():
 			"position": Vector2(4, 1)
 		}
 	])
-	environment_distribution = Distribution.new([])
+	environment_distribution = Set.new([
+	])
 	item_distribution = Distribution.new([])

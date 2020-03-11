@@ -36,3 +36,6 @@ func _on_splashbutton_start():
 func _on_worldbutton_pressed():
 	if not transitioning:
 		GameData.StartNewGame()
+
+func reroll(a, b):
+	print("Reroll!")

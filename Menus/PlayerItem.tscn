@@ -25,26 +25,26 @@ expand = true
 
 [node name="Strength" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 400 )
-progress = 0
 range_name = "Strength"
+progress = 0
 editable = false
 
 [node name="Hitpoints" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 640 )
-progress = 0
 range_name = "Hitpoints"
+progress = 0
 editable = false
 
 [node name="Speed" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 760 )
-progress = 0
 range_name = "Speed"
+progress = 0
 editable = false
 
 [node name="Defence" parent="." instance=ExtResource( 2 )]
 position = Vector2( 125, 520 )
-progress = 0
 range_name = "Defence"
+progress = 0
 editable = false
 
 [node name="PlayerNameLabel" type="Label" parent="."]
