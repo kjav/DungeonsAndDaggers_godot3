@@ -268,6 +268,7 @@ func setTarget(direction):
 func handleEnemyCollisions(posArray):
 	var collisions = []
 	var collided = false
+	var isFirstCollision = true
 	
 	for pos in posArray:
 		if attackPositionBlockable and (not targetWalkable(pos) or GameData.environmentBlocksAttack(pos)) :
@@ -277,8 +278,9 @@ func handleEnemyCollisions(posArray):
 
 	for collision in collisions:
 		if not (collision == self):
-			attack(collision)
+			attack(collision, isFirstCollision)
 			collided = true
+			isFirstCollision = false
 
 			if onlyAttacksFirstEnemy:
 				return true
@@ -348,7 +350,7 @@ func calculate_damage(character, base_damage):
 func shouldAttack(character):
 	return alive() && (character == GameData.player or self == GameData.player)
 
-func attack(character, base_damage = 0):
+func attack(character, isFirstCollision, base_damage = 0):
 	if shouldAttack(character):
 		var damage = calculate_damage(character, base_damage)
 		
@@ -483,7 +485,7 @@ func _on_BossDoor_bossDoorOpened():
 	resetToStartPosition()
 
 func damageAfterMultiplier(damage):
-	return ceil(damage * 2 * damageMultiplier) / 2
+	return round(damage * 2 * damageMultiplier) / 2
 
 func reduceDamageMultiplier():
 	multiplierRemainingAttacks -= 1

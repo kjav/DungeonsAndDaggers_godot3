@@ -31,6 +31,7 @@ var currentWeaponSlot
 var hasMoved
 var lastEvent
 var applePickedUp = false
+var lastDirection = Enums.DIRECTION.NONE
 
 func _init():
 	initialStats.health = {
@@ -239,8 +240,9 @@ func checkForTutorialPrompts():
 		addTutorialTextIfTutorial("Click The\nFloating Menu\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2:
-			GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
-			GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
+		GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
+		GameData.player.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOffhand", Vector2(1.2, 8.1))
+		GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo:
@@ -255,6 +257,7 @@ func _input(ev):
 
 func swiped(direction):
 	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		lastDirection = direction
 		forceTurnEnd(direction)
 
 func MoveCharacters():
@@ -267,13 +270,16 @@ func MoveCharacters():
 			if len(GameData.characters) > i:
 				GameData.characters[i].setTurnAnimations()
 
-func attack(character, base_damage = 0):
+func attack(character, isFirstCollision, base_damage = 0):
 	if alive():
 		var currentWeapon = getCurrentWeapon()
+		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
-			currentWeapon.onAttack(character)
-			.attack(character, currentWeapon.damage)
+			currentWeapon.onAttack(character, lastDirection, isFirstCollision)
+
+			if currentWeapon.doesDamage:
+				.attack(character, isFirstCollision, currentWeapon.damage)
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
 				addTutorialTextIfTutorial("Move on\nitems to\npick up", Vector2(7, 6.2))
@@ -285,6 +291,12 @@ func attack(character, base_damage = 0):
 				removeCurrentWeapon()
 		else:
 			removeCurrentWeapon()
+		
+		if offhandWeapon is Constants.WeaponClasses.CommonDagger && currentWeapon.isMelee && target_pos == character.target_pos:
+			.attack(character, isFirstCollision, offhandWeapon.damage)
+	
+	additionalRelativeAttackPositions = getCurrentWeapon().relativeAttackPositions
+	currentWeaponNode.set_rotation(getCurrentWeapon().rotationInHand)
 
 func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())

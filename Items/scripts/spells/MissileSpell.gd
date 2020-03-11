@@ -27,11 +27,14 @@ func launchPellet(closest_enemy):
 	GameData.player.get_parent().add_child(new_missile)
 	
 	new_missile.init(
+		GameData.player,
 		closest_enemy,
 		missile_texture,
 		GameData.player.get_position(),
 		25,
 		2,
 		"Missile_Hit",
-		Vector2(0.2, 0.2)
+		Vector2(0.2, 0.2),
+		true,
+		false
 	)

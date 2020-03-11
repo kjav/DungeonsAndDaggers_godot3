@@ -13,7 +13,7 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	var enemiesInArea = GameData.getEnemiesWithinAreaAroundPlayer(2)
+	var enemiesInArea = GameData.getCharactersWithinAreaAroundCharacter(GameData.player, 2)
 	
 	if enemiesInArea.size() > 0 and GameData.player.consume_stat("mana", 1):
 		addHeavyImpacts()

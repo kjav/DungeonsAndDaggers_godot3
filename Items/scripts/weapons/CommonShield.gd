@@ -9,6 +9,8 @@ func _init():
 	iconTexture = preload("res://assets/basic_shield.webp")
 	item_name = "Common Shield"
 	damage = 1
+	isMelee = true
+	isOffhand = true
 
 func onPlayerDamaged():
 	if randi() % int(chanceToBlockOutOf + 1) == 1:

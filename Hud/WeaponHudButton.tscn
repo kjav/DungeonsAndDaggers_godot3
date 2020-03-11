@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ring.webp" type="Texture" id=5]
 [ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
-[ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=7]
-[ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=8]
-[ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=9]
-[ext_resource path="res://assets/basic_sword.png" type="Texture" id=10]
+[ext_resource path="res://assets/offhand.png" type="Texture" id=7]
+[ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=8]
+[ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=9]
+[ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=10]
+[ext_resource path="res://assets/basic_sword.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -58,19 +59,28 @@ margin_right = 557.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
+[node name="Secondary Offhand" type="TextureRect" parent="."]
+visible = false
+margin_left = 341.269
+margin_top = 202.727
+margin_right = 515.269
+margin_bottom = 266.727
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
 [node name="Secondary Inactive Button" type="TextureButton" parent="."]
 margin_left = 257.0
 margin_top = -20.0
 margin_right = 557.0
 margin_bottom = 280.0
-texture_normal = ExtResource( 7 )
-script = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Primary Background" type="TextureRect" parent="."]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Primary Icon" type="TextureRect" parent="."]
 margin_left = 51.0
@@ -78,7 +88,7 @@ margin_top = 58.0
 margin_right = 179.0
 margin_bottom = 186.0
 rect_scale = Vector2( 1.15, 1.15 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Primary front" type="TextureRect" parent="."]
 margin_left = -1.0
@@ -103,10 +113,19 @@ margin_right = 277.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
+[node name="Primary Offhand" type="TextureRect" parent="."]
+visible = false
+margin_left = 62.2686
+margin_top = 202.727
+margin_right = 236.269
+margin_bottom = 266.727
+rect_scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
 [node name="Primary Inactive Button" type="TextureButton" parent="."]
 margin_left = -22.9872
 margin_top = -18.6659
 margin_right = 277.013
 margin_bottom = 281.334
-texture_normal = ExtResource( 7 )
-script = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+script = ExtResource( 9 )

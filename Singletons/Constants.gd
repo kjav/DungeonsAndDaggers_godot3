@@ -26,14 +26,19 @@ const SpellClasses = {
 const WeaponClasses = {
 	"Unarmed": preload("res://Items/scripts/weapons/Unarmed.gd"),
 	"CommonSword": preload("res://Items/scripts/weapons/CommonSword.gd"),
+	"CommonDagger": preload("res://Items/scripts/weapons/CommonDagger.gd"),
 	"CommonShield": preload("res://Items/scripts/weapons/CommonShield.gd"),
 	"CommonSpear": preload("res://Items/scripts/weapons/CommonSpear.gd"),
 	"CommonBow": preload("res://Items/scripts/weapons/CommonBow.gd"),
+	"Bomb": preload("res://Items/scripts/weapons/Bomb.gd"),
 	"UncommonSword": preload("res://Items/scripts/weapons/UncommonSword.gd"),
+	"UncommonDagger": preload("res://Items/scripts/weapons/UncommonDagger.gd"),
 	"UncommonShield": preload("res://Items/scripts/weapons/UncommonShield.gd"),
 	"UncommonSpear": preload("res://Items/scripts/weapons/UncommonSpear.gd"),
 	"UncommonBow": preload("res://Items/scripts/weapons/UncommonBow.gd"),
+	"OgreArm": preload("res://Items/scripts/weapons/OgreArm.gd"),
 	"RareSword": preload("res://Items/scripts/weapons/RareSword.gd"),
+	"RareDagger": preload("res://Items/scripts/weapons/RareDagger.gd"),
 	"RareShield": preload("res://Items/scripts/weapons/RareShield.gd"),
 	"RareSpear": preload("res://Items/scripts/weapons/RareSpear.gd"),
 	"RareBow": preload("res://Items/scripts/weapons/RareBow.gd")
@@ -57,13 +62,16 @@ const IndependentDistribution = preload("res://Components/Distributions/Independ
 const CommonWeapons = [
 	{ "value": WeaponClasses.CommonShield },
 	{ "value": WeaponClasses.CommonSword },
+	{ "value": WeaponClasses.CommonDagger },
 	{ "value": WeaponClasses.CommonSpear },
 	{ "value": WeaponClasses.CommonBow }
 ]
 
 const UncommonWeapons = [
+	{ "value": WeaponClasses.Bomb },
 	{ "value": WeaponClasses.UncommonSpear },
 	{ "value": WeaponClasses.UncommonSword },
+	{ "value": WeaponClasses.UncommonDagger },
 	{ "value": WeaponClasses.UncommonShield },
 	{ "value": WeaponClasses.UncommonBow }
 ]
@@ -71,6 +79,7 @@ const UncommonWeapons = [
 const RareWeapons = [
 	{ "value": WeaponClasses.RareSpear },
 	{ "value": WeaponClasses.RareSword },
+	{ "value": WeaponClasses.RareDagger },
 	{ "value": WeaponClasses.RareShield },
 	{ "value": WeaponClasses.RareBow }
 ]

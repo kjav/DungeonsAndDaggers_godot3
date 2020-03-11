@@ -69,11 +69,14 @@ func castMissile():
 	self.get_parent().add_child(new_missile)
 	
 	new_missile.init(
+		self,
 		GameData.player,
 		missile_texture,
 		get_position() + Vector2(GameData.TileSize/2, GameData.TileSize/2),
 		25,
 		randi()%2 / float(2),
 		"Missile_Hit",
-		Vector2(0.2, 0.2)
+		Vector2(0.2, 0.2),
+		true,
+		false
 	)

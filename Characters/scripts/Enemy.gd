@@ -17,8 +17,8 @@ func _ready():
 	self.get_node("/root/Node2D").connectEnemy(self)
 	._ready()
 
-func attack(character, damage=0):
-	.attack(character, base_damage);
+func attack(character, isFirstCollision, damage=0):
+	.attack(character, isFirstCollision, base_damage);
 
 func turn(skipTurnBehaviour = false):
 	turnWithNoAfterMoveComplete(skipTurnBehaviour)

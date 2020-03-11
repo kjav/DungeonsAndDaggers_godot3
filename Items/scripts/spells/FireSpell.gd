@@ -28,11 +28,14 @@ func launchFireball(closest_enemy):
 	GameData.player.get_parent().add_child(new_missile)
 	
 	new_missile.init(
+		GameData.player,
 		closest_enemy,
 		missile_texture,
 		GameData.player.get_position(),
 		25,
 		randi() % 3 + 8,
 		"Fireball_Hit",
-		Vector2(4, 4)
+		Vector2(4, 4),
+		true,
+		false
 	)
