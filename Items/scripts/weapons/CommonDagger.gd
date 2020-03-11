@@ -5,7 +5,6 @@ func _init():
 	texture = preload("res://assets/basic_dagger.png")
 	iconTexture = preload("res://assets/basic_dagger.png")
 	iconTextureFilePath = "res://assets/basic_dagger.png"
-	iconTexture = preload("res://assets/basic_dagger.png")
 	item_name = "Common Dagger"
 	damage = 0.5
 	isMelee = true

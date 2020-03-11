@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clipped_basic_spear.png-5159e6e1b73d91e7ea187af87dec7379.stex"
+path="res://.import/basic-bow-icon.png-6dc50c3a6ad6ec2627e7bbf5db809022.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/clipped_basic_spear.png"
-dest_files=[ "res://.import/clipped_basic_spear.png-5159e6e1b73d91e7ea187af87dec7379.stex" ]
+source_file="res://assets/basic-bow-icon.png"
+dest_files=[ "res://.import/basic-bow-icon.png-6dc50c3a6ad6ec2627e7bbf5db809022.stex" ]
 
 [params]
 

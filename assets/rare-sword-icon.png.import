@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/basic_sword.png-4868a62d2281ace2d8a9a4003208b235.stex"
+path="res://.import/rare-sword-icon.png-64962f0f5b5e933bf7b43ae43633b5bf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/basic_sword.png"
-dest_files=[ "res://.import/basic_sword.png-4868a62d2281ace2d8a9a4003208b235.stex" ]
+source_file="res://assets/rare-sword-icon.png"
+dest_files=[ "res://.import/rare-sword-icon.png-64962f0f5b5e933bf7b43ae43633b5bf.stex" ]
 
 [params]
 
