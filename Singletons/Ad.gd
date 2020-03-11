@@ -20,6 +20,7 @@ func _init_ads():
 		admob.loadRewardedVideo(adRewardId)
 
 func play_reward_video():
+	print("play_reward_video")
 	if admob == null:
 		emit_signal("reward_ad", "", 0)
 	else:
@@ -35,9 +36,11 @@ func _on_rewarded_video_ad_left_application():
 	admob.loadRewardedVideo(adRewardId)
 
 func _on_rewarded_video_ad_closed():
+	print("_on_rewarded_video_ad_closed")
 	admob.loadRewardedVideo(adRewardId)
 
 func _on_rewarded_video_ad_loaded():
+	print("_on_rewarded_video_ad_loaded")
 	reward_video_loaded = true
 	if do_play_reward_video:
 		do_play_reward_video = false
@@ -45,5 +48,6 @@ func _on_rewarded_video_ad_loaded():
 		admob.showRewardedVideo()
 
 func _on_rewarded(currency, amount):
+	print("_on_rewarded")
 	admob.loadRewardedVideo(adRewardId)
 	emit_signal("reward_ad", currency, amount)
