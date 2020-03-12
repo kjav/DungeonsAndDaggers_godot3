@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/present.png-8c0c5d6d444c31a015f0ebdb6f9b48e3.stex"
+path="res://.import/trophy.webp-5a705e886ac243eecc91ef5d223d964d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/present.png"
-dest_files=[ "res://.import/present.png-8c0c5d6d444c31a015f0ebdb6f9b48e3.stex" ]
+source_file="res://assets/trophy.webp"
+dest_files=[ "res://.import/trophy.webp-5a705e886ac243eecc91ef5d223d964d.stex" ]
 
 [params]
 

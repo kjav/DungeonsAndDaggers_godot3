@@ -18,6 +18,7 @@ func close():
 	speeds = []
 	buttons = []
 	time = 0
+	get_node("ReRoll/Trophy").grayscale = false
 	hide()
 
 func get_upgrade():
@@ -60,6 +61,8 @@ func _process(delta):
 					speeds[i] = 0
 					if speeds[0] == 0 and speeds[1] == 0 and speeds[2] == 0:
 						# Finished animation
+						get_node("ReRoll/Loading").hide()
+						get_node("ReRoll/Trophy").show()
 						for button in buttons:
 							button.clickable = true
 							get_node("sparkle").emitting = true
@@ -74,3 +77,4 @@ func reroll(a, b):
 		button.clickable = false
 
 	get_node("ReRoll").disabled = true
+	get_node("ReRoll/Trophy").grayscale = true
