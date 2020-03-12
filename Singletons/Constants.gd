@@ -49,6 +49,7 @@ const KeyClasses = {
 const UpgradeClasses = {
 	"StrengthUpgrade3": preload("res://Items/scripts/upgrades/StrengthUpgrade3.gd"),
 	"DefenceUpgrade3": preload("res://Items/scripts/upgrades/DefenceUpgrade3.gd"),
+	"TrapImmunity": preload("res://Items/scripts/upgrades/TrapImmunity.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
@@ -58,6 +59,13 @@ const NumberOf = preload("res://Components/Distributions/NumberOf.gd")
 const Distribution = preload("res://Components/Distributions/Distribution.gd")
 const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
+
+var AllUpgrades = [
+	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
+	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
+	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
+	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
+]
 
 const CommonWeapons = [
 	{ "value": WeaponClasses.CommonShield },
@@ -150,13 +158,4 @@ var RarePotionsDistribution = DistributionOfEquals.new(RarePotions)
 var RareSpellsDistribution = DistributionOfEquals.new(RareSpells)
 var RareFoodsDistribution = DistributionOfEquals.new(RareFoods)
 
-var UpgradesDistribution = Distribution.new([{
-	"p": 0.33, 
-	"value": UpgradeClasses.StrengthUpgrade3
-}, {
-	"p": 0.33, 
-	"value": UpgradeClasses.DefenceUpgrade3
-}, {
-	"p": 0.34, 
-	"value": UpgradeClasses.HealthUpgrade1
-}])
+var UpgradesDistribution = DistributionOfEquals.new(AllUpgrades)

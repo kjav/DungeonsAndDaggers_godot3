@@ -15,6 +15,7 @@ func _enter_tree():
 func _ready():
 	set_process(true)
 	self.get_node("/root/Node2D").connectEnemy(self)
+	trapImmune = true
 	._ready()
 
 func attack(character, isFirstCollision, damage=0):

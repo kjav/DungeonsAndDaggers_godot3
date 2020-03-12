@@ -21,7 +21,7 @@ func close():
 	hide()
 
 func get_upgrade():
-	return Constants.UpgradesDistribution.pick()[0].value.new()
+	return Constants.UpgradesDistribution.pick()[0]
 
 func show():
 	for node in range(1,4):
