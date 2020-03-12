@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Hud/UpgradeScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Hud/ReRoll.gd" type="Script" id=7]
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=8]
 [ext_resource path="res://assets/trophy.webp" type="Texture" id=9]
+[ext_resource path="res://Hud/Trophy.gd" type="Script" id=10]
+[ext_resource path="res://assets/loading.webp" type="Texture" id=11]
+[ext_resource path="res://Hud/Loading.gd" type="Script" id=12]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.747775, 0, 0, Vector2( 0.885412, 0.3592 ), -1.03026, -1.03026, 0, 0, Vector2( 1, 0.1656 ), -1.4654, 0.0, 0, 0 ]
@@ -41,6 +44,23 @@ outline_color = Color( 0.592157, 0.360784, 0, 1 )
 use_filter = true
 extra_spacing_bottom = 21
 font_data = ExtResource( 8 )
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+uniform bool grayscale = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (grayscale) {
+	    COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114)));
+	}
+}
+"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+shader_param/grayscale = false
 
 [node name="Node2D" type="Control"]
 pause_mode = 2
@@ -158,10 +178,25 @@ custom_colors/font_outline_modulate = Color( 0.427451, 0.180392, 0, 1 )
 text = "WATCH VIDEO
 TO RE-ROLL"
 
-[node name="Present" type="TextureRect" parent="ReRoll"]
-margin_left = 57.65
-margin_top = 39.9501
-margin_right = 209.65
-margin_bottom = 191.95
+[node name="Trophy" type="TextureRect" parent="ReRoll"]
+material = SubResource( 6 )
+margin_left = 22.3561
+margin_top = 2.76538
+margin_right = 174.356
+margin_bottom = 154.765
+rect_scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 9 )
 expand = true
+script = ExtResource( 10 )
+
+[node name="Loading" type="TextureRect" parent="ReRoll"]
+visible = false
+margin_left = 54.1215
+margin_top = 32.2302
+margin_right = 206.121
+margin_bottom = 184.23
+rect_scale = Vector2( 1.8, 1.8 )
+rect_pivot_offset = Vector2( 75, 75 )
+texture = ExtResource( 11 )
+expand = true
+script = ExtResource( 12 )
