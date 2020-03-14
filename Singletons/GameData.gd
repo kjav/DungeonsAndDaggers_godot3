@@ -38,6 +38,7 @@ func StartNewGame():
 	total_blocked_damage = 0
 	total_items_used = 0
 	get_tree().change_scene("Game.tscn")
+	Constants.AllUpgrades = Constants.AllUpgradesUnmodified
 
 func _ready():
 	randomize()
@@ -326,8 +327,10 @@ func save_game():
 		"player": serialise_player(player),
 		"kills": player_kills,
 		"blockedDamage": total_blocked_damage,
-		"itemsUsed": total_items_used
+		"itemsUsed": total_items_used,
+		"availableUpgrades": Constants.AllUpgrades
 	}))
+
 	save_game.close()
 
 func delete_saved_game():
@@ -359,6 +362,7 @@ func load_game():
 			player_kills = state.kills
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
+			Constants.AllUpgrades = state.availableUpgrades
 	save_game.close()
 
 func next_level():

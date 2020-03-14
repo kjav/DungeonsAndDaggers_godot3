@@ -34,6 +34,7 @@ var applePickedUp = false
 var lastDirection = Enums.DIRECTION.NONE
 var spellUsesTurn = true
 var foodUsesTurn = true
+var potionUsesTurn = true
 
 func _init():
 	initialStats.health = {

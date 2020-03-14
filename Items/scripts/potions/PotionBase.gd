@@ -11,4 +11,6 @@ func onWalkedOut():
 func onUse():
 	GameData.potions.remove(GameData.potions.find(self))
 	.onUse()
-	#Audio.playSoundEffect(useSound, true)
+
+	if GameData.player.potionUsesTurn:
+		GameData.player.forceTurnEnd()

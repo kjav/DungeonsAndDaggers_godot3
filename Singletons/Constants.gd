@@ -52,6 +52,7 @@ const UpgradeClasses = {
 	"TrapImmunity": preload("res://Items/scripts/upgrades/TrapImmunity.gd"),
 	"QuickSpellcaster": preload("res://Items/scripts/upgrades/QuickSpellcaster.gd"),
 	"QuickEater": preload("res://Items/scripts/upgrades/QuickEater.gd"),
+	"QuickDrinker": preload("res://Items/scripts/upgrades/QuickDrinker.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
@@ -62,12 +63,23 @@ const Distribution = preload("res://Components/Distributions/Distribution.gd")
 const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
+const AllUpgradesUnmodified = [
+	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
+	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
+	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
+	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
+	{ "value": UpgradeClasses.QuickEater, "onetime": true },
+	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
+	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
+]
+
 var AllUpgrades = [
 	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
 	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
 	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
 	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.QuickEater, "onetime": true },
+	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
 ]
 
