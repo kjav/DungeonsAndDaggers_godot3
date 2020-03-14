@@ -32,6 +32,7 @@ var hasMoved
 var lastEvent
 var applePickedUp = false
 var lastDirection = Enums.DIRECTION.NONE
+var spellUsesTurn = true
 
 func _init():
 	initialStats.health = {

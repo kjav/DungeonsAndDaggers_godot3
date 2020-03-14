@@ -9,5 +9,8 @@ func onUse():
 	GameData.spells.remove(GameData.spells.find(self))
 	.onUse()
 
+	if GameData.player.spellUsesTurn:
+		GameData.player.forceTurnEnd()
+
 func onWalkedOut():
 	pass

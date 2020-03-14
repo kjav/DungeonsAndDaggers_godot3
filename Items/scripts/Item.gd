@@ -10,7 +10,6 @@ var rarity = Enums.WEAPONRARITY.COMMON
 
 func onUse():
 	emit_signal("ItemUsed", self);
-	GameData.player.forceTurnEnd()
 	GameData.total_items_used += 1
 
 func place(newPos):

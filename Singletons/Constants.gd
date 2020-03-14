@@ -50,6 +50,7 @@ const UpgradeClasses = {
 	"StrengthUpgrade3": preload("res://Items/scripts/upgrades/StrengthUpgrade3.gd"),
 	"DefenceUpgrade3": preload("res://Items/scripts/upgrades/DefenceUpgrade3.gd"),
 	"TrapImmunity": preload("res://Items/scripts/upgrades/TrapImmunity.gd"),
+	"QuickSpellcaster": preload("res://Items/scripts/upgrades/QuickSpellcaster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
@@ -64,6 +65,7 @@ var AllUpgrades = [
 	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
 	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
 	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
+	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
 ]
 
