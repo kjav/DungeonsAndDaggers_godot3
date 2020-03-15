@@ -292,14 +292,22 @@ func serialise_player(player):
 	return {
 		"stats": player.stats,
 		"primary_weapon": inst2dict(player.primaryWeapon),
-		"secondary_weapon": inst2dict(player.secondaryWeapon)
+		"secondary_weapon": inst2dict(player.secondaryWeapon),
+		"food_uses_turn": player.foodUsesTurn,
+		"spell_uses_turn": player.spellUsesTurn,
+		"potion_uses_turn": player.potionUsesTurn,
+		"trap_immune": player.trapImmune,
 	}
 
 func load_player(dict):
 	saved_player = {
 		"stats": dict.stats,
 		"primaryWeapon": dict2item(dict.primary_weapon),
-		"secondaryWeapon": dict2item(dict.secondary_weapon)
+		"secondaryWeapon": dict2item(dict.secondary_weapon),
+		"foodUsesTurn": dict.food_uses_turn,
+		"spellUsesTurn": dict.spell_uses_turn,
+		"potionUsesTurn": dict.potion_uses_turn,
+		"trapImmune": dict.trap_immune,
 	}
 
 func stopSuggestingTutorial():

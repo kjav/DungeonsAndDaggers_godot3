@@ -30,7 +30,7 @@ var temporaryStrengthAmount = 5
 
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
-var trapImmune = false
+var trapImmune
 
 var stunnedDuration
 

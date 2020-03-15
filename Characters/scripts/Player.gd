@@ -32,9 +32,9 @@ var hasMoved
 var lastEvent
 var applePickedUp = false
 var lastDirection = Enums.DIRECTION.NONE
-var spellUsesTurn = true
-var foodUsesTurn = true
-var potionUsesTurn = true
+var spellUsesTurn
+var foodUsesTurn
+var potionUsesTurn
 
 func _init():
 	initialStats.health = {
@@ -66,6 +66,9 @@ func _ready():
 	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
 	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
 	offHandWeaponNode = backHandBone.get_node("OffHandWeapon")
+	spellUsesTurn = true
+	foodUsesTurn = true
+	potionUsesTurn = true
 	
 	setSecondaryWeapon(secondaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
@@ -80,10 +83,13 @@ func _ready():
 	addTutorialTextIfTutorial("These are\ncrucial, they\noffer random\nupgrades", Vector2(7.1, -2.9))
   
 	if GameData.saved_player:
-		print("Here!")
 		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
 		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
 		stats = GameData.saved_player.stats
+		foodUsesTurn = GameData.saved_player.foodUsesTurn
+		spellUsesTurn = GameData.saved_player.spellUsesTurn
+		potionUsesTurn = GameData.saved_player.potionUsesTurn
+		trapImmune = GameData.saved_player.trapImmune
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":
