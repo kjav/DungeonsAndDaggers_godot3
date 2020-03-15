@@ -299,6 +299,7 @@ func serialise_player(player):
 		"trap_immune": player.trapImmune,
 		"can_always_hurt_ghosts": player.canAlwaysHurtGhosts,
 		"increased_spell_damage": player.increasedSpellDamage,
+		"increased_food_heal": player.increasedFoodHeal,
 	}
 
 func load_player(dict):
@@ -312,6 +313,7 @@ func load_player(dict):
 		"trapImmune": dict.trap_immune,
 		"canAlwaysHurtGhosts": dict.can_always_hurt_ghosts,
 		"increasedSpellDamage": dict.increased_spell_damage,
+		"increasedFoodHeal": dict.increased_food_heal,
 	}
 
 func stopSuggestingTutorial():
