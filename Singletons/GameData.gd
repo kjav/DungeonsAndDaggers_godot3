@@ -329,7 +329,7 @@ func save_game():
 		"kills": player_kills,
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
-		"availableUpgrades": Constants.AllUpgrades
+		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades)
 	}))
 
 	save_game.close()
@@ -364,11 +364,27 @@ func load_game():
 			player_kills = state.kills
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
-			Constants.AllUpgrades = state.availableUpgrades
+			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
 	save_game.close()
+
+func load_upgrades(availableUpgrades):
+	var upgrades = []
+
+	for upgrade in availableUpgrades:
+		upgrades.append({ "value": dict2inst(upgrade.value).get_script(), "onetime": upgrade.onetime })
+
+	return upgrades
+
+func serialise_upgrades(upgrades):
+	var dictionaries = []
+	
+	for upgrade in upgrades:
+		dictionaries.append({ "value": inst2dict(upgrade.value.new()), "onetime": upgrade.onetime })
+
+	return dictionaries
 
 func next_level():
 	# TODO: Hide HUD node.
