@@ -2,10 +2,13 @@ extends TextureButton
 
 var clickable = true
 
-export var upgrade = Constants.UpgradeClasses.DefenceUpgrade3 setget setUpgrade, getUpgrade
+export var upgrade = "" setget setUpgrade, getUpgrade
 var shouldDelete = false
 
 func setUpgrade(new_upgrade):
+	if upgrade is String:
+		upgrade = { "value": Constants.UpgradeClasses.DefenceUpgrade3, "onetime": false }
+	
 	upgrade = new_upgrade.value.new()
 	shouldDelete = new_upgrade.onetime
 	

@@ -39,6 +39,7 @@ func StartNewGame():
 	total_items_used = 0
 	get_tree().change_scene("Game.tscn")
 	Constants.AllUpgrades = Constants.AllUpgradesUnmodified
+	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 
 func _ready():
 	randomize()
@@ -349,6 +350,7 @@ func load_game():
 
 	# the object it represents.
 	save_game.open("user://" + chosen_map + ".save", File.READ)
+	
 	while not save_game.eof_reached():
 		var state = parse_json(save_game.get_line())
 		if state:
@@ -363,6 +365,9 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = state.availableUpgrades
+	
+	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
+	
 	save_game.close()
 
 func next_level():
