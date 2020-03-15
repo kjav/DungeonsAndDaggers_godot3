@@ -300,6 +300,7 @@ func serialise_player(player):
 		"can_always_hurt_ghosts": player.canAlwaysHurtGhosts,
 		"increased_spell_damage": player.increasedSpellDamage,
 		"increased_food_heal": player.increasedFoodHeal,
+		"extend_brief_potion": player.extendBriefPotions,
 	}
 
 func load_player(dict):
@@ -314,6 +315,7 @@ func load_player(dict):
 		"canAlwaysHurtGhosts": dict.can_always_hurt_ghosts,
 		"increasedSpellDamage": dict.increased_spell_damage,
 		"increasedFoodHeal": dict.increased_food_heal,
+		"extendBriefPotions": dict.extend_brief_potion,
 	}
 
 func stopSuggestingTutorial():

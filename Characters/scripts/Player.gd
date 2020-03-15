@@ -38,6 +38,7 @@ var potionUsesTurn
 var canAlwaysHurtGhosts
 var increasedSpellDamage
 var increasedFoodHeal
+var extendBriefPotions
 
 func _init():
 	initialStats.health = {
@@ -96,6 +97,7 @@ func _ready():
 		canAlwaysHurtGhosts = GameData.saved_player.canAlwaysHurtGhosts
 		increasedSpellDamage = GameData.saved_player.increasedSpellDamage
 		increasedFoodHeal = GameData.saved_player.increasedFoodHeal
+		extendBriefPotions = GameData.saved_player.extendBriefPotions
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":

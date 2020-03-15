@@ -10,5 +10,13 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return
 	
-	GameData.player.applyTemporaryStrength(15)
+	GameData.player.applyTemporaryStrength(turnCount())
 	.onUse()
+
+func turnCount():
+	var turnCount = 15
+
+	if GameData.player.extendBriefPotions:
+		turnCount = 25
+	
+	return turnCount
