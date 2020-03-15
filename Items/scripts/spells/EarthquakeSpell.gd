@@ -25,7 +25,16 @@ func onUse():
 
 func damageEnemies(enemiesInArea):
 	for enemy in enemiesInArea:
-		enemy.takeDamage(3)
+		enemy.takeDamage(spellDamage())
+
+func spellDamage():
+	var damage = 3
+
+	if GameData.player.increasedSpellDamage:
+		damage = 3.5
+	
+	return damage
+
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.getRelativeCoordinatesAroundPoint(1)
