@@ -297,6 +297,7 @@ func serialise_player(player):
 		"spell_uses_turn": player.spellUsesTurn,
 		"potion_uses_turn": player.potionUsesTurn,
 		"trap_immune": player.trapImmune,
+		"can_always_hurt_ghosts": player.canAlwaysHurtGhosts,
 	}
 
 func load_player(dict):
@@ -308,6 +309,7 @@ func load_player(dict):
 		"spellUsesTurn": dict.spell_uses_turn,
 		"potionUsesTurn": dict.potion_uses_turn,
 		"trapImmune": dict.trap_immune,
+		"canAlwaysHurtGhosts": dict.can_always_hurt_ghosts,
 	}
 
 func stopSuggestingTutorial():

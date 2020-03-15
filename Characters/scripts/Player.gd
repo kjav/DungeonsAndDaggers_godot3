@@ -35,6 +35,7 @@ var lastDirection = Enums.DIRECTION.NONE
 var spellUsesTurn
 var foodUsesTurn
 var potionUsesTurn
+var canAlwaysHurtGhosts
 
 func _init():
 	initialStats.health = {
@@ -90,6 +91,7 @@ func _ready():
 		spellUsesTurn = GameData.saved_player.spellUsesTurn
 		potionUsesTurn = GameData.saved_player.potionUsesTurn
 		trapImmune = GameData.saved_player.trapImmune
+		canAlwaysHurtGhosts = GameData.saved_player.canAlwaysHurtGhosts
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":

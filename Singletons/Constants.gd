@@ -53,6 +53,7 @@ const UpgradeClasses = {
 	"QuickSpellcaster": preload("res://Items/scripts/upgrades/QuickSpellcaster.gd"),
 	"QuickEater": preload("res://Items/scripts/upgrades/QuickEater.gd"),
 	"QuickDrinker": preload("res://Items/scripts/upgrades/QuickDrinker.gd"),
+	"GhostBuster": preload("res://Items/scripts/upgrades/GhostBuster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
@@ -70,6 +71,7 @@ const AllUpgradesUnmodified = [
 	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.QuickEater, "onetime": true },
 	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
+	{ "value": UpgradeClasses.GhostBuster, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
 ]
 
@@ -80,6 +82,7 @@ var AllUpgrades = [
 	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.QuickEater, "onetime": true },
 	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
+	{ "value": UpgradeClasses.GhostBuster, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
 ]
 

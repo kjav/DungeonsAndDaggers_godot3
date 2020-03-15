@@ -39,5 +39,5 @@ func _ready():
 
 func turn(skipTurnBehaviour = false):
 	.turn()    
-	self.damageable = turnBehaviour.getDamageable()
+	self.damageable = turnBehaviour.getDamageable() || GameData.player.canAlwaysHurtGhosts
 	
