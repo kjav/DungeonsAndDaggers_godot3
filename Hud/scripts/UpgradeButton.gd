@@ -6,7 +6,7 @@ export var upgrade = "" setget setUpgrade, getUpgrade
 var shouldDelete = false
 
 func setUpgrade(new_upgrade):
-	if upgrade is String:
+	if new_upgrade is String:
 		upgrade = { "value": Constants.UpgradeClasses.DefenceUpgrade3, "onetime": false }
 	
 	upgrade = new_upgrade.value.new()

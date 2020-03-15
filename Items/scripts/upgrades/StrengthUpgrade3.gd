@@ -2,6 +2,7 @@ extends "UpgradeBase.gd"
 
 func _init():
 	texture = preload("res://assets/37_a.webp")
+	textureFilePath = "res://assets/37_a.webp"
 	description="Increases your strength level, making you hit more consistently.\n\n  +3 strength"
 	title="Berserker"
 
