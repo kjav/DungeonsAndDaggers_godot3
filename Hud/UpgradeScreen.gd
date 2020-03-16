@@ -25,6 +25,9 @@ func get_upgrade():
 	return Constants.UpgradesDistribution.pick()[0]
 
 func show():
+	get_node("ActiveThirdUpgradeSlot").visible = GameData.player.thirdUpgradeSlot
+	get_node("InactiveThirdUpgradeSlot").visible = !GameData.player.thirdUpgradeSlot
+
 	for node in range(1,4):
 		var button = get_node("UpgradeButton" + str(node))
 		button.upgrade = get_upgrade()

@@ -52,7 +52,13 @@ const UpgradeClasses = {
 	"TrapImmunity": preload("res://Items/scripts/upgrades/TrapImmunity.gd"),
 	"QuickSpellcaster": preload("res://Items/scripts/upgrades/QuickSpellcaster.gd"),
 	"QuickEater": preload("res://Items/scripts/upgrades/QuickEater.gd"),
+	"GreatPalate": preload("res://Items/scripts/upgrades/GreatPalate.gd"),
+	"ReserveWeapon": preload("res://Items/scripts/upgrades/ReserveWeapon.gd"),
 	"QuickDrinker": preload("res://Items/scripts/upgrades/QuickDrinker.gd"),
+	"PotionExtender": preload("res://Items/scripts/upgrades/PotionExtender.gd"),
+	"GhostBuster": preload("res://Items/scripts/upgrades/GhostBuster.gd"),
+	"Versatile": preload("res://Items/scripts/upgrades/Versatile.gd"),
+	"MaliciousSpellcaster": preload("res://Items/scripts/upgrades/MaliciousSpellcaster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
@@ -68,20 +74,18 @@ const AllUpgradesUnmodified = [
 	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
 	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
 	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
+	{ "value": UpgradeClasses.MaliciousSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.QuickEater, "onetime": true },
+	{ "value": UpgradeClasses.GreatPalate, "onetime": true },
 	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
+	{ "value": UpgradeClasses.PotionExtender, "onetime": true },
+	{ "value": UpgradeClasses.GhostBuster, "onetime": true },
+	{ "value": UpgradeClasses.Versatile, "onetime": true },
+	{ "value": UpgradeClasses.ReserveWeapon, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
 ]
 
-var AllUpgrades = [
-	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
-	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
-	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
-	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
-	{ "value": UpgradeClasses.QuickEater, "onetime": true },
-	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
-	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
-]
+var AllUpgrades = AllUpgradesUnmodified
 
 const CommonWeapons = [
 	{ "value": WeaponClasses.CommonShield },

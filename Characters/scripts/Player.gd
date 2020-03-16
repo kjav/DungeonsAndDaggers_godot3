@@ -15,6 +15,7 @@ var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
 var secondaryWeapon = Constants.WeaponClasses.Unarmed.new()
+var tertiaryWeapon = Constants.WeaponClasses.Unarmed.new()
 var swipe_funcref
 var character_name = 'Player'
 var charactersAwaitingMove = false
@@ -35,6 +36,12 @@ var lastDirection = Enums.DIRECTION.NONE
 var spellUsesTurn
 var foodUsesTurn
 var potionUsesTurn
+var canAlwaysHurtGhosts
+var increasedSpellDamage
+var increasedFoodHeal
+var extendBriefPotions
+var thirdWeaponSlot
+var thirdUpgradeSlot
 
 func _init():
 	initialStats.health = {
@@ -69,8 +76,11 @@ func _ready():
 	spellUsesTurn = true
 	foodUsesTurn = true
 	potionUsesTurn = true
+	thirdWeaponSlot = false
+	thirdUpgradeSlot = false
 	
 	setSecondaryWeapon(secondaryWeapon)
+	setTertiaryWeapon(tertiaryWeapon)
 	setPrimaryWeapon(primaryWeapon)
 	setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 	faceDirection(Enums.DIRECTION.RIGHT)
@@ -85,11 +95,18 @@ func _ready():
 	if GameData.saved_player:
 		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
 		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
+		setTertiaryWeapon(GameData.saved_player.tertiaryWeapon)
 		stats = GameData.saved_player.stats
 		foodUsesTurn = GameData.saved_player.foodUsesTurn
 		spellUsesTurn = GameData.saved_player.spellUsesTurn
 		potionUsesTurn = GameData.saved_player.potionUsesTurn
 		trapImmune = GameData.saved_player.trapImmune
+		canAlwaysHurtGhosts = GameData.saved_player.canAlwaysHurtGhosts
+		increasedSpellDamage = GameData.saved_player.increasedSpellDamage
+		increasedFoodHeal = GameData.saved_player.increasedFoodHeal
+		extendBriefPotions = GameData.saved_player.extendBriefPotions
+		thirdWeaponSlot = GameData.saved_player.thirdWeaponSlot
+		thirdUpgradeSlot = GameData.saved_player.thirdUpgradeSlot
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":
@@ -129,17 +146,23 @@ func getCurrentWeapon():
 		return primaryWeapon
 	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
 		return secondaryWeapon
+	elif currentWeaponSlot == Enums.WEAPONSLOT.TERTIARY:
+		return tertiaryWeapon
 
 func getOffHandWeapon():
 	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
 		return secondaryWeapon
 	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
 		return primaryWeapon
+	elif currentWeaponSlot == Enums.WEAPONSLOT.TERTIARY:
+		return secondaryWeapon
 
 func swapWeapons():
 	if currentWeaponSlot == Enums.WEAPONSLOT.PRIMARY:
 		setCurrentWeaponSlot(Enums.WEAPONSLOT.SECONDARY)
 	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
+		setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
+	elif currentWeaponSlot == Enums.WEAPONSLOT.TERTIARY:
 		setCurrentWeaponSlot(Enums.WEAPONSLOT.PRIMARY)
 
 func setCurrentWeapon(weapon):
@@ -147,6 +170,8 @@ func setCurrentWeapon(weapon):
 		setPrimaryWeapon(weapon)
 	elif currentWeaponSlot == Enums.WEAPONSLOT.SECONDARY:
 		setSecondaryWeapon(weapon)
+	elif currentWeaponSlot == Enums.WEAPONSLOT.TERTIARY:
+		setTertiaryWeapon(weapon)
 	
 func setPrimaryWeapon(weapon):
 	primaryWeapon = weapon
@@ -157,6 +182,12 @@ func setPrimaryWeapon(weapon):
 func setSecondaryWeapon(weapon):
 	secondaryWeapon = weapon
 	emit_signal("weaponChanged", Enums.WEAPONSLOT.SECONDARY, secondaryWeapon)
+
+	setCurrentWeaponSlot(currentWeaponSlot)
+
+func setTertiaryWeapon(weapon):
+	tertiaryWeapon = weapon
+	emit_signal("weaponChanged", Enums.WEAPONSLOT.TERTIARY, tertiaryWeapon)
 	
 	setCurrentWeaponSlot(currentWeaponSlot)
 
@@ -350,6 +381,7 @@ func takeDamage(damage):
 	var damageableStore = damageable
 	primaryWeapon.onPlayerDamaged()
 	secondaryWeapon.onPlayerDamaged()
+	tertiaryWeapon.onPlayerDamaged()
 	
 	if GameData.chosen_map == "Tutorial":
 		damage = min(damage, stats.health.value - 0.5)
@@ -369,11 +401,15 @@ func pickUpTopItem():
 	pickUp(GameData.itemAtPos(self.get_position()/GameData.TileSize))
 	
 func pickUpWeapon(weapon):
-	if not getOffHandWeapon().equiptable:
-		swapWeapons()
-	
-	dropWeapon()
-	setCurrentWeapon(weapon)
+	if not primaryWeapon.equiptable:
+		setPrimaryWeapon(weapon)
+	elif not secondaryWeapon.equiptable:
+			setSecondaryWeapon(weapon)
+	elif not tertiaryWeapon.equiptable && GameData.player.thirdWeaponSlot:
+			setTertiaryWeapon(weapon)
+	else:
+		dropWeapon()
+		setCurrentWeapon(weapon)
 
 func pickUp(item):
 	if (item != null):
