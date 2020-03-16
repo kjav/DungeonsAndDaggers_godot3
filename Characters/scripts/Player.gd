@@ -41,6 +41,7 @@ var increasedSpellDamage
 var increasedFoodHeal
 var extendBriefPotions
 var thirdWeaponSlot
+var thirdUpgradeSlot
 
 func _init():
 	initialStats.health = {
@@ -76,6 +77,7 @@ func _ready():
 	foodUsesTurn = true
 	potionUsesTurn = true
 	thirdWeaponSlot = false
+	thirdUpgradeSlot = false
 	
 	setSecondaryWeapon(secondaryWeapon)
 	setTertiaryWeapon(tertiaryWeapon)
@@ -104,6 +106,7 @@ func _ready():
 		increasedFoodHeal = GameData.saved_player.increasedFoodHeal
 		extendBriefPotions = GameData.saved_player.extendBriefPotions
 		thirdWeaponSlot = GameData.saved_player.thirdWeaponSlot
+		thirdUpgradeSlot = GameData.saved_player.thirdUpgradeSlot
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":

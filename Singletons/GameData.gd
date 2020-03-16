@@ -302,6 +302,7 @@ func serialise_player(player):
 		"increased_food_heal": player.increasedFoodHeal,
 		"extend_brief_potion": player.extendBriefPotions,
 		"third_weapon_slot": player.thirdWeaponSlot,
+		"third_upgrade_slot": player.thirdUpgradeSlot,
 	}
 
 func load_player(dict):
@@ -319,6 +320,7 @@ func load_player(dict):
 		"increasedFoodHeal": dict.increased_food_heal,
 		"extendBriefPotions": dict.extend_brief_potion,
 		"thirdWeaponSlot": dict.third_weapon_slot,
+		"thirdUpgradeSlot": dict.third_upgrade_slot,
 	}
 
 func stopSuggestingTutorial():
