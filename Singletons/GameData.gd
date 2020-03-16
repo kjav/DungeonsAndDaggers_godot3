@@ -251,7 +251,6 @@ func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	
 	return enemiesInDistance
 
-
 func string2vec(s):
 	var x = s.split(", ")[0].split("(")[1]
 	var y = s.split(", ")[1].split(")")[0]
@@ -293,6 +292,7 @@ func serialise_player(player):
 		"stats": player.stats,
 		"primary_weapon": inst2dict(player.primaryWeapon),
 		"secondary_weapon": inst2dict(player.secondaryWeapon),
+		"tertiary_weapon": inst2dict(player.tertiaryWeapon),
 		"food_uses_turn": player.foodUsesTurn,
 		"spell_uses_turn": player.spellUsesTurn,
 		"potion_uses_turn": player.potionUsesTurn,
@@ -301,6 +301,7 @@ func serialise_player(player):
 		"increased_spell_damage": player.increasedSpellDamage,
 		"increased_food_heal": player.increasedFoodHeal,
 		"extend_brief_potion": player.extendBriefPotions,
+		"third_weapon_slot": player.thirdWeaponSlot,
 	}
 
 func load_player(dict):
@@ -308,6 +309,7 @@ func load_player(dict):
 		"stats": dict.stats,
 		"primaryWeapon": dict2item(dict.primary_weapon),
 		"secondaryWeapon": dict2item(dict.secondary_weapon),
+		"tertiaryWeapon": dict2item(dict.tertiary_weapon),
 		"foodUsesTurn": dict.food_uses_turn,
 		"spellUsesTurn": dict.spell_uses_turn,
 		"potionUsesTurn": dict.potion_uses_turn,
@@ -316,6 +318,7 @@ func load_player(dict):
 		"increasedSpellDamage": dict.increased_spell_damage,
 		"increasedFoodHeal": dict.increased_food_heal,
 		"extendBriefPotions": dict.extend_brief_potion,
+		"thirdWeaponSlot": dict.third_weapon_slot,
 	}
 
 func stopSuggestingTutorial():
