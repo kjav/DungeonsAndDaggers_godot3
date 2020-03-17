@@ -10,10 +10,11 @@ script = ExtResource( 1 )
 z_index = 3
 
 [node name="Hitmarker" type="TextureRect" parent="Container"]
-margin_left = 45.0
-margin_top = 33.0
-margin_right = 515.0
-margin_bottom = 488.0
+margin_left = -40.0
+margin_top = 30.0
+margin_right = 430.0
+margin_bottom = 485.0
+rect_scale = Vector2( 4, 3 )
 texture = ExtResource( 2 )
 
 [node name="Amount" type="Label" parent="Container"]
@@ -28,5 +29,6 @@ margin_bottom = 88.2528
 rect_scale = Vector2( 17, 17 )
 mouse_filter = 1
 size_flags_vertical = 0
+text = "2.5"
 align = 1
 valign = 1

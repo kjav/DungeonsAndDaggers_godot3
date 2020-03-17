@@ -19,8 +19,8 @@ func setAmount(newAmount):
 
 func setBlockedHitmarker():
 	hitmarkerScene.texture = blockHitmarket
-	hitmarkerScene.set_scale(Vector2(0.6, 0.6))
-	hitmarkerScene.rect_position += Vector2(40, 30)
+	hitmarkerScene.set_scale(Vector2(3, 2.5))
+	hitmarkerScene.rect_position += Vector2(60, 40)
 
 func getAmount():
 	return amount
