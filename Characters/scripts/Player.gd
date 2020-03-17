@@ -135,7 +135,7 @@ func setCurrentWeaponSlot(slot):
 		currentWeaponNode.set_texture(chosenWeapon.texture)
 		currentWeaponNode.set_offset(chosenWeapon.offset)
 		currentWeaponNode.set_rotation(chosenWeapon.rotationInHand)
-		offHandWeaponNode.set_texture(offHandWeapon.texture)
+		offHandWeaponNode.set_texture(offHandWeapon.offhandTexture)
 		offHandWeaponNode.set_offset(offHandWeapon.offset)
 		offHandWeaponNode.set_rotation(offHandWeapon.rotationInOffHand)
 		additionalRelativeAttackPositions = chosenWeapon.relativeAttackPositions

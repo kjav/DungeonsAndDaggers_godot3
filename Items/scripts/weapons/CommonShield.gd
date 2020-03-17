@@ -5,6 +5,8 @@ var chanceToBlockOutOf = 6
 func _init():
 	textureFilePath = "res://assets/basic_shield.webp"
 	texture = preload("res://assets/basic_shield.webp")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/basic_shield.webp"
 	iconTexture = preload("res://assets/basic_shield.webp")
 	item_name = "Common Shield"

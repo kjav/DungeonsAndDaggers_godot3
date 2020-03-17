@@ -5,6 +5,8 @@ const missile = preload("res://Projectiles/Missile.tscn")
 func _init():
 	textureFilePath = "res://assets/bomb.png"
 	texture = preload("res://assets/bomb.png")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/bomb.png"
 	iconTexture = preload("res://assets/bomb.png")
 	item_name = "Bomb"
