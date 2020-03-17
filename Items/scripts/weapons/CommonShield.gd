@@ -15,5 +15,6 @@ func _init():
 	rotationInOffHand = deg2rad(-100)
 
 func onPlayerDamaged():
-	if randi() % int(chanceToBlockOutOf + 1) == 1:
+	if !GameData.player.shieldOnDamageUsedForTurn && randi() % int(chanceToBlockOutOf + 1) == 1:
 		GameData.player.damageable = false
+		GameData.player.shieldOnDamageUsedForTurn = true

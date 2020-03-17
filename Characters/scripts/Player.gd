@@ -42,6 +42,7 @@ var increasedFoodHeal
 var extendBriefPotions
 var thirdWeaponSlot
 var thirdUpgradeSlot
+var shieldOnDamageUsedForTurn
 
 func _init():
 	initialStats.health = {
@@ -332,11 +333,23 @@ func attack(character, isFirstCollision, base_damage = 0):
 		else:
 			removeCurrentWeapon()
 		
-		if offhandWeapon is Constants.WeaponClasses.CommonDagger && currentWeapon.isMelee && target_pos == character.target_pos:
-			.attack(character, isFirstCollision, offhandWeapon.damage)
+		var dagger = getDaggerIfEquipt()
+
+		if dagger != null && currentWeapon.isMelee && target_pos == character.target_pos:
+			.attack(character, isFirstCollision, dagger.damage)
 	
 	additionalRelativeAttackPositions = getCurrentWeapon().relativeAttackPositions
 	currentWeaponNode.set_rotation(getCurrentWeapon().rotationInHand)
+
+func getDaggerIfEquipt():
+	if primaryWeapon is Constants.WeaponClasses.CommonDagger:
+		return primaryWeapon
+	elif secondaryWeapon is Constants.WeaponClasses.CommonDagger:
+		return secondaryWeapon
+	elif tertiaryWeapon is Constants.WeaponClasses.CommonDagger:
+		return tertiaryWeapon
+	else:
+		return null
 
 func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
@@ -379,6 +392,9 @@ func _process(delta):
 
 func takeDamage(damage):
 	var damageableStore = damageable
+
+	shieldOnDamageUsedForTurn = false
+
 	primaryWeapon.onPlayerDamaged()
 	secondaryWeapon.onPlayerDamaged()
 	tertiaryWeapon.onPlayerDamaged()
