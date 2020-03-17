@@ -246,7 +246,6 @@ func setStandAnimation(direction):
 			get_node("Polygons").scale = polygonsScale
 
 func forceTurnEnd(direction = Enums.DIRECTION.NONE):
-	.turn()
 	time_elapsed = 0
 	#Audio.playWalk()
 	moveDirection(direction)
@@ -304,6 +303,7 @@ func swiped(direction):
 func MoveCharacters():
 	charactersAwaitingMove = false
 	
+	#this includes the player
 	for i in range(GameData.characters.size()):
 		if i < GameData.characters.size():
 			GameData.characters[i].turn()
