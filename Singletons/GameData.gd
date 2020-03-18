@@ -259,19 +259,28 @@ func string2vec(s):
 func dict2item(dict):
 	if "subpath" in dict:
 		dict["@subpath"] = dict["subpath"]
+	
 	var item = dict2inst(dict)
+
 	# Fixes textures not loading
 	item.texture = load(item.textureFilePath)
+
 	if not item.get("iconTextureFilePath") == null:
 		item.iconTexture = load(item.iconTextureFilePath)
+
+	if not item.get("offhandTextureFilePath") == null:
+		item.offhandTexture = load(item.offhandTextureFilePath)
+
 	if "offset" in item:
 		# Fixes offset stored as string not Vector2
 		item.offset = string2vec(item.offset)
+
 	if "relativeAttackPositions" in item:
 		var array = []
 		for s in item.relativeAttackPositions:
 			array.push_back(string2vec(s))
 		item.relativeAttackPositions = array
+		
 	return item
 
 func serialise_items(items):
