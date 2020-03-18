@@ -335,7 +335,7 @@ func attack(character, isFirstCollision, base_damage = 0):
 		
 		var dagger = getDaggerIfEquipt()
 
-		if dagger != null && currentWeapon.isMelee && target_pos == character.target_pos:
+		if dagger != null && currentWeapon.isMelee && randi() % 3 == 1 && target_pos == character.target_pos:
 			.attack(character, isFirstCollision, dagger.damage)
 	
 	additionalRelativeAttackPositions = getCurrentWeapon().relativeAttackPositions

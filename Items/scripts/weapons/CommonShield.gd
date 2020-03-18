@@ -1,6 +1,6 @@
 extends "WeaponBase.gd"
 
-var chanceToBlockOutOf = 6
+var chanceToBlockOutOf
 
 func _init():
 	textureFilePath = "res://assets/basic_shield.webp"
@@ -10,6 +10,7 @@ func _init():
 	iconTextureFilePath = "res://assets/basic_shield.webp"
 	iconTexture = preload("res://assets/basic_shield.webp")
 	item_name = "Common Shield"
+	chanceToBlockOutOf = 5
 	damage = 1
 	isMelee = true
 	isOffhand = true

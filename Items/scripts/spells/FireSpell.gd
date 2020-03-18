@@ -23,10 +23,10 @@ func onUse():
 		GameData.hud.addEventMessage("No target in range")
 
 func spellDamage():
-	var damage = randi() % 3 + 8
+	var damage = randi() % 3 + 5
 
 	if GameData.player.increasedSpellDamage:
-		damage += 3
+		damage += 2
 	
 	return damage
 

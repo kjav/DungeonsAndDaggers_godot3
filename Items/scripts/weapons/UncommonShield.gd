@@ -1,7 +1,7 @@
 extends "CommonShield.gd"
 
 func _init():
-	chanceToBlockOutOf = 5
+	chanceToBlockOutOf = 4
 	textureFilePath = "res://assets/uncommon-shield.png"
 	texture = preload("res://assets/uncommon-shield.png")
 	offhandTexture = texture

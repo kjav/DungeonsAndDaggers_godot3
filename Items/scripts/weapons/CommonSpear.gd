@@ -9,6 +9,7 @@ func _init():
 	iconTexture = preload("res://assets/basic-spear-icon.png")
 	item_name = "Common Spear"
 	relativeAttackPositions = [Vector2(0, -1)]
+	onlyAttacksFirstEnemy = false
 	damage = 1.5
 	isMelee = true
 	showBehindHand = true
