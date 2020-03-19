@@ -13,11 +13,11 @@ func onUse():
 		.tryAgainOnTurnEnd()
 		return;
 
-	var enemiesToPush = GameData.getCharactersWithinAreaAroundCharacter(GameData.player, 3)
+	var enemiesToPush = GameData.getCharactersWithinAreaAroundCharacter(GameData.player, 4)
 	
 	if enemiesToPush.size() > 0 and GameData.player.consume_stat("mana", 1):
 			for enemy in enemiesToPush:
-				pushEnemy(enemy, 3)
+				pushEnemy(enemy, 5)
 				
 			var blastInstance = Blast.instance()
 			blastInstance.position = GameData.player.position + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)

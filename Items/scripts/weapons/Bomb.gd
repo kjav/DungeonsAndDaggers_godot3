@@ -30,7 +30,7 @@ func onAttack(target, attackDirection, isFirstCollision):
 			texture,
 			GameData.player.getPrimaryHandPosition(),
 			25,
-			5,
+			6,
 			"Arrow_Hit",
 			Vector2(0.5, 0.5),
 			true,
