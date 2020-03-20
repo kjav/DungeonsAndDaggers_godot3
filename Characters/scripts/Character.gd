@@ -405,9 +405,7 @@ func handleCharacterDeath():
 	death_timer.start()
 
 func revive():
-	print("Reviving")
 	stats.health.value = stats.health.maximum
-	print(stats.health)
 	GameData.characters.append(self)
 	
 	setAnimationOnAllBodyParts("stand_down", true)

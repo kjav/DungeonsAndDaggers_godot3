@@ -407,7 +407,6 @@ func takeDamage(damage):
 
 func handleCharacterDeath():
 	GameData.delete_saved_game()
-	print("Deleted save game")
 	currentWeaponNode.hide()
 	offHandWeaponNode.hide()
 	get_node("Polygons").hide()
