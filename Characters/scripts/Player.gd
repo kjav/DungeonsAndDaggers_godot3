@@ -365,6 +365,13 @@ func handleCharacterDeath():
 	get_node("Polygons").hide()
 	.handleCharacterDeath()
 
+func revive():
+	.revive()
+	emit_signal("statsChanged", "health", "Up", stats.health.value)
+	currentWeaponNode.show()
+	offHandWeaponNode.show()
+	get_node("Polygons").show()
+
 func pickUpTopItem():
 	pickUp(GameData.itemAtPos(self.get_position()/GameData.TileSize))
 	

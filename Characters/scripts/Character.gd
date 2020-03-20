@@ -389,6 +389,7 @@ func takeDamage(damage):
 		
 		createHitmarker(0, true)
 
+var death_timer
 func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
@@ -396,13 +397,25 @@ func handleCharacterDeath():
 	setAnimationOnAllBodyParts("death", true)
 	setPlayingOnAllBodyParts(true, true)
 	
-	var timer = Timer.new()
-	timer.set_wait_time(1)
-	timer.connect("timeout",self,"deathAnimationsComplete") 
-	timer.set_one_shot(true)
-	add_child(timer)
-	timer.start()
+	death_timer = Timer.new()
+	death_timer.set_wait_time(1)
+	death_timer.connect("timeout",self,"deathAnimationsComplete") 
+	death_timer.set_one_shot(true)
+	add_child(death_timer)
+	death_timer.start()
+
+func revive():
+	print("Reviving")
+	stats.health.value = stats.health.maximum
+	print(stats.health)
+	GameData.characters.append(self)
 	
+	setAnimationOnAllBodyParts("stand_down", true)
+	setPlayingOnAllBodyParts(true, true)
+	
+	death_timer.stop()
+	show()
+
 func deathAnimationsComplete():
 	hide()
 	
