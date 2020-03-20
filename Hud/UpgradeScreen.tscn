@@ -83,8 +83,23 @@ RollCurve = SubResource( 1 )
 margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
-margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0.686275 )
+margin_bottom = 1167.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="ActiveThirdUpgradeSlot" type="ColorRect" parent="."]
+visible = false
+margin_left = -23.0
+margin_top = 1167.0
+margin_right = 1098.0
+margin_bottom = 1637.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = -22.584
+margin_top = 1637.0
+margin_right = 1098.42
+margin_bottom = 1947.0
+color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 2 )
@@ -167,6 +182,13 @@ margin_top = 1167.32
 margin_right = 1251.0
 margin_bottom = 2339.32
 rect_scale = Vector2( 0.4, 0.4 )
+
+[node name="InactiveThirdUpgradeSlot" type="ColorRect" parent="."]
+margin_left = -23.0
+margin_top = 1167.0
+margin_right = 1098.0
+margin_bottom = 1637.0
+color = Color( 0, 0, 0, 0.784314 )
 
 [node name="ReRoll" type="TextureButton" parent="."]
 margin_left = 108.0

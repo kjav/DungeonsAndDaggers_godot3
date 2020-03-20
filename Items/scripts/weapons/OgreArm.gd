@@ -5,6 +5,8 @@ var nextAttackForward = true
 func _init():
 	textureFilePath = "res://assets/meat_club.png"
 	texture = preload("res://assets/meat_club.png")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/meat_club.png"
 	iconTexture = preload("res://assets/meat_club.png")
 	item_name = "Ogre Arm"

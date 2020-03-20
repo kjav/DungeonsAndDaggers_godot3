@@ -23,6 +23,7 @@ func _ready():
 	GameData.player.connect("playerMove", self, "CheckFloor")
 	PlayerWeaponChanged(Enums.WEAPONSLOT.PRIMARY, GameData.player.primaryWeapon)
 	PlayerWeaponChanged(Enums.WEAPONSLOT.SECONDARY, GameData.player.secondaryWeapon)
+	PlayerWeaponChanged(Enums.WEAPONSLOT.TERTIARY, GameData.player.tertiaryWeapon)
 	SetCurrentWeapon(Enums.WEAPONSLOT.PRIMARY)
 
 func CheckFloor(pos):

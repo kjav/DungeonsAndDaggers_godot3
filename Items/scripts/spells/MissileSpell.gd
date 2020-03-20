@@ -21,6 +21,14 @@ func onUse():
 	else:
 		GameData.hud.addEventMessage("No target in range")
 
+func spellDamage():
+	var damage = 2
+
+	if GameData.player.increasedSpellDamage:
+		damage = 3
+	
+	return damage
+
 func launchPellet(closest_enemy):
 	var new_missile = missile.instance()
 	#Audio.playSoundEffect("Missile_Flying")
@@ -32,7 +40,7 @@ func launchPellet(closest_enemy):
 		missile_texture,
 		GameData.player.get_position(),
 		25,
-		2,
+		spellDamage(),
 		"Missile_Hit",
 		Vector2(0.2, 0.2),
 		true,

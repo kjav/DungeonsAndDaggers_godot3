@@ -12,7 +12,15 @@ func onUse():
 		return
 	
 	if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
-		GameData.player.heal(3)
+		GameData.player.heal(amountToHeal())
 		.onUse()
 	else:
 		GameData.hud.addEventMessage("Health is already full")
+
+func amountToHeal():
+	var heal = 3
+
+	if GameData.player.increasedFoodHeal:
+		heal = 3.5
+
+	return heal

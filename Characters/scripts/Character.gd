@@ -322,12 +322,12 @@ func calculate_damage(character, base_damage):
 	
 	# The mean of the distribution is 0 by default.
 	var mean = 0
-	if difference > 0:
-		mean = difference_sign * (pow(1.2, difference) - 1)
+	if difference > 1:
+		mean = difference_sign / 4 * (pow(difference, 1.1) - 1)
  
-	# Use a fixed standard deviation. The value 1.5 gives a 10% chance of getting
+	# Use a fixed standard deviation. The value 1.1 gives a 10% chance of getting
 	# a modifier of 0 or 2 for equal stats (i.e. a difference of 0).
-	var sd = 1.5
+	var sd = 1.2
 	
 	# Generate a random number, between -infinity and infinity, from the standard
 	# distribution with calculated mean and standard deviation.

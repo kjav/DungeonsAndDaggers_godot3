@@ -1,6 +1,7 @@
 extends Node2D
 
 var lastPos
+var weaponBase = preload("res://Items/scripts/weapons/WeaponBase.gd")
 
 func _ready():
 	get_node("ItemNode1").get_node("frame").connect("pressed",self,"refresh") 
@@ -50,8 +51,16 @@ func populateItems(items):
 		
 		if itemNumber <= items.size():
 			itemNode.show()
-			itemNode.get_node("icon").texture = items[itemNumber-1].texture
+			itemNode.get_node("icon").texture = getItemTexture(items[itemNumber-1])
 			itemNode.get_node("frame").item = items[itemNumber-1]
 			itemNode.get_node("background").texture = GameData.getBackgroundForRarity(items[itemNumber-1].rarity)
 		else:
 			itemNode.hide()
+
+func getItemTexture(item):
+	var texture = item.texture
+
+	if "iconTexture" in item:
+		texture = item.iconTexture
+
+	return texture

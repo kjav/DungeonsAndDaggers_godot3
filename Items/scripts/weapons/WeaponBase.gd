@@ -13,6 +13,8 @@ var isOffhand = false
 var rotationInOffHand = 0
 var ammo = -1
 var equiptable = true
+var offhandTexture
+var offhandTextureFilePath
 var iconTexture
 var iconTextureFilePath
 var doesDamage = true

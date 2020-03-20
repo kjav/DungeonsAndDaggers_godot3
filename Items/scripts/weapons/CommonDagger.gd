@@ -3,6 +3,8 @@ extends "WeaponBase.gd"
 func _init():
 	textureFilePath = "res://assets/basic_dagger.png"
 	texture = preload("res://assets/basic_dagger.png")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTexture = preload("res://assets/basic_dagger.png")
 	iconTextureFilePath = "res://assets/basic_dagger.png"
 	item_name = "Common Dagger"

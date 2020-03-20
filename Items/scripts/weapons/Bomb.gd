@@ -5,6 +5,8 @@ const missile = preload("res://Projectiles/Missile.tscn")
 func _init():
 	textureFilePath = "res://assets/bomb.png"
 	texture = preload("res://assets/bomb.png")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/bomb.png"
 	iconTexture = preload("res://assets/bomb.png")
 	item_name = "Bomb"
@@ -28,7 +30,7 @@ func onAttack(target, attackDirection, isFirstCollision):
 			texture,
 			GameData.player.getPrimaryHandPosition(),
 			25,
-			3,
+			6,
 			"Arrow_Hit",
 			Vector2(0.5, 0.5),
 			true,

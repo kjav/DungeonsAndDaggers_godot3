@@ -6,6 +6,8 @@ const missile_texture = preload("res://assets/arrow.png")
 func _init():
 	textureFilePath = "res://assets/basic_bow.png"
 	texture = preload("res://assets/basic_bow.png")
+	offhandTexture = texture
+	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/basic-bow-icon.png"
 	iconTexture = preload("res://assets/basic-bow-icon.png")
 	item_name = "Common Bow"

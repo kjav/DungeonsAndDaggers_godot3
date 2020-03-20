@@ -22,6 +22,14 @@ func onUse():
 	else:
 		GameData.hud.addEventMessage("No target in range")
 
+func spellDamage():
+	var damage = randi() % 3 + 5
+
+	if GameData.player.increasedSpellDamage:
+		damage += 2
+	
+	return damage
+
 func launchFireball(closest_enemy):
 	var new_missile = missile.instance()
 	#Audio.playSoundEffect("Fireball_Flying")
@@ -33,7 +41,7 @@ func launchFireball(closest_enemy):
 		missile_texture,
 		GameData.player.get_position(),
 		25,
-		randi() % 3 + 8,
+		spellDamage(),
 		"Fireball_Hit",
 		Vector2(4, 4),
 		true,
