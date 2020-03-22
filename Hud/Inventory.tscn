@@ -118,7 +118,7 @@ func setInventoryToFitItems(lastNode):
 			
 		eventMessageHolderNode.addMessage(\"You have no \" + pluralised)
 		
-		get_node(\"Invent oryWrapperTop\").set_size(Vector2(0,0))
+		get_node(\"InventoryWrapperTop\").set_size(Vector2(0,0))
 		get_node(\"InventoryWrapperBottom\").set_size(Vector2(0,0))
 		get_node(\"InventoryWrapperLeft\").set_size(Vector2(0,0))
 		get_node(\"InventoryClickableRegion\").set_size(Vector2(0,0))
