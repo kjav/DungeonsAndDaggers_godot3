@@ -48,5 +48,4 @@ tile_data = PoolIntArray( 65560, 37, 0, 65561, 36, 0, 65562, 36, 0, 65563, 36, 0
 
 [node name="SwipeNode" parent="." instance=ExtResource( 7 )]
 [connection signal="playerAttack" from="Player" to="HudNode" method="_on_Player_playerAttack"]
-[connection signal="click" from="SwipeNode" to="Player" method="moveToTile"]
 [connection signal="swipe" from="SwipeNode" to="Player" method="swiped"]

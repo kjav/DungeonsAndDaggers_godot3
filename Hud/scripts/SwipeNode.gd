@@ -36,5 +36,7 @@ func _calculate_swipe(event):
 				emit_signal("swipe", Enums.DIRECTION.DOWN)
 			else:
 				emit_signal("swipe", Enums.DIRECTION.UP)
+		GameData.click_state = false
 	else:
 		emit_signal("click", event)
+		GameData.click_state = event

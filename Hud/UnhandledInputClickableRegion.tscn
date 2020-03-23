@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Hud/UnhandledInputClickableRegion.gd" type="Script" id=1]
+
+[node name="Node2D" type="Button"]
+margin_right = 100.0
+margin_bottom = 100.0
+mouse_filter = 1
+script = ExtResource( 1 )

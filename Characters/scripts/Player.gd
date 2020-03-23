@@ -490,6 +490,8 @@ func decreaseMaxMana(amount):
 func gameClickableRegionClicked(event = null):
 	if readyToTeleportOnTileSelect:
 		teleportToTile(event)
+	else:
+		moveToTile(event)
 
 func pathToDirectionPath(path):
 	var directionPath = []
@@ -509,7 +511,6 @@ func moveToTile(event = null):
 	var tilePosition = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
 	var tilePositionRounded = Vector2(floor(tilePosition.x), floor(tilePosition.y))
 	var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
-	print("Positions: ", player_pos, tilePositionRounded)
 	var path = GameData.tilemap.findPath(player_pos, tilePositionRounded)
 	moveStack = pathToDirectionPath(path)
 
