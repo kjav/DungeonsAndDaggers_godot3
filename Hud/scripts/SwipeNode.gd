@@ -1,6 +1,7 @@
 extends Node2D
 
 signal swipe
+signal click
 var swipe_start = null
 var minimum_drag = 30
 
@@ -8,9 +9,10 @@ func _input(event):
 	if event.is_action_pressed("click"):
 		swipe_start = event.global_position
 	if event.is_action_released("click"):
-		_calculate_swipe(event.global_position)
+		_calculate_swipe(event)
 
-func _calculate_swipe(swipe_end):
+func _calculate_swipe(event):
+	var swipe_end = event.global_position
 	if swipe_start == null:
 		return
 	var swipe = swipe_end - swipe_start
@@ -34,3 +36,5 @@ func _calculate_swipe(swipe_end):
 				emit_signal("swipe", Enums.DIRECTION.DOWN)
 			else:
 				emit_signal("swipe", Enums.DIRECTION.UP)
+	else:
+		emit_signal("click", event)

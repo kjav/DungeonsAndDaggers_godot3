@@ -43,6 +43,7 @@ var extendBriefPotions
 var thirdWeaponSlot
 var thirdUpgradeSlot
 var shieldOnDamageUsedForTurn
+var moveStack = []
 
 func _init():
 	initialStats.health = {
@@ -61,6 +62,7 @@ func _init():
 	}
 
 func _ready():
+	self.connect("turnTimeChange", self, "performMoveStack")
 	set_process(true)
 	swipe_funcref = funcref(self, "swiped")
 	EventListener.listen("SwipeCommand", swipe_funcref)
@@ -277,11 +279,11 @@ func checkForTutorialPrompts():
 		GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(640, -512) && GameData.current_level == 1:
-		addTutorialTextIfTutorial("Click The\nFloating Menu\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
+		addTutorialTextIfTutorial("Click The\nPopup\nTo Go\nTo The\nNext Level", Vector2(4.6, -5.5))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2:
 		GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Levels\nBlue's Best\nThen Green\nLast Is Grey", Vector2(1.8, 6))
-		GameData.player.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOffhand", Vector2(1.2, 8.1))
+		GameData.player.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOff-hand", Vector2(1.2, 8.1))
 		GameData.player.addTutorialTextIfTutorial("Good luck\nand have fun", Vector2(4.7, 5.3))
 
 func _input(ev):
@@ -296,9 +298,10 @@ func _input(ev):
 			swiped(Enums.DIRECTION.DOWN)
 
 func swiped(direction):
-	if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
-		lastDirection = direction
-		forceTurnEnd(direction)
+	moveStack = [direction]
+	#if not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+	#	lastDirection = direction
+	#	forceTurnEnd(direction)
 
 func MoveCharacters():
 	charactersAwaitingMove = false
@@ -312,6 +315,7 @@ func MoveCharacters():
 				GameData.characters[i].setTurnAnimations()
 
 func attack(character, isFirstCollision, base_damage = 0):
+	moveStack = []
 	if alive():
 		var currentWeapon = getCurrentWeapon()
 		var offhandWeapon = getOffHandWeapon()
@@ -391,6 +395,7 @@ func _process(delta):
 			MoveCharacters()
 
 func takeDamage(damage):
+	moveStack = []
 	var damageableStore = damageable
 
 	shieldOnDamageUsedForTurn = false
@@ -483,17 +488,48 @@ func decreaseMaxMana(amount):
 	emit_signal("statsChanged", "maxmana", "Down", amount)
 
 func gameClickableRegionClicked(event = null):
+	if readyToTeleportOnTileSelect:
+		teleportToTile(event)
+
+func pathToDirectionPath(path):
+	var directionPath = []
+	for i in range(0, len(path) - 1):
+		var direction_vector = path[i + 1] - path[i]
+		if direction_vector.x == 1:
+			directionPath.push_front(Enums.DIRECTION.RIGHT)
+		elif direction_vector.x == -1:
+			directionPath.push_front(Enums.DIRECTION.LEFT)
+		elif direction_vector.y == 1:
+			directionPath.push_front(Enums.DIRECTION.DOWN)
+		elif direction_vector.y == -1:
+			directionPath.push_front(Enums.DIRECTION.UP)
+	return directionPath
+
+func moveToTile(event = null):
+	var tilePosition = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
+	var tilePositionRounded = Vector2(floor(tilePosition.x), floor(tilePosition.y))
+	var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
+	print("Positions: ", player_pos, tilePositionRounded)
+	var path = GameData.tilemap.findPath(player_pos, tilePositionRounded)
+	moveStack = pathToDirectionPath(path)
+
+func performMoveStack(t):
+	if len(moveStack) > 0 and not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+		var direction = moveStack.pop_back()
+		lastDirection = direction
+		forceTurnEnd(direction)
+
+func teleportToTile(event = null):
 	if event == null:
 		event = lastEvent
 	else:
 		lastEvent = event
 	
-	if not readyToTeleportOnTileSelect:
-		return
-	
 	if moving or charactersAwaitingMove or GameData.charactersMoving():
-		self.connect("turnEnd",self,"gameClickableRegionClicked", [], CONNECT_ONESHOT)
+		self.connect("turnEnd", self, "gameClickableRegionClicked", [], CONNECT_ONESHOT)
 		return
+
+	moveStack = []
 
 	var tilePositionRelativeToCamera = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
 	var tilePositionRelativeToCameraRounded = Vector2(floor(tilePositionRelativeToCamera.x), floor(tilePositionRelativeToCamera.y))

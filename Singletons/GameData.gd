@@ -114,10 +114,7 @@ func HasKey(unlockGuid):
 
 func charactersMoving():
 	#at the moment all characters move at the same speed so this is cutting corners
-	if characters.size() <= 0:
-		return false;
-	
-	return characters[0].moving
+	return characters.size() > 0 && characters[0].moving
 
 func charactersAtPosExcludingCharacter(pos, character):
 	var possibleCharacters = charactersAtPos(pos)
