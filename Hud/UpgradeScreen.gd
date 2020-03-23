@@ -73,7 +73,6 @@ func _process(delta):
 
 func reroll(currency, amount):
 	if currency == "reroll":
-		print("After loading")
 		get_node("ReRoll/Loading").hide()
 		get_node("ReRoll/Trophy").show()
 		spinning = true

@@ -110,7 +110,6 @@ func setInventoryToFitItems(lastNode):
 		get_node(\"InventoryClickableRegion\").set_position(inventoryPosition)
 	else:
 		var pluralised
-		print(type)
 		if type.to_lower() == \"food\":
 			pluralised = type.to_lower()
 		else:

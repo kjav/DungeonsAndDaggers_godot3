@@ -9,6 +9,7 @@ var currency = ""
 var rewardAdId = "ca-app-pub-6580148569317237/9855207822"
 
 signal reward_ad(currency, amount)
+signal cancel_ad(currency)
 
 func _ready():
 	call_deferred("_init_ads")
@@ -35,9 +36,11 @@ func play_reward_video(name):
 
 func _on_rewarded_video_ad_left_application():
 	admob.loadRewardedVideo(rewardAdId)
+	emit_signal("cancel_ad", currency)
 
 func _on_rewarded_video_ad_closed():
 	admob.loadRewardedVideo(rewardAdId)
+	emit_signal("cancel_ad", currency)
 
 func _on_rewarded_video_ad_loaded():
 	loaded = true
