@@ -169,7 +169,7 @@ func increaseStat(stat, amount):
 
 func moveDirection(direction):
 	if (not moving) and alive():
-		original_pos = get_position() 
+		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
 		stand_direction = Enums.DIRECTION.NONE
 		

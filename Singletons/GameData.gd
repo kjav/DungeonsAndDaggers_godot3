@@ -429,6 +429,7 @@ func next_level():
 			chr.queue_free()
 	characters = [player]
 	player.position = Vector2(640, 1024)
+	player.turn_end_pos = Vector2(640, 1024)
 	tilemap.next_level()
 	save_game()
 
