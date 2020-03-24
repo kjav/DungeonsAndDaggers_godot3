@@ -10,7 +10,7 @@ var green = preload("res://assets//ring_inner_green.png")
 var yellow = preload("res://assets//ring_inner_yellow.png")
 var orange = preload("res://assets//ring_inner_orange.png")
 var potion = preload("res://assets//ring_potion_inventory.webp")
-var food = preload("res://assets//ring_food_inventory.png")
+var food = preload("res://assets//ring_food_inventory.webp")
 var spell = preload("res://assets//ring_spell_inventory.webp")
 
 func setIconTexture(weapon):
