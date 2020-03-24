@@ -23,6 +23,7 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	turnBehaviour.setWaitEvery(2)
 	attackedLastTurn = false
+	fixedMaxHealth = true
 	
 	base_damage = 0.5
 	
