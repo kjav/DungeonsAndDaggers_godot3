@@ -47,8 +47,8 @@ var moveStack = []
 
 func _init():
 	initialStats.health = {
-		"value": 1,
-		"maximum": 1
+		"value": 4,
+		"maximum": 4
 	}
 	
 	initialStats.strength = {
