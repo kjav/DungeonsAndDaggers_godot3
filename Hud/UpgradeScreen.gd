@@ -64,8 +64,6 @@ func _process(delta):
 					speeds[i] = 0
 					if speeds[0] == 0 and speeds[1] == 0 and speeds[2] == 0:
 						# Finished animation
-						get_node("ReRoll/Loading").hide()
-						get_node("ReRoll/Trophy").show()
 						for button in buttons:
 							button.clickable = true
 							get_node("sparkle").emitting = true
@@ -73,11 +71,14 @@ func _process(delta):
 							get_node("sparkle").show()
 							spinning = false
 
-func reroll(a, b):
-	spinning = true
-	time = 0
-	for button in buttons:
-		button.clickable = false
+func reroll(currency, amount):
+	if currency == "reroll":
+		get_node("ReRoll/Loading").hide()
+		get_node("ReRoll/Trophy").show()
+		spinning = true
+		time = 0
+		for button in buttons:
+			button.clickable = false
 
-	get_node("ReRoll").disabled = true
-	get_node("ReRoll/Trophy").grayscale = true
+		get_node("ReRoll").disabled = true
+		get_node("ReRoll/Trophy").grayscale = true

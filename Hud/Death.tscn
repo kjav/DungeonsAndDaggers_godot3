@@ -1,12 +1,56 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=2]
 [ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=4]
 [ext_resource path="res://Hud/PlaythroughStats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/plank07.webp" type="Texture" id=6]
+[ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=7]
+[ext_resource path="res://assets/plank07_grey.webp" type="Texture" id=8]
+[ext_resource path="res://Hud/ReviveButton.gd" type="Script" id=9]
+[ext_resource path="res://assets/CMONNEAR_with_plus.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://assets/death.webp" type="Texture" id=11]
+[ext_resource path="res://assets/loading.webp" type="Texture" id=12]
+[ext_resource path="res://Hud/TextureRect.gd" type="Script" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 63
+outline_size = 1
+outline_color = Color( 0.172549, 0.0901961, 0.0117647, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform bool grayscale = false;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	if (grayscale) {
+		COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.199, 0.287, 0.014)));
+	} else {
+		COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.999, 0.587, 0.314)));
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+shader_param/grayscale = false
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV);
+	COLOR.rgb = vec3(dot(COLOR.rgb, vec3(0.999, 0.587, 0.314)));
+}
+"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
 
 [node name="Node2D" type="Control"]
 
@@ -15,7 +59,7 @@ margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0.686275 )
+color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
@@ -32,10 +76,10 @@ align = 1
 autowrap = true
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 357.799
-margin_top = 428.482
-margin_right = 756.799
-margin_bottom = 680.48
+margin_left = 358.0
+margin_top = 428.0
+margin_right = 700.0
+margin_bottom = 563.0
 texture_normal = ExtResource( 2 )
 script = ExtResource( 3 )
 
@@ -52,3 +96,45 @@ text = "Menu"
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 5 )]
 position = Vector2( 69.1286, 803.998 )
+
+[node name="ReviveButton" type="TextureButton" parent="."]
+margin_left = 112.0
+margin_top = 1670.0
+margin_right = 937.0
+margin_bottom = 1855.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 8 )
+expand = true
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="ReviveButton"]
+margin_left = 208.921
+margin_top = 27.0823
+margin_right = 799.921
+margin_bottom = 158.082
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "WATCH VIDEO
+TO REVIVE"
+
+[node name="skull" type="TextureRect" parent="ReviveButton"]
+material = SubResource( 4 )
+margin_left = -12.0
+margin_top = -36.922
+margin_right = 244.0
+margin_bottom = 219.078
+texture = ExtResource( 11 )
+
+[node name="loading" type="TextureRect" parent="ReviveButton"]
+visible = false
+material = SubResource( 6 )
+margin_left = -10.0
+margin_top = -38.0
+margin_right = 246.0
+margin_bottom = 218.0
+rect_scale = Vector2( 0.9, 0.9 )
+rect_pivot_offset = Vector2( 125, 127 )
+texture = ExtResource( 12 )
+expand = true
+script = ExtResource( 13 )

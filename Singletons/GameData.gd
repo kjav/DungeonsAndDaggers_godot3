@@ -28,6 +28,7 @@ var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
 var bossLevelEvery = 11
 var turnTime = 0.2
+var click_state = false
 
 var saved_player = null
 
@@ -114,10 +115,7 @@ func HasKey(unlockGuid):
 
 func charactersMoving():
 	#at the moment all characters move at the same speed so this is cutting corners
-	if characters.size() <= 0:
-		return false;
-	
-	return characters[0].moving
+	return characters.size() > 0 && characters[0].moving
 
 func charactersAtPosExcludingCharacter(pos, character):
 	var possibleCharacters = charactersAtPos(pos)

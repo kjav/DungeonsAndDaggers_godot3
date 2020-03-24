@@ -211,6 +211,10 @@ func _getIdPath(a, b):
 
 func findPath(a, b):
 	var id_path = _getIdPath(a, b)
+	
+	if id_path == null:
+		return []
+	
 	var path = []
 	
 	for id in id_path:
