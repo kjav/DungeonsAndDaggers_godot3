@@ -11,6 +11,7 @@ func _ready():
 	turnBehaviour = Turn.Wait.new(self)
 	processBehaviour = Process.Direct.new()
 	base_damage = 0
+	fixedMaxHealth = true
 	
 	initialStats.health = {
 		"value": 9,

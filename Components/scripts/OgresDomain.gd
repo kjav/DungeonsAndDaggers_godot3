@@ -2,9 +2,20 @@ extends "MapBase.gd"
 
 var rooms = []
 var valid_exterior_walls = []
+var n_rooms = 20
 
 func level_rooms(level):
 	if level == 1:
+		return Distribution.new([
+			{ "p": 0.3, "value": GameData.Rooms.SpiritRoom },
+			{ "p": 0.2, "value": GameData.Rooms.Corridor },
+			{ "p": 0.2, "value": GameData.Rooms.FillerRoom },
+			{ "p": 0.15, "value": GameData.Rooms.DoubleSpiritRoom },
+			{ "p": 0.07, "value": GameData.Rooms.CommonWeaponRoom },
+			{ "p": 0.05, "value": GameData.Rooms.CommonLootRoom },
+			{ "p": 0.03, "value": GameData.Rooms.CommonChestRoom },
+		])
+	elif level == 2:
 		return Distribution.new([
 			{ "p": 0.25, "value": GameData.Rooms.SpiritRoom },
 			{ "p": 0.2, "value": GameData.Rooms.Corridor },
@@ -15,7 +26,20 @@ func level_rooms(level):
 			{ "p": 0.05, "value": GameData.Rooms.CommonLootRoom },
 			{ "p": 0.03, "value": GameData.Rooms.CommonChestRoom },
 		])
-	elif level == 2:
+	elif level == 3:
+		return Distribution.new([
+			{ "p": 0.25, "value": GameData.Rooms.BatRoom },
+			{ "p": 0.15, "value": GameData.Rooms.FillerRoom },
+			{ "p": 0.15, "value": GameData.Rooms.Corridor },
+			{ "p": 0.15, "value": GameData.Rooms.SpiritRoom },
+			{ "p": 0.15, "value": GameData.Rooms.DoubleSpiritRoom },
+			{ "p": 0.04, "value": GameData.Rooms.CommonLootRoom },
+			{ "p": 0.04, "value": GameData.Rooms.CommonChestRoom },
+			{ "p": 0.03, "value": GameData.Rooms.UncommonLootRoom },
+			{ "p": 0.02, "value": GameData.Rooms.CommonWeaponRoom },
+			{ "p": 0.02, "value": GameData.Rooms.UncommonWeaponRoom },
+		])
+	elif level == 4:
 		return Distribution.new([
 			{ "p": 0.2, "value": GameData.Rooms.BatRoom },
 			{ "p": 0.15, "value": GameData.Rooms.FillerRoom },
@@ -29,7 +53,21 @@ func level_rooms(level):
 			{ "p": 0.02, "value": GameData.Rooms.CommonWeaponRoom },
 			{ "p": 0.02, "value": GameData.Rooms.UncommonWeaponRoom },
 		])
-	elif level == 3:
+	elif level == 5:
+		return Distribution.new([
+			{ "p": 0.25, "value": GameData.Rooms.GhostRoom },
+			{ "p": 0.25, "value": GameData.Rooms.BatRoom },
+			{ "p": 0.15, "value": GameData.Rooms.Corridor },
+			{ "p": 0.1, "value": GameData.Rooms.FillerRoom },
+			{ "p": 0.05, "value": GameData.Rooms.DoubleSpiritRoom },
+			{ "p": 0.05, "value": GameData.Rooms.TrapRoom },
+			{ "p": 0.04, "value": GameData.Rooms.UncommonWeaponRoom },
+			{ "p": 0.03, "value": GameData.Rooms.UncommonLootRoom },
+			{ "p": 0.03, "value": GameData.Rooms.UncommonChestRoom },
+			{ "p": 0.03, "value": GameData.Rooms.CommonLootRoom },
+			{ "p": 0.02, "value": GameData.Rooms.CommonChestRoom },
+		])
+	elif level == 6:
 		return Distribution.new([
 			{ "p": 0.25, "value": GameData.Rooms.GhostRoom },
 			{ "p": 0.2, "value": GameData.Rooms.BatRoom },
@@ -44,7 +82,20 @@ func level_rooms(level):
 			{ "p": 0.03, "value": GameData.Rooms.CommonLootRoom },
 			{ "p": 0.02, "value": GameData.Rooms.CommonChestRoom },
 		])
-	elif level == 4:
+	elif level == 7:
+		return Distribution.new([
+			{ "p": 0.2, "value": GameData.Rooms.BatRoom },
+			{ "p": 0.2, "value": GameData.Rooms.MageRoom },
+			{ "p": 0.15, "value": GameData.Rooms.GhostRoom },
+			{ "p": 0.1, "value": GameData.Rooms.Corridor },
+			{ "p": 0.1, "value": GameData.Rooms.FillerRoom },
+			{ "p": 0.08, "value": GameData.Rooms.TrapRoom },
+			{ "p": 0.07, "value": GameData.Rooms.UncommonWeaponRoom },
+			{ "p": 0.05, "value": GameData.Rooms.UncommonLootRoom },
+			{ "p": 0.03, "value": GameData.Rooms.UncommonChestRoom },
+			{ "p": 0.02, "value": GameData.Rooms.DoubleSpiritRoom },
+		])
+	elif level == 8:
 		return Distribution.new([
 			{ "p": 0.2, "value": GameData.Rooms.BatRoom },
 			{ "p": 0.15, "value": GameData.Rooms.MageRoom },
@@ -58,7 +109,23 @@ func level_rooms(level):
 			{ "p": 0.03, "value": GameData.Rooms.UncommonChestRoom },
 			{ "p": 0.02, "value": GameData.Rooms.DoubleSpiritRoom },
 		])
-	elif level == 5:
+	elif level == 9:
+		return Distribution.new([
+			{ "p": 0.2, "value": GameData.Rooms.BabyOgreRoom },
+			{ "p": 0.15, "value": GameData.Rooms.GhostRoom },
+			{ "p": 0.15, "value": GameData.Rooms.MageRoom },
+			{ "p": 0.12, "value": GameData.Rooms.BatRoom },
+			{ "p": 0.1, "value": GameData.Rooms.Corridor },
+			{ "p": 0.08, "value": GameData.Rooms.TrapRoom },
+			{ "p": 0.05, "value": GameData.Rooms.FillerRoom },
+			{ "p": 0.055, "value": GameData.Rooms.UncommonWeaponRoom },
+			{ "p": 0.035, "value": GameData.Rooms.UncommonLootRoom },
+			{ "p": 0.02, "value": GameData.Rooms.UncommonChestRoom },
+			{ "p": 0.015, "value": GameData.Rooms.RareWeaponRoom },
+			{ "p": 0.015, "value": GameData.Rooms.RareLootRoom },
+			{ "p": 0.01, "value": GameData.Rooms.RareChestRoom },
+		])
+	elif level == 10:
 		return Distribution.new([
 			{ "p": 0.2, "value": GameData.Rooms.BabyOgreRoom },
 			{ "p": 0.15, "value": GameData.Rooms.GhostRoom },
@@ -267,7 +334,6 @@ func get_facing(wall_direction):
 	return "front"
 
 func _init(level).(200, 200, level, -1):
-	var n_rooms = 30
 	if GameData.map_seed:
 		# Use the loaded seed, adding the level multiplied by a large prime
 		seed(GameData.map_seed + level * 524287)

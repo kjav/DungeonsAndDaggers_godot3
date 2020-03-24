@@ -32,6 +32,8 @@ var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
 var trapImmune
 
+var fixedMaxHealth
+
 var stunnedDuration
 
 const bodyPartsNodeName = "ChangingBodyParts"
@@ -82,13 +84,17 @@ func _ready():
 
 func resetStats():
 	var additional = 0
+	var additionalHealth = 0
 
 	if self != GameData.player: 
-		additional = GameData.current_level - 1
+		additional = ceil(GameData.current_level / 2 - 1)
 
+	if self.fixedMaxHealth: 
+		additionalHealth = additional
+	
 	stats.health = {
-		"value" : initialStats.health.value + additional,
-		"maximum" : initialStats.health.maximum + additional
+		"value" : initialStats.health.value + additionalHealth,
+		"maximum" : initialStats.health.maximum + additionalHealth
 	}
 
 	stats.mana = {
@@ -105,6 +111,7 @@ func resetStats():
 		"value" : initialStats.defence.value + additional,
 		"maximum" : initialStats.defence.maximum + additional
 	}
+
 func afterMoveComplete():
 	if stunnedDuration > 0:
 		stunnedDuration -= 1
