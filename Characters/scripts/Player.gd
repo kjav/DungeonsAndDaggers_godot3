@@ -9,6 +9,8 @@ signal turnTimeChange(time_elapsed)
 signal playerAttack(character, amount)
 signal turnEnd()
 
+var lastdone = OS.get_ticks_msec()
+
 const LightBlip = preload("res://Effects/LightBlip.tscn")
 const Text = preload("res://Effects/Text.tscn")
 var time_elapsed = 0
@@ -287,7 +289,7 @@ func checkForTutorialPrompts():
 		GameData.player.addTutorialTextIfTutorial("Good luck,\nand have fun.", Vector2(4.7, 5.3))
 
 func _input(ev):
-	if ev is InputEventKey and not ev.echo:
+	if ev is InputEventKey and not ev.echo and (OS.get_ticks_msec() - lastdone) > 50 :
 		if ev.scancode == KEY_LEFT:
 			swiped(Enums.DIRECTION.LEFT)
 		elif ev.scancode == KEY_RIGHT:
@@ -296,6 +298,8 @@ func _input(ev):
 			swiped(Enums.DIRECTION.UP)
 		elif ev.scancode == KEY_DOWN:
 			swiped(Enums.DIRECTION.DOWN)
+		
+		lastdone = OS.get_ticks_msec()
 
 func swiped(direction):
 	moveStack = [direction]
