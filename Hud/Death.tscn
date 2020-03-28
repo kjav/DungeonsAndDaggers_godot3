@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=2]
@@ -9,6 +9,45 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 
+[sub_resource type="Animation" id=2]
+resource_name = "death screen fade in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.627451 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlaythroughStats:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Buttons:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Node2D" type="Control"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -16,7 +55,7 @@ margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0.686275 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
@@ -32,7 +71,10 @@ text = "Rest In Pieces"
 align = 1
 autowrap = true
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="TextureButton" type="TextureButton" parent="Buttons"]
 margin_left = 358.0
 margin_top = 588.0
 margin_right = 700.0
@@ -40,7 +82,7 @@ margin_bottom = 723.0
 texture_normal = ExtResource( 2 )
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="Buttons/TextureButton"]
 margin_left = 82.2655
 margin_top = 44.8893
 margin_right = 146.266
@@ -51,7 +93,7 @@ size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
 text = "Menu"
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="TextureButton2" type="TextureButton" parent="Buttons"]
 margin_left = 275.0
 margin_top = 428.0
 margin_right = 617.0
@@ -60,7 +102,7 @@ rect_scale = Vector2( 1.5, 1 )
 texture_normal = ExtResource( 2 )
 script = ExtResource( 5 )
 
-[node name="Label2" type="Label" parent="TextureButton2"]
+[node name="Label2" type="Label" parent="Buttons/TextureButton2"]
 margin_left = 49.523
 margin_top = 44.8893
 margin_right = 177.523
@@ -72,4 +114,8 @@ custom_fonts/font = ExtResource( 4 )
 text = "New Game"
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 69.1286, 803.998 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/death screen fade in" = SubResource( 2 )
