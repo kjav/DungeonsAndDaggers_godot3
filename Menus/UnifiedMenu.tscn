@@ -49,6 +49,9 @@ margin_right = 1075.34
 margin_bottom = 1798.87
 mouse_filter = 2
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartButton" type="TextureButton" parent="."]
 margin_left = 311.0
