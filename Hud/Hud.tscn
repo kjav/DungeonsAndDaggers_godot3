@@ -77,6 +77,9 @@ margin_bottom = 282.105
 rect_scale = Vector2( 0.5, 0.5 )
 texture_normal = ExtResource( 7 )
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 31.4499, 114.573 )

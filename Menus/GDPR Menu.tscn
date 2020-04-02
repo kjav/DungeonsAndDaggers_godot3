@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=1]
+[ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=2]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
+[ext_resource path="res://Menus/GDPR Menu.gd" type="Script" id=5]
+
+[sub_resource type="Gradient" id=5]
+colors = PoolColorArray( 0, 0, 0, 0.901961, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 68
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 3 )
+
+[node name="GDPR Menu" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_top = 177.0
+margin_right = 1080.0
+margin_bottom = 1929.0
+color = Color( 0, 0, 0, 0.901961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gradient" type="TextureRect" parent="."]
+margin_top = 177.0
+margin_right = 60.0
+margin_bottom = 1257.0
+rect_rotation = -90.0
+texture = SubResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scroll" type="TextureRect" parent="."]
+margin_left = 154.225
+margin_top = 619.064
+margin_right = 812.224
+margin_bottom = 1211.06
+rect_scale = Vector2( 1.2, 1.2 )
+mouse_filter = 0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDPR Title" type="Label" parent="."]
+margin_left = 139.0
+margin_top = 624.0
+margin_right = 950.0
+margin_bottom = 822.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Data Consent"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GDPR Text" type="Label" parent="."]
+margin_left = 228.0
+margin_top = 791.0
+margin_right = 889.0
+margin_bottom = 1151.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "We use Google services to provide Ads to you. With your consent, we would like to use your data to provide personalised ads to make them more relevant to you."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmButton" type="TextureButton" parent="."]
+margin_left = 543.985
+margin_top = 1137.84
+margin_right = 885.985
+margin_bottom = 1272.84
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfirmButton"]
+margin_right = 341.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Accept"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RejectButton" type="TextureButton" parent="."]
+modulate = Color( 0.823529, 0.823529, 0.823529, 0.823529 )
+margin_left = 237.926
+margin_top = 1159.46
+margin_right = 579.926
+margin_bottom = 1294.46
+rect_scale = Vector2( 0.72, 0.72 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="RejectButton"]
+margin_right = 343.0
+margin_bottom = 134.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "reject"
+align = 1
+valign = 1
+[connection signal="pressed" from="ConfirmButton" to="." method="confirm"]
+[connection signal="pressed" from="RejectButton" to="." method="reject"]

@@ -2,7 +2,10 @@ extends Node
 var admob = null
 var isReal = false
 var childDirected = false
-var personalised = true
+var personalised = false
+var rating = "PG"
+var ready_to_load = false
+var personalised_checked = false
 
 var loaded = false
 var do_play = false
@@ -14,7 +17,15 @@ signal reward_ad(currency, amount)
 signal cancel_ad(currency)
 
 func _ready():
-	call_deferred("_init_ads")
+	ready_to_load = true
+	if ready_to_load and personalised_checked:
+		call_deferred("_init_ads")
+
+func set_personalised(p):
+	personalised = p
+	personalised_checked = true
+	if ready_to_load and personalised_checked:
+		call_deferred("_init_ads")
 
 func _init_ads():
 	if(Engine.has_singleton("AdMob")):
@@ -24,7 +35,7 @@ func _init_ads():
 			get_instance_id(),
 			childDirected,
 			personalised,
-			"PG"
+			rating
 		)
 
 		admob.resize()

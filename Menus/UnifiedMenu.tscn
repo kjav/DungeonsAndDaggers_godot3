@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=8]
 [ext_resource path="res://Menus/TextureButton.gd" type="Script" id=9]
+[ext_resource path="res://Menus/GDPR Menu.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -39,6 +40,9 @@ rect_scale = Vector2( 1.32, 1.32 )
 texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SplashScreen" type="Node2D" parent="."]
 
@@ -107,6 +111,9 @@ custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "New Game
 "
+
+[node name="GDPR Menu" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1180, 0 )
 
 [node name="Mute" type="TextureButton" parent="."]
 margin_left = 1908.0
