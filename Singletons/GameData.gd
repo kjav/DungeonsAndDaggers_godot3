@@ -369,7 +369,6 @@ func delete_saved_game():
 func has_save_game(map):
 	return File.new().file_exists("user://" + map + ".save")
 
-
 func load_game():
 	# TODO: Load current game state from config object
 	var save_game = File.new()

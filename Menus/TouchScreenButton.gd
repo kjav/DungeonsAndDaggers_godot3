@@ -20,6 +20,6 @@ func setScene(value):
 func getScene():
 	return scene
 
-func pressed():
+func _pressed():
 	if scene:
 		get_tree().change_scene(scene.get_path())
