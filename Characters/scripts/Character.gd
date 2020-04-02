@@ -89,7 +89,7 @@ func resetStats():
 	if self != GameData.player: 
 		additional = ceil(GameData.current_level / 2 - 1)
 
-	if self.fixedMaxHealth: 
+	if !self.fixedMaxHealth: 
 		additionalHealth = additional
 	
 	stats.health = {

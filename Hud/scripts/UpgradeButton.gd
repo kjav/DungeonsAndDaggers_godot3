@@ -7,7 +7,7 @@ var shouldDelete = false
 
 func setUpgrade(new_upgrade):
 	if new_upgrade is String:
-		upgrade = { "value": Constants.UpgradeClasses.DefenceUpgrade3, "onetime": false }
+		upgrade = { "value": Constants.UpgradeClasses.DefenceUpgrade, "onetime": false }
 	
 	upgrade = new_upgrade.value.new()
 	shouldDelete = new_upgrade.onetime
