@@ -1,6 +1,8 @@
 extends Node
 var admob = null
 var isReal = false
+var childDirected = false
+var personalised = true
 
 var loaded = false
 var do_play = false
@@ -17,7 +19,13 @@ func _ready():
 func _init_ads():
 	if(Engine.has_singleton("AdMob")):
 		admob = Engine.get_singleton("AdMob")
-		var res = admob.init(isReal, get_instance_id())
+		var res = admob.initWithContentRating(
+			isReal,
+			get_instance_id(),
+			childDirected,
+			personalised,
+			"PG"
+		)
 
 		admob.resize()
 		admob.loadRewardedVideo(rewardAdId)
