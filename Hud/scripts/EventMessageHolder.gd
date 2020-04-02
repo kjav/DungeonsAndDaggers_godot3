@@ -27,7 +27,10 @@ func _on_Player_playerAttack( character, amount ):
 		addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');
 
 func _on_Enemy_attack( character, amount ):
-	addMessage('A ' + character.character_name + ' hurt you: ' + str(amount) + '.');
+	var potentiallyFreedCharacter = weakref(character)
+	
+	if potentiallyFreedCharacter.get_ref():
+		addMessage('A ' + character.character_name + ' hurt you: ' + str(amount) + '.');
 
 func _on_Timer_timeout(node):
 	removeChild(node);
