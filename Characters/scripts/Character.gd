@@ -330,7 +330,7 @@ func calculate_damage(character, base_damage):
 	# The mean of the distribution is 0 by default.
 	var mean = 0
 	if difference > 1:
-		mean = difference_sign / 4 * (pow(difference, 1.1) - 1)
+		mean = float(difference_sign) / 4 * (pow(difference, 1.1) - 1)
  
 	# Use a fixed standard deviation. The value 1.1 gives a 10% chance of getting
 	# a modifier of 0 or 2 for equal stats (i.e. a difference of 0).
