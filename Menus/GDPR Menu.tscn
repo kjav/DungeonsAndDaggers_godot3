@@ -6,30 +6,31 @@
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
 [ext_resource path="res://Menus/GDPR Menu.gd" type="Script" id=5]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 0.901961, 0, 0, 0, 0 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 68
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 36
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=5]
 size = 50
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 50
 font_data = ExtResource( 3 )
 
 [node name="GDPR Menu" type="Node2D"]
+visible = false
 script = ExtResource( 5 )
 
 [node name="Background" type="ColorRect" parent="."]
@@ -46,7 +47,7 @@ margin_top = 177.0
 margin_right = 60.0
 margin_bottom = 1257.0
 rect_rotation = -90.0
-texture = SubResource( 6 )
+texture = SubResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,7 +71,7 @@ margin_left = 139.0
 margin_top = 624.0
 margin_right = 950.0
 margin_bottom = 822.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Data Consent"
 align = 1
@@ -84,7 +85,7 @@ margin_left = 228.0
 margin_top = 791.0
 margin_right = 889.0
 margin_bottom = 1151.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "We use Google services to provide Ads to you. With your consent, we would like to use your data to provide personalised ads to make them more relevant to you."
 autowrap = true
@@ -106,7 +107,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="ConfirmButton"]
 margin_right = 341.0
 margin_bottom = 134.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Accept"
 align = 1
@@ -131,7 +132,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="RejectButton"]
 margin_right = 343.0
 margin_bottom = 134.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "reject"
 align = 1

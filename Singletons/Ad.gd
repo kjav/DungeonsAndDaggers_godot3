@@ -1,5 +1,6 @@
 extends Node
 var admob = null
+var consent = null
 var isReal = false
 var childDirected = false
 var personalised = false
@@ -18,14 +19,47 @@ signal cancel_ad(currency)
 
 func _ready():
 	ready_to_load = true
+	
+	if Engine.has_singleton("MySingleton"):
+		consent = Engine.get_singleton("MySingleton")
+		print(consent.myFunction("World"))
+		call_deferred("_init_consent")
+
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+
+func _init_consent():
+	consent.init(get_instance_id())
 
 func set_personalised(p):
 	personalised = p
 	personalised_checked = true
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+
+func _on_consent_fail(e):
+	print("Failed to obtain consent: ")
+	print(e)
+
+func _on_consent_success():
+	print("Consent success")
+
+func _on_consent_unknown():
+	print("Consent unknown")
+	consent.showConsentForm()
+
+func _on_consent_forward(personalised):
+	print("Consent forwarded: ", personalised)
+
+func _on_consent_loaded():
+	print("Consent loaded")
+	consent.showConsentForm()
+
+func _on_consent_opened():
+	print("Consent opened")
+
+func _on_consent_error(e):
+	print("Consent error: ", e)
 
 func _init_ads():
 	if(Engine.has_singleton("AdMob")):
