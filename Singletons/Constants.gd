@@ -47,8 +47,8 @@ const KeyClasses = {
 	"SilverKey": preload("res://Items/scripts/keys/SilverKey.gd")
 }
 const UpgradeClasses = {
-	"StrengthUpgrade3": preload("res://Items/scripts/upgrades/StrengthUpgrade3.gd"),
-	"DefenceUpgrade3": preload("res://Items/scripts/upgrades/DefenceUpgrade3.gd"),
+	"StrengthUpgrade": preload("res://Items/scripts/upgrades/StrengthUpgrade.gd"),
+	"DefenceUpgrade": preload("res://Items/scripts/upgrades/DefenceUpgrade.gd"),
 	"TrapImmunity": preload("res://Items/scripts/upgrades/TrapImmunity.gd"),
 	"QuickSpellcaster": preload("res://Items/scripts/upgrades/QuickSpellcaster.gd"),
 	"QuickEater": preload("res://Items/scripts/upgrades/QuickEater.gd"),
@@ -70,8 +70,8 @@ const DistributionOfEquals = preload("res://Components/Distributions/Distributio
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
 const AllUpgradesUnmodified = [
-	{ "value": UpgradeClasses.StrengthUpgrade3, "onetime": false },
-	{ "value": UpgradeClasses.DefenceUpgrade3, "onetime": false },
+	{ "value": UpgradeClasses.StrengthUpgrade, "onetime": false },
+	{ "value": UpgradeClasses.DefenceUpgrade, "onetime": false },
 	{ "value": UpgradeClasses.TrapImmunity, "onetime": true },
 	{ "value": UpgradeClasses.QuickSpellcaster, "onetime": true },
 	{ "value": UpgradeClasses.MaliciousSpellcaster, "onetime": true },

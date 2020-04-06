@@ -113,6 +113,8 @@ func _ready():
 		thirdWeaponSlot = GameData.saved_player.thirdWeaponSlot
 		thirdUpgradeSlot = GameData.saved_player.thirdUpgradeSlot
 
+	._ready()
+
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":
 		var textNode = Text.instance()
