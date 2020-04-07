@@ -6,6 +6,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [  ],
+"loop": false,
+"name": "death",
+"speed": 1.0
+}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "stand_down",
@@ -28,4 +33,3 @@ centered = false
 [node name="Stars" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 79.9778, -271.144 )
-frame = 3
