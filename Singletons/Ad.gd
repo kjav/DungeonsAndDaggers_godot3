@@ -16,6 +16,7 @@ var rewardAdId = "ca-app-pub-6580148569317237/9855207822"
 
 signal reward_ad(currency, amount)
 signal cancel_ad(currency)
+signal privacy_consent_obtained
 
 func _ready():
 	ready_to_load = true
@@ -24,18 +25,18 @@ func _ready():
 		consent = Engine.get_singleton("MySingleton")
 		print(consent.myFunction("World"))
 		call_deferred("_init_consent")
-
+	
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+
+func show_privacy_form():
+	if consent == null:
+		emit_signal("privacy_consent_obtained")
+	else:
+		consent.showConsentForm()
 
 func _init_consent():
 	consent.init(get_instance_id())
-
-func set_personalised(p):
-	personalised = p
-	personalised_checked = true
-	if ready_to_load and personalised_checked:
-		call_deferred("_init_ads")
 
 func _on_consent_fail(e):
 	print("Failed to obtain consent: ")
@@ -48,12 +49,16 @@ func _on_consent_unknown():
 	print("Consent unknown")
 	consent.showConsentForm()
 
-func _on_consent_forward(personalised):
-	print("Consent forwarded: ", personalised)
+func _on_consent_forward(p):
+	print("Consent forwarded: ", p)
+	personalised = p
+	personalised_checked = true
+	emit_signal("privacy_consent_obtained")
+	if ready_to_load and personalised_checked:
+		call_deferred("_init_ads")
 
 func _on_consent_loaded():
 	print("Consent loaded")
-	consent.showConsentForm()
 
 func _on_consent_opened():
 	print("Consent opened")

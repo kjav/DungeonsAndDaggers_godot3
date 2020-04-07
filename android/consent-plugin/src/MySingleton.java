@@ -23,6 +23,7 @@ public class MySingleton extends Godot.SingletonBase {
     }
 
     public void showConsentForm() {
+        form = null;
         URL privacyUrl = null;
         try {
             // TODO: Replace with your app's privacy policy URL.

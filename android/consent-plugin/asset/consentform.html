@@ -66,6 +66,10 @@
       .btn {
         cursor: pointer;
       }
+      #tick {
+        width: 15px;
+        vertical-align: middle;
+      }
       #overlay {
         position: fixed;
         top: 30px;
@@ -179,6 +183,10 @@
         -webkit-transition: all 0.2s ease-in-out;
         -o-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+      }
+      .button.inverted {
+        color: white;
+        background-color: #1a73e8;
       }
       .button.sel {
         background-color: rgba(26, 115, 232, 0.08);
@@ -899,10 +907,14 @@
             <div id="buttons" data-sel="">
               <div
                 id="btn0"
-                class="button btn0 flex-center"
+                class="button btn0 flex-center inverted"
                 onclick="actionClick(event, 'agree0');"
               >
                 <div class="button_title">
+                  <img
+                    src="data:image/png;base64,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"
+                    id="tick"
+                  />
                   Yes, continue to see relevant ads
                 </div>
               </div>

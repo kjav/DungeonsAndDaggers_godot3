@@ -4,9 +4,9 @@ enum {Full, Half, Empty}
 
 export(int) var type setget setType, getType
 
-var full = preload("res://assets/hat.png")
-var half = preload("res://assets/half_grey_hat.png")
-var empty = preload("res://assets/grey_hat.png")
+var full = preload("res://assets/pixel.png")
+var half = preload("res://assets/pixel.png")
+var empty = preload("res://assets/pixel.png")
 
 func setType(newType):
 	type = newType
