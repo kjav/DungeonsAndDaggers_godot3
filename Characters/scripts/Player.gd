@@ -458,6 +458,9 @@ func pickUp(item):
 			applePickedUp = true
 			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("Click the food\nicon at the\nbottom to eat.")
 			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
+		
+		if GameData.chosen_map == "Tutorial" && item.item_name == "Bomb" && GameData.current_level == 2:
+			GameData.hud.get_node("TutorialTextPrompts").get_child(0).set_text("Click the weapon\nyou want to\nequipt on the\nbottom left icons")
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))
