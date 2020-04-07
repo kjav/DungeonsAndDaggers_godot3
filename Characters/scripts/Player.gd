@@ -529,7 +529,7 @@ func moveToTile(event = null):
 	moveStack = pathToDirectionPath(path)
 
 func performMoveStack(t):
-	if len(moveStack) > 0 and not (moving or charactersAwaitingMove or GameData.charactersMoving()):
+	if len(moveStack) > 0 and not (moving or charactersAwaitingMove):
 		var direction = moveStack.pop_back()
 		lastDirection = direction
 		forceTurnEnd(direction)
