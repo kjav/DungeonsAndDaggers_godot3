@@ -27,7 +27,7 @@ public class MySingleton extends Godot.SingletonBase {
         URL privacyUrl = null;
         try {
             // TODO: Replace with your app's privacy policy URL.
-            privacyUrl = new URL("https://www.google.com/");
+            privacyUrl = new URL("https://www.noisyleaf.co.uk/privacy_policy");
         } catch (MalformedURLException e) {
             e.printStackTrace();
             // Handle error.

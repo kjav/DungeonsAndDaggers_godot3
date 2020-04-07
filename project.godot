@@ -28,7 +28,7 @@ config/name="Dungeons & Daggers"
 run/main_scene="res://Menus/UnifiedMenu.tscn"
 boot_splash/image="res://assets/NoisyLeafSplash.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://icon.webp"
+config/icon="res://icon.png"
 
 [autoload]
 

@@ -4,7 +4,7 @@ var consent = null
 var isReal = false
 var childDirected = false
 var personalised = false
-var rating = "PG"
+var rating = "T"
 var ready_to_load = false
 var personalised_checked = false
 
@@ -65,6 +65,7 @@ func _on_consent_opened():
 
 func _on_consent_error(e):
 	print("Consent error: ", e)
+	emit_signal("privacy_consent_obtained")
 
 func _init_ads():
 	if(Engine.has_singleton("AdMob")):

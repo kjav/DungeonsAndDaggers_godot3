@@ -39,7 +39,7 @@ texture = ExtResource( 2 )
 [node name="ClickableRegion" parent="." instance=ExtResource( 3 )]
 modulate = Color( 1, 1, 1, 0 )
 margin_left = -32.0
-margin_top = 1037.0
+margin_top = 884.0
 margin_right = 1124.0
 margin_bottom = 2106.0
 rect_pivot_offset = Vector2( 598, 941 )
@@ -121,6 +121,7 @@ align = 1
 valign = 1
 
 [node name="PrivacyButton" type="TextureButton" parent="."]
+visible = false
 margin_left = 325.227
 margin_top = 893.326
 margin_right = 765.227

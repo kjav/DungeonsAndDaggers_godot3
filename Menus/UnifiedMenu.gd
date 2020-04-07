@@ -14,6 +14,12 @@ func _ready():
 			position = Vector2(-1180, 0)
 		_: # The default
 			position = Vector2(0, 0)
+	Ad.connect("privacy_consent_obtained", self, "privacy_consent_obtained")
+
+func privacy_consent_obtained():
+	print("Privacy consent obtained")
+	get_node("loading").hide()
+
 
 func _process(delta):
 	if transitioning:

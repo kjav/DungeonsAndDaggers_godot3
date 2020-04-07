@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=8]
 [ext_resource path="res://Menus/TextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Menus/GDPR Menu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Menus/Ad Settings.gd" type="Script" id=11]
+[ext_resource path="res://assets/loading.webp" type="Texture" id=12]
+[ext_resource path="res://Menus/TextureRect.gd" type="Script" id=13]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -123,6 +126,9 @@ margin_bottom = 168.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 8 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Mute"]
 margin_right = 343.0
@@ -133,5 +139,61 @@ custom_colors/font_outline_modulate = Color( 0.286275, 0.113725, 0, 1 )
 text = "MUTE"
 align = 1
 valign = 1
+
+[node name="Ad Settings" type="TextureButton" parent="."]
+margin_left = 1189.0
+margin_top = 33.0
+margin_right = 1877.0
+margin_bottom = 168.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 8 )
+expand = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Ad Settings"]
+margin_left = 85.3154
+margin_top = 34.6689
+margin_right = 616.315
+margin_bottom = 155.669
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.309804, 0.145098, 0, 1 )
+text = "Ad Settings
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="loading" type="ColorRect" parent="."]
+visible = false
+margin_left = 1030.0
+margin_top = -42.0
+margin_right = 2396.0
+margin_bottom = 2021.0
+color = Color( 0, 0, 0, 0.843137 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="loading"]
+margin_left = 487.636
+margin_top = 875.885
+margin_right = 941.636
+margin_bottom = 934.885
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "loading..."
+
+[node name="TextureRect" type="TextureRect" parent="loading"]
+margin_left = 561.972
+margin_top = 923.997
+margin_right = 817.972
+margin_bottom = 1180.0
+rect_pivot_offset = Vector2( 127, 127 )
+texture = ExtResource( 12 )
+script = ExtResource( 13 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]

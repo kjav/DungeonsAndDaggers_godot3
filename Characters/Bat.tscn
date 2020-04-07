@@ -38,6 +38,16 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
+"name": "walk_up",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
 "name": "walk_down",
 "speed": 14.0
 }, {
@@ -55,16 +65,6 @@ animations = [ {
 "loop": true,
 "name": "stand_left",
 "speed": 14.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 14.0
 } ]
 
 [node name="Bat" type="Node2D"]
@@ -77,11 +77,11 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "stand_down"
-frame = 5
+frame = 6
 playing = true
 offset = Vector2( 160, 160 )
 
 [node name="Stars" parent="." instance=ExtResource( 18 )]
 visible = false
 position = Vector2( 144.936, 27.6696 )
-frame = 0
+frame = 1

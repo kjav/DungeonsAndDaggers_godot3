@@ -25,6 +25,16 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
+"name": "walk_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "walk_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
 "name": "walk_down",
 "speed": 1.0
 }, {
@@ -41,16 +51,6 @@ animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "walk_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "walk_right",
 "speed": 1.0
 } ]
 
@@ -70,3 +70,4 @@ offset = Vector2( 16, 16 )
 visible = false
 position = Vector2( 6.38902, -1.84483 )
 scale = Vector2( 0.03, 0.03 )
+frame = 1
