@@ -403,6 +403,7 @@ func handleCharacterDeath():
 	
 	setAnimationOnAllBodyParts("death", true)
 	setPlayingOnAllBodyParts(true, true)
+	removeStunned()
 	
 	death_timer = Timer.new()
 	death_timer.set_wait_time(1)
