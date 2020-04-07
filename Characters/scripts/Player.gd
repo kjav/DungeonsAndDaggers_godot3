@@ -91,9 +91,6 @@ func _ready():
 	faceDirection(Enums.DIRECTION.RIGHT)
 	half_screen_size = Vector2(540, 960)
 	
-	if GameData.chosen_map == "Tutorial":
-		stats.health.value -= 1
-	
 	addTutorialTextIfTutorial("Swipe or\nclick to\nmove.", Vector2(5, 9.3))
 	addTutorialTextIfTutorial("These offer\nrandom upgrades\nto improve\nyour character.", Vector2(7.1, -2.9))
   
@@ -114,6 +111,9 @@ func _ready():
 		thirdUpgradeSlot = GameData.saved_player.thirdUpgradeSlot
 
 	._ready()
+	
+	if GameData.chosen_map == "Tutorial":
+		stats.health.value -= 1
 
 func addTutorialTextIfTutorial(text, pos):
 	if GameData.chosen_map == "Tutorial":
