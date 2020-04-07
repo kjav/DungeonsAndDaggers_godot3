@@ -177,7 +177,7 @@ func set_map_type(type):
 				node.setUnlockGuid("Silver")
 				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.UncommonSpear}]))
 				if type == "Tutorial":
-					node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.CommonBow}]))
+					node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.Bomb}]))
 			elif node.environment_name == "Door":
 				node.setLocked(false)
 			elif node.environment_name == "BossDoor":

@@ -33,11 +33,11 @@ func setup_params():
 			"position": Vector2(2, 4)
 		}
 	])
-	item_distribution = Distribution.new(
+	item_distribution = IndependentDistribution.new(
 	[
 		{
 			"p": 1, 
-			"value": Constants.WeaponClasses.UncommonSpear,
+			"value": Constants.WeaponClasses.RareSword,
 			"position": Vector2(2, 1)
 		},
 		{
