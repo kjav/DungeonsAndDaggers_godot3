@@ -369,14 +369,14 @@ func attack(character, isFirstCollision, base_damage = 0):
 		removeInvisibility()
 		
 		damage = round(damage * 2) / 2
-
-		if self == GameData.player:
-			emit_signal("playerAttack", character, damage);
-		else:
-			emit_signal("attack", self, damage);
 		
 		#Audio.playHit()
-		character.takeDamage(damage)
+		var actualDamage = character.takeDamage(damage)
+		
+		if self == GameData.player:
+			emit_signal("playerAttack", character, actualDamage);
+		else:
+			emit_signal("attack", self, actualDamage);
 
 func takeDamage(damage):
 	if damageable:
@@ -390,13 +390,18 @@ func takeDamage(damage):
 			handleCharacterDeath()
 		
 		createHitmarker(damage)
+	
+		return damage
 	else:
 		if self == GameData.player:
 			GameData.total_blocked_damage += damage
 		
 		createHitmarker(0, true)
+		
+		return 0;
 
 var death_timer
+
 func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)

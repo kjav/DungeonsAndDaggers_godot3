@@ -412,9 +412,14 @@ func takeDamage(damage):
 	
 	if GameData.chosen_map == "Tutorial":
 		damage = min(damage, stats.health.value - 0.5)
+		
+	if (damage >= stats.health.value && stats.health.value > 2):
+		damage = stats.health.value - 0.5
 	
-	.takeDamage(damage)
+	damage = .takeDamage(damage)
 	damageable = damageableStore
+	
+	return damage
 
 func handleCharacterDeath():
 	GameData.delete_saved_game()
