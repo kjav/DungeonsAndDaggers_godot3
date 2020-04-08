@@ -11,7 +11,8 @@ func revive(currency, amount):
 		GameData.player.revive()
 		disabled = true
 		get_node("skull").material.set_shader_param("grayscale", true)
-		get_parent().hide()
+		get_parent().get_parent().hide()
+		get_parent().get_parent().get_node("AnimationPlayer").play_backwards("death screen fade in")
 
 func _pressed():
 	get_node("loading").show()
