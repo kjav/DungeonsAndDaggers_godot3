@@ -291,7 +291,7 @@ func checkForTutorialPrompts():
 		GameData.player.addTutorialTextIfTutorial("Good luck,\nand have fun.", Vector2(4.7, 5.3))
 
 func _input(ev):
-	if ev is InputEventKey and not ev.echo and (OS.get_ticks_msec() - lastdone) > 50 :
+	if ev is InputEventKey and not ev.echo and (OS.get_ticks_msec() - lastdone) > 50:
 		if ev.scancode == KEY_LEFT:
 			swiped(Enums.DIRECTION.LEFT)
 		elif ev.scancode == KEY_RIGHT:
