@@ -25,8 +25,9 @@ func _process(delta):
 			var new_instance = ItemDescriptionPopup.instance()
 			popupAdded = true
 			new_instance.set_name("ItemDescriptionPopup")
-			get_tree().get_current_scene().get_node("HudNode").get_node("HudCanvasLayer").add_child(new_instance)
+			new_instance.setItem(get_parent().getInstance())
 			new_instance.setPopupPosition(mousePosition)
+			get_tree().get_current_scene().get_node("HudNode").get_node("HudCanvasLayer").add_child(new_instance)
 
 func isLongPress():
 	return (OS.get_ticks_msec() - pressStartTime) > 100

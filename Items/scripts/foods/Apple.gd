@@ -3,6 +3,7 @@ extends "FoodBase.gd"
 func _init():
 	textureFilePath = "res://assets/apple.webp"
 	item_name = "Apple"
+	item_description = "Heals you up to 1 heart."
 	texture = preload("res://assets/apple.webp")
 
 func onUse():

@@ -3,6 +3,7 @@ extends "FoodBase.gd"
 func _init():
 	textureFilePath = "res://assets/cooked_steak2.webp"
 	item_name = "Steak"
+	item_description = "Heals you up to 3 hearts."
 	texture = preload("res://assets/cooked_steak2.webp")
 	rarity = Enums.WEAPONRARITY.RARE
 
