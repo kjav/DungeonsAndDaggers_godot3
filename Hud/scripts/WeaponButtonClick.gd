@@ -1,9 +1,8 @@
 extends "ItemPopupBaseScript.gd"
-var enabled = false
 var representedSlot
 
 func actionShortPress():
-	if not get_tree().get_current_scene().get_node("HudNode").inventoryOpen:
+	if not get_tree().get_current_scene().get_node("HudNode").inventoryOpen and getItem().equiptable:
 		GameData.player.setCurrentWeaponSlot(representedSlot)
 
 func getItem():
