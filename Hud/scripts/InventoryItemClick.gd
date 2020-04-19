@@ -1,5 +1,8 @@
 extends "ItemPopupBaseScript.gd"
 
+func _init():
+	popupPosition = "left"
+
 func actionShortPress():
 	var parent = self.get_parent()
 	
