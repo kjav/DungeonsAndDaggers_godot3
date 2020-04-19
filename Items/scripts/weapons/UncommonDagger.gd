@@ -8,5 +8,6 @@ func _init():
 	iconTextureFilePath = "res://assets/uncommon-dagger-icon.png"
 	iconTexture = preload("res://assets/uncommon-dagger-icon.png")
 	item_name = "Uncommon Dagger"
+	item_description = "Daggers work in your offhand and may add an additional attack to adjecent tiles. Uncommon has a base damage of 1."
 	damage = 1
 	rarity = Enums.WEAPONRARITY.UNCOMMON

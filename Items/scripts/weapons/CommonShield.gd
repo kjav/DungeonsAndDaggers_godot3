@@ -10,6 +10,7 @@ func _init():
 	iconTextureFilePath = "res://assets/basic_shield.webp"
 	iconTexture = preload("res://assets/basic_shield.webp")
 	item_name = "Common Shield"
+	item_description = "Shields work in your offhand and may fully block attacks. Common, on average, blocks 1 in 5 attacks."
 	chanceToBlockOutOf = 5
 	damage = 1
 	isMelee = true

@@ -8,5 +8,6 @@ func _init():
 	iconTextureFilePath = "res://assets/rare-sword-icon.png"
 	iconTexture = preload("res://assets/rare-sword-icon.png")
 	item_name = "Rare Sword"
+	item_description = "Swords attack adjecent tiles only. Rare deals damage of base 3.5."
 	damage = 3.5
 	rarity = Enums.WEAPONRARITY.RARE

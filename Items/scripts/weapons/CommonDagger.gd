@@ -8,6 +8,7 @@ func _init():
 	iconTexture = preload("res://assets/basic_dagger.png")
 	iconTextureFilePath = "res://assets/basic_dagger.png"
 	item_name = "Common Dagger"
+	item_description = "Daggers work in your offhand and may add an additional attack to adjecent tiles. Common has a base damage of 0.5."
 	damage = 0.5
 	isMelee = true
 	showBehindHand = true

@@ -25,21 +25,21 @@ rect_scale = Vector2( 0.6, 0.17 )
 texture = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
-margin_left = -167.736
-margin_top = -131.158
-margin_right = 118.264
-margin_bottom = -109.158
+margin_left = -173.736
+margin_top = -138.158
+margin_right = 112.264
+margin_bottom = -116.158
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "EarthQuake Spell"
 
 [node name="Description" type="Label" parent="."]
-margin_left = -166.736
-margin_top = -96.5481
-margin_right = 179.264
-margin_bottom = -11.5481
+margin_left = -173.0
+margin_top = -108.0
+margin_right = 176.0
+margin_bottom = -12.0
 focus_mode = 2
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )
+custom_colors/font_color = Color( 0.129412, 0.129412, 0.129412, 1 )
 text = "Damages all enemies within 3 tiles of you a moderate amount."
 autowrap = true

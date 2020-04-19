@@ -8,6 +8,7 @@ func _init():
 	iconTexture = preload("res://assets/common-sword.png")
 	iconTextureFilePath = "res://assets/common-sword.png"
 	item_name = "Common Sword"
+	item_description = "Swords attack adjecent tiles only. Common deals damage of base 2.5."
 	damage = 2.5
 	isMelee = true
 	showBehindHand = true
