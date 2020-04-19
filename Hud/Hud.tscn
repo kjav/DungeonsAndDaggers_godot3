@@ -95,6 +95,7 @@ visible = false
 visible = false
 
 [node name="Popups" type="Node2D" parent="HudCanvasLayer"]
+z_index = 4096
 
 [node name="ContextualMenu" parent="." instance=ExtResource( 14 )]
 visible = false
