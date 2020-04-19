@@ -17,27 +17,28 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Background" type="TextureRect" parent="."]
-margin_left = -376.0
-margin_top = -129.0
-margin_right = 282.0
-margin_bottom = 742.0
+modulate = Color( 1, 1, 1, 0.647059 )
+margin_left = -192.736
+margin_top = -148.548
+margin_right = 465.264
+margin_bottom = 722.452
 rect_scale = Vector2( 0.6, 0.17 )
 texture = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
-margin_left = -351.0
-margin_top = -111.61
-margin_right = -65.0
-margin_bottom = -89.61
+margin_left = -167.736
+margin_top = -131.158
+margin_right = 118.264
+margin_bottom = -109.158
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "EarthQuake Spell"
 
 [node name="Description" type="Label" parent="."]
-margin_left = -350.0
-margin_top = -77.0
-margin_right = -4.0
-margin_bottom = 8.0
+margin_left = -166.736
+margin_top = -96.5481
+margin_right = 179.264
+margin_bottom = -11.5481
 focus_mode = 2
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.172549, 0.172549, 0.172549, 1 )

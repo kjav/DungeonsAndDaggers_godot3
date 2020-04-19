@@ -94,6 +94,8 @@ visible = false
 [node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 visible = false
 
+[node name="Popups" type="Node2D" parent="HudCanvasLayer"]
+
 [node name="ContextualMenu" parent="." instance=ExtResource( 14 )]
 visible = false
 

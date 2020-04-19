@@ -20,6 +20,7 @@ func _input(event):
 				parent.hide()
 				parent.get_parent().selectItem(parent)
 				parent.instance.onUse()
+
 func _process(delta):
 	if Input.is_mouse_button_pressed(BUTTON_LEFT) and isLongPress() and !popupAdded:
 			var new_instance = ItemDescriptionPopup.instance()

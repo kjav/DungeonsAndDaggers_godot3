@@ -78,14 +78,16 @@ margin_bottom = 280.0
 texture_normal = ExtResource( 8 )
 script = ExtResource( 9 )
 
-[node name="Secondary Background" type="TextureRect" parent="."]
+[node name="Secondary Weapon" type="Node2D" parent="."]
+
+[node name="Secondary Background" type="TextureRect" parent="Secondary Weapon"]
 margin_left = 280.0
 margin_right = 408.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
-[node name="Secondary Icon" type="TextureRect" parent="."]
+[node name="Secondary Icon" type="TextureRect" parent="Secondary Weapon"]
 margin_left = 333.0
 margin_top = 56.0
 margin_right = 461.0
@@ -93,7 +95,7 @@ margin_bottom = 184.0
 rect_scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 3 )
 
-[node name="Secondary Use Count" type="Label" parent="."]
+[node name="Secondary Use Count" type="Label" parent="Secondary Weapon"]
 visible = false
 margin_left = 424.0
 margin_top = 69.0
@@ -102,21 +104,21 @@ margin_bottom = 156.0
 custom_fonts/font = SubResource( 1 )
 text = "3"
 
-[node name="Secondary front" type="TextureRect" parent="."]
+[node name="Secondary front" type="TextureRect" parent="Secondary Weapon"]
 margin_left = 279.0
 margin_top = 3.0
 margin_right = 535.0
 margin_bottom = 259.0
 texture = ExtResource( 5 )
 
-[node name="Secondary Inactive Overlay" type="TextureRect" parent="."]
+[node name="Secondary Inactive Overlay" type="TextureRect" parent="Secondary Weapon"]
 margin_left = 257.0
 margin_top = -18.0
 margin_right = 557.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
-[node name="Secondary Offhand" type="TextureRect" parent="."]
+[node name="Secondary Offhand" type="TextureRect" parent="Secondary Weapon"]
 visible = false
 margin_left = 341.269
 margin_top = 202.727
@@ -125,7 +127,7 @@ margin_bottom = 266.727
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 7 )
 
-[node name="Secondary Inactive Button" type="TextureButton" parent="."]
+[node name="Secondary Inactive Button" type="TextureButton" parent="Secondary Weapon"]
 margin_left = 257.0
 margin_top = -20.0
 margin_right = 557.0
@@ -133,13 +135,15 @@ margin_bottom = 280.0
 texture_normal = ExtResource( 8 )
 script = ExtResource( 9 )
 
-[node name="Primary Background" type="TextureRect" parent="."]
+[node name="Primary Weapon" type="Node2D" parent="."]
+
+[node name="Primary Background" type="TextureRect" parent="Primary Weapon"]
 margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
-[node name="Primary Icon" type="TextureRect" parent="."]
+[node name="Primary Icon" type="TextureRect" parent="Primary Weapon"]
 margin_left = 51.0
 margin_top = 58.0
 margin_right = 179.0
@@ -147,14 +151,14 @@ margin_bottom = 186.0
 rect_scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 11 )
 
-[node name="Primary front" type="TextureRect" parent="."]
+[node name="Primary front" type="TextureRect" parent="Primary Weapon"]
 margin_left = -1.0
 margin_top = 3.0
 margin_right = 255.0
 margin_bottom = 259.0
 texture = ExtResource( 5 )
 
-[node name="Primary Use Count" type="Label" parent="."]
+[node name="Primary Use Count" type="Label" parent="Primary Weapon"]
 visible = false
 margin_left = 146.0
 margin_top = 69.0
@@ -163,14 +167,14 @@ margin_bottom = 156.0
 custom_fonts/font = SubResource( 1 )
 text = "0"
 
-[node name="Primary Inactive Overlay" type="TextureRect" parent="."]
+[node name="Primary Inactive Overlay" type="TextureRect" parent="Primary Weapon"]
 margin_left = -23.0
 margin_top = -18.0
 margin_right = 277.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
-[node name="Primary Offhand" type="TextureRect" parent="."]
+[node name="Primary Offhand" type="TextureRect" parent="Primary Weapon"]
 visible = false
 margin_left = 62.2686
 margin_top = 202.727
@@ -179,7 +183,7 @@ margin_bottom = 266.727
 rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 7 )
 
-[node name="Primary Inactive Button" type="TextureButton" parent="."]
+[node name="Primary Inactive Button" type="TextureButton" parent="Primary Weapon"]
 margin_left = -22.9872
 margin_top = -18.6659
 margin_right = 277.013
