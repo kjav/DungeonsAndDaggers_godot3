@@ -13,6 +13,7 @@ var initial_pos
 var isPartOfBossRoom
 var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
+const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase.gd")
 
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
@@ -237,8 +238,7 @@ func handleMove(direction):
 
 func environmentOnWalkedOut():
 	for i in range(environmentsAtPosition.size()):
-		if (is_instance_valid(environmentsAtPosition[i])):
-			if funcref(environmentsAtPosition[i], "onWalkedOut"):
+		if (is_instance_valid(environmentsAtPosition[i]) && environmentsAtPosition[i] is environmentBaseClass && funcref(environmentsAtPosition[i], "onWalkedOut")):
 				environmentsAtPosition[i].onWalkedOut(self)
 	
 	environmentsAtPosition = environmentsAtTargetPosition
