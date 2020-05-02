@@ -21,7 +21,7 @@ align = 1
 script = ExtResource( 2 )
 
 [node name="Background" type="TextureRect" parent="."]
-self_modulate = Color( 1, 1, 1, 0.490196 )
+self_modulate = Color( 1, 1, 1, 0.686275 )
 show_behind_parent = true
 margin_left = -2.0
 margin_top = -2.0
