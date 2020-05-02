@@ -16,3 +16,9 @@ func _init():
 	offset = Vector2(-20, -15)
 	rotationInHand = deg2rad(120)
 	rotationInOffHand = deg2rad(55)
+
+func pickup():
+	if GameData.chosen_map == "Tutorial" && GameData.current_level == 2:
+		GameData.hud.get_node("TutorialTextPrompts").get_child(1).set_text("To check what a\nweapon does long\npress on the\nbottom left icon")
+	
+	.pickup()
