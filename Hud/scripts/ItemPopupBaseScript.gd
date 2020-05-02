@@ -43,7 +43,7 @@ func _process(delta):
 			GameData.hud.get_node("HudCanvasLayer/Popups").add_child(new_instance)
 
 func isLongPress():
-	return (OS.get_ticks_msec() - pressStartTime) > 100
+	return (OS.get_ticks_msec() - pressStartTime) > 150
 	
 func withinTileBounds(pos):
 	var size = self.get_global_transform().get_scale() * self.get_size()
