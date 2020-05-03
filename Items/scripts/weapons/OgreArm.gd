@@ -1,5 +1,5 @@
 extends "WeaponBase.gd"
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 var nextAttackForward = true
 
 func _init():

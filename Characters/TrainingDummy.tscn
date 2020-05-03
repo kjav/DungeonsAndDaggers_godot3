@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Characters/scripts/TrainingDummy.gd" type="Script" id=1]
 [ext_resource path="res://assets/TrainingDummy/training_dummy_0.png" type="Texture" id=2]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=3]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=3]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

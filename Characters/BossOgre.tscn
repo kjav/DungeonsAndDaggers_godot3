@@ -15,7 +15,8 @@
 [ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_head_left.png" type="Texture" id=13]
 [ext_resource path="res://assets/OgreBoss/boss_ogre_arm_left.png" type="Texture" id=14]
 [ext_resource path="res://assets/OgreBoss/overlay_boss_ogre_left_arm.png" type="Texture" id=15]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=16]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=16]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

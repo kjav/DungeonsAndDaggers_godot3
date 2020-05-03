@@ -1,6 +1,6 @@
 extends Sprite
 
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 
 export(NodePath) var target setget setTarget, getTarget
 export(float) var speed = 25

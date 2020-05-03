@@ -17,7 +17,8 @@
 [ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_005.webp" type="Texture" id=15]
 [ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_006.webp" type="Texture" id=16]
 [ext_resource path="res://assets/tilesets/Bat/Bat_Fly_left_007.webp" type="Texture" id=17]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=18]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=18]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

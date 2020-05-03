@@ -9,7 +9,8 @@
 [ext_resource path="res://assets/basic_bow.png" type="Texture" id=7]
 [ext_resource path="res://Components/scripts/CameraWithShake.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player.tres" type="Animation" id=9]
-[ext_resource path="res://Effects/LightBlip.tscn" type="PackedScene" id=10]
+[ext_resource path="res://VisualEffects/LightBlip.tscn" type="PackedScene" id=10]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "stand"

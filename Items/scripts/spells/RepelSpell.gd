@@ -1,6 +1,6 @@
 extends "SpellBase.gd"
 
-const Blast = preload("res://Effects/Blast.tscn")
+const Blast = preload("res://VisualEffects/Blast.tscn")
 
 func _init():
 	textureFilePath = "res://assets/swirl_spell.webp"

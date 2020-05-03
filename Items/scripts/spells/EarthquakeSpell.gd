@@ -1,6 +1,6 @@
 extends "SpellBase.gd"
 
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 
 func _init():
 	textureFilePath = "res://assets/brown_spell.webp"

@@ -11,8 +11,8 @@ signal turnEnd()
 
 var lastdone = OS.get_ticks_msec()
 
-const LightBlip = preload("res://Effects/LightBlip.tscn")
-const Text = preload("res://Effects/Text.tscn")
+const LightBlip = preload("res://VisualEffects/LightBlip.tscn")
+const Text = preload("res://VisualEffects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()

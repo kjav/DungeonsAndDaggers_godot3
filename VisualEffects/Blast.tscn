@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/blast/spack_2.webp" type="Texture" id=3]
 [ext_resource path="res://assets/blast/spack_3.webp" type="Texture" id=4]
 [ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=5]
-[ext_resource path="res://Effects/scripts/Blast.gd" type="Script" id=6]
+[ext_resource path="res://VisualEffects/scripts/Blast.gd" type="Script" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

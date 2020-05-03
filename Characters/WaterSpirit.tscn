@@ -18,7 +18,8 @@
 [ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_4.png" type="Texture" id=16]
 [ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_5.png" type="Texture" id=17]
 [ext_resource path="res://assets/WaterSpirit/water_spirit_flames_left_6.png" type="Texture" id=18]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=19]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=19]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

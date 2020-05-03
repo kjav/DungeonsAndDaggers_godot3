@@ -2,8 +2,8 @@ extends "Boss.gd"
 
 const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
-const AngerMark = preload("res://Effects/AngerMark.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
+const AngerMark = preload("res://VisualEffects/AngerMark.tscn")
 
 const leftArmXInitialPosition = 3.96536
 const rightArmXInitialPosition = 14.6453

@@ -10,7 +10,8 @@
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Up_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_1_Flipped.png" type="Texture" id=9]
 [ext_resource path="res://assets/tilesets/Baby Ogre/BabyOgre_Down_2_Flipped.png" type="Texture" id=10]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=11]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=11]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

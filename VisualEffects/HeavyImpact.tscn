@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/HeavyImpact/Oexplosiona_8.webp" type="Texture" id=6]
 [ext_resource path="res://assets/HeavyImpact/Oexplosiona_9.webp" type="Texture" id=7]
 [ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=8]
-[ext_resource path="res://Effects/scripts/HeavyImpact.gd" type="Script" id=9]
+[ext_resource path="res://VisualEffects/scripts/HeavyImpact.gd" type="Script" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
