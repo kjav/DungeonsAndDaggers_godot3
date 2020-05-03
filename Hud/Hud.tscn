@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/TextureButton.gd" type="Script" id=2]
@@ -9,11 +9,12 @@
 [ext_resource path="res://assets/settings_gear.webp" type="Texture" id=7]
 [ext_resource path="res://Hud/scripts/SettingsClick.gd" type="Script" id=8]
 [ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=11]
-[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hud/PlayerEffects.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=12]
+[ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=15]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -84,20 +85,24 @@ __meta__ = {
 [node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 31.4499, 114.573 )
 
-[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 10 )]
-visible = false
-script = ExtResource( 11 )
+[node name="PlayerEffects" parent="HudCanvasLayer" instance=ExtResource( 10 )]
+position = Vector2( 695.854, 210 )
+scale = Vector2( 0.2, 0.2 )
 
-[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 12 )]
+[node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 11 )]
+visible = false
+script = ExtResource( 12 )
+
+[node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 visible = false
 
-[node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 13 )]
+[node name="UpgradeMenu" parent="HudCanvasLayer" instance=ExtResource( 14 )]
 visible = false
 
 [node name="Popups" type="Node2D" parent="HudCanvasLayer"]
 z_index = 4096
 
-[node name="ContextualMenu" parent="." instance=ExtResource( 14 )]
+[node name="ContextualMenu" parent="." instance=ExtResource( 15 )]
 visible = false
 
 [node name="TutorialTextPrompts" type="Node2D" parent="."]
