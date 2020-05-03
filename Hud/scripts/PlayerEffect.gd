@@ -15,4 +15,5 @@ func setProportion(_proportion):
 	update()
 
 func setEffect(effect):
-	get_node("TextureRect").texture = effect.texture
+	visible = true
+	get_node("TextureRect").set_texture(effect.texture)

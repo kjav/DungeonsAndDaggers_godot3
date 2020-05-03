@@ -7,24 +7,32 @@
 script = ExtResource( 1 )
 
 [node name="Effect1" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 1425, 0 )
 
 [node name="Effect2" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 950, 0 )
 
 [node name="Effect3" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 475, 0 )
 
 [node name="Effect4" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Effect5" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 1425, 475 )
 
 [node name="Effect6" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 950, 475 )
 
 [node name="Effect7" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 475, 475 )
 
 [node name="Effect8" parent="." instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 0, 475 )
