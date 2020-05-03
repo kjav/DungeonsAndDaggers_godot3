@@ -66,7 +66,7 @@ frameStyle = "Orange"
 type = "Spell"
 
 [node name="Turn Timer" parent="HudCanvasLayer" instance=ExtResource( 6 )]
-position = Vector2( 985.047, 118.504 )
+position = Vector2( 980.005, 117.244 )
 scale = Vector2( 0.2, 0.2 )
 
 [node name="Settings" type="TextureButton" parent="HudCanvasLayer"]
