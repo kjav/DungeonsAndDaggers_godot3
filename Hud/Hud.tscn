@@ -85,7 +85,7 @@ __meta__ = {
 [node name="EventMessageHolder" parent="HudCanvasLayer" instance=ExtResource( 9 )]
 position = Vector2( 31.4499, 114.573 )
 
-[node name="PlayerEffects" parent="HudCanvasLayer" instance=ExtResource( 10 )]
+[node name="StatusEffects" parent="HudCanvasLayer" instance=ExtResource( 10 )]
 position = Vector2( 695.854, 210 )
 scale = Vector2( 0.2, 0.2 )
 

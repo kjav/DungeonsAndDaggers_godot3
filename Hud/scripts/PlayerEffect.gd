@@ -8,9 +8,13 @@ func _init():
 	colour = Color(1,1,1)
 
 func setProportion(_proportion):
+	if _proportion <= 0:
+		hide()
+		return
+	
 	proportion = _proportion
 	
-	degrees = 1 * 360
+	degrees = proportion * 360
 	
 	update()
 

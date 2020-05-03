@@ -15,6 +15,8 @@ var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
 const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase.gd")
 
+var hudStatusEffects
+
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
 
@@ -29,6 +31,7 @@ var damageSinceTemporaryHealthAdded = 0
 var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
 
+var temporaryDefenceInitialLength = -1
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
 var trapImmune
@@ -77,6 +80,7 @@ func resetToStartPosition():
 	_ready()
 
 func _ready():
+	hudStatusEffects = GameData.hud.get_node("HudCanvasLayer/StatusEffects")
 	setPosition(get_position())
 	
 	stunnedDuration = -1
@@ -137,6 +141,7 @@ func turn(skipTurnBehaviour = false):
 
 	if temporaryDefenceTurnsRemaining > 0:
 		temporaryDefenceTurnsRemaining -= 1
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), float(temporaryDefenceTurnsRemaining) / temporaryDefenceInitialLength)
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
 
@@ -621,13 +626,18 @@ func applyTemporaryDefence(turnAmount):
 		self.stats.defence.value += temporaryDefenceAmount
 		self.stats.defence.maximum += temporaryDefenceAmount
 		temporaryDefenceTurnsRemaining = 0
+		hudStatusEffects.addEffect(Constants.StatusEffects.IncreasedDefence.new())
 	
 	temporaryDefenceTurnsRemaining += turnAmount
+	temporaryDefenceInitialLength = temporaryDefenceTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), 1)
+	
 
 func removeTemporaryDefence():
 	self.stats.defence.value -= temporaryDefenceAmount
 	self.stats.defence.maximum -= temporaryDefenceAmount
 	temporaryDefenceTurnsRemaining = -1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), 0)
 
 func addStun(turnAmount):
 	if (turnAmount <= 0):
