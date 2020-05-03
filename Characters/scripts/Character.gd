@@ -140,8 +140,8 @@ func turn(skipTurnBehaviour = false):
 		removeTemporaryStrength()
 
 	if temporaryDefenceTurnsRemaining > 0:
-		temporaryDefenceTurnsRemaining -= 1
 		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, float(temporaryDefenceTurnsRemaining) / temporaryDefenceInitialLength)
+		temporaryDefenceTurnsRemaining -= 1
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
 
