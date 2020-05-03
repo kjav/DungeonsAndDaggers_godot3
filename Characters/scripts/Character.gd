@@ -141,7 +141,7 @@ func turn(skipTurnBehaviour = false):
 
 	if temporaryDefenceTurnsRemaining > 0:
 		temporaryDefenceTurnsRemaining -= 1
-		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), float(temporaryDefenceTurnsRemaining) / temporaryDefenceInitialLength)
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, float(temporaryDefenceTurnsRemaining) / temporaryDefenceInitialLength)
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
 
@@ -626,18 +626,18 @@ func applyTemporaryDefence(turnAmount):
 		self.stats.defence.value += temporaryDefenceAmount
 		self.stats.defence.maximum += temporaryDefenceAmount
 		temporaryDefenceTurnsRemaining = 0
-		hudStatusEffects.addEffect(Constants.StatusEffects.IncreasedDefence.new())
+		hudStatusEffects.addEffect(Constants.StatusEffects.IncreasedDefence)
 	
 	temporaryDefenceTurnsRemaining += turnAmount
 	temporaryDefenceInitialLength = temporaryDefenceTurnsRemaining
-	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), 1)
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, 1)
 	
 
 func removeTemporaryDefence():
 	self.stats.defence.value -= temporaryDefenceAmount
 	self.stats.defence.maximum -= temporaryDefenceAmount
 	temporaryDefenceTurnsRemaining = -1
-	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence.new(), 0)
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, 0)
 
 func addStun(turnAmount):
 	if (turnAmount <= 0):

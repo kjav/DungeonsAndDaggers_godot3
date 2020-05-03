@@ -67,8 +67,8 @@ const UpgradeClasses = {
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
 }
 
-const StatusEffects = {
-	"IncreasedDefence": preload("res://StatusEffects/IncreasedDefence.gd"),
+var StatusEffects = {
+	"IncreasedDefence": preload("res://StatusEffects/IncreasedDefence.gd").new(),
 }
 
 #Distribution Classes
