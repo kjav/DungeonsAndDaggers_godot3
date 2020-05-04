@@ -400,6 +400,9 @@ func load_game():
 func addCurrentStatusEffects():
 	if GameData.player.canAlwaysHurtGhosts:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.GhostBuster)
+	
+	if GameData.player.increasedFoodHeal:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)
 
 func load_upgrades(availableUpgrades):
 	var upgrades = []
