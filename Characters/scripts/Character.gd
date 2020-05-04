@@ -17,8 +17,9 @@ const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase
 
 var hudStatusEffects
 
+var multiplierInitialLength = -1
 var damageMultiplier = 2
-var multiplierRemainingAttacks = 0
+var multiplierRemainingAttacks = -1
 
 var invisibilityInitialLength = -1
 var invisible = false
@@ -529,18 +530,25 @@ func reduceDamageMultiplier():
 	
 	if multiplierRemainingAttacks <= 0:
 		removeDamageModfier()
+		return
+	
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, float(multiplierRemainingAttacks) / multiplierInitialLength)
 
 func removeDamageModfier():
 	multiplierRemainingAttacks = 0
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, 0)
 
 func applyDamageModifier(numberOfAttacks):
 	if (numberOfAttacks <= 0):
 		return
 	
 	if multiplierRemainingAttacks < 0:
+		hudStatusEffects.addEffect(Constants.StatusEffects.DoubleDamage)
 		multiplierRemainingAttacks = 0
 	
 	multiplierRemainingAttacks += numberOfAttacks
+	multiplierInitialLength = multiplierRemainingAttacks
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, 1)
 
 func damageMultiplierInEffect():
 	return multiplierRemainingAttacks > 0

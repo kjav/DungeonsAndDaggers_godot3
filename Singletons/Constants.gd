@@ -72,6 +72,7 @@ var StatusEffects = {
 	"IncreasedStrength": preload("res://StatusEffects/IncreasedStrength.gd").new(),
 	"TemporaryHealth": preload("res://StatusEffects/TemporaryHealth.gd").new(),
 	"Invisible": preload("res://StatusEffects/Invisible.gd").new(),
+	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
 }
 
 #Distribution Classes
