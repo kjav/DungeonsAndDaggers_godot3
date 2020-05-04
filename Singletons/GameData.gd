@@ -409,6 +409,15 @@ func addCurrentStatusEffects():
 
 	if GameData.player.extendBriefPotions:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ExtendBriefPotions)
+	
+	if GameData.player.potionUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickDrinking)
+	
+	if GameData.player.foodUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickEating)
+
+	if GameData.player.spellUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickSpellcasting)
 
 func load_upgrades(availableUpgrades):
 	var upgrades = []

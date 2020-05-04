@@ -77,6 +77,9 @@ var StatusEffects = {
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
 	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
 	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),
+	"QuickDrinking": preload("res://StatusEffects/QuickDrinking.gd").new(),
+	"QuickEating": preload("res://StatusEffects/QuickEating.gd").new(),
+	"QuickSpellcasting": preload("res://StatusEffects/QuickSpellcasting.gd").new(),
 }
 
 #Distribution Classes
