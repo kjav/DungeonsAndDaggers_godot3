@@ -25,6 +25,9 @@ func updateEffectProportion(effect, proportion):
 func removeActiveEffects(effect):
 	var nodeIndex = activeEffects.find(effect)
 	
+	if nodeIndex < 0:
+		return
+	
 	for i in range(nodeIndex, activeEffects.size() - 1):
 		activeEffects[i] = activeEffects[i+1]
 		

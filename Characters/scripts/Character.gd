@@ -20,6 +20,7 @@ var hudStatusEffects
 var damageMultiplier = 2
 var multiplierRemainingAttacks = 0
 
+var invisibilityInitialLength = -1
 var invisible = false
 var invisibilityTurnsRemaining = -1
 
@@ -36,6 +37,7 @@ var temporaryStrengthAmount = 5
 var temporaryDefenceInitialLength = -1
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
+
 var trapImmune
 
 var fixedMaxHealth
@@ -127,6 +129,7 @@ func afterMoveComplete():
 
 func turn(skipTurnBehaviour = false):
 	if invisibilityTurnsRemaining > 0:
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, float(invisibilityTurnsRemaining) / invisibilityInitialLength)
 		invisibilityTurnsRemaining -= 1
 	elif invisibilityTurnsRemaining == 0:
 		removeInvisibility()
@@ -546,6 +549,7 @@ func removeInvisibility():
 	invisible = false
 	self.set_modulate(Color(1, 1, 1, 1))
 	invisibilityTurnsRemaining = -1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, 0)
 
 func applyInvisibility(turnsAmount):
 	if (turnsAmount <= 0):
@@ -555,9 +559,12 @@ func applyInvisibility(turnsAmount):
 	self.set_modulate(Color(1, 1, 1, 0.1))
 	
 	if invisibilityTurnsRemaining < 0:
+		hudStatusEffects.addEffect(Constants.StatusEffects.Invisible)
 		invisibilityTurnsRemaining = 0
 	
 	invisibilityTurnsRemaining += turnsAmount
+	invisibilityInitialLength = invisibilityTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, 1)
 
 func increaseMaxHealth(amount):
 	if (amount <= 0):
