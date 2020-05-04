@@ -419,6 +419,9 @@ func addCurrentStatusEffects():
 	if GameData.player.spellUsesTurn:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickSpellcasting)
 
+	if GameData.player.trapImmune:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.TrapImmune)
+
 func load_upgrades(availableUpgrades):
 	var upgrades = []
 

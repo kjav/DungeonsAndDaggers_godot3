@@ -80,6 +80,7 @@ var StatusEffects = {
 	"QuickDrinking": preload("res://StatusEffects/QuickDrinking.gd").new(),
 	"QuickEating": preload("res://StatusEffects/QuickEating.gd").new(),
 	"QuickSpellcasting": preload("res://StatusEffects/QuickSpellcasting.gd").new(),
+	"TrapImmune": preload("res://StatusEffects/TrapImmune.gd").new(),
 }
 
 #Distribution Classes
