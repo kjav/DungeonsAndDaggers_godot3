@@ -3,7 +3,7 @@
 [ext_resource path="res://Hud/scripts/TurnTimer.gd" type="Script" id=1]
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 80
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
@@ -16,5 +16,6 @@ margin_left = 50.5124
 margin_top = 166.859
 margin_right = 341.512
 margin_bottom = 248.859
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Turn"

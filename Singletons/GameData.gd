@@ -397,6 +397,10 @@ func load_game():
 	
 	save_game.close()
 
+func addCurrentStatusEffects():
+	if GameData.player.canAlwaysHurtGhosts:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.GhostBuster)
+
 func load_upgrades(availableUpgrades):
 	var upgrades = []
 
