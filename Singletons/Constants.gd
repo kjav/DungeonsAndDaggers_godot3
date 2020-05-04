@@ -76,6 +76,7 @@ var StatusEffects = {
 	"GhostBuster": preload("res://StatusEffects/GhostBuster.gd").new(),
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
 	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
+	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),
 }
 
 #Distribution Classes

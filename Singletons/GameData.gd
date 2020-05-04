@@ -407,6 +407,9 @@ func addCurrentStatusEffects():
 	if GameData.player.increasedSpellDamage:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.MaliciousSpellcaster)
 
+	if GameData.player.extendBriefPotions:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ExtendBriefPotions)
+
 func load_upgrades(availableUpgrades):
 	var upgrades = []
 
