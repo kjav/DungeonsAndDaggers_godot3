@@ -75,6 +75,7 @@ var StatusEffects = {
 	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
 	"GhostBuster": preload("res://StatusEffects/GhostBuster.gd").new(),
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
+	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
 }
 
 #Distribution Classes

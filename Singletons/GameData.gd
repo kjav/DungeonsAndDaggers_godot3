@@ -404,6 +404,9 @@ func addCurrentStatusEffects():
 	if GameData.player.increasedFoodHeal:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)
 
+	if GameData.player.increasedSpellDamage:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.MaliciousSpellcaster)
+
 func load_upgrades(availableUpgrades):
 	var upgrades = []
 
