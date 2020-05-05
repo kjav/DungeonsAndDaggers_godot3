@@ -58,11 +58,14 @@ func onWalkedInto(character):
 		blocksAttacks = false
 		
 		if GameData.chosen_map == "Tutorial" && GameData.current_level == 1:
-			GameData.hud.get_node("TutorialTextPrompts").get_child(4).set_text("You can also\nclick on a\ntile to move.")
-			GameData.hud.get_node("TutorialTextPrompts").get_child(4).set_position(Vector2(5.2, 4.1) * GameData.TileSize)
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("You can also\nclick on a\ntile to move.")
+			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(5.2, 4.1) * GameData.TileSize)
+			
+			GameData.addTutorialTextIfTutorial("You can find out\nwhat an item or\nweapon does by long\npressing on it in\nthe inventory.", Vector2(7.8, 1))
 	
 	if locked && character == GameData.player:
 		var key = GameData.HasKey(UnlockGuid)
 		
 		if key != null:
 			keyUnlocked()
+

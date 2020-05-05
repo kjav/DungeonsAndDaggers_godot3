@@ -14,6 +14,6 @@ func _pressed():
 		GameData.next_level()
 		
 		if GameData.chosen_map == "Tutorial" && GameData.current_level == 2:
-			GameData.player.addTutorialTextIfTutorial("Move into\nobjects to\ninteract.", Vector2(4.3, 10.1))
+			GameData.addTutorialTextIfTutorial("Move into\nobjects to\ninteract.", Vector2(4.3, 10.1))
 	
 	get_parent().hide()

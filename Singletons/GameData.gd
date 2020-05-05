@@ -3,6 +3,7 @@ extends Node
 signal itemDropped(item)
 signal itemPickedUp(item)
 
+const Text = preload("res://VisualEffects/Text.tscn")
 var potions = []
 var foods = []
 var spells = []
@@ -421,6 +422,13 @@ func addCurrentStatusEffects():
 
 	if GameData.player.trapImmune:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.TrapImmune)
+
+func addTutorialTextIfTutorial(text, pos):
+	if chosen_map == "Tutorial":
+		var textNode = Text.instance()
+		textNode.set_position(pos * GameData.TileSize)
+		textNode.set_text(text)
+		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func load_upgrades(availableUpgrades):
 	var upgrades = []

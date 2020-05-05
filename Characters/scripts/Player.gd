@@ -12,7 +12,6 @@ signal turnEnd()
 var lastdone = OS.get_ticks_msec()
 
 const LightBlip = preload("res://VisualEffects/LightBlip.tscn")
-const Text = preload("res://VisualEffects/Text.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
@@ -95,9 +94,8 @@ func _ready():
 	faceDirection(Enums.DIRECTION.RIGHT)
 	half_screen_size = Vector2(540, 960)
 	
-	addTutorialTextIfTutorial("Swipe to\nmove.", Vector2(5, 9.3))
-	addTutorialTextIfTutorial("These offer\nrandom upgrades\nto improve\nyour character.", Vector2(7.1, -2.9))
-	addTutorialTextIfTutorial("To see what a\nitem or weapon\ndoes, pick it\nup and hold\ndown on it.", Vector2(7.8, 1))
+	GameData.addTutorialTextIfTutorial("Swipe to\nmove.", Vector2(5, 9.3))
+	GameData.addTutorialTextIfTutorial("These offer\nrandom upgrades\nto improve\nyour character.", Vector2(7.1, -2.9))
   
 	if GameData.saved_player:
 		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
@@ -119,13 +117,6 @@ func _ready():
 	
 	if GameData.chosen_map == "Tutorial":
 		stats.health.value -= 1
-
-func addTutorialTextIfTutorial(text, pos):
-	if GameData.chosen_map == "Tutorial":
-		var textNode = Text.instance()
-		textNode.set_position(pos * GameData.TileSize)
-		textNode.set_text(text)
-		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func getPrimaryHandPosition():
 	return forwardHandBone.global_position
@@ -285,24 +276,24 @@ func checkForTutorialPrompts():
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(768, 768) && GameData.current_level == 1 && !applePickedUp && !appleWalkedInto:
 		appleWalkedInto = true
-		addTutorialTextIfTutorial("Careful!\nEnemies move\ninto you\nto attack.", Vector2(5.2, 3.5))
-		GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("To Pick up,\nClick The\nFloating icon.\nThis Uses up\nA Turn.")
-		GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
+		GameData.addTutorialTextIfTutorial("Careful!\nEnemies move\ninto you\nto attack.", Vector2(5.2, 3))
+		GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_text("To Pick up,\nClick The\nFloating icon.\nThis Uses up\nA Turn.")
+		GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_position(Vector2(7, 6.1) * GameData.TileSize)
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(640, -512) && GameData.current_level == 1:
-		addTutorialTextIfTutorial("Click The\nPopup To \nGo To The\nNext Level.", Vector2(4.6, -5.5))
+		GameData.addTutorialTextIfTutorial("Click The\nPopup To \nGo To The\nNext Level.", Vector2(4.6, -5.5))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2 and not offhandWeaponMessageShown:
 		offhandWeaponMessageShown = true
-		GameData.player.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOff-hand.", Vector2(1.2, 8.1))
+		GameData.addTutorialTextIfTutorial("Some Weapons\nWork Best\nIn Your\nOff-hand.", Vector2(1.2, 8.1))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(384, 1024) && GameData.current_level == 2 and not rarityWeaponMessageShown:
 		rarityWeaponMessageShown = true
-		GameData.player.addTutorialTextIfTutorial("Weapons Have\nDifferent Rarities.\nBlue is Best,\nThen Green;\nWorst Is Grey.", Vector2(1.8, 6))
+		GameData.addTutorialTextIfTutorial("Weapons Have\nDifferent Rarities.\nBlue is Best,\nThen Green;\nWorst Is Grey.", Vector2(1.8, 6))
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(640, 768) && GameData.current_level == 2 and not goodLuckMessageShown:
 		goodLuckMessageShown = true
-		GameData.player.addTutorialTextIfTutorial("Good luck,\nand have fun.", Vector2(4.7, 5.3))
+		GameData.addTutorialTextIfTutorial("Good luck,\nand have fun.", Vector2(4.7, 5.3))
 
 func _input(ev):
 	if ev is InputEventKey and not ev.echo and (OS.get_ticks_msec() - lastdone) > 50:
@@ -347,7 +338,7 @@ func attack(character, isFirstCollision, base_damage = 0):
 				.attack(character, isFirstCollision, currentWeapon.damage)
 			
 			if character.character_name == "Training Dummy" && not character.alive() && GameData.current_level == 1:
-				addTutorialTextIfTutorial("Move on\nitems to\npick up.", Vector2(7, 6.2))
+				GameData.addTutorialTextIfTutorial("Move on\nitems to\npick up.", Vector2(7, 6.2))
 			
 			GameData.hud.get_node("HudCanvasLayer/WeaponSlots").updateAmmo(currentWeaponSlot, currentWeapon.ammo)
 			
@@ -469,8 +460,8 @@ func pickUp(item):
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Apple" && GameData.current_level == 1:
 			applePickedUp = true
-			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_text("Click the food\nicon at the\nbottom to eat.")
-			GameData.hud.get_node("TutorialTextPrompts").get_child(3).set_position(Vector2(7, 6.1) * GameData.TileSize)
+			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_text("Click the food\nicon at the\nbottom to eat.")
+			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_position(Vector2(7, 6.1) * GameData.TileSize)
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Bomb" && GameData.current_level == 2:
 			GameData.hud.get_node("TutorialTextPrompts").get_child(0).set_text("Click the weapon\nyou want to\nequip on the\nbottom left icons")
