@@ -39,8 +39,15 @@ func setup_params():
 			"value": load("res://Environments/UpgradeStand.tscn"),
 			"position": Vector2(2, 2)
 		}])
-	item_distribution = Distribution.new([{
-		"p": 1, 
-		"value": Constants.SpellClasses.EarthquakeSpell,
-		"position": Vector2(3, 6)
-	}])
+	item_distribution = IndependentDistribution.new([
+		{
+			"p": 1, 
+			"value": Constants.SpellClasses.EarthquakeSpell,
+			"position": Vector2(3, 6)
+		},
+		{
+			"p": 1, 
+			"value": Constants.PotionClasses.BriefStrengthPotion,
+			"position": Vector2(3, 1)
+		},
+	])

@@ -10,6 +10,9 @@ func addEffect(effect, proportion = 1):
 		get_node("Effect" + str(effectNodeNumber)).setEffect(effect)
 		get_node("Effect" + str(effectNodeNumber)).setProportion(proportion)
 	
+	if GameData.chosen_map == "Tutorial" && GameData.current_level == 1:
+		GameData.hud.get_node("TutorialTextPrompts").get_child(1).set_text("Your current effects\nappear under the\nturn timer, click them\nto see what they do.")
+
 	activeEffects.append(effect)
 
 func updateEffectProportion(effect, proportion):
