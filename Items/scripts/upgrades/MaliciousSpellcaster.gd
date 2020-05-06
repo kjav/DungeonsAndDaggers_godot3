@@ -8,4 +8,4 @@ func _init():
 
 func onUse():
 	GameData.player.increasedSpellDamage = true
-	GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.MaliciousSpellcaster)
+	GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.MaliciousSpellcasting)

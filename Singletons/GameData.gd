@@ -58,8 +58,15 @@ func addInitialItemsForTesting():
 	var instance5 = Constants.PotionClasses.BriefHealthPotion.new()
 	var instance6 = Constants.PotionClasses.BriefStrengthPotion.new()
 	var instance7 = Constants.PotionClasses.BriefDefencePotion.new()
+	var instance8 = Constants.PotionClasses.HealthPotion.new()
+	var instance9 = Constants.PotionClasses.DoubleDamagePotion.new()
+	var instance10 = Constants.PotionClasses.InvisibilityPotion.new()
+	var instance11 = Constants.PotionClasses.LevelUpPotion.new()
+	var instance12 = Constants.PotionClasses.BriefHealthPotion.new()
+	var instance13 = Constants.PotionClasses.BriefStrengthPotion.new()
+	var instance14 = Constants.PotionClasses.BriefDefencePotion.new()
 	
-	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7])
+	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7,instance8, instance9, instance10, instance11, instance12, instance13, instance14])
 	
 	instance = Constants.FoodClasses.CookedSteak.new()
 	instance2 = Constants.FoodClasses.Cheese.new()
