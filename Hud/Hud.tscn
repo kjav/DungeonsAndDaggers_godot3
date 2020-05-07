@@ -106,3 +106,5 @@ z_index = 4096
 visible = false
 
 [node name="TutorialTextPrompts" type="Node2D" parent="."]
+
+[node name="DirectionArrows" type="Node2D" parent="."]
