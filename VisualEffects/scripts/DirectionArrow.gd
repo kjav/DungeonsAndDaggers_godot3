@@ -12,7 +12,8 @@ func setDirection(direction):
 		set_rotation(0)
 
 func _process(delta):
-	var a = (abs(float(sin(current_time))) / 6 + 0.75)*0.25
-	
-	set_scale(Vector2(a,a))
-	current_time += delta
+	if current_time < 10:
+		var a = (abs(float(sin(current_time))) / 6 + 0.75)*0.25
+		
+		set_scale(Vector2(a,a))
+		current_time += delta
