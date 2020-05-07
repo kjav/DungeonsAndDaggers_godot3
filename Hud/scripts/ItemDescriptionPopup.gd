@@ -15,5 +15,8 @@ func setPopupPosition(mousePosition, position):
 	set_position(mousePosition)
 
 func setItem(item):
-	get_node("Name").text = item.item_name
-	get_node("Description").text = item.item_description
+	setTitleAndDescription(item.item_name, item.item_description)
+
+func setTitleAndDescription(nameText, descriptionText):
+	get_node("Name").text = nameText
+	get_node("Description").text = descriptionText

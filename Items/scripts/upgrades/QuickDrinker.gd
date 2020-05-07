@@ -8,3 +8,4 @@ func _init():
 
 func onUse():
 	GameData.player.potionUsesTurn = false
+	GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickDrinking)

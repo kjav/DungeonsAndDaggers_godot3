@@ -8,3 +8,4 @@ func _init():
 
 func onUse():
 	GameData.player.increasedFoodHeal = true
+	GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)

@@ -13,8 +13,8 @@ func onUse():
 	
 	if GameData.player.stats.health.maximum > GameData.player.stats.health.value && GameData.player.alive():
 		if GameData.chosen_map == "Tutorial" && GameData.current_level == 1:
-			GameData.hud.get_node("TutorialTextPrompts").remove_child(GameData.hud.get_node("TutorialTextPrompts").get_child(3))
-			GameData.player.addTutorialTextIfTutorial("Item use\ntakes up\na turn.", Vector2(7, 6.2))
+			GameData.hud.get_node("TutorialTextPrompts").remove_child(GameData.hud.get_node("TutorialTextPrompts").get_child(2))
+			GameData.addTutorialTextIfTutorial("Item use\ntakes up\na turn.", Vector2(7, 6.2))
 		GameData.player.heal(1)
 		.onUse()
 	else:
