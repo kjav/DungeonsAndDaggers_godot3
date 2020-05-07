@@ -9,4 +9,5 @@ func _init():
 	iconTextureFilePath = "res://assets/uncommon-shield-icon.png"
 	iconTexture = preload("res://assets/uncommon-shield-icon.png")
 	item_name = "Uncommon Shield"
+	item_description = "Shields work in your offhand and may fully block attacks. Uncommon, on average, blocks 1 in 4 attacks."
 	rarity = Enums.WEAPONRARITY.UNCOMMON

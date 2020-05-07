@@ -6,6 +6,7 @@ const missile_texture = preload("res://assets/pellet.jpg")
 func _init():
 	textureFilePath = "res://assets/triangle_spell.webp"
 	item_name = "Missile"
+	item_description = "Deals 2 damage to the closest enemy."
 	texture = preload("res://assets/triangle_spell.webp")
 
 func onUse():

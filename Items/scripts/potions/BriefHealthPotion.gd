@@ -3,6 +3,7 @@ extends "PotionBase.gd"
 func _init():
 	textureFilePath = "res://assets/red_simple_potion.webp"
 	item_name = "Brief Health"
+	item_description = "Temporarily increases your health and max health by 2 for 15 turns."
 	texture = preload("res://assets/red_simple_potion.webp")
 
 func onUse():

@@ -1,10 +1,11 @@
 extends "SpellBase.gd"
 
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 
 func _init():
 	textureFilePath = "res://assets/brown_spell.webp"
 	item_name = "Earthquake"
+	item_description = "Deals 3 damage to all enemies within 2 tiles of you."
 	texture = preload("res://assets/brown_spell.webp")
 	rarity = Enums.WEAPONRARITY.UNCOMMON
 

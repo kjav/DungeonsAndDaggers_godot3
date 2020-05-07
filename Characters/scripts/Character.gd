@@ -13,23 +13,32 @@ var initial_pos
 var isPartOfBossRoom
 var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
+const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase.gd")
 
+var hudStatusEffects
+
+var multiplierInitialLength = -1
 var damageMultiplier = 2
-var multiplierRemainingAttacks = 0
+var multiplierRemainingAttacks = -1
 
+var invisibilityInitialLength = -1
 var invisible = false
 var invisibilityTurnsRemaining = -1
 
-var temporaryMaxHeathTurnsRemaining = -1
+var temporaryHealthInitialLength = -1
+var temporaryHealthTurnsRemaining = -1
 var healthAfterTemporaryIncreaseAdded = 0
 var temporaryMaxHeathAmount = 2
 var damageSinceTemporaryHealthAdded = 0
 
+var temporaryStrengthInitialLength = -1
 var temporaryStrengthTurnsRemaining = -1
 var temporaryStrengthAmount = 5
 
+var temporaryDefenceInitialLength = -1
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
+
 var trapImmune
 
 var fixedMaxHealth
@@ -76,6 +85,7 @@ func resetToStartPosition():
 	_ready()
 
 func _ready():
+	hudStatusEffects = GameData.hud.get_node("HudCanvasLayer/StatusEffects")
 	setPosition(get_position())
 	
 	stunnedDuration = -1
@@ -120,21 +130,25 @@ func afterMoveComplete():
 
 func turn(skipTurnBehaviour = false):
 	if invisibilityTurnsRemaining > 0:
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, float(invisibilityTurnsRemaining) / invisibilityInitialLength)
 		invisibilityTurnsRemaining -= 1
 	elif invisibilityTurnsRemaining == 0:
 		removeInvisibility()
 
-	if temporaryMaxHeathTurnsRemaining > 0:
-		temporaryMaxHeathTurnsRemaining -= 1
-	elif temporaryMaxHeathTurnsRemaining == 0:
+	if temporaryHealthTurnsRemaining > 0:
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.TemporaryHealth, float(temporaryHealthTurnsRemaining) / temporaryHealthInitialLength)
+		temporaryHealthTurnsRemaining -= 1
+	elif temporaryHealthTurnsRemaining == 0:
 		removeTemporaryMaxHealth()
 
 	if temporaryStrengthTurnsRemaining > 0:
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedStrength, float(temporaryStrengthTurnsRemaining) / temporaryStrengthInitialLength)
 		temporaryStrengthTurnsRemaining -= 1
 	elif temporaryStrengthTurnsRemaining == 0:
 		removeTemporaryStrength()
 
 	if temporaryDefenceTurnsRemaining > 0:
+		hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, float(temporaryDefenceTurnsRemaining) / temporaryDefenceInitialLength)
 		temporaryDefenceTurnsRemaining -= 1
 	elif temporaryDefenceTurnsRemaining == 0:
 		removeTemporaryDefence()
@@ -237,8 +251,7 @@ func handleMove(direction):
 
 func environmentOnWalkedOut():
 	for i in range(environmentsAtPosition.size()):
-		if (is_instance_valid(environmentsAtPosition[i])):
-			if funcref(environmentsAtPosition[i], "onWalkedOut"):
+		if (is_instance_valid(environmentsAtPosition[i]) && environmentsAtPosition[i] is environmentBaseClass && funcref(environmentsAtPosition[i], "onWalkedOut")):
 				environmentsAtPosition[i].onWalkedOut(self)
 	
 	environmentsAtPosition = environmentsAtTargetPosition
@@ -517,18 +530,25 @@ func reduceDamageMultiplier():
 	
 	if multiplierRemainingAttacks <= 0:
 		removeDamageModfier()
+		return
+	
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, float(multiplierRemainingAttacks) / multiplierInitialLength)
 
 func removeDamageModfier():
 	multiplierRemainingAttacks = 0
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, 0)
 
 func applyDamageModifier(numberOfAttacks):
 	if (numberOfAttacks <= 0):
 		return
 	
 	if multiplierRemainingAttacks < 0:
+		hudStatusEffects.addEffect(Constants.StatusEffects.DoubleDamage)
 		multiplierRemainingAttacks = 0
 	
 	multiplierRemainingAttacks += numberOfAttacks
+	multiplierInitialLength = multiplierRemainingAttacks
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.DoubleDamage, 1)
 
 func damageMultiplierInEffect():
 	return multiplierRemainingAttacks > 0
@@ -537,6 +557,7 @@ func removeInvisibility():
 	invisible = false
 	self.set_modulate(Color(1, 1, 1, 1))
 	invisibilityTurnsRemaining = -1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, 0)
 
 func applyInvisibility(turnsAmount):
 	if (turnsAmount <= 0):
@@ -546,9 +567,12 @@ func applyInvisibility(turnsAmount):
 	self.set_modulate(Color(1, 1, 1, 0.1))
 	
 	if invisibilityTurnsRemaining < 0:
+		hudStatusEffects.addEffect(Constants.StatusEffects.Invisible)
 		invisibilityTurnsRemaining = 0
 	
 	invisibilityTurnsRemaining += turnsAmount
+	invisibilityInitialLength = invisibilityTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.Invisible, 1)
 
 func increaseMaxHealth(amount):
 	if (amount <= 0):
@@ -581,21 +605,25 @@ func applyTemporaryHealth(turnAmount):
 	if (turnAmount <= 0):
 		return
 	
-	if temporaryMaxHeathTurnsRemaining <= 0:
+	if temporaryHealthTurnsRemaining <= 0:
 		increaseMaxHealth(temporaryMaxHeathAmount)
 		increaseHealth(temporaryMaxHeathAmount)
 		healthAfterTemporaryIncreaseAdded = self.stats.health.value
-		temporaryMaxHeathTurnsRemaining = 0
+		temporaryHealthTurnsRemaining = 0
+		hudStatusEffects.addEffect(Constants.StatusEffects.TemporaryHealth)
 	else:
 		increaseHealth(min(damageSinceTemporaryHealthAdded, temporaryMaxHeathAmount))
 	
 	damageSinceTemporaryHealthAdded = 0
-	temporaryMaxHeathTurnsRemaining += turnAmount
+	temporaryHealthTurnsRemaining += turnAmount
+	temporaryHealthInitialLength = temporaryHealthTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.TemporaryHealth, 1)
 
 func removeTemporaryMaxHealth():
 	decreaseHealth(max(temporaryMaxHeathAmount - damageSinceTemporaryHealthAdded, 0))
 	decreaseMaxHealth(temporaryMaxHeathAmount)
-	temporaryMaxHeathTurnsRemaining -= 1
+	temporaryHealthTurnsRemaining -= 1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.TemporaryHealth, 0)
 
 func applyTemporaryStrength(turnAmount):
 	if (turnAmount <= 0):
@@ -605,13 +633,17 @@ func applyTemporaryStrength(turnAmount):
 		self.stats.strength.value += temporaryStrengthAmount
 		self.stats.strength.maximum += temporaryStrengthAmount
 		temporaryStrengthTurnsRemaining = 0
+		hudStatusEffects.addEffect(Constants.StatusEffects.IncreasedStrength)
 	
 	temporaryStrengthTurnsRemaining += turnAmount
+	temporaryStrengthInitialLength = temporaryStrengthTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedStrength, 1)
 
 func removeTemporaryStrength():
 	self.stats.strength.value -= temporaryStrengthAmount
 	self.stats.strength.maximum -= temporaryStrengthAmount
 	temporaryStrengthTurnsRemaining = -1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedStrength, 0)
 
 func applyTemporaryDefence(turnAmount):
 	if (turnAmount <= 0):
@@ -621,13 +653,18 @@ func applyTemporaryDefence(turnAmount):
 		self.stats.defence.value += temporaryDefenceAmount
 		self.stats.defence.maximum += temporaryDefenceAmount
 		temporaryDefenceTurnsRemaining = 0
+		hudStatusEffects.addEffect(Constants.StatusEffects.IncreasedDefence)
 	
 	temporaryDefenceTurnsRemaining += turnAmount
+	temporaryDefenceInitialLength = temporaryDefenceTurnsRemaining
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, 1)
+	
 
 func removeTemporaryDefence():
 	self.stats.defence.value -= temporaryDefenceAmount
 	self.stats.defence.maximum -= temporaryDefenceAmount
 	temporaryDefenceTurnsRemaining = -1
+	hudStatusEffects.updateEffectProportion(Constants.StatusEffects.IncreasedDefence, 0)
 
 func addStun(turnAmount):
 	if (turnAmount <= 0):

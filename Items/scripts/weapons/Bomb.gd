@@ -10,6 +10,7 @@ func _init():
 	iconTextureFilePath = "res://assets/bomb.png"
 	iconTexture = preload("res://assets/bomb.png")
 	item_name = "Bomb"
+	item_description = "Bombs are single use and hit the first enemy in a straight line. It deals 6 damage and 3 to anything within a tile."
 	rarity = Enums.WEAPONRARITY.UNCOMMON
 	ammo = 1
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5)]

@@ -1,13 +1,16 @@
-extends Node2D
+extends "TimerBase.gd"
 
 const timePerTurn = 1
-var timerNode
 
 func _ready():
 	GameData.player.connect("turnTimeChange", self, "timeChange")
-	timerNode = self.get_node("Turn Timer")
 
 func timeChange(timeElapsed):
-	var desiredFrame = floor( timeElapsed / timePerTurn * (timerNode.frames.get_frame_count("default") - 1) )
+	var proportion = timeElapsed / timePerTurn
 	
-	timerNode.set_frame(desiredFrame)
+	#slightly higher than 360 so that it looks like a small pause between turn end and start
+	degrees = min(floor(proportion * 1.1 * 360), 360)
+	#slight higher than 1-propotion (scaled from yellow to red) to allow period of yellow before it starts fading to redish
+	colour = Color(1,1.3-proportion,0)
+	
+	update()

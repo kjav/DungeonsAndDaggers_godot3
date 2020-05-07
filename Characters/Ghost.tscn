@@ -12,7 +12,8 @@
 [ext_resource path="res://assets/tilesets/Ghost/Ghost_Left_1.png" type="Texture" id=10]
 [ext_resource path="res://assets/tilesets/Ghost/Ghost_Left_Up_1.png" type="Texture" id=11]
 [ext_resource path="res://assets/tilesets/Ghost/Ghost_Right_1.png" type="Texture" id=12]
-[ext_resource path="res://Effects/Stars.tscn" type="PackedScene" id=13]
+[ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=13]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

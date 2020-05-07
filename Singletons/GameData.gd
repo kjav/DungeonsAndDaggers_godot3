@@ -3,6 +3,7 @@ extends Node
 signal itemDropped(item)
 signal itemPickedUp(item)
 
+const Text = preload("res://VisualEffects/Text.tscn")
 var potions = []
 var foods = []
 var spells = []
@@ -26,7 +27,7 @@ var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
-var bossLevelEvery = 11
+var bossLevelEvery = 10
 var turnTime = 0.2
 var click_state = false
 
@@ -57,8 +58,15 @@ func addInitialItemsForTesting():
 	var instance5 = Constants.PotionClasses.BriefHealthPotion.new()
 	var instance6 = Constants.PotionClasses.BriefStrengthPotion.new()
 	var instance7 = Constants.PotionClasses.BriefDefencePotion.new()
+	var instance8 = Constants.PotionClasses.HealthPotion.new()
+	var instance9 = Constants.PotionClasses.DoubleDamagePotion.new()
+	var instance10 = Constants.PotionClasses.InvisibilityPotion.new()
+	var instance11 = Constants.PotionClasses.LevelUpPotion.new()
+	var instance12 = Constants.PotionClasses.BriefHealthPotion.new()
+	var instance13 = Constants.PotionClasses.BriefStrengthPotion.new()
+	var instance14 = Constants.PotionClasses.BriefDefencePotion.new()
 	
-	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7])
+	addPotions([instance, instance2, instance3, instance4, instance5, instance6, instance7,instance8, instance9, instance10, instance11, instance12, instance13, instance14])
 	
 	instance = Constants.FoodClasses.CookedSteak.new()
 	instance2 = Constants.FoodClasses.Cheese.new()
@@ -396,6 +404,38 @@ func load_game():
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
 	save_game.close()
+
+func addCurrentStatusEffects():
+	if GameData.player.canAlwaysHurtGhosts:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.GhostBuster)
+	
+	if GameData.player.increasedFoodHeal:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)
+
+	if GameData.player.increasedSpellDamage:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.MaliciousSpellcaster)
+
+	if GameData.player.extendBriefPotions:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ExtendBriefPotions)
+	
+	if !GameData.player.potionUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickDrinking)
+	
+	if !GameData.player.foodUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickEating)
+
+	if !GameData.player.spellUsesTurn:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickSpellcasting)
+
+	if GameData.player.trapImmune:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.TrapImmune)
+
+func addTutorialTextIfTutorial(text, pos):
+	if chosen_map == "Tutorial":
+		var textNode = Text.instance()
+		textNode.set_position(pos * GameData.TileSize)
+		textNode.set_text(text)
+		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)
 
 func load_upgrades(availableUpgrades):
 	var upgrades = []

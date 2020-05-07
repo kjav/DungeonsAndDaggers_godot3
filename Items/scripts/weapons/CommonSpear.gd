@@ -8,6 +8,7 @@ func _init():
 	iconTextureFilePath = "res://assets/basic-spear-icon.png"
 	iconTexture = preload("res://assets/basic-spear-icon.png")
 	item_name = "Common Spear"
+	item_description = "Spears can attack up to 2 tiles away and penetrate multiple enemies. Common deals damage of base 1.5."
 	relativeAttackPositions = [Vector2(0, -1)]
 	onlyAttacksFirstEnemy = false
 	damage = 1.5

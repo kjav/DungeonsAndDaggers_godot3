@@ -10,11 +10,13 @@ const PotionClasses = {
 	"BriefStrengthPotion": preload("res://Items/scripts/potions/BriefStrengthPotion.gd"),
 	"BriefDefencePotion": preload("res://Items/scripts/potions/BriefDefencePotion.gd")
 }
+
 const FoodClasses = {
 	"CookedSteak": preload("res://Items/scripts/foods/CookedSteak.gd"),
 	"Apple": preload("res://Items/scripts/foods/Apple.gd"),
 	"Cheese": preload("res://Items/scripts/foods/Cheese.gd")
 }
+
 const SpellClasses = {
 	"EarthquakeSpell": preload("res://Items/scripts/spells/EarthquakeSpell.gd"),
 	"FireSpell": preload("res://Items/scripts/spells/FireSpell.gd"),
@@ -23,6 +25,7 @@ const SpellClasses = {
 	"MissileSpell": preload("res://Items/scripts/spells/MissileSpell.gd"),
 	"TeleportSpell": preload("res://Items/scripts/spells/TeleportSpell.gd")
 }
+
 const WeaponClasses = {
 	"Unarmed": preload("res://Items/scripts/weapons/Unarmed.gd"),
 	"CommonSword": preload("res://Items/scripts/weapons/CommonSword.gd"),
@@ -43,9 +46,11 @@ const WeaponClasses = {
 	"RareSpear": preload("res://Items/scripts/weapons/RareSpear.gd"),
 	"RareBow": preload("res://Items/scripts/weapons/RareBow.gd")
 }
+
 const KeyClasses = {
 	"SilverKey": preload("res://Items/scripts/keys/SilverKey.gd")
 }
+
 const UpgradeClasses = {
 	"StrengthUpgrade": preload("res://Items/scripts/upgrades/StrengthUpgrade.gd"),
 	"DefenceUpgrade": preload("res://Items/scripts/upgrades/DefenceUpgrade.gd"),
@@ -60,6 +65,22 @@ const UpgradeClasses = {
 	"Versatile": preload("res://Items/scripts/upgrades/Versatile.gd"),
 	"MaliciousSpellcaster": preload("res://Items/scripts/upgrades/MaliciousSpellcaster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
+}
+
+var StatusEffects = {
+	"IncreasedDefence": preload("res://StatusEffects/IncreasedDefence.gd").new(),
+	"IncreasedStrength": preload("res://StatusEffects/IncreasedStrength.gd").new(),
+	"TemporaryHealth": preload("res://StatusEffects/TemporaryHealth.gd").new(),
+	"Invisible": preload("res://StatusEffects/Invisible.gd").new(),
+	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
+	"GhostBuster": preload("res://StatusEffects/GhostBuster.gd").new(),
+	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
+	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
+	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),
+	"QuickDrinking": preload("res://StatusEffects/QuickDrinking.gd").new(),
+	"QuickEating": preload("res://StatusEffects/QuickEating.gd").new(),
+	"QuickSpellcasting": preload("res://StatusEffects/QuickSpellcasting.gd").new(),
+	"TrapImmune": preload("res://StatusEffects/TrapImmune.gd").new(),
 }
 
 #Distribution Classes

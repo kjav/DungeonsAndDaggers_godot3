@@ -8,5 +8,6 @@ func _init():
 	iconTextureFilePath = "res://assets/rare-spear-icon.png"
 	iconTexture = preload("res://assets/rare-spear-icon.png")
 	item_name = "Rare Spear"
+	item_description = "Spears can attack up to 2 tiles away and penetrate multiple enemies. Rare deals damage of base 2.5."
 	damage = 2.5
 	rarity = Enums.WEAPONRARITY.RARE

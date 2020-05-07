@@ -1,5 +1,5 @@
 extends "WeaponBase.gd"
-const HeavyImpact = preload("res://Effects/HeavyImpact.tscn")
+const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 var nextAttackForward = true
 
 func _init():
@@ -10,6 +10,7 @@ func _init():
 	iconTextureFilePath = "res://assets/meat_club.png"
 	iconTexture = preload("res://assets/meat_club.png")
 	item_name = "Ogre Arm"
+	item_description = "The ogre arm swaps between attacking infront or to the side of the attacked tile with base of 3 damage."
 	rarity = Enums.WEAPONRARITY.RARE
 	isMelee = true
 	showBehindHand = true
