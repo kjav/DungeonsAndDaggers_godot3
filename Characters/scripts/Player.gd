@@ -11,6 +11,7 @@ signal turnEnd()
 
 var lastdone = OS.get_ticks_msec()
 
+const DirectionArrow = preload("res://VisualEffects/DirectionArrow.tscn")
 const LightBlip = preload("res://VisualEffects/LightBlip.tscn")
 var time_elapsed = 0
 var attack
@@ -369,6 +370,24 @@ func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
 	swapWeapons()
 
+func displayArrowsOverMoveStack():
+	for n in GameData.hud.get_node("DirectionArrows").get_children():
+		GameData.hud.get_node("DirectionArrows").remove_child(n)
+		n.queue_free()
+	if moveStack.size() > 1:
+		var pos = PositionHelper.getNextTargetPos(turn_end_pos / Vector2(GameData.TileSize, GameData.TileSize), moveStack[moveStack.size()-1]) * Vector2(GameData.TileSize, GameData.TileSize) + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
+			
+		for i in range(moveStack.size()-2, 0, -1):
+			var arrowNode = DirectionArrow.instance()
+			
+			pos = PositionHelper.getNextTargetPos(pos / Vector2(GameData.TileSize, GameData.TileSize), moveStack[i]) * Vector2(GameData.TileSize, GameData.TileSize)
+			
+			arrowNode.set_position(pos)
+	
+			arrowNode.setDirection(moveStack[i-1])
+	
+			GameData.hud.get_node("DirectionArrows").add_child(arrowNode)
+
 func _process(delta):
 	if moving:
 		var length = 128
@@ -396,6 +415,8 @@ func _process(delta):
 			emit_signal("turnEnd")
 			time_elapsed = 0
 	else:
+		displayArrowsOverMoveStack()
+		
 		time_elapsed += delta
 		emit_signal("turnTimeChange", time_elapsed)
 		if time_elapsed >= 1:
