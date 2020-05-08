@@ -26,7 +26,7 @@ func _input(event):
 			mousePosition = Vector2(9999,9999)
 			
 			for node in GameData.hud.get_node("HudCanvasLayer/Popups").get_children():
-		        node.hidePopup()
+				node.hidePopup()
 		elif !isLongPress():
 			actionShortPress()
 			popupAdded = false
