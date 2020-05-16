@@ -75,3 +75,8 @@ limits/message_queue/max_size_kb=2048
 [physics_2d]
 
 motion_fix_enabled=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true

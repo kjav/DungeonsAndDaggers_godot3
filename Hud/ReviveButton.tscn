@@ -4,15 +4,14 @@
 [ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=2]
 [ext_resource path="res://assets/plank07_grey.webp" type="Texture" id=3]
 [ext_resource path="res://Hud/ReviveButton.gd" type="Script" id=4]
-[ext_resource path="res://assets/CMONNEAR_with_plus.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/death.webp" type="Texture" id=6]
 [ext_resource path="res://assets/loading.webp" type="Texture" id=7]
 [ext_resource path="res://Hud/TextureRect.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 63
-outline_size = 1
-outline_color = Color( 0.172549, 0.0901961, 0.0117647, 1 )
+size = 62
+outline_color = Color( 0.32549, 0.145098, 0, 1 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="Shader" id=2]
@@ -62,9 +61,9 @@ margin_top = 27.0823
 margin_right = 799.921
 margin_bottom = 158.082
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "WATCH VIDEO
-TO REVIVE"
+  TO REVIVE"
 
 [node name="skull" type="TextureRect" parent="."]
 material = SubResource( 3 )
