@@ -2,7 +2,7 @@ extends Node2D
 
 export(Curve) var transition_curve
 export(float) var transition_time = 1.0
-
+ 
 var transitioning = false
 var target_pos
 var current_time
