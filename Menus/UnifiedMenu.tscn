@@ -7,9 +7,9 @@
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=8]
-[ext_resource path="res://Menus/TextureButton.gd" type="Script" id=9]
-[ext_resource path="res://Menus/GDPR Menu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Menus/GDPR Menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=9]
+[ext_resource path="res://Menus/TextureButton.gd" type="Script" id=10]
 [ext_resource path="res://Menus/Ad Settings.gd" type="Script" id=11]
 [ext_resource path="res://assets/loading.webp" type="Texture" id=12]
 [ext_resource path="res://Menus/TextureRect.gd" type="Script" id=13]
@@ -115,7 +115,7 @@ custom_constants/shadow_offset_y = 2
 text = "New Game
 "
 
-[node name="GDPR Menu" parent="." instance=ExtResource( 10 )]
+[node name="GDPR Menu" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1180, 0 )
 
 [node name="Mute" type="TextureButton" parent="."]
@@ -124,8 +124,8 @@ margin_top = 33.0
 margin_right = 2250.0
 margin_bottom = 168.0
 texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 8 )
-script = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -146,7 +146,7 @@ margin_top = 33.0
 margin_right = 1877.0
 margin_bottom = 168.0
 texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
 expand = true
 script = ExtResource( 11 )
 __meta__ = {
