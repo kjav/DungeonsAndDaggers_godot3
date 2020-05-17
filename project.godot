@@ -50,13 +50,13 @@ window/handheld/emulate_touchscreen=true
 
 [image_loader]
 
-filter=false
+filter=true
 
 [importer_defaults]
 
 texture={
-"flags/filter": false,
-"flags/mipmaps": true
+"flags/filter": true,
+"flags/mipmaps": false
 }
 
 [input]
