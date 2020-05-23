@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/scripts/TrainingDummy.gd" type="Script" id=1]
 [ext_resource path="res://assets/TrainingDummy/training_dummy_0.png" type="Texture" id=2]
 [ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://Characters/HealthBar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
-"loop": false,
-"name": "death",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "stand_down",
+"speed": 1.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "death",
 "speed": 1.0
 } ]
 
@@ -35,3 +35,7 @@ centered = false
 visible = false
 position = Vector2( 79.9778, -271.144 )
 frame = 1
+
+[node name="Health Bar" parent="." instance=ExtResource( 4 )]
+position = Vector2( 272, -60 )
+scale = Vector2( 20, 20 )

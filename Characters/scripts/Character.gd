@@ -121,6 +121,8 @@ func resetStats():
 		"value" : initialStats.defence.value + additional,
 		"maximum" : initialStats.defence.maximum + additional
 	}
+	
+	get_node("Health Bar").updateHealth(stats.health.value)
 
 func afterMoveComplete():
 	if stunnedDuration > 0:
@@ -172,6 +174,8 @@ func decreaseHealth(amount):
 func increaseHealth(amount, evenIfDead = false):
 	if self.stats.health.value < self.stats.health.maximum && (evenIfDead || alive()):
 		self.stats.health.value = min(self.stats.health.value + amount, self.stats.health.maximum)
+	
+	get_node("Health Bar").updateHealth(stats.health.value)
 
 func increaseMana(amount):
 	if self.stats.mana.value < self.stats.mana.maximum:
@@ -394,6 +398,7 @@ func attack(character, isFirstCollision, base_damage = 0):
 func takeDamage(damage):
 	if damageable:
 		stats.health.value -= damage
+		get_node("Health Bar").updateHealth(stats.health.value)
 		damageSinceTemporaryHealthAdded += damage
 		
 		if self == GameData.player:
@@ -432,6 +437,8 @@ func handleCharacterDeath():
 
 func revive():
 	stats.health.value = stats.health.maximum
+	get_node("Health Bar").updateHealth(stats.health.value)
+	
 	GameData.characters.append(self)
 	
 	setAnimationOnAllBodyParts("stand_down", true)
