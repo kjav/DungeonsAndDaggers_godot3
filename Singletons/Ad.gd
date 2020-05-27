@@ -54,10 +54,13 @@ func _on_consent_forward(acceptedPersonalised, adFree):
 	personalised = acceptedPersonalised
 	personalised_checked = true
 	emit_signal("privacy_consent_obtained")
-	if adFree:
-		Ad.play_reward_video("revive")
+	
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+		
+	if adFree:
+		#todo logic for buying game
+		pass
 
 func _on_consent_loaded():
 	print("Consent loaded")
