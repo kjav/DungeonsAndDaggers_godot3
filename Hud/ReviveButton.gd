@@ -6,6 +6,7 @@ func _ready():
 
 func revive(currency, amount):
 	if currency == "revive":
+		GameAnalytics.queue_design_event('RewardAd:revive')
 		get_node("loading").hide()
 		get_node("skull").show()
 		GameData.player.revive()

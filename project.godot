@@ -39,6 +39,7 @@ GameData="*res://Singletons/GameData.gd"
 PositionHelper="*res://Singletons/PositionHelper.gd"
 Audio="*res://Singletons/Audio.tscn"
 Ad="*res://Singletons/Ad.gd"
+GameAnalytics="*res://Singletons/GameAnalytics.gd"
 
 [display]
 

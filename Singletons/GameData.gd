@@ -454,6 +454,7 @@ func serialise_upgrades(upgrades):
 	return dictionaries
 
 func next_level():
+	GameAnalytics.queue_progress_event("Complete:" + str(current_level))
 	# TODO: Hide HUD node.
 	current_level += 1
 	for item in placedItems:
