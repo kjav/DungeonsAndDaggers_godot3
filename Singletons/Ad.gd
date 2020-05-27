@@ -49,13 +49,15 @@ func _on_consent_unknown():
 	print("Consent unknown")
 	consent.showConsentForm()
 
-func _on_consent_forward(p):
-	print("Consent forwarded: ", p)
-	personalised = p
+func _on_consent_forward(acceptedPersonalised, adFree):
+	print("Consent forwarded: ", acceptedPersonalised)
+	personalised = acceptedPersonalised
 	personalised_checked = true
 	emit_signal("privacy_consent_obtained")
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+	if adFree:
+		Ad.play_reward_video("revive")
 
 func _on_consent_loaded():
 	print("Consent loaded")
