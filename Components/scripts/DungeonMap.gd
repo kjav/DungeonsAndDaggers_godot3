@@ -108,6 +108,7 @@ func disconnectPoint(i, j):
 
 func set_map_type(type):
 	if has_node("BottomTileMap"):
+		GameAnalytics.queue_progress_event("Start:" + str(GameData.current_level))
 		map = Maps[type].new(GameData.current_level)
 		var BTM = self.get_node("BottomTileMap")
 		var TTM = self.get_node("TopTileMap")

@@ -451,6 +451,7 @@ func handleCharacterDeath():
 	currentWeaponNode.hide()
 	offHandWeaponNode.hide()
 	get_node("Polygons").hide()
+	GameAnalytics.queue_design_event("GamePlay:monsters_killed", GameData.player_kills)
 	.handleCharacterDeath()
 
 func revive():
