@@ -58,7 +58,8 @@ public class MySingleton extends Godot.SingletonBase {
                 }
             })
             .withPersonalizedAdsOption()
-            .withNonPersonalizedAdsOption();
+            .withNonPersonalizedAdsOption()
+            .withAdFreeOption();
 
         activity.runOnUiThread(new Runnable() {    
             @Override public void run() {
