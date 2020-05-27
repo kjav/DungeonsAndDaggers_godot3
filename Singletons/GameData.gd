@@ -27,7 +27,7 @@ var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
-var bossLevelEvery = 10
+var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
@@ -45,7 +45,7 @@ func StartNewGame():
 
 func _ready():
 	randomize()
-	addInitialItemsForTesting()
+	# addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
 	print("Map seed: ", map_seed)
@@ -242,7 +242,7 @@ func reset():
 	# Erase the saved state
 	saved_player = null
 	map_seed = null
-	addInitialItemsForTesting()
+	# addInitialItemsForTesting()
 
 func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	var enemiesInDistance = []

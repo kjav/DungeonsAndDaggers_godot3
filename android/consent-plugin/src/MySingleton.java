@@ -49,7 +49,7 @@ public class MySingleton extends Godot.SingletonBase {
                 public void onConsentFormClosed(
                         ConsentStatus consentStatus, Boolean userPrefersAdFree) {
                     // Consent form was closed.
-                    GodotLib.calldeferred(instanceId, "_on_consent_forward", new Object[] { consentStatus == ConsentStatus.PERSONALIZED });
+                    GodotLib.calldeferred(instanceId, "_on_consent_forward", new Object[] { consentStatus == ConsentStatus.PERSONALIZED, userPrefersAdFree });
                 }
 
                 @Override
@@ -58,7 +58,8 @@ public class MySingleton extends Godot.SingletonBase {
                 }
             })
             .withPersonalizedAdsOption()
-            .withNonPersonalizedAdsOption();
+            .withNonPersonalizedAdsOption()
+            .withAdFreeOption();
 
         activity.runOnUiThread(new Runnable() {    
             @Override public void run() {

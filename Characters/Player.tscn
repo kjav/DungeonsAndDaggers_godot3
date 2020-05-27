@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/Player/ActionRpgArmor_72.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Components/scripts/CameraWithShake.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player.tres" type="Animation" id=9]
 [ext_resource path="res://VisualEffects/LightBlip.tscn" type="PackedScene" id=10]
-
+[ext_resource path="res://Characters/HealthBar.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "stand"
@@ -253,7 +253,7 @@ tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2.13443e-07 ]
+"values": [ 2.13443e-007 ]
 }
 tracks/20/type = "value"
 tracks/20/path = NodePath("Skeleton2D/Body/Chest/Left Arm:position")
@@ -515,7 +515,7 @@ bones = [ NodePath("Body"), PoolRealArray( 0.5, 0, 0, 0, 0, 0, 0, 0 ), NodePath(
 
 [node name="Right Hand" type="Polygon2D" parent="Polygons"]
 position = Vector2( -7.05, 15.731 )
-rotation = -1.50996e-07
+rotation = -1.50996e-007
 scale = Vector2( 0.015, -0.015 )
 texture = ExtResource( 6 )
 texture_scale = Vector2( 0.125, 0.125 )
@@ -537,7 +537,7 @@ rest = Transform2D( 1, 0, 0, 0.996422, 0, 9.083 )
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D/Body"]
 rotation = 1.5708
-rest = Transform2D( -3.61999e-06, 1, -1, -3.61999e-06, 0, 0 )
+rest = Transform2D( -3.61999e-006, 1, -1, -3.61999e-006, 0, 0 )
 default_length = 4.0
 
 [node name="Right Upper Leg" type="Bone2D" parent="Skeleton2D/Body/Hip"]
@@ -561,7 +561,7 @@ __meta__ = {
 [node name="Right Foot" type="Bone2D" parent="Skeleton2D/Body/Hip/Right Upper Leg/Right Lower Leg"]
 position = Vector2( 5.5, 0.036 )
 rotation = -1.5708
-rest = Transform2D( -3.61999e-06, -1, 1, -3.61999e-06, 5.5, 0.036 )
+rest = Transform2D( -3.61999e-006, -1, 1, -3.61999e-006, 5.5, 0.036 )
 default_length = 3.0
 __meta__ = {
 "_edit_bone_": true
@@ -577,8 +577,8 @@ __meta__ = {
 
 [node name="Left Lower Leg" type="Bone2D" parent="Skeleton2D/Body/Hip/Left Upper Leg"]
 position = Vector2( 1.76706, -0.132019 )
-rotation = 4.78892e-06
-rest = Transform2D( 1, 4.78892e-06, -4.78892e-06, 1, 1.76706, -0.132019 )
+rotation = 4.78892e-006
+rest = Transform2D( 1, 4.78892e-006, -4.78892e-006, 1, 1.76706, -0.132019 )
 default_length = 2.0
 __meta__ = {
 "_edit_bone_": true,
@@ -588,7 +588,7 @@ __meta__ = {
 [node name="Left Foot" type="Bone2D" parent="Skeleton2D/Body/Hip/Left Upper Leg/Left Lower Leg"]
 position = Vector2( 5.5, 0 )
 rotation = -1.57079
-rest = Transform2D( 6.27438e-06, -1, 1, 6.27438e-06, 5.5, 0 )
+rest = Transform2D( 6.27438e-006, -1, 1, 6.27438e-006, 5.5, 0 )
 default_length = 3.0
 __meta__ = {
 "_edit_bone_": true
@@ -601,7 +601,7 @@ rest = Transform2D( 1, 0, 0, 1, 0, 0 )
 position = Vector2( -0.051, -8 )
 rotation = 1.5708
 scale = Vector2( 1.03097, -22.9448 )
-rest = Transform2D( 9.95504e-07, -1.03097, -22.9448, -2.21555e-05, -0.051, -8 )
+rest = Transform2D( 9.95504e-007, -1.03097, -22.9448, -2.21555e-005, -0.051, -8 )
 default_length = 3.0
 
 [node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
@@ -637,7 +637,7 @@ offset = Vector2( 10, 22 )
 [node name="Left Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( 4.89159, -5.77594 )
 rotation = 1.57079
-rest = Transform2D( 6.27438e-06, 1, -1, 6.27438e-06, 4.89159, -5.77594 )
+rest = Transform2D( 6.27438e-006, 1, -1, 6.27438e-006, 4.89159, -5.77594 )
 default_length = 4.0
 __meta__ = {
 "_edit_bone_": true,
@@ -646,8 +646,8 @@ __meta__ = {
 
 [node name="Left Wrist" type="Bone2D" parent="Skeleton2D/Body/Chest/Left Arm"]
 position = Vector2( 4.02557, -0.0999908 )
-rotation = 3.72528e-09
-rest = Transform2D( 1, 3.72528e-09, -3.72528e-09, 1, 4.02557, -0.0999908 )
+rotation = 3.72528e-009
+rest = Transform2D( 1, 3.72528e-009, -3.72528e-009, 1, 4.02557, -0.0999908 )
 
 [node name="Left Hand" type="Bone2D" parent="Skeleton2D/Body/Chest/Left Arm/Left Wrist"]
 position = Vector2( 1.84055, -0.115448 )
@@ -677,3 +677,9 @@ anims/walk = ExtResource( 9 )
 [node name="LightBlip" parent="." instance=ExtResource( 10 )]
 visible = false
 position = Vector2( 64.75, 45.415 )
+frame = 3
+
+[node name="Health Bar" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 63.8, -45 )
+scale = Vector2( 5, 5 )
