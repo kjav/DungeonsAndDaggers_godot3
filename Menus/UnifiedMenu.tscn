@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
@@ -27,6 +27,11 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=3]
 size = 58
 outline_size = 2
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 36
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [node name="UnifiedMenu" type="Node2D"]
@@ -61,6 +66,7 @@ __meta__ = {
 }
 
 [node name="StartButton" type="TextureButton" parent="."]
+editor/display_folded = true
 margin_left = 311.0
 margin_top = 1089.0
 margin_right = 653.0
@@ -81,6 +87,7 @@ custom_constants/shadow_offset_y = 2
 text = "START"
 
 [node name="WorldSelect" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 1180, 0 )
 
 [node name="WorldSelectTexture" type="TextureRect" parent="WorldSelect"]
@@ -119,6 +126,7 @@ text = "New Game
 position = Vector2( 1180, 0 )
 
 [node name="Mute" type="TextureButton" parent="."]
+editor/display_folded = true
 margin_left = 1908.0
 margin_top = 33.0
 margin_right = 2250.0
@@ -141,6 +149,7 @@ align = 1
 valign = 1
 
 [node name="Ad Settings" type="TextureButton" parent="."]
+editor/display_folded = true
 margin_left = 1189.0
 margin_top = 33.0
 margin_right = 1877.0
@@ -168,6 +177,7 @@ __meta__ = {
 }
 
 [node name="loading" type="ColorRect" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 1030.0
 margin_top = -42.0
@@ -195,5 +205,13 @@ margin_bottom = 1180.0
 rect_pivot_offset = Vector2( 127, 127 )
 texture = ExtResource( 12 )
 script = ExtResource( 13 )
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_left = 1157.0
+margin_top = 136.0
+margin_right = 2289.0
+margin_bottom = 1905.0
+custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]

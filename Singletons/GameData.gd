@@ -31,6 +31,7 @@ var rareBackground = preload("res://assets//ring_inner_blue.png")
 var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
+var test
 
 var saved_player = null
 
@@ -87,7 +88,8 @@ func updateForPurchases():
 	InAppPurchases.connect("has_purchased", self, "applyMicrotransaction")
 	InAppPurchases.request_purchased()
 	
-func applyMicrotransaction(item_name):	
+func applyMicrotransaction(item_name):
+	GameData.test.get_node("Label").text += "applied microtransaction " + item_name
 	if item_name == Constants.AppStoreMicrotransactions.AdFree:
 		GameData.adFree = true;
 

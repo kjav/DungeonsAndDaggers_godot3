@@ -33,9 +33,12 @@ func _ready():
 		call_deferred("_init_ads")
 
 func on_purchase_success(item_name):
+	GameData.test.get_node("Label").text += "on_purchase_success " + item_name
 	GameData.applyMicrotransaction(item_name)
 
 func show_privacy_form():
+
+	GameData.test.get_node("Label").text += "show_privacy_form"
 	if consent == null:
 		emit_signal("privacy_consent_obtained")
 	else:
@@ -65,6 +68,7 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 		call_deferred("_init_ads")
 		
 	if requestedAdFree:
+		GameData.test.get_node("Label").text += "requestAdFree"
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():

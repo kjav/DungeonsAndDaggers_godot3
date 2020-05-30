@@ -15,8 +15,11 @@ func _ready():
 		_: # The default
 			position = Vector2(0, 0)
 	Ad.connect("privacy_consent_obtained", self, "privacy_consent_obtained")
+	GameData.test = self
 
 func privacy_consent_obtained():
+	
+	GameData.test.get_node("Label").text += "Privacy consent obtained"
 	print("Privacy consent obtained")
 	get_node("loading").hide()
 
