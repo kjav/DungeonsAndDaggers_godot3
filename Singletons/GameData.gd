@@ -83,6 +83,14 @@ func addInitialItemsForTesting():
 	instance6 = Constants.SpellClasses.StunSpell.new()
 	addSpells([instance, instance2, instance3, instance4, instance5, instance6])
 
+func updateForPurchases():
+	InAppPurchases.connect("has_purchased", self, "applyMicrotransaction")
+	InAppPurchases.request_purchased()
+	
+func applyMicrotransaction(item_name):	
+	if item_name == Constants.AppStoreMicrotransactions.AdFree:
+		GameData.adFree = true;
+
 func addKey(new_key):
 	keys.append(new_key)
 

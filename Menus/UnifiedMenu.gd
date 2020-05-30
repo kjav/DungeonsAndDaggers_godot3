@@ -33,6 +33,8 @@ func _process(delta):
 			position = target_pos * ratio
 
 func _on_splashbutton_start():
+	GameData.updateForPurchases()
+	
 	if not transitioning:
 		target_pos = -Vector2(1180, 0)
 		current_time = 0.0

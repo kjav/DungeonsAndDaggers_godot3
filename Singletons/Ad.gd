@@ -33,8 +33,7 @@ func _ready():
 		call_deferred("_init_ads")
 
 func on_purchase_success(item_name):
-	if item_name == Constants.AppStoreMicrotransactions.AdFree:
-		GameData.adFree = true;
+	GameData.applyMicrotransaction(item_name)
 
 func show_privacy_form():
 	if consent == null:

@@ -125,7 +125,6 @@ func sku_details_query(list):
 		var sku_list = PoolStringArray(list)
 		payment.querySkuDetails(sku_list)
 
-
 func sku_details_complete(result):
 	print("sku_details_complete : ", result)
 	for key in result.keys():
