@@ -11,5 +11,6 @@ func _pressed():
 
 func cancel(currency):
 	if currency == "reroll":
+		GameAnalytics.queue_design_event('RewardAd:reroll')
 		get_node("Loading").hide()
 		get_node("Trophy").show()
