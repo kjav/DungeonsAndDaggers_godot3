@@ -34,8 +34,7 @@ func _ready():
 
 func on_purchase_success(item_name):
 	if item_name == Constants.AppStoreMicrotransactions.AdFree:
-		#todo do
-		pass
+		GameData.adFree = true;
 
 func show_privacy_form():
 	if consent == null:
@@ -57,7 +56,7 @@ func _on_consent_unknown():
 	print("Consent unknown")
 	consent.showConsentForm()
 
-func _on_consent_forward(acceptedPersonalised, adFree):
+func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 	print("Consent forwarded: ", acceptedPersonalised)
 	personalised = acceptedPersonalised
 	personalised_checked = true
@@ -66,7 +65,7 @@ func _on_consent_forward(acceptedPersonalised, adFree):
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
 		
-	if adFree:
+	if requestedAdFree:
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():
@@ -80,7 +79,7 @@ func _on_consent_error(e):
 	emit_signal("privacy_consent_obtained")
 
 func _init_ads():
-	if(Engine.has_singleton("AdMob")):
+	if(Engine.has_singleton("AdMob") && !GameData.adFree):
 		admob = Engine.get_singleton("AdMob")
 		var res = admob.initWithContentRating(
 			isReal,
@@ -94,16 +93,17 @@ func _init_ads():
 		admob.loadRewardedVideo(rewardAdId)
 
 func play_reward_video(name):
-	currency = name
-	if admob == null:
-		emit_signal("reward_ad", currency, 1)
-	else:
-		do_play = true
-		if loaded:
-			loaded = false
-			do_play = false
-			admob.showRewardedVideo()
-			admob.loadRewardedVideo(rewardAdId)
+	if !GameData.adFree:
+		currency = name
+		if admob == null:
+			emit_signal("reward_ad", currency, 1)
+		else:
+			do_play = true
+			if loaded:
+				loaded = false
+				do_play = false
+				admob.showRewardedVideo()
+				admob.loadRewardedVideo(rewardAdId)
 
 func _on_rewarded_video_ad_left_application():
 	admob.loadRewardedVideo(rewardAdId)
@@ -121,5 +121,6 @@ func _on_rewarded_video_ad_loaded():
 		admob.showRewardedVideo()
 
 func _on_rewarded(unused, amount):
-	admob.loadRewardedVideo(rewardAdId)
+	if !GameData.adFree:
+		admob.loadRewardedVideo(rewardAdId)
 	emit_signal("reward_ad", currency, amount)
