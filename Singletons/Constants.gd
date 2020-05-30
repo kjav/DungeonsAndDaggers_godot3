@@ -90,6 +90,10 @@ const Distribution = preload("res://Components/Distributions/Distribution.gd")
 const DistributionOfEquals = preload("res://Components/Distributions/DistributionOfEquals.gd")
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
+const AppStoreMicrotransactions = { 
+	"AdFree": "ad_free"
+}
+
 const AllUpgradesUnmodified = [
 	{ "value": UpgradeClasses.StrengthUpgrade, "onetime": false },
 	{ "value": UpgradeClasses.DefenceUpgrade, "onetime": false },

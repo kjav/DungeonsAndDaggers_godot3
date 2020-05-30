@@ -19,6 +19,9 @@ signal cancel_ad(currency)
 signal privacy_consent_obtained
 
 func _ready():
+	InAppPurchases.set_auto_consume(false)
+	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
+	
 	ready_to_load = true
 	
 	if Engine.has_singleton("MySingleton"):
@@ -28,6 +31,11 @@ func _ready():
 	
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+
+func on_purchase_success(item_name):
+	if item_name == Constants.AppStoreMicrotransactions.AdFree:
+		#todo do
+		pass
 
 func show_privacy_form():
 	if consent == null:
@@ -59,8 +67,7 @@ func _on_consent_forward(acceptedPersonalised, adFree):
 		call_deferred("_init_ads")
 		
 	if adFree:
-		#todo logic for buying game
-		pass
+		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():
 	print("Consent loaded")
