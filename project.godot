@@ -39,8 +39,8 @@ GameData="*res://Singletons/GameData.gd"
 PositionHelper="*res://Singletons/PositionHelper.gd"
 Audio="*res://Singletons/Audio.tscn"
 Ad="*res://Singletons/Ad.gd"
-InAppPurchases="*res://Microtransactions/InAppPurchases.gd"
 GameAnalytics="*res://Singletons/GameAnalytics.gd"
+InAppPurchases="*res://Microtransactions/InAppPurchases.gd"
 
 [display]
 
