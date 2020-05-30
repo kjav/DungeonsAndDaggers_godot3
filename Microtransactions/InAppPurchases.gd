@@ -16,15 +16,47 @@ signal sku_details_error
 
 var payment
 
+func aaaa(a):
+	GameData.test.get_node("Label").text += a
+
 func _ready():
 	if Engine.has_singleton("GodotPayments"):
 		payment = Engine.get_singleton("GodotPayments")
+		
+		var timer = Timer.new()
+		timer.set_wait_time(0.1)
+		timer.connect("timeout",self,"aaaa",["GodotPayment available"]) 
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start()
 	else:
 		print("GodotPayment singleton is only available on Android devices.")
+		
+		var timer = Timer.new()
+		timer.set_wait_time(0.1)
+		timer.connect("timeout",self,"aaaa",["GodotPayment unavailable"]) 
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start()
 
 	if payment:
 		# Set callback with this script instance.
+		
+		var timer = Timer.new()
+		timer.set_wait_time(0.1)
+		timer.connect("timeout",self,"aaaa",["GodotPayment payment"]) 
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start()
 		payment.setPurchaseCallbackId(get_instance_id())
+	else:
+		
+		var timer = Timer.new()
+		timer.set_wait_time(0.1)
+		timer.connect("timeout",self,"aaaa",["GodotPayment no payment"]) 
+		timer.set_one_shot(true)
+		add_child(timer)
+		timer.start()
 
 # Set consume purchased item automatically after purchase, default value is true.
 func set_auto_consume(auto):
