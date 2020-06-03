@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [android]
 
-modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MySingleton"
+modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MySingleton,org/godotengine/godot/GodotPaymentV3"
 
 [application]
 

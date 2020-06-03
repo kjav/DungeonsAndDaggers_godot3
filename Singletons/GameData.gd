@@ -89,9 +89,10 @@ func updateForPurchases():
 	InAppPurchases.request_purchased()
 	
 func applyMicrotransaction(item_name):
-	GameData.test.get_node("Label").text += "applied microtransaction " + item_name
-	if item_name == Constants.AppStoreMicrotransactions.AdFree:
-		GameData.adFree = true;
+	if not item_name == null:
+		GameData.test.get_node("Label").text += "applied microtransaction " + item_name
+		if item_name == Constants.AppStoreMicrotransactions.AdFree:
+			GameData.adFree = true;
 
 func addKey(new_key):
 	keys.append(new_key)
