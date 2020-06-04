@@ -48,7 +48,7 @@ var url_events = "/v2/" + game_key + "/events"
 
 # settings
 var use_gzip = false
-var verbose_log = false
+var verbose_log = true
 var thread
 var mutex
 var semaphore
@@ -161,10 +161,10 @@ func send_previous_events():
 				var end_event = {
 					'v': unfinished_events[0]['v'],
 					'user_id': unfinished_events[0]['user_id'],
-					'limit_ad_tracking': unfinished_events[0]['limit_ad_tracking'],
 					'sdk_version': unfinished_events[0]['sdk_version'],
 					'os_version': unfinished_events[0]['os_version'],
 					'manufacturer': unfinished_events[0]['manufacturer'],
+					'limit_ad_tracking': unfinished_events[0]['limit_ad_tracking'],
 					'device': unfinished_events[0]['device'],
 					'platform': unfinished_events[0]['platform'],
 					'session_id': unfinished_events[0]['session_id'],
@@ -185,9 +185,11 @@ func _ready():
 	# Open the new cache file
 	cache_file = File.new()
 	# There is no "windows" platform on GA
-	if platform == "Windows":
-		platform = "ios"
-		os_version = "ios 8.2"
+	platform = platform.to_lower()
+	manufacturer = manufacturer.to_lower()
+	os_version = platform.to_lower()
+	if Engine.has_singleton("MySingleton"):
+		os_version += " " + Ad.getDeviceVersion()
 	mutex = Mutex.new()
 	semaphore = Semaphore.new()
 	send_previous_events()
@@ -655,7 +657,6 @@ func annotate_event_with_default_values():
 		# 'android_id',                             # (required: No - send if set)
 		# 'googleplus_id',                          # (required: No - send if set)
 		# 'facebook_id',                            # (required: No - send if set)
-		'limit_ad_tracking': limit_ad_tracking,                      # (required: No - send if true)
 		# 'logon_gamecenter',                       # (required: No - send if true)
 		# 'logon_googleplay                         # (required: No - send if true)
 		#'gender': 'male',                           # (required: No - send if set)
@@ -677,6 +678,8 @@ func annotate_event_with_default_values():
 		# 'jailbroken                               # (required: No - send if true)
 		#'engine_version': engine_version            # (required: No - send if set by an engine)
 	}
+	if limit_ad_tracking:
+		default_annotations['limit_ad_tracking'] = true
 	#event_dict.update(default_annotations)
 	#state_config['event_queue'].append(default_annotations)
 	return default_annotations
