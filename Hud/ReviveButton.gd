@@ -1,6 +1,9 @@
 extends TextureButton
 
 func _ready():
+	if GameData.adFree:
+		get_node("Label").text = "Click To\n\rRevive"
+	
 	Ad.connect("reward_ad", self, "revive")
 	Ad.connect("cancel_ad", self, "cancel")
 

@@ -97,8 +97,9 @@ func _init_ads():
 		admob.loadRewardedVideo(rewardAdId)
 
 func play_reward_video(name):
+	currency = name
+	
 	if !GameData.adFree:
-		currency = name
 		if admob == null:
 			emit_signal("reward_ad", currency, 1)
 		else:
@@ -108,6 +109,8 @@ func play_reward_video(name):
 				do_play = false
 				admob.showRewardedVideo()
 				admob.loadRewardedVideo(rewardAdId)
+	else:
+		_on_rewarded(null, 1)
 
 func _on_rewarded_video_ad_left_application():
 	admob.loadRewardedVideo(rewardAdId)

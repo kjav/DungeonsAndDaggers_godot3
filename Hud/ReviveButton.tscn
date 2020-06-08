@@ -63,7 +63,8 @@ margin_bottom = 158.082
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "WATCH VIDEO
-  TO REVIVE"
+TO REVIVE"
+align = 1
 
 [node name="skull" type="TextureRect" parent="."]
 material = SubResource( 3 )
