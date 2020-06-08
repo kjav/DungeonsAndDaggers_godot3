@@ -17,9 +17,8 @@ public class MySingleton extends Godot.SingletonBase {
     private int instanceId = 0;
     private ConsentForm form;
 
-    public String myFunction(String p_str) {
-        // A function to bind.
-        return "Hello " + p_str;
+    public String getDeviceVersion() {
+        return android.os.Build.VERSION.RELEASE;
     }
 
     public void showConsentForm() {
@@ -108,7 +107,7 @@ public class MySingleton extends Godot.SingletonBase {
         // Register class name and functions to bind.
         registerClass("MySingleton", new String[]
             {
-                "myFunction",
+                "getDeviceVersion",
                 "init",
                 "showConsentForm"
             });

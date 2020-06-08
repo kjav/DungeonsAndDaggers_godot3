@@ -26,11 +26,13 @@ func _ready():
 	
 	if Engine.has_singleton("MySingleton"):
 		consent = Engine.get_singleton("MySingleton")
-		print(consent.myFunction("World"))
 		call_deferred("_init_consent")
 	
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+
+func getDeviceVersion():
+	return consent.getDeviceVersion()
 
 func on_purchase_success(item_name):
 	GameData.test.get_node("Label").text += "on_purchase_success " + item_name
