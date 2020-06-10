@@ -202,10 +202,10 @@ texture = ExtResource( 12 )
 script = ExtResource( 13 )
 
 [node name="Label" type="RichTextLabel" parent="."]
-margin_left = 1226.0
+margin_left = 1337.0
 margin_top = 136.0
-margin_right = 2289.0
-margin_bottom = 533.0
+margin_right = 2032.0
+margin_bottom = 1522.0
 custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 __meta__ = {
