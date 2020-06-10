@@ -38,6 +38,10 @@ func on_purchase_success(item_name):
 	GameData.test.get_node("Label").text += "on_purchase_success " + item_name
 	GameData.applyMicrotransaction(item_name)
 
+func on_purchase_owned(item_name):
+	GameData.test.get_node("Label").text += "on_purchaseowned " + item_name
+	GameData.applyMicrotransaction(item_name)
+
 func show_privacy_form():
 
 	GameData.test.get_node("Label").text += "show_privacy_form"

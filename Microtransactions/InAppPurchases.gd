@@ -17,7 +17,7 @@ signal sku_details_error
 var payment
 
 func aaaa(a):
-	GameData.test.get_node("Label").text += a
+	pass#GameData.test.get_node("Label").text += a
 
 func _ready():
 	if Engine.has_singleton("GodotPayments"):
@@ -75,21 +75,22 @@ func request_purchased():
 
 func has_purchased(_receipt, _signature, sku):
 	if sku == "":
-		GameData.test.get_node("Label").text += "has_purchased : nothing"
+		#GameData.test.get_node("Label").text += "has_purchased : nothing"
 		emit_signal("has_purchased", null)
 	else:
 		
-		GameData.test.get_node("Label").text += "has_purchased : " + sku
+		#GameData.test.get_node("Label").text += "has_purchased : " + sku
 		emit_signal("has_purchased", sku)
 
 func on_consume_success(item):
-	GameData.test.get_node("Label").text += " uhoh something consumed " + str(item)
+	pass
+	#GameData.test.get_node("Label").text += " uhoh something consumed " + str(item)
 
 # purchase item
 # callback : purchase_success, purchase_fail, purchase_cancel, purchase_owned
 func purchase(item_name):
 	
-	GameData.test.get_node("Label").text += "purchase " + payment
+	#GameData.test.get_node("Label").text += "purchase " + payment
 	if payment:
 		# transaction_id could be any string that used for validation internally in java
 		payment.purchase(item_name, "transaction_id")
@@ -97,25 +98,25 @@ func purchase(item_name):
 
 func purchase_success(_receipt, _signature, sku):
 	
-	GameData.test.get_node("Label").text += "purchase_success : " + sku
+	#GameData.test.get_node("Label").text += "purchase_success : " + sku
 	emit_signal("purchase_success", sku)
 
 
 func purchase_fail():
 	
-	GameData.test.get_node("Label").text += "purchase_fail"
+	#GameData.test.get_node("Label").text += "purchase_fail"
 	emit_signal("purchase_fail")
 
 
 func purchase_cancel():
 	
-	GameData.test.get_node("Label").text += "purchase_cancel"
+	#GameData.test.get_node("Label").text += "purchase_cancel"
 	emit_signal("purchase_cancel")
 
 
 func purchase_owned(sku):
 	
-	GameData.test.get_node("Label").text += "purchase_owned : " + sku
+	#GameData.test.get_node("Label").text += "purchase_owned : " + sku
 	emit_signal("purchase_owned", sku)
 
 
@@ -123,7 +124,7 @@ func purchase_owned(sku):
 # Callback: consume_success, consume_fail
 func consume(item_name):
 	
-	GameData.test.get_node("Label").text += "consume " + payment
+	#GameData.test.get_node("Label").text += "consume " + payment
 	if payment:
 		payment.consume(item_name)
 
@@ -131,13 +132,13 @@ func consume(item_name):
 # Consume all purchased items.
 func consume_all():
 	
-	GameData.test.get_node("Label").text += "consume_all " + payment
+	#GameData.test.get_node("Label").text += "consume_all " + payment
 	if payment:
 		payment.consumeUnconsumedPurchases()
 
 
 func consume_success(_receipt, _signature, sku):
-	GameData.test.get_node("Label").text += "consume_sucess " + sku
+	#GameData.test.get_node("Label").text += "consume_sucess " + sku
 	print("consume_success : ", sku)
 	emit_signal("consume_success", sku)
 
@@ -145,13 +146,13 @@ func consume_success(_receipt, _signature, sku):
 # If consume fails, need to call request_purchased() to get purchase token from Google.
 # Then try to consume again.
 func consume_fail():
-	GameData.test.get_node("Label").text += "consume_fail "
+	#GameData.test.get_node("Label").text += "consume_fail "
 	emit_signal("consume_fail")
 
 
 # No purchased item to consume.
 func consume_not_required():
-	GameData.test.get_node("Label").text += "consume_not_required"
+	#GameData.test.get_node("Label").text += "consume_not_required"
 	emit_signal("consume_not_required")
 
 
@@ -173,13 +174,13 @@ var sku_details = {}
 # Query for details of IAP items.
 # Callback: sku_details_complete
 func sku_details_query(list):
-	GameData.test.get_node("Label").text += "sku_details_query " + payment + " a " + list 
+	#GameData.test.get_node("Label").text += "sku_details_query " + payment + " a " + list 
 	if payment:
 		var sku_list = PoolStringArray(list)
 		payment.querySkuDetails(sku_list)
 
 func sku_details_complete(result):
-	GameData.test.get_node("Label").text += "sku_details_complete : " + result
+	#GameData.test.get_node("Label").text += "sku_details_complete : " + result
 	for key in result.keys():
 		sku_details[key] = result[key]
 	emit_signal("sku_details_complete")
@@ -187,5 +188,5 @@ func sku_details_complete(result):
 
 func sku_details_error(error_message):
 	
-	GameData.test.get_node("Label").text += "error_sku_details = " + error_message
+	#GameData.test.get_node("Label").text += "error_sku_details = " + error_message
 	emit_signal("sku_details_error")
