@@ -23,6 +23,8 @@ func _ready():
 	if Engine.has_singleton("GodotPayments"):
 		payment = Engine.get_singleton("GodotPayments")
 		
+		self.connect("consume_success", self, "on_consume_success")
+		
 		var timer = Timer.new()
 		timer.set_wait_time(0.1)
 		timer.connect("timeout",self,"aaaa",["GodotPayment available"]) 
@@ -80,6 +82,8 @@ func has_purchased(_receipt, _signature, sku):
 		GameData.test.get_node("Label").text += "has_purchased : " + sku
 		emit_signal("has_purchased", sku)
 
+func on_consume_success(item):
+	GameData.test.get_node("Label").text += " uhoh something consumed " + str(item)
 
 # purchase item
 # callback : purchase_success, purchase_fail, purchase_cancel, purchase_owned
