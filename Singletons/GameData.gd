@@ -92,7 +92,7 @@ func updateForPurchases():
 	InAppPurchases.request_purchased()
 
 func sku_details_complete():
-	GameData.test.get_node("Label").text += " sku details complete " + str(InAppPurchases.sku_details)
+	GameData.test.get_node("Label").text += " sku details complete " + str(InAppPurchases.sku_details["ad_free"].price)
 
 func applyMicrotransaction(item_name):
 	if not item_name == null:
