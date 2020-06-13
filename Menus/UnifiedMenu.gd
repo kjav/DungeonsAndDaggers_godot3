@@ -15,7 +15,6 @@ func _ready():
 		_: # The default
 			position = Vector2(0, 0)
 	Ad.connect("privacy_consent_obtained", self, "privacy_consent_obtained")
-	GameData.test = self
 	
 	InAppPurchases.set_auto_consume(false)
 	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
@@ -34,11 +33,8 @@ func applyMicrotransaction(item_name):
 			GameData.adFree = true;
 
 func privacy_consent_obtained():
-	
-	GameData.test.get_node("Label").text += "Privacy consent obtained"
 	print("Privacy consent obtained")
 	get_node("loading").hide()
-
 
 func _process(delta):
 	if transitioning:

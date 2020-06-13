@@ -18,7 +18,7 @@ signal reward_ad(currency, amount)
 signal cancel_ad(currency)
 signal privacy_consent_obtained
 
-func _ready():	
+func _ready():
 	ready_to_load = true
 	
 	if Engine.has_singleton("MySingleton"):
@@ -32,8 +32,6 @@ func getDeviceVersion():
 	return consent.getDeviceVersion()
 
 func show_privacy_form():
-
-	GameData.test.get_node("Label").text += "show_privacy_form"
 	if consent == null:
 		emit_signal("privacy_consent_obtained")
 	else:
@@ -63,7 +61,6 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 		call_deferred("_init_ads")
 		
 	if requestedAdFree:
-		GameData.test.get_node("Label").text += " purchase " + Constants.AppStoreMicrotransactions.AdFree
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():
