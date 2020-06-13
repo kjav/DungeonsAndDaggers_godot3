@@ -18,6 +18,7 @@ func _ready():
 	
 	InAppPurchases.set_auto_consume(false)
 	InAppPurchases.consume("ad_free")
+	
 	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
 	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
 	InAppPurchases.connect("purchase_owned", self, "purchase_owned")
