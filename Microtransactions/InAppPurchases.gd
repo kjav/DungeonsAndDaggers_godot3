@@ -90,9 +90,11 @@ func on_consume_success(item):
 # callback : purchase_success, purchase_fail, purchase_cancel, purchase_owned
 func purchase(item_name):
 	
-	#GameData.test.get_node("Label").text += "purchase " + payment
+	GameData.test.get_node("Label").text += "purchase " + payment
 	if payment:
 		# transaction_id could be any string that used for validation internally in java
+		
+		GameData.test.get_node("Label").text += "purchase2 " + item_name
 		payment.purchase(item_name, "transaction_id")
 
 

@@ -63,6 +63,7 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 		call_deferred("_init_ads")
 		
 	if requestedAdFree:
+		GameData.test.get_node("Label").text += " purchase " + Constants.AppStoreMicrotransactions.AdFree
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():
