@@ -91,7 +91,7 @@ const DistributionOfEquals = preload("res://Components/Distributions/Distributio
 const IndependentDistribution = preload("res://Components/Distributions/IndependentDistributions.gd")
 
 const AppStoreMicrotransactions = { 
-	"AdFree": "android.test.purchased"
+	"AdFree": "ad_free"
 }
 
 const AllUpgradesUnmodified = [

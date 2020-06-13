@@ -84,21 +84,21 @@ func addInitialItemsForTesting():
 	instance6 = Constants.SpellClasses.StunSpell.new()
 	addSpells([instance, instance2, instance3, instance4, instance5, instance6])
 
-func updateForPurchases():
-	GameData.test.get_node("Label").text += " update called "
-	InAppPurchases.connect("sku_details_complete", self, "sku_details_complete")
-	InAppPurchases.sku_details_query('ad_free')
-	InAppPurchases.connect("has_purchased", self, "applyMicrotransaction")
-	InAppPurchases.request_purchased()
+# func updateForPurchases():
+# 	GameData.test.get_node("Label").text += " update called "
+# 	InAppPurchases.connect("sku_details_complete", self, "sku_details_complete")
+# 	InAppPurchases.sku_details_query('ad_free')
+# 	InAppPurchases.connect("has_purchased", self, "applyMicrotransaction")
+# 	InAppPurchases.request_purchased()
 
-func sku_details_complete():
-	GameData.test.get_node("Label").text += " sku details complete " + str(InAppPurchases.sku_details["ad_free"].price)
+# func sku_details_complete():
+# 	GameData.test.get_node("Label").text += " sku details complete " + str(InAppPurchases.sku_details["ad_free"].price)
 
-func applyMicrotransaction(item_name):
-	if not item_name == null:
-		GameData.test.get_node("Label").text += "applied microtransaction " + item_name
-		if item_name == Constants.AppStoreMicrotransactions.AdFree:
-			GameData.adFree = true;
+# func applyMicrotransaction(item_name):
+# 	if not item_name == null:
+# 		GameData.test.get_node("Label").text += "applied microtransaction " + item_name
+# 		if item_name == Constants.AppStoreMicrotransactions.AdFree:
+# 			GameData.adFree = true;
 
 func addKey(new_key):
 	keys.append(new_key)

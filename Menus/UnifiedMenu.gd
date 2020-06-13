@@ -16,6 +16,21 @@ func _ready():
 			position = Vector2(0, 0)
 	Ad.connect("privacy_consent_obtained", self, "privacy_consent_obtained")
 	GameData.test = self
+	
+	InAppPurchases.set_auto_consume(false)
+	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
+	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
+
+func on_has_purchased(item_name):
+	GameData.applyMicrotransaction(item_name)
+
+func on_purchase_success(item_name):
+	applyMicrotransaction(item_name)
+
+func applyMicrotransaction(item_name):
+	if not item_name == null:
+		if item_name == Constants.AppStoreMicrotransactions.AdFree:
+			GameData.adFree = true;
 
 func privacy_consent_obtained():
 	
@@ -35,9 +50,7 @@ func _process(delta):
 			var ratio = transition_curve.interpolate_baked(current_time / transition_time)
 			position = target_pos * ratio
 
-func _on_splashbutton_start():
-	GameData.updateForPurchases()
-	
+func _on_splashbutton_start():	
 	if not transitioning:
 		target_pos = -Vector2(1180, 0)
 		current_time = 0.0
