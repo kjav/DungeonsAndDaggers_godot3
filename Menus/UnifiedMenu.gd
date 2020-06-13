@@ -19,6 +19,7 @@ func _ready():
 	InAppPurchases.set_auto_consume(false)
 	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
 	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
+	InAppPurchases.connect("purchase_owned", self, "purchase_owned")
 	InAppPurchases.request_purchased()
 
 func on_has_purchased(item_name):
@@ -26,6 +27,9 @@ func on_has_purchased(item_name):
 
 func on_purchase_success(item_name):
 	applyMicrotransaction(item_name)
+
+func purchase_owned(sku):
+	OS.alert("Purchase Already Owned")
 
 func applyMicrotransaction(item_name):
 	if not item_name == null:
