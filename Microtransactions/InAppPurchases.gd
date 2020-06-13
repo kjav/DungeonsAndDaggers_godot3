@@ -100,25 +100,25 @@ func purchase(item_name):
 
 func purchase_success(_receipt, _signature, sku):
 	
-	#GameData.test.get_node("Label").text += "purchase_success : " + sku
+	GameData.test.get_node("Label").text += "purchase_success : " + sku
 	emit_signal("purchase_success", sku)
 
 
 func purchase_fail():
 	
-	#GameData.test.get_node("Label").text += "purchase_fail"
+	GameData.test.get_node("Label").text += "purchase_fail"
 	emit_signal("purchase_fail")
 
 
 func purchase_cancel():
 	
-	#GameData.test.get_node("Label").text += "purchase_cancel"
+	GameData.test.get_node("Label").text += "purchase_cancel"
 	emit_signal("purchase_cancel")
 
 
 func purchase_owned(sku):
 	
-	#GameData.test.get_node("Label").text += "purchase_owned : " + sku
+	GameData.test.get_node("Label").text += "purchase_owned : " + sku
 	emit_signal("purchase_owned", sku)
 
 
