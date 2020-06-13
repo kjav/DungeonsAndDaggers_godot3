@@ -23,7 +23,7 @@ func _ready():
 	InAppPurchases.request_purchased()
 
 func on_has_purchased(item_name):
-	GameData.applyMicrotransaction(item_name)
+	applyMicrotransaction(item_name)
 
 func on_purchase_success(item_name):
 	applyMicrotransaction(item_name)
