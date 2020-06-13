@@ -20,6 +20,7 @@ func _ready():
 	InAppPurchases.set_auto_consume(false)
 	InAppPurchases.connect("purchase_success", self, "on_purchase_success")
 	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
+	InAppPurchases.request_purchased()
 
 func on_has_purchased(item_name):
 	GameData.applyMicrotransaction(item_name)
