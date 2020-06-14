@@ -749,6 +749,7 @@
 
         // Update provider list.
         var providers = consentInfo['providers'] || [];
+        providers.push({'company_name': 'GameAnalytics', 'policy_url': 'https://gameanalytics.com/privacy'});
         var providersLen = providers.length;
 
         obj.providersEl.innerHTML = '';
