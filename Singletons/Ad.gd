@@ -59,6 +59,7 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 	
 	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
+		GameAnalytics.start_analytics()
 		
 	if requestedAdFree:
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)

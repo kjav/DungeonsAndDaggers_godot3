@@ -193,6 +193,8 @@ func _ready():
 	mutex = Mutex.new()
 	semaphore = Semaphore.new()
 	send_previous_events()
+
+func start_analytics():
 	thread = Thread.new()
 	thread.start(self, "_thread_function", 1)
 	#add_to_event_queue(get_test_design_event('test', 1337))
