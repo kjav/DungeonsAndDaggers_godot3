@@ -76,9 +76,9 @@ text = "CONTINUE
 
 [node name="New Game" type="TextureButton" parent="OgresDomain"]
 margin_left = -324.228
-margin_top = 907.77
+margin_top = 857.77
 margin_right = 17.772
-margin_bottom = 1042.77
+margin_bottom = 992.77
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
@@ -94,12 +94,12 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "NEW GAME"
 
-[node name="slider" parent="OgresDomain" instance=ExtResource( 9 )]
-margin_left = -225.635
-margin_top = 1052.53
-margin_right = 1151.36
-margin_bottom = 1274.53
-rect_scale = Vector2( 0.35, 0.35 )
+[node name="Slider" parent="OgresDomain" instance=ExtResource( 9 )]
+margin_left = -195.546
+margin_top = 1018.29
+margin_right = 1181.45
+margin_bottom = 1240.29
+rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="Tutorial" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
@@ -126,9 +126,9 @@ align = 1
 
 [node name="New Game" type="TextureButton" parent="Tutorial"]
 margin_left = -324.064
-margin_top = 907.03
-margin_right = 17.9355
-margin_bottom = 1042.03
+margin_top = 857.03
+margin_right = 17.936
+margin_bottom = 992.03
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
