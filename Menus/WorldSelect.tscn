@@ -95,11 +95,12 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "NEW GAME"
 
 [node name="Slider" parent="OgresDomain" instance=ExtResource( 9 )]
-margin_left = -195.546
+visible = false
+margin_left = -218.814
 margin_top = 1018.29
-margin_right = 1181.45
+margin_right = 1158.19
 margin_bottom = 1240.29
-rect_scale = Vector2( 0.3, 0.3 )
+rect_scale = Vector2( 0.35, 0.35 )
 
 [node name="Tutorial" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
