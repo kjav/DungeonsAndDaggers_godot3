@@ -100,3 +100,33 @@ func addStun(turnAmount):
 func removeStunned():
 	.removeStunned()
 	get_node("Stars").hide()
+
+#todo change to 0.5
+func setBaseDamage(baseDamage, difficultyIncrease = 5):
+	base_damage += difficultyIncrease * GameData.currentDifficultyOgreDomain
+
+#todo change to 1
+func setInitialStats(healthStat, maxHealthStat, strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 5):
+	if !fixedMaxHealth:
+		healthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+		maxHealthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	
+	strengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	defenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	maxDefenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	
+	initialStats.health = {
+		"value": healthStat,
+		"maximum": maxHealthStat
+	}
+
+	initialStats.strength = {
+		"value": strengthStat,
+		"maximum": maxStrengthStat
+	}
+
+	initialStats.defence = {
+		"value": defenceStat,
+		"maximum": maxDefenceStat
+	}

@@ -59,7 +59,6 @@ func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
 	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new(self)
 	processBehaviour = Process.Direct.new()
-	base_damage = 2.5
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
 	alternateAttackCue = false
@@ -89,20 +88,8 @@ func _ready():
 	
 	headFrameSize = head.frames.get_frame("stand_left", 0).get_size()
 	
-	initialStats.health = {
-		"value": 15,
-		"maximum": 30
-	}
-	
-	initialStats.strength = {
-		"value": 5,
-		"maximum": 5
-	}
-	
-	initialStats.defence = {
-		"value": 5,
-		"maximum": 5
-	}
+	setBaseDamage(2)
+	setInitialStats(15, 30, 5, 5, 5, 5)
 	
 	._ready()
 

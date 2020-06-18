@@ -18,24 +18,13 @@ func _init():
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait.new(self)
 	processBehaviour = Process.Direct.new()
-	base_damage = 2
 	turnBehaviour.setTurnWait(1)
 	undamageableAnimationName = "invinsible"
 	
-	initialStats.health = {
-		"value": 4,
-		"maximum": 4
-	}
-
-	initialStats.strength = {
-		"value": 4,
-		"maximum": 4
-	}
-
-	initialStats.defence = {
-		"value": 2,
-		"maximum": 2
-	}
+	setBaseDamage(1)
+	setInitialStats(1.5, 1.5, 1.5, 1.5, 2.5, 2.5)
+	
+	._ready()
 
 func turn(skipTurnBehaviour = false):
 	.turn()    

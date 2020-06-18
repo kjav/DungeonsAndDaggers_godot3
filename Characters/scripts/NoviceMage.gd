@@ -25,22 +25,8 @@ func _ready():
 	attackedLastTurn = false
 	fixedMaxHealth = true
 	
-	base_damage = 0.5
-	
-	initialStats.health = {
-		"value": 1.5,
-		"maximum": 1.5
-	}
-
-	initialStats.strength = {
-		"value": 3,
-		"maximum": 3
-	}
-
-	initialStats.defence = {
-		"value": 1,
-		"maximum": 1
-	}
+	setBaseDamage(0.5, 0)
+	setInitialStats(1.5, 1.5, 1.5, 1.5, 0.5, 0.5)
 	
 	._ready()
 
@@ -69,13 +55,18 @@ func castMissile():
 	#Audio.playSoundEffect("Missile_Flying")
 	self.get_parent().add_child(new_missile)
 	
+	var damage = base_damage
+	
+	if randi()%100 < 66 * pow(0.75, GameData.currentDifficultyOgreDomain):
+		damage = 0
+	
 	new_missile.init(
 		self,
 		GameData.player,
 		missile_texture,
 		get_position() + Vector2(GameData.TileSize/2, GameData.TileSize/2),
 		25,
-		randi()%2 / float(2),
+		damage,
 		"Missile_Hit",
 		Vector2(0.2, 0.2),
 		true,
