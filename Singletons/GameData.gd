@@ -32,6 +32,11 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
+var currentDifficultyOgreDomain = 1
+var unlockedDifficultiesOgreDomain = ["easy", "normal"]
+
+const difficultySaveFileName = "user://difficulties.save"
+
 var saved_player = null
 
 var map_seed = null
@@ -338,6 +343,32 @@ func load_player(dict):
 		"thirdWeaponSlot": dict.third_weapon_slot,
 		"thirdUpgradeSlot": dict.third_upgrade_slot,
 	}
+
+func saveCurrentDifficulties():
+	var difficulties = File.new()
+	
+	difficulties.open("user://difficulties.save", File.WRITE)
+	difficulties.store_line(to_json({
+		"currentDifficultyOgreDomain": currentDifficultyOgreDomain,
+		"unlockedDifficultiesOgreDomain": unlockedDifficultiesOgreDomain
+	}))
+	
+	difficulties.close()
+
+func loadCurrentDifficulties():
+	var difficulties = File.new()
+	if not difficulties.file_exists(difficultySaveFileName):
+		return
+	
+	difficulties.open(difficultySaveFileName, File.READ)
+	
+	while not difficulties.eof_reached():
+		var state = parse_json(difficulties.get_line())
+		if state:
+			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
+			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
+	
+	difficulties.close()
 
 func stopSuggestingTutorial():
 	if not shouldTutorialHide():
