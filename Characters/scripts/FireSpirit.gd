@@ -16,7 +16,7 @@ func _ready():
 	turnBehaviour = Turn.MoveUpRightDownLeft.new(self)
 	processBehaviour = Process.Direct.new()
 	
-	setBaseDamage(0.5)
+	setBaseDamage(1)
 	setInitialHealth(0.5, 0.5, 0.75)
 	setInitialStats(1, 1, 0.5, 0.5)
 

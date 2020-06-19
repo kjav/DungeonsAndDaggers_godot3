@@ -103,7 +103,7 @@ func removeStunned():
 
 #todo change to 0.5
 func setBaseDamage(baseDamage, difficultyIncrease = 5):
-	base_damage += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	base_damage = baseDamage + difficultyIncrease * GameData.currentDifficultyOgreDomain
 
 func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 5):
 	if !fixedMaxHealth:
