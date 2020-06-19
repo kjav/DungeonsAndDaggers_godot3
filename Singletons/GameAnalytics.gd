@@ -778,8 +778,12 @@ func _exit_tree():
 	semaphore.post()
 
 	# Wait until it exits.
-	thread.wait_to_finish()
-	cache_file.close()
+	if thread:
+		thread.wait_to_finish()
+	if cache_file:
+		cache_file.close()
 	var dir = Directory.new()
-	dir.remove("user://" + str(session_num) + ".analytics.backup")
+	var path = "user://" + str(session_num) + ".analytics.backup"
+	if dir.file_exists(path):
+		dir.remove(path)
 	print_verbose("Exited cleanly")
