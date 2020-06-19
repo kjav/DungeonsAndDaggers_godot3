@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/Continue.gd" type="Script" id=7]
 [ext_resource path="res://Menus/New Game.gd" type="Script" id=8]
-[ext_resource path="res://assets/dummy_01.webp" type="Texture" id=9]
+[ext_resource path="res://Menus/DifficultySlider.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/dummy_01.webp" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -53,7 +54,6 @@ text = "OGRES DOMAIN"
 align = 1
 
 [node name="Continue" type="TextureButton" parent="OgresDomain"]
-visible = false
 margin_left = -326.057
 margin_top = 660.373
 margin_right = 15.9427
@@ -76,9 +76,9 @@ text = "CONTINUE
 
 [node name="New Game" type="TextureButton" parent="OgresDomain"]
 margin_left = -324.228
-margin_top = 907.03
-margin_right = 17.7716
-margin_bottom = 1042.03
+margin_top = 857.77
+margin_right = 17.772
+margin_bottom = 992.77
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
@@ -94,6 +94,14 @@ custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "NEW GAME"
 
+[node name="Slider" parent="OgresDomain" instance=ExtResource( 9 )]
+visible = false
+margin_left = -218.814
+margin_top = 1018.29
+margin_right = 1158.19
+margin_bottom = 1240.29
+rect_scale = Vector2( 0.35, 0.35 )
+
 [node name="Tutorial" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
 
@@ -103,7 +111,7 @@ margin_top = -318.723
 margin_right = -98.4608
 margin_bottom = -62.7231
 rect_scale = Vector2( 2.8, 2.8 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Tutorial" type="Label" parent="Tutorial"]
 margin_left = -424.0
@@ -119,9 +127,9 @@ align = 1
 
 [node name="New Game" type="TextureButton" parent="Tutorial"]
 margin_left = -324.064
-margin_top = 907.03
-margin_right = 17.9355
-margin_bottom = 1042.03
+margin_top = 857.03
+margin_right = 17.936
+margin_bottom = 992.03
 rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )

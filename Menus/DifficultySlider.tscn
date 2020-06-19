@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/gui_01_slider_02.png" type="Texture" id=1]
+[ext_resource path="res://Menus/scripts/DifficultySlider.gd" type="Script" id=2]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/pixel.png" type="Texture" id=4]
+[ext_resource path="res://assets/direction_arrow.webp" type="Texture" id=5]
+[ext_resource path="res://Menus/scripts/SliderLeft.gd" type="Script" id=6]
+[ext_resource path="res://Menus/scripts/SliderRight.gd" type="Script" id=7]
+[ext_resource path="res://assets/gui_04_icon_06.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 80
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Background" type="TextureRect"]
+margin_right = 1377.0
+margin_bottom = 222.0
+rect_scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 214.0
+margin_top = 30.0
+margin_right = 1163.0
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Normal"
+align = 1
+valign = 1
+
+[node name="Divider Left" type="TextureRect" parent="."]
+modulate = Color( 0.556863, 0.337255, 0.270588, 1 )
+margin_left = 187.5
+margin_right = 188.5
+margin_bottom = 1.0
+rect_scale = Vector2( 25, 194 )
+texture = ExtResource( 4 )
+
+[node name="Divider Right" type="TextureRect" parent="."]
+modulate = Color( 0.556863, 0.337255, 0.270588, 1 )
+margin_left = 1165.0
+margin_right = 1166.0
+margin_bottom = 1.0
+rect_scale = Vector2( 25, 194 )
+texture = ExtResource( 4 )
+
+[node name="Left" type="TextureButton" parent="."]
+margin_left = 55.6102
+margin_top = 175.768
+margin_right = 309.61
+margin_bottom = 343.768
+rect_rotation = -90.0
+rect_scale = Vector2( 0.5, 0.6 )
+texture_normal = ExtResource( 5 )
+script = ExtResource( 6 )
+
+[node name="Right" type="TextureButton" parent="."]
+margin_left = 1323.11
+margin_top = 48.2681
+margin_right = 1577.11
+margin_bottom = 216.268
+rect_rotation = 90.0
+rect_scale = Vector2( 0.5, 0.6 )
+texture_normal = ExtResource( 5 )
+script = ExtResource( 7 )
+
+[node name="Higher Locked" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.658824 )
+margin_left = 1323.11
+margin_top = 48.2681
+margin_right = 1577.11
+margin_bottom = 216.268
+rect_rotation = 90.0
+rect_scale = Vector2( 0.5, 0.6 )
+texture = ExtResource( 5 )
+
+[node name="Lock" type="TextureRect" parent="Higher Locked"]
+self_modulate = Color( 0.717647, 0.698039, 0.0352941, 1 )
+margin_left = 57.7231
+margin_top = 133.547
+margin_right = 247.723
+margin_bottom = 394.547
+rect_rotation = -90.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
