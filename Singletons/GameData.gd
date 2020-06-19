@@ -397,7 +397,8 @@ func save_game():
 		"kills": player_kills,
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
-		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades)
+		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
+		"difficulty": currentDifficultyOgreDomain
 	}))
 
 	save_game.close()
@@ -432,6 +433,7 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
+			currentDifficultyOgreDomain = state.difficulty
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
