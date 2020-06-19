@@ -192,7 +192,6 @@ func _ready():
 		os_version += " " + Ad.getDeviceVersion()
 	mutex = Mutex.new()
 	semaphore = Semaphore.new()
-	send_previous_events()
 
 func start_analytics():
 	thread = Thread.new()
@@ -200,6 +199,7 @@ func start_analytics():
 	#add_to_event_queue(get_test_design_event('test', 1337))
 
 func _thread_function(x):
+	send_previous_events()
 	generate_new_session_id()
 	request_init()
 	add_to_event_queue(get_user_event())
