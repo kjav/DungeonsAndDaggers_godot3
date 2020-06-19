@@ -22,7 +22,8 @@ func _ready():
 	undamageableAnimationName = "invinsible"
 	
 	setBaseDamage(1)
-	setInitialStats(1.5, 1.5, 1.5, 1.5, 2.5, 2.5)
+	setInitialHealth(1.5, 1.5)
+	setInitialStats(1, 1, 2.5, 2.5)
 	
 	._ready()
 

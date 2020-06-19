@@ -13,6 +13,7 @@ func _ready():
 	fixedMaxHealth = true
 	
 	setBaseDamage(0, 0)
-	setInitialStats(4.5, 4.5, 1, 1, 1, 1)
+	setInitialHealth(4.5, 4.5)
+	setInitialStats(1, 1, 1, 1, 0)
 	
 	._ready()

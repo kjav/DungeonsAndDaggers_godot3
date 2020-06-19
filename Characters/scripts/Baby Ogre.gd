@@ -18,7 +18,8 @@ func _ready():
 	turnBehaviour.setWaitEvery(3)
 	
 	setBaseDamage(1.5)
-	setInitialStats(2.5, 2.5, 2.5, 2.5, 2.5, 2.5)
+	setInitialHealth(1.5, 1.5)
+	setInitialStats(2, 2, 2, 2)
 
 	._ready()
 

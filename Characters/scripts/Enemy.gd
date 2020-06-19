@@ -105,21 +105,22 @@ func removeStunned():
 func setBaseDamage(baseDamage, difficultyIncrease = 5):
 	base_damage += difficultyIncrease * GameData.currentDifficultyOgreDomain
 
-#todo change to 1
-func setInitialStats(healthStat, maxHealthStat, strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 5):
+func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 5):
 	if !fixedMaxHealth:
 		healthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 		maxHealthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	
-	strengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	defenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	maxDefenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 	
 	initialStats.health = {
 		"value": healthStat,
 		"maximum": maxHealthStat
 	}
+
+#todo change to 1
+func setInitialStats(strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 5):
+	strengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	defenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	maxDefenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 
 	initialStats.strength = {
 		"value": strengthStat,

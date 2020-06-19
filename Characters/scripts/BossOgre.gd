@@ -89,7 +89,8 @@ func _ready():
 	headFrameSize = head.frames.get_frame("stand_left", 0).get_size()
 	
 	setBaseDamage(2)
-	setInitialStats(15, 30, 5, 5, 5, 5)
+	setInitialHealth(8, 16, 8)
+	setInitialStats(3.5, 3.5, 3.5, 3.5)
 	
 	._ready()
 
@@ -286,7 +287,7 @@ func handleCharacterDeath():
 		.handleCharacterDeath()
 	else:
 		stageOneDefeated = true
-		.heal(30, true)
+		.heal(300, true)
 		
 		addAngerMark(getHeadLeftTopPosition(), PI/4)
 		addAngerMark(getHeadLeftMiddlePosition(), PI/16)
