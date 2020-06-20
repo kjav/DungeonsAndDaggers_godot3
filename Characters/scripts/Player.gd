@@ -447,12 +447,15 @@ func takeDamage(damage):
 	return damage
 
 func handleCharacterDeath():
-	GameData.delete_saved_game()
+	endGame()
 	currentWeaponNode.hide()
 	offHandWeaponNode.hide()
 	get_node("Polygons").hide()
-	GameAnalytics.queue_design_event("GamePlay:monsters_killed", GameData.player_kills)
 	.handleCharacterDeath()
+
+func endGame():
+	GameData.delete_saved_game()
+	GameAnalytics.queue_design_event("GamePlay:monsters_killed", GameData.player_kills)
 
 func revive():
 	.revive()

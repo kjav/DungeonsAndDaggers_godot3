@@ -74,3 +74,6 @@ func load_highscores():
 
 func highscores_save_name():
 	return "user://" + GameData.chosen_map + "-highscores.save";
+
+func _ready():
+	get_node("Title").text = GameData.unlockedDifficultiesOgreDomain[GameData.currentDifficultyOgreDomain] + " Scores"

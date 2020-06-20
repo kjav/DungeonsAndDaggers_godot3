@@ -56,7 +56,7 @@ func PlayerHealthChanged(health, maxHealth):
 			heart.setType(heart.Empty)
 	
 	if health <= 0:
-		get_node("HudCanvasLayer/DeathMenu").died()
+		get_node("HudCanvasLayer/DeathMenu").fadeIn()
 		get_node("HudCanvasLayer/Turn Timer").hide()
 
 func _on_Environment_unlocked(unlockGuid, environmentObjectsName):

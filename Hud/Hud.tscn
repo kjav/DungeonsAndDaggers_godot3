@@ -11,7 +11,7 @@
 [ext_resource path="res://Hud/EventMessageHolder.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hud/PlayerEffects.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hud/Death.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Hud/scripts/Death.gd" type="Script" id=12]
+[ext_resource path="res://Hud/Win.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Hud/TeleportWarning.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=15]
@@ -91,7 +91,9 @@ scale = Vector2( 0.2, 0.2 )
 
 [node name="DeathMenu" parent="HudCanvasLayer" instance=ExtResource( 11 )]
 visible = false
-script = ExtResource( 12 )
+
+[node name="WinMenu" parent="HudCanvasLayer" instance=ExtResource( 12 )]
+visible = false
 
 [node name="Teleport Warning" parent="HudCanvasLayer" instance=ExtResource( 13 )]
 visible = false

@@ -306,3 +306,6 @@ func addAngerMark(position, rotation):
 	angerMark.position = position
 	
 	self.add_child(angerMark)
+
+func deathWinConditionMet():
+	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2

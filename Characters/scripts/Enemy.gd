@@ -101,11 +101,10 @@ func removeStunned():
 	.removeStunned()
 	get_node("Stars").hide()
 
-#todo change to 0.5
-func setBaseDamage(baseDamage, difficultyIncrease = 5):
+func setBaseDamage(baseDamage, difficultyIncrease = 0.5):
 	base_damage = baseDamage + difficultyIncrease * GameData.currentDifficultyOgreDomain
 
-func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 5):
+func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 1):
 	if !fixedMaxHealth:
 		healthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 		maxHealthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
@@ -115,8 +114,7 @@ func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 5):
 		"maximum": maxHealthStat
 	}
 
-#todo change to 1
-func setInitialStats(strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 5):
+func setInitialStats(strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 1):
 	strengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
 	defenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain

@@ -33,13 +33,25 @@ var turnTime = 0.2
 var click_state = false
 
 var currentDifficultyOgreDomain = 1
-var unlockedDifficultiesOgreDomain = ["easy", "normal"]
+var unlockedDifficultiesOgreDomain = ["Easy", "Normal"]
+var possibleDifficulties = ["Easy", "Normal", "Hard"]
+var additionalDifficultyPreText = "Challenge"
 
 const difficultySaveFileName = "user://difficulties.save"
 
 var saved_player = null
 
 var map_seed = null
+
+func unlockNextDifficulty():
+	if unlockedDifficultiesOgreDomain.size() < possibleDifficulties.size():
+		unlockedDifficultiesOgreDomain.append(possibleDifficulties[unlockedDifficultiesOgreDomain.size()])
+	else:
+		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesOgreDomain.size()) + 1
+		
+		unlockedDifficultiesOgreDomain.append(additionalDifficultyPreText + " " + str(challengeNumber))
+	
+	saveCurrentDifficulties()
 
 func StartNewGame():
 	player_kills = 0
