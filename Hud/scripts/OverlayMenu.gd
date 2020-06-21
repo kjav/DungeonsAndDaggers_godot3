@@ -1,5 +1,5 @@
 extends Control
 
-func died():
+func fadeIn():
 	show()
 	get_node("AnimationPlayer").play("death screen fade in")

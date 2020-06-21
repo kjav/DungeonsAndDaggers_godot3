@@ -34,7 +34,6 @@ centered = false
 [node name="Stars" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 79.9778, -271.144 )
-frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 272, -60 )

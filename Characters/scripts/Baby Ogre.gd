@@ -15,23 +15,11 @@ func _init():
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomWaitEveryNTurns.new(self)
 	processBehaviour = Process.Direct.new()
-	base_damage = 2
 	turnBehaviour.setWaitEvery(3)
 	
-	initialStats.health = {
-		"value": 4,
-		"maximum": 4
-	}
-
-	initialStats.strength = {
-		"value": 4,
-		"maximum": 4
-	}
-
-	initialStats.defence = {
-		"value": 3,
-		"maximum": 3
-	}
+	setBaseDamage(1)
+	setInitialHealth(1.5, 1.5)
+	setInitialStats(2, 2, 2, 2)
 
 	._ready()
 

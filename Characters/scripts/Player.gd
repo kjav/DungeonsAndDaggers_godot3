@@ -53,8 +53,8 @@ var goodLuckMessageShown = false
 
 func _init():
 	initialStats.health = {
-		"value": 4,
-		"maximum": 4
+		"value": 5,
+		"maximum": 5
 	}
 	
 	initialStats.strength = {
@@ -447,12 +447,15 @@ func takeDamage(damage):
 	return damage
 
 func handleCharacterDeath():
-	GameData.delete_saved_game()
+	endGame()
 	currentWeaponNode.hide()
 	offHandWeaponNode.hide()
 	get_node("Polygons").hide()
-	GameAnalytics.queue_design_event("GamePlay:monsters_killed", GameData.player_kills)
 	.handleCharacterDeath()
+
+func endGame():
+	GameData.delete_saved_game()
+	GameAnalytics.queue_design_event("GamePlay:monsters_killed", GameData.player_kills)
 
 func revive():
 	.revive()

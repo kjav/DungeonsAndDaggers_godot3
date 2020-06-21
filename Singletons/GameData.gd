@@ -32,9 +32,26 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
+var currentDifficultyOgreDomain = 1
+var unlockedDifficultiesOgreDomain = ["Easy", "Normal"]
+var possibleDifficulties = ["Easy", "Normal", "Hard"]
+var additionalDifficultyPreText = "Challenge"
+
+const difficultySaveFileName = "user://difficulties.save"
+
 var saved_player = null
 
 var map_seed = null
+
+func unlockNextDifficulty():
+	if unlockedDifficultiesOgreDomain.size() < possibleDifficulties.size():
+		unlockedDifficultiesOgreDomain.append(possibleDifficulties[unlockedDifficultiesOgreDomain.size()])
+	else:
+		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesOgreDomain.size()) + 1
+		
+		unlockedDifficultiesOgreDomain.append(additionalDifficultyPreText + " " + str(challengeNumber))
+	
+	saveCurrentDifficulties()
 
 func StartNewGame():
 	player_kills = 0
@@ -339,6 +356,32 @@ func load_player(dict):
 		"thirdUpgradeSlot": dict.third_upgrade_slot,
 	}
 
+func saveCurrentDifficulties():
+	var difficulties = File.new()
+	
+	difficulties.open("user://difficulties.save", File.WRITE)
+	difficulties.store_line(to_json({
+		"currentDifficultyOgreDomain": currentDifficultyOgreDomain,
+		"unlockedDifficultiesOgreDomain": unlockedDifficultiesOgreDomain
+	}))
+	
+	difficulties.close()
+
+func loadCurrentDifficulties():
+	var difficulties = File.new()
+	if not difficulties.file_exists(difficultySaveFileName):
+		return
+	
+	difficulties.open(difficultySaveFileName, File.READ)
+	
+	while not difficulties.eof_reached():
+		var state = parse_json(difficulties.get_line())
+		if state:
+			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
+			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
+	
+	difficulties.close()
+
 func stopSuggestingTutorial():
 	if not shouldTutorialHide():
 		var hide_tutorial = File.new()
@@ -366,7 +409,8 @@ func save_game():
 		"kills": player_kills,
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
-		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades)
+		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
+		"difficulty": currentDifficultyOgreDomain
 	}))
 
 	save_game.close()
@@ -401,6 +445,7 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
+			currentDifficultyOgreDomain = state.difficulty
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	

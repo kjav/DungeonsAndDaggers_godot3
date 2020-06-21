@@ -59,7 +59,6 @@ func _ready():
 	EffectsNode = get_node("/root/Node2D/Effects")
 	turnBehaviour = Turn.MoveToSignalBeforeAttackRecoverIfMissed.new(self)
 	processBehaviour = Process.Direct.new()
-	base_damage = 2.5
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
 	alternateAttackCue = false
@@ -89,20 +88,9 @@ func _ready():
 	
 	headFrameSize = head.frames.get_frame("stand_left", 0).get_size()
 	
-	initialStats.health = {
-		"value": 15,
-		"maximum": 30
-	}
-	
-	initialStats.strength = {
-		"value": 5,
-		"maximum": 5
-	}
-	
-	initialStats.defence = {
-		"value": 5,
-		"maximum": 5
-	}
+	setBaseDamage(2)
+	setInitialHealth(8, 16, 8)
+	setInitialStats(3.5, 3.5, 3.5, 3.5)
 	
 	._ready()
 
@@ -299,7 +287,7 @@ func handleCharacterDeath():
 		.handleCharacterDeath()
 	else:
 		stageOneDefeated = true
-		.heal(30, true)
+		.heal(300, true)
 		
 		addAngerMark(getHeadLeftTopPosition(), PI/4)
 		addAngerMark(getHeadLeftMiddlePosition(), PI/16)
@@ -318,3 +306,6 @@ func addAngerMark(position, rotation):
 	angerMark.position = position
 	
 	self.add_child(angerMark)
+
+func deathWinConditionMet():
+	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2

@@ -15,21 +15,9 @@ func _init():
 func _ready():
 	turnBehaviour = Turn.MoveUpRightDownLeft.new(self)
 	processBehaviour = Process.Direct.new()
-	base_damage = 1
 	
-	initialStats.health = {
-		"value": 2,
-		"maximum": 2
-	}
-
-	initialStats.strength = {
-		"value": 2,
-		"maximum": 2
-	}
-
-	initialStats.defence = {
-		"value": 2,
-		"maximum": 2
-	}
+	setBaseDamage(1)
+	setInitialHealth(0.5, 0.5)
+	setInitialStats(1, 1, 0.5, 0.5)
 
 	._ready()

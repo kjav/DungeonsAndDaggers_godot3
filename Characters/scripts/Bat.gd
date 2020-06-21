@@ -14,22 +14,9 @@ func _init():
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
 	processBehaviour = Process.Direct.new()
-
-	base_damage = 1
 	
-	initialStats.health = {
-		"value": 2,
-		"maximum": 2
-	}
-
-	initialStats.strength = {
-		"value": 1,
-		"maximum": 1
-	}
-
-	initialStats.defence = {
-		"value": 3,
-		"maximum": 3
-	}
+	setBaseDamage(0.5, 0.25)
+	setInitialHealth(0.5, 0.5)
+	setInitialStats(1, 1, 0.5, 0.5)
 
 	._ready()
