@@ -62,9 +62,9 @@ text = "16
 [node name="Monsters New Highscore" type="Label" parent="."]
 visible = false
 margin_left = 175.915
-margin_top = 98.7371
+margin_top = 218.737
 margin_right = 757.915
-margin_bottom = 253.737
+margin_bottom = 373.737
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
 text = "Old Highscore"
@@ -107,9 +107,9 @@ text = "3"
 [node name="Level New Highscore" type="Label" parent="."]
 visible = false
 margin_left = 178.915
-margin_top = 294.509
+margin_top = 414.509
 margin_right = 760.915
-margin_bottom = 449.509
+margin_bottom = 569.509
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
 text = "Old Highscore"
@@ -143,9 +143,9 @@ text = "HighScore"
 [node name="Damage Blocked New Highscore" type="Label" parent="."]
 visible = false
 margin_left = 183.915
-margin_top = 492.509
+margin_top = 612.509
 margin_right = 765.915
-margin_bottom = 647.509
+margin_bottom = 767.509
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
 text = "Old Highscore"
@@ -197,9 +197,9 @@ text = "33"
 [node name="Items Used New Highscore" type="Label" parent="."]
 visible = false
 margin_left = 183.573
-margin_top = 690.509
+margin_top = 810.509
 margin_right = 765.573
-margin_bottom = 845.509
+margin_bottom = 965.509
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
 text = "Old Highscore"

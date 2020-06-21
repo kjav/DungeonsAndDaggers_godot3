@@ -100,7 +100,7 @@ func resetStats():
 		additional = ceil(GameData.current_level / 2)
 
 	if !self.fixedMaxHealth: 
-		additionalHealth = additional / 2
+		additionalHealth = additional
 	
 	stats.health = {
 		"value" : initialStats.health.value + additionalHealth,
