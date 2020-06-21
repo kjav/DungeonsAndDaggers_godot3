@@ -17,7 +17,7 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	turnBehaviour.setWaitEvery(3)
 	
-	setBaseDamage(1.5)
+	setBaseDamage(1)
 	setInitialHealth(1.5, 1.5)
 	setInitialStats(2, 2, 2, 2)
 

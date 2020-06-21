@@ -15,8 +15,8 @@ func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
 	processBehaviour = Process.Direct.new()
 	
-	setBaseDamage(0.5)
-	setInitialHealth(0.5, 0.5, 0.75)
+	setBaseDamage(0.5, 0.25)
+	setInitialHealth(0.5, 0.5)
 	setInitialStats(1, 1, 0.5, 0.5)
 
 	._ready()
