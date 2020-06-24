@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/scripts/Hitmarker.gd" type="Script" id=1]
 [ext_resource path="res://assets/hitmarker.webp" type="Texture" id=2]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,13 +29,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 50.8594
-margin_top = 67.2528
-margin_right = 74.8594
-margin_bottom = 88.2528
-rect_scale = Vector2( 17, 17 )
+margin_left = 56.0
+margin_top = 112.0
+margin_right = 174.0
+margin_bottom = 185.0
+rect_scale = Vector2( 3, 3 )
 mouse_filter = 1
 size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
 text = "2.5"
 align = 1
 valign = 1
