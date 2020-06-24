@@ -1,18 +1,30 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Hud/scripts/OverlayMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/plank_15.webp" type="Texture" id=3]
-[ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=4]
-[ext_resource path="res://assets/PressStart2P.font" type="BitmapFont" id=5]
+[ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
+[ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=5]
 [ext_resource path="res://Menus/New Game.gd" type="Script" id=6]
 [ext_resource path="res://Hud/ReviveButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hud/PlaythroughStats.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="Animation" id=2]
-resource_name = "death screen fade in"
+[sub_resource type="DynamicFont" id=2]
+size = 55
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -58,72 +70,76 @@ margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.627451 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
 margin_left = 143.0
-margin_top = 150.0
+margin_top = 100.0
 margin_right = 341.0
-margin_bottom = 207.0
+margin_bottom = 157.0
 rect_scale = Vector2( 4, 4 )
 mouse_filter = 1
 size_flags_vertical = 0
 theme = ExtResource( 2 )
-text = "Rest In Pieces"
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.898039, 0.396078, 0.396078, 1 )
+text = "You Died!"
 align = 1
 autowrap = true
+uppercase = true
 
 [node name="Buttons" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -70 )
 
 [node name="TextureButton" type="TextureButton" parent="Buttons"]
 margin_left = 358.0
-margin_top = 588.0
+margin_top = 558.0
 margin_right = 700.0
-margin_bottom = 723.0
-texture_normal = ExtResource( 3 )
-script = ExtResource( 4 )
+margin_bottom = 693.0
+texture_normal = ExtResource( 4 )
+script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Buttons/TextureButton"]
-margin_left = 82.2655
-margin_top = 44.8893
-margin_right = 146.266
-margin_bottom = 60.8893
+margin_left = 73.2655
+margin_top = 10.8893
+margin_right = 144.266
+margin_bottom = 42.8893
 rect_scale = Vector2( 3, 3 )
 mouse_filter = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Menu"
+uppercase = true
 
 [node name="TextureButton2" type="TextureButton" parent="Buttons"]
 margin_left = 275.0
-margin_top = 428.0
+margin_top = 398.0
 margin_right = 617.0
-margin_bottom = 563.0
+margin_bottom = 533.0
 rect_scale = Vector2( 1.5, 1 )
-texture_normal = ExtResource( 3 )
+texture_normal = ExtResource( 4 )
 script = ExtResource( 6 )
 
-[node name="Label2" type="Label" parent="Buttons/TextureButton2"]
-margin_left = 49.523
-margin_top = 44.8893
-margin_right = 177.523
-margin_bottom = 60.8893
+[node name="Label3" type="Label" parent="Buttons/TextureButton2"]
+margin_left = 38.1565
+margin_top = 9.33728
+margin_right = 175.157
+margin_bottom = 41.3373
 rect_scale = Vector2( 2, 3 )
 mouse_filter = 1
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "New Game"
+uppercase = true
 
 [node name="ReviveButton" parent="Buttons" instance=ExtResource( 7 )]
-margin_top = 1720.0
-margin_bottom = 1905.0
+margin_top = 1740.0
+margin_bottom = 1925.0
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 8 )]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 69.1286, 733.998 )
+position = Vector2( 1.1286, 702.998 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/death screen fade in" = SubResource( 2 )
+"anims/death screen fade in" = SubResource( 3 )

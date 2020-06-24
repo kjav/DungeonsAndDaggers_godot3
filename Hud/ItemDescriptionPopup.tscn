@@ -2,14 +2,19 @@
 
 [ext_resource path="res://Hud/scripts/ItemDescriptionPopup.gd" type="Script" id=1]
 [ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=2]
-[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
+outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -10
 font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
@@ -26,12 +31,13 @@ texture = ExtResource( 2 )
 
 [node name="Name" type="Label" parent="."]
 margin_left = -173.736
-margin_top = -138.158
+margin_top = -146.158
 margin_right = 112.264
-margin_bottom = -116.158
+margin_bottom = -114.158
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "EarthQuake Spell"
+custom_colors/font_color = Color( 0.709804, 0.952941, 0.92549, 1 )
+text = "Earthquake Spell"
+uppercase = true
 
 [node name="Description" type="Label" parent="."]
 margin_left = -173.0
@@ -40,6 +46,6 @@ margin_right = 176.0
 margin_bottom = -12.0
 focus_mode = 2
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Damages all enemies within 3 tiles of you a moderate amount."
 autowrap = true
