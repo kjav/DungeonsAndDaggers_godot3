@@ -6,7 +6,7 @@ var colour = Color(255,255,0)
 func _draw():
 	draw_circle_arc_poly(Vector2(200, 200), 200, 0, degrees, colour)
 	
-	draw_circle(Vector2(200, 200), 170, Color(0.8,0.8,0.8))
+	draw_circle(Vector2(200, 200), 170, Color(0.2,0.2,0.2))
 
 func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
     var nb_points = 32
