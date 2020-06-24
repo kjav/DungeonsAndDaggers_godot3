@@ -66,7 +66,6 @@ func _ready():
 	# addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
-	print("Map seed: ", map_seed)
 
 func addInitialItemsForTesting():
 	var instance = Constants.PotionClasses.HealthPotion.new()
@@ -259,7 +258,6 @@ func reset():
 	
 	# Erase the saved state
 	saved_player = null
-	map_seed = null
 	# addInitialItemsForTesting()
 
 func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
@@ -436,7 +434,6 @@ func load_game():
 		if state:
 			current_level = state.level
 			map_seed = state.seed
-			print("Loaded Map Seed: ", map_seed)
 			potions = deserialise_items(state.potions)
 			foods = deserialise_items(state.foods)
 			spells = deserialise_items(state.spells)

@@ -97,7 +97,9 @@ func _ready():
 	
 	GameData.addTutorialTextIfTutorial("Swipe to\nmove.", Vector2(5, 9.3))
 	GameData.addTutorialTextIfTutorial("These offer\nrandom upgrades\nto improve\nyour character.", Vector2(7.1, -2.9))
-  
+	
+	._ready()
+	
 	if GameData.saved_player:
 		setPrimaryWeapon(GameData.saved_player.primaryWeapon)
 		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
@@ -113,8 +115,6 @@ func _ready():
 		extendBriefPotions = GameData.saved_player.extendBriefPotions
 		thirdWeaponSlot = GameData.saved_player.thirdWeaponSlot
 		thirdUpgradeSlot = GameData.saved_player.thirdUpgradeSlot
-
-	._ready()
 	
 	if GameData.chosen_map == "Tutorial":
 		stats.health.value -= 1
