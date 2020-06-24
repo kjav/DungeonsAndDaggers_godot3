@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/ui_book.webp" type="Texture" id=1]
 [ext_resource path="res://assets/ui_book_pressed.webp" type="Texture" id=2]
 [ext_resource path="res://Hud/scripts/UpgradeButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/37_a.webp" type="Texture" id=5]
+[ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 94
@@ -13,14 +14,10 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 60
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-extra_spacing_top = 10
-extra_spacing_bottom = 10
-extra_spacing_char = 2
-extra_spacing_space = 5
-font_data = ExtResource( 4 )
+size = 128
+outline_size = 1
+outline_color = Color( 0.145098, 0.0823529, 0.0823529, 1 )
+font_data = ExtResource( 6 )
 
 [node name="UpgradeButton" type="TextureButton"]
 margin_right = 2145.0
@@ -49,12 +46,12 @@ texture = ExtResource( 5 )
 expand = true
 
 [node name="Description" type="Label" parent="."]
-margin_left = 1182.0
-margin_top = 192.0
-margin_right = 2036.0
-margin_bottom = 1060.0
+margin_left = 1151.0
+margin_top = 96.0
+margin_right = 2026.0
+margin_bottom = 1035.0
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.145098, 0.0823529, 0.0823529, 1 )
 text = "Increases your strength level, making you hit more consistently.
 
    +3 Strength"

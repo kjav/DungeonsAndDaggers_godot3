@@ -1,20 +1,21 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Hud/scripts/Settings.gd" type="Script" id=1]
 [ext_resource path="res://assets/cross.png" type="Texture" id=2]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
 [ext_resource path="res://Hud/scripts/DeathMenuButton.gd" type="Script" id=5]
-[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=6]
+[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Hud/scripts/MuteButton.gd" type="Script" id=7]
 [ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=8]
 [ext_resource path="res://Hud/PrivacyButton.gd" type="Script" id=9]
-[ext_resource path="res://Hud/spinner.gd" type="Script" id=10]
+[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=10]
 [ext_resource path="res://assets/loading.webp" type="Texture" id=11]
+[ext_resource path="res://Hud/spinner.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 58
-font_data = ExtResource( 6 )
+font_data = ExtResource( 10 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 2
@@ -80,17 +81,18 @@ expand = true
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="QuitButton"]
-margin_left = 130.05
-margin_top = 35.5177
-margin_right = 402.049
-margin_bottom = 156.518
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 120.0
+margin_top = 10.0
+margin_right = 378.0
+margin_bottom = 217.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.368627, 0.172549, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Quit
 "
+uppercase = true
 
 [node name="MuteButton" type="TextureButton" parent="."]
 pause_mode = 2
@@ -107,18 +109,19 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="MuteButton"]
-margin_left = 55.307
-margin_top = 7.07098
-margin_right = 393.307
-margin_bottom = 127.071
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 57.8917
+margin_top = -3.26789
+margin_right = 395.892
+margin_bottom = 116.732
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.368627, 0.172549, 0, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Mute"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="PrivacyButton" type="TextureButton" parent="."]
 visible = false
@@ -170,7 +173,7 @@ margin_right = 692.935
 margin_bottom = 966.663
 rect_pivot_offset = Vector2( 127, 127 )
 texture = ExtResource( 11 )
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 [connection signal="pressed" from="ClickableRegion" to="." method="hideMenu"]
 [connection signal="pressed" from="ClickableRegion2" to="." method="hideMenu"]
 [connection signal="pressed" from="ClickableRegion3" to="." method="hideMenu"]

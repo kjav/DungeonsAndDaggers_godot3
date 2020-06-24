@@ -1,27 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hud/scripts/ContextualMenu.gd" type="Script" id=1]
-[ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/frame_bg_fake_square.webp" type="Texture" id=3]
 [ext_resource path="res://Hud/scripts/NextLevel.gd" type="Script" id=4]
 [ext_resource path="res://assets/pixel.png" type="Texture" id=5]
 [ext_resource path="res://Hud/ContextualMenuItemNode.tscn" type="PackedScene" id=6]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
-
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="LevelSelectText" type="Label" parent="."]
-margin_left = -85.0
-margin_top = -22.0
-margin_right = 87.0
-margin_bottom = -5.0
-custom_fonts/font = SubResource( 1 )
+margin_left = -90.0
+margin_top = -35.0
+margin_right = 627.0
+margin_bottom = 114.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = ExtResource( 2 )
 text = "Go to Level 2"
 align = 1
 valign = 1
+uppercase = true
 
 [node name="LevelSelect" type="TextureButton" parent="."]
 show_behind_parent = true

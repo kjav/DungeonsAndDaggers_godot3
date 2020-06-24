@@ -32,7 +32,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Normal"
 align = 1
 valign = 1
-uppercase = true
 
 [node name="Divider Left" type="TextureRect" parent="."]
 modulate = Color( 0.556863, 0.337255, 0.270588, 1 )

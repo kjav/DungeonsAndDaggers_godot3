@@ -1,23 +1,31 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
 [ext_resource path="res://assets/splash.webp" type="Texture" id=3]
 [ext_resource path="res://assets/plank_15.webp" type="Texture" id=4]
-[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/bg_01_02.webp" type="Texture" id=6]
 [ext_resource path="res://Menus/WorldSelect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=8]
 [ext_resource path="res://Menus/GDPR Menu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/plank_15_dark.webp" type="Texture" id=10]
 [ext_resource path="res://Menus/TextureButton.gd" type="Script" id=11]
-[ext_resource path="res://Menus/Ad Settings.gd" type="Script" id=12]
-[ext_resource path="res://assets/loading.webp" type="Texture" id=13]
-[ext_resource path="res://Menus/TextureRect.gd" type="Script" id=14]
+[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Menus/Ad Settings.gd" type="Script" id=13]
+[ext_resource path="res://assets/loading.webp" type="Texture" id=14]
+[ext_resource path="res://Menus/TextureRect.gd" type="Script" id=15]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
 _data = [ Vector2( 0, 0 ), 0.0, 1.4, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="DynamicFont" id=4]
+size = 128
+outline_size = 4
+outline_color = Color( 0.145098, 0.0823529, 0.0823529, 1 )
+extra_spacing_space = -30
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 58
@@ -70,16 +78,17 @@ rect_scale = Vector2( 1.35, 1.35 )
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="StartButton"]
-margin_left = 52.8597
-margin_top = 13.3431
-margin_right = 324.86
-margin_bottom = 108.343
-custom_fonts/font = ExtResource( 5 )
+margin_left = 37.3916
+margin_top = 6.64191
+margin_right = 319.392
+margin_bottom = 108.642
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0.815686, 0.788235, 0.141176, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
-text = "Start"
+text = "Sta rt"
 uppercase = true
+percent_visible = -0.2
 
 [node name="WorldSelect" type="Node2D" parent="."]
 position = Vector2( 1180, 0 )
@@ -132,17 +141,17 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Mute"]
-margin_left = 1.44714
-margin_top = -9.03894
-margin_right = 344.447
-margin_bottom = 126.961
-custom_fonts/font = ExtResource( 5 )
+margin_left = 29.2064
+margin_top = -5.33769
+margin_right = 372.206
+margin_bottom = 130.662
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 custom_colors/font_outline_modulate = Color( 0.286275, 0.113725, 0, 1 )
 text = "Mute"
 align = 1
 valign = 1
-uppercase = true
 
 [node name="Ad Settings" type="TextureButton" parent="."]
 margin_left = 1189.0
@@ -152,21 +161,21 @@ margin_bottom = 168.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 10 )
 expand = true
-script = ExtResource( 12 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Ad Settings"]
-margin_left = 88.9347
-margin_top = 9.77615
-margin_right = 619.935
-margin_bottom = 104.776
-custom_fonts/font = ExtResource( 5 )
+margin_left = 112.993
+margin_top = 11.6268
+margin_right = 656.993
+margin_bottom = 113.627
+rect_scale = Vector2( 0.9, 0.9 )
+custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "Ad Settings"
 align = 1
-uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -197,7 +206,7 @@ margin_top = 923.997
 margin_right = 817.972
 margin_bottom = 1180.0
 rect_pivot_offset = Vector2( 127, 127 )
-texture = ExtResource( 13 )
-script = ExtResource( 14 )
+texture = ExtResource( 14 )
+script = ExtResource( 15 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]

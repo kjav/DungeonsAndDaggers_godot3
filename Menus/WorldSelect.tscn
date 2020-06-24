@@ -80,10 +80,10 @@ texture_pressed = ExtResource( 6 )
 script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="OgresDomain/New Game"]
-margin_left = 72.2233
-margin_top = 13.5769
-margin_right = 513.224
-margin_bottom = 108.577
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -131,10 +131,10 @@ texture_pressed = ExtResource( 6 )
 script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Tutorial/New Game"]
-margin_left = 72.2233
-margin_top = 13.5769
-margin_right = 513.224
-margin_bottom = 108.577
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
