@@ -114,10 +114,10 @@ texture_normal = ExtResource( 4 )
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="Buttons/TextureButton"]
-margin_left = 73.2655
-margin_top = 11.8894
-margin_right = 284.266
-margin_bottom = 106.889
+margin_left = 70.2655
+margin_top = 5.8894
+margin_right = 294.266
+margin_bottom = 107.889
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 6 )
