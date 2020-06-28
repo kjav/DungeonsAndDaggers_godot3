@@ -3,39 +3,21 @@
 [ext_resource path="res://Hud/UpgradeScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/8BitTheme.tres" type="Theme" id=2]
 [ext_resource path="res://TitleFont.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Hud/UpgradeButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/plank07.webp" type="Texture" id=5]
-[ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=6]
-[ext_resource path="res://assets/plank07_grey.webp" type="Texture" id=7]
-[ext_resource path="res://Hud/ReRoll.gd" type="Script" id=8]
-[ext_resource path="res://assets/trophy.webp" type="Texture" id=9]
-[ext_resource path="res://Hud/Trophy.gd" type="Script" id=10]
-[ext_resource path="res://assets/loading.webp" type="Texture" id=11]
-[ext_resource path="res://Hud/Loading.gd" type="Script" id=12]
+[ext_resource path="res://VisualEffects/Confetti.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hud/UpgradeButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/plank07.webp" type="Texture" id=6]
+[ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=7]
+[ext_resource path="res://assets/plank07_grey.webp" type="Texture" id=8]
+[ext_resource path="res://Hud/ReRoll.gd" type="Script" id=9]
+[ext_resource path="res://assets/trophy.webp" type="Texture" id=10]
+[ext_resource path="res://Hud/Trophy.gd" type="Script" id=11]
+[ext_resource path="res://assets/loading.webp" type="Texture" id=12]
+[ext_resource path="res://Hud/Loading.gd" type="Script" id=13]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, -0.747775, 0, 0, Vector2( 0.885412, 0.3592 ), -1.03026, -1.03026, 0, 0, Vector2( 1, 0.1656 ), -1.4654, 0.0, 0, 0 ]
 
 [sub_resource type="ShaderMaterial" id=2]
-
-[sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 2
-emission_box_extents = Vector3( 75, 300, 1 )
-flag_disable_z = true
-spread = 15.0
-gravity = Vector3( -8, 0, 0 )
-initial_velocity = 185.0
-initial_velocity_random = 0.6
-angular_velocity = 32.18
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 1.0
-scale = 40.0
-scale_random = 0.9
-color = Color( 1, 0, 0, 1 )
-hue_variation = 1.0
-hue_variation_random = 1.0
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -124,54 +106,44 @@ text = "Pick One Upgrade"
 align = 1
 autowrap = true
 
-[node name="sparkle" type="Particles2D" parent="."]
-position = Vector2( 540.685, 1774.61 )
-rotation = -1.5708
-emitting = false
-amount = 500
-lifetime = 50.0
-one_shot = true
-speed_scale = 12.03
-explosiveness = 1.0
-randomness = 0.31
-process_material = SubResource( 3 )
+[node name="sparkle" parent="." instance=ExtResource( 4 )]
 
-[node name="UpgradeButton1" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton1" parent="." instance=ExtResource( 5 )]
 margin_left = 106.0
 margin_top = 224.15
 margin_right = 2251.0
 margin_bottom = 1396.15
 rect_scale = Vector2( 0.4, 0.4 )
 
-[node name="UpgradeButton2" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton2" parent="." instance=ExtResource( 5 )]
 margin_left = 106.0
 margin_top = 696.053
 margin_right = 2251.0
 margin_bottom = 1868.05
 rect_scale = Vector2( 0.4, 0.4 )
 
-[node name="UpgradeButton3" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton3" parent="." instance=ExtResource( 5 )]
 margin_left = 106.0
 margin_top = 1167.32
 margin_right = 2251.0
 margin_bottom = 2339.32
 rect_scale = Vector2( 0.4, 0.4 )
 
-[node name="UpgradeButton4" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton4" parent="." instance=ExtResource( 5 )]
 margin_left = -894.0
 margin_top = 224.15
 margin_right = 1251.0
 margin_bottom = 1396.15
 rect_scale = Vector2( 0.4, 0.4 )
 
-[node name="UpgradeButton5" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton5" parent="." instance=ExtResource( 5 )]
 margin_left = -894.0
 margin_top = 696.053
 margin_right = 1251.0
 margin_bottom = 1868.05
 rect_scale = Vector2( 0.4, 0.4 )
 
-[node name="UpgradeButton6" parent="." instance=ExtResource( 4 )]
+[node name="UpgradeButton6" parent="." instance=ExtResource( 5 )]
 margin_left = -894.0
 margin_top = 1167.32
 margin_right = 1251.0
@@ -190,11 +162,11 @@ margin_left = 108.0
 margin_top = 1657.0
 margin_right = 961.0
 margin_bottom = 1889.0
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 6 )
-texture_disabled = ExtResource( 7 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_disabled = ExtResource( 8 )
 expand = true
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="ReRoll"]
 margin_left = 219.0
@@ -216,9 +188,9 @@ margin_top = 2.76538
 margin_right = 174.356
 margin_bottom = 154.765
 rect_scale = Vector2( 1.4, 1.4 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 expand = true
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Loading" type="TextureRect" parent="ReRoll"]
 visible = false
@@ -229,6 +201,6 @@ margin_right = 206.121
 margin_bottom = 184.23
 rect_scale = Vector2( 1.8, 1.8 )
 rect_pivot_offset = Vector2( 75, 75 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 expand = true
-script = ExtResource( 12 )
+script = ExtResource( 13 )
