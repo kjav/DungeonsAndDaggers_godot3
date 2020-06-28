@@ -66,7 +66,7 @@ margin_right = 513.14
 margin_bottom = 143.315
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.796078, 0.815686, 0.141176, 1 )
+custom_colors/font_color = Color( 0.866667, 0.886275, 0.113725, 1 )
 text = "Continue"
 
 [node name="New Game" type="TextureButton" parent="OgresDomain"]
