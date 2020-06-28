@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Menus/Ad Settings.gd" type="Script" id=13]
 [ext_resource path="res://assets/loading.webp" type="Texture" id=14]
 [ext_resource path="res://Menus/TextureRect.gd" type="Script" id=15]
+[ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=16]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -59,21 +60,17 @@ __meta__ = {
 [node name="SplashScreen" type="Node2D" parent="."]
 
 [node name="SplashScreenTexture" type="TextureRect" parent="."]
-margin_left = -4.659
-margin_top = -121.134
-margin_right = 1075.34
-margin_bottom = 1798.87
-mouse_filter = 2
+margin_left = 85.6218
+margin_top = 1249.77
+margin_right = 912.622
+margin_bottom = 1925.77
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="StartButton" type="TextureButton" parent="."]
 margin_left = 311.0
-margin_top = 1089.0
+margin_top = 939.0
 margin_right = 653.0
-margin_bottom = 1224.0
+margin_bottom = 1074.0
 rect_scale = Vector2( 1.35, 1.35 )
 texture_normal = ExtResource( 4 )
 
@@ -93,9 +90,9 @@ uppercase = true
 position = Vector2( 1180, 0 )
 
 [node name="WorldSelectTexture" type="TextureRect" parent="WorldSelect"]
-margin_top = 183.0
+margin_top = 147.0
 margin_right = 658.0
-margin_bottom = 1054.0
+margin_bottom = 1037.0
 rect_scale = Vector2( 1.64, 1.94 )
 texture = ExtResource( 6 )
 
@@ -129,9 +126,10 @@ position = Vector2( 1180, 0 )
 
 [node name="Mute" type="TextureButton" parent="."]
 margin_left = 1908.0
-margin_top = 33.0
+margin_top = 21.0
 margin_right = 2250.0
-margin_bottom = 168.0
+margin_bottom = 156.0
+rect_scale = Vector2( 1, 0.8 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 10 )
 script = ExtResource( 11 )
@@ -140,13 +138,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Mute"]
-margin_left = 29.2064
+margin_left = -10.7936
 margin_top = -5.33769
-margin_right = 372.206
+margin_right = 332.206
 margin_bottom = 130.662
-rect_scale = Vector2( 0.9, 0.9 )
+rect_scale = Vector2( 1.125, 0.9 )
 custom_fonts/font = ExtResource( 12 )
-custom_colors/font_color = Color( 0.486275, 0.521569, 0.564706, 1 )
+custom_colors/font_color = Color( 0.52549, 0.662745, 0.709804, 1 )
 custom_colors/font_outline_modulate = Color( 0.286275, 0.113725, 0, 1 )
 text = "Mute"
 align = 1
@@ -154,9 +152,10 @@ valign = 1
 
 [node name="Ad Settings" type="TextureButton" parent="."]
 margin_left = 1189.0
-margin_top = 33.0
+margin_top = 21.0
 margin_right = 1877.0
-margin_bottom = 168.0
+margin_bottom = 156.0
+rect_scale = Vector2( 1, 0.8 )
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 10 )
 expand = true
@@ -166,13 +165,13 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Ad Settings"]
-margin_left = 112.993
+margin_left = 42.993
 margin_top = 11.6268
-margin_right = 656.993
+margin_right = 586.993
 margin_bottom = 113.627
-rect_scale = Vector2( 0.9, 0.9 )
+rect_scale = Vector2( 1.125, 0.9 )
 custom_fonts/font = ExtResource( 12 )
-custom_colors/font_color = Color( 0.486275, 0.521569, 0.564706, 1 )
+custom_colors/font_color = Color( 0.52549, 0.662745, 0.709804, 1 )
 text = "Ad Settings"
 align = 1
 __meta__ = {
@@ -207,5 +206,42 @@ margin_bottom = 1180.0
 rect_pivot_offset = Vector2( 127, 127 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 149.163
+margin_top = 292.852
+margin_right = 956.163
+margin_bottom = 454.852
+rect_scale = Vector2( 1, 1.667 )
+texture = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="TextureRect"]
+margin_left = 109.029
+margin_top = -4.04143
+margin_right = 365.029
+margin_bottom = 97.9586
+rect_scale = Vector2( 2.25, 1.35 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 0.964706, 0.270588, 0, 1 )
+text = "Swipe"
+uppercase = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 149.04
+margin_top = 587.056
+margin_right = 956.04
+margin_bottom = 749.056
+texture = ExtResource( 16 )
+
+[node name="Label2" type="Label" parent="TextureRect2"]
+margin_left = 139.126
+margin_top = -2.06918
+margin_right = 523.126
+margin_bottom = 99.9308
+rect_scale = Vector2( 1.35, 1.35 )
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color = Color( 1, 0.607843, 0, 1 )
+text = "Dungeon"
+uppercase = true
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]

@@ -19,11 +19,11 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 0, 169 )
+position = Vector2( 0, 89 )
 script = ExtResource( 1 )
 
 [node name="SelectScreen" parent="." instance=ExtResource( 2 )]
-position = Vector2( -2.54724, -0.088501 )
+position = Vector2( -2.54724, -2.13904 )
 
 [node name="OgresDomain" type="Node2D" parent="."]
 position = Vector2( 544.205, 485.558 )
@@ -44,7 +44,7 @@ margin_bottom = 567.0
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.509804, 0.560784, 0.286275, 1 )
+custom_colors/font_color = Color( 0.576471, 0.643137, 0.278431, 1 )
 text = "Ogres Domain"
 align = 1
 uppercase = true
@@ -86,14 +86,13 @@ margin_right = 510.724
 margin_bottom = 109.577
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.780392, 0.780392, 0.780392, 1 )
 text = "New Game"
 
 [node name="Slider" parent="OgresDomain" instance=ExtResource( 10 )]
 margin_left = -218.814
-margin_top = 968.29
+margin_top = 998.29
 margin_right = 1158.19
-margin_bottom = 1190.29
+margin_bottom = 1220.29
 rect_scale = Vector2( 0.35, 0.35 )
 
 [node name="Tutorial" type="Node2D" parent="."]
@@ -115,7 +114,7 @@ margin_bottom = 567.0
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.313726, 0.568627, 0.580392, 1 )
+custom_colors/font_color = Color( 0.270588, 0.686275, 0.705882, 1 )
 text = "Tutorial"
 align = 1
 uppercase = true
@@ -137,6 +136,5 @@ margin_right = 510.724
 margin_bottom = 109.577
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.780392, 0.780392, 0.780392, 1 )
 text = "New Game"
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
