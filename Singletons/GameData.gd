@@ -54,6 +54,7 @@ func unlockNextDifficulty():
 	saveCurrentDifficulties()
 
 func StartNewGame():
+	map_seed = randi()
 	player_kills = 0
 	total_blocked_damage = 0
 	total_items_used = 0
