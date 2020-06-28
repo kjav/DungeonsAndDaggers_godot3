@@ -23,7 +23,7 @@ position = Vector2( 0, 169 )
 script = ExtResource( 1 )
 
 [node name="SelectScreen" parent="." instance=ExtResource( 2 )]
-position = Vector2( -833.547, 130.911 )
+position = Vector2( -2.54724, -0.088501 )
 
 [node name="OgresDomain" type="Node2D" parent="."]
 position = Vector2( 544.205, 485.558 )
