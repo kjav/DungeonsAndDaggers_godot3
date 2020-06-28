@@ -68,7 +68,7 @@ margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0.627451 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
@@ -103,6 +103,7 @@ align = 1
 autowrap = true
 
 [node name="Buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 130 )
 
 [node name="TextureButton" type="TextureButton" parent="Buttons"]
@@ -125,6 +126,7 @@ text = "Menu"
 uppercase = true
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -0.871399, 573.998 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

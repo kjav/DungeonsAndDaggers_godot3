@@ -22,6 +22,7 @@ func _pressed():
 	get_node("loading").show()
 	get_node("skull").hide()
 	Ad.play_reward_video("revive")
+	get_node("Label").self_modulate = Color('4d4d4d')
 
 func cancel(currency):
 	if currency == "revive":

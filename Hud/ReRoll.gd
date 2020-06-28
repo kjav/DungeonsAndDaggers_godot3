@@ -11,6 +11,7 @@ func _pressed():
 	get_node("Loading").show()
 	get_node("Trophy").hide()
 	Ad.play_reward_video("reroll")
+	get_node("Label").self_modulate = Color('4d4d4d')
 
 func cancel(currency):
 	if currency == "reroll":

@@ -25,38 +25,38 @@ text = "Normal Scores"
 align = 1
 
 [node name="Monsters Text" type="Label" parent="."]
-margin_left = 45.4821
-margin_top = 96.516
-margin_right = 1117.48
-margin_bottom = 251.516
+margin_left = 45.0
+margin_top = 97.0
+margin_right = 1117.0
+margin_bottom = 199.0
 rect_pivot_offset = Vector2( -880.482, -260.516 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.984314, 0.823529, 1 )
-text = "Monsters Defeated"
+text = "Monsters Slain"
 
 [node name="Monsters Amount" type="Label" parent="."]
-margin_left = 915.747
-margin_top = 128.0
-margin_right = 1204.75
-margin_bottom = 283.0
+margin_left = 872.747
+margin_top = 135.0
+margin_right = 1161.75
+margin_bottom = 290.0
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "4"
 
 [node name="Monsters Highscore Text" type="Label" parent="."]
-margin_left = 375.915
+margin_left = 312.915
 margin_top = 202.509
-margin_right = 805.915
+margin_right = 768.915
 margin_bottom = 357.509
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
 text = "Highscore"
 
 [node name="Monsters Highscore Amount" type="Label" parent="."]
-margin_left = 918.179
-margin_top = 235.208
-margin_right = 1207.18
-margin_bottom = 390.208
+margin_left = 875.179
+margin_top = 242.208
+margin_right = 1164.18
+margin_bottom = 397.208
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -65,9 +65,9 @@ text = "16
 
 [node name="Monsters New Highscore" type="Label" parent="."]
 visible = false
-margin_left = 193.915
+margin_left = 121.915
 margin_top = 202.737
-margin_right = 805.915
+margin_right = 769.915
 margin_bottom = 357.737
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
@@ -83,36 +83,36 @@ custom_colors/font_color = Color( 1, 0.984314, 0.823529, 1 )
 text = "Level Reached"
 
 [node name="Level Amount" type="Label" parent="."]
-margin_left = 916.883
-margin_top = 339.942
-margin_right = 1205.88
-margin_bottom = 494.942
+margin_left = 873.883
+margin_top = 342.942
+margin_right = 1162.88
+margin_bottom = 497.942
 custom_fonts/font = SubResource( 1 )
 text = "2"
 
 [node name="Level Highscore Text" type="Label" parent="."]
-margin_left = 378.915
+margin_left = 315.915
 margin_top = 398.509
-margin_right = 808.915
+margin_right = 771.915
 margin_bottom = 553.509
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
 text = "Highscore"
 
 [node name="Level Highscore Amount" type="Label" parent="."]
-margin_left = 916.292
-margin_top = 433.228
-margin_right = 1205.29
-margin_bottom = 588.228
+margin_left = 873.292
+margin_top = 439.228
+margin_right = 1162.29
+margin_bottom = 594.228
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "3"
 
 [node name="Level New Highscore" type="Label" parent="."]
 visible = false
-margin_left = 196.915
+margin_left = 124.915
 margin_top = 398.509
-margin_right = 808.915
+margin_right = 772.915
 margin_bottom = 553.509
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
@@ -128,17 +128,17 @@ custom_colors/font_color = Color( 1, 0.984314, 0.823529, 1 )
 text = "Damage Blocked"
 
 [node name="Damage Blocked Amount" type="Label" parent="."]
-margin_left = 916.883
-margin_top = 532.202
-margin_right = 1205.88
-margin_bottom = 687.202
+margin_left = 873.883
+margin_top = 538.202
+margin_right = 1162.88
+margin_bottom = 693.202
 custom_fonts/font = SubResource( 1 )
 text = "1"
 
 [node name="Damage Blocked Highscore Text" type="Label" parent="."]
-margin_left = 383.915
+margin_left = 320.915
 margin_top = 596.769
-margin_right = 813.915
+margin_right = 776.915
 margin_bottom = 751.769
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
@@ -146,19 +146,19 @@ text = "Highscore"
 
 [node name="Damage Blocked New Highscore" type="Label" parent="."]
 visible = false
-margin_left = 201.915
+margin_left = 131.081
 margin_top = 596.509
-margin_right = 813.915
+margin_right = 779.081
 margin_bottom = 751.509
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )
 text = "Old Highscore"
 
 [node name="Damage Blocked Highscore Amount" type="Label" parent="."]
-margin_left = 916.292
-margin_top = 631.488
-margin_right = 1205.29
-margin_bottom = 786.488
+margin_left = 873.292
+margin_top = 637.488
+margin_right = 1162.29
+margin_bottom = 792.488
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "3.5"
@@ -173,36 +173,36 @@ custom_colors/font_color = Color( 1, 0.984314, 0.823529, 1 )
 text = "Items Used"
 
 [node name="Items Used Amount" type="Label" parent="."]
-margin_left = 918.883
-margin_top = 735.202
-margin_right = 1207.88
-margin_bottom = 890.202
+margin_left = 875.883
+margin_top = 741.202
+margin_right = 1164.88
+margin_bottom = 896.202
 custom_fonts/font = SubResource( 1 )
 text = "22"
 
 [node name="Items Used Highscore Text" type="Label" parent="."]
-margin_left = 383.915
+margin_left = 320.915
 margin_top = 794.769
-margin_right = 813.915
+margin_right = 776.915
 margin_bottom = 949.769
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.870588, 0.533333, 0.533333, 1 )
 text = "Highscore"
 
 [node name="Items Used Highscore Amount" type="Label" parent="."]
-margin_left = 916.292
-margin_top = 829.488
-margin_right = 1205.29
-margin_bottom = 984.488
+margin_left = 873.292
+margin_top = 832.488
+margin_right = 1162.29
+margin_bottom = 987.488
 rect_pivot_offset = Vector2( 37.2526, 39 )
 custom_fonts/font = SubResource( 1 )
 text = "33"
 
 [node name="Items Used New Highscore" type="Label" parent="."]
 visible = false
-margin_left = 201.573
+margin_left = 130.739
 margin_top = 794.509
-margin_right = 813.573
+margin_right = 778.739
 margin_bottom = 949.509
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.694118, 0.870588, 0.533333, 1 )

@@ -18,13 +18,13 @@ outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_top = -8
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -70,7 +70,7 @@ margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0.627451 )
+color = Color( 0, 0, 0, 0 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
@@ -90,6 +90,7 @@ autowrap = true
 uppercase = true
 
 [node name="Buttons" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -70 )
 
 [node name="TextureButton" type="TextureButton" parent="Buttons"]
@@ -108,7 +109,7 @@ margin_bottom = 42.8893
 rect_scale = Vector2( 3, 3 )
 mouse_filter = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Menu"
 uppercase = true
 
@@ -129,7 +130,7 @@ margin_bottom = 41.3373
 rect_scale = Vector2( 2, 3 )
 mouse_filter = 1
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "New Game"
 uppercase = true
@@ -139,7 +140,8 @@ margin_top = 1740.0
 margin_bottom = 1925.0
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 1.1286, 702.998 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/death screen fade in" = SubResource( 3 )
+"anims/death screen fade in" = SubResource( 4 )
