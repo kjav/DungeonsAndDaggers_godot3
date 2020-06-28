@@ -16,6 +16,7 @@ func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomWaitEveryNTurns.new(self)
 	processBehaviour = Process.Direct.new()
 	turnBehaviour.setWaitEvery(3)
+	turnBehaviour.setLimit(6)
 	
 	setBaseDamage(1)
 	setInitialHealth(1.5, 1.5)

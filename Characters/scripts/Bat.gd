@@ -13,7 +13,7 @@ func _init():
 
 func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandom.new(self)
-	turnBehaviour.setLimit(4)
+	turnBehaviour.setLimit(5)
 	processBehaviour = Process.Direct.new()
 	
 	setBaseDamage(0.5, 0.25)
