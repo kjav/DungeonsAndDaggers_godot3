@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=2]
@@ -7,17 +7,23 @@
 [ext_resource path="res://assets/ring.webp" type="Texture" id=5]
 [ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
 [ext_resource path="res://assets/offhand.png" type="Texture" id=7]
-[ext_resource path="res://TitleFont.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=9]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=10]
 [ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=11]
 [ext_resource path="res://assets/basic_sword.png" type="Texture" id=12]
+[ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -72,14 +78,18 @@ rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 7 )
 
 [node name="Label3" type="Label" parent="Tertiary Weapon/Tertiary Offhand"]
-margin_left = 13.0809
-margin_top = 11.1545
-margin_right = 389.081
-margin_bottom = 113.155
+margin_left = 13.6256
+margin_top = 10.8079
+margin_right = 693.626
+margin_bottom = 112.808
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.764706, 0.784314, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Offhand"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tertiary Inactive Button" type="TextureButton" parent="Tertiary Weapon"]
 margin_left = 537.0
@@ -90,13 +100,18 @@ texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
 
 [node name="Label3" type="Label" parent="Tertiary Weapon/Tertiary Inactive Button"]
-margin_left = 53.4882
-margin_top = 192.833
-margin_right = 733.488
-margin_bottom = 294.833
+margin_left = 52.4882
+margin_top = 194.833
+margin_right = 740.488
+margin_bottom = 296.833
 rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Secondary Weapon" type="Node2D" parent="."]
 
@@ -148,14 +163,18 @@ rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 7 )
 
 [node name="Label2" type="Label" parent="Secondary Weapon/Secondary Offhand"]
-margin_left = 13.0807
-margin_top = 11.1545
-margin_right = 389.081
-margin_bottom = 113.155
+margin_left = 13.6256
+margin_top = 10.8079
+margin_right = 693.626
+margin_bottom = 112.808
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.764706, 0.784314, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Offhand"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Secondary Inactive Button" type="TextureButton" parent="Secondary Weapon"]
 margin_left = 257.0
@@ -166,13 +185,18 @@ texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
 
 [node name="Label2" type="Label" parent="Secondary Weapon/Secondary Inactive Button"]
-margin_left = 53.4882
-margin_top = 192.833
-margin_right = 733.488
-margin_bottom = 294.833
+margin_left = 52.4882
+margin_top = 194.833
+margin_right = 740.488
+margin_bottom = 296.833
 rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Primary Weapon" type="Node2D" parent="."]
 
@@ -223,14 +247,18 @@ rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="Primary Weapon/Primary Offhand"]
-margin_left = 11.7481
-margin_top = 11.1544
-margin_right = 387.748
-margin_bottom = 113.154
+margin_left = 12.2928
+margin_top = 10.8079
+margin_right = 692.293
+margin_bottom = 112.808
 rect_scale = Vector2( 0.4, 0.4 )
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 0.764706, 0.784314, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Offhand"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Primary Inactive Button" type="TextureButton" parent="Primary Weapon"]
 margin_left = -22.9872
@@ -239,12 +267,20 @@ margin_right = 277.013
 margin_bottom = 281.334
 texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Primary Weapon/Primary Inactive Button"]
-margin_left = 53.4754
-margin_top = 191.499
-margin_right = 733.475
-margin_bottom = 293.499
+margin_left = 52.4754
+margin_top = 193.499
+margin_right = 740.475
+margin_bottom = 295.499
 rect_scale = Vector2( 0.3, 0.3 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

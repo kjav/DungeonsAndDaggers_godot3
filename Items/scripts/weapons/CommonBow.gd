@@ -13,12 +13,11 @@ func _init():
 	item_name = "Common Bow"
 	item_description = "Bows hit the first enemy in a straight line at any distance. Common's base damage is 1 and has at most 6 ammo."
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5), Vector2(0, -6), Vector2(0, -7)]
-	damage = 1
+	damage = 0.5
 	showBehindHand = true
 	offset = Vector2(10, 22)
 	rotationInHand = deg2rad(185)
 	rotationInOffHand = deg2rad(145)
-	ammo = 6
 
 func onAttack(target, attackDirection, isFirstCollision):
 	if target:

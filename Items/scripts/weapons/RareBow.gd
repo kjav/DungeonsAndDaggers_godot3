@@ -9,5 +9,5 @@ func _init():
 	iconTextureFilePath = "res://assets/rare-bow-icon.png"
 	item_name = "Rare Bow"
 	item_description = "Bows hit the first enemy in a straight line at any distance. Rare's base damage is 2 and has at most 6 ammo."
-	damage = 2
+	damage = 1.5
 	rarity = Enums.WEAPONRARITY.RARE
