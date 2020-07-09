@@ -541,7 +541,7 @@ var Rooms = {
 	"FillerRoom": preload("res://Components/Rooms/FillerRoom.gd").new(),
 	"SpiritRoom": preload("res://Components/Rooms/SpiritRoom.gd").new(),
 	"DoubleSpiritRoom": preload("res://Components/Rooms/DoubleSpiritRoom.gd").new(),
-	"BatRoom": preload("res://Components/Rooms/BatRoom.gd").new(),
+	"RavenRoom": preload("res://Components/Rooms/RavenRoom.gd").new(),
 	"CommonWeaponRoom": preload("res://Components/Rooms/CommonWeaponRoom.gd").new(),
 	"CommonChestRoom": preload("res://Components/Rooms/CommonChestRoom.gd").new(),
 	"CommonLootRoom": preload("res://Components/Rooms/CommonLootRoom.gd").new(),
