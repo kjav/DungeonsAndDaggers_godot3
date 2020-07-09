@@ -83,17 +83,18 @@ script = ExtResource( 3 )
 [node name="ChangingBodyParts" type="Node2D" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ChangingBodyParts"]
-position = Vector2( 16.2757, 21.3268 )
-scale = Vector2( 0.06, 0.06 )
+modulate = Color( 0.729412, 0.729412, 0.729412, 1 )
+position = Vector2( 17.5257, 19.3268 )
+scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 1 )
 animation = "stand_right"
-frame = 3
+frame = 8
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 1 )]
 visible = false
-position = Vector2( 9.6856, 1.07051 )
-scale = Vector2( 0.02, 0.02 )
+position = Vector2( 5.93279, -0.350014 )
+scale = Vector2( 0.03, 0.03 )
 frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
