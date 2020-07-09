@@ -329,7 +329,7 @@ func serialise_player(player):
 		"spell_uses_turn": player.spellUsesTurn,
 		"potion_uses_turn": player.potionUsesTurn,
 		"trap_immune": player.trapImmune,
-		"can_always_hurt_ghosts": player.canAlwaysHurtGhosts,
+		"can_always_hurt_reapers": player.canAlwaysHurtReapers,
 		"increased_spell_damage": player.increasedSpellDamage,
 		"increased_food_heal": player.increasedFoodHeal,
 		"extend_brief_potion": player.extendBriefPotions,
@@ -347,7 +347,7 @@ func load_player(dict):
 		"spellUsesTurn": dict.spell_uses_turn,
 		"potionUsesTurn": dict.potion_uses_turn,
 		"trapImmune": dict.trap_immune,
-		"canAlwaysHurtGhosts": dict.can_always_hurt_ghosts,
+		"canAlwaysHurtReapers": dict.can_always_hurt_reapers,
 		"increasedSpellDamage": dict.increased_spell_damage,
 		"increasedFoodHeal": dict.increased_food_heal,
 		"extendBriefPotions": dict.extend_brief_potion,
@@ -450,8 +450,8 @@ func load_game():
 	save_game.close()
 
 func addCurrentStatusEffects():
-	if GameData.player.canAlwaysHurtGhosts:
-		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.GhostBuster)
+	if GameData.player.canAlwaysHurtReapers:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ReaperBuster)
 	
 	if GameData.player.increasedFoodHeal:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)
@@ -545,7 +545,7 @@ var Rooms = {
 	"CommonWeaponRoom": preload("res://Components/Rooms/CommonWeaponRoom.gd").new(),
 	"CommonChestRoom": preload("res://Components/Rooms/CommonChestRoom.gd").new(),
 	"CommonLootRoom": preload("res://Components/Rooms/CommonLootRoom.gd").new(),
-	"GhostRoom": preload("res://Components/Rooms/GhostRoom.gd").new(),
+	"ReaperRoom": preload("res://Components/Rooms/ReaperRoom.gd").new(),
 	"UncommonWeaponRoom": preload("res://Components/Rooms/UncommonWeaponRoom.gd").new(),
 	"UncommonLootRoom": preload("res://Components/Rooms/UncommonLootRoom.gd").new(),
 	"BossRoomOgre": preload("res://Components/Rooms/BossRoomOgre.gd").new(),
