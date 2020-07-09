@@ -1,4 +1,4 @@
-extends "OgresDomain.gd"
+extends "UndeadCrypt.gd"
 
 func _init().(6):
 	pass

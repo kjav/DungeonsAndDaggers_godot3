@@ -58,7 +58,7 @@ func castMissile():
 	
 	var damage = base_damage
 	
-	if randi()%100 < 66 * pow(0.75, GameData.currentDifficultyOgreDomain):
+	if randi()%100 < 66 * pow(0.75, GameData.currentDifficultyUndeadCrypt):
 		damage = 0
 	
 	new_missile.init(

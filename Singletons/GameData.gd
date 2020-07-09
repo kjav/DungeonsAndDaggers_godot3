@@ -32,8 +32,8 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
-var currentDifficultyOgreDomain = 1
-var unlockedDifficultiesOgreDomain = ["Easy", "Normal"]
+var currentDifficultyUndeadCrypt = 1
+var unlockedDifficultiesUndeadCrypt = ["Easy", "Normal"]
 var possibleDifficulties = ["Easy", "Normal", "Hard"]
 var additionalDifficultyPreText = "Challenge"
 
@@ -44,12 +44,12 @@ var saved_player = null
 var map_seed = null
 
 func unlockNextDifficulty():
-	if unlockedDifficultiesOgreDomain.size() < possibleDifficulties.size():
-		unlockedDifficultiesOgreDomain.append(possibleDifficulties[unlockedDifficultiesOgreDomain.size()])
+	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
+		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
 	else:
-		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesOgreDomain.size()) + 1
+		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesUndeadCrypt.size()) + 1
 		
-		unlockedDifficultiesOgreDomain.append(additionalDifficultyPreText + " " + str(challengeNumber))
+		unlockedDifficultiesUndeadCrypt.append(additionalDifficultyPreText + " " + str(challengeNumber))
 	
 	saveCurrentDifficulties()
 
@@ -360,8 +360,8 @@ func saveCurrentDifficulties():
 	
 	difficulties.open("user://difficulties.save", File.WRITE)
 	difficulties.store_line(to_json({
-		"currentDifficultyOgreDomain": currentDifficultyOgreDomain,
-		"unlockedDifficultiesOgreDomain": unlockedDifficultiesOgreDomain
+		"currentDifficultyUndeadCrypt": currentDifficultyUndeadCrypt,
+		"unlockedDifficultiesUndeadCrypt": unlockedDifficultiesUndeadCrypt
 	}))
 	
 	difficulties.close()
@@ -376,8 +376,8 @@ func loadCurrentDifficulties():
 	while not difficulties.eof_reached():
 		var state = parse_json(difficulties.get_line())
 		if state:
-			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
-			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
+			currentDifficultyUndeadCrypt = state.currentDifficultyUndeadCrypt
+			unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
 	
 	difficulties.close()
 
@@ -409,7 +409,7 @@ func save_game():
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
 		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
-		"difficulty": currentDifficultyOgreDomain
+		"difficulty": currentDifficultyUndeadCrypt
 	}))
 
 	save_game.close()
@@ -443,7 +443,7 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
-			currentDifficultyOgreDomain = state.difficulty
+			currentDifficultyUndeadCrypt = state.difficulty
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	

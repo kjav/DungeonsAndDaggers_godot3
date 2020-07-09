@@ -4,10 +4,10 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
+export(int, "Undead Crypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-	"OgresDomain": preload("res://Components/scripts/OgresDomain.gd"),
+	"UndeadCrypt": preload("res://Components/scripts/UndeadCrypt.gd"),
 	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }
 
