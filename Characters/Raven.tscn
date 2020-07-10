@@ -50,14 +50,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 28 ), ExtResource( 27 ), ExtResource( 36 ), ExtResource( 29 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 31 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ) ],
 "loop": false,
-"name": "attack",
+"name": "hurt_right",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 14 ), ExtResource( 22 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 23 ), ExtResource( 19 ), ExtResource( 24 ) ],
 "loop": false,
-"name": "death",
+"name": "death_right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 27 ), ExtResource( 36 ), ExtResource( 29 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 31 ) ],
+"loop": false,
+"name": "attack_right",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 45 ) ],
@@ -69,11 +74,6 @@ animations = [ {
 "loop": true,
 "name": "stand_right",
 "speed": 12.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 24.0
 } ]
 
 [node name="Raven" type="Node2D"]
@@ -86,8 +86,8 @@ script = ExtResource( 25 )
 position = Vector2( 319.28, 268.708 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 1 )
-animation = "walk_right"
-frame = 4
+animation = "hurt_right"
+frame = 7
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 1 )]

@@ -5,6 +5,7 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
 	self.character_name = 'Raven'
+	hasOnlyRightAnimations = true
 	walkAnimationUsesStand = true
 
 	item_distribution = Constants.Distribution.new([

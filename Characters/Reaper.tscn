@@ -50,14 +50,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 25 ), ExtResource( 47 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 43 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 21 ), ExtResource( 17 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 23 ), ExtResource( 12 ) ],
 "loop": false,
-"name": "attack",
+"name": "hurt_right",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": false,
-"name": "death",
+"name": "death_right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 47 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 43 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 22 ) ],
+"loop": false,
+"name": "attack_right",
 "speed": 24.0
 }, {
 "frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 30 ) ],
@@ -69,11 +74,6 @@ animations = [ {
 "loop": true,
 "name": "stand_right",
 "speed": 12.0
-}, {
-"frames": [ ExtResource( 21 ), ExtResource( 17 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 23 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "hurt",
-"speed": 24.0
 } ]
 
 [node name="Reaper" type="Node2D"]
@@ -87,15 +87,15 @@ modulate = Color( 0.729412, 0.729412, 0.729412, 1 )
 position = Vector2( 17.5257, 19.3268 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 1 )
-animation = "stand_right"
-frame = 11
+animation = "hurt_right"
+frame = 7
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 5.93279, -0.350014 )
 scale = Vector2( 0.03, 0.03 )
-frame = 1
+frame = 3
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 6 )

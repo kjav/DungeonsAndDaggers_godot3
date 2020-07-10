@@ -5,6 +5,8 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
 	self.character_name = 'Reaper'
+	hasOnlyRightAnimations = true
+	
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.07, "value": Constants.UncommonFoodsDistribution.pick()[0].value}, 
 		{"p": 0.05, "value": Constants.CommonFoodsDistribution.pick()[0].value}, 

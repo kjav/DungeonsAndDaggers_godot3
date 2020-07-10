@@ -16,8 +16,7 @@ var environmentsAtPosition = []
 const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase.gd")
 
 var currentAnimationName = ""
-var flipRightAnimationsForLeft = true
-var hasUpAnimations = false
+var hasOnlyRightAnimations = false
 var walkAnimationUsesStand = false
 
 var hudStatusEffects
@@ -421,7 +420,8 @@ func handleCharacterDeath():
 	playDeathAudio()
 	GameData.characters.erase(self)
 	
-	setAnimationOnAllBodyParts("death", true)
+	setDeathAnimation()
+	
 	setPlayingOnAllBodyParts(true, true)
 	removeStunned()
 	
@@ -492,25 +492,34 @@ func setWalkAnimation(direction):
 		setStandAnimation(direction)
 	else:
 		setDirectionAnimation(direction, "walk")
+		
+func setDeathAnimation():
+	setDirectionAnimation(movement_direction, "death", true)
 
 func setStandAnimation(direction):
 	setDirectionAnimation(direction, "stand")
 
-func setDirectionAnimation(direction, animationPreText):
-	if alive():
-		match direction:
-			Enums.DIRECTION.UP:
-				if (hasUpAnimations) :
-					setAnimationOnAllBodyParts(animationPreText + "_up")
-			Enums.DIRECTION.LEFT:
-				if (flipRightAnimationsForLeft):
+func setDirectionAnimation(direction, animationPreText, setEvenIfDead = false):
+	if alive() or setEvenIfDead:
+		if (!hasOnlyRightAnimations):
+			match direction:
+				Enums.DIRECTION.UP:
+					setAnimationOnAllBodyParts(animationPreText + "_up", setEvenIfDead)
+				Enums.DIRECTION.DOWN:
+					setAnimationOnAllBodyParts(animationPreText + "_down", setEvenIfDead)
+				Enums.DIRECTION.LEFT:
+					setAnimationOnAllBodyParts(animationPreText + "_left", setEvenIfDead)
+				Enums.DIRECTION.RIGHT:
+					setAnimationOnAllBodyParts(animationPreText + "_right", setEvenIfDead)
+					setFlip_hOnAllBodyParts(false)
+		else:
+			setAnimationOnAllBodyParts(animationPreText + "_right", setEvenIfDead)
+			
+			match direction:
+				Enums.DIRECTION.LEFT:
 					setFlip_hOnAllBodyParts(true)
-				else:
-					setAnimationOnAllBodyParts(animationPreText + "_left")
-				
-			Enums.DIRECTION.RIGHT:
-				setAnimationOnAllBodyParts(animationPreText + "_right")
-				setFlip_hOnAllBodyParts(false)
+				Enums.DIRECTION.RIGHT:
+					setFlip_hOnAllBodyParts(false)
 
 func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
