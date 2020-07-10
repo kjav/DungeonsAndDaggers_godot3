@@ -142,7 +142,7 @@ func set_map_type(type):
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 			
 			if type == "Tutorial":
-				if node.character_name == "Fire Spirit" or node.character_name == "Water Spirit":
+				if node.character_name == "Zombie":
 					node.item_distribution = null
 				elif node.character_name == "Training Dummy":
 					node.item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])

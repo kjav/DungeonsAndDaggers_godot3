@@ -4,7 +4,7 @@ const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
-	self.character_name = 'Fire Spirit'
+	self.character_name = 'Zombie'
 
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.1, "value": Constants.DistributionOfEquals.new([{ "value": Constants.PotionClasses.BriefStrengthPotion }, { "value": Constants.CommonPotionsDistribution.pick()[0].value }]).pick()[0].value}, 

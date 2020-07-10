@@ -14,7 +14,7 @@ func setup_params():
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/FireSpirit.tscn"),
+			"value": load("res://Characters/ZombieBrown.tscn"),
 			"position": Vector2(2, 4)
 		},
 		{
@@ -24,7 +24,7 @@ func setup_params():
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/FireSpirit.tscn"),
+			"value": load("res://Characters/ZombieBrown.tscn"),
 			"position": Vector2(2, 7)
 		}
 	])

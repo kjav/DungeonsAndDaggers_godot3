@@ -10,7 +10,7 @@ func setup_params():
 	
 	npc_distribution = IndependentDistribution.new([
 		{ "p": 0.9, "value": load("res://Characters/WaterSpirit.tscn") },
-		{ "p": 0.9, "value": load("res://Characters/FireSpirit.tscn") }
+		{ "p": 0.9, "value": load("res://Characters/ZombieBrown.tscn") }
 	])
 
 func apply_randomness():

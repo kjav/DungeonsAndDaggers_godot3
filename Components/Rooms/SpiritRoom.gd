@@ -11,7 +11,7 @@ func setup_params():
 func apply_randomness():
 	npc_distribution = Distribution.new([{ "p": 0.9, "value": DistributionOfEquals.new([
 			{ "value": load("res://Characters/WaterSpirit.tscn") },
-			{ "value": load("res://Characters/FireSpirit.tscn") }
+			{ "value": load("res://Characters/ZombieBrown.tscn") }
 		]).pick()[0].value}
 	])
 	
