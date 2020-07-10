@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fire_spirit_flames_4.png-c8b3c6f1b6275eefa171217eea441de9.stex"
+path="res://.import/zombie_creme.png-30c47cb9560d7547fb6645e589da3fb3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/FireSpirit/fire_spirit_flames_4.png"
-dest_files=[ "res://.import/fire_spirit_flames_4.png-c8b3c6f1b6275eefa171217eea441de9.stex" ]
+source_file="res://assets/Zombie/zombie_creme.png"
+dest_files=[ "res://.import/zombie_creme.png-30c47cb9560d7547fb6645e589da3fb3.stex" ]
 
 [params]
 

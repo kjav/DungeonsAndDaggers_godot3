@@ -9,7 +9,7 @@ func setup_params():
 	[
 		{
 			"p": 1, 
-			"value": load("res://Characters/WaterSpirit.tscn"),
+			"value": load("res://Characters/ZombieCreme.tscn"),
 			"position": Vector2(2, 3)
 		},
 		{
@@ -19,7 +19,7 @@ func setup_params():
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/WaterSpirit.tscn"),
+			"value": load("res://Characters/ZombieCreme.tscn"),
 			"position": Vector2(2, 6)
 		},
 		{
