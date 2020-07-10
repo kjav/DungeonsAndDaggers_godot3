@@ -8,7 +8,7 @@ var moveTo
 var attackedLastTurn
 
 func _init():
-	self.character_name = 'Novice Mage'
+	self.character_name = 'Necromancer'
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.07, "value": Constants.UncommonFoodsDistribution.pick()[0].value}, 
 		{"p": 0.06, "value": Constants.CommonFoodsDistribution.pick()[0].value}, 

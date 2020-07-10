@@ -50,6 +50,16 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 45 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 21 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "stand_right",
+"speed": 12.0
+}, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 26 ), ExtResource( 34 ), ExtResource( 30 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ) ],
 "loop": false,
 "name": "hurt_right",
@@ -64,16 +74,6 @@ animations = [ {
 "loop": false,
 "name": "attack_right",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 45 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 21 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "stand_right",
-"speed": 12.0
 } ]
 
 [node name="Raven" type="Node2D"]
@@ -93,6 +93,7 @@ playing = true
 [node name="Stars" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 144.936, 27.6696 )
+frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 320, 183 )

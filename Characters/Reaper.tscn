@@ -50,6 +50,16 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "walk_right",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 26 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 18 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 39 ), ExtResource( 27 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "stand_right",
+"speed": 12.0
+}, {
 "frames": [ ExtResource( 21 ), ExtResource( 17 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 23 ), ExtResource( 12 ) ],
 "loop": false,
 "name": "hurt_right",
@@ -64,16 +74,6 @@ animations = [ {
 "loop": false,
 "name": "attack_right",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 46 ), ExtResource( 26 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 18 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 39 ), ExtResource( 27 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "stand_right",
-"speed": 12.0
 } ]
 
 [node name="Reaper" type="Node2D"]
@@ -84,7 +84,7 @@ script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ChangingBodyParts"]
 modulate = Color( 0.729412, 0.729412, 0.729412, 1 )
-position = Vector2( 17.5257, 19.3268 )
+position = Vector2( 16.895, 19.3297 )
 scale = Vector2( 0.05, 0.05 )
 frames = SubResource( 1 )
 animation = "hurt_right"
