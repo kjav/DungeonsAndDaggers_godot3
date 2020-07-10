@@ -4,10 +4,10 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "Ogres Domain", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
+export(int, "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
-	"OgresDomain": preload("res://Components/scripts/OgresDomain.gd"),
+	"UndeadCrypt": preload("res://Components/scripts/UndeadCrypt.gd"),
 	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }
 
@@ -142,7 +142,7 @@ func set_map_type(type):
 			node.isPartOfBossRoom = enemy.isPartOfBossRoom
 			
 			if type == "Tutorial":
-				if node.character_name == "Fire Spirit" or node.character_name == "Water Spirit":
+				if node.character_name == "Zombie":
 					node.item_distribution = null
 				elif node.character_name == "Training Dummy":
 					node.item_distribution = Constants.IndependentDistribution.new([{"p": 1, "value": Constants.FoodClasses.Apple}])

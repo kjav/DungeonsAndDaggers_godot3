@@ -1,7 +1,7 @@
 extends "OverlayMenu.gd"
 
 func fadeIn():
-	if GameData.currentDifficultyOgreDomain == GameData.unlockedDifficultiesOgreDomain.size() - 1:
+	if GameData.currentDifficultyUndeadCrypt == GameData.unlockedDifficultiesUndeadCrypt.size() - 1:
 		get_node("Difficulty Text").visible = true
 		GameData.unlockNextDifficulty()
 	

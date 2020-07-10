@@ -2,7 +2,7 @@ extends TextureButton
 
 # Only show if a save exists
 func _ready():
-	if GameData.has_save_game("OgresDomain"):
+	if GameData.has_save_game("UndeadCrypt"):
 		show()
 	else:
 		hide()
