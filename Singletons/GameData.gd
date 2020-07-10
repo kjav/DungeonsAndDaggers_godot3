@@ -375,9 +375,13 @@ func loadCurrentDifficulties():
 	
 	while not difficulties.eof_reached():
 		var state = parse_json(difficulties.get_line())
+		
 		if state:
-			currentDifficultyUndeadCrypt = state.currentDifficultyUndeadCrypt
-			unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
+			if state.has("currentDifficultyUndeadCrypt"):
+				currentDifficultyUndeadCrypt = state.currentDifficultyUndeadCrypt
+			
+			if state.has("unlockedDifficultiesUndeadCrypt"):
+				unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
 	
 	difficulties.close()
 
@@ -443,7 +447,8 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
-			currentDifficultyUndeadCrypt = state.difficulty
+			if state.has("difficulty"):
+				currentDifficultyUndeadCrypt = state.difficulty
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	

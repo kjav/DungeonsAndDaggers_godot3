@@ -4,7 +4,7 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "Undead Crypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
+export(int, "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
 	"UndeadCrypt": preload("res://Components/scripts/UndeadCrypt.gd"),

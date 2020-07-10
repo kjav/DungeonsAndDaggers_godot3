@@ -4,7 +4,8 @@ const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
-	self.character_name = 'Bat'
+	self.character_name = 'Raven'
+	walkAnimationUsesStand = true
 
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.2, "value": Constants.CommonFoodsDistribution.pick()[0].value},

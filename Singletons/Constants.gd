@@ -61,7 +61,7 @@ const UpgradeClasses = {
 	"ReserveWeapon": preload("res://Items/scripts/upgrades/ReserveWeapon.gd"),
 	"QuickDrinker": preload("res://Items/scripts/upgrades/QuickDrinker.gd"),
 	"PotionExtender": preload("res://Items/scripts/upgrades/PotionExtender.gd"),
-	"ReaperRoom": preload("res://Items/scripts/upgrades/ReaperRoom.gd"),
+	"ReaperRoom": preload("res://Items/scripts/upgrades/ReaperBuster.gd"),
 	"Versatile": preload("res://Items/scripts/upgrades/Versatile.gd"),
 	"MaliciousSpellcaster": preload("res://Items/scripts/upgrades/MaliciousSpellcaster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
@@ -73,7 +73,7 @@ var StatusEffects = {
 	"TemporaryHealth": preload("res://StatusEffects/TemporaryHealth.gd").new(),
 	"Invisible": preload("res://StatusEffects/Invisible.gd").new(),
 	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
-	"ReaperRoom": preload("res://StatusEffects/ReaperRoom.gd").new(),
+	"ReaperRoom": preload("res://StatusEffects/ReaperBuster.gd").new(),
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
 	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
 	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),

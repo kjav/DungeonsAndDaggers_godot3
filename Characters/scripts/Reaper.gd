@@ -4,7 +4,7 @@ const Turn = preload("res://Characters/scripts/behaviours/Turn.gd")
 const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
-	self.character_name = 'Ghost'
+	self.character_name = 'Reaper'
 	item_distribution = Constants.Distribution.new([
 		{"p": 0.07, "value": Constants.UncommonFoodsDistribution.pick()[0].value}, 
 		{"p": 0.05, "value": Constants.CommonFoodsDistribution.pick()[0].value}, 
@@ -29,4 +29,4 @@ func _ready():
 
 func turn(skipTurnBehaviour = false):
 	.turn()    
-	self.damageable = turnBehaviour.getDamageable() || GameData.player.canAlwaysHurtGhosts
+	self.damageable = turnBehaviour.getDamageable() || GameData.player.canAlwaysHurtReapers
