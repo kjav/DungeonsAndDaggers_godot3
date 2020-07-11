@@ -56,14 +56,14 @@ func level_rooms(level):
 			{ "p": 0.1, "value": GameData.Rooms.FillerRoom },
 			{ "p": 0.08, "value": GameData.Rooms.TrapRoom },
 			{ "p": 0.07, "value": GameData.Rooms.UncommonWeaponRoom },
-			{ "p": 0.05, "value": GameData.Rooms.BabyOgreRoom },
+			{ "p": 0.05, "value": GameData.Rooms.MummyRoom },
 			{ "p": 0.05, "value": GameData.Rooms.UncommonLootRoom },
 			{ "p": 0.03, "value": GameData.Rooms.UncommonChestRoom },
 			{ "p": 0.02, "value": GameData.Rooms.DoubleSpiritRoom },
 		])
 	elif level == 5:
 		return Distribution.new([
-			{ "p": 0.2, "value": GameData.Rooms.BabyOgreRoom },
+			{ "p": 0.2, "value": GameData.Rooms.MummyRoom },
 			{ "p": 0.15, "value": GameData.Rooms.ReaperRoom },
 			{ "p": 0.15, "value": GameData.Rooms.MageRoom },
 			{ "p": 0.12, "value": GameData.Rooms.RavenRoom },
@@ -79,7 +79,7 @@ func level_rooms(level):
 		])
 	elif level == 6:
 		return Distribution.new([
-			{ "p": 0.2, "value": GameData.Rooms.BabyOgreRoom },
+			{ "p": 0.2, "value": GameData.Rooms.MummyRoom },
 			{ "p": 0.15, "value": GameData.Rooms.ReaperRoom },
 			{ "p": 0.15, "value": GameData.Rooms.MageRoom },
 			{ "p": 0.12, "value": GameData.Rooms.RavenRoom },
@@ -95,7 +95,7 @@ func level_rooms(level):
 		])
 	else:
 		return Distribution.new([
-			{ "p": 0.2, "value": GameData.Rooms.BabyOgreRoom },
+			{ "p": 0.2, "value": GameData.Rooms.MummyRoom },
 			{ "p": 0.1, "value": GameData.Rooms.Corridor },
 			{ "p": 0.1, "value": GameData.Rooms.ReaperRoom },
 			{ "p": 0.2, "value": GameData.Rooms.MageRoom },

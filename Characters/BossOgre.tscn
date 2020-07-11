@@ -20,37 +20,37 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "walk_up",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "walk_left",
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "stand_up",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "walk_left",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": false,
-"name": "stand_left",
+"name": "walk_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -58,22 +58,22 @@ animations = [ {
 "name": "walk_left",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": false,
-"name": "stand_up",
+"name": "stand_left",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": false,
-"name": "stand_left",
+"name": "walk_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 10 ) ],
@@ -81,22 +81,22 @@ animations = [ {
 "name": "walk_left",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
-"name": "stand_up",
+"name": "stand_left",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 13 ) ],
 "loop": false,
-"name": "stand_left",
+"name": "walk_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -104,42 +104,17 @@ animations = [ {
 "name": "walk_left",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": false,
-"name": "stand_up",
+"name": "stand_left",
 "speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
 "frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "stand_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "walk_left",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "walk_right",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "stand_up",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "stand_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
@@ -148,21 +123,46 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
 "loop": false,
 "name": "walk_down",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "stand_up",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "walk_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "stand_left",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "stand_down",
+"speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "stand_left",
+"name": "walk_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "walk_up",
+"name": "stand_up",
 "speed": 1.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -172,7 +172,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "stand_up",
+"name": "stand_left",
 "speed": 1.0
 } ]
 

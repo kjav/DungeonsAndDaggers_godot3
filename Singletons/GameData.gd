@@ -555,7 +555,7 @@ var Rooms = {
 	"UncommonLootRoom": preload("res://Components/Rooms/UncommonLootRoom.gd").new(),
 	"BossRoomOgre": preload("res://Components/Rooms/BossRoomOgre.gd").new(),
 	"DoubleBossRoomOgre": preload("res://Components/Rooms/DoubleBossRoomOgre.gd").new(),
-	"BabyOgreRoom": preload("res://Components/Rooms/BabyOgreRoom.gd").new(),
+	"MummyRoom": preload("res://Components/Rooms/MummyRoom.gd").new(),
 	"TrapRoom": preload("res://Components/Rooms/TrapRoom.gd").new(),
 	"MageRoom": preload("res://Components/Rooms/MageRoom.gd").new(),
 	"UncommonChestRoom": preload("res://Components/Rooms/UncommonChestRoom.gd").new(),

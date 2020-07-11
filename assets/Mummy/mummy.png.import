@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BabyOgre_Up_2.png-540b8f7de7186aa89b7874fae142b423.stex"
+path="res://.import/mummy.png-ae02d8675e08568748692cc76b035b90.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/Baby Ogre/BabyOgre_Up_2.png"
-dest_files=[ "res://.import/BabyOgre_Up_2.png-540b8f7de7186aa89b7874fae142b423.stex" ]
+source_file="res://assets/Mummy/mummy.png"
+dest_files=[ "res://.import/mummy.png-ae02d8675e08568748692cc76b035b90.stex" ]
 
 [params]
 
