@@ -12,12 +12,12 @@ func setup_params():
 	npc_distribution = IndependentDistribution.new([
 		{
 			"p": 1, 
-			"value": load("res://Characters/BossOgre.tscn"),
+			"value": load("res://Characters/UndeadDragon.tscn"),
 			"position": Vector2(1, 1),
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/BossOgre.tscn"),
+			"value": load("res://Characters/UndeadDragon.tscn"),
 			"position": Vector2(5, 7),
 		}
 	])

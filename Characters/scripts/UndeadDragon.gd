@@ -37,7 +37,7 @@ var currentFlip_hState
 var walkingUp
 
 func _init():
-	self.character_name = 'Boss Ogre'
+	self.character_name = 'Undead Dragon'
 
 	item_distribution = Constants.IndependentDistribution.new([
 		{ "p": 1, "value": Constants.Distribution.new([

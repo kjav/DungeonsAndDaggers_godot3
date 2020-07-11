@@ -117,9 +117,9 @@ func level_final_rooms(level):
 
 func pick_bossroom(level):
 	if GameData.isFirstBossLevel(level):
-		return GameData.Rooms.BossRoomOgre
+		return GameData.Rooms.BossRoomUndeadDragon
 	
-	return GameData.Rooms.DoubleBossRoomOgre
+	return GameData.Rooms.DoubleBossRoomUndeadDragon
 
 func add_room(name, room, wall):
 	room.apply_randomness()

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boss_ogre_body_back_2.png-d749215cf7d67811beed497b5f8efe53.stex"
+path="res://.import/UndeadDragon.png-99d6e9dea0abeadd01849ded629c7dee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/OgreBoss/boss_ogre_body_back_2.png"
-dest_files=[ "res://.import/boss_ogre_body_back_2.png-d749215cf7d67811beed497b5f8efe53.stex" ]
+source_file="res://assets/UndeadDragon/UndeadDragon.png"
+dest_files=[ "res://.import/UndeadDragon.png-99d6e9dea0abeadd01849ded629c7dee.stex" ]
 
 [params]
 
