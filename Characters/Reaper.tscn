@@ -96,7 +96,6 @@ playing = true
 visible = false
 position = Vector2( 5.93279, -0.350014 )
 scale = Vector2( 0.03, 0.03 )
-frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 6 )

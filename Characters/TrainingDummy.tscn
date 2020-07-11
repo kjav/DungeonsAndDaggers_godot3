@@ -8,14 +8,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "death",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
-"name": "stand_down",
+"name": "stand_right",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "death_right",
 "speed": 1.0
 } ]
 
@@ -28,13 +28,14 @@ script = ExtResource( 1 )
 [node name="Body" type="AnimatedSprite" parent="ChangingBodyParts"]
 position = Vector2( 136, -32 )
 frames = SubResource( 1 )
-animation = "stand_down"
+animation = "stand_right"
 playing = true
 centered = false
 
 [node name="Stars" parent="." instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 79.9778, -271.144 )
+frame = 0
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 272, -60 )
