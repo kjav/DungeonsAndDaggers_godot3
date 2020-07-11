@@ -469,8 +469,9 @@ playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 9.76915, -0.163147 )
-scale = Vector2( 0.02, 0.02 )
+position = Vector2( 0.26915, -0.163147 )
+scale = Vector2( 0.05, 0.02 )
+frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 16.5, -0.25 )
