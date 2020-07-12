@@ -33,8 +33,6 @@ var EffectsNode
 var stageOneDefeated
 var alternateAttackCue
 var visualAttackCueActive
-var currentFlip_hState
-var walkingUp
 
 func _init():
 	self.character_name = 'Undead Dragon'
@@ -63,30 +61,13 @@ func _ready():
 	stageOneDefeated = false
 	alternateAttackCue = false
 	visualAttackCueActive = false
-	currentFlip_hState = false
-	walkingUp = false
 	
 	turnBehaviour.LeaveWaitAttackWaitSequence()
 
 	changingBodyParts = get_node("ChangingBodyParts")
-	leftArm = changingBodyParts.get_node("Left Arm")
-	rightArm = changingBodyParts.get_node("Right Arm")
-	head = changingBodyParts.get_node("Head")
 	body = changingBodyParts.get_node("Body")
-	leftArmAngerOverlay = changingBodyParts.get_node("Left Arm Anger Overlay")
-	rightArmAngerOverlay = changingBodyParts.get_node("Right Arm Anger Overlay")
-	headAngerOverlay = changingBodyParts.get_node("Head Anger Overlay")
-	bodyAngerOverlay = changingBodyParts.get_node("Body Anger Overlay")
-	
 	additionalRelativeAttackPositions = []
 	turnBehaviour.additionalRelativeAttackPositions = []
-	
-	leftArmAngerOverlay.hide()
-	rightArmAngerOverlay.hide()
-	headAngerOverlay.hide()
-	bodyAngerOverlay.hide()
-	
-	headFrameSize = head.frames.get_frame("stand_left", 0).get_size()
 	
 	setBaseDamage(2)
 	setInitialHealth(8, 16, 8)
@@ -97,7 +78,6 @@ func _ready():
 func turn(skipTurnBehaviour = false):
 	if stunnedDuration <= 0:
 		.turnWithNoAfterMoveComplete()
-		
 		if (turnBehaviour.Attacking()):
 			addHeavyImpacts()
 			
@@ -136,24 +116,8 @@ func turn(skipTurnBehaviour = false):
 func setVisualAttackCues():
 	if alternateAttackCue:
 		if visualAttackCueActive:
-			leftArm.set_flip_h( false )
-			leftArmAngerOverlay.set_flip_h( false )
-			rightArm.set_flip_h( true )
-			rightArmAngerOverlay.set_flip_h( true )
-			
-			if walkingUp:
-				leftArm.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
-				leftArmAngerOverlay.position.x -= leftArm.frames.get_frame("stand_left", 0).get_size().x
-		else:
-			leftArm.set_flip_h( currentFlip_hState )
-			leftArmAngerOverlay.set_flip_h( currentFlip_hState )
-			rightArm.set_flip_h( currentFlip_hState )
-			rightArmAngerOverlay.set_flip_h( currentFlip_hState )
-	
-	leftArm.set_flip_v( visualAttackCueActive )
-	leftArmAngerOverlay.set_flip_v( visualAttackCueActive )
-	rightArm.set_flip_v( visualAttackCueActive )
-	rightArmAngerOverlay.set_flip_v( visualAttackCueActive )
+			pass
+	#set visual cue 
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
@@ -173,18 +137,6 @@ func addHeavyImpacts():
 		else:
 			AddHeavyImpact(attackPosition * GameData.TileSize)
 
-func getHeadLeftTopPosition():
-	return Vector2(head.position.x - headFrameSize.x / 2, head.position.y - headFrameSize.y / 2)
-
-func getHeadLeftMiddlePosition():
-	return Vector2(head.position.x - headFrameSize.x / 2, head.position.y)
-
-func getHeadRightTopPosition():
-	return Vector2(head.position.x + headFrameSize.x / 2, head.position.y - headFrameSize.y / 2)
-
-func getHeadRightMiddlePosition():
-	return Vector2(head.position.x + headFrameSize.x / 2, head.position.y)
-
 func AddHeavyImpact(position):
 	var heavyImpactInstance = HeavyImpact.instance()
 	
@@ -198,86 +150,19 @@ func resetToStartPosition():
 	_ready()
 
 func setWalkAnimation(direction):
-	walkingUp = false
-	
-	match direction:
-		Enums.DIRECTION.UP:
-			setAnimationOnAllBodyParts("walk_up")
-			walkingUp = true
-			currentFlip_hState = true
-		Enums.DIRECTION.DOWN:
-			setAnimationOnAllBodyParts("walk_left")
-		Enums.DIRECTION.LEFT:
-			setAnimationOnAllBodyParts("walk_left")
-			currentFlip_hState = false
-		Enums.DIRECTION.RIGHT:
-			setAnimationOnAllBodyParts("walk_left")
-			currentFlip_hState = true
-	
-	adjustBosyPositions()
-
-func setStandAnimation(direction):
-	walkingUp = false
-	
-	match direction:
-		Enums.DIRECTION.UP:
-			setAnimationOnAllBodyParts("stand_up")
-			walkingUp = true
-			currentFlip_hState = true
-		Enums.DIRECTION.DOWN:
-			setAnimationOnAllBodyParts("stand_left")
-		Enums.DIRECTION.LEFT:
-			setAnimationOnAllBodyParts("stand_left")
-			currentFlip_hState = false
-		Enums.DIRECTION.RIGHT:
-			setAnimationOnAllBodyParts("stand_left")
-			currentFlip_hState = true
-	
-	adjustBosyPositions()
-
-func adjustBosyPositions():
-	setFlip_hOnAllBodyParts(currentFlip_hState)
-	
-	if (walkingUp):
-		adjustPositonForWalkingUp()
-	else:
-		changingBodyParts.move_child(bodyAngerOverlay, 0)
-		changingBodyParts.move_child(body, 0)
-		adjustPositonForFacingDown()
+	.setWalkAnimation(direction)
 	
 	setVisualAttackCues()
 
-func adjustPositonForWalkingUp():
-	head.position.x = headXUpPosition
-	headAngerOverlay.position.x = headXUpPosition
-	leftArm.position.x = leftArmXUpPosition
-	leftArmAngerOverlay.position.x = leftArmXUpPosition
-	rightArm.position.x = rightArmXUpPosition
-	rightArmAngerOverlay.position.x = rightArmXUpPosition
+func faceDirecion(direction):
+	.faceDirecion(direction)
 	
-	changingBodyParts.move_child(body, changingBodyParts.get_child_count()-1)
-	changingBodyParts.move_child(bodyAngerOverlay, changingBodyParts.get_child_count()-1)
+	setVisualAttackCues()
 
-func adjustPositonForFacingDown():
-	var plannedLeftArmXPosition
-	var plannedRightArmXPosition
-	var plannedHeadArmXPosition
+func setStandAnimation(direction):
+	.setStandAnimation(direction)
 	
-	if currentFlip_hState:
-		plannedLeftArmXPosition = leftArmXFlippedPosition
-		plannedRightArmXPosition = rightArmXFlippedPosition
-		plannedHeadArmXPosition = headXFlippedPosition
-	else:
-		plannedLeftArmXPosition = leftArmXInitialPosition
-		plannedRightArmXPosition = rightArmXInitialPosition
-		plannedHeadArmXPosition = headXInitialPosition
-	
-	leftArm.position.x = plannedLeftArmXPosition
-	leftArmAngerOverlay.position.x = plannedLeftArmXPosition
-	rightArm.position.x = plannedRightArmXPosition
-	rightArmAngerOverlay.position.x = plannedRightArmXPosition
-	head.position.x = plannedHeadArmXPosition
-	headAngerOverlay.position.x = plannedHeadArmXPosition
+	setVisualAttackCues()
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
@@ -288,24 +173,7 @@ func handleCharacterDeath():
 	else:
 		stageOneDefeated = true
 		.heal(300, true)
-		
-		addAngerMark(getHeadLeftTopPosition(), PI/4)
-		addAngerMark(getHeadLeftMiddlePosition(), PI/16)
-		addAngerMark(getHeadRightTopPosition(), PI*3/4)
-		addAngerMark(getHeadRightMiddlePosition(), PI*15/16)
-		
-		leftArmAngerOverlay.show()
-		rightArmAngerOverlay.show()
-		headAngerOverlay.show()
-		bodyAngerOverlay.show()
-
-func addAngerMark(position, rotation):
-	var angerMark = AngerMark.instance()
-	
-	angerMark.setRotation(rotation)
-	angerMark.position = position
-	
-	self.add_child(angerMark)
+		#style for
 
 func deathWinConditionMet():
 	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2
