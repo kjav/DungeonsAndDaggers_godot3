@@ -110,6 +110,9 @@ func turn(skipTurnBehaviour = false):
 			
 			visualAttackCueActive = true
 			setVisualAttackCues()
+		
+		if (turnBehaviour.Attacking()):
+			setWalkAnimation(previous_stand_direction)
 	else:
 		.turn()
 
@@ -150,19 +153,37 @@ func resetToStartPosition():
 	_ready()
 
 func setWalkAnimation(direction):
-	.setWalkAnimation(direction)
+	if(turnBehaviour.Attacking()):
+		.setWalkAnimation(turnBehaviour.attackDirection)
+	elif turnBehaviour.PreparingAttack():
+		setPrepareAttackAnimation(direction)
+	else:
+		.setWalkAnimation(direction)
 	
 	setVisualAttackCues()
 
 func faceDirecion(direction):
-	.faceDirecion(direction)
+	if(turnBehaviour.Attacking()):
+		.faceDirecion(turnBehaviour.attackDirection)
+	elif turnBehaviour.PreparingAttack():
+		setPrepareAttackAnimation(direction)
+	else:
+		.faceDirecion(direction)
 	
 	setVisualAttackCues()
 
 func setStandAnimation(direction):
-	.setStandAnimation(direction)
+	if(turnBehaviour.Attacking()):
+		.setStandAnimation(turnBehaviour.attackDirection)
+	elif turnBehaviour.PreparingAttack():
+		setPrepareAttackAnimation(direction)
+	else:
+		.setStandAnimation(direction)
 	
 	setVisualAttackCues()
+
+func setPrepareAttackAnimation(direction):
+	setDirectionAnimation(direction, "prepare_attack")
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
