@@ -198,3 +198,16 @@ func handleCharacterDeath():
 
 func deathWinConditionMet():
 	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2
+
+func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
+	var currentAnimationNameToUse = currentAnimationName
+	
+	.setAnimationOnAllBodyParts(animationName, setEvenIfDead)
+	
+	if (alive() or setEvenIfDead) and currentAnimationNameToUse != animationName:
+		if "prepare_attack" in animationName:
+			get_node("ChangingBodyParts/SideFlameBehind").set_animation(animationName)
+			get_node("ChangingBodyParts/SideFlameFront").set_animation(animationName)
+		else:
+			get_node("ChangingBodyParts/SideFlameBehind").set_animation("none")
+			get_node("ChangingBodyParts/SideFlameFront").set_animation("none")
