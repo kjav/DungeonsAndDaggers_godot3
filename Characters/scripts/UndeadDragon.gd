@@ -179,7 +179,10 @@ func handleCharacterDeath():
 	else:
 		stageOneDefeated = true
 		.heal(300, true)
-		#style for
+		get_node("BloodExplosion").show()
+		get_node("BloodExplosion").explode()
+		get_node("ChangingBodyParts/Body").hide()
+		get_node("ChangingBodyParts/RedBody").show()
 
 func deathWinConditionMet():
 	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2
