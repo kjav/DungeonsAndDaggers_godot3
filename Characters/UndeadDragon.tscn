@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://assets/UndeadDragon/UndeadDragon.png" type="Texture" id=1]
 [ext_resource path="res://Characters/scripts/UndeadDragon.gd" type="Script" id=2]
@@ -6,35 +6,36 @@
 [ext_resource path="res://Characters/HealthBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/UndeadDragon/sideFlames.png" type="Texture" id=5]
 [ext_resource path="res://assets/transparent_pixel.png" type="Texture" id=6]
+[ext_resource path="res://assets/UndeadDragon/forwardFlames.png" type="Texture" id=7]
 
-[sub_resource type="AtlasTexture" id=58]
+[sub_resource type="AtlasTexture" id=179]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 1024, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=59]
+[sub_resource type="AtlasTexture" id=180]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 1024, 1024, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=60]
+[sub_resource type="AtlasTexture" id=181]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 1536, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=61]
+[sub_resource type="AtlasTexture" id=182]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 512, 1024, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=62]
+[sub_resource type="AtlasTexture" id=183]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 1536, 1024, 512, 512 )
 
-[sub_resource type="AtlasTexture" id=63]
+[sub_resource type="AtlasTexture" id=184]
 flags = 4
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 512, 1536, 512, 512 )
 
 [sub_resource type="SpriteFrames" id=64]
@@ -54,7 +55,7 @@ animations = [ {
 "name": "prepare_attack_down",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ],
+"frames": [ SubResource( 179 ), SubResource( 180 ), SubResource( 181 ), SubResource( 182 ), SubResource( 183 ), SubResource( 184 ) ],
 "loop": true,
 "name": "prepare_attack_up",
 "speed": 12.0
@@ -691,6 +692,96 @@ animations = [ {
 "speed": 12.0
 } ]
 
+[sub_resource type="AtlasTexture" id=161]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 3072, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=162]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 3072, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=163]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 3584, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=164]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 3072, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=165]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1536, 3072, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=166]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 3584, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=167]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=168]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=169]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=170]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=171]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1536, 0, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=172]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 512, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=173]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 2048, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=174]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1024, 2048, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=175]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 2560, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=176]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 2048, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=177]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1536, 2048, 512, 512 )
+
+[sub_resource type="AtlasTexture" id=178]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 512, 2560, 512, 512 )
+
 [sub_resource type="SpriteFrames" id=160]
 animations = [ {
 "frames": [ ExtResource( 6 ) ],
@@ -698,12 +789,12 @@ animations = [ {
 "name": "none",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 141 ), SubResource( 142 ), SubResource( 143 ), SubResource( 144 ), SubResource( 145 ), SubResource( 146 ) ],
+"frames": [ SubResource( 161 ), SubResource( 162 ), SubResource( 163 ), SubResource( 164 ), SubResource( 165 ), SubResource( 166 ) ],
 "loop": true,
 "name": "prepare_attack_right",
 "speed": 12.0
 }, {
-"frames": [ SubResource( 147 ), SubResource( 148 ), SubResource( 149 ), SubResource( 150 ), SubResource( 151 ), SubResource( 152 ) ],
+"frames": [ SubResource( 167 ), SubResource( 168 ), SubResource( 169 ), SubResource( 170 ), SubResource( 171 ), SubResource( 172 ) ],
 "loop": true,
 "name": "prepare_attack_down",
 "speed": 12.0
@@ -713,7 +804,7 @@ animations = [ {
 "name": "prepare_attack_up",
 "speed": 1.0
 }, {
-"frames": [ SubResource( 153 ), SubResource( 154 ), SubResource( 155 ), SubResource( 156 ), SubResource( 157 ), SubResource( 158 ) ],
+"frames": [ SubResource( 173 ), SubResource( 174 ), SubResource( 175 ), SubResource( 176 ), SubResource( 177 ), SubResource( 178 ) ],
 "loop": true,
 "name": "prepare_attack_left",
 "speed": 12.0
@@ -726,6 +817,14 @@ script = ExtResource( 2 )
 [node name="ChangingBodyParts" type="Node2D" parent="."]
 
 [node name="SideFlameBehind" type="AnimatedSprite" parent="ChangingBodyParts"]
+visible = false
+position = Vector2( 16.431, 11.26 )
+scale = Vector2( 0.1, 0.135 )
+frames = SubResource( 64 )
+animation = "none"
+playing = true
+
+[node name="ForwardFlameBehind" type="AnimatedSprite" parent="ChangingBodyParts"]
 position = Vector2( 16.431, 11.26 )
 scale = Vector2( 0.1, 0.135 )
 frames = SubResource( 64 )
@@ -737,18 +836,18 @@ position = Vector2( 16.4309, 11.26 )
 scale = Vector2( 0.1, 0.135 )
 frames = SubResource( 140 )
 animation = "stand_right"
-frame = 2
+frame = 3
 playing = true
 
 [node name="SideFlameFront" type="AnimatedSprite" parent="ChangingBodyParts"]
+visible = false
 position = Vector2( 16.431, 11.26 )
 scale = Vector2( 0.1, 0.135 )
 frames = SubResource( 159 )
 animation = "none"
 playing = true
 
-[node name="ForwardFlameFront2" type="AnimatedSprite" parent="ChangingBodyParts"]
-visible = false
+[node name="ForwardFlameFront" type="AnimatedSprite" parent="ChangingBodyParts"]
 position = Vector2( 16.431, 11.26 )
 scale = Vector2( 0.1, 0.135 )
 frames = SubResource( 160 )
@@ -759,7 +858,7 @@ playing = true
 visible = false
 position = Vector2( 0.26915, -0.163147 )
 scale = Vector2( 0.05, 0.02 )
-frame = 1
+frame = 3
 
 [node name="Health Bar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 16.5, -0.25 )

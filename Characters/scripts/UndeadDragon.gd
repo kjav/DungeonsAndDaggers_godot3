@@ -31,8 +31,6 @@ var headFrameSize
 
 var EffectsNode
 var stageOneDefeated
-var alternateAttackCue
-var visualAttackCueActive
 
 func _init():
 	self.character_name = 'Undead Dragon'
@@ -59,8 +57,6 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	self.get_node("Stars").hide()
 	stageOneDefeated = false
-	alternateAttackCue = false
-	visualAttackCueActive = false
 	
 	turnBehaviour.LeaveWaitAttackWaitSequence()
 
@@ -81,9 +77,6 @@ func turn(skipTurnBehaviour = false):
 		if (turnBehaviour.Attacking()):
 			addHeavyImpacts()
 			
-			visualAttackCueActive = false
-			setVisualAttackCues()
-			
 			turnBehaviour.additionalRelativeAttackPositions = []
 			additionalRelativeAttackPositions = []
 		
@@ -94,33 +87,31 @@ func turn(skipTurnBehaviour = false):
 			
 			stand_direction = turnBehaviour.attackDirection
 			previous_stand_direction = turnBehaviour.attackDirection
-			alternateAttackCue = false
 			
 			if (stageOneDefeated):
 				if (randi() % 2 == 1):
+					showFrontWarningFlames(true)
 					currentAdditionalRelativeAttacks = [Vector2(0, -1)]
 				else:
+					showFrontWarningFlames(false)
 					currentAdditionalRelativeAttacks = [Vector2(-1, 0), Vector2(1, 0)]
-					alternateAttackCue = true
 			else:
+				showFrontWarningFlames(true)
 				currentAdditionalRelativeAttacks = [Vector2(0, -1)]
 			
 			additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
 			turnBehaviour.additionalRelativeAttackPositions = currentAdditionalRelativeAttacks
-			
-			visualAttackCueActive = true
-			setVisualAttackCues()
 		
 		if (turnBehaviour.Attacking()):
 			setWalkAnimation(previous_stand_direction)
 	else:
 		.turn()
 
-func setVisualAttackCues():
-	if alternateAttackCue:
-		if visualAttackCueActive:
-			pass
-	#set visual cue 
+func showFrontWarningFlames(isFront):
+	get_node("ChangingBodyParts/ForwardFlameFront").visible = isFront
+	get_node("ChangingBodyParts/ForwardFlameBehind").visible = isFront
+	get_node("ChangingBodyParts/SideFlameFront").visible = !isFront
+	get_node("ChangingBodyParts/SideFlameBehind").visible = !isFront
 
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
@@ -159,8 +150,6 @@ func setWalkAnimation(direction):
 		setPrepareAttackAnimation(direction)
 	else:
 		.setWalkAnimation(direction)
-	
-	setVisualAttackCues()
 
 func faceDirecion(direction):
 	if(turnBehaviour.Attacking()):
@@ -169,8 +158,6 @@ func faceDirecion(direction):
 		setPrepareAttackAnimation(direction)
 	else:
 		.faceDirecion(direction)
-	
-	setVisualAttackCues()
 
 func setStandAnimation(direction):
 	if(turnBehaviour.Attacking()):
@@ -179,8 +166,6 @@ func setStandAnimation(direction):
 		setPrepareAttackAnimation(direction)
 	else:
 		.setStandAnimation(direction)
-	
-	setVisualAttackCues()
 
 func setPrepareAttackAnimation(direction):
 	setDirectionAnimation(direction, "prepare_attack")
@@ -206,8 +191,12 @@ func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 	
 	if (alive() or setEvenIfDead) and currentAnimationNameToUse != animationName:
 		if "prepare_attack" in animationName:
+			setAnimationOnEachFlameSprite(animationName)
+		else:
+			setAnimationOnEachFlameSprite("none")
+
+func setAnimationOnEachFlameSprite(animationName):
 			get_node("ChangingBodyParts/SideFlameBehind").set_animation(animationName)
 			get_node("ChangingBodyParts/SideFlameFront").set_animation(animationName)
-		else:
-			get_node("ChangingBodyParts/SideFlameBehind").set_animation("none")
-			get_node("ChangingBodyParts/SideFlameFront").set_animation("none")
+			get_node("ChangingBodyParts/ForwardFlameBehind").set_animation(animationName)
+			get_node("ChangingBodyParts/ForwardFlameFront").set_animation(animationName)
