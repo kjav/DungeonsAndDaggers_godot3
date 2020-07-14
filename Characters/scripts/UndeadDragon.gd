@@ -37,18 +37,21 @@ func _init():
 
 	item_distribution = Constants.IndependentDistribution.new([
 		{ "p": 1, "value": Constants.Distribution.new([
-			{ "p": 0.5, "value": Constants.UncommonWeaponsDistribution.pick()[0].value }, 
-			{ "p": 0.35, "value": Constants.RareWeaponsDistribution.pick()[0].value },
-			{ "p": 0.15, "value": Constants.WeaponClasses.OgreArm }
+			{ "p": 0.6, "value": Constants.UncommonWeaponsDistribution.pick()[0].value }, 
+			{ "p": 0.4, "value": Constants.RareWeaponsDistribution.pick()[0].value }
 		]).pick()[0].value }, 
-		{ "p": 1, "value": Constants.SpellClasses.EarthquakeSpell },
+		{ "p": 0.2, "value": Constants.Distribution.new([
+			{ "p": 0.6, "value": Constants.UncommonWeaponsDistribution.pick()[0].value }, 
+			{ "p": 0.4, "value": Constants.RareWeaponsDistribution.pick()[0].value }
+		]).pick()[0].value }, 
+		{ "p": 0.9, "value": Constants.SpellClasses.FireSpell },
 		{ "p": 1, "value": Constants.PotionClasses.LevelUpPotion },
 		{ "p": 1, "value": Constants.Distribution.new([
 			{ "p": 0.6, "value": Constants.UncommonFoodsDistribution.pick()[0].value }, 
 			{ "p": 0.4, "value": Constants.RareFoodsDistribution.pick()[0].value }
 		]).pick()[0].value }, 
-		{ "p": 0.6, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value },
-		{ "p": 0.3, "value": Constants.AllRarePotionsSpellsDistribution.pick()[0].value }
+		{ "p": 0.8, "value": Constants.AllUncommonPotionsSpellsDistribution.pick()[0].value },
+		{ "p": 0.4, "value": Constants.RareFoodsDistribution.pick()[0].value }
 	])
 
 func _ready():
