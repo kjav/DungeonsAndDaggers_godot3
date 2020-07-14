@@ -5,8 +5,8 @@ func setup_params():
 	extents_distribution = Set.new([Vector2(5, 5)])
 	
 	npc_distribution = IndependentDistribution.new([
-		{ "p": 1, "value": load("res://Characters/TrainingDummy.tscn"), "position": Vector2(3,2) },
-		{ "p": 1, "value": load("res://Characters/TrainingDummy.tscn"), "position": Vector2(1,2) }
+		{ "p": 1, "value": Constants.Enemies.TrainingDummy, "position": Vector2(3,2) },
+		{ "p": 1, "value": Constants.Enemies.TrainingDummy, "position": Vector2(1,2) }
 	])
 
 func apply_randomness():

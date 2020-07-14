@@ -9,22 +9,22 @@ func setup_params():
 	[
 		{
 			"p": 1, 
-			"value": load("res://Characters/ZombieCreme.tscn"),
+			"value": Constants.Enemies.ZombieCreme,
 			"position": Vector2(2, 3)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/ZombieBrown.tscn"),
+			"value": Constants.Enemies.ZombieBrown,
 			"position": Vector2(2, 4)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/ZombieCreme.tscn"),
+			"value": Constants.Enemies.ZombieCreme,
 			"position": Vector2(2, 6)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/ZombieBrown.tscn"),
+			"value": Constants.Enemies.ZombieBrown,
 			"position": Vector2(2, 7)
 		}
 	])

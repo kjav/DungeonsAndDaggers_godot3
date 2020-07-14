@@ -51,6 +51,17 @@ const KeyClasses = {
 	"SilverKey": preload("res://Items/scripts/keys/SilverKey.gd")
 }
 
+const Enemies = {
+	"Raven": preload("res://Characters/Raven.tscn"),
+	"Mummy": preload("res://Characters/Mummy.tscn"),
+	"Necromancer": preload("res://Characters/Necromancer.tscn"),
+	"Reaper": preload("res://Characters/Reaper.tscn"),
+	"TrainingDummy": preload("res://Characters/TrainingDummy.tscn"),
+	"UndeadDragon": preload("res://Characters/UndeadDragon.tscn"),
+	"ZombieBrown": preload("res://Characters/ZombieBrown.tscn"),
+	"ZombieCreme": preload("res://Characters/ZombieCreme.tscn"),
+}
+
 const UpgradeClasses = {
 	"StrengthUpgrade": preload("res://Items/scripts/upgrades/StrengthUpgrade.gd"),
 	"DefenceUpgrade": preload("res://Items/scripts/upgrades/DefenceUpgrade.gd"),
@@ -180,6 +191,19 @@ const RareFoods = [
 	{ "value": FoodClasses.CookedSteak },
 ]
 
+const NonBossEnemies = [
+	{ "value": Enemies.Raven },
+	{ "value": Enemies.Mummy },
+	{ "value": Enemies.Necromancer },
+	{ "value": Enemies.Reaper },
+	{ "value": Enemies.ZombieBrown },
+	{ "value": Enemies.ZombieCreme }
+]
+
+const BossEnemies = [
+	{ "value": Enemies.UndeadDragon }
+]
+
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
 var AllRareItemsDistribution = DistributionOfEquals.new(RareFoods + RarePotions + RareSpells + RareWeapons)
@@ -204,3 +228,4 @@ var RareSpellsDistribution = DistributionOfEquals.new(RareSpells)
 var RareFoodsDistribution = DistributionOfEquals.new(RareFoods)
 
 var UpgradesDistribution = DistributionOfEquals.new(AllUpgrades)
+var AllHarmfulEnemies = DistributionOfEquals.new(NonBossEnemies + BossEnemies)
