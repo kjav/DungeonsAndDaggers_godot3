@@ -7,7 +7,6 @@ var base_damage = 1
 var processBehaviour
 var turnBehaviour
 var previous_stand_direction = Enums.DIRECTION.DOWN
-var undamageableAnimationName = ""
 
 func _enter_tree():
 	GameData.characters.append(self)
@@ -77,18 +76,6 @@ func dropItem():
 		for pickedItem in item_distribution.pick():
 			var item = pickedItem.value.new()
 			item.place(target_pos)
-
-func setWalkAnimation(direction):
-	if (!damageable and undamageableAnimationName != ""):
-		setAnimationOnAllBodyParts(undamageableAnimationName)
-	else:
-		.setWalkAnimation(direction)
-
-func setStandAnimation(direction):
-	if (!damageable and undamageableAnimationName != ""):
-		setAnimationOnAllBodyParts(undamageableAnimationName)
-	else:
-		.setStandAnimation(direction)
 
 func addStun(turnAmount):
 	if turnAmount <= 0:

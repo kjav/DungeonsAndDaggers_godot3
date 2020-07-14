@@ -21,14 +21,27 @@ func _ready():
 	turnBehaviour = Turn.InRangeMoveToOtherwiseRandomEveryNTurnsInvinsibleOnWait.new(self)
 	processBehaviour = Process.Direct.new()
 	turnBehaviour.setTurnWait(1)
-	undamageableAnimationName = "invinsible"
 	
 	setBaseDamage(1)
 	setInitialHealth(1.5, 1.5)
 	setInitialStats(1, 1, 2.5, 2.5)
 	
+	get_node("Explosion").setSpeedScale(2.0)
+	
 	._ready()
 
 func turn(skipTurnBehaviour = false):
 	.turn()    
-	self.damageable = turnBehaviour.getDamageable() || GameData.player.canAlwaysHurtReapers
+	
+	var previouslyDamageable = damageable
+	damageable = turnBehaviour.getDamageable() || GameData.player.canAlwaysHurtReapers
+	
+	if previouslyDamageable and !damageable:
+		get_node("Explosion").show()
+		get_node("Explosion").explode()
+	
+	
+	if !damageable:
+		get_node("ChangingBodyParts").modulate = Color("#262626")
+	else:
+		get_node("ChangingBodyParts").modulate = Color("#bababa")

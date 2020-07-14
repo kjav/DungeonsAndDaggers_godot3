@@ -73,7 +73,7 @@ var StatusEffects = {
 	"TemporaryHealth": preload("res://StatusEffects/TemporaryHealth.gd").new(),
 	"Invisible": preload("res://StatusEffects/Invisible.gd").new(),
 	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
-	"ReaperRoom": preload("res://StatusEffects/ReaperBuster.gd").new(),
+	"ReaperBuster": preload("res://StatusEffects/ReaperBuster.gd").new(),
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
 	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
 	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),

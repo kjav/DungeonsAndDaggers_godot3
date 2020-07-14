@@ -5,7 +5,9 @@ const Process = preload("res://Characters/scripts/behaviours/_Process.gd")
 
 func _init():
 	self.character_name = 'Training Dummy'
-	item_distribution = Constants.Distribution.new([{"p": 0.1, "value": Constants.CommonWeaponsDistribution.pick()[0].value}])
+	
+	hasOnlyRightAnimations = true
+	walkAnimationUsesStand = true
 
 func _ready():
 	turnBehaviour = Turn.Wait.new(self)

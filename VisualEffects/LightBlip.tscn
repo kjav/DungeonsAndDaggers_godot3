@@ -24,6 +24,6 @@ self_modulate = Color( 1, 1, 1, 0.784314 )
 scale = Vector2( 0.55, 0.55 )
 frames = SubResource( 1 )
 animation = "preparing"
-frame = 2
+frame = 3
 playing = true
 script = ExtResource( 5 )

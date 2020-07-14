@@ -81,6 +81,8 @@ var additionalRelativeAttackPositions = []
 var attackPositionBlockable = true
 var onlyAttacksFirstEnemy = true
 
+var lastNotNoneDirection = Enums.DIRECTION.RIGHT
+
 const Hitmarker = preload("res://Characters/Hitmarker.tscn")
 
 func resetToStartPosition():
@@ -197,6 +199,7 @@ func moveDirection(direction):
 		stand_direction = Enums.DIRECTION.NONE
 		
 		if direction != Enums.DIRECTION.NONE:
+			lastNotNoneDirection = direction
 			movement_direction = handleMove(direction)
 			stand_direction = movement_direction
 		
@@ -494,7 +497,7 @@ func setWalkAnimation(direction):
 		setDirectionAnimation(direction, "walk")
 		
 func setDeathAnimation():
-	setDirectionAnimation(movement_direction, "death", true)
+	setDirectionAnimation(lastNotNoneDirection, "death", true)
 
 func setStandAnimation(direction):
 	setDirectionAnimation(direction, "stand")
