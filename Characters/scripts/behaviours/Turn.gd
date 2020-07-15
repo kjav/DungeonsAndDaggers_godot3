@@ -293,7 +293,8 @@ class WaitEveryN extends BaseTurn:
 	var behaviour 
 	var waitEvery = 3
 	var counter = 0
-	var shouldStunOnWait = true
+	var shouldStunInsteadOfWait = true
+	var nextTurnIsWait = false
 	
 	func _init(_character = null).(_character):
 		pass
@@ -306,12 +307,18 @@ class WaitEveryN extends BaseTurn:
 	
 	func turn(pos):
 		counter += 1
-		if (counter % waitEvery != 0):
+		
+		var turnNumber = counter % waitEvery
+		nextTurnIsWait = turnNumber == waitEvery - 1
+		
+		if counter % waitEvery != 0 or shouldStunInsteadOfWait:
 			return behaviour.turn(pos)
 		else:
-			if (shouldStunOnWait and character.stunnedDuration <= 0):
-				character.addStun(1)
 			return Enums.DIRECTION.NONE
+	
+	func afterMoveComplete(pos):
+		if (nextTurnIsWait and shouldStunInsteadOfWait and character.stunnedDuration <= 0):
+			character.addStun(1)
 
 class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
 	var turnBehaviour
@@ -336,6 +343,10 @@ class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
 	
 	func turn(pos):
 		return waitEveryN.turn(pos)
+	
+	func afterMoveComplete(pos):
+		turnBehaviour.afterMoveComplete(pos)
+		waitEveryN.afterMoveComplete(pos)
 
 class InvincibleWaitEveryN extends BaseTurn:
 	var behaviour 
