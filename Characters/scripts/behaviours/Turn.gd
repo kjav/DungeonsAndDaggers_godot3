@@ -293,6 +293,7 @@ class WaitEveryN extends BaseTurn:
 	var behaviour 
 	var waitEvery = 3
 	var counter = 0
+	var shouldStunOnWait = true
 	
 	func _init(_character = null).(_character):
 		pass
@@ -308,6 +309,8 @@ class WaitEveryN extends BaseTurn:
 		if (counter % waitEvery != 0):
 			return behaviour.turn(pos)
 		else:
+			if (shouldStunOnWait and character.stunnedDuration <= 0):
+				character.addStun(1)
 			return Enums.DIRECTION.NONE
 
 class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
