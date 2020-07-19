@@ -15,6 +15,8 @@ var environmentsAtTargetPosition = []
 var environmentsAtPosition = []
 const environmentBaseClass = preload("res://Environments/scripts/EnvironmentBase.gd")
 
+const oneShotAnimations = ["attack"]
+
 var currentAnimationName = ""
 var hasOnlyRightAnimations = false
 var walkAnimationUsesStand = false
@@ -386,6 +388,8 @@ func attack(character, isFirstCollision, base_damage = 0):
 		
 		damage = round(damage * 2) / 2
 		
+		setDirectionAnimation(lastNotNoneDirection, "attack")
+		
 		#Audio.playHit()
 		var actualDamage = character.takeDamage(damage)
 		
@@ -402,12 +406,12 @@ func takeDamage(damage):
 		
 		if self == GameData.player:
 			emit_signal("statsChanged", "health", "Down", -damage)
-
+		
 		if stats.health.value <= 0:
 			handleCharacterDeath()
 		
 		createHitmarker(damage)
-	
+		
 		return damage
 	else:
 		if self == GameData.player:
@@ -441,7 +445,7 @@ func revive():
 	
 	GameData.characters.append(self)
 	
-	setAnimationOnAllBodyParts("stand_down", true)
+	setAnimation("stand_down", true)
 	setPlayingOnAllBodyParts(true, true)
 	
 	death_timer.stop()
@@ -507,16 +511,16 @@ func setDirectionAnimation(direction, animationPreText, setEvenIfDead = false):
 		if (!hasOnlyRightAnimations):
 			match direction:
 				Enums.DIRECTION.UP:
-					setAnimationOnAllBodyParts(animationPreText + "_up", setEvenIfDead)
+					setAnimation(animationPreText + "_up", setEvenIfDead)
 				Enums.DIRECTION.DOWN:
-					setAnimationOnAllBodyParts(animationPreText + "_down", setEvenIfDead)
+					setAnimation(animationPreText + "_down", setEvenIfDead)
 				Enums.DIRECTION.LEFT:
-					setAnimationOnAllBodyParts(animationPreText + "_left", setEvenIfDead)
+					setAnimation(animationPreText + "_left", setEvenIfDead)
 				Enums.DIRECTION.RIGHT:
-					setAnimationOnAllBodyParts(animationPreText + "_right", setEvenIfDead)
+					setAnimation(animationPreText + "_right", setEvenIfDead)
 					setFlip_hOnAllBodyParts(false)
 		else:
-			setAnimationOnAllBodyParts(animationPreText + "_right", setEvenIfDead)
+			setAnimation(animationPreText + "_right", setEvenIfDead)
 			
 			match direction:
 				Enums.DIRECTION.LEFT:
@@ -524,11 +528,39 @@ func setDirectionAnimation(direction, animationPreText, setEvenIfDead = false):
 				Enums.DIRECTION.RIGHT:
 					setFlip_hOnAllBodyParts(false)
 
+func setAnimation(animationName, setEvenIfDead = false):
+	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
+		if animationIsOneShot(animationName):
+			setOneShotAnimationOnAllBodyParts(animationName, setEvenIfDead)
+		elif animationIsOneShot(currentAnimationName):
+			for child in self.get_node(bodyPartsNodeName).get_children():
+				child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
+				child.connect("animation_finished",self,"setAnimationOnAllBodyParts", [animationName, "death" in animationName], CONNECT_ONESHOT)
+		else:
+			setAnimationOnAllBodyParts(animationName, setEvenIfDead)
+
+func animationIsOneShot(animationName):
+	var isOneShot = false
+	
+	for animation in oneShotAnimations:
+		if animation in animationName:
+			isOneShot = true
+	
+	return isOneShot
+
+func setOneShotAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
+	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
+		for child in self.get_node(bodyPartsNodeName).get_children():
+			child.set_animation(animationName)
+			child.connect("animation_finished",self,"setAnimationOnAllBodyParts", [animationName], CONNECT_ONESHOT)
+	
+		currentAnimationName = animationName
+
 func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
 		for child in self.get_node(bodyPartsNodeName).get_children():
 			child.set_animation(animationName)
-		
+			
 		currentAnimationName = animationName
 
 func setFlip_hOnAllBodyParts(state):
