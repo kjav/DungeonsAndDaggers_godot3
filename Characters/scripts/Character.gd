@@ -378,6 +378,18 @@ func shouldAttack(character):
 
 func attack(character, isFirstCollision, base_damage = 0):
 	if shouldAttack(character):
+		triggerAttackAnimations()
+		
+	performAttack(character, isFirstCollision, base_damage)
+
+func triggerAttackAnimations():
+		setDirectionAnimation(lastNotNoneDirection, "attack")
+
+func triggerStandInLastDirection():
+	setStandAnimation(lastNotNoneDirection)
+
+func performAttack(character, isFirstCollision, base_damage = 0):
+	if shouldAttack(character):
 		var damage = calculate_damage(character, base_damage)
 		
 		if damageMultiplierInEffect():
@@ -387,8 +399,6 @@ func attack(character, isFirstCollision, base_damage = 0):
 		removeInvisibility()
 		
 		damage = round(damage * 2) / 2
-		
-		setDirectionAnimation(lastNotNoneDirection, "attack")
 		
 		#Audio.playHit()
 		var actualDamage = character.takeDamage(damage)
@@ -506,6 +516,28 @@ func setDeathAnimation():
 func setStandAnimation(direction):
 	setDirectionAnimation(direction, "stand")
 
+func setDirectionAnimationAfterCurrentFinishes(direction, animationPreText, setEvenIfDead = false):
+	if alive() or setEvenIfDead:
+		if (!hasOnlyRightAnimations):
+			match direction:
+				Enums.DIRECTION.UP:
+					setAnimationOnAllBodyPartsAfterCurrentFinishes(animationPreText + "_up", setEvenIfDead)
+				Enums.DIRECTION.DOWN:
+					setAnimationOnAllBodyPartsAfterCurrentFinishes(animationPreText + "_down", setEvenIfDead)
+				Enums.DIRECTION.LEFT:
+					setAnimationOnAllBodyPartsAfterCurrentFinishes(animationPreText + "_left", setEvenIfDead)
+				Enums.DIRECTION.RIGHT:
+					setAnimationOnAllBodyPartsAfterCurrentFinishes(animationPreText + "_right", setEvenIfDead)
+					setFlip_hOnAllBodyParts(false)
+		else:
+			setAnimationOnAllBodyPartsAfterCurrentFinishes(animationPreText + "_right", setEvenIfDead)
+			
+			match direction:
+				Enums.DIRECTION.LEFT:
+					setFlip_hOnAllBodyParts(true)
+				Enums.DIRECTION.RIGHT:
+					setFlip_hOnAllBodyParts(false)
+
 func setDirectionAnimation(direction, animationPreText, setEvenIfDead = false):
 	if alive() or setEvenIfDead:
 		if (!hasOnlyRightAnimations):
@@ -533,11 +565,15 @@ func setAnimation(animationName, setEvenIfDead = false):
 		if animationIsOneShot(animationName):
 			setOneShotAnimationOnAllBodyParts(animationName, setEvenIfDead)
 		elif animationIsOneShot(currentAnimationName):
-			for child in self.get_node(bodyPartsNodeName).get_children():
-				child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
-				child.connect("animation_finished",self,"setAnimationOnAllBodyParts", [animationName, "death" in animationName], CONNECT_ONESHOT)
+			setAnimationOnAllBodyPartsAfterCurrentFinishes(animationName, setEvenIfDead)
 		else:
 			setAnimationOnAllBodyParts(animationName, setEvenIfDead)
+
+func setAnimationOnAllBodyPartsAfterCurrentFinishes(animationName, setEvenIfDead = false):
+	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
+		for child in self.get_node(bodyPartsNodeName).get_children():
+			child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
+			child.connect("animation_finished",self,"setAnimationOnAllBodyParts", [animationName, "death" in animationName], CONNECT_ONESHOT)
 
 func animationIsOneShot(animationName):
 	var isOneShot = false

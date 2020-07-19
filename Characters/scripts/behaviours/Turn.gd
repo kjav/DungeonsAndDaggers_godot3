@@ -109,6 +109,8 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 					if playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
 						return moveTo.turn(pos)
 					
+					character.triggerAttackAnimations()
+					character.triggerStandInLastDirection()
 					shouldStun = randi()%2 == 1
 				else:
 					LeaveWaitAttackWaitSequence()

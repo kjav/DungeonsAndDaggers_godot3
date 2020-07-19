@@ -32,6 +32,8 @@ var headFrameSize
 var EffectsNode
 var stageOneDefeated
 
+var attacksRelativePositions = []
+
 func _init():
 	self.character_name = 'Undead Dragon'
 
@@ -78,8 +80,7 @@ func turn(skipTurnBehaviour = false):
 	if stunnedDuration <= 0:
 		.turnWithNoAfterMoveComplete()
 		if (turnBehaviour.Attacking()):
-			addHeavyImpacts()
-			
+			attacksRelativePositions = additionalRelativeAttackPositions
 			turnBehaviour.additionalRelativeAttackPositions = []
 			additionalRelativeAttackPositions = []
 		
@@ -117,7 +118,7 @@ func showFrontWarningFlames(isFront):
 	get_node("ChangingBodyParts/SideFlameBehind").visible = !isFront
 
 func addHeavyImpacts():
-	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), additionalRelativeAttackPositions, turnBehaviour.attackDirection)
+	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), attacksRelativePositions, turnBehaviour.attackDirection)
 	
 	for i in range(0, attackPositions.size()):
 		var attackPosition = attackPositions[i]
@@ -147,31 +148,41 @@ func resetToStartPosition():
 	_ready()
 
 func setWalkAnimation(direction):
-	if(turnBehaviour.Attacking()):
-		.setWalkAnimation(turnBehaviour.attackDirection)
-	elif turnBehaviour.PreparingAttack():
-		setPrepareAttackAnimation(direction)
-	else:
-		.setWalkAnimation(direction)
+	if(not "prepare" in currentAnimationName):
+		if(turnBehaviour.Attacking()):
+			.setWalkAnimation(turnBehaviour.attackDirection)
+		elif turnBehaviour.PreparingAttack():
+			setPrepareAttackAnimation(direction)
+		else:
+			.setWalkAnimation(direction)
 
 func faceDirecion(direction):
-	if(turnBehaviour.Attacking()):
-		.faceDirecion(turnBehaviour.attackDirection)
-	elif turnBehaviour.PreparingAttack():
-		setPrepareAttackAnimation(direction)
-	else:
-		.faceDirecion(direction)
+	if(not "prepare" in currentAnimationName):
+		if(turnBehaviour.Attacking()):
+			.faceDirecion(turnBehaviour.attackDirection)
+		elif turnBehaviour.PreparingAttack():
+			setPrepareAttackAnimation(direction)
+		else:
+			.faceDirecion(direction)
+
+func triggerAttackAnimations():
+	setDirectionAnimationAfterCurrentFinishes(lastNotNoneDirection, "attack")
+	get_node(bodyPartsNodeName).get_children()[0].connect("animation_finished",self,"setHeavyImpactsAfterAnimationFinishes", [], CONNECT_ONESHOT)
+
+func setHeavyImpactsAfterAnimationFinishes():
+	get_node(bodyPartsNodeName).get_children()[0].connect("animation_finished",self,"addHeavyImpacts", [], CONNECT_ONESHOT)
 
 func setStandAnimation(direction):
-	if(turnBehaviour.Attacking()):
-		.setStandAnimation(turnBehaviour.attackDirection)
-	elif turnBehaviour.PreparingAttack():
-		setPrepareAttackAnimation(direction)
-	else:
-		.setStandAnimation(direction)
+	if(not "prepare" in currentAnimationName):
+		if(turnBehaviour.Attacking()):
+			.setStandAnimation(turnBehaviour.attackDirection)
+		elif turnBehaviour.PreparingAttack():
+			setPrepareAttackAnimation(direction)
+		else:
+			.setStandAnimation(direction)
 
 func setPrepareAttackAnimation(direction):
-	setDirectionAnimation(direction, "prepare_attack")
+	setDirectionAnimation(direction, "prepare")
 
 func handleCharacterDeath():
 	self.get_node("Stars").hide()
@@ -190,13 +201,13 @@ func handleCharacterDeath():
 func deathWinConditionMet():
 	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2
 
-func setAnimation(animationName, setEvenIfDead = false):
-	var currentAnimationNameToUse = currentAnimationName
+func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
+	var unchangedCurrentAnimationName = currentAnimationName
 	
-	.setAnimation(animationName, setEvenIfDead)
+	.setAnimationOnAllBodyParts(animationName, setEvenIfDead)
 	
-	if (alive() or setEvenIfDead) and currentAnimationNameToUse != animationName:
-		if "prepare_attack" in animationName:
+	if (alive() or setEvenIfDead) and unchangedCurrentAnimationName != animationName:
+		if "prepare" in animationName:
 			setAnimationOnEachFlameSprite(animationName)
 		else:
 			setAnimationOnEachFlameSprite("none")
