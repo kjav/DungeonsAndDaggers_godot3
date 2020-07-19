@@ -318,7 +318,7 @@ class WaitEveryN extends BaseTurn:
 	
 	func afterMoveComplete(pos):
 		if (nextTurnIsWait and shouldStunInsteadOfWait and character.stunnedDuration <= 0):
-			character.addStun(1)
+			character.addStun(2)
 
 class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
 	var turnBehaviour
