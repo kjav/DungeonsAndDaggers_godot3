@@ -1,7 +1,7 @@
 extends TextureButton
 
 func _ready():
-	if GameData.adFree:
+	if GameData.adFree or GameData.chosen_map == "Tutorial":
 		get_node("Label").text = "Re-Roll"
 		
 	Ad.connect("reward_ad", get_parent(), "reroll")

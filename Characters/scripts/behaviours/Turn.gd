@@ -109,6 +109,8 @@ class MoveToSignalBeforeAttackRecoverIfMissed extends BaseTurn:
 					if playerInAttackablePosition(player_pos, divided_pos, additionalRelativeAttackPositions):
 						return moveTo.turn(pos)
 					
+					character.triggerAttackAnimations()
+					character.triggerStandInLastDirection()
 					shouldStun = randi()%2 == 1
 				else:
 					LeaveWaitAttackWaitSequence()
@@ -318,7 +320,7 @@ class WaitEveryN extends BaseTurn:
 	
 	func afterMoveComplete(pos):
 		if (nextTurnIsWait and shouldStunInsteadOfWait and character.stunnedDuration <= 0):
-			character.addStun(1)
+			character.addStun(2)
 
 class InRangeMoveToOtherwiseRandomWaitEveryNTurns extends BaseTurn:
 	var turnBehaviour
