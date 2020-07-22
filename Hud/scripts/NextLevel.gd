@@ -6,8 +6,8 @@ func _pressed():
 		GameData.start_screen = "world_select"
 		get_tree().change_scene("res://Menus/UnifiedMenu.tscn")
 		
-		if not GameData.has_save_game("OgresDomain"):
-			GameData.chosen_map = "OgresDomain"
+		if not GameData.has_save_game("UndeadCrypt"):
+			GameData.chosen_map = "UndeadCrypt"
 			GameData.chosen_player = "BeserkerPlayer"
 			GameData.StartNewGame()
 	else:

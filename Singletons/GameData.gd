@@ -32,8 +32,8 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
-var currentDifficultyOgreDomain = 1
-var unlockedDifficultiesOgreDomain = ["Easy", "Normal"]
+var currentDifficultyUndeadCrypt = 1
+var unlockedDifficultiesUndeadCrypt = ["Easy", "Normal"]
 var possibleDifficulties = ["Easy", "Normal", "Hard"]
 var additionalDifficultyPreText = "Challenge"
 
@@ -44,12 +44,12 @@ var saved_player = null
 var map_seed = null
 
 func unlockNextDifficulty():
-	if unlockedDifficultiesOgreDomain.size() < possibleDifficulties.size():
-		unlockedDifficultiesOgreDomain.append(possibleDifficulties[unlockedDifficultiesOgreDomain.size()])
+	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
+		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
 	else:
-		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesOgreDomain.size()) + 1
+		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesUndeadCrypt.size()) + 1
 		
-		unlockedDifficultiesOgreDomain.append(additionalDifficultyPreText + " " + str(challengeNumber))
+		unlockedDifficultiesUndeadCrypt.append(additionalDifficultyPreText + " " + str(challengeNumber))
 	
 	saveCurrentDifficulties()
 
@@ -329,7 +329,7 @@ func serialise_player(player):
 		"spell_uses_turn": player.spellUsesTurn,
 		"potion_uses_turn": player.potionUsesTurn,
 		"trap_immune": player.trapImmune,
-		"can_always_hurt_ghosts": player.canAlwaysHurtGhosts,
+		"can_always_hurt_reapers": player.canAlwaysHurtReapers,
 		"increased_spell_damage": player.increasedSpellDamage,
 		"increased_food_heal": player.increasedFoodHeal,
 		"extend_brief_potion": player.extendBriefPotions,
@@ -347,7 +347,7 @@ func load_player(dict):
 		"spellUsesTurn": dict.spell_uses_turn,
 		"potionUsesTurn": dict.potion_uses_turn,
 		"trapImmune": dict.trap_immune,
-		"canAlwaysHurtGhosts": dict.can_always_hurt_ghosts,
+		"canAlwaysHurtReapers": dict.can_always_hurt_reapers,
 		"increasedSpellDamage": dict.increased_spell_damage,
 		"increasedFoodHeal": dict.increased_food_heal,
 		"extendBriefPotions": dict.extend_brief_potion,
@@ -360,8 +360,8 @@ func saveCurrentDifficulties():
 	
 	difficulties.open("user://difficulties.save", File.WRITE)
 	difficulties.store_line(to_json({
-		"currentDifficultyOgreDomain": currentDifficultyOgreDomain,
-		"unlockedDifficultiesOgreDomain": unlockedDifficultiesOgreDomain
+		"currentDifficultyUndeadCrypt": currentDifficultyUndeadCrypt,
+		"unlockedDifficultiesUndeadCrypt": unlockedDifficultiesUndeadCrypt
 	}))
 	
 	difficulties.close()
@@ -375,9 +375,13 @@ func loadCurrentDifficulties():
 	
 	while not difficulties.eof_reached():
 		var state = parse_json(difficulties.get_line())
+		
 		if state:
-			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
-			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
+			if state.has("currentDifficultyUndeadCrypt"):
+				currentDifficultyUndeadCrypt = state.currentDifficultyUndeadCrypt
+			
+			if state.has("unlockedDifficultiesUndeadCrypt"):
+				unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
 	
 	difficulties.close()
 
@@ -409,7 +413,7 @@ func save_game():
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
 		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
-		"difficulty": currentDifficultyOgreDomain
+		"difficulty": currentDifficultyUndeadCrypt
 	}))
 
 	save_game.close()
@@ -443,15 +447,16 @@ func load_game():
 			total_blocked_damage = state.blockedDamage
 			total_items_used = state.itemsUsed
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
-			currentDifficultyOgreDomain = state.difficulty
+			if state.has("difficulty"):
+				currentDifficultyUndeadCrypt = state.difficulty
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
 	save_game.close()
 
 func addCurrentStatusEffects():
-	if GameData.player.canAlwaysHurtGhosts:
-		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.GhostBuster)
+	if GameData.player.canAlwaysHurtReapers:
+		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ReaperBuster)
 	
 	if GameData.player.increasedFoodHeal:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.SophisticatedPalate)
@@ -541,16 +546,16 @@ var Rooms = {
 	"FillerRoom": preload("res://Components/Rooms/FillerRoom.gd").new(),
 	"SpiritRoom": preload("res://Components/Rooms/SpiritRoom.gd").new(),
 	"DoubleSpiritRoom": preload("res://Components/Rooms/DoubleSpiritRoom.gd").new(),
-	"BatRoom": preload("res://Components/Rooms/BatRoom.gd").new(),
+	"RavenRoom": preload("res://Components/Rooms/RavenRoom.gd").new(),
 	"CommonWeaponRoom": preload("res://Components/Rooms/CommonWeaponRoom.gd").new(),
 	"CommonChestRoom": preload("res://Components/Rooms/CommonChestRoom.gd").new(),
 	"CommonLootRoom": preload("res://Components/Rooms/CommonLootRoom.gd").new(),
-	"GhostRoom": preload("res://Components/Rooms/GhostRoom.gd").new(),
+	"ReaperRoom": preload("res://Components/Rooms/ReaperRoom.gd").new(),
 	"UncommonWeaponRoom": preload("res://Components/Rooms/UncommonWeaponRoom.gd").new(),
 	"UncommonLootRoom": preload("res://Components/Rooms/UncommonLootRoom.gd").new(),
-	"BossRoomOgre": preload("res://Components/Rooms/BossRoomOgre.gd").new(),
-	"DoubleBossRoomOgre": preload("res://Components/Rooms/DoubleBossRoomOgre.gd").new(),
-	"BabyOgreRoom": preload("res://Components/Rooms/BabyOgreRoom.gd").new(),
+	"BossRoomUndeadDragon": preload("res://Components/Rooms/BossRoomUndeadDragon.gd").new(),
+	"DoubleBossRoomUndeadDragon": preload("res://Components/Rooms/DoubleBossRoomUndeadDragon.gd").new(),
+	"MummyRoom": preload("res://Components/Rooms/MummyRoom.gd").new(),
 	"TrapRoom": preload("res://Components/Rooms/TrapRoom.gd").new(),
 	"MageRoom": preload("res://Components/Rooms/MageRoom.gd").new(),
 	"UncommonChestRoom": preload("res://Components/Rooms/UncommonChestRoom.gd").new(),

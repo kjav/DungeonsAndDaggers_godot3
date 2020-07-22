@@ -1,6 +1,6 @@
 extends Node2D
 
-var _item_names = ["Tutorial", "OgresDomain"]
+var _item_names = ["Tutorial", "UndeadCrypt"]
 var _items = []
 
 func get_items():

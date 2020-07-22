@@ -51,6 +51,17 @@ const KeyClasses = {
 	"SilverKey": preload("res://Items/scripts/keys/SilverKey.gd")
 }
 
+const Enemies = {
+	"Raven": preload("res://Characters/Raven.tscn"),
+	"Mummy": preload("res://Characters/Mummy.tscn"),
+	"Necromancer": preload("res://Characters/Necromancer.tscn"),
+	"Reaper": preload("res://Characters/Reaper.tscn"),
+	"TrainingDummy": preload("res://Characters/TrainingDummy.tscn"),
+	"UndeadDragon": preload("res://Characters/UndeadDragon.tscn"),
+	"ZombieBrown": preload("res://Characters/ZombieBrown.tscn"),
+	"ZombieCreme": preload("res://Characters/ZombieCreme.tscn"),
+}
+
 const UpgradeClasses = {
 	"StrengthUpgrade": preload("res://Items/scripts/upgrades/StrengthUpgrade.gd"),
 	"DefenceUpgrade": preload("res://Items/scripts/upgrades/DefenceUpgrade.gd"),
@@ -61,7 +72,7 @@ const UpgradeClasses = {
 	"ReserveWeapon": preload("res://Items/scripts/upgrades/ReserveWeapon.gd"),
 	"QuickDrinker": preload("res://Items/scripts/upgrades/QuickDrinker.gd"),
 	"PotionExtender": preload("res://Items/scripts/upgrades/PotionExtender.gd"),
-	"GhostBuster": preload("res://Items/scripts/upgrades/GhostBuster.gd"),
+	"ReaperRoom": preload("res://Items/scripts/upgrades/ReaperBuster.gd"),
 	"Versatile": preload("res://Items/scripts/upgrades/Versatile.gd"),
 	"MaliciousSpellcaster": preload("res://Items/scripts/upgrades/MaliciousSpellcaster.gd"),
 	"HealthUpgrade1": preload("res://Items/scripts/upgrades/HealthUpgrade1.gd")
@@ -73,7 +84,7 @@ var StatusEffects = {
 	"TemporaryHealth": preload("res://StatusEffects/TemporaryHealth.gd").new(),
 	"Invisible": preload("res://StatusEffects/Invisible.gd").new(),
 	"DoubleDamage": preload("res://StatusEffects/DoubleDamage.gd").new(),
-	"GhostBuster": preload("res://StatusEffects/GhostBuster.gd").new(),
+	"ReaperBuster": preload("res://StatusEffects/ReaperBuster.gd").new(),
 	"SophisticatedPalate": preload("res://StatusEffects/SophisticatedPalate.gd").new(),
 	"MaliciousSpellcasting": preload("res://StatusEffects/MaliciousSpellcasting.gd").new(),
 	"ExtendedBriefPotions": preload("res://StatusEffects/ExtendedBriefPotions.gd").new(),
@@ -104,7 +115,7 @@ const AllUpgradesUnmodified = [
 	{ "value": UpgradeClasses.GreatPalate, "onetime": true },
 	{ "value": UpgradeClasses.QuickDrinker, "onetime": true },
 	{ "value": UpgradeClasses.PotionExtender, "onetime": true },
-	{ "value": UpgradeClasses.GhostBuster, "onetime": true },
+	{ "value": UpgradeClasses.ReaperRoom, "onetime": true },
 	{ "value": UpgradeClasses.Versatile, "onetime": true },
 	{ "value": UpgradeClasses.ReserveWeapon, "onetime": true },
 	{ "value": UpgradeClasses.HealthUpgrade1, "onetime": false }
@@ -180,6 +191,19 @@ const RareFoods = [
 	{ "value": FoodClasses.CookedSteak },
 ]
 
+const NonBossEnemies = [
+	{ "value": Enemies.Raven },
+	{ "value": Enemies.Mummy },
+	{ "value": Enemies.Necromancer },
+	{ "value": Enemies.Reaper },
+	{ "value": Enemies.ZombieBrown },
+	{ "value": Enemies.ZombieCreme }
+]
+
+const BossEnemies = [
+	{ "value": Enemies.UndeadDragon }
+]
+
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
 var AllRareItemsDistribution = DistributionOfEquals.new(RareFoods + RarePotions + RareSpells + RareWeapons)
@@ -204,3 +228,4 @@ var RareSpellsDistribution = DistributionOfEquals.new(RareSpells)
 var RareFoodsDistribution = DistributionOfEquals.new(RareFoods)
 
 var UpgradesDistribution = DistributionOfEquals.new(AllUpgrades)
+var AllHarmfulEnemies = DistributionOfEquals.new(NonBossEnemies + BossEnemies)

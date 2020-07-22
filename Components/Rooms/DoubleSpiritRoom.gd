@@ -9,8 +9,8 @@ func setup_params():
 	])
 	
 	npc_distribution = IndependentDistribution.new([
-		{ "p": 0.9, "value": load("res://Characters/WaterSpirit.tscn") },
-		{ "p": 0.9, "value": load("res://Characters/FireSpirit.tscn") }
+		{ "p": 0.9, "value": Constants.Enemies.ZombieCreme },
+		{ "p": 0.9, "value": Constants.Enemies.ZombieBrown }
 	])
 
 func apply_randomness():

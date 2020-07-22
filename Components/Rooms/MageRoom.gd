@@ -3,7 +3,7 @@ extends 'RoomBase.gd'
 func setup_params():
 	extents_distribution = Set.new([Vector2(4, 6)])
 	
-	npc_distribution = Distribution.new([{"p": 1, "value": load("res://Characters/NoviceMage.tscn")}])
+	npc_distribution = Distribution.new([{"p": 1, "value": Constants.Enemies.Necromancer}])
 
 func apply_randomness():	
 	item_distribution = IndependentDistribution.new([

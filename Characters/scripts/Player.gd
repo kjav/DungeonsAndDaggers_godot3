@@ -16,7 +16,7 @@ const LightBlip = preload("res://VisualEffects/LightBlip.tscn")
 var time_elapsed = 0
 var attack
 var primaryWeapon = Constants.WeaponClasses.CommonSword.new()
-var secondaryWeapon = Constants.WeaponClasses.Unarmed.new()
+var secondaryWeapon = Constants.WeaponClasses.UncommonShield.new()
 var tertiaryWeapon = Constants.WeaponClasses.Unarmed.new()
 var swipe_funcref
 var character_name = 'Player'
@@ -38,7 +38,7 @@ var lastDirection = Enums.DIRECTION.NONE
 var spellUsesTurn
 var foodUsesTurn
 var potionUsesTurn
-var canAlwaysHurtGhosts
+var canAlwaysHurtReapers
 var increasedSpellDamage
 var increasedFoodHeal
 var extendBriefPotions
@@ -109,7 +109,7 @@ func _ready():
 		spellUsesTurn = GameData.saved_player.spellUsesTurn
 		potionUsesTurn = GameData.saved_player.potionUsesTurn
 		trapImmune = GameData.saved_player.trapImmune
-		canAlwaysHurtGhosts = GameData.saved_player.canAlwaysHurtGhosts
+		canAlwaysHurtReapers = GameData.saved_player.canAlwaysHurtReapers
 		increasedSpellDamage = GameData.saved_player.increasedSpellDamage
 		increasedFoodHeal = GameData.saved_player.increasedFoodHeal
 		extendBriefPotions = GameData.saved_player.extendBriefPotions

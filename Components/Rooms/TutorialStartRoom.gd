@@ -6,7 +6,7 @@ func setup_params():
 	[
 		{
 			"p": 1, 
-			"value": load("res://Characters/TrainingDummy.tscn"),
+			"value": Constants.Enemies.TrainingDummy,
 			"position": Vector2(4, 1)
 		}
 	])

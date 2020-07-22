@@ -9,22 +9,22 @@ func setup_params():
 	[
 		{
 			"p": 1, 
-			"value": load("res://Characters/WaterSpirit.tscn"),
+			"value": Constants.Enemies.ZombieCreme,
 			"position": Vector2(2, 3)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/FireSpirit.tscn"),
+			"value": Constants.Enemies.ZombieBrown,
 			"position": Vector2(2, 4)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/WaterSpirit.tscn"),
+			"value": Constants.Enemies.ZombieCreme,
 			"position": Vector2(2, 6)
 		},
 		{
 			"p": 1, 
-			"value": load("res://Characters/FireSpirit.tscn"),
+			"value": Constants.Enemies.ZombieBrown,
 			"position": Vector2(2, 7)
 		}
 	])

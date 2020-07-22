@@ -7,7 +7,6 @@ var base_damage = 1
 var processBehaviour
 var turnBehaviour
 var previous_stand_direction = Enums.DIRECTION.DOWN
-var undamageableAnimationName = ""
 
 func _enter_tree():
 	GameData.characters.append(self)
@@ -78,18 +77,6 @@ func dropItem():
 			var item = pickedItem.value.new()
 			item.place(target_pos)
 
-func setWalkAnimation(direction):
-	if (!damageable and undamageableAnimationName != ""):
-		setAnimationOnAllBodyParts(undamageableAnimationName)
-	else:
-		.setWalkAnimation(direction)
-
-func setStandAnimation(direction):
-	if (!damageable and undamageableAnimationName != ""):
-		setAnimationOnAllBodyParts(undamageableAnimationName)
-	else:
-		.setStandAnimation(direction)
-
 func addStun(turnAmount):
 	if turnAmount <= 0:
 		return
@@ -102,12 +89,12 @@ func removeStunned():
 	get_node("Stars").hide()
 
 func setBaseDamage(baseDamage, difficultyIncrease = 0.5):
-	base_damage = baseDamage + difficultyIncrease * GameData.currentDifficultyOgreDomain
+	base_damage = baseDamage + difficultyIncrease * GameData.currentDifficultyUndeadCrypt
 
 func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 0.75):
 	if !fixedMaxHealth:
-		healthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-		maxHealthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+		healthStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
+		maxHealthStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
 	
 	initialStats.health = {
 		"value": healthStat,
@@ -115,10 +102,10 @@ func setInitialHealth(healthStat, maxHealthStat, difficultyIncrease = 0.75):
 	}
 
 func setInitialStats(strengthStat, maxStrengthStat, defenceStat, maxDefenceStat, difficultyIncrease = 0.75):
-	strengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	defenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
-	maxDefenceStat += difficultyIncrease * GameData.currentDifficultyOgreDomain
+	strengthStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
+	maxStrengthStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
+	defenceStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
+	maxDefenceStat += difficultyIncrease * GameData.currentDifficultyUndeadCrypt
 
 	initialStats.strength = {
 		"value": strengthStat,
