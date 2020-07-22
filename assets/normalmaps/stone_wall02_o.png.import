@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stone_wall02.webp-df2cb7dd441bd406271750b824f82d15.stex"
+path="res://.import/stone_wall02_o.png-768d788b5dba83721a79bc4d68c43f4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stone_wall02.webp"
-dest_files=[ "res://.import/stone_wall02.webp-df2cb7dd441bd406271750b824f82d15.stex" ]
+source_file="res://assets/normalmaps/stone_wall02_o.png"
+dest_files=[ "res://.import/stone_wall02_o.png-768d788b5dba83721a79bc4d68c43f4a.stex" ]
 
 [params]
 
@@ -19,12 +19,12 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=0
-process/fix_alpha_border=false
+flags/srgb=2
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Menus/UnifiedMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/stone_wall02.webp" type="Texture" id=2]
@@ -16,6 +16,12 @@
 [ext_resource path="res://assets/loading.webp" type="Texture" id=14]
 [ext_resource path="res://Menus/TextureRect.gd" type="Script" id=15]
 [ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=16]
+[ext_resource path="res://assets/normalmaps/stone_wall02_n.png" type="Texture" id=17]
+[ext_resource path="res://assets/normalmaps/plank_15_n.png" type="Texture" id=18]
+[ext_resource path="res://assets/normalmaps/splash_n.png" type="Texture" id=19]
+[ext_resource path="res://assets/normalmaps/plank07_dark_n.png" type="Texture" id=20]
+[ext_resource path="res://assets/bg_01_02_n.png" type="Texture" id=21]
+[ext_resource path="res://Menus/Torch.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Curve" id=1]
 bake_resolution = 200
@@ -44,37 +50,38 @@ script = ExtResource( 1 )
 transition_curve = SubResource( 1 )
 transition_time = 0.86
 
-[node name="StoneBackground" type="TextureRect" parent="."]
-margin_left = -635.334
-margin_top = -255.066
-margin_right = 7728.67
-margin_bottom = 4288.94
-rect_scale = Vector2( 1.32, 1.32 )
+[node name="StoneBackground" type="Sprite" parent="."]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+position = Vector2( 2417.88, 1803.82 )
+scale = Vector2( 1.32, 1.32 )
 texture = ExtResource( 2 )
-expand = true
-stretch_mode = 2
+normal_map = ExtResource( 17 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4608, 3072 )
+
+[node name="SplashScreen" type="Node2D" parent="."]
+
+[node name="SplashScreenTexture" type="Sprite" parent="."]
+position = Vector2( 480.578, 1628.25 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 19 )
+
+[node name="StartButton" type="TextureButton" parent="."]
+margin_left = 312.0
+margin_top = 944.0
+margin_right = 654.0
+margin_bottom = 1079.0
+rect_scale = Vector2( 1.35, 1.35 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SplashScreen" type="Node2D" parent="."]
+[node name="Sprite" type="Sprite" parent="StartButton"]
+texture = ExtResource( 4 )
+normal_map = ExtResource( 18 )
+centered = false
 
-[node name="SplashScreenTexture" type="TextureRect" parent="."]
-margin_left = 85.6218
-margin_top = 1249.77
-margin_right = 912.622
-margin_bottom = 1925.77
-texture = ExtResource( 3 )
-
-[node name="StartButton" type="TextureButton" parent="."]
-margin_left = 311.0
-margin_top = 939.0
-margin_right = 653.0
-margin_bottom = 1074.0
-rect_scale = Vector2( 1.35, 1.35 )
-texture_normal = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="StartButton"]
+[node name="Start" type="Label" parent="StartButton"]
 margin_left = 37.3916
 margin_top = 6.64191
 margin_right = 319.392
@@ -85,16 +92,19 @@ custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 2
 text = "Sta rt"
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="WorldSelect" type="Node2D" parent="."]
 position = Vector2( 1180, 0 )
 
-[node name="WorldSelectTexture" type="TextureRect" parent="WorldSelect"]
-margin_top = 147.0
-margin_right = 658.0
-margin_bottom = 1037.0
-rect_scale = Vector2( 1.64, 1.94 )
+[node name="WorldSelectTexture" type="Sprite" parent="WorldSelect"]
+scale = Vector2( 1.64, 1.94 )
 texture = ExtResource( 6 )
+normal_map = ExtResource( 21 )
+centered = false
+offset = Vector2( 0, 85 )
 
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 7 )]
 
@@ -207,15 +217,14 @@ rect_pivot_offset = Vector2( 127, 127 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 149.163
-margin_top = 302.852
-margin_right = 956.163
-margin_bottom = 464.852
-rect_scale = Vector2( 1, 1.54 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 149.163, 302.852 )
+scale = Vector2( 1, 1.54 )
 texture = ExtResource( 16 )
+normal_map = ExtResource( 20 )
+centered = false
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Swipe" type="Label" parent="Sprite"]
 margin_left = 146.789
 margin_top = 9.18752
 margin_right = 402.789
@@ -225,17 +234,19 @@ custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 0.964706, 0.270588, 0, 1 )
 text = "Swipe"
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-margin_left = 149.04
-margin_top = 587.056
-margin_right = 956.04
-margin_bottom = 749.056
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 149.04, 585.89 )
 texture = ExtResource( 16 )
+normal_map = ExtResource( 20 )
+centered = false
 
-[node name="Label2" type="Label" parent="TextureRect2"]
+[node name="Dungeon" type="Label" parent="Sprite2"]
 margin_left = 151.126
-margin_top = -2.06918
+margin_top = -2.06915
 margin_right = 535.126
 margin_bottom = 99.9308
 rect_scale = Vector2( 1.35, 1.35 )
@@ -243,5 +254,16 @@ custom_fonts/font = ExtResource( 12 )
 custom_colors/font_color = Color( 1, 0.607843, 0, 1 )
 text = "Dungeon"
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Torch" parent="." instance=ExtResource( 24 )]
+position = Vector2( 950.025, 1162.24 )
+scale = Vector2( 3, 3 )
+
+[node name="Torch2" parent="." instance=ExtResource( 24 )]
+position = Vector2( 149.016, 1164.43 )
+scale = Vector2( 3, 3 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]
