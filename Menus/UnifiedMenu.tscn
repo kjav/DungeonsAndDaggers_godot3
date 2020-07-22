@@ -61,11 +61,6 @@ region_rect = Rect2( 0, 0, 4608, 3072 )
 
 [node name="SplashScreen" type="Node2D" parent="."]
 
-[node name="SplashScreenTexture" type="Sprite" parent="."]
-position = Vector2( 480.578, 1628.25 )
-texture = ExtResource( 3 )
-normal_map = ExtResource( 19 )
-
 [node name="StartButton" type="TextureButton" parent="."]
 margin_left = 312.0
 margin_top = 944.0
@@ -256,14 +251,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Torch2" parent="." instance=ExtResource( 24 )]
+position = Vector2( 130.496, 1171.09 )
+scale = Vector2( 2.8, 2.8 )
+time_offset = 0.0
+
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 934.025, 1162.24 )
-scale = Vector2( 3, 3 )
+position = Vector2( 936.542, 1169.79 )
+scale = Vector2( 2.8, 2.8 )
 time_offset = 100.0
 
-[node name="Torch2" parent="." instance=ExtResource( 24 )]
-position = Vector2( 149.016, 1164.43 )
-scale = Vector2( 3, 3 )
-time_offset = 115.0
+[node name="SplashScreenTexture" type="Sprite" parent="."]
+position = Vector2( 485.623, 1582.84 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 19 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]

@@ -73,3 +73,6 @@ func castMissile():
 		true,
 		false
 	)
+	
+	triggerAttackAnimations()
+	setStandAnimation(lastNotNoneDirection)
