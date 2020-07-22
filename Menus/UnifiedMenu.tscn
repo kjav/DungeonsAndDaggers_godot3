@@ -254,60 +254,16 @@ __meta__ = {
 }
 
 [node name="Torch2" parent="." instance=ExtResource( 24 )]
-position = Vector2( 146.496, 1171.09 )
+position = Vector2( 130.496, 1171.09 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 947.505, 1168.9 )
+position = Vector2( 963.505, 1168.9 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="SplashScreenTexture" type="Sprite" parent="."]
 position = Vector2( 485.623, 1582.84 )
 texture = ExtResource( 3 )
 normal_map = ExtResource( 19 )
-
-[node name="Polygon2D" type="Polygon2D" parent="SplashScreenTexture"]
-texture = ExtResource( 3 )
-polygon = PoolVector2Array( -19.7799, 344.57, -61.4043, 344.57, -137.505, 193.208, -120.267, 190.265, -113.96, 189.424, -107.654, 184.8, -107.233, 180.175, -102.608, 180.175, -87.472, 178.493, -82.0062, 176.811, -81.1653, 170.925, -78.2222, 174.288, -65.1883, 173.027, -57.6202, 168.402, -32.8138, 179.334 )
-uv = PoolVector2Array( -19.7799, 344.57, -61.4043, 344.57, -137.505, 193.208, -120.267, 190.265, -113.96, 189.424, -107.654, 184.8, -107.233, 180.175, -102.608, 180.175, -87.472, 178.493, -82.0062, 176.811, -81.1653, 170.925, -78.2222, 174.288, -65.1883, 173.027, -57.6202, 168.402, -32.8138, 179.334 )
-
-[node name="Skeleton2D" type="Skeleton2D" parent="."]
-position = Vector2( 566.512, 1918.69 )
-
-[node name="LeftArm" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( -123.49, 1.55217 )
-rotation = -1.88832
-scale = Vector2( 10.3762, 30.0829 )
-rest = Transform2D( -3.23962, -9.85745, 28.579, -9.39242, -123.49, 1.55217 )
-
-[node name="LeftForeArm" type="Bone2D" parent="Skeleton2D/LeftArm"]
-position = Vector2( 15.8937, 0.00692272 )
-rotation = 0.0750261
-scale = Vector2( 1.75464, 21.1484 )
-rest = Transform2D( 1.74971, 0.131521, -1.58519, 21.0889, 15.8937, 0.00692272 )
-
-[node name="LeftHand" type="Bone2D" parent="Skeleton2D/LeftArm/LeftForeArm"]
-position = Vector2( 15.5896, 0.000174254 )
-rotation = -0.00605909
-scale = Vector2( 0.40509, 1.29979 )
-rest = Transform2D( 0.405083, -0.00245446, 0.00787547, 1.29976, 15.5896, 0.000174254 )
-
-[node name="RightArm" type="Bone2D" parent="Skeleton2D"]
-position = Vector2( 133.388, 2.1134 )
-rotation = -1.2659
-scale = Vector2( 10.376, -30.083 )
-rest = Transform2D( 3.11481, -9.89744, -28.6955, -9.03072, 133.388, 2.1134 )
-
-[node name="RightForeArm" type="Bone2D" parent="Skeleton2D/RightArm"]
-position = Vector2( 15.4164, -0.0112429 )
-rotation = 0.0750261
-scale = Vector2( 1.75464, 21.1484 )
-rest = Transform2D( 1.74971, 0.131521, -1.58519, 21.0889, 15.4164, -0.0112429 )
-
-[node name="RightHand" type="Bone2D" parent="Skeleton2D/RightArm/RightForeArm"]
-position = Vector2( 15.5896, 0.000174254 )
-rotation = -0.00605909
-scale = Vector2( 0.40509, 1.29979 )
-rest = Transform2D( 0.405083, -0.00245446, 0.00787547, 1.29976, 15.5896, 0.000174254 )
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]
