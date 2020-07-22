@@ -109,7 +109,6 @@ offset = Vector2( 0, 85 )
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 7 )]
 
 [node name="WorldButton" type="TextureButton" parent="WorldSelect"]
-visible = false
 margin_left = 196.88
 margin_top = 1191.52
 margin_right = 1416.88
@@ -118,7 +117,6 @@ rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="WorldSelect"]
-visible = false
 margin_left = 342.352
 margin_top = 1223.45
 margin_right = 746.352
@@ -259,11 +257,13 @@ __meta__ = {
 }
 
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 950.025, 1162.24 )
+position = Vector2( 934.025, 1162.24 )
 scale = Vector2( 3, 3 )
+time_offset = 100.0
 
 [node name="Torch2" parent="." instance=ExtResource( 24 )]
 position = Vector2( 149.016, 1164.43 )
 scale = Vector2( 3, 3 )
+time_offset = 115.0
 [connection signal="pressed" from="StartButton" to="." method="_on_splashbutton_start"]
 [connection signal="pressed" from="WorldSelect/WorldButton" to="." method="_on_worldbutton_pressed"]
