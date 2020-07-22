@@ -120,6 +120,8 @@ func showFrontWarningFlames(isFront):
 func addHeavyImpacts():
 	var attackPositions = PositionHelper.absoluteAttackPositions(PositionHelper.getNextTargetPos(original_pos / GameData.TileSize, turnBehaviour.attackDirection), attacksRelativePositions, turnBehaviour.attackDirection)
 	
+	setDirectionAnimation(turnBehaviour.attackDirection, "stand")
+	
 	for i in range(0, attackPositions.size()):
 		var attackPosition = attackPositions[i]
 		
@@ -156,17 +158,17 @@ func setWalkAnimation(direction):
 		else:
 			.setWalkAnimation(direction)
 
-func faceDirecion(direction):
+func faceDirection(direction):
 	if(not "prepare" in currentAnimationName):
 		if(turnBehaviour.Attacking()):
-			.faceDirecion(turnBehaviour.attackDirection)
+			.faceDirection(turnBehaviour.attackDirection)
 		elif turnBehaviour.PreparingAttack():
 			setPrepareAttackAnimation(direction)
 		else:
-			.faceDirecion(direction)
+			.faceDirection(direction)
 
 func triggerAttackAnimations():
-	setDirectionAnimationAfterCurrentFinishes(lastNotNoneDirection, "attack")
+	setDirectionAnimationAfterCurrentFinishes(turnBehaviour.attackDirection, "attack")
 	get_node(bodyPartsNodeName).get_children()[0].connect("animation_finished",self,"setHeavyImpactsAfterAnimationFinishes", [], CONNECT_ONESHOT)
 
 func setHeavyImpactsAfterAnimationFinishes():
