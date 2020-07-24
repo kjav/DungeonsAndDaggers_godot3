@@ -295,7 +295,7 @@ class WaitEveryN extends BaseTurn:
 	var behaviour 
 	var waitEvery = 3
 	var counter = 0
-	var shouldStunInsteadOfWait = true
+	var shouldStunInsteadOfWait = false
 	var nextTurnIsWait = false
 	
 	func _init(_character = null).(_character):
