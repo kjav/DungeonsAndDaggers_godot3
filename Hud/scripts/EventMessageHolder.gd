@@ -22,7 +22,7 @@ func _on_Player_weaponChanged( slot, weapon ):
 
 func _on_Player_playerAttack( character, amount ):
 	if character == GameData.player:
-		addMessage('You hurt a Yourself: ' + str(amount) + '.');
+		addMessage('You hurt yourself: ' + str(amount) + '.');
 	else:
 		addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');
 
