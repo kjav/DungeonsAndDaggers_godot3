@@ -104,7 +104,6 @@ offset = Vector2( 0, 85 )
 [node name="Node2D" parent="WorldSelect" instance=ExtResource( 7 )]
 
 [node name="WorldButton" type="TextureButton" parent="WorldSelect"]
-visible = false
 margin_left = 196.88
 margin_top = 1191.52
 margin_right = 1416.88
@@ -113,7 +112,6 @@ rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="WorldSelect"]
-visible = false
 margin_left = 342.352
 margin_top = 1223.45
 margin_right = 746.352
@@ -255,11 +253,13 @@ __meta__ = {
 
 [node name="Torch2" parent="." instance=ExtResource( 24 )]
 position = Vector2( 130.496, 1171.09 )
-scale = Vector2( 2.5, 2.5 )
+scale = Vector2( 2.8, 2.8 )
+time_offset = 0.0
 
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 963.505, 1168.9 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 936.542, 1169.79 )
+scale = Vector2( 2.8, 2.8 )
+time_offset = 100.0
 
 [node name="SplashScreenTexture" type="Sprite" parent="."]
 position = Vector2( 485.623, 1582.84 )

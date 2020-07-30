@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/bracket.png" type="Texture" id=1]
 [ext_resource path="res://assets/light.png" type="Texture" id=2]
@@ -6,7 +6,23 @@
 [ext_resource path="res://assets/bracket_n.png" type="Texture" id=4]
 [ext_resource path="res://Menus/scripts/Light.gd" type="Script" id=5]
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="GDScript" id=10]
+script/source = "tool
+extends Node2D
+
+export var time_offset = 0.0 setget set_time_offset
+
+func set_time_offset(to):
+	time_offset = to
+	var flame = get_node(\"Flame\")
+	flame.set_material(flame.get_material().duplicate())
+	flame.material.set_shader_param(\"time_offset\", to)
+
+func _process(delta):
+	print(get_node(\"Flame\").material.get_shader_param(\"time_offset\"))
+"
+
+[sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
 emission_sphere_radius = 25.0
 flag_disable_z = true
@@ -21,7 +37,7 @@ color = Color( 1, 0.2, 0, 1 )
 hue_variation = -0.12
 hue_variation_random = 1.0
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
 
 uniform float time_offset;
@@ -88,14 +104,14 @@ void fragment() {
   COLOR = mainImage(vec2(1, 1) - UV, TIME + time_offset, 1.5);
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/time_offset = null
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+shader_param/time_offset = 115.0
 
-[sub_resource type="ImageTexture" id=7]
+[sub_resource type="ImageTexture" id=9]
 size = Vector2( 256, 256 )
 
-[sub_resource type="GDScript" id=8]
+[sub_resource type="GDScript" id=5]
 script/source = "tool
 extends Light2D
 
@@ -114,7 +130,7 @@ func _process(delta):
 	energy = (noise.get_noise_2d(time, 1.0) + 1) * 2.4
 "
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=6]
 script/source = "tool
 extends Light2D
 
@@ -135,6 +151,7 @@ func _process(delta):
 
 [node name="Torch" type="Node2D"]
 position = Vector2( 916.705, 1125.75 )
+script = SubResource( 10 )
 
 [node name="Handle" type="Sprite" parent="."]
 scale = Vector2( 0.2, 0.2 )
@@ -146,22 +163,22 @@ position = Vector2( 0, -60 )
 scale = Vector2( 2, 2 )
 emitting = false
 amount = 10
-process_material = SubResource( 4 )
+process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Flame" type="Sprite" parent="."]
 light_mask = 0
-material = SubResource( 6 )
+material = SubResource( 8 )
 position = Vector2( 0, -127.5 )
 scale = Vector2( 0.5, 1 )
-texture = SubResource( 7 )
+texture = SubResource( 9 )
 
 [node name="Light" type="Light2D" parent="."]
 position = Vector2( -2, -39.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 3.68591
+energy = 4.15034
 range_height = 40.0
 script = ExtResource( 5 )
 
@@ -170,15 +187,15 @@ position = Vector2( -2, -99.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 2.18839
+energy = 2.04306
 range_height = 40.0
-script = SubResource( 8 )
+script = SubResource( 5 )
 
 [node name="Light3" type="Light2D" parent="."]
 position = Vector2( -2, -159.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 1.55064
+energy = 1.84364
 range_height = 40.0
-script = SubResource( 9 )
+script = SubResource( 6 )
