@@ -1,6 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/red_potion2.png"
 	item_name = "Health"
 	item_description = "Increases your maximum health by 1."

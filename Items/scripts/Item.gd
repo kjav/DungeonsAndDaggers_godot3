@@ -6,6 +6,7 @@ var textureFilePath
 var item_description = ""
 var item_name = ""
 var useSound
+var typeNameForMessage = ""
 var rarity = Enums.WEAPONRARITY.COMMON
 
 func onUse():

@@ -1,6 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/green_simple_potion.webp"
 	item_name = "Brief Strength"
 	item_description = "Increases your strength for 15 turns. Strength makes damage hit higher on average."

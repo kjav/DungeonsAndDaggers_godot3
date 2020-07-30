@@ -1,6 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/special_potion.webp"
 	item_name = "Level Up"
 	item_description = "Allows you to choose an upgrade."

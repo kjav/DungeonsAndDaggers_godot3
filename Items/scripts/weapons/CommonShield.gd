@@ -3,6 +3,7 @@ extends "WeaponBase.gd"
 var chanceToBlockOutOf
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/basic_shield.webp"
 	texture = preload("res://assets/basic_shield.webp")
 	offhandTexture = texture

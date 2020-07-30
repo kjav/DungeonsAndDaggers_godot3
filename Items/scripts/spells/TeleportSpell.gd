@@ -1,6 +1,7 @@
 extends "SpellBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/gem_spell.webp"
 	item_name = "Teleport"
 	item_description = "Allows you to teleport to a chosen tile."

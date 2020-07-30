@@ -3,6 +3,7 @@ extends "SpellBase.gd"
 const Blast = preload("res://VisualEffects/Blast.tscn")
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/swirl_spell.webp"
 	item_name = "Repel"
 	item_description = "Pushes all enemies within 4 tiles away from you. Pushing enemies into walls will cause some damage."

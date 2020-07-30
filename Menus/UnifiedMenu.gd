@@ -51,7 +51,7 @@ func _process(delta):
 			var ratio = transition_curve.interpolate_baked(current_time / transition_time)
 			position = target_pos * ratio
 
-func _on_splashbutton_start():	
+func _on_splashbutton_start():
 	if not transitioning:
 		target_pos = -Vector2(1180, 0)
 		current_time = 0.0

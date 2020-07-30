@@ -3,6 +3,7 @@ extends "WeaponBase.gd"
 const missile = preload("res://Projectiles/Missile.tscn")
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/bomb.png"
 	texture = preload("res://assets/bomb.png")
 	offhandTexture = texture

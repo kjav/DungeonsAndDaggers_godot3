@@ -1,6 +1,7 @@
 extends "SpellBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/rune_spell.webp"
 	item_name = "Stun"
 	item_description = "Stuns the closest enemy for 2-4 turns."

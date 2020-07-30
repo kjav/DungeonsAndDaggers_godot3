@@ -1,6 +1,7 @@
 extends "WeaponBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/common-sword.png"
 	texture = preload("res://assets/common-sword.png")
 	offhandTexture = texture

@@ -1,6 +1,7 @@
 extends "FoodBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/cooked_steak2.webp"
 	item_name = "Steak"
 	item_description = "Heals you up to 3 hearts."

@@ -3,6 +3,7 @@ const HeavyImpact = preload("res://VisualEffects/HeavyImpact.tscn")
 var nextAttackForward = true
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/meat_club.png"
 	texture = preload("res://assets/meat_club.png")
 	offhandTexture = texture

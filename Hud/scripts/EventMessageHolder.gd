@@ -14,7 +14,7 @@ func _on_Player_healthRaised(value):
 	addMessage('You healed: ' + str(value) + '.');
 
 func _on_Player_itemPickedUp( item ):
-		addMessage('You obtained a ' + item.item_name + '.');
+	addMessage('You obtained a ' + item.item_name + item.typeNameForMessage + '.');
 
 func _on_Player_weaponChanged( slot, weapon ):
 	if (slot == Enums.WEAPONSLOT.PRIMARY):
@@ -36,13 +36,13 @@ func _on_Timer_timeout(node):
 	removeChild(node);
 
 func _on_FoodItem_used(item):
-	addItemMessage(item, "You ate a ", "");
+	addItemMessage(item, "You ate a ", item.typeNameForMessage);
 	
 func _on_PotItem_used(item):
-	addItemMessage(item, "You drank a ", " Potion");
+	addItemMessage(item, "You drank a ", item.typeNameForMessage);
 	
 func _on_SpellItem_used(item):
-	addItemMessage(item, "You cast a ", " Spell");
+	addItemMessage(item, "You cast a ", item.typeNameForMessage);
 
 func addItemMessage(item, messagePretext, messagePostText):
 	addMessage(messagePretext + str(item.item_name) + messagePostText + '.');

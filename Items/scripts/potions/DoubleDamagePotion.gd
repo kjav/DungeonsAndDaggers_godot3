@@ -1,6 +1,7 @@
 extends "PotionBase.gd"
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/black_potion.webp"
 	item_name = "Double Damage"
 	item_description = "Your next 2 attacks will hit double as hard."

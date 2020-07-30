@@ -4,6 +4,7 @@ const missile = preload("res://Projectiles/Missile.tscn")
 const missile_texture = preload("res://assets/fireball.webp")
 
 func _init():
+	._init()
 	textureFilePath = "res://assets/red_spell2.webp"
 	item_name = "Fire"
 	item_description = "Deals 5-8 damage to the closest enemy."
