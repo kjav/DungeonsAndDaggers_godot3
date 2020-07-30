@@ -204,3 +204,29 @@ var RareSpellsDistribution = DistributionOfEquals.new(RareSpells)
 var RareFoodsDistribution = DistributionOfEquals.new(RareFoods)
 
 var UpgradesDistribution = DistributionOfEquals.new(AllUpgrades)
+
+const Enemies = {
+	"Raven": preload("res://Characters/Bat.tscn"),
+	"Mummy": preload("res://Characters/BabyOgre.tscn"),
+	"Necromancer": preload("res://Characters/NoviceMage.tscn"),
+	"Reaper": preload("res://Characters/Ghost.tscn"),
+	"TrainingDummy": preload("res://Characters/TrainingDummy.tscn"),
+	"UndeadDragon": preload("res://Characters/BossOgre.tscn"),
+	"ZombieBrown": preload("res://Characters/FireSpirit.tscn"),
+	"ZombieCreme": preload("res://Characters/WaterSpirit.tscn"),
+}
+
+const NonBossEnemies = [
+	{ "value": Enemies.Raven },
+	{ "value": Enemies.Mummy },
+	{ "value": Enemies.Necromancer },
+	{ "value": Enemies.Reaper },
+	{ "value": Enemies.ZombieBrown },
+	{ "value": Enemies.ZombieCreme }
+]
+
+const BossEnemies = [
+	{ "value": Enemies.UndeadDragon }
+]
+
+var AllHarmfulEnemies = DistributionOfEquals.new(NonBossEnemies + BossEnemies)

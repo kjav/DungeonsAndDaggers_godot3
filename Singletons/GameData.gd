@@ -64,7 +64,7 @@ func StartNewGame():
 
 func _ready():
 	randomize()
-	# addInitialItemsForTesting()
+	addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
 
@@ -259,7 +259,7 @@ func reset():
 	
 	# Erase the saved state
 	saved_player = null
-	# addInitialItemsForTesting()
+	addInitialItemsForTesting()
 
 func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	var enemiesInDistance = []
@@ -367,19 +367,20 @@ func saveCurrentDifficulties():
 	difficulties.close()
 
 func loadCurrentDifficulties():
-	var difficulties = File.new()
-	if not difficulties.file_exists(difficultySaveFileName):
-		return
+#	var difficulties = File.new()
+#	if not difficulties.file_exists(difficultySaveFileName):
+#		return
+#
+#	difficulties.open(difficultySaveFileName, File.READ)
+#
+#	while not difficulties.eof_reached():
+#		var state = parse_json(difficulties.get_line())
+#		if state:
+#			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
+#			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
 	
-	difficulties.open(difficultySaveFileName, File.READ)
-	
-	while not difficulties.eof_reached():
-		var state = parse_json(difficulties.get_line())
-		if state:
-			currentDifficultyOgreDomain = state.currentDifficultyOgreDomain
-			unlockedDifficultiesOgreDomain = state.unlockedDifficultiesOgreDomain
-	
-	difficulties.close()
+#	difficulties.close()
+	pass
 
 func stopSuggestingTutorial():
 	if not shouldTutorialHide():
