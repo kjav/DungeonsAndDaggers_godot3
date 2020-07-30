@@ -6,7 +6,6 @@ var valid_exterior_walls = []
 var TutorialLevelTwoRoom = load("res://Components/Rooms/TutorialLevelTwoRoom.gd").new()
 var TutorialStartRoom = load("res://Components/Rooms/TutorialStartRoom.gd").new()
 var TutorialSecondRoom = load("res://Components/Rooms/TutorialSecondRoom.gd").new()
-var Test = load("res://Components/Rooms/AllEnemyRoom.gd").new()
 
 func add_room(name, room, wall):
 	var door
@@ -135,18 +134,17 @@ func _init(level).(200, 200, level, -1):
 	var main_room
 	
 	if (level == 1):
-		main_room = Test
+		main_room = TutorialStartRoom
 		
 		add_room("main", main_room, null)
 		
-		# var wall_index = 1
-		# var wall = valid_exterior_walls[0]
-		# var room = TutorialSecondRoom
-	
-		# var success = add_room(1, room, wall)
+		var wall_index = 1
+		var wall = valid_exterior_walls[0]
+		var room = TutorialSecondRoom
+		var success = add_room(1, room, wall)
 		
-		# if success:
-		# 	valid_exterior_walls.remove(wall_index)
+		if success:
+			valid_exterior_walls.remove(wall_index)
 		
 		make_walls_consistent()
 	else:
