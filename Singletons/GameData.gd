@@ -64,7 +64,7 @@ func StartNewGame():
 
 func _ready():
 	randomize()
-	# addInitialItemsForTesting()
+	addInitialItemsForTesting()
 	# Set this to get a fixed seed
 	map_seed = randi()
 
@@ -259,7 +259,7 @@ func reset():
 	
 	# Erase the saved state
 	saved_player = null
-	# addInitialItemsForTesting()
+	addInitialItemsForTesting()
 
 func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	var enemiesInDistance = []

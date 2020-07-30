@@ -6,7 +6,7 @@ var valid_exterior_walls = []
 var TutorialLevelTwoRoom = load("res://Components/Rooms/TutorialLevelTwoRoom.gd").new()
 var TutorialStartRoom = load("res://Components/Rooms/TutorialStartRoom.gd").new()
 var TutorialSecondRoom = load("res://Components/Rooms/TutorialSecondRoom.gd").new()
-var Test = load("res://Components/Rooms/RandomEnemyRoom.gd").new()
+var Test = load("res://Components/Rooms/AllEnemyRoom.gd").new()
 
 func add_room(name, room, wall):
 	var door
