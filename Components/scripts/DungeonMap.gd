@@ -4,9 +4,12 @@ var Distribution = Constants.Distribution
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
+export(int, "TestManyItems", "TestManyEnemy", "TestOneEnemy", "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
+	"TestManyItems": preload("res://Components/scripts/TestManyItems.gd"),
+	"TestManyEnemy": preload("res://Components/scripts/TestManyEnemy.gd"),
+	"TestOneEnemy": preload("res://Components/scripts/TestOneEnemy.gd"),
 	"UndeadCrypt": preload("res://Components/scripts/UndeadCrypt.gd"),
 	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }

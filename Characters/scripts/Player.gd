@@ -435,9 +435,9 @@ func takeDamage(damage):
 	secondaryWeapon.onPlayerDamaged()
 	tertiaryWeapon.onPlayerDamaged()
 	
-	if GameData.chosen_map == "Tutorial":
+	if GameData.chosen_map == "Tutorial" || "Test" in GameData.chosen_map:
 		damage = min(damage, stats.health.value - 0.5)
-		
+	
 	if (damage >= stats.health.value && stats.health.value > 2):
 		damage = stats.health.value - 0.5
 	

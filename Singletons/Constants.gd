@@ -207,6 +207,7 @@ const BossEnemies = [
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
 var AllRareItemsDistribution = DistributionOfEquals.new(RareFoods + RarePotions + RareSpells + RareWeapons)
+var AllItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons + UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons + RareFoods + RarePotions + RareSpells + RareWeapons)
 
 var AllCommonPotionsSpellsDistribution = DistributionOfEquals.new(CommonPotions + CommonSpells)
 var AllUncommonPotionsSpellsDistribution = DistributionOfEquals.new(UncommonPotions + UncommonSpells)

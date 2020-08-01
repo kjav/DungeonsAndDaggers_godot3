@@ -1,7 +1,7 @@
 extends Node
 var admob = null
 var consent = null
-var isReal = false
+var isReal
 var childDirected = false
 var personalised = false
 var rating = "T"
@@ -17,6 +17,9 @@ var rewardAdId = "ca-app-pub-6580148569317237/9855207822"
 signal reward_ad(currency, amount)
 signal cancel_ad(currency)
 signal privacy_consent_obtained
+
+func _init():
+	isReal = !GameData.TESTING
 
 func _ready():
 	ready_to_load = true

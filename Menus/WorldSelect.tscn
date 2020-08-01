@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Menus/New Game.gd" type="Script" id=9]
 [ext_resource path="res://Menus/DifficultySlider.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/dummy_01.webp" type="Texture" id=11]
+[ext_resource path="res://assets/settings_gear.webp" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 180
@@ -35,12 +36,15 @@ margin_right = 159.0
 margin_bottom = 195.0
 rect_scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="UndeadCrypt"]
-margin_left = -486.0
-margin_top = 424.0
-margin_right = 507.0
-margin_bottom = 567.0
+margin_left = -496.0
+margin_top = 423.0
+margin_right = 497.0
+margin_bottom = 566.0
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -81,6 +85,9 @@ rect_scale = Vector2( 2, 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="UndeadCrypt/New Game"]
 margin_left = 69.7233
@@ -110,10 +117,10 @@ rect_scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 11 )
 
 [node name="Tutorial" type="Label" parent="Tutorial"]
-margin_left = -505.995
-margin_top = 424.0
-margin_right = 487.005
-margin_bottom = 567.0
+margin_left = -495.986
+margin_top = 421.534
+margin_right = 497.014
+margin_bottom = 564.534
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
@@ -121,6 +128,9 @@ custom_colors/font_color = Color( 0.270588, 0.686275, 0.705882, 1 )
 text = "Tutorial"
 align = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="New Game" type="TextureButton" parent="Tutorial"]
 margin_left = -324.223
@@ -133,6 +143,156 @@ texture_pressed = ExtResource( 6 )
 script = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="Tutorial/New Game"]
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "New Game"
+
+[node name="TestOneEnemy" type="Node2D" parent="."]
+position = Vector2( 2664, 485.558 )
+
+[node name="TextureFrame" type="TextureRect" parent="TestOneEnemy"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Label" parent="TestOneEnemy"]
+margin_left = -496.292
+margin_top = 422.967
+margin_right = 496.708
+margin_bottom = 565.967
+mouse_filter = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.670588, 0.270588, 0.705882, 1 )
+text = "Random enemy"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="TextureButton" parent="TestOneEnemy"]
+margin_left = -324.223
+margin_top = 817.77
+margin_right = 17.7771
+margin_bottom = 952.77
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TestOneEnemy/New Game"]
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "New Game"
+
+[node name="TestManyEnemy" type="Node2D" parent="."]
+position = Vector2( 3724, 485.558 )
+
+[node name="TextureFrame" type="TextureRect" parent="TestManyEnemy"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Label" parent="TestManyEnemy"]
+margin_left = -496.292
+margin_top = 422.967
+margin_right = 496.708
+margin_bottom = 565.967
+mouse_filter = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.670588, 0.705882, 0.270588, 1 )
+text = "Many enemies"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="TextureButton" parent="TestManyEnemy"]
+margin_left = -324.223
+margin_top = 817.77
+margin_right = 17.7771
+margin_bottom = 952.77
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TestManyEnemy/New Game"]
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "New Game"
+
+[node name="TestManyItems" type="Node2D" parent="."]
+position = Vector2( 4784, 485.558 )
+
+[node name="TextureFrame" type="TextureRect" parent="TestManyItems"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Label" parent="TestManyItems"]
+margin_left = -496.292
+margin_top = 422.967
+margin_right = 496.708
+margin_bottom = 565.967
+mouse_filter = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.32549, 0.705882, 0.270588, 1 )
+text = "Many items"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="TextureButton" parent="TestManyItems"]
+margin_left = -324.223
+margin_top = 817.77
+margin_right = 17.7771
+margin_bottom = 952.77
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TestManyItems/New Game"]
 margin_left = 69.7233
 margin_top = 7.5769
 margin_right = 510.724

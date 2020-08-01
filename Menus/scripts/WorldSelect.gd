@@ -1,7 +1,12 @@
 extends Node2D
 
 var _item_names = ["Tutorial", "UndeadCrypt"]
+var _test_item_names = ["TestOneEnemy", "TestManyEnemy", "TestManyItems"]
 var _items = []
+
+func _init():
+	if (GameData.TESTING):
+		_item_names += _test_item_names
 
 func get_items():
 	for i in range(_item_names.size()):

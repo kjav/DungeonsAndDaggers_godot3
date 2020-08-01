@@ -39,6 +39,8 @@ var additionalDifficultyPreText = "Challenge"
 
 const difficultySaveFileName = "user://difficulties.save"
 
+const TESTING = true
+
 var saved_player = null
 
 var map_seed = null
@@ -64,7 +66,10 @@ func StartNewGame():
 
 func _ready():
 	randomize()
-	# addInitialItemsForTesting()
+	
+	if GameData.TESTING:
+		addInitialItemsForTesting()
+	
 	# Set this to get a fixed seed
 	map_seed = randi()
 
@@ -259,7 +264,9 @@ func reset():
 	
 	# Erase the saved state
 	saved_player = null
-	# addInitialItemsForTesting()
+	
+	if GameData.TESTING:
+		addInitialItemsForTesting()
 
 func getCharactersWithinAreaAroundCharacter(targetCharacter, distance):
 	var enemiesInDistance = []
