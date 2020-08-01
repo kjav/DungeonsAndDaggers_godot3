@@ -7,6 +7,9 @@ func _ready():
 	Ad.connect("reward_ad", get_parent(), "reroll")
 	Ad.connect("cancel_ad", self, "cancel")
 
+func show():
+	get_node("Label").self_modulate = Color('fff500')
+
 func _pressed():
 	get_node("Loading").show()
 	get_node("Trophy").hide()
@@ -18,3 +21,4 @@ func cancel(currency):
 		GameAnalytics.queue_design_event('RewardAd:reroll')
 		get_node("Loading").hide()
 		get_node("Trophy").show()
+		get_node("Label").self_modulate = Color('fff500')

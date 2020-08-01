@@ -39,6 +39,7 @@ func show():
 		buttons.append(button)
 
 	.show()
+	get_node("ReRoll").show()
 
 func _process(delta):
 	time += delta

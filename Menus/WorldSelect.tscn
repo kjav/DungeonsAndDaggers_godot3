@@ -300,4 +300,54 @@ margin_bottom = 109.577
 rect_scale = Vector2( 0.5, 1 )
 custom_fonts/font = ExtResource( 8 )
 text = "New Game"
+
+[node name="TestUpgrades" type="Node2D" parent="."]
+position = Vector2( 5844, 485.558 )
+
+[node name="TextureFrame" type="TextureRect" parent="TestUpgrades"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Label" parent="TestUpgrades"]
+margin_left = -496.292
+margin_top = 422.967
+margin_right = 496.708
+margin_bottom = 565.967
+mouse_filter = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.705882, 0.494118, 0.270588, 1 )
+text = "Upgrades"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="TextureButton" parent="TestUpgrades"]
+margin_left = -324.223
+margin_top = 817.77
+margin_right = 17.7771
+margin_bottom = 952.77
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="TestUpgrades/New Game"]
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "New Game"
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
