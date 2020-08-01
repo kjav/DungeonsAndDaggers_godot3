@@ -28,7 +28,7 @@ func _ready():
 		consent = Engine.get_singleton("MySingleton")
 		call_deferred("_init_consent")
 	
-	if ready_to_load and personalised_checked:
+	if ready_to_load and personalised_checked and GameData.shouldHideTutorial():
 		call_deferred("_init_ads")
 
 func getDeviceVersion():
@@ -56,7 +56,10 @@ func _on_consent_unknown():
 
 func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 	print("Consent forwarded: ", acceptedPersonalised)
-	personalised = acceptedPersonalised
+	
+	if !requestedAdFree:
+		personalised = acceptedPersonalised
+	
 	personalised_checked = true
 	emit_signal("privacy_consent_obtained")
 	
