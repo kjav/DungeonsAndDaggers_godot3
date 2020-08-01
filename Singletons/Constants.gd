@@ -62,6 +62,12 @@ const Enemies = {
 	"ZombieCreme": preload("res://Characters/ZombieCreme.tscn"),
 }
 
+const Environments = {
+	"CommonChest": preload("res://Environments/CommonChest.tscn"),
+	"UncommonChest": preload("res://Environments/UncommonChest.tscn"),
+	"RareChest": preload("res://Environments/RareChest.tscn"),
+}
+
 const UpgradeClasses = {
 	"StrengthUpgrade": preload("res://Items/scripts/upgrades/StrengthUpgrade.gd"),
 	"DefenceUpgrade": preload("res://Items/scripts/upgrades/DefenceUpgrade.gd"),
@@ -203,6 +209,14 @@ const NonBossEnemies = [
 const BossEnemies = [
 	{ "value": Enemies.UndeadDragon }
 ]
+
+const Chests = [
+	{ "value": Environments.CommonChest },
+	{ "value": Environments.UncommonChest },
+	{ "value": Environments.RareChest }
+]
+
+var AllChestsDistribution = DistributionOfEquals.new(Chests)
 
 var AllCommonItemsDistribution = DistributionOfEquals.new(CommonFoods + CommonPotions + CommonSpells + CommonWeapons)
 var AllUncommonItemsDistribution = DistributionOfEquals.new(UncommonFoods + UncommonPotions + UncommonSpells + UncommonWeapons)
