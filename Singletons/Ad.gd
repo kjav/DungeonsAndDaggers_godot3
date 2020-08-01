@@ -28,7 +28,7 @@ func _ready():
 		consent = Engine.get_singleton("MySingleton")
 		call_deferred("_init_consent")
 	
-	if ready_to_load and personalised_checked and GameData.shouldHideTutorial():
+	if ready_to_load and personalised_checked:
 		call_deferred("_init_ads")
 
 func getDeviceVersion():
