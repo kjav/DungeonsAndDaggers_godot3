@@ -8,19 +8,8 @@ func _init():
 	walkable = Enums.WALKABLE.NONE
 	blocksAttacks = true
 
-func handleAnimation():
-	var state
-	
-	if locked:
-		state = "closed"
-	else:
-		state = "open"
-	
-	self.set_animation(state)
-
 func setLocked(_locked):
 	.setLockedButNotWalkable(_locked)
-	handleAnimation();
 
 func keyUnlocked():
 	.keyUnlocked()
@@ -37,7 +26,8 @@ func remove():
 
 func onWalkedInto(character):
 	if !locked:
-		remove()
+		self.set_animation("open")
+		self.connect("animation_finished",self,"remove", [], CONNECT_ONESHOT)
 	
 	if GameData.chosen_map == "Tutorial":
 		GameData.hud.get_node("TutorialTextPrompts").get_child(0).set_text("Weapons can have\nlimited ammo,\nOr attack\nover a distance.")

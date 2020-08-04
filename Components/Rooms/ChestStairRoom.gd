@@ -6,8 +6,18 @@ func setup_params():
 	environment_distribution = IndependentDistribution.new([
 		{
 		"p": 1, 
-		"value": Constants.AllChestsDistribution.pick()[0].value,
+		"value": Constants.Environments.CommonChest,
+		"position": Vector2(1, 1)
+		},
+		{
+		"p": 1, 
+		"value": Constants.Environments.UncommonChest,
 		"position": Vector2(2, 1)
+		},
+		{
+		"p": 1, 
+		"value": Constants.Environments.RareChest,
+		"position": Vector2(3, 1)
 		},
 		{
 		"p": 1, 

@@ -29,7 +29,7 @@ func setup_params():
 		},
 		{
 			"p": 1,
-			"value": load("res://Environments/Chest.tscn"),
+			"value": Constants.Environments.UncommonChest,
 			"position": Vector2(2, 4)
 		}
 	])

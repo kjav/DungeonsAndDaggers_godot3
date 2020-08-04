@@ -177,11 +177,9 @@ func set_map_type(type):
 			if env.has("facing"):
 				node.setFacing(env.facing)
 			
-			if node.environment_name == "Chest":
+			if node.environment_name != null and "Chest" in node.environment_name:
 				node.setLocked(false)
 				node.blockFromPathFindingWhenReady = true
-				node.setUnlockGuid("Silver")
-				node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.UncommonSpear}]))
 				if type == "Tutorial":
 					node.setDistribution(Distribution.new([{"p": 1.0, "value": Constants.WeaponClasses.Bomb}]))
 			elif node.environment_name == "Door":

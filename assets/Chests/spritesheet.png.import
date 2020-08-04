@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chest_silver_closed.png-a28f319f451c4880fae6d9d820fa32aa.stex"
+path="res://.import/spritesheet.png-c1f51e2e61475c8387ec916f3a4ed250.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chest_silver_closed.png"
-dest_files=[ "res://.import/chest_silver_closed.png-a28f319f451c4880fae6d9d820fa32aa.stex" ]
+source_file="res://assets/Chests/spritesheet.png"
+dest_files=[ "res://.import/spritesheet.png-c1f51e2e61475c8387ec916f3a4ed250.stex" ]
 
 [params]
 
