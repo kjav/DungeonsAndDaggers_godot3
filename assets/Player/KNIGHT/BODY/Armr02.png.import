@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ActionRpgArmor_32.png-a3999d0d6e6a5c61484fb59c1562d886.stex"
+path="res://.import/Armr02.png-524d811560bf2114b27f88ca7d533e74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/ActionRpgArmor_32.png"
-dest_files=[ "res://.import/ActionRpgArmor_32.png-a3999d0d6e6a5c61484fb59c1562d886.stex" ]
+source_file="res://assets/Player/KNIGHT/BODY/Armr02.png"
+dest_files=[ "res://.import/Armr02.png-524d811560bf2114b27f88ca7d533e74.stex" ]
 
 [params]
 
