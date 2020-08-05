@@ -26,19 +26,21 @@ var points = {}
 var ids = {}
 var map = null
 
-var top_layer_tiles = [14, 15, 16, 17, 18, 19, 20, 24, 29, 31, 33, 35, 39, 44, 45]
+var top_layer_tiles = [14, 15, 16, 17, 18, 19, 24, 29, 31, 33, 35, 39, 40, 44, 45, 47]
 
 var BottomTileMap
 var TopTileMap
 
 func tile_to_top_tile(n):
 	match n:
-		14, 15, 16, 17, 18, 19, 20, 24, 39:
+		14, 15, 16, 17, 18, 19, 24, 39:
 			return 36
 		29,33,44:
 			return 37
 		31, 35, 45:
 			return 38
+		40:
+			return 47
 
 func _ready():
 	BottomTileMap = get_node("BottomTileMap")
