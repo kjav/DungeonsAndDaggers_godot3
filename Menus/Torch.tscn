@@ -17,9 +17,6 @@ func set_time_offset(to):
 	var flame = get_node(\"Flame\")
 	flame.set_material(flame.get_material().duplicate())
 	flame.material.set_shader_param(\"time_offset\", to)
-
-func _process(delta):
-	print(get_node(\"Flame\").material.get_shader_param(\"time_offset\"))
 "
 
 [sub_resource type="ParticlesMaterial" id=1]
