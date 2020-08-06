@@ -28,7 +28,7 @@ config/name="Dungeons & Daggers"
 run/main_scene="res://Menus/UnifiedMenu.tscn"
 boot_splash/image="res://assets/NoisyLeafSplash.png"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://icon.png"
+config/icon="res://new_icon.png"
 
 [autoload]
 
@@ -77,3 +77,8 @@ limits/message_queue/max_size_kb=2048
 [physics_2d]
 
 motion_fix_enabled=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
