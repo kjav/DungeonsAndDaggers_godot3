@@ -301,7 +301,10 @@ func _init(level).(200, 200, level, -1):
 	if (GameData.isBossLevel(level)):
 		main_room = pick_bossroom(level)
 	else:
-		main_room = GameData.Rooms.StartRoom
+		if GameData.TESTING:
+			main_room = GameData.Rooms.StairsRoom
+		else:
+			main_room = GameData.Rooms.StartRoom
 	add_room("main", main_room, null)
 	
 	var room_distribution = level_rooms(level)
