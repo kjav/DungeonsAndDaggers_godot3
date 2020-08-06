@@ -135,12 +135,12 @@ func setCurrentWeaponSlot(slot):
 	GameData.hud.SetCurrentWeapon(slot)
 
 	if chosenWeapon != null:
-		currentWeaponNode.set_texture(chosenWeapon.texture)
+		currentWeaponNode.set_texture(chosenWeapon.offhandTexture)
 		currentWeaponNode.set_offset(chosenWeapon.offset)
 		currentWeaponNode.set_rotation(chosenWeapon.rotationInHand)
 		offHandWeaponNode.set_texture(offHandWeapon.offhandTexture)
 		offHandWeaponNode.set_offset(offHandWeapon.offset)
-		offHandWeaponNode.set_rotation(offHandWeapon.rotationInOffHand)
+		offHandWeaponNode.set_rotation(offHandWeapon.rotationInHand)
 		additionalRelativeAttackPositions = chosenWeapon.relativeAttackPositions
 		onlyAttacksFirstEnemy = chosenWeapon.onlyAttacksFirstEnemy
 		attackPositionBlockable = chosenWeapon.attackPositionBlockable

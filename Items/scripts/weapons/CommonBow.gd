@@ -16,9 +16,8 @@ func _init():
 	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5), Vector2(0, -6), Vector2(0, -7)]
 	damage = 0.5
 	showBehindHand = true
-	offset = Vector2(10, 22)
-	rotationInHand = deg2rad(185)
-	rotationInOffHand = deg2rad(145)
+	offset = Vector2(8, 25)
+	rotationInHand = deg2rad(155)
 
 func onAttack(target, attackDirection, isFirstCollision):
 	if target:

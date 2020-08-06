@@ -242,20 +242,6 @@ scale = Vector2( 1.03097, -22.9448 )
 rest = Transform2D( -4.50651e-08, -1.03097, -22.9448, 1.00295e-06, 0, -0.709 )
 default_length = 1.0
 
-[node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
-position = Vector2( -1.40367, -0.139908 )
-rotation = 1.95117
-rest = Transform2D( -0.371268, 0.928526, -0.928526, -0.371268, -1.40367, -0.139908 )
-default_length = 1.0
-__meta__ = {
-"_edit_bone_": true,
-"_edit_ik_": true
-}
-
-[node name="OffhandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm"]
-position = Vector2( 1.66675, 0.228027 )
-scale = Vector2( 0.022, 0.022 )
-
 [node name="Left Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( 1.59497, -0.175835 )
 rotation = 1.19753
@@ -267,9 +253,22 @@ __meta__ = {
 }
 
 [node name="CurrentWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm"]
-position = Vector2( 1.65576, -0.253052 )
-rotation = -0.33642
-scale = Vector2( 0.022, 0.022 )
+position = Vector2( 1.63916, 0.0632324 )
+scale = Vector2( 0.04, 0.04 )
+
+[node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
+position = Vector2( -1.40367, -0.139908 )
+rotation = 1.95117
+rest = Transform2D( -0.371268, 0.928526, -0.928526, -0.371268, -1.40367, -0.139908 )
+default_length = 1.0
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
+
+[node name="OffhandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm"]
+position = Vector2( 1.68579, 0.00439453 )
+scale = Vector2( 0.04, 0.04 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

@@ -14,9 +14,8 @@ func _init():
 	isMelee = true
 	showBehindHand = true
 	isOffhand = true
-	offset = Vector2(-20, -15)
-	rotationInHand = deg2rad(120)
-	rotationInOffHand = deg2rad(55)
+	offset = Vector2(-30, -30)
+	rotationInHand = deg2rad(50)
 
 func pickup():
 	if GameData.chosen_map == "Tutorial" && GameData.current_level == 2:

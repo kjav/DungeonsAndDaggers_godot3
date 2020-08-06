@@ -10,7 +10,6 @@ var isMelee = false
 var offset = Vector2(0, 0)
 var rotationInHand = 0
 var isOffhand = false
-var rotationInOffHand = 0
 var ammo = -1
 var equiptable = true
 var offhandTexture
