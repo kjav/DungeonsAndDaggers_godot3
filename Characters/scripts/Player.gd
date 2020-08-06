@@ -78,10 +78,10 @@ func _ready():
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
-	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand")
+	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm")
 	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
-	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
-	offHandWeaponNode = backHandBone.get_node("OffHandWeapon")
+	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm")
+	offHandWeaponNode = backHandBone.get_node("OffhandWeapon")
 	spellUsesTurn = true
 	foodUsesTurn = true
 	potionUsesTurn = true
@@ -135,12 +135,12 @@ func setCurrentWeaponSlot(slot):
 	GameData.hud.SetCurrentWeapon(slot)
 
 	if chosenWeapon != null:
-		currentWeaponNode.set_texture(chosenWeapon.texture)
+		currentWeaponNode.set_texture(chosenWeapon.offhandTexture)
 		currentWeaponNode.set_offset(chosenWeapon.offset)
 		currentWeaponNode.set_rotation(chosenWeapon.rotationInHand)
 		offHandWeaponNode.set_texture(offHandWeapon.offhandTexture)
 		offHandWeaponNode.set_offset(offHandWeapon.offset)
-		offHandWeaponNode.set_rotation(offHandWeapon.rotationInOffHand)
+		offHandWeaponNode.set_rotation(offHandWeapon.rotationInHand)
 		additionalRelativeAttackPositions = chosenWeapon.relativeAttackPositions
 		onlyAttacksFirstEnemy = chosenWeapon.onlyAttacksFirstEnemy
 		attackPositionBlockable = chosenWeapon.attackPositionBlockable
