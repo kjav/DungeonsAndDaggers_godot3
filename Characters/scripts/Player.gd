@@ -203,7 +203,7 @@ func dropWeapon():
 		currentWeapon = null
 
 func faceDirection(direction):
-	if alive():
+	if alive() and !dontSetStand():
 		match direction:
 			Enums.DIRECTION.UP:
 				animationPlayer.current_animation = "stand"
@@ -234,19 +234,20 @@ func setWalkAnimation(direction):
 			get_node("Polygons").scale = polygonsScale
 
 func setStandAnimation(direction):
-	match direction:
-		Enums.DIRECTION.UP:
-			animationPlayer.current_animation = "stand"
-		Enums.DIRECTION.DOWN:
-			animationPlayer.current_animation = "stand"
-		Enums.DIRECTION.LEFT:
-			animationPlayer.current_animation = "stand"
-			get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
-			get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
-		Enums.DIRECTION.RIGHT:
-			animationPlayer.current_animation = "stand"
-			get_node("Skeleton2D").scale = skeletonScale
-			get_node("Polygons").scale = polygonsScale
+	if alive() and !dontSetStand():
+		match direction:
+			Enums.DIRECTION.UP:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.DOWN:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.LEFT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
+				get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
+			Enums.DIRECTION.RIGHT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = skeletonScale
+				get_node("Polygons").scale = polygonsScale
 
 func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 	time_elapsed = 0
@@ -370,13 +371,17 @@ func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
 	swapWeapons()
 
+func dontSetStand():
+	return moveStack.size() > 1
+
 func displayArrowsOverMoveStack():
 	for n in GameData.hud.get_node("DirectionArrows").get_children():
 		GameData.hud.get_node("DirectionArrows").remove_child(n)
 		n.queue_free()
+	
 	if moveStack.size() > 1:
 		var pos = PositionHelper.getNextTargetPos(turn_end_pos / Vector2(GameData.TileSize, GameData.TileSize), moveStack[moveStack.size()-1]) * Vector2(GameData.TileSize, GameData.TileSize) + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
-			
+		
 		for i in range(moveStack.size()-2, 0, -1):
 			var arrowNode = DirectionArrow.instance()
 			
