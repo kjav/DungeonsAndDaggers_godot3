@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/toxic_explosion_256x256px.png-611ec9d18a8415c23335f01b1904632a.stex"
+path="res://.import/blood_explosion_128x128px.webp-38fd387bd23ed5a300eb4b6db190a5f0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BearFxExplosions/toxic_explosion_256x256px.png"
-dest_files=[ "res://.import/toxic_explosion_256x256px.png-611ec9d18a8415c23335f01b1904632a.stex" ]
+source_file="res://assets/BearFxExplosions/blood_explosion_128x128px.webp"
+dest_files=[ "res://.import/blood_explosion_128x128px.webp-38fd387bd23ed5a300eb4b6db190a5f0.stex" ]
 
 [params]
 
