@@ -17,3 +17,4 @@ func _init():
 	showBehindHand = true
 	offset = Vector2(-30, -50)
 	rotationInHand = deg2rad(45)
+	attackAnimation = "stab"

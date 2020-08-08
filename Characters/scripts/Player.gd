@@ -79,7 +79,7 @@ func _ready():
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
 	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm")
-	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
+	currentWeaponNode = forwardHandBone.get_node("Hand/CurrentWeapon")
 	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm")
 	offHandWeaponNode = backHandBone.get_node("OffhandWeapon")
 	spellUsesTurn = true
@@ -334,8 +334,11 @@ func attack(character, isFirstCollision, base_damage = 0):
 		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
+			animationPlayer.current_animation = currentWeapon.attackAnimation
+			animationPlayer.queue("stand")
+			
 			currentWeapon.onAttack(character, lastDirection, isFirstCollision)
-
+			
 			if currentWeapon.doesDamage:
 				.attack(character, isFirstCollision, currentWeapon.damage)
 			

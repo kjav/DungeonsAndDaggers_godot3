@@ -17,6 +17,7 @@ func _init():
 	isMelee = true
 	isOffhand = true
 	rotationInHand = deg2rad(0)
+	attackAnimation = "stab"
 
 func onPlayerDamaged():
 	if !GameData.player.shieldOnDamageUsedForTurn && randi() % int(chanceToBlockOutOf + 1) == 1:

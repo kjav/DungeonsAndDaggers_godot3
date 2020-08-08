@@ -18,6 +18,7 @@ func _init():
 	showBehindHand = true
 	offset = Vector2(8, 25)
 	rotationInHand = deg2rad(155)
+	attackAnimation = "shoot"
 
 func onAttack(target, attackDirection, isFirstCollision):
 	if target:

@@ -17,6 +17,7 @@ var offhandTextureFilePath
 var iconTexture
 var iconTextureFilePath
 var doesDamage = true
+var attackAnimation = "swing"
 
 func onAttack(character, attackDirection, isFirstCollision):
 	if ammo > 0:
