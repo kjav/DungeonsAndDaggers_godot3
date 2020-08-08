@@ -97,3 +97,6 @@ func addEventMessage(message):
 func show_upgrade_menu():
 	get_tree().paused = true
 	get_node("HudCanvasLayer/UpgradeMenu").show()
+
+func resetForNewGame():
+	get_node("HudCanvasLayer/DeathMenu").reset()

@@ -18,6 +18,10 @@ func revive(currency, amount):
 		get_parent().get_parent().hide()
 		get_parent().get_parent().get_node("AnimationPlayer").play_backwards("death screen fade in")
 
+func reset():
+	get_node("skull").material.set_shader_param("grayscale", false)
+	get_node("Label").self_modulate = Color('fff500')
+
 func _pressed():
 	get_node("loading").show()
 	get_node("skull").hide()
@@ -28,3 +32,4 @@ func cancel(currency):
 	if currency == "revive":
 		get_node("loading").hide()
 		get_node("skull").show()
+		reset()
