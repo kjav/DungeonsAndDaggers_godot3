@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ice_explosion_256x256px.png-1f4c40ebffa9074d13834b4e4aa33927.stex"
+path="res://.import/ice_explosion_128x128px.webp-ba869ae7ab1aa695f96dc4e270b78b04.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BearFxExplosions/ice_explosion_256x256px.png"
-dest_files=[ "res://.import/ice_explosion_256x256px.png-1f4c40ebffa9074d13834b4e4aa33927.stex" ]
+source_file="res://assets/BearFxExplosions/ice_explosion_128x128px.webp"
+dest_files=[ "res://.import/ice_explosion_128x128px.webp-ba869ae7ab1aa695f96dc4e270b78b04.stex" ]
 
 [params]
 
