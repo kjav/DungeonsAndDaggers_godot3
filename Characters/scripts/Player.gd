@@ -463,7 +463,7 @@ func handleCharacterDeath():
 	endGame()
 	currentWeaponNode.hide()
 	offHandWeaponNode.hide()
-	get_node("Polygons").hide()
+	animationPlayer.current_animation = "death"
 	.handleCharacterDeath()
 
 func endGame():
@@ -472,8 +472,10 @@ func endGame():
 
 func revive():
 	.revive()
+	triggerStandInLastDirection()
 	emit_signal("statsChanged", "health", "Up", stats.health.value)
 	currentWeaponNode.show()
+	
 	offHandWeaponNode.show()
 	get_node("Polygons").show()
 
