@@ -3,75 +3,75 @@
 [ext_resource path="res://VisualEffects/Stars.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Characters/HealthBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/scripts/Reaper.gd" type="Script" id=3]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_001.png" type="Texture" id=4]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_000.png" type="Texture" id=5]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_003.png" type="Texture" id=6]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_004.png" type="Texture" id=7]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_005.png" type="Texture" id=8]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_006.png" type="Texture" id=9]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_002.png" type="Texture" id=10]
-[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_007.png" type="Texture" id=11]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_007.png" type="Texture" id=12]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_002.png" type="Texture" id=13]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_002.png" type="Texture" id=14]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_004.png" type="Texture" id=15]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_011.png" type="Texture" id=16]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_001.png" type="Texture" id=17]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_004.png" type="Texture" id=18]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_003.png" type="Texture" id=19]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_005.png" type="Texture" id=20]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_000.png" type="Texture" id=21]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_007.png" type="Texture" id=22]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_006.png" type="Texture" id=23]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_006.png" type="Texture" id=24]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_000.png" type="Texture" id=25]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_001.png" type="Texture" id=26]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_010.png" type="Texture" id=27]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_000.png" type="Texture" id=28]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_008.png" type="Texture" id=29]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_007.png" type="Texture" id=30]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_007.png" type="Texture" id=31]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_001.png" type="Texture" id=32]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_003.png" type="Texture" id=33]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_005.png" type="Texture" id=34]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_002.png" type="Texture" id=35]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_003.png" type="Texture" id=36]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_005.png" type="Texture" id=37]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_006.png" type="Texture" id=38]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_009.png" type="Texture" id=39]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_002.png" type="Texture" id=40]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_004.png" type="Texture" id=41]
-[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_006.png" type="Texture" id=42]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_004.png" type="Texture" id=43]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_003.png" type="Texture" id=44]
-[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_005.png" type="Texture" id=45]
-[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_000.png" type="Texture" id=46]
-[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_001.png" type="Texture" id=47]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_000.webp" type="Texture" id=4]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_001.webp" type="Texture" id=5]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_001.webp" type="Texture" id=6]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_003.webp" type="Texture" id=7]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_002.webp" type="Texture" id=8]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_004.webp" type="Texture" id=9]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_005.webp" type="Texture" id=10]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_002.webp" type="Texture" id=11]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_001.webp" type="Texture" id=12]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_004.webp" type="Texture" id=13]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_002.webp" type="Texture" id=14]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_003.webp" type="Texture" id=15]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_009.webp" type="Texture" id=16]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_003.webp" type="Texture" id=17]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_011.webp" type="Texture" id=18]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_003.webp" type="Texture" id=19]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_002.webp" type="Texture" id=20]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_010.webp" type="Texture" id=21]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_005.webp" type="Texture" id=22]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_000.webp" type="Texture" id=23]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_006.webp" type="Texture" id=24]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_007.webp" type="Texture" id=25]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_006.webp" type="Texture" id=26]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_005.webp" type="Texture" id=27]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_006.webp" type="Texture" id=28]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_007.webp" type="Texture" id=29]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_005.webp" type="Texture" id=30]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_004.webp" type="Texture" id=31]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_007.webp" type="Texture" id=32]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_006.webp" type="Texture" id=33]
+[ext_resource path="res://assets/Reaper/05-Die/__Grim_Die_007.webp" type="Texture" id=34]
+[ext_resource path="res://assets/Reaper/01-Idle/__Grim_Idle_008.webp" type="Texture" id=35]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_000.webp" type="Texture" id=36]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_001.webp" type="Texture" id=37]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_002.webp" type="Texture" id=38]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_003.webp" type="Texture" id=39]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_004.webp" type="Texture" id=40]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_004.webp" type="Texture" id=41]
+[ext_resource path="res://assets/Reaper/02-Move/__Grim_Move_000.webp" type="Texture" id=42]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_000.webp" type="Texture" id=43]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_005.webp" type="Texture" id=44]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_007.webp" type="Texture" id=45]
+[ext_resource path="res://assets/Reaper/04-Hurt/NoFX/__Grim_Hurt_006.webp" type="Texture" id=46]
+[ext_resource path="res://assets/Reaper/03-Attack/__Grim_Attack_001.webp" type="Texture" id=47]
 [ext_resource path="res://VisualEffects/DarkIceExplosion.tscn" type="PackedScene" id=48]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 21 ), ExtResource( 17 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 45 ), ExtResource( 23 ), ExtResource( 12 ) ],
-"loop": false,
-"name": "hurt_right",
-"speed": 24.0
-}, {
-"frames": [ ExtResource( 25 ), ExtResource( 47 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 43 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 22 ) ],
-"loop": false,
-"name": "attack_right",
-"speed": 24.0
-}, {
-"frames": [ ExtResource( 46 ), ExtResource( 26 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 18 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 31 ), ExtResource( 29 ), ExtResource( 39 ), ExtResource( 27 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 23 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 35 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 18 ) ],
 "loop": true,
 "name": "stand_right",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 43 ), ExtResource( 47 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "attack_right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": false,
 "name": "death_right",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 40 ), ExtResource( 33 ), ExtResource( 15 ), ExtResource( 34 ), ExtResource( 42 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 41 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 45 ) ],
+"loop": false,
+"name": "hurt_right",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 40 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "walk_right",
 "speed": 8.0
@@ -86,16 +86,16 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ChangingBodyParts"]
 modulate = Color( 0.729412, 0.729412, 0.729412, 1 )
 position = Vector2( 16.895, 19.3297 )
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
-animation = "hurt_right"
-frame = 7
+animation = "stand_right"
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 5.93279, -0.350014 )
 scale = Vector2( 0.03, 0.03 )
+frame = 0
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 6 )
