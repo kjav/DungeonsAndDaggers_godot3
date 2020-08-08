@@ -227,12 +227,11 @@ __meta__ = {
 [node name="Torch2" parent="." instance=ExtResource( 24 )]
 position = Vector2( 130.496, 1171.09 )
 scale = Vector2( 2.5, 2.5 )
-time_offset = 0.0
 
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 936.542, 1169.79 )
+position = Vector2( 950, 1169.79 )
 scale = Vector2( 2.5, 2.5 )
-time_offset = 100.0
+time_offset = 95.0
 
 [node name="SplashScreenTexture" type="Sprite" parent="."]
 position = Vector2( 485.623, 1582.84 )
