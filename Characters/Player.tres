@@ -222,7 +222,7 @@ tracks/17/keys = {
 "values": [ Vector2( -1.40367, -0.139908 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false

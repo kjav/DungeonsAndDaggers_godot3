@@ -78,9 +78,9 @@ func _ready():
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
-	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm")
-	currentWeaponNode = forwardHandBone.get_node("Hand/CurrentWeapon")
-	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm")
+	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Hand")
+	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
+	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Hand")
 	offHandWeaponNode = backHandBone.get_node("OffhandWeapon")
 	spellUsesTurn = true
 	foodUsesTurn = true

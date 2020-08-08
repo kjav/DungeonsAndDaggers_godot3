@@ -237,7 +237,7 @@ tracks/17/keys = {
 "values": [ 111.794, 5.71003, 5.71003, 111.794 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -470,7 +470,7 @@ tracks/17/keys = {
 "values": [ 111.794, 57.4434, 57.4434, 119.003, 111.794 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -604,7 +604,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 68.6137, 121.548, 2.94772, 68.6137 ]
+"values": [ 68.6137, 140.547, -17.53, 68.6137 ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Skeleton2D/Body:position")
@@ -703,7 +703,7 @@ tracks/17/keys = {
 "values": [ 111.794, 122.646, 113.288, 111.794 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -712,7 +712,7 @@ tracks/18/keys = {
 "times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, -50.0, 50.0, 0.0 ]
+"values": [ 0.0, -65.0, 76.1266, 0.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -919,7 +919,7 @@ tracks/17/keys = {
 "values": [ Vector2( -1.40367, -0.139908 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1151,7 +1151,7 @@ tracks/17/keys = {
 "values": [ 111.794, 103.781, 116.439, 111.794 ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Hand:rotation_degrees")
+tracks/18/path = NodePath("Skeleton2D/Body/Chest/Left Arm/Left Hand:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -1300,10 +1300,10 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="Hand" type="Node2D" parent="Skeleton2D/Body/Chest/Left Arm"]
+[node name="Left Hand" type="Node2D" parent="Skeleton2D/Body/Chest/Left Arm"]
 position = Vector2( 1.639, 0.063 )
 
-[node name="CurrentWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Hand"]
+[node name="CurrentWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Hand"]
 rotation = 0.785731
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 2 )
@@ -1327,8 +1327,11 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="OffhandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm"]
-position = Vector2( 1.68579, 0.00439453 )
+[node name="Right Hand" type="Node2D" parent="Skeleton2D/Body/Chest/Right Arm"]
+rotation = -2.98023e-08
+
+[node name="OffhandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Hand"]
+position = Vector2( 1.68579, 0.00440216 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 15 )
 
@@ -1349,7 +1352,7 @@ anims/walk = ExtResource( 9 )
 visible = false
 position = Vector2( 32, -2.585 )
 scale = Vector2( 0.2, 0.2 )
-frame = 2
+frame = 0
 
 [node name="Health Bar" parent="." instance=ExtResource( 11 )]
 visible = false

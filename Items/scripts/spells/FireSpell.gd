@@ -41,7 +41,7 @@ func launchFireball(closest_enemy):
 		GameData.player,
 		closest_enemy,
 		missile_texture,
-		GameData.player.get_position(),
+		GameData.player.getPrimaryHandPosition(),
 		25,
 		spellDamage(),
 		"Fireball_Hit",
