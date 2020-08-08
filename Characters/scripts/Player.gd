@@ -450,6 +450,11 @@ func takeDamage(damage):
 		damage = stats.health.value - 0.5
 	
 	damage = .takeDamage(damage)
+	
+	if !damageable:
+		animationPlayer.current_animation = "block"
+		animationPlayer.queue("stand")
+	
 	damageable = damageableStore
 	
 	return damage
