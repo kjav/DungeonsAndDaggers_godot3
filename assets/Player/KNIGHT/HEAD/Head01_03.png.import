@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mage_right.png-3f0b723ef479fa4f5918387d9107218d.stex"
+path="res://.import/Head01_03.png-1256c2995a35c030e12ff4342d8e5831.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mage_right.png"
-dest_files=[ "res://.import/mage_right.png-3f0b723ef479fa4f5918387d9107218d.stex" ]
+source_file="res://assets/Player/KNIGHT/HEAD/Head01_03.png"
+dest_files=[ "res://.import/Head01_03.png-1256c2995a35c030e12ff4342d8e5831.stex" ]
 
 [params]
 

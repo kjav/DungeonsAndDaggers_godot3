@@ -78,10 +78,10 @@ func _ready():
 	animationPlayer = get_node("AnimationPlayer")
 	skeletonScale = get_node("Skeleton2D").scale
 	polygonsScale = get_node("Polygons").scale
-	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Wrist/Left Hand")
+	forwardHandBone = get_node("Skeleton2D/Body/Chest/Left Arm/Left Hand")
 	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
-	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Wrist/Right Hand")
-	offHandWeaponNode = backHandBone.get_node("OffHandWeapon")
+	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Hand")
+	offHandWeaponNode = backHandBone.get_node("OffhandWeapon")
 	spellUsesTurn = true
 	foodUsesTurn = true
 	potionUsesTurn = true
@@ -135,12 +135,12 @@ func setCurrentWeaponSlot(slot):
 	GameData.hud.SetCurrentWeapon(slot)
 
 	if chosenWeapon != null:
-		currentWeaponNode.set_texture(chosenWeapon.texture)
+		currentWeaponNode.set_texture(chosenWeapon.offhandTexture)
 		currentWeaponNode.set_offset(chosenWeapon.offset)
 		currentWeaponNode.set_rotation(chosenWeapon.rotationInHand)
 		offHandWeaponNode.set_texture(offHandWeapon.offhandTexture)
 		offHandWeaponNode.set_offset(offHandWeapon.offset)
-		offHandWeaponNode.set_rotation(offHandWeapon.rotationInOffHand)
+		offHandWeaponNode.set_rotation(offHandWeapon.rotationInHand)
 		additionalRelativeAttackPositions = chosenWeapon.relativeAttackPositions
 		onlyAttacksFirstEnemy = chosenWeapon.onlyAttacksFirstEnemy
 		attackPositionBlockable = chosenWeapon.attackPositionBlockable
@@ -203,7 +203,7 @@ func dropWeapon():
 		currentWeapon = null
 
 func faceDirection(direction):
-	if alive():
+	if alive() and !dontSetStand():
 		match direction:
 			Enums.DIRECTION.UP:
 				animationPlayer.current_animation = "stand"
@@ -234,19 +234,20 @@ func setWalkAnimation(direction):
 			get_node("Polygons").scale = polygonsScale
 
 func setStandAnimation(direction):
-	match direction:
-		Enums.DIRECTION.UP:
-			animationPlayer.current_animation = "stand"
-		Enums.DIRECTION.DOWN:
-			animationPlayer.current_animation = "stand"
-		Enums.DIRECTION.LEFT:
-			animationPlayer.current_animation = "stand"
-			get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
-			get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
-		Enums.DIRECTION.RIGHT:
-			animationPlayer.current_animation = "stand"
-			get_node("Skeleton2D").scale = skeletonScale
-			get_node("Polygons").scale = polygonsScale
+	if alive() and !dontSetStand():
+		match direction:
+			Enums.DIRECTION.UP:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.DOWN:
+				animationPlayer.current_animation = "stand"
+			Enums.DIRECTION.LEFT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = Vector2(skeletonScale.x * -1, skeletonScale.y)
+				get_node("Polygons").scale = Vector2(polygonsScale.x * -1, polygonsScale.y)
+			Enums.DIRECTION.RIGHT:
+				animationPlayer.current_animation = "stand"
+				get_node("Skeleton2D").scale = skeletonScale
+				get_node("Polygons").scale = polygonsScale
 
 func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 	time_elapsed = 0
@@ -333,8 +334,11 @@ func attack(character, isFirstCollision, base_damage = 0):
 		var offhandWeapon = getOffHandWeapon()
 		
 		if currentWeapon.ammo != 0:
+			animationPlayer.current_animation = currentWeapon.attackAnimation
+			animationPlayer.queue("stand")
+			
 			currentWeapon.onAttack(character, lastDirection, isFirstCollision)
-
+			
 			if currentWeapon.doesDamage:
 				.attack(character, isFirstCollision, currentWeapon.damage)
 			
@@ -370,13 +374,17 @@ func removeCurrentWeapon():
 	setCurrentWeapon(Constants.WeaponClasses.Unarmed.new())
 	swapWeapons()
 
+func dontSetStand():
+	return moveStack.size() > 1
+
 func displayArrowsOverMoveStack():
 	for n in GameData.hud.get_node("DirectionArrows").get_children():
 		GameData.hud.get_node("DirectionArrows").remove_child(n)
 		n.queue_free()
+	
 	if moveStack.size() > 1:
 		var pos = PositionHelper.getNextTargetPos(turn_end_pos / Vector2(GameData.TileSize, GameData.TileSize), moveStack[moveStack.size()-1]) * Vector2(GameData.TileSize, GameData.TileSize) + Vector2(GameData.TileSize / 2, GameData.TileSize / 2)
-			
+		
 		for i in range(moveStack.size()-2, 0, -1):
 			var arrowNode = DirectionArrow.instance()
 			
@@ -442,6 +450,11 @@ func takeDamage(damage):
 		damage = stats.health.value - 0.5
 	
 	damage = .takeDamage(damage)
+	
+	if !damageable:
+		animationPlayer.current_animation = "block"
+		animationPlayer.queue("stand")
+	
 	damageable = damageableStore
 	
 	return damage

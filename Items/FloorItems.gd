@@ -20,7 +20,12 @@ func remove(item):
 
 func addItem(newItem):
 	var s = Sprite.new()
-	s.set_texture(newItem.texture) 
+	
+	if newItem.get("rotationInOffHand") != null:
+		s.set_texture(newItem.rotationInOffHand)
+	else:
+		s.set_texture(newItem.texture)
+	
 	s.set_scale(Vector2(0.5, 0.5))
 	s.set_position(newItem.position + Vector2(64,64))
 	add_child(s)
