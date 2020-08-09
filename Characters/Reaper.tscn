@@ -51,15 +51,20 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 35 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 40 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 32 ) ],
 "loop": true,
-"name": "stand_right",
-"speed": 12.0
+"name": "walk_right",
+"speed": 8.0
 }, {
 "frames": [ ExtResource( 43 ), ExtResource( 47 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 25 ) ],
 "loop": false,
 "name": "attack_right",
 "speed": 24.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 17 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 35 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "stand_right",
+"speed": 12.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": false,
@@ -70,11 +75,6 @@ animations = [ {
 "loop": false,
 "name": "hurt_right",
 "speed": 24.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 40 ), ExtResource( 30 ), ExtResource( 28 ), ExtResource( 32 ) ],
-"loop": true,
-"name": "walk_right",
-"speed": 8.0
 } ]
 
 [node name="Reaper" type="Node2D"]
@@ -89,13 +89,14 @@ position = Vector2( 16.895, 19.3297 )
 scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 1 )
 animation = "stand_right"
+frame = 8
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 1 )]
 visible = false
 position = Vector2( 5.93279, -0.350014 )
 scale = Vector2( 0.03, 0.03 )
-frame = 0
+frame = 1
 
 [node name="Health Bar" parent="." instance=ExtResource( 2 )]
 position = Vector2( 16, 6 )
@@ -103,4 +104,4 @@ position = Vector2( 16, 6 )
 [node name="Explosion" parent="." instance=ExtResource( 48 )]
 visible = false
 position = Vector2( 15.9937, 16.8726 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.2, 0.2 )

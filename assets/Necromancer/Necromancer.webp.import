@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/concussive_explosion_128x128px.webp-d7caa5ca1146878dfba0493b4ab4d84a.stex"
+path="res://.import/Necromancer.webp-cb76eb40288977a726f0a2784018ae2f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BearFxExplosions/concussive_explosion_128x128px.webp"
-dest_files=[ "res://.import/concussive_explosion_128x128px.webp-d7caa5ca1146878dfba0493b4ab4d84a.stex" ]
+source_file="res://assets/Necromancer/Necromancer.webp"
+dest_files=[ "res://.import/Necromancer.webp-cb76eb40288977a726f0a2784018ae2f.stex" ]
 
 [params]
 
