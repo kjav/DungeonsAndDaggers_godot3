@@ -14,7 +14,7 @@ dest_files=[ "res://.import/forwardFlames.webp-1f6570aa6d6e92356506eba13c39aeac.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

@@ -14,7 +14,7 @@ dest_files=[ "res://.import/blood_explosion_128x128px.webp-38fd387bd23ed5a300eb4
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
