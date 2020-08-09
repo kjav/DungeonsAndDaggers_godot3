@@ -464,14 +464,14 @@ position = Vector2( 15.8684, 17.1592 )
 scale = Vector2( 0.12, 0.12 )
 frames = SubResource( 70 )
 animation = "stand_right"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Stars" parent="." instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 6.05901, 4.00842 )
 scale = Vector2( 0.03, 0.02 )
-frame = 1
+frame = 3
 
 [node name="Health Bar" parent="." instance=ExtResource( 3 )]
 position = Vector2( 16, 8.75 )

@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Armr02.webp" type="Texture" id=14]
 [ext_resource path="res://assets/rare-shield.png" type="Texture" id=15]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=1]
 resource_name = "block"
 length = 0.45
 step = 0.05
@@ -249,7 +249,7 @@ tracks/18/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "death"
 length = 0.5
 tracks/0/type = "value"
@@ -947,7 +947,7 @@ tracks/18/keys = {
 "values": [ 0.0, -65.0, 76.1266, 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.05
 tracks/0/type = "bezier"
@@ -1163,8 +1163,7 @@ tracks/18/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "swing"
+[sub_resource type="Animation" id=6]
 length = 0.45
 tracks/0/type = "value"
 tracks/0/path = NodePath("Skeleton2D/Body/Hip:position")
@@ -1499,7 +1498,6 @@ default_length = 4.0
 [node name="Left Leg" type="Bone2D" parent="Skeleton2D/Body/Hip"]
 position = Vector2( 0.0573316, -0.951496 )
 rotation = -0.0700963
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.997544, -0.0700389, 0.0700389, 0.997544, 0.0573316, -0.951496 )
 default_length = 1.0
 __meta__ = {
@@ -1509,7 +1507,6 @@ __meta__ = {
 [node name="Right Leg" type="Bone2D" parent="Skeleton2D/Body/Hip"]
 position = Vector2( 0.0636001, 0.761479 )
 rotation = 0.0678343
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.9977, 0.0677823, -0.0677823, 0.9977, 0.0636001, 0.761479 )
 default_length = 1.0
 __meta__ = {
@@ -1524,7 +1521,6 @@ default_length = 1.0
 [node name="Left Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( 1.59497, -0.175835 )
 rotation = 1.19754
-scale = Vector2( 1, 1 )
 rest = Transform2D( 0.364654, 0.931143, -0.931143, 0.364654, 1.59497, -0.175835 )
 default_length = 1.0
 __meta__ = {
@@ -1551,7 +1547,6 @@ default_length = 1.0
 [node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
 position = Vector2( -1.40367, -0.139908 )
 rotation = 1.95117
-scale = Vector2( 1, 1 )
 rest = Transform2D( -0.371268, 0.928526, -0.928526, -0.371268, -1.40367, -0.139908 )
 default_length = 1.0
 __meta__ = {
@@ -1573,12 +1568,12 @@ script = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 2.0
-anims/block = SubResource( 5 )
-anims/death = SubResource( 6 )
+anims/block = SubResource( 1 )
+anims/death = SubResource( 2 )
 anims/shoot = SubResource( 3 )
 anims/stab = SubResource( 4 )
-anims/stand = SubResource( 2 )
-anims/swing = SubResource( 1 )
+anims/stand = SubResource( 5 )
+anims/swing = SubResource( 6 )
 anims/walk = ExtResource( 9 )
 
 [node name="LightBlip" parent="." instance=ExtResource( 10 )]
