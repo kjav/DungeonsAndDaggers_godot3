@@ -84,7 +84,7 @@ script = ExtResource( 25 )
 
 [node name="Body" type="AnimatedSprite" parent="ChangingBodyParts"]
 position = Vector2( 319.28, 268.708 )
-scale = Vector2( 2.4, 2.4 )
+scale = Vector2( 4.8, 4.8 )
 frames = SubResource( 1 )
 animation = "stand_right"
 frame = 6
