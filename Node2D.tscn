@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/common-sword.png" type="Texture" id=1]
+[ext_resource path="res://assets/Player/KNIGHT/HEAD/Head01_01.webp" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -72.3171, -87.4532 )
+texture = ExtResource( 2 )
+skeleton = NodePath("Skeleton2D")
+polygon = PoolVector2Array( 301, 50, 604, 432, 12, 447, 136, 9 )
+uv = PoolVector2Array( 301, 50, 604, 432, 12, 447, 136, 9 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 1, 1, 1 ) ]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Polygon2D"]
+
+[node name="Bone2D" type="Bone2D" parent="Polygon2D/Skeleton2D"]
+rest = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2( 257.314, -82.4078 )
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( 301, 50, 604, 432, 12, 447, 136, 9 )
+uv = PoolVector2Array( 301, 50, 604, 432, 12, 447, 136, 9 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 1, 1, 1 ) ]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 591.991
+margin_top = -62.2263
+margin_right = 1063.99
+margin_bottom = 362.774
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 782.276
+margin_top = 391.761
+margin_right = 1254.28
+margin_bottom = 816.761
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2( 151.289, 389.967 )
+texture = ExtResource( 1 )
+skeleton = NodePath("Skeleton2D")
+polygon = PoolVector2Array( -90.4109, -152.055, 494.521, 0, -57.5342, 334.247 )
+uv = PoolVector2Array( -90.4109, -152.055, 494.521, 0, -57.5342, 334.247 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 1, 1 ) ]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Polygon2D3"]
+
+[node name="Bone2D" type="Bone2D" parent="Polygon2D3/Skeleton2D"]
+rest = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Polygon2D5" type="Polygon2D" parent="."]
+position = Vector2( 458.442, 407.947 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( -90.4109, -152.055, 494.521, 0, -57.5342, 334.247 )
+uv = PoolVector2Array( -90.4109, -152.055, 494.521, 0, -57.5342, 334.247 )
+bones = [ NodePath("Bone2D"), PoolRealArray( 1, 1, 1 ) ]
