@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/basic_spear.png" type="Texture" id=2]
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Leg02.webp" type="Texture" id=3]
 [ext_resource path="res://assets/Player/KNIGHT/HEAD/Head01_01.webp" type="Texture" id=4]
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Leg01.webp" type="Texture" id=5]
-[ext_resource path="res://assets/Player/KNIGHT/BODY/body.webp" type="Texture" id=6]
+[ext_resource path="res://assets/Player/ActionRpgArmor_23.png" type="Texture" id=6]
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Arm02.webp" type="Texture" id=7]
 [ext_resource path="res://Components/scripts/CameraWithShake.gd" type="Script" id=8]
 [ext_resource path="res://Characters/Player.tres" type="Animation" id=9]
@@ -15,7 +15,6 @@
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Arm01.webp" type="Texture" id=13]
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Armr02.webp" type="Texture" id=14]
 [ext_resource path="res://assets/rare-shield.png" type="Texture" id=15]
-[ext_resource path="res://Node2D.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "block"
@@ -1446,13 +1445,13 @@ uv = PoolVector2Array( 31.3954, -36.0465, -46.5116, 96.5116, 152.326, 98.8372 )
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 1, 1, 1 ), NodePath("Body/Head"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Right Arm"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Left Arm"), PoolRealArray( 0, 0, 0 ) ]
 
 [node name="Body" type="Polygon2D" parent="Polygons/Knight"]
-position = Vector2( -1.81689, 2.39648 )
+position = Vector2( -0.483887, 3.72998 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 6 )
 skeleton = NodePath("../../../Skeleton2D")
-polygon = PoolVector2Array( 32.4094, 132.409, 58.8486, 138.806, 106.61, 140.725, 117.058, 145.203, 128.998, 138.806, 154.584, 133.262, 159.275, 127.505, 142.644, 43.4968, 127.292, 30.4904, 100, 24.7334, 50.9595, 34.5415, 35.1812, 56.2899 )
-uv = PoolVector2Array( 32.4094, 132.409, 58.8486, 138.806, 106.61, 140.725, 117.058, 145.203, 128.998, 138.806, 154.584, 133.262, 159.275, 127.505, 142.644, 43.4968, 127.292, 30.4904, 100, 24.7334, 50.9595, 34.5415, 35.1812, 56.2899 )
-bones = [ NodePath("Body"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
+polygon = PoolVector2Array( 28, -74, 122, 29, -23, 140, -50, 3 )
+uv = PoolVector2Array( 28, -74, 122, 29, -23, 140, -50, 3 )
+bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 1, 1, 1, 1 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0, 0 ) ]
 
 [node name="Head" type="Polygon2D" parent="Polygons/Knight"]
 position = Vector2( -0.0993652, 1.83301 )
@@ -1583,13 +1582,9 @@ anims/walk = ExtResource( 9 )
 visible = false
 position = Vector2( 32, -2.585 )
 scale = Vector2( 0.2, 0.2 )
-frame = 0
+frame = 2
 
 [node name="Health Bar" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 63.8, -45 )
 scale = Vector2( 5, 5 )
-
-[node name="Node2D" parent="." instance=ExtResource( 16 )]
-position = Vector2( -21.4429, -57.6016 )
-scale = Vector2( 0.1, 0.1 )
