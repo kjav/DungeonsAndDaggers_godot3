@@ -419,7 +419,7 @@ func _process(delta):
 		
 		time_elapsed += delta
 		emit_signal("turnTimeChange", time_elapsed)
-		if time_elapsed >= 1:
+		if time_elapsed >= 1 && GameData.currentGameModeUsesTimer():
 			# forefit turn
 			time_elapsed = 0
 			moveDirection(Enums.DIRECTION.NONE)

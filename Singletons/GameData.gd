@@ -53,6 +53,9 @@ var saved_player = null
 
 var map_seed = null
 
+func currentGameModeUsesTimer():
+	return unlockedGameModesUndeadCrypt[currentGameModeUndeadCrypt] == "Turn Pressure" && chosen_map == "UndeadCrypt"
+
 func unlockNextDifficulty():
 	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
 		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
