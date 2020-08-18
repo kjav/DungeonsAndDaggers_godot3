@@ -32,6 +32,14 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
+#TODO change this to 0 on next release
+var currentGameModeUndeadCrypt = 1
+#TODO change this to just standard for next release
+var unlockedGameModesUndeadCrypt = ["Standard", "Turn Pressure"]
+var possibleGameModes = ["Normal", "Turn Pressure"]
+
+const gameModesSaveFileName = "user://gameModes.save"
+
 var currentDifficultyUndeadCrypt = 1
 var unlockedDifficultiesUndeadCrypt = ["Easy", "Normal"]
 var possibleDifficulties = ["Easy", "Normal", "Hard"]
@@ -54,6 +62,12 @@ func unlockNextDifficulty():
 		unlockedDifficultiesUndeadCrypt.append(additionalDifficultyPreText + " " + str(challengeNumber))
 	
 	saveCurrentDifficulties()
+
+func unlockNextGameMode():
+	if unlockedGameModesUndeadCrypt.size() < possibleGameModes.size():
+		unlockedGameModesUndeadCrypt.append(possibleGameModes[unlockedGameModesUndeadCrypt.size()])
+		
+		saveCurrentGameModes()
 
 func StartNewGame():
 	map_seed = randi()
@@ -365,7 +379,7 @@ func load_player(dict):
 func saveCurrentDifficulties():
 	var difficulties = File.new()
 	
-	difficulties.open("user://difficulties.save", File.WRITE)
+	difficulties.open(gameModesSaveFileName, File.WRITE)
 	difficulties.store_line(to_json({
 		"currentDifficultyUndeadCrypt": currentDifficultyUndeadCrypt,
 		"unlockedDifficultiesUndeadCrypt": unlockedDifficultiesUndeadCrypt
@@ -391,6 +405,36 @@ func loadCurrentDifficulties():
 				unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
 	
 	difficulties.close()
+
+func saveCurrentGameModes():
+	var gameModes = File.new()
+	
+	gameModes.open(gameModesSaveFileName, File.WRITE)
+	gameModes.store_line(to_json({
+		"currentGameModeUndeadCrypt": currentGameModeUndeadCrypt,
+		"unlockedGameModesUndeadCrypt": unlockedGameModesUndeadCrypt
+	}))
+	
+	gameModes.close()
+
+func loadCurrentGameModes():
+	var gameModes = File.new()
+	if not gameModes.file_exists(gameModesSaveFileName):
+		return
+	
+	gameModes.open(gameModesSaveFileName, File.READ)
+	
+	while not gameModes.eof_reached():
+		var state = parse_json(gameModes.get_line())
+		
+		if state:
+			if state.has("currentGameModeUndeadCrypt"):
+				currentGameModeUndeadCrypt = state.currentGameModeUndeadCrypt
+			
+			if state.has("unlockedGameModesUndeadCrypt"):
+				unlockedGameModesUndeadCrypt = state.unlockedGameModesUndeadCrypt
+	
+	gameModes.close()
 
 func stopSuggestingTutorial():
 	if not shouldTutorialHide():
@@ -420,7 +464,8 @@ func save_game():
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
 		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
-		"difficulty": currentDifficultyUndeadCrypt
+		"difficulty": currentDifficultyUndeadCrypt,
+		"gameMode": currentGameModeUndeadCrypt
 	}))
 
 	save_game.close()
@@ -456,6 +501,8 @@ func load_game():
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
 			if state.has("difficulty"):
 				currentDifficultyUndeadCrypt = state.difficulty
+			if state.has("gameMode"):
+				currentDifficultyUndeadCrypt = state.gameMode
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
