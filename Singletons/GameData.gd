@@ -35,8 +35,8 @@ var click_state = false
 #TODO change this to 0 on next release
 var currentGameModeUndeadCrypt = 1
 #TODO change this to just standard for next release
-var unlockedGameModesUndeadCrypt = ["Standard", "Turn Pressure"]
-var possibleGameModes = ["Normal", "Turn Pressure"]
+var unlockedGameModesUndeadCrypt = ["Standard", "Fast Paced"]
+var possibleGameModes = ["Standard", "Fast Paced"]
 
 const gameModesSaveFileName = "user://gameModes.save"
 
