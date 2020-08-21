@@ -459,6 +459,10 @@ func takeDamage(damage):
 	
 	return damage
 
+func PlaySleep():
+	get_node("Sleep").show()
+	get_node("Sleep").playSleep()
+
 func handleCharacterDeath():
 	endGame()
 	currentWeaponNode.hide()
