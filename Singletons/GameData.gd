@@ -3,6 +3,8 @@ extends Node
 signal itemDropped(item)
 signal itemPickedUp(item)
 
+const TESTING = true
+
 const Text = preload("res://VisualEffects/Text.tscn")
 var potions = []
 var foods = []
@@ -46,8 +48,6 @@ var possibleDifficulties = ["Easy", "Normal", "Hard"]
 var additionalDifficultyPreText = "Challenge"
 
 const difficultySaveFileName = "user://difficulties.save"
-
-const TESTING = true
 
 var saved_player = null
 

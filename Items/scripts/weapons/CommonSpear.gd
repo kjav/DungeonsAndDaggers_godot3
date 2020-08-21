@@ -16,5 +16,5 @@ func _init():
 	isMelee = true
 	showBehindHand = true
 	offset = Vector2(-30, -50)
-	rotationInHand = deg2rad(120)
-	rotationInOffHand = deg2rad(55)
+	rotationInHand = deg2rad(45)
+	attackAnimation = "stab"

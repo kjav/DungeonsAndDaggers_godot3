@@ -16,11 +16,11 @@
 [ext_resource path="res://assets/loading.webp" type="Texture" id=14]
 [ext_resource path="res://Menus/TextureRect.gd" type="Script" id=15]
 [ext_resource path="res://assets/plank07_dark.webp" type="Texture" id=16]
-[ext_resource path="res://assets/normalmaps/stone_wall02_n.png" type="Texture" id=17]
-[ext_resource path="res://assets/normalmaps/plank_15_n.png" type="Texture" id=18]
-[ext_resource path="res://assets/normalmaps/splash_n.png" type="Texture" id=19]
-[ext_resource path="res://assets/normalmaps/plank07_dark_n.png" type="Texture" id=20]
-[ext_resource path="res://assets/bg_01_02_n.png" type="Texture" id=21]
+[ext_resource path="res://assets/normalmaps/stone_wall02_n.webp" type="Texture" id=17]
+[ext_resource path="res://assets/normalmaps/plank_15_n.webp" type="Texture" id=18]
+[ext_resource path="res://assets/normalmaps/splash_n.webp" type="Texture" id=19]
+[ext_resource path="res://assets/normalmaps/plank07_dark_n.webp" type="Texture" id=20]
+[ext_resource path="res://assets/bg_01_02_n.webp" type="Texture" id=21]
 [ext_resource path="res://Menus/Torch.tscn" type="PackedScene" id=24]
 
 [sub_resource type="Curve" id=1]
@@ -227,12 +227,12 @@ __meta__ = {
 [node name="Torch2" parent="." instance=ExtResource( 24 )]
 position = Vector2( 130.496, 1171.09 )
 scale = Vector2( 2.5, 2.5 )
-time_offset = 0.0
+time_offset = 0
 
 [node name="Torch" parent="." instance=ExtResource( 24 )]
-position = Vector2( 936.542, 1169.79 )
+position = Vector2( 950, 1169.79 )
 scale = Vector2( 2.5, 2.5 )
-time_offset = 100.0
+time_offset = 95.0
 
 [node name="SplashScreenTexture" type="Sprite" parent="."]
 position = Vector2( 485.623, 1582.84 )

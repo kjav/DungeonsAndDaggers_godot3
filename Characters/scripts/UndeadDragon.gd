@@ -197,8 +197,7 @@ func handleCharacterDeath():
 		.heal(300, true)
 		get_node("BloodExplosion").show()
 		get_node("BloodExplosion").explode()
-		get_node("ChangingBodyParts/Body").hide()
-		get_node("ChangingBodyParts/RedBody").show()
+		get_node("ChangingBodyParts/Body").set_modulate(Color("#c76868"))
 
 func deathWinConditionMet():
 	return !anyOtherBossesRemaining() && GameData.current_level == GameData.bossLevelEvery * 2

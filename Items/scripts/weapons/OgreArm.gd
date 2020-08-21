@@ -19,7 +19,6 @@ func _init():
 	attackPositionBlockable = false
 	onlyAttacksFirstEnemy = false
 	offset = Vector2(-35, -35)
-	rotationInOffHand = deg2rad(55)
 	toggleRelativeAttackPositions()
 
 func onAttack(target, attackDirection, isFirstCollision):
