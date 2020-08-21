@@ -7,9 +7,7 @@ func _ready():
 
 func _pressed():
 	if !isDisabled():
-		GameData.player.moveDirection(Enums.DIRECTION.NONE)
-		GameData.player.MoveCharacters()
-		GameData.player.PlaySleep()
+		GameData.player.waitATurn()
 		pressed_time = OS.get_ticks_msec()
 
 func _process(delta):

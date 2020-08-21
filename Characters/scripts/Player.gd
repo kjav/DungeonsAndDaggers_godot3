@@ -569,12 +569,24 @@ func pathToDirectionPath(path):
 			directionPath.push_front(Enums.DIRECTION.UP)
 	return directionPath
 
+func waitATurn():
+	if len(moveStack) <= 0:
+		moveDirection(Enums.DIRECTION.NONE)
+		MoveCharacters()
+		PlaySleep()
+	else:
+		moveStack = pathToDirectionPath([(GameData.player.turn_end_pos) / GameData.TileSize])
+
 func moveToTile(event = null):
 	var tilePosition = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
 	var tilePositionRounded = Vector2(floor(tilePosition.x), floor(tilePosition.y))
 	var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
 	var path = GameData.tilemap.findPath(player_pos, tilePositionRounded)
-	moveStack = pathToDirectionPath(path)
+	
+	if (path.size() == 1 && path[0] == player_pos):
+		waitATurn()
+	else:
+		moveStack = pathToDirectionPath(path)
 
 func performMoveStack(t):
 	if len(moveStack) > 0 and not (moving or charactersAwaitingMove):
