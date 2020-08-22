@@ -4,9 +4,9 @@ func _init():
 	._init()
 	texture = preload("res://assets/40_a.webp")
 	textureFilePath = "res://assets/40_a.webp"
-	description="Become a quick eater. Food can be eaten as quick as you can click, without using up a turn.\n\n  +Quick Eating"
+	description="Become a quick eater. The first food you eat on a turn will not end it.\n\n  +Quick Eating"
 	title="Quick Eating"
 
 func onUse():
-	GameData.player.foodUsesTurn = false
+	GameData.player.firstFoodTurnFree = true
 	GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickEating)

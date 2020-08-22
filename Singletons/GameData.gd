@@ -54,7 +54,7 @@ var saved_player = null
 var map_seed = null
 
 func currentGameModeUsesTimer():
-	return unlockedGameModesUndeadCrypt[currentGameModeUndeadCrypt] == "Turn Pressure" && chosen_map == "UndeadCrypt"
+	return unlockedGameModesUndeadCrypt[currentGameModeUndeadCrypt] == "Fast Paced" && chosen_map == "UndeadCrypt"
 
 func unlockNextDifficulty():
 	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
@@ -349,9 +349,9 @@ func serialise_player(player):
 		"primary_weapon": inst2dict(player.primaryWeapon),
 		"secondary_weapon": inst2dict(player.secondaryWeapon),
 		"tertiary_weapon": inst2dict(player.tertiaryWeapon),
-		"food_uses_turn": player.foodUsesTurn,
-		"spell_uses_turn": player.spellUsesTurn,
-		"potion_uses_turn": player.potionUsesTurn,
+		"food_uses_turn": player.firstFoodTurnFree,
+		"spell_uses_turn": player.firstSpellTurnFree,
+		"potion_uses_turn": player.firstPotionTurnFree,
 		"trap_immune": player.trapImmune,
 		"can_always_hurt_reapers": player.canAlwaysHurtReapers,
 		"increased_spell_damage": player.increasedSpellDamage,
@@ -367,9 +367,9 @@ func load_player(dict):
 		"primaryWeapon": dict2item(dict.primary_weapon),
 		"secondaryWeapon": dict2item(dict.secondary_weapon),
 		"tertiaryWeapon": dict2item(dict.tertiary_weapon),
-		"foodUsesTurn": dict.food_uses_turn,
-		"spellUsesTurn": dict.spell_uses_turn,
-		"potionUsesTurn": dict.potion_uses_turn,
+		"firstFoodTurnFree": dict.food_uses_turn,
+		"firstSpellTurnFree": dict.spell_uses_turn,
+		"firstPotionTurnFree": dict.potion_uses_turn,
 		"trapImmune": dict.trap_immune,
 		"canAlwaysHurtReapers": dict.can_always_hurt_reapers,
 		"increasedSpellDamage": dict.increased_spell_damage,
@@ -524,13 +524,13 @@ func addCurrentStatusEffects():
 	if GameData.player.extendBriefPotions:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ExtendBriefPotions)
 	
-	if !GameData.player.potionUsesTurn:
+	if GameData.player.firstPotionTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickDrinking)
 	
-	if !GameData.player.foodUsesTurn:
+	if GameData.player.firstFoodTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickEating)
 
-	if !GameData.player.spellUsesTurn:
+	if GameData.player.firstSpellTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickSpellcasting)
 
 	if GameData.player.trapImmune:

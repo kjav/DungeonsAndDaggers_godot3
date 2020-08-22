@@ -15,6 +15,8 @@ func onWalkedOut():
 func onUse():
 	GameData.potions.remove(GameData.potions.find(self))
 	.onUse()
-
-	if GameData.player.potionUsesTurn:
+	
+	if !GameData.player.firstPotionTurnFree || !GameData.player.isFirstPotion:
 		GameData.player.forceTurnEnd()
+	
+	GameData.player.isFirstPotion = false
