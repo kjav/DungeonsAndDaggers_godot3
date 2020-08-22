@@ -216,7 +216,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurns extends BaseTurn:
 	var turnBehaviour
 	var behaviourEveryN
 	var turnWait = 2
-	var limit = 10
+	var limit = 8
 	
 	func _init(_character = null).(_character):
 		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)
