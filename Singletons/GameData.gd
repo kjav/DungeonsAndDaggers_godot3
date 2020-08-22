@@ -382,7 +382,7 @@ func load_player(dict):
 func saveCurrentDifficulties():
 	var difficulties = File.new()
 	
-	difficulties.open(gameModesSaveFileName, File.WRITE)
+	difficulties.open(difficultySaveFileName, File.WRITE)
 	difficulties.store_line(to_json({
 		"currentDifficultyUndeadCrypt": currentDifficultyUndeadCrypt,
 		"unlockedDifficultiesUndeadCrypt": unlockedDifficultiesUndeadCrypt
