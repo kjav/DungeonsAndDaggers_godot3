@@ -3,7 +3,10 @@ extends "TimerBase.gd"
 const timePerTurn = 1
 
 func _ready():
-	GameData.player.connect("turnTimeChange", self, "timeChange")
+	self.visible = GameData.currentGameModeUsesTimer()
+	
+	if GameData.currentGameModeUsesTimer():
+		GameData.player.connect("turnTimeChange", self, "timeChange")
 
 func timeChange(timeElapsed):
 	var proportion = timeElapsed / timePerTurn

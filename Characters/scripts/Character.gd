@@ -45,6 +45,10 @@ var temporaryDefenceInitialLength = -1
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
 
+var isFirstPotion = true
+var isFirstSpell = true
+var isFirstFood = true
+
 var trapImmune
 
 var fixedMaxHealth
@@ -196,6 +200,9 @@ func increaseStat(stat, amount):
 
 func moveDirection(direction):
 	if (not moving) and alive():
+		isFirstPotion = true
+		isFirstFood = true
+		isFirstSpell = true
 		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
 		stand_direction = Enums.DIRECTION.NONE
