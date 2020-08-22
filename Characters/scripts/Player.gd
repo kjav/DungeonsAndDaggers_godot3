@@ -575,7 +575,7 @@ func waitATurn():
 		MoveCharacters()
 		PlaySleep()
 	else:
-		moveStack = pathToDirectionPath([(GameData.player.turn_end_pos) / GameData.TileSize])
+		moveStack = []
 
 func moveToTile(event = null):
 	var tilePosition = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
