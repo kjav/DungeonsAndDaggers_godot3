@@ -98,6 +98,9 @@ margin_right = 837.0
 margin_bottom = 280.0
 texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label3" type="Label" parent="Tertiary Weapon/Tertiary Inactive Button"]
 margin_left = 52.4882

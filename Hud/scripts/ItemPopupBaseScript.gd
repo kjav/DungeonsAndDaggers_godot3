@@ -14,6 +14,10 @@ func getItem():
 	pass
 
 func _input(event):
+	if !clickInProgress and event.is_action_pressed("click"):
+		for node in GameData.hud.get_node("HudCanvasLayer/Popups").get_children():
+			node.hidePopup()
+	
 	if !clickInProgress and event.is_action_pressed("click") and withinTileBounds(event.position):
 		pressStartTime = OS.get_ticks_msec()
 		popupAdded = false
@@ -24,9 +28,6 @@ func _input(event):
 			popupAdded = false
 			clickInProgress = false
 			mousePosition = Vector2(9999,9999)
-			
-			for node in GameData.hud.get_node("HudCanvasLayer/Popups").get_children():
-				node.hidePopup()
 		elif !isLongPress():
 			actionShortPress()
 			popupAdded = false
@@ -34,7 +35,6 @@ func _input(event):
 
 func _process(delta):
 	if clickInProgress and withinTileBounds(mousePosition) and Input.is_mouse_button_pressed(BUTTON_LEFT) and isLongPress() and !popupAdded:
-
 			var new_instance = ItemDescriptionPopup.instance()
 			popupAdded = true
 			new_instance.set_name("ItemDescriptionPopup")
