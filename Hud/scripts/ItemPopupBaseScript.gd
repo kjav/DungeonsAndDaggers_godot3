@@ -6,11 +6,18 @@ var clickInProgress = false
 var pressStartTime = OS.get_ticks_msec()
 var mousePosition = Vector2(9999,9999)
 var popupPosition = "center"
+var longPressTime = 150
 
 func actionShortPress():
 	pass
 
 func getItem():
+	pass
+	
+func getTitle():
+	pass
+
+func getDescription():
 	pass
 
 func _input(event):
@@ -38,12 +45,18 @@ func _process(delta):
 			var new_instance = ItemDescriptionPopup.instance()
 			popupAdded = true
 			new_instance.set_name("ItemDescriptionPopup")
-			new_instance.setItem(getItem())
+			
+			var item = getItem()
+			if (item != null):
+				new_instance.setItem(getItem())
+			else:
+				new_instance.setTitleAndDescription(getTitle(), getDescription())
+				
 			new_instance.setPopupPosition(mousePosition, popupPosition)
 			GameData.hud.get_node("HudCanvasLayer/Popups").add_child(new_instance)
 
 func isLongPress():
-	return (OS.get_ticks_msec() - pressStartTime) > 150
+	return (OS.get_ticks_msec() - pressStartTime) > longPressTime
 	
 func withinTileBounds(pos):
 	var size = self.get_global_transform().get_scale() * self.get_size()
