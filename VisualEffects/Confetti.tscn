@@ -1,25 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=2]
 
-[sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 2
-emission_box_extents = Vector3( 75, 300, 1 )
-flag_disable_z = true
-spread = 15.0
-gravity = Vector3( -8, 0, 0 )
-initial_velocity = 185.0
-initial_velocity_random = 0.6
-angular_velocity = 32.18
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 1.0
-scale = 40.0
-scale_random = 0.9
-color = Color( 1, 0, 0, 1 )
-hue_variation = 1.0
-hue_variation_random = 1.0
-
-[node name="sparkle" type="Particles2D"]
+[node name="sparkle" type="CPUParticles2D"]
 position = Vector2( 540.685, 1774.61 )
 rotation = -1.5708
 emitting = false
@@ -29,4 +10,17 @@ one_shot = true
 speed_scale = 12.03
 explosiveness = 1.0
 randomness = 0.31
-process_material = SubResource( 3 )
+emission_shape = 2
+emission_rect_extents = Vector2( 75, 300 )
+spread = 15.0
+gravity = Vector2( -8, 0 )
+initial_velocity = 185.0
+initial_velocity_random = 0.6
+angular_velocity = 32.18
+angular_velocity_random = 1.0
+damping = 1.0
+scale_amount = 40.0
+scale_amount_random = 0.9
+color = Color( 1, 0, 0, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
