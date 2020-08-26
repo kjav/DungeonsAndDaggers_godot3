@@ -14,11 +14,11 @@ outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[node name="Background" type="TextureRect"]
+[node name="Background" type="TextureButton"]
 margin_right = 1377.0
 margin_bottom = 222.0
 rect_scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 1 )
+texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,7 +73,7 @@ rect_scale = Vector2( 0.5, 0.6 )
 texture_normal = ExtResource( 5 )
 script = ExtResource( 7 )
 
-[node name="Higher Locked" type="TextureRect" parent="."]
+[node name="Higher Locked" type="TextureButton" parent="."]
 visible = false
 self_modulate = Color( 0, 0, 0, 0.658824 )
 margin_left = 1323.11
@@ -82,7 +82,10 @@ margin_right = 1577.11
 margin_bottom = 216.268
 rect_rotation = 90.0
 rect_scale = Vector2( 0.5, 0.6 )
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Lock" type="TextureRect" parent="Higher Locked"]
 self_modulate = Color( 0.717647, 0.698039, 0.0352941, 1 )

@@ -486,4 +486,6 @@ text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Popups" type="Node2D" parent="."]
 [connection signal="changed" from="SelectScreen" to="." method="_on_changed"]
