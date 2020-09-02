@@ -11,7 +11,6 @@ func withinTileBounds(pos):
 	var position = button.get_global_position()
 	
 	return pos.x >= position.x - size.y and pos.x <= position.x and pos.y >= position.y and pos.y < position.y + size.x && button.visible
-	
 
 func getTitle():
 	return "Locked"
