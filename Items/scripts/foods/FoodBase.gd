@@ -12,5 +12,7 @@ func onUse():
 	.onUse()
 	GameData.foods.remove(GameData.foods.find(self))
 
-	if GameData.player.foodUsesTurn:
+	if !GameData.player.firstFoodTurnFree || !GameData.player.isFirstFood:
 		GameData.player.forceTurnEnd()
+
+	GameData.player.isFirstFood = false

@@ -1,4 +1,22 @@
-extends TextureRect
+extends "../../Hud/scripts/ItemPopupBaseScript.gd"
+
+func _init().():
+	longPressTime = 0
+	popupPosition = "right"
+
+func withinTileBounds(pos):
+	var button = get_node("Higher Locked")
+
+	var size = button.get_global_transform().get_scale() * button.get_size()
+	var position = button.get_global_position()
+	
+	return pos.x >= position.x - size.y and pos.x <= position.x and pos.y >= position.y and pos.y < position.y + size.x && button.visible
+
+func getTitle():
+	return "Locked"
+
+func getDescription():
+	return "Beat the second boss floor in this difficulty to unlock the next!"
 
 func _ready():
 	GameData.loadCurrentDifficulties()

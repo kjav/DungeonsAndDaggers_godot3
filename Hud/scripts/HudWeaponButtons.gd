@@ -24,13 +24,13 @@ func updateAmmo(slot, ammo):
 func setIconTexture(slot, weapon):
 	if slot == Enums.WEAPONSLOT.PRIMARY:
 		primaryWeapon = weapon
-		setTexture(get_node("Primary Weapon/Primary Icon"), get_node("Primary Weapon/Primary Background"), get_node("Primary Weapon/Primary Offhand"), weapon)
+		setTexture(get_node("Primary Weapon/Primary Icon"), get_node("Primary Weapon/Primary Background"), get_node("Primary Weapon/Primary Inactive Button"), weapon)
 	elif slot == Enums.WEAPONSLOT.SECONDARY:
 		secondaryWeapon = weapon
-		setTexture(get_node("Secondary Weapon/Secondary Icon"), get_node("Secondary Weapon/Secondary Background"), get_node("Secondary Weapon/Secondary Offhand"), weapon)
+		setTexture(get_node("Secondary Weapon/Secondary Icon"), get_node("Secondary Weapon/Secondary Background"), get_node("Secondary Weapon/Secondary Inactive Button"), weapon)
 	elif slot == Enums.WEAPONSLOT.TERTIARY:
 		tertiaryWeapon = weapon
-		setTexture(get_node("Tertiary Weapon/Tertiary Icon"), get_node("Tertiary Weapon/Tertiary Background"), get_node("Tertiary Weapon/Tertiary Offhand"), weapon)
+		setTexture(get_node("Tertiary Weapon/Tertiary Icon"), get_node("Tertiary Weapon/Tertiary Background"), get_node("Tertiary Weapon/Tertiary Inactive Button"), weapon)
 	
 	updateAmmo(slot, weapon.ammo)
 
@@ -42,10 +42,13 @@ func getWeapon(slot):
 	elif slot == Enums.WEAPONSLOT.TERTIARY:
 		return tertiaryWeapon
 
-func setTexture(icon, background, offhand, weapon):
+func setTexture(icon, background, inactive, weapon):
 		icon.set_texture(weapon.iconTexture)
 		background.set_texture(GameData.getBackgroundForRarity(weapon.rarity))
-		offhand.visible = weapon.isOffhand
+		if weapon.isOffhand:
+			inactive.get_node("InactiveLabel").text = "Offhand"
+		else:
+			inactive.get_node("InactiveLabel").text = "Click To Equip"
 
 func SetCurrentWeapon(slot):
 	get_node("Primary Weapon/Primary Inactive Overlay").visible = not slot == Enums.WEAPONSLOT.PRIMARY

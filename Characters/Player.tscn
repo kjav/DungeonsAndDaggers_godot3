@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Characters/scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/basic_spear.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Arm01.webp" type="Texture" id=13]
 [ext_resource path="res://assets/Player/KNIGHT/BODY/Armr02.webp" type="Texture" id=14]
 [ext_resource path="res://assets/rare-shield.png" type="Texture" id=15]
+[ext_resource path="res://VisualEffects/Sleep.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "block"
@@ -1580,10 +1581,16 @@ anims/walk = ExtResource( 9 )
 
 [node name="LightBlip" parent="." instance=ExtResource( 10 )]
 visible = false
-position = Vector2( 32, -2.585 )
+position = Vector2( 32, 33.415 )
 scale = Vector2( 0.2, 0.2 )
+frame = 2
 
 [node name="Health Bar" parent="." instance=ExtResource( 11 )]
 visible = false
 position = Vector2( 63.8, -45 )
 scale = Vector2( 5, 5 )
+
+[node name="Sleep" parent="." instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 17.5665, 21.3925 )
+scale = Vector2( 0.3, 0.3 )

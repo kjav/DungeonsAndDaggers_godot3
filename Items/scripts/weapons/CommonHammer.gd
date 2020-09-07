@@ -4,21 +4,21 @@ var nextAttackForward = true
 
 func _init():
 	._init()
-	textureFilePath = "res://assets/meat_club.png"
-	texture = preload("res://assets/meat_club.png")
+	textureFilePath = "res://assets/Hammers/ActionLoot_105.png"
+	texture = preload("res://assets/Hammers/ActionLoot_105.png")
 	offhandTexture = texture
 	offhandTextureFilePath = textureFilePath
-	iconTextureFilePath = "res://assets/meat_club.png"
-	iconTexture = preload("res://assets/meat_club.png")
-	item_name = "Ogre Arm"
-	item_description = "The ogre arm swaps between attacking infront or to the side of the attacked tile with base of 3 damage."
-	rarity = Enums.WEAPONRARITY.RARE
+	iconTextureFilePath = "res://assets/Hammers/ActionLoot_105.png"
+	iconTexture = preload("res://assets/Hammers/ActionLoot_105.png")
+	item_name = "Common Hammer"
+	item_description = "Hammers alternate between additionally attacking behind or to the sides of the target. Common has a base damage of 1.5."
+	rarity = Enums.WEAPONRARITY.COMMON
 	isMelee = true
 	showBehindHand = true
-	damage = 3
+	damage = 1.5
 	attackPositionBlockable = false
 	onlyAttacksFirstEnemy = false
-	offset = Vector2(-35, -35)
+	offset = Vector2(-40, -40)
 	toggleRelativeAttackPositions()
 
 func onAttack(target, attackDirection, isFirstCollision):
@@ -31,10 +31,10 @@ func onAttack(target, attackDirection, isFirstCollision):
 func toggleRelativeAttackPositions():
 	if nextAttackForward:
 		relativeAttackPositions = [Vector2(0, -1)]
-		rotationInHand = deg2rad(120)
+		rotationInHand = deg2rad(35)
 	else:
 		relativeAttackPositions = [Vector2(-1, 0), Vector2(1, 0)]
-		rotationInHand = deg2rad(180)
+		rotationInHand = deg2rad(80)
 
 	nextAttackForward = !nextAttackForward
 

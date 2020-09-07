@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ogre.png-21c11e983f21001e7f9c4e00dc3ce00f.stex"
+path="res://.import/hammer_long.png-b6a7fde98806d14836d184322fdebb3d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ogre.png"
-dest_files=[ "res://.import/ogre.png-21c11e983f21001e7f9c4e00dc3ce00f.stex" ]
+source_file="res://assets/Hammers/hammer_long.png"
+dest_files=[ "res://.import/hammer_long.png-b6a7fde98806d14836d184322fdebb3d.stex" ]
 
 [params]
 
