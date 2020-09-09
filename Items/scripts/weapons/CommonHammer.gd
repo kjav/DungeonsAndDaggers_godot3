@@ -4,12 +4,12 @@ var nextAttackForward = true
 
 func _init():
 	._init()
-	textureFilePath = "res://assets/Hammers/ActionLoot_105.png"
-	texture = preload("res://assets/Hammers/ActionLoot_105.png")
+	textureFilePath = "res://assets/Staves/basic_staff.png"
+	texture = preload("res://assets/Staves/basic_staff.png")
 	offhandTexture = texture
 	offhandTextureFilePath = textureFilePath
-	iconTextureFilePath = "res://assets/Hammers/ActionLoot_105.png"
-	iconTexture = preload("res://assets/Hammers/ActionLoot_105.png")
+	iconTextureFilePath = "res://assets/Staves/basic_staff_icon.png"
+	iconTexture = preload("res://assets/Staves/basic_staff_icon.png")
 	item_name = "Common Hammer"
 	item_description = "Hammers alternate between additionally attacking behind or to the sides of the target. Common has a base damage of 1.5."
 	rarity = Enums.WEAPONRARITY.COMMON
@@ -18,7 +18,7 @@ func _init():
 	damage = 1.5
 	attackPositionBlockable = false
 	onlyAttacksFirstEnemy = false
-	offset = Vector2(-40, -40)
+	offset = Vector2(-30, -50)
 	toggleRelativeAttackPositions()
 
 func onAttack(target, attackDirection, isFirstCollision):
@@ -34,7 +34,7 @@ func toggleRelativeAttackPositions():
 		rotationInHand = deg2rad(35)
 	else:
 		relativeAttackPositions = [Vector2(-1, 0), Vector2(1, 0)]
-		rotationInHand = deg2rad(80)
+		rotationInHand = deg2rad(0)
 
 	nextAttackForward = !nextAttackForward
 

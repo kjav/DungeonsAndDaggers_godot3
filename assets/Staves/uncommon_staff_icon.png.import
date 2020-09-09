@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ActionLoot_105.png-20330b5d024840b9659783734ce2c50a.stex"
+path="res://.import/uncommon_staff_icon.png-60fd525f5112c190c309fb18b2bcba4d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Hammers/ActionLoot_105.png"
-dest_files=[ "res://.import/ActionLoot_105.png-20330b5d024840b9659783734ce2c50a.stex" ]
+source_file="res://assets/Staves/uncommon_staff_icon.png"
+dest_files=[ "res://.import/uncommon_staff_icon.png-60fd525f5112c190c309fb18b2bcba4d.stex" ]
 
 [params]
 

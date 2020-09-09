@@ -548,7 +548,7 @@ position = Vector2( -2, -39.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 2.81853
+energy = 2.39999
 range_height = 40.0
 script = ExtResource( 5 )
 
@@ -557,7 +557,7 @@ position = Vector2( -2, -99.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 2.26074
+energy = 2.88495
 range_height = 40.0
 script = SubResource( 2 )
 
@@ -566,7 +566,7 @@ position = Vector2( -2, -159.994 )
 texture = ExtResource( 2 )
 texture_scale = 0.25
 color = Color( 1, 0.352941, 0, 1 )
-energy = 2.05613
+energy = 2.08108
 range_height = 40.0
 script = SubResource( 3 )
 
@@ -577,5 +577,5 @@ rotation = 3.14159
 scale = Vector2( 1.4, 1.4 )
 frames = SubResource( 98 )
 animation = "New Anim 2"
-frame = 15
+frame = 83
 playing = true
