@@ -10,8 +10,8 @@ func _init():
 	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/Staves/basic_staff_icon.png"
 	iconTexture = preload("res://assets/Staves/basic_staff_icon.png")
-	item_name = "Common Hammer"
-	item_description = "Hammers alternate between additionally attacking behind or to the sides of the target. Common has a base damage of 1.5."
+	item_name = "Common Staff"
+	item_description = "Staves alternate between additionally attacking behind or to the sides of the target. Common has a base damage of 1.5."
 	rarity = Enums.WEAPONRARITY.COMMON
 	isMelee = true
 	showBehindHand = true
