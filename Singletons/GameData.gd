@@ -3,7 +3,7 @@ extends Node
 signal itemDropped(item)
 signal itemPickedUp(item)
 
-const TESTING = true
+const TESTING = false
 
 const Text = preload("res://VisualEffects/Text.tscn")
 var potions = []
