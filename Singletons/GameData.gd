@@ -34,15 +34,14 @@ var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
-#TODO change this to 0 on next release
-var currentGameModeUndeadCrypt = 1
+var currentGameModeUndeadCrypt = 0
 #TODO change this to just standard for next release
 var unlockedGameModesUndeadCrypt = ["Standard", "Fast Paced"]
 var possibleGameModes = ["Standard", "Fast Paced"]
 
 const gameModesSaveFileName = "user://gameModes.save"
 
-var currentDifficultyUndeadCrypt = 1
+var currentDifficultyUndeadCrypt = 0
 var unlockedDifficultiesUndeadCrypt = ["Easy", "Normal"]
 var possibleDifficulties = ["Easy", "Normal", "Hard"]
 var additionalDifficultyPreText = "Challenge"
