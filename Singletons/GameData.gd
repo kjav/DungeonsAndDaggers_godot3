@@ -14,7 +14,7 @@ var tilemap
 var chosen_player
 var player
 var hud
-var adFree
+var adFree = false
 var chosen_map
 var characters = []
 var environmentObjects = []
