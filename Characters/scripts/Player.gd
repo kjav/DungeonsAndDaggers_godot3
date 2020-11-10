@@ -53,8 +53,8 @@ var goodLuckMessageShown = false
 
 func _init():
 	initialStats.health = {
-		"value": 5,
-		"maximum": 5
+		"value": 6,
+		"maximum": 6
 	}
 	
 	initialStats.strength = {

@@ -20,7 +20,7 @@ func _ready():
 	turnBehaviour.setLimit(6)
 	
 	setBaseDamage(1)
-	setInitialHealth(1.5, 1.5)
+	setInitialHealth(3.5, 3.5, 2.5)
 	setInitialStats(2, 2, 2, 2)
 
 	._ready()

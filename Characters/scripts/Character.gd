@@ -107,17 +107,13 @@ func _ready():
 
 func resetStats():
 	var additional = 0
-	var additionalHealth = 0
 
 	if self != GameData.player: 
 		additional = ceil(GameData.current_level / 2)
-
-	if !self.fixedMaxHealth: 
-		additionalHealth = additional
 	
 	stats.health = {
-		"value" : initialStats.health.value + additionalHealth,
-		"maximum" : initialStats.health.maximum + additionalHealth
+		"value" : initialStats.health.value,
+		"maximum" : initialStats.health.maximum
 	}
 
 	stats.mana = {

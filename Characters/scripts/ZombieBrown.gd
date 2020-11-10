@@ -17,7 +17,7 @@ func _ready():
 	processBehaviour = Process.Direct.new()
 	
 	setBaseDamage(1)
-	setInitialHealth(0.5, 0.5)
-	setInitialStats(1, 1, 0.5, 0.5)
+	setInitialHealth(1, 1, 1)
+	setInitialStats(2, 2, 1, 1)
 
 	._ready()
