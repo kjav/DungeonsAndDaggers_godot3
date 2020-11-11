@@ -45,6 +45,9 @@ func _on_connected():
 	print(Constants.AppStoreMicrotransactions.AdFree)
 	payment.querySkuDetails([Constants.AppStoreMicrotransactions.AdFree], "inapp") # "subs" for subscriptions
 	print("on_connected")
+
+func _on_sku_details_query_completed(sku_details):
+	print("_on_sku_details_query_completed")
 	for item_name in to_purchase:
 		print("payment.purchase")
 		print(item_name)
@@ -53,10 +56,8 @@ func _on_connected():
 		_request_purchased()
 		do_request_purchased = null
 
-func _on_sku_details_query_completed(sku_details):
-	print("_on_sku_details_query_completed")
-	for available_sku in sku_details:
-		print(available_sku)
+func _on_sku_details_query_error(id, msg, skus):
+	print("$#$#$# ERROR: ", id, ", ", msg)
 
 func purchase(item_name):
 	print("purcchasing")
