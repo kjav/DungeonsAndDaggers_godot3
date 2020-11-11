@@ -54,6 +54,7 @@ func _on_connected():
 		do_request_purchased = null
 
 func _on_sku_details_query_completed(sku_details):
+	print("_on_sku_details_query_completed")
 	for available_sku in sku_details:
 		print(available_sku)
 
@@ -68,12 +69,14 @@ func purchase(item_name):
 		to_purchase.push_back(item_name)
 
 func request_purchased():
+	print("request_purchased")
 	if payment:
 		_request_purchased()
 	else:
 		do_request_purchased = true
 
 func _request_purchased():
+	print("_request_purchased")
 	var query = payment.queryPurchases("inapp") # Or "subs" for subscriptions
 	if query.status == OK:
 		for purchase in query.purchases:
@@ -82,5 +85,6 @@ func _request_purchased():
 			emit_signal("has_purchased", purchase.sku)
 
 func _on_purchases_updated(purchases):
+	print("_on_purchases_updated")
 	for key in purchases.keys():
 		emit_signal("purchase_success", key)
