@@ -40,6 +40,18 @@ func _ready():
 	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
 	InAppPurchases.connect("purchase_owned", self, "purchase_owned")
 
+func _on_connect_error(ints, strings):
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print("_on_connect_error")
+	print(strings)
+	print(ints)
+
 func _on_purchase_error(ints, strings):
 	print("_on_purchase_error")
 	print("_on_purchase_error")
