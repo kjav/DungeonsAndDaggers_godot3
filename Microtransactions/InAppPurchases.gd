@@ -61,8 +61,9 @@ func purchase(item_name):
 	print("purcchasing")
 	print(item_name)
 	if payment:
-		print("purcchasing2")
+		print("payment.purchase(item_name) - if purchase")
 		payment.purchase(item_name)
+		print("payment.purchase(item_name) - if purchase - completed")
 	else:
 		to_purchase.push_back(item_name)
 
