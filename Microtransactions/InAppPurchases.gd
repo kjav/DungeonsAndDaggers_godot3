@@ -40,13 +40,72 @@ func _ready():
 	InAppPurchases.connect("has_purchased", self, "on_has_purchased")
 	InAppPurchases.connect("purchase_owned", self, "purchase_owned")
 
+func _on_purchase_error(ints, strings):
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print("_on_purchase_error")
+	print(strings)
+	print(ints)
+
+func _on_purchase_acknowledgement_error(strings):
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print("purchase_acknowledgement_error")
+	print(strings)
+
+func _on_purchase_acknowledged(id, strings):
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print("purchase_acknowledged")
+	print(strings)
+	print(id)
+
 func _on_connected():
+	print("on_connected")
+	print("on_connected")
+	print("on_connected")
+	print("on_connected")
+	print("on_connected")
+	print("on_connected")
 	print("on_connected")
 	print(Constants.AppStoreMicrotransactions.AdFree)
 	payment.querySkuDetails([Constants.AppStoreMicrotransactions.AdFree], "inapp") # "subs" for subscriptions
 	print("on_connected")
 
 func _on_sku_details_query_completed(sku_details):
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
+	print("_on_sku_details_query_completed")
 	print("_on_sku_details_query_completed")
 	for item_name in to_purchase:
 		print("payment.purchase")
@@ -58,8 +117,25 @@ func _on_sku_details_query_completed(sku_details):
 
 func _on_sku_details_query_error(id, msg, skus):
 	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
+	print("$#$#$# ERROR: ", id, ", ", msg)
 
 func purchase(item_name):
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
+	print("purcchasing")
 	print("purcchasing")
 	print(item_name)
 	if payment:
@@ -71,12 +147,32 @@ func purchase(item_name):
 
 func request_purchased():
 	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
+	print("request_purchased")
 	if payment:
 		_request_purchased()
 	else:
 		do_request_purchased = true
 
 func _request_purchased():
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
+	print("_request_purchased")
 	print("_request_purchased")
 	var query = payment.queryPurchases("inapp") # Or "subs" for subscriptions
 	if query.status == OK:
@@ -86,6 +182,14 @@ func _request_purchased():
 			emit_signal("has_purchased", purchase.sku)
 
 func _on_purchases_updated(purchases):
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
+	print("_on_purchases_updated")
 	print("_on_purchases_updated")
 	for key in purchases.keys():
 		emit_signal("purchase_success", key)
