@@ -41,7 +41,9 @@ func _ready():
 	InAppPurchases.connect("purchase_owned", self, "purchase_owned")
 
 func _on_connected():
-	payment.querySkuDetails(["my_iap_item"], "inapp") # "subs" for subscriptions
+	print("on_connected")
+	print(Constants.AppStoreMicrotransactions.AdFree)
+	payment.querySkuDetails([Constants.AppStoreMicrotransactions.AdFree], "inapp") # "subs" for subscriptions
 	print("on_connected")
 	for item_name in to_purchase:
 		print("payment.purchase")
