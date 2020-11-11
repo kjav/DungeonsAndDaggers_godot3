@@ -19,6 +19,7 @@ font_data = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D"]
 pause_mode = 2
+visible = false
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 

@@ -20,3 +20,8 @@ func setItem(item):
 func setTitleAndDescription(nameText, descriptionText):
 	get_node("Name").text = nameText
 	get_node("Description").text = descriptionText
+	
+	show()
+	
+	if (nameText == null and descriptionText == null):
+		hidePopup()
