@@ -64,7 +64,7 @@ func _on_purchase_error(ints, strings):
 	print(strings)
 	print(ints)
 
-func _on_purchase_acknowledgement_error(strings):
+func _on_purchase_acknowledgement_error(ints, strings, strings2):
 	print("purchase_acknowledgement_error")
 	print("purchase_acknowledgement_error")
 	print("purchase_acknowledgement_error")
@@ -77,9 +77,11 @@ func _on_purchase_acknowledgement_error(strings):
 	print("purchase_acknowledgement_error")
 	print("purchase_acknowledgement_error")
 	print("purchase_acknowledgement_error")
+	print(ints)
 	print(strings)
+	print(strings2)
 
-func _on_purchase_acknowledged(id, strings):
+func _on_purchase_acknowledged(strings):
 	print("purchase_acknowledged")
 	print("purchase_acknowledged")
 	print("purchase_acknowledged")
@@ -96,7 +98,6 @@ func _on_purchase_acknowledged(id, strings):
 	print("purchase_acknowledged")
 	print("purchase_acknowledged")
 	print(strings)
-	print(id)
 
 func _on_connected():
 	print("on_connected")
