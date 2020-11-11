@@ -68,6 +68,8 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 		GameAnalytics.start_analytics()
 		
 	if requestedAdFree:
+		print("consent purchase")
+		print(Constants.AppStoreMicrotransactions.AdFree)
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():

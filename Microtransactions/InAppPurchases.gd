@@ -42,7 +42,10 @@ func _ready():
 
 func _on_connected():
 	payment.querySkuDetails(["my_iap_item"], "inapp") # "subs" for subscriptions
+	print("on_connected")
 	for item_name in to_purchase:
+		print("payment.purchase")
+		print(item_name)
 		payment.purchase(item_name)
 	if do_request_purchased:
 		_request_purchased()
@@ -53,7 +56,10 @@ func _on_sku_details_query_completed(sku_details):
 		print(available_sku)
 
 func purchase(item_name):
+	print("purcchasing")
+	print(item_name)
 	if payment:
+		print("purcchasing2")
 		payment.purchase(item_name)
 	else:
 		to_purchase.push_back(item_name)
