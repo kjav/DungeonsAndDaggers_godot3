@@ -54,6 +54,11 @@ func SetCurrentWeapon(slot):
 	get_node("Primary Weapon/Primary Inactive Overlay").visible = not slot == Enums.WEAPONSLOT.PRIMARY
 	get_node("Secondary Weapon/Secondary Inactive Overlay").visible = not slot == Enums.WEAPONSLOT.SECONDARY
 	get_node("Tertiary Weapon/Tertiary Inactive Overlay").visible = not slot == Enums.WEAPONSLOT.TERTIARY
+	
 	get_node("Primary Weapon/Primary Inactive Button").visible = not slot == Enums.WEAPONSLOT.PRIMARY && (primaryWeapon != null && primaryWeapon.equiptable)
 	get_node("Secondary Weapon/Secondary Inactive Button").visible = not slot == Enums.WEAPONSLOT.SECONDARY && (secondaryWeapon != null && secondaryWeapon.equiptable)
 	get_node("Tertiary Weapon/Tertiary Inactive Button").visible = not slot == Enums.WEAPONSLOT.TERTIARY && (tertiaryWeapon != null && tertiaryWeapon.equiptable)
+
+	get_node("Primary Weapon/Not Recommended").visible = slot == Enums.WEAPONSLOT.PRIMARY && primaryWeapon.isOffhand
+	get_node("Secondary Weapon/Not Recommended").visible = slot == Enums.WEAPONSLOT.SECONDARY && secondaryWeapon.isOffhand
+	get_node("Tertiary Weapon/Not Recommended").visible = slot == Enums.WEAPONSLOT.TERTIARY && tertiaryWeapon.isOffhand

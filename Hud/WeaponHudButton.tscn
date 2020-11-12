@@ -67,6 +67,31 @@ margin_right = 837.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
+[node name="Not Recommended" type="TextureButton" parent="Tertiary Weapon"]
+margin_left = 537.0
+margin_top = -20.0
+margin_right = 837.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="activeLabel" type="Label" parent="Tertiary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
+text = "better Offhand"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Tertiary Inactive Button" type="TextureButton" parent="Tertiary Weapon"]
 margin_left = 537.0
 margin_top = -20.0
@@ -133,6 +158,31 @@ margin_right = 557.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
+[node name="Not Recommended" type="TextureButton" parent="Secondary Weapon"]
+margin_left = 257.0
+margin_top = -20.0
+margin_right = 557.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="activeLabel" type="Label" parent="Secondary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
+text = "better Offhand"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Secondary Inactive Button" type="TextureButton" parent="Secondary Weapon"]
 margin_left = 257.0
 margin_top = -20.0
@@ -197,6 +247,31 @@ margin_top = -18.0
 margin_right = 277.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
+
+[node name="Not Recommended" type="TextureButton" parent="Primary Weapon"]
+margin_left = -23.0
+margin_top = -20.0
+margin_right = 277.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="activeLabel" type="Label" parent="Primary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.609375, 0, 0, 1 )
+text = "better Offhand"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Primary Inactive Button" type="TextureButton" parent="Primary Weapon"]
 margin_left = -22.9872
