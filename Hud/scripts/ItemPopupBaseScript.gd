@@ -10,11 +10,10 @@ var longPressTime = 150
 var popupContainer
 
 func _ready():
-	if is_instance_valid(GameData.hud):
-		if GameData.hud != null:
-			popupContainer = GameData.hud.get_node("HudCanvasLayer/Popups")
-		else:
-			popupContainer = get_node("../../Popups")
+	if GameData.hud != null:
+		popupContainer = GameData.hud.get_node("HudCanvasLayer/Popups")
+	else:
+		popupContainer = get_node("../../Popups")
 
 func actionShortPress():
 	pass
@@ -29,9 +28,6 @@ func getDescription():
 	pass
 
 func _input(event):
-	if not is_instance_valid(popupContainer):
-		return false
-	
 	if !clickInProgress and event.is_action_pressed("click"):
 		for node in popupContainer.get_children():
 			node.hidePopup()
