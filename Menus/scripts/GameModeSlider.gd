@@ -22,7 +22,7 @@ func getDescription():
 	if GameData.unlockedGameModesUndeadCrypt[GameData.currentGameModeUndeadCrypt] == "Fast Paced":
 		return "We are working hard to improve the game at the moment and more game modes will be coming soon!"
 	
-	return "Reach Level 4 in this mode to unlock the next one! The next mode is " + GameData.unlockedGameModesUndeadCrypt[GameData.currentGameModeUndeadCrypt + 1]
+	return "Reach Level 4 in this mode to unlock the next one! The next mode is " + GameData.possibleGameModes[GameData.currentGameModeUndeadCrypt + 1]
 
 func _ready():
 	GameData.loadCurrentGameModes()
