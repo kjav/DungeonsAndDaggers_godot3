@@ -30,13 +30,14 @@ var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
+const unlockNotification = preload("res://Hud/UnlockNotification.tscn")
 var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
 var currentGameModeUndeadCrypt = 0
 #TODO change this to just standard for next release
-var unlockedGameModesUndeadCrypt = ["Standard", "Fast Paced"]
+var unlockedGameModesUndeadCrypt = ["Standard"]
 var possibleGameModes = ["Standard", "Fast Paced"]
 
 const gameModesSaveFileName = "user://gameModes.save"
@@ -576,7 +577,25 @@ func next_level():
 	player.position = Vector2(640, 1024)
 	player.turn_end_pos = Vector2(640, 1024)
 	tilemap.next_level()
+	
+	check_for_unlocks()
+	
 	save_game()
+
+func check_for_unlocks():
+	if current_level == 4 && !unlockedGameModesUndeadCrypt.has("Fast Paced"):
+		unlockFastPacedGameMode()
+
+func unlockFastPacedGameMode():
+		unlockedGameModesUndeadCrypt.append("Fast Paced")
+		saveCurrentGameModes()
+		addUnlockNotification("Unlocked New Game Mode, Fast Paced!")
+
+func addUnlockNotification(text):
+	var unlockNotificationNode = unlockNotification.instance()
+	unlockNotificationNode.setUnlockText(text)
+	GameData.hud.get_node("HudCanvasLayer/Notifications").add_child(unlockNotificationNode)
+	unlockNotificationNode.showUnlock()
 
 func toggle_mute():
 	muted = not muted
