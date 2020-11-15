@@ -1,6 +1,7 @@
 extends Node2D
 
 var Distribution = Constants.Distribution
+const NON_PLAYABLE_TILES_NUMBER = 4
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
@@ -128,7 +129,7 @@ func set_map_type(type):
 			var i = -100
 			for tile in row:
 				if tile == -1:
-					BTM.set_cell(i, j, 0)
+					BTM.set_cell(i, j, NON_PLAYABLE_TILES_NUMBER)
 				else:
 					BTM.set_cell(i, j, tile)
 				
