@@ -10,7 +10,7 @@ var longPressTime = 150
 var popupContainer
 
 func _ready():
-	if GameData.hud != null:
+	if is_instance_valid(GameData.hud) && GameData.hud != null:
 		popupContainer = GameData.hud.get_node("HudCanvasLayer/Popups")
 	else:
 		popupContainer = get_node("../../Popups")
