@@ -246,6 +246,14 @@ func findNextDirection(a, b):
 			direction = Enums.DIRECTION.UP
 	return direction
 
+func pathContainsClosedDoor(a, b):
+	var path = findPath(a, b)
+	
+	for coords in path:
+		for env in GameData.environmentObjectAtPos(coords):
+			if env.environment_name == "Door" && env.getState() == "closed":
+				return true
+
 func findPathDistance(a, b):
 	var id_path = _getIdPath(a, b)
 	

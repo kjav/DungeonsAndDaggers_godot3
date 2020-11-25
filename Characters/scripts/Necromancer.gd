@@ -33,7 +33,7 @@ func _ready():
 
 
 func turn(skipTurnBehaviour = false):
-	if stunnedDuration <= 0 && alive() && GameData.player.alive() && GameData.player.invisibilityTurnsRemaining <= 0 && pathFindingWithinBounds(moveTo.getPathFindingDistance(original_pos)):
+	if stunnedDuration <= 0 && alive() && GameData.player.alive() && GameData.player.invisibilityTurnsRemaining <= 0 && pathFindingWithinBounds(moveTo.getPathFindingDistance(original_pos)) && !moveTo.pathContainsClosedDoor(original_pos):
 		if !attackedLastTurn:
 			attackedLastTurn = true
 			
