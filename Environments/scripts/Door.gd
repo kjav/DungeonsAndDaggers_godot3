@@ -9,10 +9,16 @@ func _init():
 
 func handleAnimation():
 	self.set_animation(facing + "_" + state)
-	if facing == "front" and state == "closed":
-		get_node("Top").show()
+	if facing == "front":
+		if state == "open":
+			get_node("Top_open").show()
+			get_node("Top_closed").hide()
+		else:
+			get_node("Top_open").hide()
+			get_node("Top_closed").show()
 	else:
-		get_node("Top").hide()
+		get_node("Top_open").hide()
+		get_node("Top_closed").hide()
 
 func changeOfState(original, new):
 	return original != new
