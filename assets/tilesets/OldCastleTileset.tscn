@@ -581,3 +581,11 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 67 )
 normal_map = ExtResource( 41 )
 centered = false
+
+[node name="Outside_Tile" type="Sprite" parent="."]
+self_modulate = Color( 0.454902, 0.454902, 0.454902, 1 )
+position = Vector2( 32, 384 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 30 )
+normal_map = ExtResource( 42 )
+centered = false

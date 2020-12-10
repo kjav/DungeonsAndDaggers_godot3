@@ -285,7 +285,7 @@ func get_facing(wall_direction):
 			return "side"
 	return "front"
 
-func _init(level).(200, 200, level, 87):
+func _init(level).(200, 200, level):
 	if GameData.map_seed:
 		# Use the loaded seed, adding the level multiplied by a large prime
 		seed(GameData.map_seed + level * 524287)
