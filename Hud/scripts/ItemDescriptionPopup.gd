@@ -18,8 +18,12 @@ func setItem(item):
 	setTitleAndDescription(item.item_name, item.item_description)
 
 func setTitleAndDescription(nameText, descriptionText):
-	get_node("Name").text = nameText
-	get_node("Description").text = descriptionText
+	if not nameText:
+		return false
+	if is_instance_valid(get_node("Name")):
+		get_node("Name").text = nameText
+	if is_instance_valid(get_node("Description")):
+		get_node("Description").text = descriptionText
 	
 	show()
 	
