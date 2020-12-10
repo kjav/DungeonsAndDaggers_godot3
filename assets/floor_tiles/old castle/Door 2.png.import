@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Door 2.png-9963426c3d7328a8b73af6d9631fb4c1.stex" ]
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
