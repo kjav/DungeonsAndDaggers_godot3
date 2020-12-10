@@ -17,7 +17,7 @@ var Maps = {
 	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }
 
-var not_walkable = [-1, 6, 13, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
+var not_walkable = [-1, GameData.Tiles["WallMiddle"], GameData.Tiles["WallMiddle_nobottom"], GameData.Tiles["Floor1_left_wall"], GameData.Tiles["Floor2_left_wall"], GameData.Tiles["Floor3_left_wall"], GameData.Tiles["Floor4_left_wall"], GameData.Tiles["Floor5_left_wall"], GameData.Tiles["Floor6_left_wall"], GameData.Tiles["Floor1_corner_topleft"], GameData.Tiles["Floor1_corner_topright"], GameData.Tiles["Floor1_corner_bottomleft"], GameData.Tiles["Floor1_over_corner_bottomleft"], GameData.Tiles["Floor1_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomrightleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall"], GameData.Tiles["Floor1_verticalwall_bottom_end"], GameData.Tiles["Floor1_corner_topright_with_rightwall"], GameData.Tiles["Floor1_corner_topleft_with_leftwall"],  GameData.Tiles["Floor1_corner_topleft_nobottom"], GameData.Tiles["Floor1_corner_topright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomright"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"]]
 # This array is a boolean array, with elements at positions in the above array
 # set to true, and all other elements false.
 var flat_not_walkable = []
@@ -27,21 +27,20 @@ var points = {}
 var ids = {}
 var map = null
 
-var top_layer_tiles = [14, 15, 16, 17, 18, 19, 24, 29, 31, 33, 35, 39, 40, 44, 45, 47]
+var top_layer_tiles = [GameData.Tiles["Floor1_over_wall"], GameData.Tiles["Floor2_over_wall"], GameData.Tiles["Floor3_over_wall"], GameData.Tiles["Floor4_over_wall"], GameData.Tiles["Floor5_over_wall"], GameData.Tiles["Floor6_over_wall"], GameData.Tiles["Floor3_door_tile"], GameData.Tiles["Floor1_over_corner_topleft"], GameData.Tiles["Floor1_over_corner_topright"], GameData.Tiles["Floor1_over_corner_bottomleft"], GameData.Tiles["Floor1_over_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomrightleft"], GameData.Tiles["Floor1_over_verticalwall"], GameData.Tiles["Floor1_corner_topright_with_rightwall"], GameData.Tiles["Floor1_corner_topleft_with_leftwall"], 47]
 
 var BottomTileMap
 var TopTileMap
 
 func tile_to_top_tile(n):
-	match n:
-		14, 15, 16, 17, 18, 19, 24, 39:
-			return 36
-		29,33,44:
-			return 37
-		31, 35, 45:
-			return 38
-		40:
-			return 47
+	if n in [GameData.Tiles["Floor1_over_wall"], GameData.Tiles["Floor2_over_wall"], GameData.Tiles["Floor3_over_wall"], GameData.Tiles["Floor4_over_wall"], GameData.Tiles["Floor5_over_wall"], GameData.Tiles["Floor6_over_wall"], GameData.Tiles["Floor3_door_tile"], GameData.Tiles["Floor1_over_corner_bottomrightleft"]]:
+		return GameData.Tiles["Floor7_over_wall"]
+	if n in [GameData.Tiles["Floor1_over_corner_topleft"],GameData.Tiles["Floor1_over_corner_bottomleft"],GameData.Tiles["Floor1_corner_topright_with_rightwall"]]:
+		return GameData.Tiles["Floor7_over_corner_topleft"]
+	if n in [GameData.Tiles["Floor1_over_corner_topright"], GameData.Tiles["Floor1_over_corner_bottomright"], GameData.Tiles["Floor1_corner_topleft_with_leftwall"]]:
+		return GameData.Tiles["Floor7_over_corner_topright"]
+	if n in [GameData.Tiles["Floor1_over_verticalwall"]]:
+		return GameData.Tiles["Tile7_over_vertical_wall"]
 
 func _ready():
 	BottomTileMap = get_node("BottomTileMap")
@@ -55,7 +54,7 @@ func _ready():
 	flat_not_walkable.push_back(true)
 	GameData.tilemap = self
 	set_map_type(GameData.chosen_map)
-
+  
 func next_level():
 	points = {}
 	ids = {}

@@ -1,3 +1,4 @@
 BUILD_NUMBER
 android/build
 .vscode/settings.json
+.import/*

@@ -1,5 +1,7 @@
 extends Node
 
+var TileResource = load("res://assets/tilesets/OldCastleTileset.res")
+
 # Item Classes
 const PotionClasses = {
 	"HealthPotion": preload("res://Items/scripts/potions/HealthPotion.gd"),

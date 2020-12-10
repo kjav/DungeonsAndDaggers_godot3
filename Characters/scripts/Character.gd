@@ -590,7 +590,8 @@ func animationIsOneShot(animationName):
 func setOneShotAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
 		for child in self.get_node(bodyPartsNodeName).get_children():
-			child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
+			if child.is_connected("animation_finished", self, "setAnimationOnAllBodyParts"):
+				child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
 			child.set_animation(animationName)
 			child.connect("animation_finished",self,"setAnimationOnAllBodyParts", [animationName], CONNECT_ONESHOT)
 	
@@ -599,7 +600,8 @@ func setOneShotAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
 	if (alive() or setEvenIfDead) and animationName != currentAnimationName:
 		for child in self.get_node(bodyPartsNodeName).get_children():
-			child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
+			if child.is_connected("animation_finished", self, "setAnimationOnAllBodyParts"):
+				child.disconnect("animation_finished",self,"setAnimationOnAllBodyParts")
 			child.set_animation(animationName)
 			
 		currentAnimationName = animationName

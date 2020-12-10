@@ -12,6 +12,9 @@ margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="icon" type="TextureRect" parent="."]
 margin_left = 64.0
@@ -25,3 +28,6 @@ margin_right = 256.0
 margin_bottom = 256.0
 texture_normal = ExtResource( 3 )
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

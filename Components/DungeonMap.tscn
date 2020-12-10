@@ -1,22 +1,54 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Components/scripts/DungeonMap.gd" type="Script" id=1]
-[ext_resource path="res://assets/tilesets/Dungeon1Tileset.res" type="TileSet" id=2]
+[ext_resource path="res://Menus/Torch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/tilesets/OldCastleTileset.res" type="TileSet" id=3]
+[ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://assets/floor_tiles/old castle/torch 1.png" type="Texture" id=5]
+[ext_resource path="res://assets/floor_tiles/old castle/torch 2.png" type="Texture" id=6]
+[ext_resource path="res://assets/floor_tiles/old castle/torch 3.png" type="Texture" id=7]
+[ext_resource path="res://assets/floor_tiles/old castle/torch 4.png" type="Texture" id=8]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 4
+frame_0/texture = ExtResource( 5 )
+frame_1/texture = ExtResource( 6 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 7 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 8 )
+frame_3/delay_sec = 0.0
 
 [node name="DungeonMap" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="BottomTileMap" type="TileMap" parent="."]
-scale = Vector2( 4, 4 )
+scale = Vector2( 2, 2 )
 z_as_relative = false
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 32, 32 )
+tile_set = ExtResource( 3 )
 format = 1
 
 [node name="TopTileMap" type="TileMap" parent="."]
-scale = Vector2( 4, 4 )
+scale = Vector2( 2, 2 )
 z_index = 2
 z_as_relative = false
-tile_set = ExtResource( 2 )
-cell_size = Vector2( 32, 32 )
+tile_set = ExtResource( 3 )
 format = 1
+
+[node name="Torch" parent="." instance=ExtResource( 2 )]
+position = Vector2( 684.914, 1554.64 )
+time_offset = 0
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 4
+position = Vector2( 681.671, 1507.23 )
+scale = Vector2( 3.24408, 3.41781 )
+texture = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="Sprite"]
+position = Vector2( -80.8398, -33.0028 )
+texture = ExtResource( 4 )
+texture_scale = 0.3
+color = Color( 1, 0.494118, 0, 1 )
+energy = 1.3
+range_height = 100.0

@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [android]
 
-modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MySingleton"
+modules="org/godotengine/godot/GodotAdMob,org/godotengine/godot/MySingleton,org/godotengine/godot/GodotPaymentV3"
 
 [application]
 
@@ -80,4 +80,5 @@ motion_fix_enabled=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
