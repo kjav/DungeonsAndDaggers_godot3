@@ -63,13 +63,11 @@ offset = Vector2( 16, 12 )
 script = ExtResource( 6 )
 
 [node name="Top_closed" type="Sprite" parent="."]
-visible = false
 position = Vector2( 32, -32 )
 z_index = 2
 texture = ExtResource( 1 )
 
 [node name="Top_open" type="Sprite" parent="."]
-visible = false
 position = Vector2( 32, -32 )
 z_index = 2
 texture = ExtResource( 10 )
