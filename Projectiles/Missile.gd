@@ -20,7 +20,9 @@ func _ready():
 		set_process(true)
 
 func init(_caster, _target, _texture, _pos, _speed, _damage, _hitSound, _scale, _inflictDamage, _explodes):
-	set_texture(_texture)
+	if _texture != null:
+		set_texture(_texture)
+	
 	set_position(_pos)
 	set_scale(_scale)
 

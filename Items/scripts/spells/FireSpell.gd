@@ -1,7 +1,6 @@
 extends "SpellBase.gd"
 
-const missile = preload("res://Projectiles/Missile.tscn")
-const missile_texture = preload("res://assets/fireball.webp")
+const missile = preload("res://Projectiles/FireBall.tscn")
 
 func _init():
 	._init()
@@ -40,7 +39,7 @@ func launchFireball(closest_enemy):
 	new_missile.init(
 		GameData.player,
 		closest_enemy,
-		missile_texture,
+		null,
 		GameData.player.getPrimaryHandPosition(),
 		25,
 		spellDamage(),
