@@ -71,8 +71,8 @@ func _ready():
 	turnBehaviour.additionalRelativeAttackPositions = []
 	
 	setBaseDamage(2)
-	setInitialHealth(8, 16, 8)
-	setInitialStats(3.5, 3.5, 3.5, 3.5)
+	setInitialHealth(10, 20, 10)
+	setInitialStats(3, 3, 3, 3, 1.5)
 	
 	._ready()
 

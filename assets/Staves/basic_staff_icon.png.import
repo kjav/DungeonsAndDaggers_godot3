@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/meat_club.png-c05037bd7c4f209dc4b9d7d5bf3661c3.stex"
+path="res://.import/basic_staff_icon.png-cbc7fc14f931923f4a4b3f68c44e5a59.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meat_club.png"
-dest_files=[ "res://.import/meat_club.png-c05037bd7c4f209dc4b9d7d5bf3661c3.stex" ]
+source_file="res://assets/Staves/basic_staff_icon.png"
+dest_files=[ "res://.import/basic_staff_icon.png-cbc7fc14f931923f4a4b3f68c44e5a59.stex" ]
 
 [params]
 

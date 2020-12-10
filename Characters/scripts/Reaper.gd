@@ -23,7 +23,7 @@ func _ready():
 	turnBehaviour.setTurnWait(1)
 	
 	setBaseDamage(1)
-	setInitialHealth(1.5, 1.5)
+	setInitialHealth(2.5, 2.5, 2)
 	setInitialStats(1, 1, 2.5, 2.5)
 	
 	get_node("Explosion").setSpeedScale(2.0)

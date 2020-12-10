@@ -35,9 +35,9 @@ var hasMoved
 var lastEvent
 var applePickedUp = false
 var lastDirection = Enums.DIRECTION.NONE
-var spellUsesTurn
-var foodUsesTurn
-var potionUsesTurn
+var firstSpellTurnFree
+var firstFoodTurnFree
+var firstPotionTurnFree
 var canAlwaysHurtReapers
 var increasedSpellDamage
 var increasedFoodHeal
@@ -53,8 +53,8 @@ var goodLuckMessageShown = false
 
 func _init():
 	initialStats.health = {
-		"value": 5,
-		"maximum": 5
+		"value": 6,
+		"maximum": 6
 	}
 	
 	initialStats.strength = {
@@ -82,9 +82,9 @@ func _ready():
 	currentWeaponNode = forwardHandBone.get_node("CurrentWeapon")
 	backHandBone = get_node("Skeleton2D/Body/Chest/Right Arm/Right Hand")
 	offHandWeaponNode = backHandBone.get_node("OffhandWeapon")
-	spellUsesTurn = true
-	foodUsesTurn = true
-	potionUsesTurn = true
+	firstSpellTurnFree = false
+	firstFoodTurnFree = false
+	firstPotionTurnFree = false
 	thirdWeaponSlot = false
 	thirdUpgradeSlot = false
 	
@@ -105,9 +105,9 @@ func _ready():
 		setSecondaryWeapon(GameData.saved_player.secondaryWeapon)
 		setTertiaryWeapon(GameData.saved_player.tertiaryWeapon)
 		stats = GameData.saved_player.stats
-		foodUsesTurn = GameData.saved_player.foodUsesTurn
-		spellUsesTurn = GameData.saved_player.spellUsesTurn
-		potionUsesTurn = GameData.saved_player.potionUsesTurn
+		firstFoodTurnFree = GameData.saved_player.firstFoodTurnFree
+		firstSpellTurnFree = GameData.saved_player.firstSpellTurnFree
+		firstPotionTurnFree = GameData.saved_player.firstPotionTurnFree
 		trapImmune = GameData.saved_player.trapImmune
 		canAlwaysHurtReapers = GameData.saved_player.canAlwaysHurtReapers
 		increasedSpellDamage = GameData.saved_player.increasedSpellDamage
@@ -427,8 +427,8 @@ func _process(delta):
 		
 		time_elapsed += delta
 		emit_signal("turnTimeChange", time_elapsed)
-		if time_elapsed >= 1:
-			# forefit turn 
+		if time_elapsed >= 1 && GameData.currentGameModeUsesTimer():
+			# forefit turn
 			time_elapsed = 0
 			moveDirection(Enums.DIRECTION.NONE)
 			MoveCharacters()
@@ -458,6 +458,10 @@ func takeDamage(damage):
 	damageable = damageableStore
 	
 	return damage
+
+func PlaySleep():
+	get_node("Sleep").show()
+	get_node("Sleep").playSleep()
 
 func handleCharacterDeath():
 	endGame()
@@ -565,12 +569,24 @@ func pathToDirectionPath(path):
 			directionPath.push_front(Enums.DIRECTION.UP)
 	return directionPath
 
+func waitATurn():
+	if len(moveStack) <= 0:
+		moveDirection(Enums.DIRECTION.NONE)
+		MoveCharacters()
+		PlaySleep()
+	else:
+		moveStack = []
+
 func moveToTile(event = null):
 	var tilePosition = (event.position + (get_node("Camera2D").get_camera_screen_center()) - half_screen_size) / GameData.TileSize
 	var tilePositionRounded = Vector2(floor(tilePosition.x), floor(tilePosition.y))
 	var player_pos = (GameData.player.turn_end_pos) / GameData.TileSize
 	var path = GameData.tilemap.findPath(player_pos, tilePositionRounded)
-	moveStack = pathToDirectionPath(path)
+	
+	if (path.size() == 1 && path[0] == player_pos):
+		waitATurn()
+	else:
+		moveStack = pathToDirectionPath(path)
 
 func performMoveStack(t):
 	if len(moveStack) > 0 and not (moving or charactersAwaitingMove):

@@ -45,6 +45,10 @@ var temporaryDefenceInitialLength = -1
 var temporaryDefenceTurnsRemaining = -1
 var temporaryDefenceAmount = 5
 
+var isFirstPotion = true
+var isFirstSpell = true
+var isFirstFood = true
+
 var trapImmune
 
 var fixedMaxHealth
@@ -103,17 +107,13 @@ func _ready():
 
 func resetStats():
 	var additional = 0
-	var additionalHealth = 0
 
 	if self != GameData.player: 
 		additional = ceil(GameData.current_level / 2)
-
-	if !self.fixedMaxHealth: 
-		additionalHealth = additional
 	
 	stats.health = {
-		"value" : initialStats.health.value + additionalHealth,
-		"maximum" : initialStats.health.maximum + additionalHealth
+		"value" : initialStats.health.value,
+		"maximum" : initialStats.health.maximum
 	}
 
 	stats.mana = {
@@ -196,6 +196,9 @@ func increaseStat(stat, amount):
 
 func moveDirection(direction):
 	if (not moving) and alive():
+		isFirstPotion = true
+		isFirstFood = true
+		isFirstSpell = true
 		original_pos = get_position()
 		movement_direction = Enums.DIRECTION.NONE
 		stand_direction = Enums.DIRECTION.NONE

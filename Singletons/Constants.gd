@@ -35,18 +35,20 @@ const WeaponClasses = {
 	"CommonShield": preload("res://Items/scripts/weapons/CommonShield.gd"),
 	"CommonSpear": preload("res://Items/scripts/weapons/CommonSpear.gd"),
 	"CommonBow": preload("res://Items/scripts/weapons/CommonBow.gd"),
+	"CommonStaff": preload("res://Items/scripts/weapons/CommonStaff.gd"),
 	"Bomb": preload("res://Items/scripts/weapons/Bomb.gd"),
 	"UncommonSword": preload("res://Items/scripts/weapons/UncommonSword.gd"),
 	"UncommonDagger": preload("res://Items/scripts/weapons/UncommonDagger.gd"),
 	"UncommonShield": preload("res://Items/scripts/weapons/UncommonShield.gd"),
 	"UncommonSpear": preload("res://Items/scripts/weapons/UncommonSpear.gd"),
 	"UncommonBow": preload("res://Items/scripts/weapons/UncommonBow.gd"),
-	"OgreArm": preload("res://Items/scripts/weapons/OgreArm.gd"),
+	"UncommonStaff": preload("res://Items/scripts/weapons/UncommonStaff.gd"),
 	"RareSword": preload("res://Items/scripts/weapons/RareSword.gd"),
 	"RareDagger": preload("res://Items/scripts/weapons/RareDagger.gd"),
 	"RareShield": preload("res://Items/scripts/weapons/RareShield.gd"),
 	"RareSpear": preload("res://Items/scripts/weapons/RareSpear.gd"),
-	"RareBow": preload("res://Items/scripts/weapons/RareBow.gd")
+	"RareBow": preload("res://Items/scripts/weapons/RareBow.gd"),
+	"RareStaff": preload("res://Items/scripts/weapons/RareStaff.gd")
 }
 
 const KeyClasses = {
@@ -136,7 +138,8 @@ const CommonWeapons = [
 	{ "value": WeaponClasses.CommonSword },
 	{ "value": WeaponClasses.CommonDagger },
 	{ "value": WeaponClasses.CommonSpear },
-	{ "value": WeaponClasses.CommonBow }
+	{ "value": WeaponClasses.CommonBow },
+	{ "value": WeaponClasses.CommonStaff }
 ]
 
 const UncommonWeapons = [
@@ -145,7 +148,8 @@ const UncommonWeapons = [
 	{ "value": WeaponClasses.UncommonSword },
 	{ "value": WeaponClasses.UncommonDagger },
 	{ "value": WeaponClasses.UncommonShield },
-	{ "value": WeaponClasses.UncommonBow }
+	{ "value": WeaponClasses.UncommonBow },
+	{ "value": WeaponClasses.UncommonStaff }
 ]
 
 const RareWeapons = [
@@ -154,6 +158,7 @@ const RareWeapons = [
 	{ "value": WeaponClasses.RareDagger },
 	{ "value": WeaponClasses.RareShield },
 	{ "value": WeaponClasses.RareBow },
+	{ "value": WeaponClasses.RareStaff }
 ]
 
 const CommonPotions = [

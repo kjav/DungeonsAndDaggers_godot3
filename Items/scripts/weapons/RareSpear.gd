@@ -2,8 +2,8 @@ extends "UncommonSpear.gd"
 
 func _init():
 	._init()
-	textureFilePath = "res://assets/rare-spear.png"
-	texture = preload("res://assets/rare-spear.png")
+	textureFilePath = "res://assets/rare-spear-offhand.png"
+	texture = preload("res://assets/rare-spear-offhand.png")
 	offhandTexture = texture
 	offhandTextureFilePath = textureFilePath
 	iconTextureFilePath = "res://assets/rare-spear-icon.png"

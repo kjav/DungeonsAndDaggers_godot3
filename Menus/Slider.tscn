@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/gui_01_slider_02.png" type="Texture" id=1]
-[ext_resource path="res://Menus/scripts/DifficultySlider.gd" type="Script" id=2]
 [ext_resource path="res://assets/HopeGold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/pixel.png" type="Texture" id=4]
 [ext_resource path="res://assets/direction_arrow.webp" type="Texture" id=5]
@@ -15,12 +14,14 @@ outline_size = 7
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[node name="Background" type="TextureRect"]
+[node name="Background" type="TextureButton"]
 margin_right = 1377.0
 margin_bottom = 222.0
 rect_scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
 margin_left = 214.0
@@ -32,6 +33,9 @@ custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
 text = "Normal"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Divider Left" type="TextureRect" parent="."]
 modulate = Color( 0.556863, 0.337255, 0.270588, 1 )
@@ -69,7 +73,7 @@ rect_scale = Vector2( 0.5, 0.6 )
 texture_normal = ExtResource( 5 )
 script = ExtResource( 7 )
 
-[node name="Higher Locked" type="TextureRect" parent="."]
+[node name="Higher Locked" type="TextureButton" parent="."]
 visible = false
 self_modulate = Color( 0, 0, 0, 0.658824 )
 margin_left = 1323.11
@@ -78,7 +82,10 @@ margin_right = 1577.11
 margin_bottom = 216.268
 rect_rotation = 90.0
 rect_scale = Vector2( 0.5, 0.6 )
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Lock" type="TextureRect" parent="Higher Locked"]
 self_modulate = Color( 0.717647, 0.698039, 0.0352941, 1 )

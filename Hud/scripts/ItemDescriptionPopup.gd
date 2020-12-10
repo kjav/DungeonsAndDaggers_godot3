@@ -5,7 +5,7 @@ func hidePopup():
 	queue_free()
 
 func setPopupPosition(mousePosition, position):
-	var width = get_node("Background").get_global_transform().get_scale().x * get_node("Background").get_size().x - 50
+	var width = get_node("Background").get_global_transform().get_scale().x * get_node("Background").get_size().x
 
 	if position == "left":
 		mousePosition.x -= width / 2
@@ -20,3 +20,8 @@ func setItem(item):
 func setTitleAndDescription(nameText, descriptionText):
 	get_node("Name").text = nameText
 	get_node("Description").text = descriptionText
+	
+	show()
+	
+	if (nameText == null and descriptionText == null):
+		hidePopup()

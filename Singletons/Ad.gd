@@ -68,6 +68,8 @@ func _on_consent_forward(acceptedPersonalised, requestedAdFree):
 		GameAnalytics.start_analytics()
 		
 	if requestedAdFree:
+		print("consent purchase")
+		print(Constants.AppStoreMicrotransactions.AdFree)
 		InAppPurchases.purchase(Constants.AppStoreMicrotransactions.AdFree)
 
 func _on_consent_loaded():
@@ -97,7 +99,7 @@ func _init_ads():
 func play_reward_video(name):
 	currency = name
 	
-	if !GameData.adFree:
+	if !GameData.adFree and GameData.chosen_map != "Tutorial":
 		if admob == null:
 			emit_signal("reward_ad", currency, 1)
 		else:
@@ -126,6 +128,6 @@ func _on_rewarded_video_ad_loaded():
 		admob.showRewardedVideo()
 
 func _on_rewarded(unused, amount):
-	if !GameData.adFree:
+	if !GameData.adFree and GameData.chosen_map != "Tutorial":
 		admob.loadRewardedVideo(rewardAdId)
 	emit_signal("reward_ad", currency, amount)

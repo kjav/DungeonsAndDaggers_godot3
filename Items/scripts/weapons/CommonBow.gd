@@ -12,9 +12,10 @@ func _init():
 	iconTextureFilePath = "res://assets/basic-bow-icon.png"
 	iconTexture = preload("res://assets/basic-bow-icon.png")
 	item_name = "Common Bow"
-	item_description = "Bows hit the first enemy in a straight line at any distance. Common's base damage is 1 and has at most 6 ammo."
-	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5), Vector2(0, -6), Vector2(0, -7)]
-	damage = 0.5
+	item_description = "Bows hit the first enemy in a straight line at any distance and have at most 6 ammo.  Common's base damage is 1."
+	relativeAttackPositions = [Vector2(0, -1), Vector2(0, -2), Vector2(0, -3), Vector2(0, -4), Vector2(0, -5), Vector2(0, -6), Vector2(0, -7), Vector2(0, -8), Vector2(0, -9), Vector2(0, -10)]
+	damage = 1
+	ammo = 6
 	showBehindHand = true
 	offset = Vector2(8, 25)
 	rotationInHand = deg2rad(155)

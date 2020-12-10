@@ -37,6 +37,15 @@ class MoveTo extends BaseTurn:
 		player_pos.x = int(player_pos.x / GameData.TileSize)
 		player_pos.y = int(player_pos.y / GameData.TileSize)
 		return GameData.tilemap.findPathDistance(divided_pos, player_pos)
+	
+	func pathContainsClosedDoor(pos):
+		var divided_pos = Vector2(0,0)
+		divided_pos.x = int(pos.x / GameData.TileSize)
+		divided_pos.y = int(pos.y / GameData.TileSize)
+		var player_pos = GameData.player.turn_end_pos
+		player_pos.x = int(player_pos.x / GameData.TileSize)
+		player_pos.y = int(player_pos.y / GameData.TileSize)
+		return GameData.tilemap.pathContainsClosedDoor(divided_pos, player_pos)
 
 class MoveRandom extends BaseTurn:
 	func _init(_character = null).(_character):
@@ -216,7 +225,7 @@ class InRangeMoveToOtherwiseRandomEveryNTurns extends BaseTurn:
 	var turnBehaviour
 	var behaviourEveryN
 	var turnWait = 2
-	var limit = 10
+	var limit = 8
 	
 	func _init(_character = null).(_character):
 		turnBehaviour = InRangeMoveToOtherwiseRandom.new(_character)

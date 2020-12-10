@@ -13,8 +13,10 @@ func onUse():
 	GameData.spells.remove(GameData.spells.find(self))
 	.onUse()
 
-	if GameData.player.spellUsesTurn:
+	if !GameData.player.firstSpellTurnFree || !GameData.player.isFirstSpell:
 		GameData.player.forceTurnEnd()
+
+	GameData.player.isFirstSpell = false
 
 func onWalkedOut():
 	pass

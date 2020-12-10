@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ogre.png-21c11e983f21001e7f9c4e00dc3ce00f.stex"
+path="res://.import/basic_staff.png-065eac1f5fc4aeaeeae7046e73193062.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ogre.png"
-dest_files=[ "res://.import/ogre.png-21c11e983f21001e7f9c4e00dc3ce00f.stex" ]
+source_file="res://assets/Staves/basic_staff.png"
+dest_files=[ "res://.import/basic_staff.png-065eac1f5fc4aeaeeae7046e73193062.stex" ]
 
 [params]
 

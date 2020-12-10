@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ring.webp" type="Texture" id=5]
 [ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
-[ext_resource path="res://assets/offhand.png" type="Texture" id=7]
 [ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=9]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=10]
 [ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=11]
@@ -68,24 +67,26 @@ margin_right = 837.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
-[node name="Tertiary Offhand" type="TextureRect" parent="Tertiary Weapon"]
-visible = false
-margin_left = 621.269
-margin_top = 202.727
-margin_right = 795.269
-margin_bottom = 266.727
-rect_scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 7 )
+[node name="Not Recommended" type="TextureButton" parent="Tertiary Weapon"]
+margin_left = 537.0
+margin_top = -20.0
+margin_right = 837.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label3" type="Label" parent="Tertiary Weapon/Tertiary Offhand"]
-margin_left = 13.6256
-margin_top = 10.8079
-margin_right = 693.626
-margin_bottom = 112.808
-rect_scale = Vector2( 0.4, 0.4 )
+[node name="activeLabel" type="Label" parent="Tertiary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Offhand"
+custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
+text = "better Offhand"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -98,8 +99,11 @@ margin_right = 837.0
 margin_bottom = 280.0
 texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label3" type="Label" parent="Tertiary Weapon/Tertiary Inactive Button"]
+[node name="InactiveLabel" type="Label" parent="Tertiary Weapon/Tertiary Inactive Button"]
 margin_left = 52.4882
 margin_top = 194.833
 margin_right = 740.488
@@ -108,6 +112,7 @@ rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -153,24 +158,26 @@ margin_right = 557.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
-[node name="Secondary Offhand" type="TextureRect" parent="Secondary Weapon"]
-visible = false
-margin_left = 341.269
-margin_top = 202.727
-margin_right = 515.269
-margin_bottom = 266.727
-rect_scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 7 )
+[node name="Not Recommended" type="TextureButton" parent="Secondary Weapon"]
+margin_left = 257.0
+margin_top = -20.0
+margin_right = 557.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label2" type="Label" parent="Secondary Weapon/Secondary Offhand"]
-margin_left = 13.6256
-margin_top = 10.8079
-margin_right = 693.626
-margin_bottom = 112.808
-rect_scale = Vector2( 0.4, 0.4 )
+[node name="activeLabel" type="Label" parent="Secondary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Offhand"
+custom_colors/font_color = Color( 0.607843, 0, 0, 1 )
+text = "better Offhand"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,8 +190,11 @@ margin_right = 557.0
 margin_bottom = 280.0
 texture_normal = ExtResource( 9 )
 script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label2" type="Label" parent="Secondary Weapon/Secondary Inactive Button"]
+[node name="InactiveLabel" type="Label" parent="Secondary Weapon/Secondary Inactive Button"]
 margin_left = 52.4882
 margin_top = 194.833
 margin_right = 740.488
@@ -193,6 +203,7 @@ rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -237,24 +248,26 @@ margin_right = 277.0
 margin_bottom = 282.0
 texture = ExtResource( 6 )
 
-[node name="Primary Offhand" type="TextureRect" parent="Primary Weapon"]
-visible = false
-margin_left = 62.2686
-margin_top = 202.727
-margin_right = 236.269
-margin_bottom = 266.727
-rect_scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 7 )
+[node name="Not Recommended" type="TextureButton" parent="Primary Weapon"]
+margin_left = -23.0
+margin_top = -20.0
+margin_right = 277.0
+margin_bottom = 280.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Primary Weapon/Primary Offhand"]
-margin_left = 12.2928
-margin_top = 10.8079
-margin_right = 692.293
-margin_bottom = 112.808
-rect_scale = Vector2( 0.4, 0.4 )
+[node name="activeLabel" type="Label" parent="Primary Weapon/Not Recommended"]
+margin_left = 33.0
+margin_top = 195.0
+margin_right = 833.0
+margin_bottom = 297.0
+rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Offhand"
+custom_colors/font_color = Color( 0.609375, 0, 0, 1 )
+text = "better Offhand"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,7 +284,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Primary Weapon/Primary Inactive Button"]
+[node name="InactiveLabel" type="Label" parent="Primary Weapon/Primary Inactive Button"]
 margin_left = 52.4754
 margin_top = 193.499
 margin_right = 740.475
@@ -280,6 +293,7 @@ rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Click To Equip"
+align = 1
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false

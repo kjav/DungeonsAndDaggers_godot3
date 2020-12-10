@@ -3,7 +3,7 @@ extends Node
 signal itemDropped(item)
 signal itemPickedUp(item)
 
-const TESTING = true
+const TESTING = true 
 
 const Text = preload("res://VisualEffects/Text.tscn")
 var potions = []
@@ -14,7 +14,7 @@ var tilemap
 var chosen_player
 var player
 var hud
-var adFree
+var adFree = false
 var chosen_map
 var characters = []
 var environmentObjects = []
@@ -30,11 +30,19 @@ var muted = check_muted()
 var commonBackground = preload("res://assets//ring_inner_grey.png")
 var uncommonBackground = preload("res://assets//ring_inner_green.png")
 var rareBackground = preload("res://assets//ring_inner_blue.png")
+const unlockNotification = preload("res://Hud/UnlockNotification.tscn")
 var bossLevelEvery = 7
 var turnTime = 0.2
 var click_state = false
 
-var currentDifficultyUndeadCrypt = 1
+var currentGameModeUndeadCrypt = 0
+#TODO change this to just standard for next release
+var unlockedGameModesUndeadCrypt = ["Standard"]
+var possibleGameModes = ["Standard", "Fast Paced"]
+
+const gameModesSaveFileName = "user://gameModes.save"
+
+var currentDifficultyUndeadCrypt = 0
 var unlockedDifficultiesUndeadCrypt = ["Easy", "Normal"]
 var possibleDifficulties = ["Easy", "Normal", "Hard"]
 var additionalDifficultyPreText = "Challenge"
@@ -47,6 +55,9 @@ var saved_player = null
 
 var map_seed = null
 
+func currentGameModeUsesTimer():
+	return unlockedGameModesUndeadCrypt[currentGameModeUndeadCrypt] == "Fast Paced" && chosen_map == "UndeadCrypt"
+
 func unlockNextDifficulty():
 	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
 		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
@@ -56,6 +67,12 @@ func unlockNextDifficulty():
 		unlockedDifficultiesUndeadCrypt.append(additionalDifficultyPreText + " " + str(challengeNumber))
 	
 	saveCurrentDifficulties()
+
+func unlockNextGameMode():
+	if unlockedGameModesUndeadCrypt.size() < possibleGameModes.size():
+		unlockedGameModesUndeadCrypt.append(possibleGameModes[unlockedGameModesUndeadCrypt.size()])
+		
+		saveCurrentGameModes()
 
 func StartNewGame():
 	if TESTING:
@@ -344,9 +361,9 @@ func serialise_player(player):
 		"primary_weapon": inst2dict(player.primaryWeapon),
 		"secondary_weapon": inst2dict(player.secondaryWeapon),
 		"tertiary_weapon": inst2dict(player.tertiaryWeapon),
-		"food_uses_turn": player.foodUsesTurn,
-		"spell_uses_turn": player.spellUsesTurn,
-		"potion_uses_turn": player.potionUsesTurn,
+		"food_uses_turn": player.firstFoodTurnFree,
+		"spell_uses_turn": player.firstSpellTurnFree,
+		"potion_uses_turn": player.firstPotionTurnFree,
 		"trap_immune": player.trapImmune,
 		"can_always_hurt_reapers": player.canAlwaysHurtReapers,
 		"increased_spell_damage": player.increasedSpellDamage,
@@ -362,9 +379,9 @@ func load_player(dict):
 		"primaryWeapon": dict2item(dict.primary_weapon),
 		"secondaryWeapon": dict2item(dict.secondary_weapon),
 		"tertiaryWeapon": dict2item(dict.tertiary_weapon),
-		"foodUsesTurn": dict.food_uses_turn,
-		"spellUsesTurn": dict.spell_uses_turn,
-		"potionUsesTurn": dict.potion_uses_turn,
+		"firstFoodTurnFree": dict.food_uses_turn,
+		"firstSpellTurnFree": dict.spell_uses_turn,
+		"firstPotionTurnFree": dict.potion_uses_turn,
 		"trapImmune": dict.trap_immune,
 		"canAlwaysHurtReapers": dict.can_always_hurt_reapers,
 		"increasedSpellDamage": dict.increased_spell_damage,
@@ -377,7 +394,7 @@ func load_player(dict):
 func saveCurrentDifficulties():
 	var difficulties = File.new()
 	
-	difficulties.open("user://difficulties.save", File.WRITE)
+	difficulties.open(difficultySaveFileName, File.WRITE)
 	difficulties.store_line(to_json({
 		"currentDifficultyUndeadCrypt": currentDifficultyUndeadCrypt,
 		"unlockedDifficultiesUndeadCrypt": unlockedDifficultiesUndeadCrypt
@@ -403,6 +420,36 @@ func loadCurrentDifficulties():
 				unlockedDifficultiesUndeadCrypt = state.unlockedDifficultiesUndeadCrypt
 	
 	difficulties.close()
+
+func saveCurrentGameModes():
+	var gameModes = File.new()
+	
+	gameModes.open(gameModesSaveFileName, File.WRITE)
+	gameModes.store_line(to_json({
+		"currentGameModeUndeadCrypt": currentGameModeUndeadCrypt,
+		"unlockedGameModesUndeadCrypt": unlockedGameModesUndeadCrypt
+	}))
+	
+	gameModes.close()
+
+func loadCurrentGameModes():
+	var gameModes = File.new()
+	if not gameModes.file_exists(gameModesSaveFileName):
+		return
+	
+	gameModes.open(gameModesSaveFileName, File.READ)
+	
+	while not gameModes.eof_reached():
+		var state = parse_json(gameModes.get_line())
+		
+		if state:
+			if state.has("currentGameModeUndeadCrypt"):
+				currentGameModeUndeadCrypt = state.currentGameModeUndeadCrypt
+			
+			if state.has("unlockedGameModesUndeadCrypt"):
+				unlockedGameModesUndeadCrypt = state.unlockedGameModesUndeadCrypt
+	
+	gameModes.close()
 
 func stopSuggestingTutorial():
 	if not shouldTutorialHide():
@@ -432,7 +479,8 @@ func save_game():
 		"blockedDamage": total_blocked_damage,
 		"itemsUsed": total_items_used,
 		"availableUpgrades": serialise_upgrades(Constants.AllUpgrades),
-		"difficulty": currentDifficultyUndeadCrypt
+		"difficulty": currentDifficultyUndeadCrypt,
+		"gameMode": currentGameModeUndeadCrypt
 	}))
 
 	save_game.close()
@@ -468,6 +516,8 @@ func load_game():
 			Constants.AllUpgrades = load_upgrades(state.availableUpgrades)
 			if state.has("difficulty"):
 				currentDifficultyUndeadCrypt = state.difficulty
+			if state.has("gameMode"):
+				currentDifficultyUndeadCrypt = state.gameMode
 	
 	Constants.UpgradesDistribution = Constants.DistributionOfEquals.new(Constants.AllUpgrades)
 	
@@ -486,13 +536,13 @@ func addCurrentStatusEffects():
 	if GameData.player.extendBriefPotions:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.ExtendBriefPotions)
 	
-	if !GameData.player.potionUsesTurn:
+	if GameData.player.firstPotionTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickDrinking)
 	
-	if !GameData.player.foodUsesTurn:
+	if GameData.player.firstFoodTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickEating)
 
-	if !GameData.player.spellUsesTurn:
+	if GameData.player.firstSpellTurnFree:
 		GameData.hud.get_node("HudCanvasLayer/StatusEffects").addEffect(Constants.StatusEffects.QuickSpellcasting)
 
 	if GameData.player.trapImmune:
@@ -539,7 +589,25 @@ func next_level():
 	player.position = Vector2(640, 1024)
 	player.turn_end_pos = Vector2(640, 1024)
 	tilemap.next_level()
+	
+	check_for_unlocks()
+	
 	save_game()
+
+func check_for_unlocks():
+	if current_level == 4 && !unlockedGameModesUndeadCrypt.has("Fast Paced"):
+		unlockFastPacedGameMode()
+
+func unlockFastPacedGameMode():
+		unlockedGameModesUndeadCrypt.append("Fast Paced")
+		saveCurrentGameModes()
+		addUnlockNotification("Unlocked New Game Mode, Fast Paced!")
+
+func addUnlockNotification(text):
+	var unlockNotificationNode = unlockNotification.instance()
+	unlockNotificationNode.setUnlockText(text)
+	GameData.hud.get_node("HudCanvasLayer/Notifications").add_child(unlockNotificationNode)
+	unlockNotificationNode.showUnlock()
 
 func toggle_mute():
 	muted = not muted
