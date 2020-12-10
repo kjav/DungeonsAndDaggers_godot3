@@ -285,7 +285,7 @@ func get_facing(wall_direction):
 			return "side"
 	return "front"
 
-func _init(level).(200, 200, level, -1):
+func _init(level).(200, 200, level, 87):
 	if GameData.map_seed:
 		# Use the loaded seed, adding the level multiplied by a large prime
 		seed(GameData.map_seed + level * 524287)
@@ -313,6 +313,8 @@ func _init(level).(200, 200, level, -1):
   
 	if not GameData.isBossLevel(level):
 		while rooms.size() < n_rooms:
+			if rooms.size() == 15:
+				pass
 			# Pick a wall
 			var wall_index = randi() % valid_exterior_walls.size()
 			var wall = valid_exterior_walls[wall_index]

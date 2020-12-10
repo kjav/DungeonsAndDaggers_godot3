@@ -11,7 +11,7 @@ var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution
 
 func is_wall(tile):
-	return tile in [6, 13, 21, 28, 30, 32, 33, 34, 35, 39, 41, 42, 44, 45]
+	return tile in [GameData.Tiles["WallMiddle"], GameData.Tiles["WallMiddle_nobottom"], GameData.Tiles["Floor1_left_wall"], GameData.Tiles["Floor1_corner_topleft"], GameData.Tiles["Floor1_corner_topright"], GameData.Tiles["Floor1_corner_bottomleft"], GameData.Tiles["Floor1_over_corner_bottomleft"], GameData.Tiles["Floor1_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomrightleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall"], GameData.Tiles["Floor1_verticalwall_bottom_end"], GameData.Tiles["Floor1_corner_topright_with_rightwall"], GameData.Tiles["Floor1_corner_topleft_with_leftwall"], GameData.Tiles["Floor1_corner_topleft_nobottom"], GameData.Tiles["Floor1_corner_topright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomright"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"]]
 	
 func _init(width, height, level, initial_tile=-1):
 	self.initial_tile = initial_tile
@@ -20,100 +20,130 @@ func _init(width, height, level, initial_tile=-1):
 		null, null, null,
 		null, false, null,
 		true, true, null, null
-	], 14)
+	], GameData.Tiles["Floor1_over_wall"])
 	tree.add_value([
 		null, null, null,
 		null, false, null,
 		null, true, true, null
-	], 14)
+	], GameData.Tiles["Floor1_over_wall"])
 	
 	tree.add_value([
 		null, null, null,
 		true, true, true,
 		null, false, null, null
-	], 6)
+	], GameData.Tiles["WallMiddle"])
 	tree.add_value([
 		null, false, null,
 		false, true, true,
 		null, false, null, null
-	], 6)
+	], GameData.Tiles["WallMiddle"])
 	tree.add_value([
 		null, false, null,
 		true, true, false,
 		null, false, null, null
-	], 6)
+	], GameData.Tiles["WallMiddle"])
 	tree.add_value([
 		null, true, null,
 		true, true, true,
 		null, false, null, null
-	], 6)
+	], GameData.Tiles["WallMiddle"])
 	tree.add_value([
 		true, true, true,
 		true, true, true,
 		true, true, true, null
-	], 6)
+	], GameData.Tiles["WallMiddle_nobottom"])
 	tree.add_value([
 		null, null, null,
 		null, true, null,
 		null, true, null, null
-	], 6)
+	], GameData.Tiles["WallMiddle_nobottom"])
 	tree.add_value([
 		null, null, null,
 		null, true, null,
-		false, true, null, true
-	], 41)
+		false, true, true, true
+	], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomright"])
 	tree.add_value([
 		null, null, null,
 		null, true, null,
-		null, true, false, true
-	], 41)
+		true, true, false, true
+	], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomleft"])
+	tree.add_value([
+		null, null, null,
+		null, true, null,
+		true, true, true, true
+	], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"])
+	tree.add_value([
+		null, null, null,
+		null, true, null,
+		false, true, false, true
+	], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall"])
 	
 	# Vertical wall
 	tree.add_value([
 		null, null, null,
 		false, true, false,
 		false, true, false, null
-	], 21)
+	], GameData.Tiles["Floor1_left_wall"])
 	tree.add_value([
 		null, true, null,
 		false, true, false,
 		null, false, null, null
-	], 42)
+	], GameData.Tiles["Floor1_verticalwall_bottom_end"])
 	
 	# Horizontal wall endings with wall above
 	tree.add_value([
 		null, true, null,
 		false, true, true,
 		null, false, null, null
-	], 32)
+	], GameData.Tiles["Floor1_corner_bottomleft"])
+	
 	tree.add_value([
-	
 		null, true, null,
-		true,  true, false,
+		true, true, false,
 		null, false, null, null
-	], 34)
-	
+	], GameData.Tiles["Floor1_corner_bottomright"])
+
 	# Horizontal wall endings with wall below
 	tree.add_value([
 		null, false, null,
 		false, true, true,
-		null, true, null, null
-	], 28)
+		null, true, false, null
+	], GameData.Tiles["Floor1_corner_topleft"])
 	tree.add_value([
 		null, false, null,
 		false, true, true,
-		true, true, null, null
-	], 45)
-	tree.add_value([
-		null, false, null,
-		true, true, false,
-		null, true, null, null
-	], 30)
-	tree.add_value([
-		null, false, null,
-		true, true, false,
 		null, true, true, null
-	], 44)
+	], GameData.Tiles["Floor1_corner_topleft_nobottom"])
+	tree.add_value([
+		null, false, null,
+		false, true, true,
+		true, true, true, null
+	], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"])
+	tree.add_value([
+		null, false, null,
+		false, true, true,
+		true, true, false, null
+	], GameData.Tiles["Floor1_corner_topleft_with_leftwall"])
+	tree.add_value([
+		null, false, null,
+		true, true, false,
+		true, true, null, null
+	], GameData.Tiles["Floor1_corner_topright_nobottom"])
+	tree.add_value([
+		null, false, null,
+		true, true, false,
+		false, true, null, null
+	], GameData.Tiles["Floor1_corner_topright"])
+	tree.add_value([
+		null, false, null,
+		true, true, false,
+		false, true, true, null
+	], GameData.Tiles["Floor1_corner_topright_with_rightwall"])
+	tree.add_value([
+		null, false, null,
+		true, true, false,
+		true, true, true, null
+	], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"])
 	
 	# Above horizontal wall
 	tree.add_value([
@@ -121,76 +151,96 @@ func _init(width, height, level, initial_tile=-1):
 		null, false, null,
 		true, true, false,
 		true
-	], 31)
+	], GameData.Tiles["Floor1_over_corner_topright"])
 	tree.add_value([
 		null, null, null,
 		null, false, null,
 		false, true, true,
 		true
-	], 29)
+	], GameData.Tiles["Floor1_over_corner_topleft"])
 	
 	# Above vertical wall
 	tree.add_value([
 		null, null, null,
 		null, false, null,
 		false, true, false, null
-	], 40)
+	], GameData.Tiles["Floor1_over_verticalwall"])
 	
 	# Horizontal 1 way meets vertical 2 ways
 	tree.add_value([
 		null, true, null,
 		false, true, true,
-		null, true, null, null
-	], 28)
+		null, true, false, null
+	], GameData.Tiles["Floor1_corner_topleft"])
 	tree.add_value([
 		null, true, null,
 		false, true, true,
-		true, true, null, null
-	], 45)
-	tree.add_value([
-		null, true, null,
-		true, true, false,
-		null, true, null, null
-	], 30)
-	tree.add_value([
-		null, true, null,
-		true, true, false,
 		null, true, true, null
-	], 44)
+	], GameData.Tiles["Floor1_corner_topleft_nobottom"])
+	tree.add_value([
+		null, true, null,
+		false, true, true,
+		true, true, false, null
+	], GameData.Tiles["Floor1_corner_topleft_with_leftwall"])
+	tree.add_value([
+		null, true, null,
+		false, true, true,
+		true, true, true, null
+	], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"])
+	tree.add_value([
+		null, true, null,
+		true, true, false,
+		true, true, null, null
+	], GameData.Tiles["Floor1_corner_topright_nobottom"])
+	tree.add_value([
+		null, true, null,
+		true, true, false,
+		false, true, null, null
+	], GameData.Tiles["Floor1_corner_topright"])
+	tree.add_value([
+		null, true, null,
+		true, true, false,
+		false, true, true, null
+	], GameData.Tiles["Floor1_corner_topright_with_rightwall"])
+	tree.add_value([
+		null, true, null,
+		true, true, false,
+		true, true, true, null
+	], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"])
 	
 	# L shapes
 	tree.add_value([
 		null, null, null,
 		false, true, false,
 		false, true, true, null
-	], 33)
+	], GameData.Tiles["Floor1_over_corner_bottomleft"])
 	tree.add_value([
 		null, null, null,
 		false, true, false,
 		true, true, false, null
-	], 35)
+	], GameData.Tiles["Floor1_over_corner_bottomright"])
 	tree.add_value([
 		null, null, null,
 		false, true, false,
 		true, true, true, null
-	], 39)
+	], GameData.Tiles["Floor1_over_corner_bottomrightleft"])
 	
 	# Horizontal walls
 	tree.add_value([
 		null, true, null,
 		true, true, false,
 		false, true, false, null
-	], 30)
+	], GameData.Tiles["Floor1_corner_topright"])
 	tree.add_value([
 		null, true, null,
 		false, true, true,
 		false, true, false, null
-	], 28)
+	], GameData.Tiles["Floor1_corner_topleft"])
 	tree.add_value([
 		null, null, null,
 		true, true, true,
 		false, true, false, null
-	], 41)
+	], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall"])
 	
 	for j in range(0, height):
 		tiles.push_back([])
@@ -240,10 +290,10 @@ func wall(path, alreadyExistingWalls = []):
 	if path_size == 1:
 		var point = path[0]
 		
-		if tiles[point[1]][point[0]] == 6:
+		if tiles[point[1]][point[0]] == GameData.Tiles["WallMiddle"]:
 			alreadyExistingWalls.append(Vector2(point[0], point[1]))
 		
-		tiles[point[1]][point[0]] = 6
+		tiles[point[1]][point[0]] = GameData.Tiles["WallMiddle"]
 	else:
 		for index in range(0, path.size() - 1):
 			var point_a = path[index]
@@ -262,10 +312,10 @@ func wall(path, alreadyExistingWalls = []):
 				return
 			
 			while point_a != point_b:
-				if tiles[point_a.y][point_a.x] == 6:
+				if tiles[point_a.y][point_a.x] == GameData.Tiles["WallMiddle"]:
 					alreadyExistingWalls.append(Vector2(point_a.x, point_a.y))
 				
-				tiles[point_a.y][point_a.x] = 6
+				tiles[point_a.y][point_a.x] = GameData.Tiles["WallMiddle"]
 				changed_tiles[point_a] = true
 				changed_tiles[point_a + right] = true
 				changed_tiles[point_a + left] = true
@@ -277,7 +327,7 @@ func wall(path, alreadyExistingWalls = []):
 		
 		var point = path[-1]
 			
-		tiles[point.y][point.x] = 6
+		tiles[point.y][point.x] = GameData.Tiles["WallMiddle"]
 		changed_tiles[point] = true
 		changed_tiles[point + right] = true
 		changed_tiles[point + left] = true
@@ -357,13 +407,13 @@ func is_door_or_wall(point):
 func remove_wall(path):
 	for index in range(0, path.size()):
 		var point = path[index]
-		tiles[point.y][point.x] = 0
+		tiles[point.y][point.x] = GameData.Tiles["Floor1"]
 		changed_tiles[point] = true
 
 func draw_floor(position, extents):
 	for x in range(position.x + 1, position.x + extents.x - 1):
 		for y in range(position.y + 1, position.y + extents.y - 1):
-			tiles[y][x] = 0
+			tiles[y][x] = GameData.Tiles["Floor1"]
 
 func make_walls_consistent():
 	print("Making walls consistent: ")
@@ -384,7 +434,7 @@ func make_walls_consistent():
 				var x = surroundings[i].x
 				var y = surroundings[i].y
 				# Doors should count as walls to the tiles to their left and right.
-				# Therefore we exclute the centre column of surroundings above in the
+				# Therefore we exclude the centre column of surroundings above in the
 				# is_door check.
 				surroundings[i] = is_wall(tiles[y][x]) or (i % 3 != 1 and is_door(Vector2(x, y))) or (i != 4 and is_door(Vector2(x, y)) and centre_is_wall)
 

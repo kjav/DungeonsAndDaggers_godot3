@@ -5,7 +5,7 @@ var tree_array = []
 
 func _init(depth):
 	for i in range(0, pow(2, depth + 1) - 1):
-		tree_array.push_back(0)
+		tree_array.push_back(41)
 
 func depths_0(tree_indices):
 	for i in tree_indices:

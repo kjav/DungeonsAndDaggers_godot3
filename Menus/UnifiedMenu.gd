@@ -1,4 +1,4 @@
-extends Node2D
+	extends Node2D
 
 export(Curve) var transition_curve
 export(float) var transition_time = 1.0

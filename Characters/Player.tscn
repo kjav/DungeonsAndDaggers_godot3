@@ -1582,6 +1582,7 @@ anims/walk = ExtResource( 9 )
 visible = false
 position = Vector2( 32, -2.585 )
 scale = Vector2( 0.2, 0.2 )
+frame = 0
 
 [node name="Health Bar" parent="." instance=ExtResource( 11 )]
 visible = false
