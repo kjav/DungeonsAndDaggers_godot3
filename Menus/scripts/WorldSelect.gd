@@ -1,7 +1,7 @@
 extends Node2D
 
 var _item_names = ["Tutorial", "UndeadCrypt"]
-var _test_item_names = ["TestTraps", "TestOneEnemy", "TestManyEnemy", "TestManyItems", "TestUpgrades", "TestChests"]
+var _test_item_names = ["TestTraps", "TestStorage", "TestOneEnemy", "TestManyEnemy", "TestManyItems", "TestUpgrades", "TestChests"]
 var _items = []
 
 func _init():
