@@ -174,7 +174,8 @@ func set_map_type(type):
 					_envs[index].queue_free()
 					GameData.RemoveEnvironment(_envs[index])
 			else:
-				if node.position in positions:
+				var index = positions.find(node.position)
+				if (index != -1) and (_envs[index].environment_name == "Door"):
 					# Don't place
 					continue
 			Environments.add_child(node)
