@@ -161,11 +161,27 @@ func set_map_type(type):
 			var node = item.value.new()
 			node.place((item.position - Vector2(100.0, 100.0)) * 128.0)
 
+		var positions = []
+		var _envs = []
 		for env in map.environmentObjects:
 			var Environments = self.get_node("/root/Node2D/Environments")
 			var node = env.value.instance()
 			node.set_position((env.position - Vector2(100, 100)) * 128)
+			if node.environment_name == "Door":
+				# Remove other environments
+				var index = positions.find(node.position)
+				if index != -1:
+					_envs[index].hide()
+					_envs[index].queue_free()
+					GameData.RemoveEnvironment(_envs[index])
+			else:
+				var index = positions.find(node.position)
+				if (index != -1) and (_envs[index].environment_name == "Door"):
+					# Don't place
+					continue
 			Environments.add_child(node)
+			positions.append((env.position - Vector2(100, 100)) * 128)
+			_envs.append(node)
 
 			# Insert the node at the correct position, sorted by y coordinate, to prevent overdraw
 			var children = Environments.get_children()
