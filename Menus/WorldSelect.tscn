@@ -207,6 +207,62 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TestTraps" type="Node2D" parent="."]
+position = Vector2( 7997, 485.558 )
+
+[node name="TextureFrame" type="TextureRect" parent="TestTraps"]
+margin_left = -354.461
+margin_top = -318.723
+margin_right = -98.4608
+margin_bottom = -62.7231
+rect_scale = Vector2( 2.8, 2.8 )
+texture = ExtResource( 12 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Label" parent="TestTraps"]
+margin_left = -496.292
+margin_top = 420.967
+margin_right = 496.708
+margin_bottom = 563.967
+mouse_filter = 1
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.670588, 0.270588, 0.705882, 1 )
+text = "Trap Room"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="New Game" type="TextureButton" parent="TestTraps"]
+margin_left = -324.223
+margin_top = 774.77
+margin_right = 17.7771
+margin_bottom = 909.77
+rect_scale = Vector2( 2, 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TestTraps/New Game"]
+margin_left = 69.7233
+margin_top = 7.5769
+margin_right = 510.724
+margin_bottom = 109.577
+rect_scale = Vector2( 0.5, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "New Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TestOneEnemy" type="Node2D" parent="."]
 position = Vector2( 2664, 485.558 )
 
@@ -223,10 +279,10 @@ __meta__ = {
 }
 
 [node name="Tutorial" type="Label" parent="TestOneEnemy"]
-margin_left = -496.292
-margin_top = 420.967
-margin_right = 496.708
-margin_bottom = 563.967
+margin_left = -496.0
+margin_top = 421.0
+margin_right = 497.0
+margin_bottom = 564.0
 mouse_filter = 1
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )

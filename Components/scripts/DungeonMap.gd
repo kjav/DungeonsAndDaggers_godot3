@@ -5,7 +5,7 @@ const NON_PLAYABLE_TILES_NUMBER = 4
 
 export(int) var bottom_z_index = 0
 export(int) var top_z_index = 2
-export(int, "TestChests", "TestUpgrades", "TestManyItems", "TestManyEnemy", "TestOneEnemy", "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
+export(int, "TestChests", "TestUpgrades", "TestManyItems", "TestManyEnemy", "TestOneEnemy", "TestTraps", "UndeadCrypt", "Tutorial") var map_type = 0 setget set_map_type, get_map_type
 
 var Maps = {
 	"TestChests": preload("res://Components/scripts/TestChests.gd"),
@@ -13,6 +13,7 @@ var Maps = {
 	"TestManyItems": preload("res://Components/scripts/TestManyItems.gd"),
 	"TestManyEnemy": preload("res://Components/scripts/TestManyEnemy.gd"),
 	"TestOneEnemy": preload("res://Components/scripts/TestOneEnemy.gd"),
+	"TestTraps": preload("res://Components/scripts/TestTraps.gd"),
 	"UndeadCrypt": preload("res://Components/scripts/UndeadCrypt.gd"),
 	"Tutorial": preload("res://Components/scripts/TutorialMap.gd")
 }
