@@ -9,6 +9,7 @@ var door_tiles = {}
 
 var tree = load("res://Components/scripts/SurroundingsTree.gd").new(10)
 var Distribution = Constants.Distribution
+var broken_floor_proportion = 0.1
 
 func is_wall(tile):
 	return tile in [GameData.Tiles["WallMiddle"], GameData.Tiles["WallMiddle_nobottom"], GameData.Tiles["Floor1_left_wall"], GameData.Tiles["Floor1_corner_topleft"], GameData.Tiles["Floor1_corner_topright"], GameData.Tiles["Floor1_corner_bottomleft"], GameData.Tiles["Floor1_over_corner_bottomleft"], GameData.Tiles["Floor1_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomright"], GameData.Tiles["Floor1_over_corner_bottomrightleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall"], GameData.Tiles["Floor1_verticalwall_bottom_end"], GameData.Tiles["Floor1_corner_topright_with_rightwall"], GameData.Tiles["Floor1_corner_topleft_with_leftwall"], GameData.Tiles["Floor1_corner_topleft_nobottom"], GameData.Tiles["Floor1_corner_topright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomleft"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottomright"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"], GameData.Tiles["Floor1_corner_topleft_with_leftwall_nobottom"], GameData.Tiles["Floor1_corner_topright_with_rightwall_nobottom"], GameData.Tiles["Floor1_verticalwall_plus_horizontal_wall_nobottom"], GameData.Tiles["Wall 3_nobottom"], GameData.Tiles["Floor1_corner_bottomleft_nobottom"], GameData.Tiles["Floor1_corner_bottomright_nobottom"]]
@@ -404,16 +405,22 @@ func is_vertical_wall(point):
 func is_door_or_wall(point):
 	return is_wall(tiles[point.y][point.x]) || is_door(point)
 
+func choose_floor():
+	if randf() < broken_floor_proportion:
+		return GameData.Tiles["Floor3"]
+	else:
+		return GameData.Tiles["Floor1"]
+
 func remove_wall(path):
 	for index in range(0, path.size()):
 		var point = path[index]
-		tiles[point.y][point.x] = GameData.Tiles["Floor1"]
+		tiles[point.y][point.x] = choose_floor()
 		changed_tiles[point] = true
 
 func draw_floor(position, extents):
 	for x in range(position.x + 1, position.x + extents.x - 1):
 		for y in range(position.y + 1, position.y + extents.y - 1):
-			tiles[y][x] = GameData.Tiles["Floor1"]
+			tiles[y][x] = 47#choose_floor()
 
 func make_walls_consistent():
 	print("Making walls consistent: ")
@@ -438,7 +445,13 @@ func make_walls_consistent():
 				# is_door check.
 				surroundings[i] = is_wall(tiles[y][x]) or (i % 3 != 1 and is_door(Vector2(x, y))) or (i != 4 and is_door(Vector2(x, y)) and centre_is_wall)
 
-			tiles[point.y][point.x] = tree.get_value(surroundings)
+			if (tiles[point.y][point.x] == GameData.Tiles["Floor2_under_wall"]) and (not surroundings[7]):
+				continue
+			
+			var value = tree.get_value(surroundings)
+			if value == -1:
+				value = choose_floor()
+			tiles[point.y][point.x] = value
 	changed_tiles = {}
 
 func add_door(v):
