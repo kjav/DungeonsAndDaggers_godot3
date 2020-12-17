@@ -445,8 +445,9 @@ func make_walls_consistent():
 				# is_door check.
 				surroundings[i] = is_wall(tiles[y][x]) or (i % 3 != 1 and is_door(Vector2(x, y))) or (i != 4 and is_door(Vector2(x, y)) and centre_is_wall)
 
-			if (tiles[point.y][point.x] == GameData.Tiles["Floor2_under_wall"]) and (not surroundings[7]):
-				continue
+			# Ignore cases where we are outside the map, unless there is a wall below us
+			# if (tiles[point.y][point.x] == GameData.Tiles["Floor2_under_wall"]) and (not surroundings[7]):
+			#	continue
 			
 			var value = tree.get_value(surroundings)
 			if value == -1:
