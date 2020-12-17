@@ -61,6 +61,7 @@ const Enemies = {
 	"Necromancer": preload("res://Characters/Necromancer.tscn"),
 	"Reaper": preload("res://Characters/Reaper.tscn"),
 	"TrainingDummy": preload("res://Characters/TrainingDummy.tscn"),
+	"Storage": preload("res://Characters/Storage.tscn"),
 	"UndeadDragon": preload("res://Characters/UndeadDragon.tscn"),
 	"ZombieBrown": preload("res://Characters/ZombieBrown.tscn"),
 	"ZombieCreme": preload("res://Characters/ZombieCreme.tscn"),

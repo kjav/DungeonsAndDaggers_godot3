@@ -47,23 +47,7 @@ func getSpawnDistributions():
 	var extendsRotated = rotate(extents_distribution.pick()[0]) if (extents_distribution != null) else []
 	var environments = environment_distribution.pick() if (environment_distribution != null) else []
 	
-	var rugArray = []
-	
-	var rugProbability
-	
-	for x in range(1, extendsRotated.x-1):
-		rugProbability = randi()%2
-		
-		for y in range(1, extendsRotated.y-1):
-			rugArray.append({
-				"p": rugProbability, 
-				"value": load("res://Environments/Rug.tscn"),
-				"position": Vector2(x, y)
-			})
-		
-	var rug_distribution = IndependentDistribution.new(rugArray)
-	
-	environments += rug_distribution.pick()
+	environments += rugsInRoom(extendsRotated, environments)
 	
 	return {
 		"extents": extendsRotated,
@@ -71,3 +55,21 @@ func getSpawnDistributions():
 		"items": item_distribution.pick() if (item_distribution != null) else [],
 		"npcs": npc_distribution.pick() if (npc_distribution != null) else []
 	}
+
+func rugsInRoom(var extendsRotated, var environments):
+	if randi()%2 == 0:
+		var rugArray = []
+		var rugColumn = randi()%int(extendsRotated.x-2)+1
+		
+		for y in range(1, extendsRotated.y-1):
+			rugArray.append({
+				"p": 1, 
+				"value": load("res://Environments/Rug.tscn"),
+				"position": Vector2(rugColumn, y)
+			})
+		
+		var rug_distribution = IndependentDistribution.new(rugArray)
+		
+		return rug_distribution.pick()
+	
+	return []
