@@ -420,7 +420,7 @@ func remove_wall(path):
 func draw_floor(position, extents):
 	for x in range(position.x + 1, position.x + extents.x - 1):
 		for y in range(position.y + 1, position.y + extents.y - 1):
-			tiles[y][x] = 47#choose_floor()
+			tiles[y][x] = choose_floor()
 
 func make_walls_consistent():
 	print("Making walls consistent: ")
