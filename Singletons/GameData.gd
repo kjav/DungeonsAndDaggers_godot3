@@ -89,10 +89,8 @@ func StartNewGame():
 var Tiles = {}
 
 func _ready():
-	print("Tile 47 is ", TileResource.tile_get_name(47))
 	for s in ["Floor1", "Floor1_under_wall", "Floor1_over_wall", "Floor7_over_wall", "Floor1_corner_topleft", "Floor1_over_corner_topleft", "Floor7_over_corner_topleft", "Floor1_corner_topright", "Floor1_over_corner_topright", "Floor7_over_corner_topright", "Floor1_corner_bottomleft", "Floor1_over_corner_bottomleft", "Floor1_over_corner_bottomright", "Floor1_left_wall", "Floor2", "Floor2_under_wall", "Floor2_over_wall", "Floor2_left_wall", "Floor3", "Floor3_under_wall", "Floor3_over_wall", "Floor3_left_wall", "Floor3_door_tile", "Floor4", "Floor4_under_wall", "Floor4_over_wall", "Floor4_left_wall", "Floor5", "Floor5_under_wall", "Floor5_over_wall", "Floor5_left_wall", "Floor6", "Floor6_under_wall", "Floor6_over_wall", "Floor6_left_wall", "Wall", "WallMiddle", "WallMiddle_nobottom", "Floor1_over_corner_bottomrightleft", "Floor1_over_verticalwall", "Floor1_verticalwall_plus_horizontal_wall", "Floor1_verticalwall_bottom_end", "ZZZ_Floor1_duplicate", "Floor1_corner_topright_with_rightwall", "Floor1_corner_topleft_with_leftwall", "Stairs", "Tile7_over_vertical_wall", "Floor1_corner_bottomright", "floor_not_walkable",  "Floor1_corner_topleft_nobottom", "Floor1_corner_topright_nobottom", "Floor1_corner_topleft_with_leftwall_nobottom", "Floor1_corner_topright_with_rightwall_nobottom", "Floor1_verticalwall_plus_horizontal_wall_nobottom", "Wall 3_nobottom", "Floor1_corner_bottomleft_nobottom", "Floor1_corner_bottomright_nobottom", "Floor1_corner_topleft_with_leftwall_nobottom", "Floor1_corner_topright_with_rightwall_nobottom", "Floor1_verticalwall_plus_horizontal_wall_nobottom", "Floor1_verticalwall_plus_horizontal_wall_nobottomleft", "Floor1_verticalwall_plus_horizontal_wall_nobottomright", "Wall 3_nobottom", "Floor1_corner_bottomleft_nobottom", "Floor1_corner_bottomright_nobottom"]:
 		Tiles[s] = TileResource.find_tile_by_name(s)
-		print("%3d is " % TileResource.find_tile_by_name(s), s)
 
 	randomize()
 	

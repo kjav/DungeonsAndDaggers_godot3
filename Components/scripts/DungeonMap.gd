@@ -42,6 +42,7 @@ func tile_to_top_tile(n):
 		return GameData.Tiles["Floor7_over_corner_topright"]
 	if n in [GameData.Tiles["Floor1_over_verticalwall"]]:
 		return GameData.Tiles["Tile7_over_vertical_wall"]
+	return -1
 
 func _ready():
 	BottomTileMap = get_node("BottomTileMap")
