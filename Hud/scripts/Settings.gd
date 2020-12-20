@@ -5,6 +5,7 @@ func _ready():
 
 func hideMenu():
 	get_tree().get_current_scene().get_node("HudNode").settingsOpen = false
+	GameData.player.get_node("Camera2D").zoom = Vector2(1,1)
 	get_tree().paused = false
 	self.queue_free()
 	self.hide()
