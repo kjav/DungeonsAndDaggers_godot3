@@ -62,6 +62,7 @@ func remove():
 
 func onWalkedInto(character):
 	if !locked:
+		GameData.player.clearMoveStack()
 		startExplosions()
 		get_node("StorageGraphics").get_node("large").get_node("explosion").connect("animation_finished",self,"remove", [], CONNECT_ONESHOT)
 
