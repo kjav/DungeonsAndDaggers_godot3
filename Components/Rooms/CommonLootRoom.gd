@@ -6,7 +6,12 @@ func setup_params():
 	environment_distribution = Distribution.new([{
 		"p": 0.5, 
 		"value": load("res://Environments/Trap.tscn")
-	}])
+	},
+	{
+		"p": 0.5, 
+		"value": Constants.Environments.Storage
+	},
+	])
 
 func apply_randomness():
 	item_distribution = IndependentDistribution.new([

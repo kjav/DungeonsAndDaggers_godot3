@@ -198,7 +198,7 @@ func set_map_type(type):
 			if env.has("facing"):
 				node.setFacing(env.facing)
 			
-			if node.environment_name != null and "Chest" in node.environment_name:
+			if node.environment_name != null and ("Chest" in node.environment_name or "Storage" in node.environment_name):
 				node.setLocked(false)
 				node.blockFromPathFindingWhenReady = true
 				if type == "Tutorial":

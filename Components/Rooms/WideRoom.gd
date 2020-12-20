@@ -10,6 +10,7 @@ func setup_params():
 			"position": Distribution.new([
 				{ "p": 1, "value": Vector2(1, 1) }
 			])
-		}
+		},
+		{ "p": 0.2, "value": Constants.Environments.Storage },
 	])
 	item_distribution = Distribution.new([{"p": 0.5, "value": Constants.PotionClasses.HealthPotion}])

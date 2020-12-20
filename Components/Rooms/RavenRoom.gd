@@ -4,3 +4,5 @@ func setup_params():
 	extents_distribution = Set.new([Vector2(4, 4)])
 	
 	npc_distribution = Distribution.new([{"p": 0.95, "value": Constants.Enemies.Raven}])
+	
+	environment_distribution = Distribution.new([ { "p": 0.1, "value": Constants.Environments.Storage } ])

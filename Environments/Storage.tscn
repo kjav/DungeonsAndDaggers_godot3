@@ -1,22 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/Environments/Barrel.png" type="Texture" id=1]
-[ext_resource path="res://assets/Environments/Box 1.png" type="Texture" id=2]
+[ext_resource path="res://StorageGraphics.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environments/scripts/Storage.gd" type="Script" id=9]
-[ext_resource path="res://VisualEffects/FloorExplosion.tscn" type="PackedScene" id=10]
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "box",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": false,
-"name": "barrel",
-"speed": 1.0
-} ]
 
 [node name="Storage" type="AnimatedSprite"]
 position = Vector2( 0, 0.353554 )
@@ -24,45 +9,4 @@ playing = true
 offset = Vector2( 64, 40 )
 script = ExtResource( 9 )
 
-[node name="small" type="AnimatedSprite" parent="."]
-position = Vector2( 51.7982, 38.9275 )
-scale = Vector2( 0.5, 0.75 )
-frames = SubResource( 1 )
-animation = "box"
-playing = true
-centered = false
-
-[node name="explosion" parent="small" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 6.23628, 43.951 )
-scale = Vector2( 1, 1 )
-
-[node name="medium" type="AnimatedSprite" parent="."]
-position = Vector2( 43.5448, 23.063 )
-scale = Vector2( 0.75, 1.125 )
-frames = SubResource( 1 )
-animation = "box"
-playing = true
-centered = false
-
-[node name="explosion" parent="medium" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 5.65926, 43.6004 )
-scale = Vector2( 1, 1 )
-
-[node name="large" type="AnimatedSprite" parent="."]
-position = Vector2( 36.5998, 14.7292 )
-scale = Vector2( 1, 1.5 )
-frames = SubResource( 1 )
-animation = "barrel"
-playing = true
-centered = false
-
-[node name="explosion" parent="large" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 6.09067, 38.7878 )
-scale = Vector2( 1, 1 )
-
-[node name="ChangingBodyParts" type="Node2D" parent="."]
-position = Vector2( 0, 21 )
-scale = Vector2( 0.25, 0.25 )
+[node name="StorageGraphics" parent="." instance=ExtResource( 1 )]

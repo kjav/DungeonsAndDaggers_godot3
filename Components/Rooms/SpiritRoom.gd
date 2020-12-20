@@ -5,8 +5,8 @@ func setup_params():
 	
 	environment_distribution = Distribution.new([{
 		"p": 0.2, 
-		"value": load("res://Environments/Trap.tscn")
-	}])
+		"value": load("res://Environments/Trap.tscn")},
+		{ "p": 0.1, "value": Constants.Environments.Storage } ])
 
 func apply_randomness():
 	npc_distribution = Distribution.new([{ "p": 0.9, "value": DistributionOfEquals.new([
