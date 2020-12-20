@@ -8,7 +8,7 @@ func setup_params():
 		"value": load("res://Environments/Trap.tscn")
 	},
 	{
-		"p": 0.5, 
+		"p": 0.6, 
 		"value": Constants.Environments.Storage
 	}])
 

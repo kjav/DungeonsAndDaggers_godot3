@@ -5,7 +5,7 @@ func setup_params():
 	
 	npc_distribution = Distribution.new([{"p": 1, "value": Constants.Enemies.Necromancer}])
 	
-	environment_distribution = Distribution.new([ { "p": 0.1, "value": Constants.Environments.Storage } ])
+	environment_distribution = Distribution.new([ { "p": 0.2, "value": Constants.Environments.Storage } ])
 
 func apply_randomness():
 	item_distribution = IndependentDistribution.new([
