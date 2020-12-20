@@ -3,7 +3,7 @@ extends 'RoomBase.gd'
 func setup_params():
 	extents_distribution = Set.new([Vector2(4, 5)])
 	
-	environment_distribution = Distribution.new([{
+	environment_distribution = IndependentDistribution.new([{
 		"p": 0.2, 
 		"value": load("res://Environments/Trap.tscn")},
 		{ "p": 0.1, "value": Constants.Environments.Storage } ])
