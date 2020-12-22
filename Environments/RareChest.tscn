@@ -7,6 +7,7 @@
 modulate = Color( 0.996078, 1, 0, 1 )
 frames = ExtResource( 1 )
 animation = "closed"
+frame = 6
 playing = true
 offset = Vector2( 64, 40 )
 script = ExtResource( 3 )

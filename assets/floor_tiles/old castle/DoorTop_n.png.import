@@ -14,8 +14,8 @@ dest_files=[ "res://.import/DoorTop_n.png-f299a2fce2388e9b59dac11c9692e707.stex"
 
 [params]
 
-compress/mode=1
-compress/lossy_quality=0.7
+compress/mode=0
+compress/lossy_quality=1.0
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0

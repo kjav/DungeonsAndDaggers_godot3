@@ -3,12 +3,35 @@ extends "UnlockableBase.gd"
 export(String, "side", "front") var facing = "front" setget setFacing, getFacing
 export(String, "closed", "open") var state = "closed" setget setState, getState
 
+var front_closed = preload("res://assets/floor_tiles/old castle/Door 2.png")
+var front_closed_n = preload("res://assets/floor_tiles/old castle/Door 2_n.png")
+var front_open = preload("res://assets/floor_tiles/old castle/Door 2_open.png")
+var front_open_n = preload("res://assets/floor_tiles/old castle/Door 2_open_n.png")
+
+var side_closed = preload("res://assets/floor_tiles/old castle/DoorTopVertical.png")
+var side_closed_n = preload("res://assets/floor_tiles/old castle/DoorTopVertical_n.png")
+var side_open = preload("res://assets/floor_tiles/old castle/DoorTopVertical_open.png")
+var side_open_n = preload("res://assets/floor_tiles/old castle/DoorTopVertical_open_n.png")
+
 func _init():
 	environment_name = "Door"
 	blocksAttacks = true
 
 func handleAnimation():
-	self.set_animation(facing + "_" + state)
+	if facing == "side":
+		if state == "closed":
+			get_node("door_sprite").texture = side_closed
+			get_node("door_sprite").normal_map = side_closed_n
+		else:
+			get_node("door_sprite").texture = side_open
+			get_node("door_sprite").normal_map = side_open_n
+	else:
+		if state == "closed":
+			get_node("door_sprite").texture = front_closed
+			get_node("door_sprite").normal_map = front_closed_n
+		else:
+			get_node("door_sprite").texture = front_open
+			get_node("door_sprite").normal_map = front_open_n
 	if facing == "front":
 		if state == "open":
 			get_node("Top_open").show()

@@ -24,6 +24,9 @@ func remove():
 	
 	.remove()
 
+func set_animation(s):
+	pass
+
 func onWalkedInto(character):
 	if !locked:
 		self.set_animation("open")

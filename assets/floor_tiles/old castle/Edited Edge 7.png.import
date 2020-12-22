@@ -14,7 +14,7 @@ dest_files=[ "res://.import/Edited Edge 7.png-9923986c34a4ff28ce915289415e04b2.s
 
 [params]
 
-compress/mode=1
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

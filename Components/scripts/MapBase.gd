@@ -88,7 +88,7 @@ func _init(width, height, level, initial_tile=-1):
 	tree.add_value([
 		null, true, null,
 		false, true, false,
-		null, false, null, null
+		null, null, null, null
 	], GameData.Tiles["Floor1_verticalwall_bottom_end"])
 	
 	# Horizontal wall endings with wall above
