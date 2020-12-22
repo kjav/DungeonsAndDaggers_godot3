@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Environments/Flag 1.png" type="Texture" id=1]
+[ext_resource path="res://Environments/scripts/EnvironmentBase.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "default",
+"speed": 1.0
+} ]
+
+[node name="Flag" type="AnimatedSprite"]
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+playing = true
+offset = Vector2( 32, 28 )
+script = ExtResource( 2 )

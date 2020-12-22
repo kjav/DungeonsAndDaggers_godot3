@@ -249,6 +249,11 @@ func setStandAnimation(direction):
 				get_node("Skeleton2D").scale = skeletonScale
 				get_node("Polygons").scale = polygonsScale
 
+func clearMoveStack(setStandAnimation = true):
+	moveStack = []
+	if setStandAnimation:
+		setStandAnimation(lastDirection)
+
 func forceTurnEnd(direction = Enums.DIRECTION.NONE):
 	time_elapsed = 0
 	#Audio.playWalk()

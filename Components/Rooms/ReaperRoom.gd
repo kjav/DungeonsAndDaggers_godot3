@@ -5,12 +5,12 @@ func setup_params():
 	
 	npc_distribution = Distribution.new([{"p": 0.95, "value": Constants.Enemies.Reaper}])
 	
-	environment_distribution = Distribution.new([{
+	environment_distribution = IndependentDistribution.new([{
 		"p": 0.1, 
-		"value": load("res://Environments/Trap.tscn")
-	}])
+		"value": load("res://Environments/Trap.tscn")},
+		{ "p": 0.2, "value": Constants.Environments.Storage } ])
 
-func apply_randomness():	
+func apply_randomness():
 	item_distribution = Distribution.new([
 		{ "p": 0.03, "value": Constants.PotionClasses.InvisibilityPotion },
 		{ "p": 0.02, "value": Constants.CommonPotionsDistribution.pick()[0].value },

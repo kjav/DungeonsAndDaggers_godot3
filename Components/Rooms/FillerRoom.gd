@@ -4,10 +4,12 @@ func setup_params():
 	extents_distribution = Set.new([Vector2(5, 5)])
 	npc_distribution = Distribution.new([])
 	
-	environment_distribution = Distribution.new([{
-		"p": 0.1, 
-		"value": load("res://Environments/Trap.tscn")
-	}])
+	environment_distribution = IndependentDistribution.new([{
+			"p": 0.1, 
+			"value": load("res://Environments/Trap.tscn")
+		},
+		{ "p": 0.2, "value": Constants.Environments.Storage }
+		])
 
 func apply_randomness():
 	var sizes = DistributionOfEquals.new([

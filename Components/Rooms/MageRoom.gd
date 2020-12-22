@@ -4,8 +4,10 @@ func setup_params():
 	extents_distribution = Set.new([Vector2(4, 6)])
 	
 	npc_distribution = Distribution.new([{"p": 1, "value": Constants.Enemies.Necromancer}])
+	
+	environment_distribution = Distribution.new([ { "p": 0.2, "value": Constants.Environments.Storage } ])
 
-func apply_randomness():	
+func apply_randomness():
 	item_distribution = IndependentDistribution.new([
 		{ "p": 0.15, "value": Constants.CommonSpellsDistribution.pick()[0].value },
 		{ "p": 0.15, "value": Constants.CommonSpellsDistribution.pick()[0].value },

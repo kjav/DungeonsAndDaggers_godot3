@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://VisualEffects/FloorExplosion.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Environments/Barrel.png" type="Texture" id=3]
+[ext_resource path="res://assets/Environments/Box 1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Explosion/banner_dust_FX_5.png" type="Texture" id=5]
+[ext_resource path="res://assets/Explosion/banner_dust_FX_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Explosion/banner_dust_FX_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/Explosion/banner_dust_FX_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Explosion/banner_dust_FX_4.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "box",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "barrel",
+"speed": 1.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 40.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="small" type="AnimatedSprite" parent="."]
+position = Vector2( 51.7982, 31.9275 )
+scale = Vector2( 0.5, 0.75 )
+frames = SubResource( 1 )
+animation = "box"
+playing = true
+centered = false
+
+[node name="explosion" parent="small" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 6.23628, 43.951 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 2 )
+
+[node name="medium" type="AnimatedSprite" parent="."]
+position = Vector2( 43.5448, 23.063 )
+scale = Vector2( 0.75, 1.125 )
+frames = SubResource( 1 )
+animation = "box"
+playing = true
+centered = false
+
+[node name="explosion" parent="medium" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 5.65926, 43.6004 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 2 )
+
+[node name="large" type="AnimatedSprite" parent="."]
+position = Vector2( 36.5998, 14.7292 )
+scale = Vector2( 1, 1.5 )
+frames = SubResource( 1 )
+animation = "barrel"
+playing = true
+centered = false
+
+[node name="explosion" parent="large" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 6.09067, 38.7878 )
+scale = Vector2( 1, 1 )
+frames = SubResource( 2 )

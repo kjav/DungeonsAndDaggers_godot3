@@ -48,6 +48,7 @@ func getSpawnDistributions():
 	var environments = environment_distribution.pick() if (environment_distribution != null) else []
 	
 	environments += rugsInRoom(extendsRotated, environments)
+	environments += wallEnvironmentsInRoom(extendsRotated, environments)
 	
 	return {
 		"extents": extendsRotated,
@@ -71,5 +72,23 @@ func rugsInRoom(var extendsRotated, var environments):
 		var rug_distribution = IndependentDistribution.new(rugArray)
 		
 		return rug_distribution.pick()
+	
+	return []
+
+func wallEnvironmentsInRoom(var extendsRotated, var environments):
+	if randi()%2 == 0:
+		var windowColumn = randi()%int(extendsRotated.x-2)+1
+		var wallEnvironmentsDistributions = DistributionOfEquals.new([{
+			"value": load("res://Environments/Window.tscn"),
+			"position": Vector2(windowColumn, 0)
+		}, {
+			"value": load("res://Environments/Alcove.tscn"),
+			"position": Vector2(windowColumn, 0)
+		}, {
+			"value": load("res://Environments/Flag.tscn"),
+			"position": Vector2(windowColumn, 0)
+		}])
+		
+		return wallEnvironmentsDistributions.pick()
 	
 	return []
