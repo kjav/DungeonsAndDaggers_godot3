@@ -6,8 +6,10 @@
 [ext_resource path="res://Hud/scripts/ContextualMenuItemOnClick.gd" type="Script" id=4]
 
 [node name="Node2D" type="Node2D"]
+light_mask = 4
 
 [node name="background" type="TextureRect" parent="."]
+light_mask = 4
 margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
@@ -17,6 +19,7 @@ __meta__ = {
 }
 
 [node name="icon" type="TextureRect" parent="."]
+light_mask = 4
 margin_left = 64.0
 margin_top = 64.0
 margin_right = 192.0
@@ -24,6 +27,7 @@ margin_bottom = 192.0
 texture = ExtResource( 2 )
 
 [node name="frame" type="TextureButton" parent="."]
+light_mask = 4
 margin_right = 256.0
 margin_bottom = 256.0
 texture_normal = ExtResource( 3 )
