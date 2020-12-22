@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/floor_tiles/old castle/DoorTop.png" type="Texture" id=1]
 [ext_resource path="res://assets/floor_tiles/old castle/DoorTopVertical_open.png" type="Texture" id=2]
@@ -10,40 +10,41 @@
 [ext_resource path="res://assets/floor_tiles/old castle/Door 2.png" type="Texture" id=8]
 [ext_resource path="res://assets/floor_tiles/old castle/DoorTopVertical.png" type="Texture" id=9]
 [ext_resource path="res://assets/floor_tiles/old castle/DoorTop_open.png" type="Texture" id=10]
+[ext_resource path="res://Environments/Torch.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "front_closed",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": false,
-"name": "side_closed",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": false,
 "name": "front_open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "front_closed",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "side_open",
 "speed": 1.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "side_closed",
+"speed": 1.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "front_locked",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "side_locked",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "front_locked",
 "speed": 5.0
 } ]
 
@@ -71,3 +72,11 @@ texture = ExtResource( 1 )
 position = Vector2( 32, -32 )
 z_index = 2
 texture = ExtResource( 10 )
+
+[node name="Torches" type="Node2D" parent="."]
+
+[node name="Torch" parent="Torches" instance=ExtResource( 11 )]
+position = Vector2( -10.5, 23.5 )
+
+[node name="Torch2" parent="Torches" instance=ExtResource( 11 )]
+position = Vector2( 71.5, 23.5 )

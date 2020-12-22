@@ -1396,6 +1396,7 @@ tracks/18/keys = {
 }
 
 [node name="Player" type="Node2D"]
+light_mask = 8
 position = Vector2( 540, 960 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
@@ -1409,6 +1410,7 @@ scale = Vector2( 6, 6 )
 [node name="Knight" type="Node2D" parent="Polygons"]
 
 [node name="Left Arm" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -0.12085, 4.71533 )
 rotation = -0.785398
 scale = Vector2( 0.022, 0.022 )
@@ -1419,6 +1421,7 @@ uv = PoolVector2Array( 55.2083, -41.6667, -45.8333, 133.333, 163.542, 133.333 )
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 1, 1, 1 ) ]
 
 [node name="Left Arm Armour" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( 1.01367, 3.66113 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 14 )
@@ -1428,6 +1431,7 @@ uv = PoolVector2Array( 44.8598, -78.5047, 163.551, 92.5234, -75.7009, 71.028 )
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 1, 1, 1 ) ]
 
 [node name="Left Leg" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( 0.160645, 4.58887 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 3 )
@@ -1437,6 +1441,7 @@ uv = PoolVector2Array( 31.3954, -36.0465, -46.5116, 96.5116, 152.326, 98.8372, 7
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 1, 1, 1, 1 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Head"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Right Arm"), PoolRealArray( 0, 0, 0, 0 ), NodePath("Body/Left Arm"), PoolRealArray( 0, 0, 0, 0 ) ]
 
 [node name="Right Leg" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -1.29346, 4.58789 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 5 )
@@ -1446,6 +1451,7 @@ uv = PoolVector2Array( 31.3954, -36.0465, -46.5116, 96.5116, 152.326, 98.8372 )
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 1, 1, 1 ), NodePath("Body/Head"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Right Arm"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Left Arm"), PoolRealArray( 0, 0, 0 ) ]
 
 [node name="Body" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -1.81689, 2.39648 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 6 )
@@ -1455,6 +1461,7 @@ uv = PoolVector2Array( 32.4094, 132.409, 58.8486, 138.806, 106.61, 140.725, 117.
 bones = [ NodePath("Body"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="Head" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -0.0993652, 1.83301 )
 scale = Vector2( 0.022, 0.022 )
 offset = Vector2( -250, -300 )
@@ -1465,6 +1472,7 @@ uv = PoolVector2Array( 133.333, 381.982, 261.842, 389.474, 395.395, 379.605, 427
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Head"), PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0 ) ]
 
 [node name="Right Arm" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -2.552, 3.5 )
 scale = Vector2( 0.022, 0.022 )
 texture = ExtResource( 13 )
@@ -1474,6 +1482,7 @@ uv = PoolVector2Array( 70.0935, -43.9252, 214.019, 150.467, -57.9439, 142.056 )
 bones = [ NodePath("Body"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Left Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Hip/Right Leg"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Head"), PoolRealArray( 0, 0, 0 ), NodePath("Body/Chest/Right Arm"), PoolRealArray( 1, 1, 1 ), NodePath("Body/Chest/Left Arm"), PoolRealArray( 0, 0, 0 ) ]
 
 [node name="Right Arm Armour" type="Polygon2D" parent="Polygons/Knight"]
+light_mask = 4
 position = Vector2( -1.82031, 3.58398 )
 rotation = -0.00178613
 scale = Vector2( 0.022, 0.022 )
@@ -1488,17 +1497,20 @@ position = Vector2( 32, 36.24 )
 scale = Vector2( 5, 5 )
 
 [node name="Body" type="Bone2D" parent="Skeleton2D"]
+light_mask = 4
 position = Vector2( -0.0107079, 2.57497 )
 scale = Vector2( 1, 0.996422 )
 rest = Transform2D( 1, 0, 0, 0.996422, -0.0107079, 2.57497 )
 
 [node name="Hip" type="Bone2D" parent="Skeleton2D/Body"]
+light_mask = 4
 position = Vector2( 0, 0.211884 )
 rotation = 1.5708
 rest = Transform2D( -3.50078e-06, 1, -1, -3.50078e-06, 0, 0.211884 )
 default_length = 4.0
 
 [node name="Left Leg" type="Bone2D" parent="Skeleton2D/Body/Hip"]
+light_mask = 4
 position = Vector2( 0.0573316, -0.951496 )
 rotation = -0.0700963
 rest = Transform2D( 0.997544, -0.0700389, 0.0700389, 0.997544, 0.0573316, -0.951496 )
@@ -1508,6 +1520,7 @@ __meta__ = {
 }
 
 [node name="Right Leg" type="Bone2D" parent="Skeleton2D/Body/Hip"]
+light_mask = 4
 position = Vector2( 0.0636001, 0.761479 )
 rotation = 0.0678343
 rest = Transform2D( 0.9977, 0.0677823, -0.0677823, 0.9977, 0.0636001, 0.761479 )
@@ -1517,11 +1530,13 @@ __meta__ = {
 }
 
 [node name="Chest" type="Bone2D" parent="Skeleton2D/Body"]
+light_mask = 4
 position = Vector2( 0, -0.802872 )
 rest = Transform2D( 1, 0, 0, 1, 0, -0.802872 )
 default_length = 1.0
 
 [node name="Left Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
+light_mask = 4
 position = Vector2( 1.59497, -0.175835 )
 rotation = 1.19754
 rest = Transform2D( 0.364654, 0.931143, -0.931143, 0.364654, 1.59497, -0.175835 )
@@ -1532,15 +1547,18 @@ __meta__ = {
 }
 
 [node name="Left Hand" type="Node2D" parent="Skeleton2D/Body/Chest/Left Arm"]
+light_mask = 4
 position = Vector2( 1.639, 0.063 )
 
 [node name="CurrentWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Left Arm/Left Hand"]
+light_mask = 4
 rotation = 0.785731
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 2 )
 offset = Vector2( -30, -50 )
 
 [node name="Head" type="Bone2D" parent="Skeleton2D/Body/Chest"]
+light_mask = 4
 position = Vector2( 0, -0.709 )
 rotation = -1.5708
 scale = Vector2( 1.03097, -22.9448 )
@@ -1548,6 +1566,7 @@ rest = Transform2D( -4.50651e-08, -1.03097, -22.9448, 1.00295e-06, 0, -0.709 )
 default_length = 1.0
 
 [node name="Right Arm" type="Bone2D" parent="Skeleton2D/Body/Chest"]
+light_mask = 4
 position = Vector2( -1.40367, -0.139908 )
 rotation = 1.95117
 rest = Transform2D( -0.371268, 0.928526, -0.928526, -0.371268, -1.40367, -0.139908 )
@@ -1558,9 +1577,11 @@ __meta__ = {
 }
 
 [node name="Right Hand" type="Node2D" parent="Skeleton2D/Body/Chest/Right Arm"]
+light_mask = 4
 rotation = -2.98023e-08
 
 [node name="OffhandWeapon" type="Sprite" parent="Skeleton2D/Body/Chest/Right Arm/Right Hand"]
+light_mask = 4
 position = Vector2( 1.68579, 0.00440216 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 15 )
@@ -1581,9 +1602,9 @@ anims/walk = ExtResource( 9 )
 
 [node name="LightBlip" parent="." instance=ExtResource( 10 )]
 visible = false
+light_mask = 4
 position = Vector2( 32, 33.415 )
 scale = Vector2( 0.2, 0.2 )
-frame = 0
 
 [node name="Health Bar" parent="." instance=ExtResource( 11 )]
 visible = false

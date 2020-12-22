@@ -32,6 +32,10 @@ func setFacing(_facing):
 			
 			if get_node("Locks") != null:
 				get_node("Locks").set_animation(facing + "_locked")
+			if facing == "front":
+				get_node("Torches").show()
+			else:
+				get_node("Torches").hide()
 
 func getFacing():
 	return facing

@@ -33,7 +33,7 @@ z_index = 1
 [node name="Enemies" type="Node" parent="."]
 
 [node name="HudNode" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1.21429, 0.211823 )
+position = Vector2( 2, 0.211823 )
 z_index = 3
 
 [node name="TileMap_top" type="TileMap" parent="."]
