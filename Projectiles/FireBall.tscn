@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Projectiles/Missile.gd" type="Script" id=1]
 [ext_resource path="res://assets/fireball_spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://assets/light.png" type="Texture" id=3]
+[ext_resource path="res://Environments/scripts/Light2D.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -170,18 +171,19 @@ animations = [ {
 [node name="Missile" type="Sprite"]
 script = ExtResource( 1 )
 
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -0.352087, 0.0638829 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+texture_scale = 3.5
+color = Color( 1, 0.960784, 0.172549, 1 )
+energy = 1.4081
+range_height = 40.0
+script = ExtResource( 4 )
+
 [node name="Fireball" type="AnimatedSprite" parent="."]
 position = Vector2( 0.484262, -0.0542583 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 32 )
-frame = 30
+frame = 26
 playing = true
-
-[node name="Light" type="Light2D" parent="Fireball"]
-position = Vector2( -1.89253, 0.294962 )
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
-texture_scale = 0.5
-color = Color( 1, 0.352941, 0, 1 )
-energy = 0.0
-range_height = 40.0
