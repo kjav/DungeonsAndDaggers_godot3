@@ -32,5 +32,5 @@ position = Vector2( 32, 49 )
 texture = ExtResource( 4 )
 texture_scale = 3.2
 color = Color( 0.176471, 0.537255, 1, 1 )
-energy = 4.70523
+energy = 4.35479
 script = ExtResource( 5 )

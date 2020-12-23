@@ -25,6 +25,7 @@ func addItem(newItem):
 		s.set_texture(newItem.rotationInOffHand)
 	else:
 		s.set_texture(newItem.texture)
+		s.normal_map = load(newItem.textureFilePath.split(".")[0] + "_n.png")
 	
 	s.set_scale(Vector2(0.5, 0.5))
 	s.set_position(newItem.position + Vector2(64,64))
