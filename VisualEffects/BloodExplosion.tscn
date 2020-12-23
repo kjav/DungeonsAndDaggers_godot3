@@ -269,8 +269,8 @@ animation = "explode"
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 1, -6 )
 texture = ExtResource( 3 )
-texture_scale = 0.3
-color = Color( 1, 0.141176, 0.188235, 1 )
-energy = 0.868847
+texture_scale = 8.0
+color = Color( 1, 0, 0, 1 )
+energy = 1.28898
 range_height = 40.0
 script = ExtResource( 4 )
