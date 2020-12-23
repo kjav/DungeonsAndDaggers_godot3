@@ -17,6 +17,13 @@ func _init():
 	environment_name = "Door"
 	blocksAttacks = true
 
+func _ready():
+	var randomNumber = randi()%5
+	get_node("Torches/Torch").visible = randomNumber == 0
+	get_node("Torches/Torch2").visible = randomNumber == 1
+	
+	._ready()
+
 func handleAnimation():
 	if facing == "side":
 		if state == "closed":
