@@ -13,4 +13,4 @@ func _ready():
 var time = 0
 func _process(delta):
 	time += delta * 20 * (1 + noise.get_noise_2d(time, 1000.0))
-	energy = (noise.get_noise_2d(time, 1.0) + (1 + sin(time / (1.4 * PI)))) + 0.3
+	energy = (noise.get_noise_2d(time, 1.0) + (1 + sin(time / (1.4 * PI)))) * 1.6 + 2.5

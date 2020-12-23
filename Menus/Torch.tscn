@@ -1,9 +1,8 @@
-[gd_scene load_steps=104 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://assets/bracket.png" type="Texture" id=1]
 [ext_resource path="res://assets/light.png" type="Texture" id=2]
 [ext_resource path="res://assets/bracket_n.png" type="Texture" id=4]
-[ext_resource path="res://Menus/scripts/Light.gd" type="Script" id=5]
 [ext_resource path="res://assets/loop_flame_2.webp" type="Texture" id=7]
 
 [sub_resource type="GDScript" id=1]
@@ -35,25 +34,6 @@ var time = 0.25
 func _process(delta):
 	time += delta * 20 * (1 + noise.get_noise_2d(time, 1000.0))
 	energy = (noise.get_noise_2d(time, 1.0) + 1) * 2.4
-"
-
-[sub_resource type="GDScript" id=3]
-script/source = "tool
-extends Light2D
-
-var noise
-
-func _ready():
-	noise = OpenSimplexNoise.new()
-	noise.seed = randi()
-	noise.octaves = 4
-	noise.period = 20.0
-	noise.persistence = 0.8
-
-var time = 0.5
-func _process(delta):
-	time += delta * 20 * (1 + noise.get_noise_2d(time, 1000.0))
-	energy = (noise.get_noise_2d(time, 1.0) + 1) * 1.8
 "
 
 [sub_resource type="AtlasTexture" id=4]
@@ -543,32 +523,14 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 4 )
 
-[node name="Light" type="Light2D" parent="."]
-position = Vector2( -2, -39.994 )
-texture = ExtResource( 2 )
-texture_scale = 0.25
-color = Color( 1, 0.352941, 0, 1 )
-energy = 3.34976
-range_height = 40.0
-script = ExtResource( 5 )
-
 [node name="Light2" type="Light2D" parent="."]
 position = Vector2( -2, -99.994 )
 texture = ExtResource( 2 )
-texture_scale = 0.25
+texture_scale = 8.0
 color = Color( 1, 0.352941, 0, 1 )
-energy = 2.33183
+energy = 1.9332
 range_height = 40.0
 script = SubResource( 2 )
-
-[node name="Light3" type="Light2D" parent="."]
-position = Vector2( -2, -159.994 )
-texture = ExtResource( 2 )
-texture_scale = 0.25
-color = Color( 1, 0.352941, 0, 1 )
-energy = 1.50513
-range_height = 40.0
-script = SubResource( 3 )
 
 [node name="Flame" type="AnimatedSprite" parent="."]
 light_mask = 4096
@@ -577,5 +539,5 @@ rotation = 3.14159
 scale = Vector2( 1.4, 1.4 )
 frames = SubResource( 98 )
 animation = "New Anim 2"
-frame = 33
+frame = 50
 playing = true

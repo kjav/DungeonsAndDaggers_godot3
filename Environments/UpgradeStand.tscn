@@ -30,7 +30,7 @@ hframes = 8
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 32, 49 )
 texture = ExtResource( 4 )
-texture_scale = 0.18
+texture_scale = 3.2
 color = Color( 0.176471, 0.537255, 1, 1 )
-energy = 1.80644
+energy = 4.70523
 script = ExtResource( 5 )
