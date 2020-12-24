@@ -54,6 +54,6 @@ color = Color( 0.854902, 0.854902, 0.854902, 1 )
 
 [node name="Orb" parent="." instance=ExtResource( 8 )]
 position = Vector2( 625.169, 1013.13 )
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.4, 0.4 )
 [connection signal="playerAttack" from="Player" to="HudNode" method="_on_Player_playerAttack"]
 [connection signal="swipe" from="SwipeNode" to="Player" method="swiped"]
