@@ -128,7 +128,7 @@ func get_facing(wall_direction):
 			return "side"
 	return "front"
 
-func _init(level).(200, 200, level, -1):
+func _init(level).(200, 200, level):
 	randomize()
 	
 	var main_room
