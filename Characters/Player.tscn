@@ -1586,6 +1586,9 @@ position = Vector2( 1.68579, 0.00440216 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 15 )
 
+[node name="Orb Position" type="Node2D" parent="Skeleton2D"]
+position = Vector2( -6.4, -5.60001 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 8 )

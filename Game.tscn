@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Components/DungeonMap.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Hud/Hud.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/tilesets/OldCastleTileset.res" type="TileSet" id=6]
 [ext_resource path="res://Hud/SwipeNode.tscn" type="PackedScene" id=7]
+[ext_resource path="res://VisualEffects/Orb.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -49,5 +50,10 @@ tile_data = PoolIntArray( 65560, 37, 0, 65561, 36, 0, 65562, 36, 0, 65563, 36, 0
 [node name="SwipeNode" parent="." instance=ExtResource( 7 )]
 
 [node name="AmbientLight" type="CanvasModulate" parent="."]
+color = Color( 0.854902, 0.854902, 0.854902, 1 )
+
+[node name="Orb" parent="." instance=ExtResource( 8 )]
+position = Vector2( 625.169, 1013.13 )
+scale = Vector2( 0.2, 0.2 )
 [connection signal="playerAttack" from="Player" to="HudNode" method="_on_Player_playerAttack"]
 [connection signal="swipe" from="SwipeNode" to="Player" method="swiped"]
