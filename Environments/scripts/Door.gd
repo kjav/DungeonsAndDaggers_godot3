@@ -18,7 +18,7 @@ func _init():
 	blocksAttacks = true
 
 func _ready():
-	var randomNumber = randi()%10
+	var randomNumber = randi()%20
 	get_node("Torches/Torch").visible = randomNumber == 0
 	get_node("Torches/Torch2").visible = randomNumber == 1
 	
