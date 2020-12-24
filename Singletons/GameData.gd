@@ -13,6 +13,7 @@ var keys = []
 var tilemap
 var chosen_player
 var player
+var orb
 var hud
 var adFree = false
 var chosen_map
@@ -284,6 +285,7 @@ func reset():
 	spells = []
 	tilemap = null
 	player = null
+	orb = null
 	environmentObjects = []
 	characters = []
 	placedItems = []
@@ -585,6 +587,7 @@ func next_level():
 			chr.queue_free()
 	characters = [player]
 	player.position = Vector2(640, 1024)
+	orb.position = player.position
 	player.turn_end_pos = Vector2(640, 1024)
 	tilemap.next_level()
 	

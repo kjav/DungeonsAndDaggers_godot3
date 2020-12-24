@@ -24,6 +24,8 @@ func _ready():
 	
 	rotation += rand_range(-0.09, 0.09)
 	velocity = transform.x * speed
+	
+	GameData.orb = self
 
 func seek():
 	var steer = Vector2.ZERO
