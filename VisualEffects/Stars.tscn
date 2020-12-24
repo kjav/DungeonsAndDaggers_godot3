@@ -13,6 +13,7 @@ animations = [ {
 } ]
 
 [node name="Animation" type="AnimatedSprite"]
+light_mask = 4
 scale = Vector2( 0.55, 0.55 )
 frames = SubResource( 1 )
 frame = 2

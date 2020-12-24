@@ -43,6 +43,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="UndeadCrypt"]
+light_mask = 4
 margin_left = -496.0
 margin_top = 421.0
 margin_right = 497.0
@@ -167,6 +168,7 @@ rect_scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 11 )
 
 [node name="Tutorial" type="Label" parent="Tutorial"]
+light_mask = 4
 margin_left = -495.986
 margin_top = 419.534
 margin_right = 497.014

@@ -71,6 +71,7 @@ normal_map = ExtResource( 18 )
 centered = false
 
 [node name="Start" type="Label" parent="StartButton"]
+light_mask = 4
 margin_left = 37.3916
 margin_top = 6.64191
 margin_right = 319.392
@@ -191,6 +192,7 @@ normal_map = ExtResource( 20 )
 centered = false
 
 [node name="Swipe" type="Label" parent="Sprite"]
+light_mask = 4
 margin_left = 146.789
 margin_top = 9.18752
 margin_right = 402.789
@@ -211,6 +213,7 @@ normal_map = ExtResource( 20 )
 centered = false
 
 [node name="Dungeon" type="Label" parent="Sprite2"]
+light_mask = 4
 margin_left = 151.126
 margin_top = -2.06915
 margin_right = 535.126
