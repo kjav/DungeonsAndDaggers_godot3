@@ -1,7 +1,7 @@
 extends Node2D
 
 var activeEffects = []
-var maxDisplayableEffects = 8
+var maxDisplayableEffects = 16
 
 func addEffect(effect, proportion = 1):
 	var effectNodeNumber = activeEffects.size() + 1

@@ -36,3 +36,35 @@ position = Vector2( 475, 475 )
 [node name="Effect8" parent="." instance=ExtResource( 2 )]
 visible = false
 position = Vector2( 0, 475 )
+
+[node name="Effect9" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1425, 950 )
+
+[node name="Effect10" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 950, 950 )
+
+[node name="Effect11" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 475, 950 )
+
+[node name="Effect12" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, 950 )
+
+[node name="Effect13" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1425, 1425 )
+
+[node name="Effect14" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 950, 1425 )
+
+[node name="Effect15" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 475, 1425 )
+
+[node name="Effect16" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 0, 1425 )
