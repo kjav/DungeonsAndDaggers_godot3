@@ -15,7 +15,7 @@ var acceleration = Vector2.ZERO
 
 func _ready():
 	target = get_node("../Player/Skeleton2D/Orb Position")
-	light = get_node("Light2D")
+	light = get_node("Non Rotating Node/Light2D")
 	noise = OpenSimplexNoise.new()
 	noise.seed = randi()
 	noise.octaves = 4
@@ -37,7 +37,7 @@ func _process(delta):
 	
 	light.color.h += delta / 50
 	time += delta * 20 * (1 + noise.get_noise_2d(time, 1000.0))
-	light.energy = (noise.get_noise_2d(time, .1) + 1.8)
+	light.energy = (noise.get_noise_2d(time, .1) + 1.6)
 	
 	acceleration += seek()
 	velocity += acceleration * delta

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/17_felspell_spritesheet.png-3e2b6545c0c4e9a81c9144a8cbdc512f.stex"
+path="res://.import/18_midnight_spritesheet.png-8385440c758fc6a2bf1a8d233239a5b8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/orb/17_felspell_spritesheet.png"
-dest_files=[ "res://.import/17_felspell_spritesheet.png-3e2b6545c0c4e9a81c9144a8cbdc512f.stex" ]
+source_file="res://assets/orb/18_midnight_spritesheet.png"
+dest_files=[ "res://.import/18_midnight_spritesheet.png-8385440c758fc6a2bf1a8d233239a5b8.stex" ]
 
 [params]
 
