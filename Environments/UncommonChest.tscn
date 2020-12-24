@@ -5,9 +5,9 @@
 
 [node name="Chest" type="AnimatedSprite"]
 modulate = Color( 0.784314, 0.784314, 0.784314, 1 )
+light_mask = 4
 frames = ExtResource( 1 )
 animation = "closed"
-frame = 5
 playing = true
 offset = Vector2( 64, 40 )
 script = ExtResource( 3 )

@@ -33,6 +33,7 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="small" type="AnimatedSprite" parent="."]
+light_mask = 4
 position = Vector2( 51.7982, 31.9275 )
 scale = Vector2( 0.5, 0.75 )
 frames = SubResource( 1 )
@@ -47,6 +48,7 @@ scale = Vector2( 1, 1 )
 frames = SubResource( 2 )
 
 [node name="medium" type="AnimatedSprite" parent="."]
+light_mask = 4
 position = Vector2( 43.5448, 23.063 )
 scale = Vector2( 0.75, 1.125 )
 frames = SubResource( 1 )
@@ -61,6 +63,7 @@ scale = Vector2( 1, 1 )
 frames = SubResource( 2 )
 
 [node name="large" type="AnimatedSprite" parent="."]
+light_mask = 4
 position = Vector2( 36.5998, 14.7292 )
 scale = Vector2( 1, 1.5 )
 frames = SubResource( 1 )
