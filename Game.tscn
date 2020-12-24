@@ -50,7 +50,6 @@ tile_data = PoolIntArray( 65560, 37, 0, 65561, 36, 0, 65562, 36, 0, 65563, 36, 0
 [node name="SwipeNode" parent="." instance=ExtResource( 7 )]
 
 [node name="AmbientLight" type="CanvasModulate" parent="."]
-color = Color( 0.854902, 0.854902, 0.854902, 1 )
 
 [node name="Orb" parent="." instance=ExtResource( 8 )]
 position = Vector2( 625.169, 1013.13 )
