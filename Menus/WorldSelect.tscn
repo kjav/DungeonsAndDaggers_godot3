@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/scripts/WorldSelect.gd" type="Script" id=1]
 [ext_resource path="res://Menus/SelectScreen.tscn" type="PackedScene" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://assets/settings_gear.webp" type="Texture" id=12]
 [ext_resource path="res://Menus/scripts/DifficultySlider.gd" type="Script" id=13]
 [ext_resource path="res://Menus/scripts/GameModeSlider.gd" type="Script" id=14]
+[ext_resource path="res://assets/43_n.png" type="Texture" id=15]
+[ext_resource path="res://assets/dummy_01_n.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 180
@@ -31,16 +33,10 @@ position = Vector2( 3.7439, -43.7122 )
 [node name="UndeadCrypt" type="Node2D" parent="."]
 position = Vector2( 544.205, 485.558 )
 
-[node name="TextureFrame" type="TextureRect" parent="UndeadCrypt"]
-margin_left = -353.0
-margin_top = -317.0
-margin_right = 159.0
-margin_bottom = 195.0
-rect_scale = Vector2( 1.4, 1.4 )
+[node name="TextureFrame" type="Sprite" parent="UndeadCrypt"]
+scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+normal_map = ExtResource( 15 )
 
 [node name="Label" type="Label" parent="UndeadCrypt"]
 light_mask = 4
@@ -159,13 +155,10 @@ script = ExtResource( 14 )
 [node name="Tutorial" type="Node2D" parent="."]
 position = Vector2( 1604.2, 485.558 )
 
-[node name="TextureFrame" type="TextureRect" parent="Tutorial"]
-margin_left = -354.461
-margin_top = -318.723
-margin_right = -98.4608
-margin_bottom = -62.7231
-rect_scale = Vector2( 2.8, 2.8 )
+[node name="TextureFrame" type="Sprite" parent="Tutorial"]
+scale = Vector2( 2.8, 2.8 )
 texture = ExtResource( 11 )
+normal_map = ExtResource( 16 )
 
 [node name="Tutorial" type="Label" parent="Tutorial"]
 light_mask = 4
