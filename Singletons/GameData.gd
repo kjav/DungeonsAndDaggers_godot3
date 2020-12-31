@@ -590,16 +590,21 @@ func check_for_unlocks():
 		unlockNextDifficulty()
 
 func unlockNextDifficulty():
+	var difficultyName = ""
+	
 	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
-		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
+		difficultyName = possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()]
 	else:
 		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesUndeadCrypt.size()) + 1
 		
-		var difficultyName = additionalDifficultyPreText + " " + str(challengeNumber)
-		unlockedDifficultiesUndeadCrypt.append(difficultyName)
-		addUnlockNotification("Unlocked New Difficulty, " + difficultyName + "!")
+		difficultyName = additionalDifficultyPreText + " " + str(challengeNumber)
 	
-	saveCurrentDifficulties()
+	if difficultyName != "":
+		unlockedDifficultiesUndeadCrypt.append(difficultyName)
+		
+		addUnlockNotification("Unlocked New Difficulty, " + difficultyName + "!")
+		
+		saveCurrentDifficulties()
 	
 
 func unlockFastPacedGameMode():
