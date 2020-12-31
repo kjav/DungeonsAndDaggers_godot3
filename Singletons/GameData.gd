@@ -59,16 +59,6 @@ var map_seed = null
 func currentGameModeUsesTimer():
 	return unlockedGameModesUndeadCrypt[currentGameModeUndeadCrypt] == "Fast Paced" && chosen_map == "UndeadCrypt"
 
-func unlockNextDifficulty():
-	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
-		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
-	else:
-		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesUndeadCrypt.size()) + 1
-		
-		unlockedDifficultiesUndeadCrypt.append(additionalDifficultyPreText + " " + str(challengeNumber))
-	
-	saveCurrentDifficulties()
-
 func unlockNextGameMode():
 	if unlockedGameModesUndeadCrypt.size() < possibleGameModes.size():
 		unlockedGameModesUndeadCrypt.append(possibleGameModes[unlockedGameModesUndeadCrypt.size()])
@@ -595,6 +585,22 @@ func next_level():
 func check_for_unlocks():
 	if current_level == 4 && !unlockedGameModesUndeadCrypt.has("Fast Paced"):
 		unlockFastPacedGameMode()
+	
+	if current_level == bossLevelEvery + 1 && GameData.currentDifficultyUndeadCrypt == GameData.unlockedDifficultiesUndeadCrypt.size() - 1:
+		unlockNextDifficulty()
+
+func unlockNextDifficulty():
+	if unlockedDifficultiesUndeadCrypt.size() < possibleDifficulties.size():
+		unlockedDifficultiesUndeadCrypt.append(possibleDifficulties[unlockedDifficultiesUndeadCrypt.size()])
+	else:
+		var challengeNumber = abs(possibleDifficulties.size() - unlockedDifficultiesUndeadCrypt.size()) + 1
+		
+		var difficultyName = additionalDifficultyPreText + " " + str(challengeNumber)
+		unlockedDifficultiesUndeadCrypt.append(difficultyName)
+		addUnlockNotification("Unlocked New Difficulty, " + difficultyName + "!")
+	
+	saveCurrentDifficulties()
+	
 
 func unlockFastPacedGameMode():
 		unlockedGameModesUndeadCrypt.append("Fast Paced")
