@@ -172,7 +172,7 @@ func get_facing(wall_direction):
 			return "side"
 	return "front"
 
-func _init(level, map, makeWallsConsistent = true).(200, 200, level, -1):
+func _init(level, map, makeWallsConsistent = true).(200, 200, level):
 	randomize()
 	add_room("main", load(map).new(), null)
 	
