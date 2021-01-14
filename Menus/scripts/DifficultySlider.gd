@@ -16,7 +16,7 @@ func getTitle():
 	return "Locked"
 
 func getDescription():
-	return "Beat the second boss floor in this difficulty to unlock the next!"
+	return "Beat the first boss floor in this difficulty to unlock the next!"
 
 func _ready():
 	GameData.loadCurrentDifficulties()

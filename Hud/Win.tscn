@@ -17,13 +17,13 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 100
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
@@ -63,13 +63,16 @@ tracks/2/keys = {
 
 [node name="Node2D" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -23.0
 margin_top = -23.0
 margin_right = 1098.0
 margin_bottom = 1950.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.627451 )
 
 [node name="Label" type="Label" parent="."]
 material = SubResource( 1 )
@@ -86,25 +89,29 @@ text = "Congratulations!
 You Won!"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Difficulty Text" type="Label" parent="."]
-visible = false
 material = SubResource( 1 )
 margin_left = 1.0
-margin_top = 1779.0
+margin_top = 1747.0
 margin_right = 1082.0
-margin_bottom = 1972.0
+margin_bottom = 1940.0
 mouse_filter = 1
 size_flags_vertical = 0
 theme = ExtResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "New Difficulty Unlocked!"
+text = "You can try a harder difficulty!"
 align = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Buttons" type="Node2D" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, 130 )
 
 [node name="TextureButton" type="TextureButton" parent="Buttons"]
@@ -114,6 +121,9 @@ margin_right = 700.0
 margin_bottom = 1613.0
 texture_normal = ExtResource( 4 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Buttons/TextureButton"]
 margin_left = 70.2655
@@ -127,10 +137,9 @@ text = "Menu"
 uppercase = true
 
 [node name="PlaythroughStats" parent="." instance=ExtResource( 7 )]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -0.871399, 573.998 )
 
 [node name="confetti" parent="." instance=ExtResource( 8 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/death screen fade in" = SubResource( 4 )
+"anims/death screen fade in" = SubResource( 3 )

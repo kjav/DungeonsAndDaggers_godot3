@@ -57,8 +57,7 @@ public class MySingleton extends Godot.SingletonBase {
                 }
             })
             .withPersonalizedAdsOption()
-            .withNonPersonalizedAdsOption()
-            .withAdFreeOption();
+            .withNonPersonalizedAdsOption();
 
         activity.runOnUiThread(new Runnable() {    
             @Override public void run() {
@@ -87,7 +86,7 @@ public class MySingleton extends Godot.SingletonBase {
                     // Show form
                     GodotLib.calldeferred(instanceId, "_on_consent_unknown", new Object[] { });
                 } else {
-                    GodotLib.calldeferred(instanceId, "_on_consent_forward", new Object[] { consentStatus == ConsentStatus.PERSONALIZED });
+                    GodotLib.calldeferred(instanceId, "_on_consent_forward", new Object[] { consentStatus == ConsentStatus.PERSONALIZED, false });
                 }
             }
 
