@@ -8,13 +8,13 @@ func _ready():
 	pass
 
 func _on_Environment_unlocked(environmentObjectsName):
-	addMessage('You unlocked a ' + str(environmentObjectsName) + '.');
+	addMessage('You unlocked a' + add_n(str(environmentObjectsName)) + '.');
 
 func _on_Player_healthRaised(value):
 	addMessage('You healed: ' + str(value) + '.');
 
 func _on_Player_itemPickedUp( item ):
-	addMessage('You obtained a ' + item.item_name + item.typeNameForMessage + '.');
+	addMessage('You obtained a' + add_n(item.item_name) + item.typeNameForMessage + '.');
 
 func _on_Player_weaponChanged( slot, weapon ):
 	if (slot == Enums.WEAPONSLOT.PRIMARY):
@@ -24,28 +24,28 @@ func _on_Player_playerAttack( character, amount ):
 	if character == GameData.player:
 		addMessage('You hurt yourself: ' + str(amount) + '.');
 	else:
-		addMessage('You hurt a ' + character.character_name + ': ' + str(amount) + '.');
+		addMessage('You hurt a' + add_n(character.character_name) + ': ' + str(amount) + '.');
 
 func _on_Enemy_attack( character, amount ):
 	var potentiallyFreedCharacter = weakref(character)
 	
 	if potentiallyFreedCharacter.get_ref():
-		addMessage('A ' + character.character_name + ' hurt you: ' + str(amount) + '.');
+		addMessage('A' + add_n(character.character_name) + ' hurt you: ' + str(amount) + '.');
 
 func _on_Timer_timeout(node):
 	removeChild(node);
 
 func _on_FoodItem_used(item):
-	addItemMessage(item, "You ate a ", item.typeNameForMessage);
+	addItemMessage(add_n(item.item_name), "You ate a", item.typeNameForMessage);
 	
 func _on_PotItem_used(item):
-	addItemMessage(item, "You drank a ", item.typeNameForMessage);
+	addItemMessage(add_n(item.item_name), "You drank a", item.typeNameForMessage);
 	
 func _on_SpellItem_used(item):
-	addItemMessage(item, "You cast a ", item.typeNameForMessage);
+	addItemMessage(add_n(item.item_name), "You cast a", item.typeNameForMessage);
 
 func addItemMessage(item, messagePretext, messagePostText):
-	addMessage(messagePretext + str(item.item_name) + messagePostText + '.');
+	addMessage(messagePretext + str(item) + messagePostText + '.');
 
 func createEventMessageNode(y_pos, text):
 	var instance = EventMessage.instance();
@@ -85,4 +85,8 @@ func reposition(height):
 		if item is Node2D:
 			item.set_position(item.get_position() + Vector2(0, height));
 
-
+func add_n(name):
+	if name[0].to_lower() in "aeiou":
+		return "n " + name
+	else:
+		return " " + name

@@ -289,6 +289,7 @@ func checkForTutorialPrompts():
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(640, -512) && GameData.current_level == 1:
 		GameData.addTutorialTextIfTutorial("Click The\nPopup To \nGo To The\nNext Level.", Vector2(4.6, -5.5))
+		GameData.hud.get_node("ContextualMenu/LevelSelect/TutorialArrow").show()
 	
 	if GameData.chosen_map == "Tutorial" && target_pos == Vector2(512, 1152) && GameData.current_level == 2 and not offhandWeaponMessageShown:
 		offhandWeaponMessageShown = true
@@ -511,9 +512,11 @@ func pickUp(item):
 			applePickedUp = true
 			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_text("Click the food\nicon at the\nbottom to eat.")
 			GameData.hud.get_node("TutorialTextPrompts").get_child(2).set_position(Vector2(7, 6.1) * GameData.TileSize)
+			GameData.hud.get_node("HudCanvasLayer/FoodInvent/TutorialArrow").show()
 		
 		if GameData.chosen_map == "Tutorial" && item.item_name == "Bomb" && GameData.current_level == 2:
 			GameData.hud.get_node("TutorialTextPrompts").get_child(0).set_text("Click the weapon\nyou want to\nequip on the\nbottom left icons")
+			GameData.hud.get_node("HudCanvasLayer/WeaponSlots/Secondary Weapon/TutorialArrow").show()
 
 func heal(amount, evenIfDead = false):
 	emit_signal("playerHealed", min(amount, self.stats.health.maximum - self.stats.health.value))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Hud/scripts/Hud.gd" type="Script" id=1]
 [ext_resource path="res://Hud/TextureButton.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Hud/UpgradeScreen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Hud/ContextualMenu.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Hud/Wait.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Hud/TutorialArrow.tscn" type="PackedScene" id=17]
 
 [node name="HudNode" type="Node2D"]
 script = ExtResource( 1 )
@@ -28,6 +29,9 @@ margin_right = 1090.35
 margin_bottom = 1930.0
 expand = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HudCanvasLayer" type="CanvasLayer" parent="."]
 
@@ -54,6 +58,13 @@ position = Vector2( 770, 1780 )
 scale = Vector2( 0.5, 0.5 )
 frameStyle = "Yellow"
 type = "Food"
+
+[node name="TutorialArrow" parent="HudCanvasLayer/FoodInvent" instance=ExtResource( 17 )]
+visible = false
+position = Vector2( 140, -136 )
+rotation = 0.0
+offset = Vector2( -4.95284, -1.77522 )
+direction = false
 
 [node name="PotInvent" parent="HudCanvasLayer" instance=ExtResource( 5 )]
 position = Vector2( 620, 1780 )
@@ -118,5 +129,6 @@ z_index = 4096
 visible = false
 
 [node name="TutorialTextPrompts" type="Node2D" parent="."]
+light_mask = 4
 
 [node name="DirectionArrows" type="Node2D" parent="."]

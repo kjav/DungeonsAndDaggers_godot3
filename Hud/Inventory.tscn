@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/frame_left.webp" type="Texture" id=1]
 [ext_resource path="res://assets/frame_top.webp" type="Texture" id=2]
 [ext_resource path="res://assets/frame_bottom.webp" type="Texture" id=3]
 [ext_resource path="res://Hud/ClickableRegion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hud/TutorialArrow.tscn" type="PackedScene" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "
@@ -140,7 +141,8 @@ func hideMenu(event):
 	self.hide()
 
 func getType():
-	return type"
+	return type
+"
 
 [node name="Node2D" type="Node2D"]
 script = SubResource( 1 )
@@ -161,6 +163,16 @@ margin_right = 1083.0
 margin_bottom = 1247.0
 texture = ExtResource( 2 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialArrow" parent="InventoryWrapperTop" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -56.4987, 73.5786 )
+rotation = 4.71239
+scale = Vector2( 1, 1 )
+offset = Vector2( -4.95284, 1.28875 )
 
 [node name="InventoryWrapperBottom" type="TextureRect" parent="."]
 margin_left = 599.0

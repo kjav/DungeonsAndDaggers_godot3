@@ -1,6 +1,7 @@
 extends TextureButton
 
 func _pressed():
+	get_node("TutorialArrow").hide()
 	if GameData.chosen_map == "Tutorial" && GameData.current_level > 1:
 		get_tree().paused = false
 		GameData.start_screen = "world_select"
