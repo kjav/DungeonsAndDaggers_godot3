@@ -15,7 +15,7 @@ var chosen_player
 var player
 var orb
 var hud
-var adFree = true
+var adFree = false
 var chosen_map
 var characters = []
 var environmentObjects = []
@@ -66,7 +66,10 @@ func unlockNextGameMode():
 		saveCurrentGameModes()
 
 func StartNewGame():
-	map_seed = randi()
+	if TESTING:
+		map_seed = 1337
+	else:
+		map_seed = randi()
 	player_kills = 0
 	total_blocked_damage = 0
 	total_items_used = 0
