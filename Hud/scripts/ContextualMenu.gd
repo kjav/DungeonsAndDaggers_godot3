@@ -45,6 +45,7 @@ func populateLevelOption(stairs):
 		get_node("LevelSelect").hide()
 		get_node("LevelSelectText").hide()
 
+var tutorial_arrow_already_shown = false
 func populateItems(items):
 	for itemNumber in range(1, 9):
 		var itemNode = get_node("ItemNode" + str(itemNumber))
@@ -54,6 +55,12 @@ func populateItems(items):
 			itemNode.get_node("icon").texture = getItemTexture(items[itemNumber-1])
 			itemNode.get_node("frame").item = items[itemNumber-1]
 			itemNode.get_node("background").texture = GameData.getBackgroundForRarity(items[itemNumber-1].rarity)
+			if itemNumber == 1:
+				if GameData.chosen_map == "Tutorial" and not tutorial_arrow_already_shown:
+					itemNode.get_node("TutorialArrow").show()
+					tutorial_arrow_already_shown = true
+				else:
+					itemNode.get_node("TutorialArrow").hide()
 		else:
 			itemNode.hide()
 

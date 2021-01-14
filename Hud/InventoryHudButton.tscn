@@ -15,6 +15,9 @@ margin_right = 256.0
 margin_bottom = 256.0
 texture = ExtResource( 2 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Icon" type="TextureRect" parent="."]
 margin_right = 256.0
@@ -26,3 +29,6 @@ margin_right = 256.0
 margin_bottom = 256.0
 texture_normal = ExtResource( 4 )
 script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

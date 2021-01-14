@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Hud/scripts/HudWeaponButtons.gd" type="Script" id=1]
 [ext_resource path="res://assets/ring_inner_grey.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/CMONNEAR_with_plus.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/ring.webp" type="Texture" id=5]
 [ext_resource path="res://assets/weapon_unequipt_overlay.png" type="Texture" id=6]
+[ext_resource path="res://Hud/TutorialArrow.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/weapon_unequipt_overlay_prompt.png" type="Texture" id=9]
 [ext_resource path="res://Hud/scripts/WeaponButtonClick.gd" type="Script" id=10]
 [ext_resource path="res://assets/ring_inner_blue.png" type="Texture" id=11]
@@ -209,6 +210,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TutorialArrow" parent="Secondary Weapon" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 424, -136 )
+rotation = 0.0
+offset = Vector2( -4.95284, -4.29692 )
+direction = false
+
 [node name="Primary Weapon" type="Node2D" parent="."]
 
 [node name="Primary Background" type="TextureRect" parent="Primary Weapon"]
@@ -216,6 +224,9 @@ margin_right = 128.0
 margin_bottom = 128.0
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Primary Icon" type="TextureRect" parent="Primary Weapon"]
 margin_left = 51.0
@@ -298,3 +309,4 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Secondary Weapon/Secondary Inactive Button" to="Secondary Weapon/TutorialArrow" method="hide"]

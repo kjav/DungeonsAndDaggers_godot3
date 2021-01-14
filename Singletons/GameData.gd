@@ -551,6 +551,7 @@ func addCurrentStatusEffects():
 func addTutorialTextIfTutorial(text, pos):
 	if chosen_map == "Tutorial":
 		var textNode = Text.instance()
+		textNode.light_mask = 4
 		textNode.set_position(pos * GameData.TileSize)
 		textNode.set_text(text)
 		GameData.hud.get_node("TutorialTextPrompts").add_child(textNode)

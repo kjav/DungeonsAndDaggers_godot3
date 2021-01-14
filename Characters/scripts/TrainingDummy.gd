@@ -19,3 +19,8 @@ func _ready():
 	setInitialStats(1, 1, 1, 1, 0)
 	
 	._ready()
+
+func setAnimationOnAllBodyParts(animationName, setEvenIfDead = false):
+	.setAnimationOnAllBodyParts(animationName, setEvenIfDead)
+	if animationName == "death_right":
+		get_node("Sprite").hide()
